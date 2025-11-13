@@ -1,0 +1,15 @@
+{
+    "topic_id": 886,
+    "question": "CPLD 升级 MultipleSuppliersMode MIXED Mode 功能背景了解 - 相较于 iBMC v2 的早期版本，观察到 general_hardware 模块的 CPLD 升级代码及模板 update.cfg 中新增了 MultipleSuppliersMode=3（MIXED Mode），先前 iBMC V2 仅支持 MultipleSuppliersMode=1（SINGLE） 和 MultipleSuppliersMode=2（MULTIPLE）；\n想请教一下：\n1、MultipleSuppliersMode=3 和 MultipleSuppliersMode=2 在功能上的差异是什么？为何要设计 MultipleSuppliersMode=3 ，它解决了什么问题？\n2、openUBMC 是否仍然保留了对 MultipleSuppliersMode=2 的支持？观察到代码中只有 SINGLE（1） 和 MIXED（3） 的分支，是否意味着 MultipleSuppliersMode=2 不再受支持？\n3、MultipleSuppliersMode=3 有哪些依赖，是否有硬件依赖，是否需要 CPLD 专门适配？",
+    "topic_user_name": "Kunlun Xiongzirui",
+    "best_answer_url": "/t/topic/886/2",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/886/2",
+            "text": "V3中升级打包的update.cfg文件中MultipleSuppliersMode字段为3是用于混链升级，也就是支持多厂商cpld升级。"
+        }
+    ]
+}

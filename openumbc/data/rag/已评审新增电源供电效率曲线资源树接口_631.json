@@ -1,0 +1,7 @@
+{
+    "topic_id": 631,
+    "question": "【已评审】新增电源供电效率曲线资源树接口 - content: 关联ISSUES\n【PowerMgmt】支持提供电源供电效率曲线\n背景\n支持优化供电模式切换特性的实现，用户在切换供电模式时，BMC提供优选主用电源策略，确保用户可以得到实际收益，BMC推荐时，需要使用到当前服务器的电源供电转换效率曲线，从配置加载对应电源供电效率曲线，power_mgmt组件提供给power_strategy组件\n决策点\n1、在OnePower下新增资源树接口bmc.kepler.Systems.PowerMgmt.OnePower.EfficiencyCurve，包含LoadPercentRange和ValueRange两个资源树属性；\n2、新增私有属性PartNumber和InputVoltage用于判断加载不同的电源转换效率曲线；\n详细描述\n资源path：/bmc/kepler/System/:SystemId/PowerMgmt/:ID（已有）\n资源interface：bmc.kepler.Systems.PowerMgmt.OnePower.EfficiencyCurve(新增)\n变化类型：新增\n应用场景：power_strategy在寻找最优供电模式时，访问资源树属性读取对应电源的电源转换效率\nimage1921×323 28.7 KB\nimage1911×225 42.1 KB\n评审结论\n决策点一：把LoadPercentRange和ValueRange合并为二维数组a(yd)，属性名称为EfficiencyCurve；\n决策点二：同意\nlinks: https://gitcode.com/openUBMC/power_mgmt/issues/6, https://discuss.openubmc.cn/uploads/default/original/1X/4731c95cb16695ee34880daf117a57a9c690b820.png, https://discuss.openubmc.cn/uploads/default/original/1X/0745bbd3a527f70b3470c09addf328f85494ead0.png",
+    "topic_user_name": "Tangjingman",
+    "best_answer_url": "",
+    "reply_posts": []
+}

@@ -1,0 +1,43 @@
+{
+    "topic_id": 1779,
+    "question": "CPU2 信息为空，CPU1信息正常 涉及闭源组件compute 问题 - content: 现象\n问题版本 compute/1.70.27@openUBMC.release/rc\nBMC 版本为330 开源版本\n截图_202507161954081529×369 126 KB\n基础板信息\n截图_202507161954481454×396 131 KB\n截图_20250716195510476×189 34.8 KB\n分析\n截图_20250716195527789×356 76.2 KB\ncompute异常打印\n截图_202507161955471283×240 196 KB\n诉求\n1、涉及闭源组件，请指导一下\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/647bb2572c65ce2ec91dc4b768549ce0030c2399.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/f/f058bcabe0f92e295f8f2ac275f499fcefde879a.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/d/d6aadd65583a39ffb49f4e767ce5e2a64385b9b6.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/2772116c7c9ab625a1cdde4dd45b1cf568201970.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/a/a3b6c721012a6e1c4e38f42f60051b30ddd51d32.png",
+    "topic_user_name": "Yctco Huaconghui",
+    "best_answer_url": "/t/topic/1779/6",
+    "reply_posts": [
+        {
+            "user_name": "王祝炜",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1779/2",
+            "text": "content: 可能是带内bios上报的smbios信息有问题，CPU很多静态的信息是来自带内bios上报的SMBIOS_CONFIG文件，在一键收集日志的路径是 dump_info\\AppDump\\bios\\SMBIOS_CONF\nwangzhuwei3@h-partners.com 日志麻烦转发我一份。\nlinks: mailto:wangzhuwei3@h-partners.com"
+        },
+        {
+            "user_name": "Yctco Huaconghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1779/3",
+            "text": "日志邮件已发"
+        },
+        {
+            "user_name": "Yctco Huaconghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1779/4",
+            "text": "content: 截图_202507210930311915×825 242 KB\n这个日志看，更像是闭源组件compute 解析问题\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/2ceed8ccd07681ee5be3c13ca5e24a8d2b256749.png"
+        },
+        {
+            "user_name": "Yctco Huaconghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1779/5",
+            "text": "不过这里CPU 的序号好像有差异\nsmbios 中定义的是CPU1 cpu2\nCPU 中定义的是 CPU0 CPU1\n这里可能有问题？请帮忙确认一下"
+        },
+        {
+            "user_name": "Yctco Huaconghui",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1779/6",
+            "text": "感谢指导\n已确认问题原因，BIOS 上报的CPU序号为 CPU0 CPU1\nBMC 解析的是 CPU1 CPU2"
+        }
+    ]
+}

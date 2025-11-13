@@ -1,0 +1,15 @@
+{
+    "topic_id": 1960,
+    "question": "【待评审】bmc_health新增资源协作接口展示BMC的CPU和内存使用情况 - content: 关联issue\n支持BMC监控内存使用率\n评审背景\n原始需求：支持BMC内存占用检测， BMC监控BMC小系统内存占用率，持续1分钟超过80%则告警\n当前需求：需要BMC提供BMC监测内存占用率，至少在60s进行一次内存占用监测并且上传到资源协作接口\n原有CPU占用率已支持获取，但是无相关资源协作接口展示，CPU占用率也需要上传资源协作接口。\n评审点\n新增资源协作接口\n新增path：/bmc/kepler/BmcHealth/SystemResource\n新增interface：bmc.kepler.BmcHealth.SystemResource\n新增属性：\n\nmethod/property/signal\n名称\n签名\n权限\n变化是否广播\n持久化类型\n属性说明\n备注\n\nproperty\nTotalCPUsagePercentage\nU8\n只读\n否\n不持久化\nBMC的CPU使用率百分比\n\nproperty\nTotalMemoryUsagePercentage\nU8\n只读\n否\n不持久化\nBMC的内存使用率百分比\n\n    \"SystemResource\": {\n        \"path\": \"/bmc/kepler/BmcHealth/SystemResource\",\n        \"privilege\": [\"ReadOnly\"],\n        \"interface\": {\n            \"bmc.kepler.BmcHealth.SystemResource\": {\n                \"properties\": {\n                    \"TotalCPUsagePercentage\": {\n                        \"baseType\": \"U8\",\n                        \"readOnly\": true,\n                        \"description\": \"BMC的CPU使用率百分比\"\n                    },\n                    \"TotalMemoryUsagePercentage\": {\n                        \"baseType\": \"U8\",\n                        \"readOnly\": true,\n                        \"description\": \"BMC的内存使用率百分比\"\n                    }\n                }\n            }\n        }\n    }\nlinks: #p-4803-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/165, #p-4803-h-2, #p-4803-h-3",
+    "topic_user_name": "Lilie",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1960/2",
+            "text": "lilie:\n\n原始需求：支持BMC内存占用检测， BMC监控BMC小系统内存占用率，持续1分钟超过80%则告警\n当前需求：需要BMC提供BMC监测内存占用率，至少在60s进行一次内存占用监测并且上传到资源协作接口\n原有CPU占用率已支持获取，但是无相关资源协作接口展示，CPU占用率也需要上传资源协作接口。\n\n【预审】\n\n原始需求中还有是需要针对具体的每个BMC运行进程的关于CPU和内容的收集，建议以PID为维度进行收集以及资源协作接口的评审\ninterface 建议集中设计，系统维度和进程维度分别采用不同的path\n新增资源协作接口属性按照评审模板提供"
+        }
+    ]
+}

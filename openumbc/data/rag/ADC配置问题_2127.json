@@ -1,0 +1,7 @@
+{
+    "topic_id": 2127,
+    "question": "ADC配置问题 - content: 硬件环境：米尔开发板。\n现象：root.sr下配置ADC0和ADC1后，原有的已经正确显示的 I2C传感器会被影响，无法被i2ctool动态扫描到，删除ADC配置后，i2ctool可以正确扫到总线下的设备地址。且ADC0、ADC1未正常显示。已参考该帖 配置Adc bus时候的问题 - 交流互助区 - openUBMC 论坛\n问题：配置ADC为什么会影响原有I2C传感器？ /sys/class目录下无法看到传感器相关*_input文件显示，在出现问题后，有哪些方式可以方便定位？如何方便看ADC、I2C、pwm、tach反馈的数值是否正确？\nimage895×674 8.77 KB\nimage1101×442 21.2 KB\nimage1031×257 10.1 KB\nimage945×878 35.6 KB\nimage936×907 44.1 KB\nframework.txt (1.0 MB)\nlinks: https://discuss.openubmc.cn/t/topic/838, https://discuss.openubmc.cn/uploads/default/original/2X/6/6288035c44f03323d4bd4201efbddd4d1a9e1c74.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/ed8d41730466b38e0ca60d36cf92c390084f0d58.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/8fe4a386766b207fcd59f36448b97b3aca4ea555.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/1ba4c1201f8d4d1f1b6f03f34c9b8785700fdc07.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/2089d62629af4f0580fd099c5b49a6afe8870584.png, /uploads/short-url/pv1ssqIVMDzOKFH2vwXxyizqJkO.txt",
+    "topic_user_name": "Guoxin",
+    "best_answer_url": "",
+    "reply_posts": []
+}

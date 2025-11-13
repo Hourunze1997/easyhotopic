@@ -1,0 +1,43 @@
+{
+    "topic_id": 587,
+    "question": "【已撤销】固件升级流程总线互斥 - content: ISSUE链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景\n固件升级流程中，可能存在同时访问硬件总线或器件的情况，要保证并行升级写固件不会造成总线冲突\n决策点\n各个组件管理的升级需要支持对总线加锁和解锁，需要添加私有属性LockChip来实现该能力\n详细描述\n\nservice\nOBJECT(path)\ninterface\nmethod/property/signal\ntype\n属性\n是否广播（是/否）\n是否持久化（否/临时/复位/掉电/永久）\n属性值来源（CSR/代码）\n取值类型\n备注\n\ncompute\nNPUFirmware\n私有属性\nLockChip\nproperty\nro\n否\n否\nCSR\nU8\n用于对总线加锁和解锁\n\ncompute\n/bmc/kepler/Systems/${SystemId}/PCIeDevices/PCIeCards/NPUCards/${Id}\n私有属性\nLockChip\nproperty\nro\n否\n否\nCSR\nU8\n用于对总线加锁和解锁\nlinks: https://gitcode.com/openUBMC/vpd/issues/10, https://gitcode.com/openUBMC/vpd/issues/10",
+    "topic_user_name": "曾启健",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/587/2",
+            "text": "content: 硬件的访问由框架统一调度和控制，功能组件如果需要自行访问并锁定总线时，应该是调用框架的接口，由框架来完成加锁和解锁，而不是功能组件自己提供接口，请与maintainer @WeliveWelove_8cth9 联系并讨论清楚\nlinks: /u/welivewelove_8cth9"
+        },
+        {
+            "user_name": "曾启健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/587/3",
+            "text": "这个就是框架提供的接口，需要通过添加私有属性的方式来调用接口"
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/587/4",
+            "text": "这里的描述是对总线加锁和解锁，为啥名称是LockChip？"
+        },
+        {
+            "user_name": "曾启健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/587/5",
+            "text": "方案变更，此议题撤销"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/587/6",
+            "text": ""
+        }
+    ]
+}

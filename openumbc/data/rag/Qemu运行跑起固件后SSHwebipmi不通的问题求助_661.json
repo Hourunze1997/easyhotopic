@@ -1,0 +1,36 @@
+{
+    "topic_id": 661,
+    "question": "Qemu运行跑起固件后SSH、web、ipmi不通的问题求助 - content: 问题1：\n按照官方的最新的manifest以及指导文档运行Qemu后 SSH能访问Ipmi命令能通，但是web不通，端口号也都反复检查了。这时候的固件是跑脚本的时候下载的固件。\nf2759993e82570cbd774196303f82e2625×121 89.4 KB\n问题2：\n然后我开发的时候基于br_release_openUBMC2503_20250330这个分支，我就将main分支中关于Qemu的代码拷贝过来了\n然后，加了qemu:配置，如下，但是编出来的固件ssh、web、ipmi都不通，尝试多次了都不行。难道跟用户有关系吗\n\n# yaml-language-server: $schema=/usr/share/bmcgo/schema/manifest.platform.schema.json\nbase:\n  # openUBMC四段式版本号定义规则：4段固定2字节，范围为00-99\n  version: \"1.00.05.00.B001\"\n  # 单板定制化脚本,位于build/customization目录,需要实现一个Customization类\n  customization: \"customization/prototype.py\"\n  rtos_version: 208.8.0\n  rtos_kernel: 5.10_ek_preempt_pro\n  dependency_buildtools: dependency/dependency_buildtools.xml\n  # 签名文件，由构建系统复制到self.config.board_path目录，如需定制\n  signature:\n    files:\n      - file: ${product}/ca/rootca.crl\n        dst: cms.crl\n\ndependencies:\n  - conan: huawei_secure_c\n  - conan: kmc\n  - conan: Signature_Verify_CBB_Library\n  - conan: sqlite3\n  - conan: openssh\n  - conan: nginx\n  - conan: json\n  - conan: libmc4lua\n  - conan: libiam\n  - conan: certificate\n  - conan: key_mgmt\n  - conan: Cyrus_SASL\n  - conan: openldap\n  - conan: hisec_tls\n  - conan: vpp\n  - conan: iam/1.0.0@openUBMC.common/rc\n  - conan: maca\n  - conan: soctrl\n  - conan: persistence\n  - conan: net-snmp\n  - conan: event\n  - conan: Editline_Library_-_libedit\n  - conan: event_policy\n  - conan: firmware_mgmt\n    options:\n      community_enable: true\n  - conan: cli\n  - conan: hwdiscovery\n  - conan: bmc_network\n  - conan: bmc_time\n    options:\n      manufacture: true\n  - conan: hwproxy\n  - conan: libsoc_adapter\n  - conan: runtime_accessor\n  - conan: oms\n  - conan: nsm\n  - conan: ipmi_core\n  - conan: rmcpd\n  - conan: bmc_upgrade\n  - conan: compute\n  - conan: bmc_soc\n  - conan: redfish\n  - conan: web_backend\n  - conan: ddns\n  - conan: lsnmp\n  - conan: ntp\n  - conan: libroute_mapper\n  - conan: Computing_Component_RAID\n  - conan: libssh2\n  - conan: curl\n  - conan: lcurl\n  - conan: libmgmt_protocol\n  - conan: product_mgmt\n  - conan: usb_entry\n  - conan: lldpd\n  - conan: file_transfer\n  - conan: libproto-mc4c\n  - conan: libmdbc\n  - conan: libmcc\n  - conan: ssdp\n  - conan: muparser\n  - conan: mdbctl\n  - conan: skynet\n    options:\n      enable_luajit: true\n  - conan: luajit\n  - conan: bmc_health\n  - conan: secbox\n  - conan: boost\n  - conan: remote_console\n  - conan: ums\n  - conan: snmp\n  - conan: libjpeg\n  - conan: vpd/1.70.84@openUBMC.716SMC/rc\n    options:\n      board_name: 716SMC\n  - conan: mdb_interface/1.71.1@openUBMC.common/rc\n  - conan: fructrl\n    options:\n          manufacture: true\n  - conan: sensor/1.70.28@openUBMC.common/rc\n  - conan: frudata\n  - conan: rackmount/1.71.1@openUBMC.common/rc\n  - conan: hica\n  - conan: rootfs_user\n  - conan: lsw\n  - conan: network_adapter\n  - conan: chassis\n    options:\n          manufacture: true\n  - conan: power_mgmt\n  - conan: storage\n  - conan: pcie_device\n  - conan: thermal_mgmt\n  - conan: libenergy\n  - conan: manufacture\n  - conan: bios\n  - conan: general_hardware\n  - conan: webui/2.00.000@openUBMC.common/rc\n  - conan: account\n  - conan: mctpd\n  - conan: profile_schema\n  - conan: capability_proxy\n  - conan: host_agent\n  - conan: byo_716smc/0.0.1@openUBMC.716SMC/rc\n  - conan: help\n    options:\n      board_name: openUBMC\n  - conan: byo_general/0.0.1@openUBMC.common/rc\n\n# 构建gpp包所需配置。\n# manufecture中的gpp/files会覆盖当前的配置\ngpp:\n  files:\n    # rootfs镜像文件固定为rootfs_BMC.img\n    - file: ${work_out}/rootfs_BMC.img\n    - file: ${work_out}/rootfs_BMC.tar.gz\n    # rootfs_BMC.img的cms签名文件\n    - file: ${work_out}/rootfs_BMC.img.cms\n\n    # 签名文件的证书吊销列表\n    - file: ${product}/ca/rootca.crl\n      dst: cms.crl\n    # 签名的根证书\n    - file: ${product}/ca/rootca.der\n      dst: rootca.der\n\n    - file: ${sdk_path}/Hi1711_boot_4096_debug.bin\n      dst: Hi1711_boot_4096.bin\n      condition:\n        build_type: debug\n    - file: ${sdk_path}/Hi1711_boot_pmode_debug.bin\n      dst: Hi1711_boot_pmode.bin\n      condition:\n        build_type: debug\n    - file: ${sdk_path}/Hi1711_boot_4096.bin\n      dst: Hi1711_boot_4096.bin\n      condition:\n        build_type: release\n    - file: ${sdk_path}/Hi1711_boot_pmode.bin\n      dst: Hi1711_boot_pmode.bin\n      condition:\n        build_type: release\n\ntosupporte:\n  default:\n    # 产品名称_大版本.小版本_年月日时分.zip  其他可用参数 ${version}  %Y%m%d%H%M%S\n    package_name: \"716SMC_${major_ver}.${minor_ver}_%Y%m%d%H%M.zip\"\n    build_type: debug\n    files:\n      - file: ${board_path}/version.xml\n        verify:\n          - skip\n      - file: \"${code_root}/doc/716SMC/byo.sh\"\n      - file: \"${code_root}/doc/716SMC/install.sh\"\n      - file: \"${code_root}/doc/716SMC/uninstall.sh\"\n      - file: \"${code_root}/doc/716SMC/README.md\"\n      #- file: \"${code_root}/doc/${doc_file}\"\n      # 注意：work_out中存储的是未经签名的hpm包，此处需要使用output_path目录经签名的hpm包\n      - file: \"${output_path}/rootfs_${board_name}.hpm\"\n        dst: 716SMC_${major_ver}.${minor_ver}_%Y%m%d%H%M.hpm\n        verify:\n          - pss\n  qemu:\n    package_name: \"716SMC/716SMC-CMT_${version}_qemu.zip\"\n    build_type: release\n    qemu_image: inner/${board_name}_${version}_${tosupporte_code}.cpio\n    files:\n      - file: ${board_path}/version.xml\n    dependencies:\n      - conan: fructrl\n        options:\n          qemu: true\n      - conan: general_hardware\n        options:\n          qemu: true\n      - conan: nsm\n        options:\n          qemu: true\n      - conan: bmc_network\n        options:\n          qemu: true\n\nimage1069×819 166 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/5690648cd136ec2146760db03e12b5a32d009af8.png, https://discuss.openubmc.cn/uploads/default/original/1X/9ebd1e907f6cdce2cc1993c65dde92b88421141a.jpeg",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/661/5",
+    "reply_posts": [
+        {
+            "user_name": "FXX",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/661/2",
+            "text": "尝试更新iam的版本号，与当前的manifest保持一样。ssh能够连通。"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/661/3",
+            "text": "更新account的版本到1.70.22"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/661/4",
+            "text": "web服务未被开启，可以通过ssh或者串口登录后，执行/data/home/busybox_x telnet localhost 进入telnet服务后，查看netstat -ntlpa 是否有nginx的服务。如果没有请联系我们，通常也是4~7分钟nginx就会被拉起。"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/661/5",
+            "text": "南京百敖:\n\n的固件是跑脚本\n\n请保持默认config文件内容，删除manifest temp目录和build目录重试拉起qemu"
+        }
+    ]
+}

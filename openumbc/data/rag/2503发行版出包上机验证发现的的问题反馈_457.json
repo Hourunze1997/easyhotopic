@@ -1,0 +1,50 @@
+{
+    "topic_id": 457,
+    "question": "25.03发行版出包上机验证发现的的问题反馈 - content: 当前使用25.03版本出包后上机验证后发现了以下问题，因此来反馈求助。\n主板：S920X20\n1、SSH能连接但无法登录，串口可登录\nimage730×362 3.62 KB\n2、WEB页面无法上下电，提示操作失败，Http响应码为500\n3、WEB页面设置超时时间失败，提示操作失败，Http响应码为500\n4、BCU，EXU，SEU等板卡FRU信息无法列出，疑似未识别组件\nimage549×324 13.7 KB\n5、传感器列表中存在大量无名字的传感器条目\nimage1099×869 14.7 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/a62757affa18c212b7ec113d5ba87ff594c88ba7.png, https://forum.openubmc.cn/uploads/default/original/1X/51275418384b7e69fc0841bf24018dd25a4e3629.png, https://forum.openubmc.cn/uploads/default/original/1X/7d64b79c870f216943fde7725a72e7391faa8db2.png",
+    "topic_user_name": "百信-李肖航",
+    "best_answer_url": "/t/topic/457/6",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/457/2",
+            "text": "看样子像是配置有问题，建议联系一下对应的PAE进行指导"
+        },
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/457/3",
+            "text": "通过将VPD中相关的CSR文件版本改高，使自发现组件强制使用BMC内置的CSR，问题2，4，5可暂时解决。有一点不太明白，为什么eeprom中存在的CSR文件不能正常工作？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/457/4",
+            "text": "具体需要查看一下framework.log日志了\n有一种可能是因为csr签名校验失败了"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/457/5",
+            "text": "感谢您反馈的问题，相关问题已经组织内部解决中，若确定是问题会尽快发布解决。"
+        },
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/457/6",
+            "text": "(1) 问题2, 4和5 已定位到原因，EEPROM中存在的CSR只有硬件部分，社区25.03发行版 vpd仓中soft部分的csr，导致解析CSR失败。解决方案在manifest中添加TaiShanCSR2.9.0组件,  或者使用社区VPD仓生成相应的HPM包烧入扩展板进行更新\n(2) 问题1, 3使用高可用iam组件替换社区iam组件可解决"
+        },
+        {
+            "user_name": "FXX",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/457/7",
+            "text": "ssh 无法连接问题，请使用最新的manifest出包，或者使用最新的iam和libiam"
+        }
+    ]
+}

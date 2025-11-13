@@ -1,0 +1,29 @@
+{
+    "topic_id": 2113,
+    "question": "【兼容性】openbmc支持的客户端浏览器版本和操作系统的兼容性列表，哪里可以获取到 - 客户的PC机是win7的操作系统，打不开webui界面",
+    "topic_user_name": "Hz Test",
+    "best_answer_url": "/t/topic/2113/3",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2113/2",
+            "text": "不太清楚openbmc的"
+        },
+        {
+            "user_name": "Zstlan",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2113/3",
+            "text": "联机帮助 0001.html可以查看浏览器和操作系统兼容列表"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2113/4",
+            "text": "这里是openubmc，不是openbmc！你可以去openbmc的社区discord咨询"
+        }
+    ]
+}

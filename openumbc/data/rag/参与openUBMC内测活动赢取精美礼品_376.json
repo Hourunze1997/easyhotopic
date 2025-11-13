@@ -1,0 +1,92 @@
+{
+    "topic_id": 376,
+    "question": "参与openUBMC内测活动，赢取精美礼品 - content: 诚邀各位开发者参与【openUBMC最新版本】内测体验活动，本次活动有两种参与方式，任选其一回帖提交反馈，即有机会获得奖品！\n奖品池\n一等奖：提出最有价值意见的 1名 开发者—华为 FreeBuds 6i 耳机\n二等奖：反馈有效问题数量最多的前 3名 开发者—华为超级快充立式无线充电器\n积极参与奖：积极参与活动的 5名 开发者—华为智能体脂秤3蓝牙版\n参与方式\n方式一：【社区体验】发现正确性及易用性问题\n方式二：【实战开发】使用最新社区版本及相关资源进行安装部署、开发真实需求并反馈您的真实感受\n反馈方式\n跟帖评论：在本帖评论区反馈您发现的问题并附上问题截图\npost1080×3408 238 KB\n声明：\n若您参与本次活动，即表示您同意将个人获奖信息（包括账号名与获奖奖品）公示于本活动页面，同时认可本活动规则以及openUBMC生态隐私政策声明。\n本活动最终解释权归openUBMC社区所有。\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/34a0c3506c77a7dd5687837ec8c0c0ce6c1a8db8.jpeg",
+    "topic_user_name": "",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/376/2",
+            "text": ""
+        },
+        {
+            "user_name": "zhuchao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/376/3",
+            "text": "来来来，内测开始了，小伙伴们，冲冲冲"
+        },
+        {
+            "user_name": "Ouyangyonggang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/376/4",
+            "text": "content: 来啦来啦\n\nopenubmc组件代码编写和阅读时，使用的开发工具VS code，该工具没有企业级代码规范静态检查插件，像Huawei CodeCheck，希望提供的BMC studio开发工具中存在供开发者代码静态检查的插件；\n在openubmc社区中删除评论时，点击refresh后出现资源错误，影响体验，如图；\nurl资源错误1910×880 69.1 KB\nopenubmc社区内评论上传图片时选择从移动设备上传出现错误，不确定是社区问题还是浏览器问题，先提了再说奥，如图：\n上传图片error_new1919×974 142 KB\n开发实战——搭建编译环境并构建固件，固件正常构建，可以升级至V3机器但ssh连接BMC失败\n58575947999196487d2e8f10539f0eb1920×1000 228 KB\n7454825242625866×255 67.9 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/618170e391006dbd9d57219dd0f17c2f798b2871.png, https://forum.openubmc.cn/uploads/default/original/1X/8d65244ba268db7da4a8e6c891801a820d5e0da8.png, https://forum.openubmc.cn/uploads/default/original/1X/331c70df1944910375783b103d2f8a6fe3f260b9.jpeg, https://forum.openubmc.cn/uploads/default/original/1X/58ff93f4b555a6d81b622b9a4ea41b9009598d41.png"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/376/10",
+            "text": "content: 建议反馈：希望社区论坛支持除了图片之外的附件上传功能，便于交流与问题定位\n首先特别感谢 openUBMC 团队一直以来在产品迭代与社区运营上的用心投入 \n无论是社区论坛首页的清晰分类，还是各类问题的高效响应，都体现了团队对开发者体验的持续关注与打磨。作为一名积极参与内测的开发者，我在日常使用过程中，已经切实感受到社区平台的专业性与开放氛围 \n\n 建议内容\n当前社区论坛仅支持文字与图片形式的反馈，虽然对于大多数讨论已基本满足需求，\n但在实际使用中我们经常会遇到需要上传日志、配置文件或使用案例分享的情况，这些信息仅通过截图或文字很难完整呈现。\n因此，建议社区论坛适度开放附件上传功能，支持用户上传如 .log、.txt、.yaml 等文本文件，及常见压缩格式（如 .zip、.tar.gz）的附件。\n这不仅有助于问题定位，也便于社区成员之间共享一些典型配置、使用案例、模板等资源。\n\n 建议细节\n为了兼顾社区论坛的可维护性与安全性，附件功能的开放可以遵循以下原则：\n\n 增加上传类型，例如 .log、.txt、.yaml、.zip、.tar.gz 等常用格式；\n 设置合理大小限制，如单个文件不超过 5MB；\n 上传文件可自动进行格式校验、内容预览或来源标记；\n 若暂不支持上传，也可探索“通过私信发送附件”作为过渡方案。\n\n 实际应用场景\n\n用户反馈部署问题时，上传安装日志（如 journalctl、docker logs 或一键收集日志包）；\n分享构建失败详情时，附上构建输出、配置、环境变量文件；\n社区成员之间共享某些典型配置、使用范例，可直接打包压缩上传，提高交流效率；\n甚至可以作为上传调试脚本、测试用例、监控输出的手段，拓宽社区互动边界。\n\n 结语\nopenUBMC 社区已经在技术氛围、结构组织和互动体验等方面做得非常出色，我们也很珍惜这样的开发者聚集地 \n附件上传虽然是一个小功能，却可以显著提升问题反馈的完整性与社区交流的深度。\n非常感谢社区团队的辛苦付出，也希望这个小建议能为社区的持续优化提供一点微薄的参考\nlinks: #p-707-h-1, #p-707-h-2, #p-707-h-3, #p-707-h-4, #p-707-h-5"
+        },
+        {
+            "user_name": "zhuchao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/376/11",
+            "text": "你好，很开心接受到你的反馈\n关于第二点：最新版本的功能本身没有问题，但此前因openUBMC论坛更新后与多语言插件出现兼容性问题，已临时回退到旧版本；后续会解决兼容性问题重新发布稳定版本。\n关于第三点：目前该功能在Google Chrome浏览器下运行正常，如遇问题可尝试更换浏览器。"
+        },
+        {
+            "user_name": "Archwse",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/376/12",
+            "text": "小生有礼了！我认为这个回复和帖子使用Markdown的方式非常符合我们开发者的需求和习惯，希望能够得到大家的认可。如果我的建议对活动有帮助，期待能有机会获得奖品！感谢！"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/376/13",
+            "text": "content: 我参加了实战开发，模拟适配了一张网卡，以下是我在开发过程中碰到或者联想到的问题:\n1.sr文件名中的bom号，是根据组件类型定义的么，每种组件的bom号是一样的么？如果是的话，可否提供各种组件的bom号汇总表？\n2.如下的PCIe网卡的管理拓扑配置中，Anchor的buses为mux_channel3，指的是该网卡只能接在上一级riser的channel3上么？\nimage459×531 38.5 KB\n3.一张NIC网卡中为什么要同时Scanner_Lom1Port1Link和Scanner_Lom2Port1Link，是因为不能确认该网卡接在哪个LOM口，因此做Lom口遍历扫描么？\n4.Entity对象有什么作用？ 该对象的id和Instance该如何取值？\n5.要是识别一个板载网卡，至少要实现哪些对象？每个对象会提供哪些功能支持\n6.IEU、NIC等板卡没办法通过修改connector属性来模拟加载么？\n7.可否提供文档，包含所有sr支持的对象以及对象的所有属性、取值范围和描述？\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/e14936ca4e5bd919611ceda8d9e9deacd60b4fc1.jpeg"
+        },
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/376/14",
+            "text": "2、是的，这个配置代表只有9545的chan3的链路才对接的网卡。这种PCIe标卡插在riser卡的槽位即可\n3、是的，该网卡的配置项无法直接获取到是lom1还是lom2，需要从CPLD上报网口连接状态\n5、可以参考network_adapter的README，具体详细的适配步骤后续会在社区有文档承载。\n6、使用debug包可以直接设置connector的Presence属性来模拟在位信号"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/376/15",
+            "text": "content: PCIe设备我可以通过修改connector属性实现加载\nimage657×133 2.47 KB\n\nimage554×299 21.5 KB\n但是NIC、Riser卡没能实现加载，我修改connector后，web上并没有看到对应板卡，而是多了告警\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/8866e2de398678b505b6179a3df36b8795eaa9ad.png, https://forum.openubmc.cn/uploads/default/original/1X/43d7b5191e8ea07963809c606024184c5b0ae541.jpeg"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/376/16",
+            "text": "bmc studio会提供所有CSR对象和属性的介绍，规划中，敬请期待。"
+        },
+        {
+            "user_name": "Ouyangyonggang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/376/17",
+            "text": "content: 开发实战——搭建环境构建BMC固件：\n1、本地搭建编译环境构建固件，搭建完编译环境后可以编译固件，固件可以升级至V3机器，但发现通过ssh连接bmc失败；\n58575947999196487d2e8f10539f0eb1920×1000 228 KB\n企业微信截图_17454825242625866×255 67.9 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/331c70df1944910375783b103d2f8a6fe3f260b9.jpeg, https://forum.openubmc.cn/uploads/default/original/1X/58ff93f4b555a6d81b622b9a4ea41b9009598d41.png"
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/376/18",
+            "text": "你好，目前已支持建议增加的上传类型"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "topic_id": 769,
+    "question": "【已评审】并行升级新增资源协作接口及错误引擎 - content: 并行升级特性逻辑需要新增资源协助接口及错误引擎，具体内容如下：\n评审点一：\n背景：并行升级接口除了支持多个固件并行升级外，还需要支持一次接口调用批量下发请求，其redfish接口样例如下（待评审），为配合该接口实现，需要新增资源协作接口单次请求下发多个升级任务\nURL: redfish/v1/UpdateService/Actions/Oem/Huawei/UpdateService.ParallelUpdate\n请求参数：\n    {\n        \"ActivatedImmediately\": false/true, // 备用名称：ActivatedAutomatically\n        \"Packages\": [\n            {\n                \"TaskName\": taskname, // BMC\n                \"ImageURI\": filepath,\n                \"TransferProtocol\": protocol,\n                \"BiosActiveMode\": biosactivemode,\n                \"SystemId\": systemid\n            },\n            {\n                \"TaskName\": taskname, // CPLD\n                \"ImageURI\": filepath,\n                \"TransferProtocol\": protocol,\n                \"BiosActiveMode\": biosactivemode,\n                \"SystemId\": systemid\n            }\n        ]\n    }\n响应消息体举例：\n    {\n        \"@odata.context\": \"/redfish/v1/$metadata#TaskService/Tasks/Members/$entity\", \n        \"@odata.type\": \"#Task.v1_0_2.Task\", \n        \"@odata.id\": \"/redfish/v1/TaskService/Tasks/1\", \n        \"Id\": \"1\", \n        \"Name\": \"Update Task\"\n        \"TaskState\": \"Running\", \n        \"StartTime\": \"2016-11-28T10:36+00:00\", \n        \"Messages\": [], \n        \"SubTasks\": {\n            \"@odata.id\": \"/redfish/v1/TaskService/Tasks/1/SubTasks\"\n        }\n        \"Oem\": { \n            \"Huawei\": { \n                \"TaskPercentage\": null\n            } \n        } \n    }  \n\n评审点：\nUpdateService 资源协作接口新增方法：ParallelUpdate。\npath: /bmc/kepler/UpdateService\ninterface : bmc.kepler.UpdateService\n方法说明：\n\n项目\n值\n\n方法名称\nParallelUpdate\n\n变化类型\n新增\n\n权限\nBasicSetting\n\n请求签名\na{ss}a(sa{ss})\n\n请求参数\nUpgradeOptions：签名为 a{ss}，表征当前升级的扩展参数集合，具体见参数说明：UpgradeOptionsPackages：签名为 a(sa{ss})，表征当前升级请求的固件集合，具体见参数说明：Packages\n\n响应签名\nuau\n\n响应参数\nTaskId：签名为 u，表征当前升级请求的任务标识SubTaskIds：签名为 au，表征当前升级请求中每个固件升级的子任务标识集合\n\n参数说明：UpgradeOptions\nUpgradeOptions 用于承载本次请求所有的升级配置，具体的取值如下：\n\n参数名称\n签名\n参数属性名称\n参数属性取值\n取值说明\n\nUpgradeOptions\na{ss}\nActivatedImmediately\n“false”/“true”\n本次升级完成后是否立即进行生效\n\n参数说明：Packages\nPackages 用于承载本次请求中各个升级包的升级信息，具体的取值如下：\n\n参数名称\n签名\n参数属性名称\n参数属性取值\n取值说明\n\nPackages\ns\nFilePath\n–\n本次升级固件的路径\n\nPackages\na{ss}\nAdditionalOptions\n–\n本次升级请求的额外参数集合，具体见参数说明：AdditionalOptions\n\n参数说明：AdditionalOptions\n\n参数名称\n签名\n参数属性名称\n参数属性取值\n取值说明\n\nAdditionalOptions\na{ss}\nBiosActivatedScope\n“IMU”/“IMP”/ “IMF”/ “SCC”\nBIOS无感升级生效区域（仅对BIOS升级有效）\n\n评审点二：\n背景：对于不支持同时升级的固件，固件管理需要支持通用能力，通过CSR配置实现并行升级互斥：\n评审点：\n添加私有对象：\n    // 模型定义：\n    \"MutuallyExclusiveFirmwares\": {\n        \"CurrentFirmwareId\": {\n            \"baseType\": \"String\",\n            \"description\": \"正在升级的固件ID\"\n        },\n        \"ExclusiveFirmwareIds\": {\n            \"baseType\": \"String[]\",\n            \"description\": \"禁止升级的固件ID列表\"\n        }\n    }\n\n    // 配置样例：\n    \"MutuallyExclusiveFirmwares_BMC\": {\n        \"CurrentFirmwareId\": \"0x0000001100000022\",\n        \"ExclusiveFirmwareIds\": [\n            \"0x0000003300000044\",\n            \"0x0000005500000066\"\n        ]\n    }\n\n备注：\nCurrentFirmwareId 与 ExclusiveFirmwareIds 属性元素由组件的 固件标识（ComponentId） 以及 固件扩展标识（ComponentIdEx） 组成一个8字节的字符串，其中 固件标识 位于高4字节。\n具体的  固件标识 以及 固件扩展标识 请参考社区文档中心：BMC支持升级固件信息\n评审点三：并行升级相关错误引擎新增\n场景1：并行升级特性要求对等待升级的任务数量做限制，超过最大支持的待升级任务后，再次调用并行升级接口要报错，新增如下错误引擎：\n\"ConcurrentReachedLimit\": {\n    \"Description\": \"Indicates that an operation has been requested, but the operation failed because the number of concurrent operation exceeds the limit.\",\n    \"Message\": \"The operation failed because the number of concurrent operation has reached the limit %1.\",\n    \"Severity\": \"Warning\",\n    \"NumberOfArgs\": 1,\n    \"ParamTypes\": [\n        \"string\"\n    ],\n    \"Resolution\": \"Try again later.\",\n    \"HttpStatusCode\": 503,\n    \"IpmiCompletionCode\": \"0xD5\", // Cannot execute command. Command, or request parameter(s), not supported in present state.\n    \"SnmpStatusCode\": 5,\n    \"TraceDepth\": 0\n}\n\n场景2：固件统一生效任务不允许重入，即当前已经处于固件统一生效状态时，再次调用统一生效按钮要报错，新增如下错误引擎：\n\"ActivationInProgress\": {\n    \"Description\": \"Indicates that activation is in progress\",\n    \"Message\": \"An activation is in progress. Please wait.\",\n    \"Severity\": \"Warning\",\n    \"Resolution\": \"Wait until the activated operation is complete.\",\n    \"HttpStatusCode\": 400,\n    \"IpmiCompletionCode\": \"0xD5\", // Cannot execute command. Command, or request parameter(s), not supported in present state.\n    \"SnmpStatusCode\": 5,\n    \"TraceDepth\": 0\n}\n\n评审结论\n\n评审点1：通过，同意 bmc.kepler.UpdateService 接口新增方法 ParallelUpdate\n评审点2：通过，同意新增MutuallyExclusiveFirmwares私有对象，同时需要做好对应的配置指导说明\n评审点3：通过，同意新增错误引擎：ConcurrentReachedLimit、ActivationInProgress\nlinks: #p-1597-h-1, #p-1597-h-2, #p-1597-redfish-3, #p-1597-h-4, #p-1597-h-5, #p-1597-csr-6, #p-1597-h-7, #p-1597-h-8, #p-1597-h-1-9, #p-1597-h-2-10, #p-1597-h-11",
+    "topic_user_name": "lixiaoning",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/769/2",
+            "text": "评审点3：使用类型进行抽象设计，然后使用多个实例根据不同的产品的硬件固件类型支持灵活配置。具体的配置实例样例如下：\nMutexComponents_BMC: {\n  FirmwareType: \"BMC\", \n  MutexComponents: [\"CPLD_1\", \"CPLD_1\"]\n},\nMutexComponents_BIOS: {\n  FirmwareType: \"BIOS_1\", \n  MutexComponents: [\"CPLD_1\", \"CPLD_1\"]\n}"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/769/3",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/769/4",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/769/5",
+            "text": ""
+        }
+    ]
+}

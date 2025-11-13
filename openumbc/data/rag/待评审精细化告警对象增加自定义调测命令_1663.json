@@ -1,0 +1,22 @@
+{
+    "topic_id": 1663,
+    "question": "【待评审】精细化告警对象增加自定义调测命令 - content: 关联issue\n【需求】精细化告警对象增加自定义调测命令-mdb_interface-GitCode\n背景\n精细化告警对象无法从资源协作接口进行查询，上版调试时无法实时感知已注册的告警对象及告警的门限等信息，只能从日志文件里查询已注册对象的相关信息。\n评审点\n基于上述背景，需要新增两个自定义调测命令，用于查询当前环境上已注册事件的相关信息\n评审点1\npath： /bmc/keper/Debug/Systems/:SystemsId/EventsDebug\ninterface： bmc.kepler.Debug.Systems.Events\ncmd： geteventlist <eventcode>\ndisplayDescription： Get event list by eventcode.For example: geteventlist 0x1a000029.\n\n项\n取值以及说明\n\n方法名称\nGetEventsByCode\n\n方法描述\n获取已注册的事件码为eventcode的事件实例名称列表\n\n方法权限\nReadonly\n\n请求签名\ns\n\n请求参数\n事件码\n\n响应签名\naa{ss}\n\n响应参数\n返回值为数组,每个元素为字典类型\n\n下方是调测命令回显\n[{\"EventName\":name1,\"Reading\":reading1,\"Condition\":condition1,\"OperateType\":operatetype1\",EventType\":eventtype1},\n{\"EventName\":name2,\"Reading\":reading2,\"Condition\":condition2,\"OperateType\":operatetype2,\"EventType\":eventtype2}]\n\nEventName 代表实例名称\nReading 表示当前读值\nCondition 表示门限值\nOperateType 表示运算符\nEventType表示事件类型，有power,hardware,software 三种\n评审点2\npath： /bmc/keper/Debug/Systems/:SystemsId/EventsDebug\ninterface： bmc.kepler.Debug.Systems.Events\ncmd： geteventdetail <obj_name>\ndisplayDescription： Get event detail by obj_name.For example: geteventdetail Event_NoDiskMntr_010101.\n\n项\n取值以及说明\n\n方法名称\nGetEventDetail\n\n方法描述\n获取具体事件对象的相关信息\n\n方法权限\nReadonly\n\n请求签名\ns\n\n请求参数\n事件对象实例名称\n\n响应签名\na{ss}\n\n响应参数\n返回值为字典类型,有Reading，Condition等相关信息\n\n下方是调测命令回显\n{\"EventName\":name1,\"EventCode\":eventcode,\"Condition\":condition1,“EventType”：eventtype，\"OperateType\":operatetype,\"Severty\":serverity,\"LifeCycleType \":lifecycletype ,\"ActionType\":actiontype,\"SystemId\":systemid,\"ComponentName\":componentname,\"State\":state}\n\nEventName 代表实例名称\nReading 表示当前读值\nCondition 表示门限值\nEventType表示事件类型，有power,hardware,software 三种\nOperateType表示运算符\nSeverity表示告警级别\nLifeCycleType 表示默认恢复策略，有自动恢复/os下电恢复/os上电恢复/期间在位恢复/器件不在位恢复\nActionType表示告警上报后执行的动作类型，有无动作/执行os下电/重启os/下电再上电os\nSystemId 表示事件属于哪个host\nComponentName 表示事件关联的器件的名称\nState 表示当前告警状态\n评审结论\nlinks: #p-4037-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/150, #p-4037-h-2, #p-4037-h-3, #p-4037-h-1-4, #p-4037-h-2-5, #p-4037-h-6",
+    "topic_user_name": "wangxin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1663/2",
+            "text": "content: hxmygcs:\n\n基于上述背景，需要新增一个自定义调测命令，用于查询当前环境上已注册事件的相关信息\npath： /bmc/keper/Debug/Systems/:SystemsId/Events\ninterface： bmc.kepler.Debug.Events\ncmd： geteventinfo <startid> <endid>\n\n@hxmygcs 当前评审议题，需要首先答复以下问题：\n问题1：当前命令 startid/endid 对于操作者无法确认，建议和框架确认是否可以分页，或者按照固定的类型进行展示\n问题2：当前命令的 description 要补充完整\n问题3：评审按照需求分为两个命令：\n\ngeteventlist，获取当前 Event 对象的实例名称列表，按照类型或者分页等策略进行展示\ngeteventdetail <obj_name>，获取 Event 具体对象的属性信息\nlinks: /u/hxmygcs"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1663/3",
+            "text": "对于问题1：调测命令不支持分页功能\n对于问题2/3 已修改"
+        }
+    ]
+}

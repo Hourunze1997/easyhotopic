@@ -1,0 +1,22 @@
+{
+    "topic_id": 642,
+    "question": "RAID卡类型中的 PMC, BRCM, ARIES,HBA 分别指代什么 - 请问，RAID卡类型中的 PMC, BRCM, ARIES,HBA 分别指代什么，识别判定依据是什么",
+    "topic_user_name": "Makun",
+    "best_answer_url": "/t/topic/642/2",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/642/2",
+            "text": "content: makun:\n\nPMC, BRCM, ARIES,HBA\n\ndeepseek的答复请参考：\n在RAID卡和相关存储技术中，PMC、BRCM、ARIES和HBA是几个关键术语，以下是它们的详细解释：\n\n1. PMC（PMC-Sierra）\n\n定义：PMC是一家半导体公司（现被Microsemi收购），专注于存储、通信和网络芯片解决方案。\nRAID卡关联：\n\nPMC提供RAID控制器的芯片和固件技术，例如SAS/SATA RAID控制器芯片。\n许多RAID卡厂商使用PMC的芯片方案实现硬件RAID功能。\n\n常见场景：中低端RAID卡、HBA卡中常见PMC芯片方案。\n\n2. BRCM（Broadcom，博通）\n\n定义：Broadcom是全球领先的半导体公司，提供网络、存储和无线芯片解决方案。\nRAID卡关联：\n\nBroadcom通过收购LSI（含MegaRAID技术）成为RAID控制器市场的主要供应商。\nMegaRAID是Broadcom旗下的著名RAID卡品牌，广泛用于服务器和存储系统。\n\n常见产品：\n\nMegaRAID SAS系列（如9361-8i、9440-8i）\n支持硬件RAID 0/1/5/6/10等级别。\n\n3. ARIES（可能指Adaptec RAID）\n\n定义：ARIES并非通用术语，但可能与Adaptec的RAID技术相关（需结合上下文确认）。\nAdaptec RAID卡：\n\nAdaptec是另一家老牌RAID卡厂商（现属Microchip Technology），提供SAS/SATA RAID和HBA解决方案。\n例如Adaptec SmartRAID系列支持高级RAID功能和缓存保护。\n\n注意：若指特定项目代号（如固件名称），需进一步具体信息。\n\n4. HBA（Host Bus Adapter，主机总线适配器）\n\n定义：HBA是连接主机（服务器）与存储设备（如硬盘、SSD）的接口卡。\n与RAID卡的区别：\n\nHBA：仅提供物理连接（如SAS/SATA/NVMe），无RAID功能（直通模式）。\nRAID卡：在HBA基础上增加RAID控制处理器，支持数据冗余/条带化。\n\n常见类型：\n\nSAS HBA（如LSI 9207-8i）\nNVMe HBA（用于高速SSD连接）。\nlinks: #p-1384-h-1-pmcpmc-sierra-1, #p-1384-h-2-brcmbroadcom-2, #p-1384-h-3-ariesadaptec-raid-3, #p-1384-h-4-hbahost-bus-adapter-4"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/642/3",
+            "text": "可以把 sata控制器的RAID 卡直观地理解为一块 HBA（Host Bus Adapter）：\n\n主板默认的 SATA 控制器其实就是 HBA\n现代 主板通常把所有板载 SATA 端口挂在一张 PCIe 设备，也就是hba卡上，这张设备在自己的PCIE BAR（Base Address Register）空间里实现 AHCI 协议。\nAHCI 封装了 ATA（SATA）协议\nAHCI 把原本复杂的 ATA 命令集进一步标准化、简化，为操作系统提供了一套统一、易用的硬盘交互接口。\n为什么说 有些RAID 卡“本质是 HBA”\n当 RAID 卡基于 SATA/AHCI 控制器并切到 Pass-Through 模式时，它暴露的 BAR 寄存器与普通 AHCI HBA 完全一致；如果硬件是 SAS 控制器，这块我不太清楚哈。\n\n想深入了解细节，建议下载并阅读 AHCI 1.3 规范，对照其中的寄存器映射和命令流程。直接虚拟机用nvme作为系统盘，外挂一个sata盘，把驱动卸载掉，拿一个pcie 模板，去读取bar空间，操作下ahci得流程就行了。"
+        }
+    ]
+}

@@ -1,0 +1,85 @@
+{
+    "topic_id": 303,
+    "question": "【组件仓库本地更新流程】openubmc的组件仓库中，有些组件版本疑似没有二进制包 - content: 当前有两个仓库：\nibmc_dev: http://0.0.0.0:9300/ [Verify SSL: True]\nopenubmc_dev: https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/ [Verify SSL: False]\n\n我使用以下脚本，将openubmc_dev的组件转移到ibmc_dev\nimport os\nimport subprocess\n\ndef run(cmd):\n    ret = os.system(cmd)\n    if ret != 0:\n        raise Exception(\"Command failed: %s\" % cmd)\n\n# Assuming local = conan_server and artifactory remotes\noutput = subprocess.check_output([\"conan\", \"search\", \"-r=openubmc_dev\", \"--raw\"]).decode()\npackages = output.splitlines()\n\nprint(f\"{packages}\\n{type(packages)}\")\n\nfor package in packages:\n    print(\"Downloading %s\" % package)\n    run(\"conan download %s -r=openubmc_dev\" % package)\n\nrun(\"conan upload \\\"*\\\" --all -c --force -r=ibmc_dev\")\n\n发现文件大小对不上，(openubmc_dev有44221条，而ibmc_dev只有43689条)：\nconan search \"*\" -r ibmc_dev > conan_ibmc\nconan search \"*\" -r openubmc_dev > conan_openubmc\n\n ll conan_*\n-rw-r--r-- 1 root root 43689 Mar 26 09:11 conan_ibmc\n-rw-r--r-- 1 root root 43689 Mar 26 09:12 conan_local\n-rw-r--r-- 1 root root 44221 Mar 26 09:11 conan_openubmc\n\n通过compare工具发现ibmc_dev缺失一些组件：\n\n总共涉及这些组件版本：\naccount/1.70.19@hw.ibmc.release/rc\naccount/1.70.19@hw.ibmc.release/stable\nfructrl/1.70.20@hw.ibmc.release/rc\nfructrl/1.70.20@hw.ibmc.release/stable\ngeneral_hardware/1.70.43@hw.ibmc.release/rc\ngeneral_hardware/1.70.43@hw.ibmc.release/stable\nsensor/1.70.24@hw.ibmc.release/rc\nsensor/1.70.24@hw.ibmc.release/stable\nthermal_mgmt/1.70.23@hw.ibmc.release/rc\nthermal_mgmt/1.70.23@hw.ibmc.release/stable\nvpd/1.70.81@hw.ibmc.release/rc\nvpd/1.70.81@hw.ibmc.release/stable\nwebui/1.70.48@hw.ibmc.release/rc\nwebui/1.70.48@hw.ibmc.release/stable\n\n尝试手动转移：\n>conan download \"webui/1.70.48@hw.ibmc.release/rc\"  -r=openubmc_dev\nDownloading conanmanifest.txt completed [0.15k]\nDownloading conanfile.py completed [1.33k]\nDownloading conan_export.tgz completed [2.32k]\nDecompressing conan_export.tgz completed [0.00k]\nwebui/1.70.48@hw.ibmc.release/rc: Getting the complete package list from 'webui/1.70.48@hw.ibmc.release/rc#bb96c56ee897dcfc53bef909b4cbbe58'...\nwebui/1.70.48@hw.ibmc.release/rc: WARN: No remote binary packages found in remote\n\n>conan upload \"webui/1.70.48@hw.ibmc.release/rc\" --all -c --force -r=ibmc_dev\nUploading to remote 'ibmc_dev':\nUploading webui/1.70.48@hw.ibmc.release/rc to remote 'ibmc_dev'\nUploaded conan_export.tgz -> webui/1.70.48@hw.ibmc.release/rc [2.32k]\nUploaded conanfile.py -> webui/1.70.48@hw.ibmc.release/rc [1.33k]\nUploaded conanmanifest.txt -> webui/1.70.48@hw.ibmc.release/rc [0.15k]\nUploaded conan recipe 'webui/1.70.48@hw.ibmc.release/rc' to 'ibmc_dev': http://0.0.0.0:9300/\n\n里面有这么一个告警日志：\nwebui/1.70.48@hw.ibmc.release/rc: WARN: No remote binary packages found in remote\n\n我想咨询一下：\n\n是否是因为组件没上传成功产生这个告警？\n这个现象是否会对依赖此版本的manifest有影响？\n临时解决方案是不是自行拉最新代码进行构建发布？\nlinks: #p-487-h-1, #p-487-openubmc_devibmc_dev-2, #p-487-openubmc_dev44221ibmc_dev43689-3, #p-487-compareibmc_dev-4, #p-487-h-5, #p-487-h-6, #p-487-colorredcolor-7",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/303/4",
+    "reply_posts": [
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/303/2",
+            "text": "再次补充一个问题，使用复制过来的ibmc_dev编包一直不成功：\nrm -rf temp/ && rm -rf output/\ncd /root/.conan/ && rm -rf data/ && mkdir data/ && cd -\nLOG=DEBUG bmcgo build -b openUBMC -r ibmc_dev\n\n错误日志：\n[2025-03-26 11:29:59,901 ERROR] ================== boost/1.82.0.B001@hw.ibmc.release/rc#56434ef3889adfeec499a19b0bd62f70 构建失败日志起始位置 ==================\n[2025-03-26 11:29:59,915 INFO] Using lockfile: '/home/workspace/source/manifest/temp/conan_source_debug_dev/ibmc/all/ibmc.lock'\nConfiguration:\n[settings]\narch=armv8\nbuild_type=Debug\ncompiler=gcc\ncompiler.libcxx=libstdc++\ncompiler.luajit=1.7.x\ncompiler.version=7.3\nos=Linux\n[options]\n*:module_symvers=9d01937095e74d48d1f044dd5254fbfc7c2e5bb1def2b854ad4f66e9878543b9\nbmc_time:manufacture=True\nchassis:manufacture=True\nfructrl:manufacture=True\nhelp:board_name=openUBMC\nskynet:enable_luajit=True\nvpd:board_name=openUBMC\n[build_requires]\n[env]\nAR=aarch64-target-linux-gnu-ar\nAS=aarch64-target-linux-gnu-as\nCC=aarch64-target-linux-gnu-gcc\nCFLAGS=-Wall -fPIC -fstack-protector-all -O2 -Wl,-z,relro,-z,now -Wl,-z,relro -Wl,-z,noexecstack -Wl,-z,now -fPIE -pie -fno-common -std=gnu11\nCHOST=aarch64-target-linux-gnu\nCONAN_CMAKE_FIND_ROOT_PATH=/opt/RTOS/208.8.0/arm64le_5.10_ek_preempt_pro/sdk\nCONAN_CMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY\nCONAN_CMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY\nCONAN_CMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY\nCONAN_CMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER\nCONAN_CMAKE_FIND_SDK_ROOT=/opt/hi1711sdk\nCONAN_CMAKE_SYSROOT=/opt/RTOS/208.8.0/arm64le_5.10_ek_preempt_pro/sdk\nCONAN_CMAKE_SYSTEM_VERSION=3.14\nCONAN_DISABLE_STRICT_MODE=1\nCONAN_REVISIONS_ENABLED=1\nCONAN_SKIP_BROKEN_SYMLINKS_CHECK=True\nCXX=aarch64-target-linux-gnu-g++\nCXXFLAGS=-I\"/opt/hcc_arm64le/aarch64-target-linux-gnu/lib/include\" -Wall -fPIC -fstack-protector-all -O2 -Wl,-z,relro,-z,now -Wl,-z,relro -Wl,-z,noexecstack -Wl,-z,now -fPIE -pie -fno-common -std=c++17\nHOSTCC=gcc\nKERNEL_PATH=/opt/RTOS/208.8.0/arm64le_5.10_ek_preempt_pro/sdk/usr/src/kernel/\nLD=aarch64-target-linux-gnu-ld\nPATH=[/opt/hcc_arm64le/bin]\nPKG_CONFIG_PATH=/opt/RTOS/208.8.0/arm64le_5.10_ek_preempt_pro/sdk/lib64/pkgconfig:/opt/RTOS/208.8.0/arm64le_5.10_ek_preempt_pro/sdk/usr/lib64/pkgconfig\nRANLIB=aarch64-target-linux-gnu-ranlib\nSTRIP=aarch64-target-linux-gnu-strip\nInstalling package: boost/1.82.0.B001@hw.ibmc.release/rc\nRequirements\n    boost/1.82.0.B001@hw.ibmc.release/rc from 'local_dev' - Cache\nPackages\n    boost/1.82.0.B001@hw.ibmc.release/rc:295f5ceaff90a1afe2a22ca78ccdeb749ab95b30 - Build\n\nCross-build from 'Linux:x86_64' to 'Linux:armv8'\nInstalling (downloading, building) binaries...\nboost/1.82.0.B001@hw.ibmc.release/rc: Configuring sources in /root/.conan/data/boost/1.82.0.B001/hw.ibmc.release/rc/source\nERROR: boost/1.82.0.B001@hw.ibmc.release/rc: Error in source() method, line 24\n        git.clone(**self.conan_data[\"sources\"][self.version])\n        CalledProcessErrorWithStderr: Command 'git -c http.sslVerify=false fetch --depth 1 origin \"1.82.0\"' returned non-zero exit status 128.\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)\nfatal: unable to access 'https://szv-open.codehub.huawei.com/OpenSourceCenter/boostorg/boost.git/': Could not resolve host: szv-open.codehub.huawei.com\n\n[2025-03-26 11:29:59,923 ERROR] ================== boost/1.82.0.B001@hw.ibmc.release/rc#56434ef3889adfeec499a19b0bd62f70 构建失败日志结束位置 ==================\n\n虽然这个错误日志提到的组件是boost/1.82.0.B001@hw.ibmc.release/rc\n但每次重新构建提示的组件都不同"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/303/4",
+            "text": "yizhonghui:\n\nvpd/1.70.81@hw.ibmc.release/rc\n\n1、组件未上传二进制，仅上传了recipe，所以告警说没有二进制。\n2、对manfiest无影响，缺少二进制时会自动从源码构建，唯一要做的是确保有权限访问社区的源码仓。\n3、如果想缓存二进制，提交效率，也可以在本地构建再推包。"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/303/5",
+            "text": "指定社区仓试试，LOG=DEBUG bmcgo build -b openUBMC -r openubmc_dev"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/303/6",
+            "text": "是这样的，我需要在公司内网搭建conan仓，我原本的思路是conan download openubmc_dev下所有的组件，然后转移容器，在内网环境conan upload到自己的私仓，但是构建过程中还是出现错误。\n现在似乎搞清楚原因了，就是openubmc_dev不完全包括二进制，必须要在外网环境完整执行一次.hpm构建，然后再到内网conan upload。相当于手动构建出二进制到.conan/data。\n是这样的么？"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/303/7",
+            "text": "要讲清楚这个问题就得理解recipe和package，recipe简单理解就是构建脚本和元数据，配合不同的编译器、编译选项、特性(options)都会生成不同的package，所以一个recipe可以应对无数个package。\n完整构建hpm只是构建出了一个跟hpm匹配的package集，如果将构建生成packages推送到conan仓，重复构建hpm时可以直接复用二进制。\n实际开发过程中我们会使用到各种各样的包，如DT包(x86_64包)、debug包、release包、特性（options）组合包，以及这些包的组合等等。。。。。。。\n所以：能获取到源码的场景建议使用recipe归档，conan在缺包时会自动构建二进制"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/303/8",
+            "text": "那这样会带来一个大问题\n我们的开发环境是纯内网环境，不能执行源码构建。\n当前的策略是将组件从外网打包成package，然后归档到我们的内网环境。\n一旦涉及多hpm构建（debug、release包等等），就麻烦了。\n我能想到的办法就是一种hpm对应一个组件仓。"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/303/9",
+            "text": "content: 有多种解决方案：\n方案一：按你说的方法来，先解决产品构建的问题，其它DT依赖的组件包也按这个策略。\n方案二：将openUBMC的开源源码同步到你们内部的私仓，使用私仓重新发布相同版本的组件。\n方案三：【落地时间不确定】待社区构建的conan包管理器升级到conan2.0后，使用  Backing up third-party sources with Conan 特性从备份地址下载源码包。\nlinks: https://docs.conan.io/2.14/devops/backup_sources/sources_backup.html"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/303/10",
+            "text": "方案二，需要源码编译的组件，是否都在开放范围内？"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/303/12",
+            "text": "openUBMC的开源源码"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/303/13",
+            "text": "方案二，如果能修改conanfile.py中的仓库地址为我们的私仓地址，是不是能够做到debug、release仓库归一，也能让构建时自动解决组件依赖\n但是直接改conanfile.py不是很好，是否考虑用环境变量配置源码仓地址和权限\n海哥说的重新发布，是不是就是改了组件的源码仓地址和权限，然后再以recipe的形式发布的组件？"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/303/14",
+            "text": "content: 不会使用环境变更读取仓地址，因为组件包太多，不适合使用环境变更且改动太大，而且会破坏软件包完整性。建议看方案三，待conan2.0之后考虑支持，参考conan文档：\n\ndocs.conan.io\n\nBacking up third-party sources with Conan — conan 2.6.0 documentation\nlinks: https://docs.conan.io/2.6/devops/backup_sources/sources_backup.html, https://docs.conan.io/2.6/devops/backup_sources/sources_backup.html"
+        }
+    ]
+}

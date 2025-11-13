@@ -1,0 +1,15 @@
+{
+    "topic_id": 575,
+    "question": "【已评审】支持HBM已隔离信息资源上树 - content: ISSUE链接：\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景:\n1、需要对产生HBM隔离事件提供传感器原子能力\n2、对于故障诊断组件已诊断出HBM UCE的告警，需要支持对HBM已隔离自愈场景进行对应告警消除\n决策点：\n新增HBM已隔离地址计数属性资源上树\n详细描述：\n资源path：/bmc/kepler/Systems/:SystemId/Processors/NPU/:ID\n资源interface：bmc.kepler.Systems.Processor.NPU\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n属性值来源\n设计约束\n\nHBMSingleBitIsolatedPages\n新增属性\nu\nR：ReadOnly\n复位持久化\n是\nHBM 单Bit错误隔离次数\n代码\n1、隔离页最大支持512个page页隔离  2、属性刷新需要在计数存在变化才刷新\n\nHBMMultiBitIsolatedPages\n新增属性\nu\nR：ReadOnly\n复位持久化\n是\nHBM 多Bit错误隔离次数\n代码\n1、隔离页最大支持512个page页隔离 2、属性刷新需要在计数存在变化才刷新\n\n评审结论：\n同意新增HBM已隔离地址计数属性资源上树，具体如下：\n资源path：/bmc/kepler/Systems/:SystemId/Processors/NPU/:ID\n资源interface：bmc.kepler.Systems.Processor.NPU\n资源属性：HBMSingleBitIsolatedPages\n持久化类型： BMC复位持久化\n操作权限： ReadOnly\n资源path：/bmc/kepler/Systems/:SystemId/Processors/NPU/:ID\n资源interface：bmc.kepler.Systems.Processor.NPU\n资源属性：HBMMultiBitIsolatedPages\n持久化类型： BMC复位持久化\n操作权限： ReadOnly\n评审纪要：\n1、需要刷新设计约束\n结论：设计约束增加隔离页最大page页隔离次数和属性的刷新频次说明\n2、签名类型确认是U16还是U32，刷新评审内容\n结论：已确认类型为U32更为合理\nlinks: #p-1116-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/1?ref=&did=3024878#tid-3024878, https://gitcode.com/openUBMC/mdb_interface/issues/1?ref=&did=3024878#tid-3024878, #p-1116-h-2, #p-1116-h-3, #p-1116-h-4, #p-1116-h-5, #p-1116-h-6",
+    "topic_user_name": "Guanbin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/575/2",
+            "text": ""
+        }
+    ]
+}

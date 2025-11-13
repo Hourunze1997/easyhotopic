@@ -1,0 +1,7 @@
+{
+    "topic_id": 812,
+    "question": "【待评审】bmc_network-ipv6相关标准IPMI命令评审 - content: 关联issue\n暂无，bmc_network为闭源仓；\n评审背景\n美团ipv6需求要求：需要通过ipmitool标准命令设置和查询ipv6静态路由、动态路由，以及支持ipv6动态路由使能。\n评审点\n\n是否同意新增三则属性；bmc_network组件，Ipv6对象，新增IPv6StaticRouter1Info、IPv6StaticRouter2Info与Ipv6RtrAddrConfCtrl\nIPv6StaticRouter1Info：保存静态路由1的相关信息，以“ipaddr;mac_addr;prefix_len;prefix_value”的形式保存\nIPv6StaticRouter2Info ：保存静态路由2的相关信息；\nIpv6RtrAddrConfCtrl ：保存动态和静态路由使能开关的信息\n\n是否同意新增和扩展网络相关IPMI命令\n\na. 支持设置和查询静态路由IPMI命令，0x0c, 0x02(0x01是设置，0x02是查询） (SubCmd 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48\nimage917×253 8.06 KB\nimage919×459 16.4 KB\nimage642×255 44.7 KB\nimage642×246 42.4 KB\nb. 支持查询动态路由信息，0x0c, 0x02(SubCmd 0x4A, 0x4B, 0x4C, 0x4D)\nimage635×294 53.7 KB\n\nc. 支持设置和查询静态与动态路由使能开关。\nimage641×209 29.8 KB\nlinks: #p-1677-issue-1, #p-1677-h-2, #p-1677-h-3, https://discuss.openubmc.cn/uploads/default/original/1X/09199763c8271558069999aab77c996997bb378f.png, https://discuss.openubmc.cn/uploads/default/original/1X/86b5b707b101340e5703fafbcd740f55b9bc68c4.png, https://discuss.openubmc.cn/uploads/default/original/1X/99d06deeb4f4e4f4be3070cfb9a2d25fd50ce227.png, https://discuss.openubmc.cn/uploads/default/original/1X/900fe8aaf6febc8ee2f270f9e28323a411740f95.png, https://discuss.openubmc.cn/uploads/default/original/1X/4b65c975aa547fc9c4f69fc7e53a2d2b54c32ad0.png, https://discuss.openubmc.cn/uploads/default/original/1X/d3f79e5ab420c3786d8f27c35c902d08408a9e54.png",
+    "topic_user_name": "kunlun_luzhanghui",
+    "best_answer_url": "",
+    "reply_posts": []
+}

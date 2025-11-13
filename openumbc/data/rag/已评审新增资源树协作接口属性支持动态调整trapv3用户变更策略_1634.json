@@ -1,0 +1,22 @@
+{
+    "topic_id": 1634,
+    "question": "【已评审】新增资源树协作接口属性，支持动态调整trapv3用户变更策略 - content: 背景:\n需求支持动态调整trapv3用户变更策略，不影响用户信息变更\n决策点：\n新增资源协作属性SNMPv3TrapAccountChangePolicy，支持动态调整trapv3用户变更策略，不影响用户信息变更\n详细描述：\n资源path：/bmc/kepler/AccountService\n资源interface：bmc.kepler.AccountService\n变化类型：新增属性\n应用场景：动态调整trapv3用户变更策略\n持久化类型： 掉电持久化\n操作权限：可读写，R: ReadOnly W:SecurityMgmt\n详细描述：\n\n方法名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nSNMPv3TrapAccountChangePolicy\n新增属性\ny\n可读写，R: ReadOnly W:SecurityMgmt\n掉电持久化\n是\n0：Trap v3用户使用原有变更策略（通过属性SNMPv3TrapAccountLimitPolicy控制）1：Trap v3用户使用新变更策略：trap v3用户可重命名，可被删除，删除后自动绑定环境中Id最小的管理员\n数字类型，可取值0、1默认值：0\n\n原有策略由SNMPv3TrapAccountLimitPolicy控制：\n1.仅当Trap版本不为v3时，SNMPv3TrapAccountLimitPolicy = 0，Trap v3用户可删除可重命名\n2.Trap版本为v3,且使能关闭时，SNMPv3TrapAccountLimitPolicy = 1，Trap v3用户不可删除、可重命名\n3.Trap版本为v3,且使能打开时，SNMPv3TrapAccountLimitPolicy = 2，Trap v3用户不可删除、不可重命名\n遗留问题\nQ：出厂即要使用，是否考虑北向接口或定制项，或者客户定制组件仓有需求跟踪\nA：社区有需求跟踪，直接修改客户定制组件仓进行设置，不提供北向接口和定制项\n评审结论\n同意在以下path和interface下新增属性：SNMPv3TrapAccountChangePolicy\npath：/bmc/kepler/AccountService\ninterface：bmc.kepler.AccountService\nproperty：SNMPv3TrapAccountChangePolicy ，签名y，读写，读权限：ReadOnly，写权限：SecurityMgmt ，默认值为0，需要发送变更通知事件\nlinks: #p-3958-h-1, #p-3958-h-2, #p-3958-h-3, #p-3958-h-4, #p-3958-h-5",
+    "topic_user_name": "Je Li",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1634/2",
+            "text": "使用SNMPv3TrapAccountLimitPolicy扩展实现，不要再新增属性：此方案不可行，需要新增熟悉保证前后兼容\n 刷新下描述：3 - 可删除、可重命名（无论trap版本和使能开关如何取值）"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1634/3",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,141 @@
+{
+    "topic_id": 1401,
+    "question": "网卡光模块的在位信息是怎么判断的 - content: 最近在引入一款网卡，热插拔光模块后发现光模块的信息并没有消失，查看dbus上光模块的信息发现还存在并显示为在位状态 请问光模块的在位逻辑是怎么判断的 应该怎样去debug解决\nimage988×625 27.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/8eda4be55349bc3d0ed78d01546fad509676d507.png",
+    "topic_user_name": "baixin_lipengbo",
+    "best_answer_url": "/t/topic/1401/5",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/2",
+            "text": "content: 最快的方式就是：看代码\n网卡管理开源了，光模块的在位判断逻辑在这里：https://gitcode.com/openUBMC/network_adapter/blob/main/src/lualib/device/class/optical_module.lua#L214\n因为没有直接的获取在位信号的带外管理能力，因此通过复用是否能获取光模块温度作为在位判断。\n可以基于这个地方添加日志等方式观察光模块拔出时，是否触发相关逻辑。\nlinks: https://gitcode.com/openUBMC/network_adapter/blob/main/src/lualib/device/class/optical_module.lua#L214"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/3",
+            "text": "这块代码我看到了，我加了log，插拔光模块后没有任何信息打印出来，感觉这块代码完全没有运行"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/4",
+            "text": "可以打开network_adapter app的debug日志，然后看看有没有发这块数据\n还有查看一下bma那块是否有上报信息，这些数据感觉像是走带内来的"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1401/5",
+            "text": "content: https://gitcode.com/openUBMC/network_adapter/blob/main/src/lualib/bma/handles/handler_optical.lua#L92\n可能是这里的原因，只要拿到bma数据就默认在位了\nlinks: https://gitcode.com/openUBMC/network_adapter/blob/main/src/lualib/bma/handles/handler_optical.lua#L92"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/6",
+            "text": "感谢回答，经过调试在位信息是在这里设置的，拔掉光模块后bma推送的信息回清空，可以设置光模块为不在位，但是拔掉之后再插上光模块发现bmc这边没有再收到bma推送的光模块信息，感知不到光模块插上的动作，请问这种情况bma不会检测光模块的插入然后再推送信息吗？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/7",
+            "text": "要看带内信息是否有变化，有可能是bma的数值没有发生变化，导致给bmc传递的没变化，然后bmc就感知不到变化了\n你看一下host_agent的资源树，里面有bma传来的原始数据"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/8",
+            "text": "这个我看了，插上光模块后，host_agent资源树上的数据没有更新"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/9",
+            "text": "那感觉像是bma的bug，联系技术支持看看如何下一步推进吧"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/10",
+            "text": "问题解决 拔掉并插上光模块时需要连接光纤线并且保持网络连通 ibma才会推送信息"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/11",
+            "text": "你好，请教个事，我这边是先拔掉光纤，再拔掉光模块。连接状态有更新为nolink，但是光模块的信息还在，请问这里是咋解决的？是我操作步骤问题吗，麻烦指导一下"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/12",
+            "text": "修改下代码中光模块的在位逻辑判断，代码中这块有bug，现有代码只要光模块信息发生改变就设置为在位，实际应该判断下光模块信息更新内容，不在位时应该设置状态为不在位"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/13",
+            "text": "大佬，能瞅一下咋改的不"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/14",
+            "text": "content: image224×224 62.1 KB\n考虑考虑贡献一下？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/7a5a873529f9e1a28fd0f141606eb631537fccb2.png"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/15",
+            "text": "diff --git a/src/lualib/bma/handles/handler_optical.lua b/src/lualib/bma/handles/handler_optical.lua\nindex b3e02aa..a124d8d 100644\n--- a/src/lualib/bma/handles/handler_optical.lua\n+++ b/src/lualib/bma/handles/handler_optical.lua\n@@ -90,7 +90,13 @@ function c_handler_optical:update_optical(op, data)\n     if op and op:check_port_workload_type() then\n         return\n     end\n-    op.Presence = 1\n+    if data.IsSffExist ~= nil then\n+        if data.IsSffExist then\n+            op.Presence = 1\n+        else\n+            op.Presence = 0\n+        end\n+    end\n     if data.VendorName ~= nil then\n         op.Manufacturer = data.VendorName\n     end\ndiff --git a/src/lualib/bma/handles/handler_optical_diag.lua b/src/lualib/bma/handles/handler_optical_diag.lua\nindex ae0aa4f..bd6622a 100644\n--- a/src/lualib/bma/handles/handler_optical_diag.lua\n+++ b/src/lualib/bma/handles/handler_optical_diag.lua\n@@ -14,6 +14,7 @@ local c_optical_module = require 'device.class.optical_module'\n local c_handler_optical = require 'bma.handles.handler_optical'\n local singleton = require 'mc.singleton'\n local update_if_valid = c_handler_base.update_if_valid\n+local is_nil_or_null = c_handler_base.is_nil_or_null\n\n local get_odata_id = c_handler_base.get_odata_id\n\n@@ -43,7 +44,13 @@ function c_handler_optical_diag:update_optical_diag(op, data)\n     if op and op:check_port_workload_type() then\n         return\n     end\n-    op.Presence = 1\n+    if not is_nil_or_null(data.IsSffExist) then\n+        if data.IsSffExist == true then\n+            op.Presence = 1\n+        else\n+            op.Presence = 0\n+        end\n+    end\n     -- bmc.kepler.Systems.OpticalModule.Temperature"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/16",
+            "text": "感谢感谢"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/17",
+            "text": "content: weixin_41256007:\n\ndata.IsSffExist\n\n光模型信息863×566 37.5 KB\n我已经更新到最新的ibma2.16.1了，host_agent中其他属性已经更新成NULL了，但是这个属性还是true，导致光模块被拔掉了，web上的光模块信息还在\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/3827d12ddb44e7c351e273d1636ccb37f8ce3fdc.png"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/18",
+            "text": "感觉像是ibma推送信息的问题 可以看下ibma的log"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/19",
+            "text": "content: 1、重新试了两次，第一次两个光模块都拔出来，IsSffExist都为false，如附件中24、26行。\nimage1304×126 4.72 KB\n2、重新插上，IsSffExist都为true，如35、40行。\nimage1495×246 8 KB\n3、再次拔出，只有一个网卡IsSffExist为false，另一个网卡没有该属性，如42、48行。\nimage1487×228 5.42 KB\n目前来看ibma似乎并不是每次都有IsSffExist属性上报。\ncommon.txt (14.3 KB)\n导致我一个网口的光模型信息没有更新\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/096e1d86fc291a6f5e26993c0c13b23430a2e9d7.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/16ab2cc8b623571c525070f3e0fba1d75c99e93d.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/1dcc81a53d5e09a14893a13c653047e68ba859d9.png, /uploads/short-url/inOhfSXdsv03iZNHxFMtadYb3wz.txt"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1401/20",
+            "text": "感觉ibma推送有些问题，内容不固定，也有可能和网卡有关，我没遇到这种情况，目前能想到的workaround方案是可以添加其他属性判断作为光模块在位状态的依据"
+        }
+    ]
+}

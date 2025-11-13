@@ -1,0 +1,29 @@
+{
+    "topic_id": 1770,
+    "question": "【已评审】支持国密DICE，调整Redfish接口说明 - content: 背景\n新产品支持国密DICE，与国际算法DICE证书管理结构不一样，对Redfish说明进行变更。\n触发原因\n新需求\n关联issue\n【需求】支持国密DICE，调整Redfish接口说明\n决策点\n修改Redfish说明\nuri： /redfish/v1/Managers/manager_id/SecurityService/DiceCert/Actions/DiceCert.ExportHardwareComponentsCertficateChain\n原有说明：\nimage1588×165 14.4 KB\n修改点：\n1、调整对于 Content 的说明（针对导出文件的产物）：\n支持导出到本地路径和远程路径（本地路径必须在tmp目录下，最大长度为128）。\n具体导出的文件数量以芯片能力为准\n2、调整对于 Nonce_string 的说明（针对挑战字符串的长度）：\n16进制随机数值组成的字符串，字符串长度不小于15，不超过102400。单字节数据会会在前置位默认补0，如某字节为0x8，实际转换为“08”。\n评审结论\n同意变更Redfish属性说明\n遗留问题\nlinks: #p-4313-h-1, #p-4313-h-2, #p-4313-issue-3, https://gitcode.com/openUBMC/rackmount/issues/199, #p-4313-h-4, https://discuss.openubmc.cn/uploads/default/original/2X/a/a49c23dad863508bc381f98332f3a970893cff98.png, #p-4313-h-5, #p-4313-h-6",
+    "topic_user_name": "pengxianglin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1770/2",
+            "text": "Free_Tomato_rs9n5:\n\nExportDICECSR\n\n评审的时候申请下，看看能不能直接用老方法\n再额外补充一个a{ss}参数，防止后续CSR需要配置ID或者传入其他配置"
+        },
+        {
+            "user_name": "pengxianglin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1770/3",
+            "text": "已修正，按当前最新方案，北向接口不体现对算法的可选能力"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1770/4",
+            "text": ""
+        }
+    ]
+}

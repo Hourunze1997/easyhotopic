@@ -1,0 +1,29 @@
+{
+    "topic_id": 937,
+    "question": "Qemu构建包含新增组件时失败 - content: 根据社区文档新增组件，创建一个新组件new_app，并且在mdb_interface中进行对应配置文件新增。mdb_interface重新构建成功。\nimage1571×256 47.9 KB\nnew_app组件编辑好代码后构建成功。\nimage1345×267 46.6 KB\n想通过Qemu验证新组件，需要将组件加入到Qemu的构建中。\n修改manifest/build/subsys/rc/bmc_core.yml，加入新组件依赖。\nimage440×309 9.98 KB\n编译Qemu（bingo build -sc qemu）成功，但是实际编译的组件列表中没有包含new_app。mdb_interface已经替换成功。\n\n尝试在manifest/build/product/BMC/openUBMC/manifest.yml的tosupporte字段加入依赖：\nimage550×571 11.3 KB\n再次编译Qemu发现组件列表可以查找到new_app，但是编译会报错。\nimage544×139 3.85 KB\n报错信息如下：\nimage953×308 17.2 KB\n想问一下各位大佬现在Qemu支持新增组件么？如果支持的话这个问题咋解决呢？\nlinks: https://openubmc.cn/docs/zh/development/quick_start/create_an_app.html, https://discuss.openubmc.cn/uploads/default/original/1X/8f73ea8bad1588c6f2bd8aff5414f50d7e4cfcb9.png, https://discuss.openubmc.cn/uploads/default/original/1X/f48afda5db6655fa73515d25d46a103c70eb47a2.png, https://discuss.openubmc.cn/uploads/default/original/1X/5d95fdad321c2826731add430a806155a39ebfee.png, https://discuss.openubmc.cn/uploads/default/original/1X/df16fcd7f68fbe91df74dc9dc9bd4074c9855a55.png, https://discuss.openubmc.cn/uploads/default/original/1X/4997ab6c69926b5835d2c4c2a2eebda660bc22cc.png, https://discuss.openubmc.cn/uploads/default/original/1X/6d49a36adc7ece408861d0fcca7df508cd504324.png",
+    "topic_user_name": "Iss Wangzy",
+    "best_answer_url": "/t/topic/937/2",
+    "reply_posts": [
+        {
+            "user_name": "Iss Wangzy",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/937/2",
+            "text": "content: 重新实验了一下，已经成功将new_app编译到Qemu包里了。\n去掉了manifest/build/product/BMC/openUBMC/manifest.yml的tosupporte字段里的配置，在dependencies字段里直接加入conan依赖。\n\n先进行产品包构建，构建成功后，再重新构建Qemu，new_app顺利被编译进去了。重启Qemu后，在资源树上已经可以查到new_app组件了。busctl --user tree bmc.kepler.new_app\nimage692×190 3.7 KB\n不过interface有点问题，这个还得再分析一下。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/71bab0285d30c94de6071d368a54842d5ba95f32.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/937/3",
+            "text": "构建报错的原因为：new_app没有qemu的options"
+        },
+        {
+            "user_name": "Iss Wangzy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/937/4",
+            "text": "原来如此"
+        }
+    ]
+}

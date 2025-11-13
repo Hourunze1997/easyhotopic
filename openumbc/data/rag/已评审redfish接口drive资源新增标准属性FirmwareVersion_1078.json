@@ -1,0 +1,15 @@
+{
+    "topic_id": 1078,
+    "question": "【已评审】redfish接口drive资源新增标准属性FirmwareVersion - content: 关联issue\nStorage相关资源支持redfish新标准\n背景\nDrive资源新增redfish标准属性：支持Drive资源下的硬盘固件版本\n评审点\nredfish接口Drive资源增加属性FirmwareVersion\n属性描述\nimage898×208 29.6 KB\n详细描述\nURI: /redfish/v1/Chassis/{ChassisId}/Drives/{DriveId}\n变化类型：新增属性\n操作类型：GET\n读写&权限：只读，读权限ReadOnly\n名称：FirmwareVersion\n类型：string/null\n响应样例：\n\"@odata.id\": \"/redfish/v1/Chassis/1/Drives/HDDPlaneDisk0\",\n\"@odata.type\": \"#Drive.v1_1_0.Drive\",\n...\n\"FirmwareVersion\"：\"1.2.3\"\n...\n\n评审结论\n同意redfish接口/redfish/v1/Chassis/{ChassisId}/Drives/{DriveId}新增标准属性FirmwareVersion，类型为string/null，只读，读权限ReadOnly\nlinks: #p-2283-issue-1, https://gitcode.com/openUBMC/rackmount/issues/66, #p-2283-h-2, #p-2283-h-3, https://discuss.openubmc.cn/uploads/default/original/1X/55e21640efbe30edb933e339d5e04096caf4129f.png, #p-2283-h-4, #p-2283-h-5",
+    "topic_user_name": "yangqinghua",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1078/2",
+            "text": ""
+        }
+    ]
+}

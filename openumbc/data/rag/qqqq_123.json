@@ -1,0 +1,50 @@
+{
+    "topic_id": 123,
+    "question": "qqqq - qqqq",
+    "topic_user_name": "Testxzm",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/123/2",
+            "text": ""
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/123/3",
+            "text": ""
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/123/4",
+            "text": ""
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/123/5",
+            "text": ""
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/123/6",
+            "text": "请勿水贴。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/123/7",
+            "text": ""
+        }
+    ]
+}

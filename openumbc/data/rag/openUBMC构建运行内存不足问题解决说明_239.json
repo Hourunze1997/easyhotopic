@@ -1,0 +1,15 @@
+{
+    "topic_id": 239,
+    "question": "openUBMC构建运行内存不足问题解决说明 - content: 构建时报进程异常退出 internal compiler error: Killed (program cciplus)，可能原因如下：\n\n运行内存不足，可能是物理内存不足且未设置交换分区，导致构建程序申请内存失败，异常中断，可以配置交换分区或者扩展内存解决。\n\n如果使用windows wsl，可以在windows的个人目录下新增或编辑.wslconfig文件，在[wsl2]下增加swap和swapFile配置，如：\n\n【wsl2】\n\nswap = 32G\n\nswapFile = d:\\wsl\\swap.vhdx\n\n具体参考WSL高级设置配置\n\n如果使用linux操作系统，请参考Linux运行内存扩容方法\nlinks: https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config#wslconfig, https://blog.csdn.net/zy1281539626/article/details/116126136",
+    "topic_user_name": "社区技术支持",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/239/2",
+            "text": "content: wsl配置后需要执行wsl --shutdown关闭wsl后，重新启动使配置生效。\n在windows的目录中查看是否有生成swap.vhdx文件，如果有则表明配置生效。如果未生效，参考链接。\nlinks: https://github.com/microsoft/WSL/issues/9395#issuecomment-2144579143"
+        }
+    ]
+}

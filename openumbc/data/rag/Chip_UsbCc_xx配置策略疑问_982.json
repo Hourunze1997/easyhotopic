@@ -1,0 +1,15 @@
+{
+    "topic_id": 982,
+    "question": "Chip_UsbCc_xx配置策略疑问 - 背景：\n1、某项目挂耳上支持2个Type-A USB3.0，需要配置USB相关信息\n2、V2上在USB初始化时，一定会通过遍历ccchip对象确定是ON还是SGM厂商后进行初始化，之后才能正常使用USB管理功能；\n疑问：\n1、V3上Chip_UsbCc_xx对象是否一定需要配置？\n2、Chip_UsbCc_xx的配置，与USB类型有关吗？如：Type-A还是Type-C，如果有关系，那一般情况不同类型分别需要怎么配置？\n3、V3上USB管理的逻辑和V2有什么差异吗？\n4、针对天池和非天池（不用SMC），它们是不是支持地址的获取方式不一样，前者关联smc，后者关联cpld",
+    "topic_user_name": "Kun Lun Lizhuang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/982/2",
+            "text": "收到问题，正在分析中"
+        }
+    ]
+}

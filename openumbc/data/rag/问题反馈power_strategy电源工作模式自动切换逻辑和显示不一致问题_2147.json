@@ -1,0 +1,7 @@
+{
+    "topic_id": 2147,
+    "question": "【问题反馈】power_strategy电源工作模式自动切换逻辑和显示不一致问题 - content: 问题背景\n问题与 电源工作模式设置为主备供电后概率性自动切换回负载均衡 - 交流互助区 / 鲲鹏专区 - openUBMC 论坛一致，只是对应组件责任人无法查看鲲鹏专区，因此挪到这里\n测试发现设置电源模式后部分情况下不生效，查看日志发现实际是存在自动切换逻辑\nimage954×349 36.1 KB\nimage966×270 21.1 KB\npower_strategy版本：power_strategy/1.70.11@hw.ibmc.release/stable\n问题点\n问题一\n自动切换逻辑容易让用户感到迷惑，易判断为BUG，而且自动切换的判断条件过于宽松，个人认为应该有一个阈值(10%或者50W这种)\nimage620×363 21.8 KB\n问题二\n自动切换后，界面工作模式会显示为切换前的模式，但是单个电源显示信息处为切换后的模式\nimage490×290 9.87 KB\nimage714×605 21.1 KB\nlinks: #p-5418-h-1, https://discuss.openubmc.cn/t/topic/2021, https://discuss.openubmc.cn/uploads/default/original/2X/d/d61bdea7f251e7063a10e69d042c17b4035ff24a.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/3113832025cdc22e7eeb347c199f8fccb9fc21b8.png, #p-5418-h-2, #p-5418-h-3, https://discuss.openubmc.cn/uploads/default/original/2X/7/730d2186e490e1ec6b58efcfc04649e5a20b4efb.png, #p-5418-h-4, https://discuss.openubmc.cn/uploads/default/original/2X/e/e4912ed67597c635b6f7d4cea86ea25c8b2e38af.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/60b99d5f40ad0a8daba886c7e805bfe17c928c81.png",
+    "topic_user_name": "百信-罗昊",
+    "best_answer_url": "",
+    "reply_posts": []
+}

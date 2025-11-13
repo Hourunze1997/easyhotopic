@@ -1,0 +1,78 @@
+{
+    "topic_id": 86,
+    "question": "TC运作规则和例会 - content: 技术委员会 TC\nopenUBMC技术委员会（Technical Committee，简称TC）是openUBMC社区的技术决策机构，负责社区技术决策。 当期TC委员（含主席）为8人。\n组织会议\n\n公开的会议时间：当前TC在北京时间，每双周周三的上午10:00召开公开的例行线上讨论会议。\n具体会议参会方式，会提前一天发出，会议议题在[@etherpad.TC]登记。\nTC会议的议题包括但不限于：\n\n讨论和决策社区技术发展方向\n决策社区重大技术事项\n决策SIG组的成立和撤销，审视和辅导SIG组日常工作，协作SIG组间技术合作\n在SIG组内部无法决策，需要上升的技术方案\n决策社区组件的生命周期\n\n欢迎任何感兴趣的开发者参加旁听\n\n目前的TC成员\nTC主席\n\n章建平171828563@qq.com [@zjp99]\n\nTC委员\n\n黄 晗tc@public.openubmc.cn [@huanghan]\n李 琴tc@public.openubmc.cn [@liqin]\n刘兴森tc@public.openubmc.cn [@xiaoxinglxs]\n于 飞tc@public.openubmc.cn [@nathanael]\n张 超tc@public.openubmc.cn [@TacoJay]\n张雨博tc@public.openubmc.cn [@zybwh]\n\n联系方式\n\n邮件请发送至邮件列表 tc@public.openubmc.cn\n日常讨论、建议等，请登录社区论坛发表话题\n历史讨论的记录以及历次TC会议的纪要，可以访问邮件列表归档\nlinks: #p-96-tc-1, #p-96-h-2, https://etherpad.openubmc.cn/p/TC, #p-96-tc-3, mailto:171828563@qq.com, https://gitcode.com/zjp99, mailto:tc@public.openubmc.cn, https://gitcode.com/huanghan, mailto:tc@public.openubmc.cn, https://gitcode.com/llllliiiiilllll, mailto:tc@public.openubmc.cn, https://gitcode.com/xiaoxinglxs, mailto:tc@public.openubmc.cn, https://gitcode.com/nathanael, mailto:tc@public.openubmc.cn, https://gitcode.com/TacoJay, mailto:tc@public.openubmc.cn, https://gitcode.com/zybwh, #p-96-h-4, mailto:tc@public.openubmc.cn, https://forum.openubmc.cn/c/site-tc/11/none, https://mailweb.openubmc.cn/hyperkitty/list/tc@public.openubmc.cn/",
+    "topic_user_name": "张雨博",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/86/2",
+            "text": ""
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/86/3",
+            "text": "content: 会议详情：25年第3次TC例会\n发起人：zybwh\n与会人：\n会议时间：2025-02-12 10:00-12:00\n会议平台：WELINK\n会议ID：964701067\n会议链接：https://meeting.huaweicloud.com:36443/#/j/964701067\nEtherpad链接：Etherpad\n请各位登记议题\nlinks: #p-99-h-253tc-1, https://meeting.huaweicloud.com:36443/#/j/964701067, https://etherpad.openubmc.cn/p/TC"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/86/4",
+            "text": "content: 会议纪要\n议题一：申请在社区建仓software-center和software-input\n主讲人： 翟文杰、朱超\n会议纪要：\n同意\n议题二：申请在社区建仓qemu\n主讲人： 刘习儒\n会议纪要：\n同意\n议题三：TC如何营造技术讨论\n主讲人： 张雨博\n会议纪要：\n1、前10分钟进行仓库周期管理，TC成员需要预审。中间邀请开发者进行介绍对openUBMC的使用场景，营造技术讨论。也可以邀请各SiG组定期在TC上进行运作汇报，指导SiG组运作。\n议题四：社区漏洞与缺陷管理策略评审\n主讲人： 李文杰、陈曾\n会议纪要：\n\n依赖的开源软件漏洞\n\n参考openeuler：做PR门禁限制对有漏洞的开源软件的使用\n限制在业务代码中，使用对应开源软件的功能\n具体策略待细化（c代码的库函数、python代码对应的包、conan依赖的开源软件）\n需要对漏洞分级，针对不同级别的漏洞来做限制策略\n针对高危漏洞，使用此库/二进制的组件进行限制。针对API进行细化的限制（可行性） – 李文杰、陈曾\n\n社区自身代码漏洞\n\n参考openeuler的缺陷管理策略openEuler 安全漏洞公告 | 安全信息 | openEuler社区\nlinks: #p-220-h-1, #p-220-software-centersoftware-input-2, #p-220-qemu-3, #p-220-tc-4, #p-220-h-5, https://www.openeuler.org/zh/security/bug-bulletins/"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/86/5",
+            "text": "content: 会议详情：2025第四次TC例会\n发起人：zybwh\n会议时间：10:00-12:00\n会议平台：WELINK\n会议ID：969968371\n会议链接：https://meeting.huaweicloud.com:36443/#/j/969968371\nEtherpad链接：Etherpad\n请提前登记议题\nlinks: #p-221-h-2025tc-1, https://meeting.huaweicloud.com:36443/#/j/969968371, https://etherpad.openubmc.cn/p/TC"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/86/6",
+            "text": "content: 会议纪要\n议题一：sig-interface运作和社区接口管理流程\n主讲人： 黄晗\n会议纪要：\n汇报了interface组运作和接口管理流程\n需要继续细化接口评审\n议题二：sig-infrastructure社区基础设施月度汇报\n主讲人： 朱超\n会议纪要：\n\n1.pip install openubmc-bingo ----> 二进制：bingo\n2.完善readme文档\n\n议题三：sig-security社区演进计划评审\n主讲人： 李文杰\n会议纪要：\n对齐演进策略后再评审\n议题四：user组件名称变更为account评审\n主讲人： 李文杰\n会议纪要：\n同意调整，需要保证相关的构建流程一致\n后续执行此约束：保证代码仓的名称与组件名称一致\nlinks: #p-300-h-1, #p-300-sig-interface-2, #p-300-sig-infrastructure-3, #p-300-sig-security-4, #p-300-useraccount-5"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/86/7",
+            "text": "content: 会议主题：2025第五次TC例会\n会议详情：-\n发起人：zybwh\n会议时间：10:00-12:00\n会议平台：WELINK\n会议ID：989814142\n会议链接：https://meeting.huaweicloud.com:36443/#/j/989814142\nEtherpad链接：Etherpad\nlinks: https://meeting.huaweicloud.com:36443/#/j/989814142, https://etherpad.openubmc.cn/p/TC"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/86/8",
+            "text": "content: 纪要\n议题一：QA代码仓创建申请\n主讲人： 杨威\n会议纪要：\n通过。\n议题二：社区PR创建之后基础设置增加关联issue需求评审\n主讲人：彭强\n会议纪要：\n未与会，延至下次评审\n议题三：接口依赖配置及自动生成代码优化策略\n主讲人： 刘伟\n会议纪要：\n未与会，延至下次评审\n议题四：QA-SIG工作汇报\n主讲人： 于飞、刘宇杰、杨威\n会议纪要：\n介绍了社区整体测试策略。\n议题五：社区Q2新增代码仓(承载KVM开发套件特性)评审\n**主讲人：**李四光\n会议纪要：\n同意新增代码仓libirc\n---- 临时议题 ----\n议题一：interface sig遗留问题同步\n主讲人： 黄晗\n会议纪要：\n明确接口评审流程。\nlinks: #p-350-h-1, #p-350-qa-2, #p-350-prissue-3, #p-350-h-4, #p-350-qa-sig-5, #p-350-q2kvm-6, #p-350-h-7, #p-350-interface-sig-8"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/86/9",
+            "text": ""
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/86/10",
+            "text": ""
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/86/11",
+            "text": "content: 会议主题：2025第六次TC例会\n发起人：zybwh\n会议时间：2025-03-26 10:00-12:00\n会议平台：WELINK\n会议ID：982372125\n会议链接：https://meeting.huaweicloud.com:36443/#/j/982372125\nEtherpad链接：Etherpad\nlinks: https://meeting.huaweicloud.com:36443/#/j/982372125, https://etherpad.openubmc.cn/p/TC"
+        }
+    ]
+}

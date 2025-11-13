@@ -1,0 +1,22 @@
+{
+    "topic_id": 965,
+    "question": "【待评审】NPU新增私有属性RefChip - content: ISSUE链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景\nAtlas3.2.0新需求 Atlas 300I DUO卡，必须登录带内才能查询到隔离页数，产品希望能把隔离数信息转储到带外BMC日志中。因此在一键收集时，BMC需要获取隔离页信息。\n决策点\nNPU 新增私有属性 RefChip\n整体架构/方案\n\n现状：该网卡上有1个MCU、两个NPU芯片，每个NPU芯片对应一份隔离页信息。由于同一个csr （同position）中可能有多个Chip对象，在NPU收集隔离页信息时，无法直接拿到与该NPU对应的Chip_MCU对象。\n分析：为了在NPU收集隔离页信息时能拿到对应的MCU对象，考虑NPU新增RefChip私有属性，来关联网卡的MCU。\n\n详细描述\nNPU新增私有属性RefChip\n“usage”: [“CSR”]\n评审结论 （评审结束后录入，描述全面且清晰，不能是通过或不通过、同意或不同意）\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/65, https://gitcode.com/openUBMC/mdb_interface/issues/65",
+    "topic_user_name": "Guchunlei",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Yelvsub",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/965/2",
+            "text": "不同意。建议通过NPU卡的RefChip获取，没有必要按照NPU配"
+        },
+        {
+            "user_name": "system",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/965/3",
+            "text": "由于大量社区举报，此话题被临时关闭至少 4 小时。"
+        }
+    ]
+}

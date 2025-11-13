@@ -1,0 +1,22 @@
+{
+    "topic_id": 1912,
+    "question": "【iTestSmart】ipmi接口设置SmartCooling模式，日志显示成功，但结果Fail。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 22.03\n二、问题描述\nOpenUBMC->能效管理->ipmi接口设置SmartCooling模式-低噪，操作日志显示设置成功，但检查日志结果Fail。疑似脚本问题。\n日志显示设置低噪模式成功1920×873 228 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4ca23dae20e944edbbf7fa9370d0d859ab4d20d0.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1912/2",
+            "text": "设置完成后查看资源协作属性是否为对应的低噪模式；\n排查检查脚本是否存在问题；"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1912/3",
+            "text": "content: 重新执行了一次测试用例，查看BMC的操作日志，低噪模式能够正确设置和恢复。\n应该是脚本问题，请排查脚本代码。\n低噪_查看操作日志2522×912 214 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/f0baea534aba555216e2a9f39cac3ca8965832fc.jpeg"
+        }
+    ]
+}

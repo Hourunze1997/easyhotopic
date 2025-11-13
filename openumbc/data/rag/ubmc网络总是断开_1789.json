@@ -1,0 +1,29 @@
+{
+    "topic_id": 1789,
+    "question": "ubmc网络总是断开 - 从上电开始，大概一分半后ssh能通，再过一分半左右网页能通，再过两分钟左右网络会断开，断开后ssh和网页都不通了，也就是说网页能操作的时间只有两分钟，怀疑是bmc重启了\nmanifest.yml中除了vpd组件用的是本地编的，其他组件用的都是默认远程仓的",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/1789/5",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1789/2",
+            "text": "建议排查一键收中升级后时间点里framework.log的日志"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1789/4",
+            "text": "具体看日志的哪个部分呢？文件太大了传不上来"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1789/5",
+            "text": "是看门狗的问题，把看门狗关闭就好了。"
+        }
+    ]
+}

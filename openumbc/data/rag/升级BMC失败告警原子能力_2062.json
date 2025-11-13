@@ -1,0 +1,7 @@
+{
+    "topic_id": 2062,
+    "question": "升级BMC失败告警原子能力 - 升级模块是否支持提供升级状态，用于外部查询升级bmc到某个阶段是否成功：比如bmc生效失败或者备份镜像升级失败情况下，外部可以拿来做告警",
+    "topic_user_name": "Kunlun Xiechuanguan",
+    "best_answer_url": "",
+    "reply_posts": []
+}

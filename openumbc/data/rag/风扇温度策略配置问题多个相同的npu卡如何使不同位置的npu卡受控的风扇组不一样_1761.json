@@ -1,0 +1,50 @@
+{
+    "topic_id": 1761,
+    "question": "风扇温度策略配置问题，多个相同的npu卡，如何使不同位置的npu卡受控的风扇组不一样。 - 适配300i duo卡风扇温度策略时发现一个问题。\n目前场景是当前机器有多个300i duo卡需要散热，散热工程师提供策略是槽位1的300i duo卡由风扇组的fan1，fan2，fan3调控，槽位2的300i duo卡由风扇组的fan4，fan5，fan6调控，以此类推。\n目前遇到的问题是，无论是哪个槽位上的300i duo卡其实都是调用的同一个sr文件，CoolingRequirement这个配置实际是只有一个，而想让不同的槽位的300i duo卡调控的风扇组不一样，肯定得配置多个CoolingArea，每个CoolingArea的FanIdxGroup配置不同的fan id。而CoolingRequirement和CoolingArea是一一对应的。所以请问该如何解决。",
+    "topic_user_name": "wuzhou-Lsx",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1761/2",
+            "text": "当前不支持。\n调速策略是通过槽位号可以进行偏移的，但是基础的baseRequirementId是一样的，而baseRequirementId和CoolingArea中的RequipmentIdx是一一对应的"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1761/3",
+            "text": "请问您说的调速策略是通过槽位号可以进行偏移的，具体是怎么去操作呢。"
+        },
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1761/4",
+            "text": "使用表达式语法，针对不同的槽位号使用不同的调速策略"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1761/5",
+            "text": "比如当前VPD仓中的CoolingRequirement_1_52，根据槽位号进行偏移\"RequirementId\": “${Slot} |> expr((52 << 8) | $1)”，但其实际BaseRequirementId为52，有且仅有一个CoolingArea与之对应，无法实现问题描述中的策略"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1761/6",
+            "text": "可以实现的 ，卡的csr配置两个coolingrequirement对象，一个id配置为a<<8 | slot,另一个为(a+1) <<8 | slot，然后都配置一个Enabled属性，第一个对象，if slot == 1，则为true，第二个对象if slot ==2 ，则为true\n然后PSR配置两个coolingarea，风扇分别为123 ，456"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1761/7",
+            "text": "对于卡器件，常见的都是使用所有风扇调速，能稳定的保证散热。分区域调速，对单张卡加压高功率发热运行下3风扇是否能保障散热呢?  是否未配置了分区调速导致存在 风道倒灌场景呢。我的想法是这样的，可能存在不足，可以适当参考"
+        }
+    ]
+}

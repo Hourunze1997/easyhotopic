@@ -1,0 +1,15 @@
+{
+    "topic_id": 1168,
+    "question": "【已评审】调试命令统计redfish组件接收到的发送频率TOPn特性的资源协作接口方案评审 - content: 关联 issue\n需要资源协作接口承载redfish资源变更top5特性\n评审背景\n在redfish资源变化事件上报功能中，如果资源协作接口属性频繁变化会触发redfish反复进行资源扫描，从而导致进程cpu占用率高。因此需要提供一个在线调测功能，可以直观的统计到redfish在指定时间范围内接收到的资源协作接口变动次数TOPn的数据，从而识别是否存在资源协作接口频繁变动的情况，如果是易变属性，则需要进行扫描屏蔽。此外，现网可能出现非预期的资源协作接口信号风暴导致CPU高，为了增强可定位性，该调试命令在release版本也需要提供。\n决策点\n新增统计属性变更型号的资源协作接口\n详细描述\npath：/bmc/kepler/Release/Performance/Redfish（新增）\ninterface： bmc.kepler.Release.Performance.Metrics.PropertyChange（新增）\n\n新增方法\n权限\nreq签名\nrsp签名\n说明\n\nGetStatus\nReadOnly\n无\nb\n查看使能状态\n\nGetReport\nReadOnly\n无\ns\n返回以json格式化的TOPn数据的字符串\n\nSetStatus\nBasicSetting\nb\n无\n设置使能true or false\n\n评审结论\n决策点：新增统计属性变更型号的资源协作接口\n结论： 同意新增如下资源协作接口\n新增path：/bmc/kepler/Release/Performance/Redfish\n新增interface： bmc.kepler.Release.Performance.Metrics.PropertyChange\n新增方法：GetStatus、GetReport、SetStatus（签名、权限参考详细描述）\n遗留问题及结论\n1、考虑资源协作接口方法合并的可行性\n结论：由于新增方法的签名不一致，且无可行合并的方法，所以保留当前设计。\n2、GetReport方法的响应考虑通用性\n结论：已将GetReport方法的rsp签名由ta(sssu)(sssu)改成s，兼具通用性。\nlinks: #p-2538-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/94, #p-2538-h-2, #p-2538-h-3, #p-2538-h-4, #p-2538-h-5, #p-2538-h-6",
+    "topic_user_name": "Wkbaba",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1168/2",
+            "text": ""
+        }
+    ]
+}

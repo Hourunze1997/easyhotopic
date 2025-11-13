@@ -1,0 +1,15 @@
+{
+    "topic_id": 1482,
+    "question": "openUBMC的性能指标基线输出 - 能否输出一份openUBMC的性能指标基线，来指导针对openUBMC的性能测试",
+    "topic_user_name": "Kun Lun Wanglongzhen",
+    "best_answer_url": "/t/topic/1482/2",
+    "reply_posts": [
+        {
+            "user_name": "Openubmc Liuyujie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1482/2",
+            "text": "当前openUBMC社区发行版本还没有性能指标基线，可以通过提需求到社区版本，在Q3或者Q4规划输出"
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "topic_id": 1547,
+    "question": "hpm重签名后BCU和EXU CPLD固件升级报错，大家有没有什么其他排查建议？ - content: 升级报错日志1839×533 71.7 KB\nEXU CPLD升级报错日志1904×675 96.1 KB\nCSR定义326×248 2.99 KB\nCSR定义794×281 12.9 KB\nhpm包重签名后升级报错，日志有两个报错信息\n1，hardware ERROR: tar.c(664): __extract_file: lchown on file(cpld.vme) failed!\n2，升级EXU CPLD报错，CSR定义的总线类型为jtag, 日志里边打印的bus为JtagOverLocalBus_1。\nbmc/apps/hwproxy/lualib/hwproxy_objects/work_objects.lua:74: chip: Cpld_1_0101, bus: JtagOverLocalBus_1, write failed: jtag_base.lua:94: worker exec failed: [worker]:16: response error, ioctl(CPLD_CMD_LOAD_CPLD) failed: Operation not permitted, component_id:1, product_id:16 stack traceback:  [C]: in function ‘jtag_write’  [worker]:16: in main chunk\n3，升级BCU_CPLD报错，CSR定义的总线类型为JtagOverLocalBus_1,打印中过的总线类型为Hisport_0;\n…bmc/apps/hwproxy/lualib/hwproxy_objects/work_objects.lua:74:\nchip: Cpld_1_010101, bus: Hisport_0, write failed: hisport.lua:80: attempt to compare number with nil\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/cbe8676f00560eec53a9a1c02f45622241fdfd56.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/68acc1d685489b52afdf3b4b4607fc77c336fca2.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/9f78920957314ae03c3955c7e79fdb05d067a298.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/06850541ae788b484f455927319e3f1aa630e9da.png",
+    "topic_user_name": "恒扬-李天亮",
+    "best_answer_url": "/t/topic/1547/2",
+    "reply_posts": [
+        {
+            "user_name": "Chenshengfan",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1547/2",
+            "text": "SemptianUser1:\n\n2，升级EXU CPLD报错，CSR定义的总线类型为jtag, 日志里边打印的bus为JtagOverLocalBus_1。\nbmc/apps/hwproxy/lualib/hwproxy_objects/work_objects.lua:74: chip: Cpld_1_0101, bus: JtagOverLocalBus_1, write failed: jtag_base.lua:94: worker exec failed: [worker]:16: response error, ioctl(CPLD_CMD_LOAD_CPLD) failed: Operation not permitted, component_id:1, product_id:16 stack traceback: [C]: in function ‘jtag_write’ [worker]:16: in main chunk\n3，升级BCU_CPLD报错，CSR定义的总线类型为JtagOverLocalBus_1,打印中过的总线类型为Hisport_0;\n…bmc/apps/hwproxy/lualib/hwproxy_objects/work_objects.lua:74:\nchip: Cpld_1_010101, bus: Hisport_0, write failed: hisport.lua:80: attempt to compare number with nil\n\n问题2：这个命令字是用于加载cpld升级文件的，可以确认一下升级文件的读写权限，查看/var/log/linuxkernel_log中查看对应时间点是否有cpld相关报错\n问题3：这个问题大概率是SR中总线定义没有对齐。如果在root.sr中按序声明了I2c_1,I2c_2,JtagOverLocalbus_1, Hisport_0，但是在BCU的sr里面少写了，如I2c_1,JtagOverLocalbsu_1,Hisport_0。实际SR的总线传递下来是按顺序匹配的，也就是你BCU的Hisport_0的名称实际对应的是root.sr的JtagOverLocalbus。（大概率是这种情况，排查一下）"
+        },
+        {
+            "user_name": "恒扬-李天亮",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1547/3",
+            "text": "好的，非常感谢，确实有总线定义没有对齐的情况，我修改验证下试试。"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1547/4",
+            "text": "1，hardware ERROR: tar.c(664): __extract_file: lchown on file(cpld.vme) failed!\n这条日志是正常场景，沙箱进程没有权限更改文件属主，因此会有此失败日志"
+        },
+        {
+            "user_name": "恒扬-李天亮",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1547/5",
+            "text": "好的，多谢。"
+        },
+        {
+            "user_name": "恒扬-李天亮",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1547/6",
+            "text": "已验证ok，确实是这个原因， 多谢。"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 756,
+    "question": "硬盘背板CSR配置疑问 - content: 1.SEU的CSR配置中。Smc_EnclSMC与Smc_ExpBoardSMC有什么区别吗？我看这两个分别挂在两个I2C总线上，是两个SMC吗？需要成对配置吗？\nimage387×453 6.86 KB\n2.当前需要设计的硬盘背板有两个CPLD，之前询问过可以实现两个CPLD升级(双CPLD硬盘背板疑问)，但是在看CSR配置时发现，CPLD挂在JtagOverLocalBus_1上，通过LogicFirmware_SEU进行升级操作，两个CPLD是否需要配置两个LogicFirmware_SEU，这两个通过什么来区分了？\nimage463×290 6.82 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/98b00b38e61ba90a962747f8c51b9d068be218e6.png, https://discuss.openubmc.cn/t/topic/688, https://discuss.openubmc.cn/uploads/default/original/1X/c2ddd6cfcdb863109916fe399d5ad37104d2336e.png",
+    "topic_user_name": "dh_qiuming",
+    "best_answer_url": "/t/topic/756/3",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/756/2",
+            "text": "你好，正在协调开发答复。"
+        },
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/756/3",
+            "text": "1、Smc_EnclSMC与Smc_ExpBoardSMC前者为背板的smc对象，后者为扩展板smc对象，无配置关联关系。\n2、如果有多片CPLD需配置多个LogicFirmware对象，可用于升级区分两片CPLD。具体可参考基础板配置两片会配置不同Name，如：BCU_CPLD1,BCU_CPLD2"
+        }
+    ]
+}

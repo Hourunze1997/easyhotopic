@@ -1,0 +1,22 @@
+{
+    "topic_id": 654,
+    "question": "25.03构建提示不能导入 'STAGE_DEV' - content: 操作步骤：\n1.下载25.03 docker image镜像并导入。\n2.更新manifest代码仓到最新的25-04-27。\n3.下载25.03 bmc_sdk.zip，放入到manifest目录下。\n4.执行脚本：python3 init.py -path ./bmc_sdk.zip\n执行结果：\n执行失败，报错信息如下：\nchanged 1 package in 211ms\ncopying : node/20.18.0\ninstalled : v20.18.0 (with npm 10.8.2)\nchanged 13 packages in 1s\n22 packages are looking for funding\nrun npm fund for details\nERROR: cannot import name ‘STAGE_DEV’ from ‘bmcgo.component.component_helper’ (/usr/local/lib/python3.12/dist-packages/bmcgo/component/component_helper.py)\nERROR: 请查看日志信息\nimage670×153 9.05 KB\nimage1569×785 61.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/45b891f6158cb286afd0c1f5154ce5d3d4ca7901.png, https://discuss.openubmc.cn/uploads/default/original/1X/19ae51e573674d353589c804639040e3b117e301.png",
+    "topic_user_name": "Chengxiaoju",
+    "best_answer_url": "/t/topic/654/3",
+    "reply_posts": [
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/654/2",
+            "text": "chengxiaoju:\n\npython3 init.py -path ./bmc_sdk.zip\n\ndocker image 和 bmc_sdk.zip 是在哪里下载的"
+        },
+        {
+            "user_name": "Chengxiaoju",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/654/3",
+            "text": "content: 已解决，原因是忘了启动conan_server。\n该问题解决之后，通过bingo -b openUBMC -r openubmc_dev构建，出现找不到fructrl的错误，该错误解决方案见下面的帖子：\n\n25.03 fructrl源码构建时出文件找不到的错 CICD\n\n    fructrl的源码构建问题再次复现，应该怎么处理呢： \n [image]\nlinks: https://discuss.openubmc.cn/t/topic/510/15, /c/44-category/44, https://forum.openubmc.cn/uploads/default/original/1X/99868f4572f661ca9b8a73a8113f0ec3963153f7.png"
+        }
+    ]
+}

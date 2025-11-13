@@ -1,0 +1,22 @@
+{
+    "topic_id": 1153,
+    "question": "如何自定义bingo组件构建的user - 如题，是否因bingo版本而方式有差异",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/1153/3",
+    "reply_posts": [
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1153/2",
+            "text": "bing build --user=xx.xx  或者修改/etc/bmcg.conf 的 [conan] user\n似乎不能够自动按组件指定不同的user"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1153/3",
+            "text": "content: 和bingo没关系的，属于conan的概念，需要团队自行规划\n构建上传指定–user，远程conan仓会自动创建目录存放组件\ncd ../byo_general\nbingo build --upload -r byo_openubmc_dev --user=openUBMC.common --stage rc\n\ncd ../byo_bjucibmc\nbingo build --upload -r byo_openubmc_dev --user=openUBMC.bjuciBMC --stage rc\n\nmanifest.yml依赖\n- conan: byo_general/0.0.1@openUBMC.common/rc\n- conan: byo_bjucibmc/0.0.1@openUBMC.bjuciBMC/rc\nlinks: #p-2512-userconan-1, #p-2512-manifestyml-2"
+        }
+    ]
+}

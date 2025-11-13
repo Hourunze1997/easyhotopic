@@ -1,0 +1,99 @@
+{
+    "topic_id": 838,
+    "question": "配置Adc bus时候的问题 - content: 在非天池场景下如何使用adc驱动接口在sr文件中配置Scanner - 交流互助区 - openUBMC 论坛\n按照上面进行了配置，发现把Adc_1 加到sr文件中，里面和链路相关的配置好像全部失效，请问配置上有什么问题吗？\n\nroot.sr\n\n\"Objects\": {\n...\n...\n       \"Adc_1\": {\n            \"ScanRate\": 32768,\n            \"VoltRefSrc\": 1,\n            \"VoltRefVal\": 2400\n       },\n       \"Connector_EXU_1\": {\n            \"Bom\": \"14100513\",\n            \"Slot\": 1,\n            \"Position\": 1,\n            \"Presence\": 1,\n            \"Id\": \"EXU\",\n            \"AuxId\": \"xxx\",\n            \"Buses\": [\n                \"I2c_1\",\n                \"I2c_2\",\n                \"I2c_3\",\n                \"I2c_4\",\n                \"I2c_5\",\n                \"I2c_6\",\n                \"I2c_7\",\n                \"I2c_8\",\n                \"I2c_11\",\n                \"Adc_1\",\n                \"Jtag_1\",\n                \"JtagOverLocalBus_1\",\n\n14100513_EXU_xxx.sr\n\n\"ManagementTopology\": {\n        \"Anchor\": {\n            \"Buses\": [\n                \"I2c_1\",\n                \"I2c_2\",\n                \"I2c_3\",\n                \"I2c_4\",\n                \"I2c_5\",\n                \"I2c_6\",\n                \"I2c_7\",\n                \"I2c_8\",\n                \"I2c_11\",\n                \"Adc_1\",\n                \"Jtag_1\",\n...\n...\n\"Adc_1\": {\n            \"Chips\": [\n                \"Chip_Adc_1\"\n            ]\n        },\n...\n...\n\"Objects\": {\n       \"Chip_Adc_1\": {\n            \"Address\": 0,\n            \"AddrWidth\": 4,\n            \"OffsetWidth\": 4\n        },\n        \"Scanner_Adc_0\": {\n            \"Chip\": \"#/Chip_Adc_1\",\n            \"Offset\": 0,\n            \"Size\": 4,\n            \"Period\": 3000\n        },\n        \"Scanner_Adc_1\": {\n            \"Chip\": \"#/Chip_Adc_1\",\n            \"Offset\": 1,\n            \"Size\": 4,\n            \"Period\": 3000\n        },\n        \"Scanner_Adc_2\": {\n            \"Chip\": \"#/Chip_Adc_1_1\",\n            \"Offset\": 2,\n            \"Size\": 4,\n            \"Period\": 3000\n        },\n        \"Scanner_Adc_3\": {\n            \"Chip\": \"#/Chip_Adc_1_1\",\n            \"Offset\": 3,\n            \"Size\": 4,\n            \"Period\": 3000\n        }\n\n按照上面的样子，加入了Adc相关的配置，Adc_1可以找到，但找不到Chip_Adc_1和文件中所有的Scanner对象，甚至连Smc_ExpBoardSMC都没有了。\nlinks: https://discuss.openubmc.cn/t/topic/496",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "/t/topic/838/14",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/838/2",
+            "text": "\"Scanner_Adc_2\": {\n            \"Chip\": \"#/Chip_Adc_1_1\",  // Chip_Adc_1_1 是哪来的？？\n            \"Offset\": 2,\n            \"Size\": 4,\n            \"Period\": 3000\n        },\n\n感觉像是csr配置问题，有用bmcstudio检查吗？"
+        },
+        {
+            "user_name": "Guoxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/838/3",
+            "text": "请问使用了BMC Studio进行csr配置后，CSR出包时，显示需要配置UID，这个uid在哪里配置？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/838/4",
+            "text": "UID是天池组件的编号，根据你们的单板来定的\n如果只是测试的话，可以先用VPD里面已经有的uid跳过这个步骤"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/838/5",
+            "text": "可能是查找替换时候不小心的操作。像这样出现未定义的对象，会导致这一类的class（比如Scanner）都失效，无法创建出对象吗？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/838/6",
+            "text": "这个是未定义行为"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/838/7",
+            "text": "好像和之前那个错误的对象名字没有关系，修改后还是之前的情况，丢失一堆对象，包括Smc这些。\nBMC studio暂时还使用不起来，好像不支持我们ip地址形式的git仓。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/838/8",
+            "text": "看一下framework.log日志\ncat /var/log/framework.log |grep \"hwdiscovery\""
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/838/9",
+            "text": "content: framework.zip (665.9 KB)\ngrep出好多hwdiscovery相关的信息，截不完整。这是收集的一键日志\nlinks: /uploads/short-url/3HwwxaRbFQi0kxUfauWoEsAr3Yj.zip"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/838/10",
+            "text": "问题解决了吗"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/838/11",
+            "text": "没有，后续也没再尝试了，没头绪。\ncsr的配置上来看应该没什么问题吧？但是为什么连文件中的其他配置也受到了影响，导致原有的很多对象没有被创建出来"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/838/12",
+            "text": "ioctl(ADC_CMD_CONFIG) failed: Bad address, scan_rate:32768\n你的日志里有这样一条，看起来是配置的有问题"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/838/13",
+            "text": "这个address是指的\"Chip_Adc_1\"下的吗？按照下面这个链接里张工说的应该是任意配置的。\n\n adellonzzy:\n\n在非天池场景下如何使用adc驱动接口在sr文件中配置Scanner - 交流互助区 - openUBMC 论坛\n\n请问这个具体要怎么配置呢？还是说\"Adc_1\"配置的有问题，不过我在资源树上倒是有看到Adc的对象存在。"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/838/14",
+            "text": "具体的配置问题看不太出来，从代码里看是使用Adc_1对象下的这几个属性配置调用ADC_CMD_CONFIG时出现了错误"
+        }
+    ]
+}

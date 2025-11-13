@@ -1,0 +1,15 @@
+{
+    "topic_id": 370,
+    "question": "【已评审】新增上电失败的错误引擎 - content: 关联issue\nfructrl issue #2（WEB操作下电时如果BIOS正在升级中则限制操作不支持，没有说明下电不支持的具体原因）\n评审背景\n\n在BMC进行上电操作时，如果BIOS/VRD的固件正在升级过程中，则不能上电，对外返回上电操作错误\n在BMC WEB上进行上述操作时，WEB界面弹出提示框：操作不支持，此时没有提示不支持的具体原因是什么，对用户提示不友好\n\n评审点\n新增BMC错误引擎：ResetOperationFailed/ResetOperationFailedVRD，用于提供给WEB进行优化弹窗提示。具体的错误引擎信息如下：\n错误引擎1：ResetOperationFailed\n\n项目\n值\n\n错误引擎标识\nResetOperationFailed\n\n变化类型\n新增\n\n错误描述\nReset failed. The current status does not support the reset operation.\n\n错误消息\nReset failed(parameter: %1). BIOS is being upgraded. Please wait.\n\n参数类型\nstring\n\n处理建议\nTry again after the BIOS upgrade is complete.\n\n严重程度\nWarning\n\nHTTPCode\n400\n\nIPMICode\n不涉及\n\nSNMPCode\n不涉及\n\n错误引擎2：ResetOperationFailedVRD\n\n项目\n值\n\n错误引擎标识\nResetOperationFailedVRD\n\n变化类型\n新增\n\n错误描述\nReset failed. The current status does not support the reset operation.\n\n错误消息\nReset failed(parameter: %1). VRD is being upgraded. Please wait.\n\n参数类型\nstring\n\n处理建议\nTry again after the VRD upgrade is complete.\n\n严重程度\nWarning\n\nHTTPCode\n400\n\nIPMICode\n不涉及\n\nSNMPCode\n不涉及\n\n评审结论\n总体结论\n同意新增错误引擎：ResetOperationFailed/ResetOperationFailedVRD\n剩余事项\n事项1：需要确认当前错误引擎使用之后是否有其他影响\n\n提出人：黄晗\n闭环人：彭强\n闭环结论：已经确认，无影响\nlinks: #p-661-issue-1, https://gitcode.com/openUBMC/fructrl/issues/2, #p-661-h-2, #p-661-h-3, #p-661-h-1resetoperationfailed-4, #p-661-h-2resetoperationfailedvrd-5, #p-661-h-6, #p-661-h-7, #p-661-h-8, #p-661-h-1-9",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/370/2",
+            "text": ""
+        }
+    ]
+}

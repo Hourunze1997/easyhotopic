@@ -1,0 +1,15 @@
+{
+    "topic_id": 1088,
+    "question": "SmcDfxInfo类与Scanner的关系 - content: 扩展板有一个Scanner配置如下：\nimage384×295 54 KB\n测试发现4869的Offset实际无法访问\n\n但是mdbctl查询Scanner发现状态和读值都是正常的，想知道该Scanner的值是从哪里获取的\nimage291×109 37.7 KB\n查询同文件的SmcDfxInfo_EXU发现有：\n\n猜测Scanner的值是从SmcDfxInfo_EXU同步获取的，但是社区没有相关资料\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/1c17ce61ef111a74d42695f3e3a296ab8af22276.png, https://discuss.openubmc.cn/uploads/default/original/1X/18f55797a89ac28dc746a233907ab9aea49b9f00.png",
+    "topic_user_name": "百信-罗昊",
+    "best_answer_url": "/t/topic/1088/2",
+    "reply_posts": [
+        {
+            "user_name": "百信-罗昊",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1088/2",
+            "text": "content: SmcDfxInfo可以将读出来的多个字节的数据解析后同步到Scanner\nimage863×528 18.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/2bfb676d3f6175fa0e8fa3921b3e5fdca514ad3b.png"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 388,
+    "question": "【已评审】支持HBM故障传感器事件原子能力和支持CPU/DDR内存故障度量统计 - content: ISSUE链接：\n 支持HBM故障传感器事件原子能力和支持CPU/DDR内存故障度量统计 \n评审背景\n1、故障诊断支持HBM故障传感器事件原子能力，提供定制原子能力，伙伴/客户可以根据原子能力进行二次开发\n2、CPU/DDR内存故障度量统计提供给redfish接口查询\n评审点\n评审点1：\n资源path：/bmc/kepler/Systems/:SystemId/FDMDomain/CPURAS/:Id\n资源interface：bmc.kepler.Systems.FDMDomain.CPURAS\n变化类型：新增属性\n应用场景：统计运行周期和生命周期CPU Cache模块发生了不可纠正错误次数\n持久化类型：运行周期（BMC复位持久化）、生命周期（BMC掉电持久化）\n操作权限：ReadOnly\n评审点2：\n资源path：\n/bmc/kepler/Systems/:SystemId/FDMDomain/MemoryRAS/:Id\n资源interface：bmc.kepler.Systems.FDMDomain.MemoryRAS\n变化类型：新增属性\n应用场景：统计运行周期和生命周期内存发生了不可纠正错误次数\n持久化类型：运行周期（BMC复位持久化）、生命周期（BMC掉电持久化）\n持久化类型：复位持久化\n操作权限：ReadOnly\n评审点3：\n资源path：\n/bmc/kepler/Systems/:SystemId/FDMDomain/CPURAS/:Id\n/bmc/kepler/Systems/:SystemId/FDMDomain/NPURAS/:Id\n资源interface：bmc.kepler.Systems.FDMDomain.MemoryOnChipRAS\n变化类型：新增属性\n应用场景：HBM自愈成功事件上报\n持久化类型：BMC复位持久化\n操作权限：ReadOnly\n详细描述\n\nOBJECT(path)\ninterface\nmethod/property/signal\ntype\n权限UserMgmt/BasicSetting/KVMMgmt/VMMMgmt/SecurityMgmt/PowerMgmt/DiagnoseMgmt/ReadOnly/ConfigureSelf\n属性\n是否广播（是/否）\n是否持久化（否/临时/复位/掉电/永久）\n属性值来源（CSR/代码）\n取值类型\n备注\n\n/bmc/kepler/Systems/:SystemId/FDMDomain/CPURAS/:Id\nbmc.kepler.Systems.FDMDomain.CPURAS\nCurrentPeriodCacheUncorrectableECCErrorCount\nproperty\nReadOnly\nro\n是\n复位\n代码\nU32\n统计CPU Cache模块运行周期内发生的不可纠正错误次数，取值范围：0~0xFFFFFFFF。系统上下电/复位/更换部件时，统计次数清零。\n\nLifeTimeCacheUncorrectableECCErrorCount\nproperty\nReadOnly\nro\n是\n掉电\n代码\nU32\n统计CPU Cache模块生命周期内发生的不可纠正错误次数，取值范围：0~0xFFFFFFFF。更换部件时，统计次数清零。\n\nbmc.kepler.Systems.FDMDomain.MemoryOnChipRAS\nIsolationStatus\nproperty\nReadOnly\nro\n是\n复位\n代码\nU8\n内存隔离自愈执行状态，取值范围：0（未执行隔离）、1（已成功执行隔离）、其他（预留）。系统上下电/复位时，恢复到未执行隔离状态。\n\n/bmc/kepler/Systems/:SystemId/FDMDomain/MemoryRAS/:Id\nbmc.kepler.Systems.FDMDomain.MemoryRAS\nCurrentPeriodUncorrectableECCErrorCount\nproperty\nReadOnly\nro\n是\n复位\n代码\nU32\n统计内存运行周期内发生的不可纠正错误次数，取值范围：0~0xFFFFFFFF。系统上下电/复位/更换部件时，统计次数清零。\n\nLifeTimeUncorrectableECCErrorCount\nproperty\nReadOnly\nro\n是\n掉电\n代码\nU32\n统计内存生命周期内发生的不可纠正错误次数，取值范围：0~0xFFFFFFFF。更换部件时，统计次数清零。\n\n/bmc/kepler/Systems/:SystemId/FDMDomain/NPURAS/:Id\nbmc.kepler.Systems.FDMDomain.MemoryOnChipRAS\nIsolationStatus\nproperty\nReadOnly\nro\n是\n复位\n代码\nU8\n内存隔离自愈执行状态，取值范围：0（未执行隔离）、1（已成功执行隔离）、其他（预留）。系统上下电/复位时，恢复到未执行隔离状态。\n\n评审结论\n同意新增属性\n1、\n资源path：/bmc/kepler/Systems/:SystemId/FDMDomain/CPURAS/:Id\n资源interface：bmc.kepler.Systems.FDMDomain.CPURAS\n①新增CurrentPeriodCacheUncorrectableECCErrorCount属性\n持久化类型：BMC复位持久化\n操作权限：ReadOnly\n②新增LifeTimeCacheUncorrectableECCErrorCount属性\n持久化类型：BMC掉电持久化\n操作权限：ReadOnly\n2、\n资源path：/bmc/kepler/Systems/:SystemId/FDMDomain/MemoryRAS/:Id\n资源interface：bmc.kepler.Systems.FDMDomain.MemoryRAS\n①新增CurrentPeriodUncorrectableECCErrorCount属性\n持久化类型：BMC复位持久化\n操作权限：ReadOnly\n②新增LifeTimeUncorrectableECCErrorCount属性\n持久化类型：BMC掉电持久化\n操作权限：ReadOnly\n3、\n资源path：\n/bmc/kepler/Systems/:SystemId/FDMDomain/CPURAS/:Id\n/bmc/kepler/Systems/:SystemId/FDMDomain/NPURAS/:Id\n资源interface：bmc.kepler.Systems.FDMDomain.MemoryOnChipRAS\n新增：IsolationStatus属性\n持久化类型：BMC复位持久化\n操作权限：ReadOnly\n遗留事项\n1、需要说明IsolationStatus属性作用以及取值范围，组内讨论备注内容进行说明\n结论：与组内SE对齐，详细描述新增的属性的备注信息，说明该属性的作用、场景、取值范围以及恢复策略\n2、CPU和DDR内存故障度量统计极限情况下，发生的频率，以及针对于flash的影响\n结论：需要在代码开发层面压测这些属性对flash写入量的影响\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/3",
+    "topic_user_name": "Huangrenjie Wtss6",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/388/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/388/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/388/4",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 1758,
+    "question": "ipmitool获取BMC模组拓展板的FRU信息失败 - content: 使用的是2503的社区版本， 根据PAE的建议修改过CSR配置文件，主要是适配920模组的硬件设计\n具体现象可以看图\nipmitool只能看到CPU模组的电子标签，但是拓展板上的信息看不到。\n通过BMC系统调用资源树的属性能够看到拓展板的信息\nimage1660×430 46.4 KB\n补充下组件的报错日志\nimage1234×117 19.6 KB\n追踪代码只能看到是调用l_ipmi_read_frudata接口报错，没有其他的信息可查。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/75563b19b79ac1b2f656773d74140222a322ad1e.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a6be3b1ce36b8637a67aec11ce376b8b3eb98c01.png",
+    "topic_user_name": "Limingfeng",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Limingfeng",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1758/2",
+            "text": "content: @zhangbaocun 请问一下，这个问题可以帮忙看看吗， 有什么方向可以提供吗\nlinks: /u/zhangbaocun"
+        },
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1758/3",
+            "text": "先看看frudata的初始化日志看看有没有扩展板相关的报错信息"
+        },
+        {
+            "user_name": "Limingfeng",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1758/4",
+            "text": "content: image1856×712 117 KB\n读取eeprom有一些报错\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/5a7d3d61eca3303e982dcebf2a0a457e4ada58b1.png"
+        }
+    ]
+}

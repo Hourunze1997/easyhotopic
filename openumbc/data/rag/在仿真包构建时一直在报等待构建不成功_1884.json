@@ -1,0 +1,71 @@
+{
+    "topic_id": 1884,
+    "question": "在仿真包构建时，一直在报等待，构建不成功 - content: 在仿真包构建时，一直在报等待，构建不成功\n目标 personal 正在等待任务: work.task_build_qemu_rootfs, 当前已等待 60 秒\n目标 personal 正在等待任务: work.task_build_qemu_rootfs, 当前已等待 60 秒\n目标 personal 正在等待任务: work.task_build_rootfs_img, 当前已等待 120 秒\n目标 personal 正在等待任务: work.task_build_qemu_rootfs, 当前已等待 120 秒\n目标 personal 正在等待任务: work.task_build_qemu_rootfs, 当前已等待 120 秒\n目标 personal 正在等待任务: work.task_build_rootfs_img, 当前已等待 180 秒\n使用wifi和热点都如此。\n查看/home/demon/workspace/manifest/temp/log/task.log，内容如下：\n复制 rootfs_openUBMC.hpm.signed 到 /home/demon/workspace/manifest/output/rootfs_openUBMC.hpm 并保留权限\nERROR: 执行命令 [‘/usr/bin/git’, ‘pull’, ‘origin’, ‘main’] 错误, 日志: /home/demon/workspace/manifest/temp/log/task.log\ngit@gitcode.com: Permission denied (publickey).\nfatal: Could not read from remote repository.\nPlease make sure you have the correct access rights\nand the repository exists.\nlinks: mailto:git@gitcode.com",
+    "topic_user_name": "Demon Wu",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1884/2",
+            "text": "看起来是git权限配置的问题，请尝试执行\ngit clone https://gitcode.com/openUBMC/qemu.git，确保上述git操作拉取代码仓无问题，再构建仿真包"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1884/3",
+            "text": "content: git clone https://gitcode.com/openUBMC/qemu.git ，git拉取代码仓无问题，重新构建仿真包时，报类似的错误：\n目标 personal 正在等待任务: work.task_build_rootfs_img, 当前已等待 1320 秒\nERROR: 执行命令 [‘/usr/bin/git’, ‘pull’, ‘origin’, ‘main’] 错误, 日志: /home/demon/workspace/manifest/temp/log/task.log\nERROR: Command ‘[’/usr/bin/git’, ‘pull’, ‘origin’, ‘main’]’ timed out after 1199.999994920996 seconds\nERROR: 任务 personal 执行失败\nERROR: 请查看日志信息\ntimed out\ntimed out\ntimed out\nERROR: 运行子任务 work.task_build_rootfs_img 类 bmcgo.tasks.task_build_rootfs_img失败\ntimed out\nlog日志显示：\nsearch for prefix: rootfs_openUBMC\n复制 rootfs_openUBMC.hpm.signed 到 /home/demon/workspace/manifest/output/rootfs_openUBMC.hpm 并保留权限\nERROR: 执行命令 [‘/usr/bin/git’, ‘pull’, ‘origin’, ‘main’] 错误, 日志: /home/demon/workspace/manifest/temp/log/task.log\ngit@gitcode.com: Permission denied (publickey).\nfatal: Could not read from remote repository.\nPlease make sure you have the correct access rights\nand the repository exists.\n和之前一样的错误\nlinks: mailto:git@gitcode.com"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1884/4",
+            "text": "看起来并不是构建仿真镜像包需要拉取qemu仓库引发的\n尝试使用conan search frudata -r openubmc_dev\n观察回显是否正常搜索了远程conan仓库中的组件，如果提示输入远程conan仓库密码，请输入个人社区账户密码后重试搜索远程conan仓库中的组件，成功后再次构建镜像包"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1884/5",
+            "text": "content: Hi zhengxy\n谢谢您的回复，按照你的建议，输入命令：“conan search frudata -r openubmc_dev”，在提示输入远程conan仓库密码时，输入密码，成功后，再次仿真包构建：“bingo build -sc qemu”，结果还是报一样的错误：\nERROR: 执行命令 [‘/usr/bin/git’, ‘pull’, ‘origin’, ‘main’] 错误, 日志: /home/demon/workspace/manifest/temp/log/task.log\nERROR: Command ‘[’/usr/bin/git’, ‘pull’, ‘origin’, ‘main’]’ timed out after 1199.9999882830016 seconds\nERROR: 任务 personal 执行失败\nERROR: 请查看日志信息\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\nERROR: 运行子任务 work.task_build_rootfs_img 类 bmcgo.tasks.task_build_rootfs_img失败\ntimed out\ntimed out\n错误日志内容如下：\nimage1698×355 27.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0a06699a579aba3ed7e55e51ae3a7eb52f086249.png"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1884/6",
+            "text": "麻烦看下上述日志文件manifest/temp/log/task.log中是否还有其他提示性报错"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1884/7",
+            "text": "content: image1530×883 92.6 KB\n确认log，有3个地方报error：\nERROR: No remote ‘conancenter’ defined in remotes\nERROR: No remote ‘conancenter’ defined in remotes\nERROR: 执行命令 [‘/usr/bin/git’, ‘pull’, ‘origin’, ‘main’] 错误, 日志: /home/demon/workspace/manifest/temp/log/task.log\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/5ebcbad6cb9fca6998acf14ca2f76341b6d57b9e.png"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1884/8",
+            "text": "能留个联系方式么，邮件都可以"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1884/9",
+            "text": "方便留个联系方式么，邮件也行"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1884/10",
+            "text": "私信你了"
+        }
+    ]
+}

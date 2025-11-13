@@ -1,0 +1,15 @@
+{
+    "topic_id": 491,
+    "question": "【已评审】redfish指定机箱资源信息增属性 - content: ISSUE链接（必填，此议题关联的issue）：【需求】SMM板 Redfish接口在指定机箱资源信息增属性HMMToGWLinkStateCheckingEnabled，支持检测链路是否和网关通信正常的开关\n背景:\n现网使用SmartKit巡检时发现SMM备用板无法Ping通，更换交换机的光电转换模块后正常，SMM2需要主动检测到对端路径链路的状态，异常时上报告警，正常后恢复告警。同时北向redfish接口增加属性开关使能和禁用此特性。\n决策点：\nURI: /redfish/v1/Chassis/Enclosure\n新增属性：Oem/{OemIdentifier}/新增属性HMMToGWLinkStateCheckingEnabled\n涉及方法：GET、PATCH\n详细方案：\nimage1308×667 35.8 KB\n错误码：400\n错误引擎如下：\n“HMMToGWLinkStateCheckingEnabledModificationFailed”: {\n“Description”: “Indicates that the gateway detection modification failed when the IP mode is set to automatic, the gateway is empty, and the static IP address is empty.”,\n“Message”: “The attribute %1 modification failed. Possible causes are that the IP mode is automatic, the gateway or static IP address is empty, or the attribute CheckGEMgmtGWCommState is not supported.”,\n“Severity”: “Warning”,\n“NumberOfArgs”: 1,\n“ParamTypes”: [\n“string”\n],\n“Resolution”: “Setting the IP mode is manual configuration, gateway, static IP address.”\n}\n评审结论:\nopenUBMC社区暂不涉及此类场景，因此暂不在社区增加该redfish message\nlinks: https://gitcode.com/openUBMC/bingo/issues/13, https://discuss.openubmc.cn/uploads/default/original/1X/e4ad1007e710280b76c5a4f4e99ac7dd1e6c7f86.png",
+    "topic_user_name": "Baiaijie",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Baiaijie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/491/2",
+            "text": "2025/04/24 已在TMG评审。"
+        }
+    ]
+}

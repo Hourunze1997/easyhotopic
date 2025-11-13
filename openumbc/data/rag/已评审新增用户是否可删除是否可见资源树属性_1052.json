@@ -1,0 +1,15 @@
+{
+    "topic_id": 1052,
+    "question": "【已评审】新增用户是否可删除、是否可见资源树属性 - content: issue链接\n支持OEM用户原子能力相关资源\n评审背景\n互联网诉求定制OEM用户，在定制诉求下，该类用户独立提供创建、校验能力，并支持直接通过密文密码创建用户、不可编辑、不可删除、对外不可见等特性能力。当前OEM用户实现匹配定制诉求，未提供为原子能力。为解耦和增强扩展性，account组件负责通用能力，具体定制诉求放在定制仓库，降低与特殊定制化的耦合\n评审点\n资源树新增是否可见、是否可删除属性\npath：/bmc/kepler/AccountService/AccountPolicies/OemAccount\ninterface：bmc.kepler.AccountService.AccountPolicy\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nVisible\n新增属性\nb\nR:ReadOnly,W:UserMgmt\n掉电持久化\nfalse\n标识该类型用户前端是否呈现\n取值类型: boolean,OEM用户默认不可见\n\nDeletable\n新增属性\nb\nR:ReadOnly,W:UserMgmt\n掉电持久化\nfalse\n标识该类型用户是否可删除\n取值类型: boolean,OEM用户默认不可删除\n\n评审结论\n同意资源协作接口bmc.kepler.AccountService.AccountPolicy新增属性，具体如下：\npath：/bmc/kepler/AccountService/AccountPolicies/OemAccount\ninterface：bmc.kepler.AccountService.AccountPolicy\n新增属性：Visible，签名b，读权限：ReadOnly，写权限：UserMgmt，不发送变更通知事件\n新增属性：Deletable，签名b，读权限：ReadOnly，写权限：UserMgmt，不发送变更通知事件\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/82",
+    "topic_user_name": "Je Li",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1052/2",
+            "text": ""
+        }
+    ]
+}

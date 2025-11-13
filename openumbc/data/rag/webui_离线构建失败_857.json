@@ -1,0 +1,22 @@
+{
+    "topic_id": 857,
+    "question": "webui 离线构建失败 - content: 背景\n当前目标：在纯内网状态下，构建webui。\n当前方法：在外网状态下的容器构建webui，构建成功后，打包成镜像，传递镜像到内网，在内网实例化容器，在内网进行webui构建\n问题现象\n重新实例化后的容器下构建webui卡死在下下面的步骤：\nimage1058×624 52.8 KB\n实际上本地有node_modules\nimage1920×226 24.7 KB\n初步分析\n\n这个阶段卡死疑似还是和网络有关系。\n如果在外网下，只要执行过一次webui构建，再断网，后续还是可以进行构建的。\n容器打包迁移并不能让webui构建免于外网连接\n\n诉求\n这个卡住的web构建阶段主要是和哪个网址交互，如果内网做软件源镜像是否能解决此问题？\nlinks: #p-1763-h-1, #p-1763-h-2, https://discuss.openubmc.cn/uploads/default/original/1X/f015cc1120e39fbeb74eaee270013d67c12a83b8.png, https://discuss.openubmc.cn/uploads/default/original/1X/02876ff7b5f16cbae0005af982ad5d504fa507ae.png, #p-1763-h-3, #p-1763-h-4",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/857/3",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/857/2",
+            "text": "跟你的npm源有关。"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/857/3",
+            "text": "content: webui的构建脚本在conanfile.py中， 分为2个阶段构建build，打包package, 如下图所示。\n\nimage591×185 10 KB\n可以尝试按以下步骤操作：\n\n将package方法中的前2行删除，在外网状态下构建webui，构建成功后打包成镜像。\n在内网实例化容器，在webui源码目录手动执行 npm install && npm run build 进行验证。\n验证成功后，执行构建webui。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/1e83c5bff98c18f2b4df81fb146f6a798f2b90c0.png"
+        }
+    ]
+}

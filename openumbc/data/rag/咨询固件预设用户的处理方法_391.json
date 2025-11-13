@@ -1,0 +1,29 @@
+{
+    "topic_id": 391,
+    "question": "咨询固件预设用户的处理方法 - content: image1250×268 29.1 KB\n有个定制需求场景，客户期望固件能预设几个用户。\n告知可以通过ipmi命令新增，但客户还是期望能预设到固件中，避免再多操作一次。\n所以想咨询一下，有没有预设用户的处理方法 \n还有的客户想直接把默认Administrator改成root，不知是否可行 \nimage996×869 129 KB\n查看user组件代码和单元测试代码，最终应该是这个地方保存，假如想通过该函数预设账号，该在哪里调用呢\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/bf4b9cadd584a6070ab174e039c69c3471a865dd.png, https://forum.openubmc.cn/uploads/default/original/1X/66111826f2f977031b384a6b689cf31414fbb5a7.png",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/391/3",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/391/2",
+            "text": "已收到问题，内部讨论后解答。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/391/3",
+            "text": "可以修改account仓库的manufacture/default_datas.lua文件\n修改预置用户的用户名称和扩展阈值用户的名字都可以"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/391/5",
+            "text": "content: 按这个思路操作下来可以满足需求了，但还有些差异，default_datas.lua应该是给装备包用，需要修改datas.lua文件，以下是实践记录：\n预设用户\nimage420×448 15.4 KB\n这里我们不通过代码生成了，直接修改datas.lua数据文件\n/home/jiangc/workdir2/OpenUBMC/user/gen/account/datas.lua\nimage1599×587 65.7 KB\nimage1172×114 7.54 KB\nFirstLoginPolicy首次登录策略由ForcePasswordReset设置为PromptPasswordReset（提示密码重置），避免再次修改。\n密码密文查看下一章节获取。\n明文：P@44w0rd\n密文：$6$KXzCg5gMqrSEjLb7$JQIoce9aaI31zd0I2C2br5AyHGZrZUr/l46xLB7gIHcGA.6lpkkDHloBzE8yT9J0v1CwpNPzwgp0/FFRIzHxp.\nimage532×231 3.19 KB\n密文获取\n添加debug日志后部署，在web上修改密码，通过mdbctl从account模块日志获取\n/home/jiangc/workdir2/OpenUBMC/user/src/lualib/domain/manager_account/manager_account.lua\nimage1177×529 88.8 KB\nimage1498×250 30.3 KB\n这里有个疑问 crypt_password和kdf_password密文相同，有什么作用?\n加密方式\nbmc作为精简的linux系统，密码用的是linux通用加密方式linux密码暴力破解之SHA-512破解(转载)_sha512解密-CSDN博客\ncat /etc/shadow\nroot:$6$fwBSyoSkze4QaMPU$5TofrLn1wGl922eBnylVWoNuZGKqxkquFy6p5n3cqpXXPED1V1UGVuJP8r68Edt331.9CuXmL5tUe9YNJNZUh.\nlinks: #p-848-h-1, https://forum.openubmc.cn/uploads/default/original/1X/f073d29ab438a843030eeed68648eecf286eec25.png, https://forum.openubmc.cn/uploads/default/original/1X/fcbd7a58d01ecc654fbfcab450299bc5a5a5136e.png, https://forum.openubmc.cn/uploads/default/original/1X/ac12b99d955a440ed897849443950ab8c706e7aa.png, https://forum.openubmc.cn/uploads/default/original/1X/472d1ddb466968a8cd8b684ba7ea7410d2a6e038.png, #p-848-h-2, https://forum.openubmc.cn/uploads/default/original/1X/73ca94f2af21fe3560f2b12c7676bfcf1bde5eb1.png, https://forum.openubmc.cn/uploads/default/original/1X/e55e01098b911635f97fc99f2aaad0c0375dfd88.png, #p-848-h-3, https://blog.csdn.net/tempulcc/article/details/108422164"
+        }
+    ]
+}

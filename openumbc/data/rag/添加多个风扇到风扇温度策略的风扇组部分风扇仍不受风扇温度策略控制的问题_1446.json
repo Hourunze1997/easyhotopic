@@ -1,0 +1,120 @@
+{
+    "topic_id": 1446,
+    "question": "添加多个风扇到风扇温度策略的风扇组，部分风扇仍不受风扇温度策略控制的问题 - content: 适配了16个风扇到自定义的风扇策略的风扇组里面，但是只有其实4个受控，另外12给仍无法受风扇智能调速策略影响。\n如图是风扇策略配置，可以看到fanIdxGroup里面有16个\n85bb1c1e9eb512dab3ce1d261b9393e1635×453 17.8 KB\n下图是cooling日志打印,也可以看到只有Devid:0x101到0x404，其他都是0xffff\n企业微信截图_175066943617021380×826 278 KB\n把风扇个数改成5个也是只有前四个受控。想请问是配置文件改什么地方让风扇受控风扇温度策略。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/8bd39d42ae19dbb2eed678b4b42f7c6a1df3236e.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/3433cbf6f12cf727acc04a632926afc8961901ea.jpeg",
+    "topic_user_name": "wuzhou-Lsx",
+    "best_answer_url": "/t/topic/1446/17",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/2",
+            "text": "检查风扇id配置是否存在问题"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/3",
+            "text": "新增的风扇适配一个目标调速。支持目标+环温，仅目标。但不支持仅环温线性调速"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/4",
+            "text": "id配置应该没有问题，我多加一个还是几个都没有用都是只有四个生效。"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/5",
+            "text": "content: 新增的风扇适配一个目标调速。这个不太懂，能举个示例吗？我代码配置了这些\nimage975×563 20.2 KB\nimage1195×269 27.7 KB\n这是这些是环温线性调速？要加目标调速配置还要加其他配置？是这个意思吗\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/9930bea676f2f9fff8bc2f4e08489b85f38e0544.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/05bf4431a9d3272573cb1c951c9d4a4c8926fe8a.png"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/6",
+            "text": "content: 风扇id适配是否存在问题，参考确认是否存在重复id，【问题求助】风扇适配过程遇到的问题\n从给定的cooling_control日志查看，后8个风扇是无效id\nlinks: https://discuss.openubmc.cn/t/topic/708"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/7",
+            "text": "风扇id没有重复，slot和fanid 都是 1 1 2 2  3 3 … 这么往下配置的"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/8",
+            "text": "可以给出风口调速的4风扇，加上你要新增的风扇。这样就有目标+环温调速了"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/9",
+            "text": "是往CoolingArea里面的FanIdxGroup里面加吧，我加了还是不起作用，我看日志是确实是FanIdxGroup_1_6这个温度策略生效的。"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/10",
+            "text": "CoolingArea中在FanIdxGroup中增加风扇id；\n确保CSR中配置的风扇id正确；"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/11",
+            "text": "目前确认CSR中配置的风扇id是正确的，而且CoolingArea中在FanIdxGroup中也增加了风扇id，正在调查其他导致的原因。"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/12",
+            "text": "有什么问题，及时反馈求助"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/13",
+            "text": "我使用vpd自带的7风扇sr文件（14100363_00000001050302035475.sr），然后CoolingArea中在FanIdxGroup中也增加了风扇id,还是log里面显示4个风扇的id。"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/14",
+            "text": "资源协作接口上是否有对应风扇对象"
+        },
+        {
+            "user_name": "wuzhou-Liaozhongquan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/15",
+            "text": "意思是你现在的配置除了前四个风扇是目标+环温的策略外，其余12个风扇都只有你刚刚配置的环温，没有目标策略，所以策略不生效。刚从v2问题过来，风扇加上目标调速后解决了。"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1446/16",
+            "text": "目前看起来与双风扇板配置有关，单风扇板配置通过进风口目标调试配置是可以全风扇智能调速的。我16风扇是配置了两个风扇板sr文件的。"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1446/17",
+            "text": "多风扇板配置适配，需要在CoolingConfig对象中适配FanBoardNum值为2"
+        }
+    ]
+}

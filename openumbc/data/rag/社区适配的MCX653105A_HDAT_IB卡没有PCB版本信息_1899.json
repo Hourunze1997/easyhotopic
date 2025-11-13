@@ -1,0 +1,22 @@
+{
+    "topic_id": 1899,
+    "question": "社区适配的MCX653105A-HDAT IB卡没有PCB版本信息 - 咨询一下，社区的vpd里适配的各类卡，有的pcb信息为.A，有的则是NA，请问适配这些卡时，pcb信息如何获取？同样的还有uid和部件编码等信息",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "/t/topic/1899/2",
+    "reply_posts": [
+        {
+            "user_name": "nathanael yu",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1899/2",
+            "text": "一般自研卡可以支持通过I2C/SMC获取该信息，标卡基于卡自身提供能力为准，如果未提供，则填NA即可"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1899/3",
+            "text": "好的，感谢"
+        }
+    ]
+}

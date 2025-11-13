@@ -1,0 +1,15 @@
+{
+    "topic_id": 2120,
+    "question": "板卡环温调速配置-涉及泰山仓如何解决 - content: image729×137 4.88 KB\n板卡的环温调速配置 - 交流互助区 - openUBMC 论坛\n如之前沟通，环温调速配置在PSR内，但是这部分配置文件并没有在VPD代码仓上（一些PSR、基础板等的配置）。这部分要修改调速上库的话，要如何实现呢？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/575e1c912fb817fffdce9215c2d3482cf56b5ef8.png, https://discuss.openubmc.cn/t/topic/326",
+    "topic_user_name": "kunlun_luzhanghui",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2120/2",
+            "text": "1、有温感的卡：伙伴可以在板卡适配目标调速。\n2、没有温感的卡：从板卡贡献来看，不需要贡献整机环温调速。开发新整机，需要做热设计评估，提供调速曲线再对PSR进行适配。"
+        }
+    ]
+}

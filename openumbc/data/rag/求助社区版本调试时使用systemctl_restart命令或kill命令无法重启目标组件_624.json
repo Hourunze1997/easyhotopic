@@ -1,0 +1,15 @@
+{
+    "topic_id": 624,
+    "question": "【求助】社区版本调试时，使用systemctl restart命令或kill命令，无法重启目标组件 - content: 调试过程中，在环境上修改了pcie_device以及bios组件的代码，使用systemctl restart hardware命令与killall hardware，期望可以使这两个组件复位，但实际并未被重启；\n查看framework.log\nimage1136×136 6.36 KB\n只复位了以上几个组件，想咨询下为何pcie_device、bios组件不会被重启\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/edd09e80a490ed885c9f45048b04f102881628b6.png",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "/t/topic/624/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/624/2",
+            "text": "现在pcie_device、bios在ras进程中"
+        }
+    ]
+}

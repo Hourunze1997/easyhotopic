@@ -1,0 +1,15 @@
+{
+    "topic_id": 1909,
+    "question": "BMC访问用户安全功能确认 - content: 有客户想要BMC证明，支持白名单和黑名单功能，有效限制风险访问。\n我理解当前登陆规则可以视作白名单功能，但是没有找到黑名单。\nimage3350×742 154 KB\n诉求：1、确认当前BMC是否支持访问黑名单功能？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/fd0f09d2cb746b2b4674c27b5cf4affbb49e4f80.jpeg",
+    "topic_user_name": "Huangyuxuan",
+    "best_answer_url": "/t/topic/1909/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1909/2",
+            "text": "BMC没有黑名单功能。\n\n对于本地用户， 管理员可以禁用或删除用户\n对于LDAP，管理员可以删除用户组或关闭LDAP使能"
+        }
+    ]
+}

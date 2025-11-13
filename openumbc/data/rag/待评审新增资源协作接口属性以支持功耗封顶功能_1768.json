@@ -1,0 +1,7 @@
+{
+    "topic_id": 1768,
+    "question": "【待评审】新增资源协作接口属性以支持功耗封顶功能 - content: 一、ISSUE链接\n私有属性 无ISSUE\n二、背景\n功耗封顶有两种方式：一种是透传，即直接下发整机功耗封顶值；另一种是会计算当前不参与功耗封顶的器件的功耗值，再由整机功耗封顶值减去该值计算得出参与功耗封顶器件的功耗封顶值并下发。目前没有属性可以单一指明服务器使用的是何种方式。\n三、决策点\n\n在PowerStrategy对象下新增支持功耗封顶调控私有属性\n\n四、详细描述\n资源协作接口新增支持功耗封顶调控私有属性\n资源obj：PowerStrategy\n资源path：私有资源\n资源interface：私有资源\n变化类型：新增私有属性\n应用场景：功耗封顶使能开启\n详细描述：\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nPowerLimitAutoRegulation\n新增私有属性\nb\n私有属性不涉及\n不持久化\nfalse\nCSR\n表明当前服务器是否支持功耗封顶调控\n默认值为false\n\n五、评审结论\n决策点1：资源协作接口新增支持功耗封顶调控私有属性\n结论：\nlinks: #p-4307-issue-1, #p-4307-h-2, #p-4307-h-3, #p-4307-h-4, #p-4307-h-5, #p-4307-h-6, #p-4307-h-1-7",
+    "topic_user_name": "songdianpeng",
+    "best_answer_url": "",
+    "reply_posts": []
+}

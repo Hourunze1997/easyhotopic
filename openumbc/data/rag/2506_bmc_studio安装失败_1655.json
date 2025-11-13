@@ -1,0 +1,134 @@
+{
+    "topic_id": 1655,
+    "question": "2506 bmc studio安装失败 - content: 【当前环境】\nbingo版本：0.5.262\nbmc-studio版本：1.1.95\n镜像版本：当前gitcode的dockerfile制作的镜像\n【操作过程】\n容器是在本地的wsl中，容器中安装bmc-studio之前在wsl中安装过bmc-studio，后面又把wsl中的卸载，在容器中安装bmc-studio\n【问题现象】\n按照bmc-studio安装教程在vscode上添加插件，显示安装成功\nimage1920×1032 65.6 KB\n进入后没有提示新建工作空间，设置不了仓库，点击后没反应，同时bmc-studio界面右上角显示的版本与环境中的版本不对应\nimage1920×913 50.1 KB\nimage1920×913 53.3 KB\n【当前疑问】\n第一次在wsl中安装bmc-studio是可以正常设置仓库的，是不是和这个有关系，应该如何去解决\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/451761ee8268011117d2d6815edd4bc5c1a953c5.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/9/92d8ff8af934ed85bb14b6d3728d6d9c1cfc833f.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/2/2ff4a5409c79dd90486c7d07302f0a26bbf2c180.jpeg",
+    "topic_user_name": "百信-张滨",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/2",
+            "text": "content: 在容器中执行/usr/share/bmc_studio/bmc_studio.sh start后手动去web上输入网址后可以进入正确版本的网页，但是功能用不了\nimage1091×330 13.2 KB\nimage1920×945 51.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/020d018fc8872de8290720ec305cedc91a344cf9.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/7352f58b6cad537f6371e96ea7f76f3694c2d5fb.jpeg"
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/3",
+            "text": "您好，能不能让我看一下/usr/share/bmc_studio/mds/service.json里面的内容"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/4",
+            "text": "content: image823×148 3.49 KB\n上面是文件的内容\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4f4dac29109a8396336f0c5952e138e50e4ddc6a.png"
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/5",
+            "text": "应该是这样的，您windows里的浏览器访问到的是wsl里bmc studio的前端，但是wsl的bmc studio后端没有拉起来，您拉起的是容器里的bmc studio。您可以执行以下步骤试试：\n\n在wsl里输入service nginx stop\n在容器里输入apt install xdg-utils\n在容器里用restart命令重新拉起BMCStudio"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/6",
+            "text": "content: 按照您的方式，我操作后，出现以下界面\nimage1096×366 14.6 KB\nweb界面如下\nimage1917×979 60.2 KB\n右上角没有可以设置仓库的选项\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/506deac222d5f8f57077053ca3da4098bcecbe20.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/7f2b4d3cee3c052e35d532d6a05a16e31fd586ad.jpeg"
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/7",
+            "text": "这个web页面可能是缓存的页面，您ctrl + f5试试看？"
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/8",
+            "text": "话说方便问一下背景吗？为什么不直接在wsl里跑bmc studio而是要放在wsl的docker里？"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/9",
+            "text": "content: 您好，我又重新尝试安装一次，使用apt install ./bmc-studio-1.1.95.250628.deb的方式安装，但是deb包名为bmc-studio-1.1.95.250628-beta.deb，不知道是否符合预期\nimage1023×118 4.75 KB\n安装完成后仍然是相同的界面，无论怎么刷新仍然是这个界面\nimage1918×1017 58.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/90d4f8d0bf12242d36030901fb10e088097e1ce8.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/7cf7b7092895dbbcbbf5baa0eeee0bfbb4564f09.jpeg"
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/10",
+            "text": "deb包名没有问题，您可以将您的安装命令调整为apt install ./bmc-studio-1.1.95.250628-beta.deb。\n目前在wsl里的docker里启动bmc studio可能确实会有些困难，方便问一下为什么要以这种方式运行bmc studio吗？"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/11",
+            "text": "当前是在wsl里面运行docker进行开发的，docker里面的开发环境比较完整，之前在参加bmc studio培训的时候提过，bmc studio要正常使用的话需要在能够正常出bmc固件包的环境下安装，所以采用了这种方式"
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/12",
+            "text": "那您试试看这样\n在wsl里运行service nginx restart\n拉起docker时使用这个命令：docker run -d -p 12888:12888 --name [your_container] [your_image]\n后面的两个变量请您自行替换\n然后再重新打开bmc studio\n如果还有问题的话尝试重新下载repo中的bmc studio安装包重新安装"
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/13",
+            "text": "这个有解决到您的问题吗？如果解决到了的话也麻烦您反馈一下"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/14",
+            "text": "目前搭了一套新的环境，正在测试，有结果和您反馈，感谢"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/15",
+            "text": "content: 目前搭建2506最新环境后，可以正常打开bmc studio网页，但是在部署仓库的时候出现\nimage1920×1032 124 KB\n也一直卡在这个仓库部署阶段，我的远程仓库中没有ibmc_dev，这个需要怎么设置吗\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/3fb0786fcb3b6f6e1b5135f33b16b2508a393c89.png"
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/16",
+            "text": "可能是环境里存在bmcgo导致的。方便输一下这两个命令看一下结果吗？\npip list | grep bmcgo\ndpkg -l | grep bmcgo"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/17",
+            "text": "content: 您好，当前环境里是bmcgo和bingo都有的，并且都是最新版本\nbmcgo版本：0.5.370\nbingo版本：0.5.265\nimage1032×461 13 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/b3f0a09ac59c0fcebb42d182b2cea45b2ed8201e.png"
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/18",
+            "text": "环境里存在bmcgo的话会出这个问题，如果方便的话请您卸载bmcgo。\n命令为 dpkg -P hw-ibmc-bmcgo"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1655/19",
+            "text": "当前bmcgo在开发中属于必须项，卸载的话我们在构建产品包的时候会有问题，所以当前环境还是要用bmcgo工具，这部分感觉有点冲突了，因为我们用的manifest仓库是和bmcgo配套的"
+        }
+    ]
+}

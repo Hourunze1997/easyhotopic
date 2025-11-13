@@ -1,0 +1,15 @@
+{
+    "topic_id": 1920,
+    "question": "【已评审】新增节点信息配置导入导出项 - content: 决策点1：\n评审背景\n\n新增节点配置信息需要支持配置的导入导出\n\n评审点\n新增超节点配置导入导出项\n\n配置项名称（中文）\n配置项\n配置项子项\n归属组件\n取值说明\n导入导出类型（ExportOnly，ImportAndExport）\n\n机框号\nSuperPodLabel\nChassisId\n产品扩展组件\n整型 [0, 65535]\nImportAndExport\n\n节点拓扑形态\nSuperPodLabel\nTopologyType\n产品扩展组件\n整型 [0, 255]\nImportAndExport\n\n节点互联方式\nSuperPodLabel\nInterconType\n产品扩展组件\n整型 [0, 255]\nImportAndExport\n\nNPU启动模式\nSuperPodLabel\nNPUBootOption\n产品扩展组件\n整型 [0, 255]\nImportAndExport\n\n物理在位网卡数量\nSuperPodLabel\nPresentDPUCount\n产品扩展组件\n整型 [0, 255]\nImportAndExport\n\n管理模式\nSuperPodLabel\nUBManagedBy\n产品扩展组件\n整型 [0, 255]\nImportAndExport\n\n评审结论\n决策点1：\n同意新增导入导出配置项SuperPodLabel，其包含如下子项：\n\nChassisId，表示超节点机框编号，整型，取值范围 [0, 65535]，支持导入和导出，并且导出后可立即导入\nTopologyType，表示超节点拓扑类型，整型，取值范围  [0, 255]，支持导入和导出，并且导出后可立即导入\nInterconType，表示超节点互联类型，整型，取值范围  [0, 255]，支持导入和导出，并且导出后可立即导入\nPresentDPUCount，表示在位的DPU数量，整型，取值范围  [0, 255]，支持导入和导出，并且导出后可立即导入\nNPUBootOption，表示NPU启动方式，整型，取值范围 型 [0, 255]，支持导入和导出，并且导出后可立即导入\nUBManagedBy，表示UB管理方式，整型，取值范围  [0, 255]，支持导入和导出，并且导出后可立即导入\nlinks: #p-4738-h-1, #p-4738-h-2, #p-4738-h-3",
+    "topic_user_name": "liumengda",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1920/2",
+            "text": ""
+        }
+    ]
+}

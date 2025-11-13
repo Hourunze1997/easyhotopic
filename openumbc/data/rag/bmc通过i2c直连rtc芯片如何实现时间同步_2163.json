@@ -1,0 +1,22 @@
+{
+    "topic_id": 2163,
+    "question": "bmc通过i2c直连rtc芯片，如何实现时间同步？ - 如题，bmc的时间每次上电都是从1970年开始，并不是rtc内的时间，请问这种设计需要在sr文件中添加什么特殊的类吗？",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2163/2",
+            "text": "content: https://discuss.openubmc.cn/t/topic/1174\n我看到在此帖中有访问方法，但目前的资源树中没有此资源（/bmc/kepler/Chip/Rtc/:Id）的路径\nlinks: https://discuss.openubmc.cn/t/topic/1174"
+        },
+        {
+            "user_name": "sunpeijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2163/3",
+            "text": "content: 可参考\n\nRTC时间同步问题咨询 bmc_core SIG\n\n    请问bmc_time组件是如何进行RTC时间同步的？ \n当前载板上一组i2c连接了RTC芯片，可以读到时间，但不知道如何配置SR与Time_Bmc关联起来。 \n当前SR配置如下： \n [image] \n直接读RTC芯片可以读到数据： \n[image] \n读值也关联到了Scanner \n[image] \n但实际查看BMC的时间并没有与RTC同步。 \n另外，看其他例子，RTC时间都是从CPU模组的CP…\n  \n\n注：sig仅评审接口，并不意味着此接口会在社区版本支持，也可能是在其他产品才支持\nlinks: https://discuss.openubmc.cn/t/topic/1472, /c/sig-bmc-core/7, https://discuss.openubmc.cn/uploads/default/original/2X/f/fb07dd1188def01156a8ea9a90fb5fbf82d2784d.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/3f2d1e85ad0f2fcb07c3b3d7ef9d2346bfe8c859.png"
+        }
+    ]
+}

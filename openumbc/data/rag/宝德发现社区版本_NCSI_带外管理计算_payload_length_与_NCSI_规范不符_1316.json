@@ -1,0 +1,15 @@
+{
+    "topic_id": 1316,
+    "question": "宝德发现社区版本 NCSI 带外管理计算 payload length 与 NCSI 规范不符 - content: 【影响】\n        当前 OpenUBMC NCSI 带外管理对 payload length 的计算规则会导致所有网卡厂商涉及 padding 的 OEM 命令都无法通信。\n【分析过程】\n        在进行 Intel E810 网卡适配 NCSI OEM 命令过程中，尝试在 E810.lua 中添加 response 的 data 长度、data 按单个字节解析的打印出 response 中的 data 长度为正确的 12 字节，且能够解析到 Intel 的 ManufacturerID: 0 0 1 87 (0x00157) 和 OEM 命令字: 75 (0x4B), 说明 MCTP 报文发通：\nV3 芯片结温报文1041×612 142 KB\n但 E810 网卡返回响应码 01 和原因码 05，数据获取失败，参考 NCSI 标准文档：\n\n响应码01：命令错误，无法处理或未能正确完成可用命令\n原因码05：命令给出的 payload length 不正确\n\n响应码908×390 96.6 KB\n原因码891×568 171 KB\n根据 NCSI 标准定义 payload length 如下，长度不包含 padding：\npayloadlength规范1242×176 27.7 KB\n但当前 OpenUBMC 的 NCSI 带外管理 payload length 是直接计算 request 里给出的 data 的长度作为 payload length，没有考虑到有些厂商 NCSI 命令有 padding 填充数据，不符合 NCSI 规范。\n【2025.06.10】15.29.511083×424 39 KB\n【解决方案】\n\n因涉及闭源组件，宝德无法修改，已向 hardware SIG 组反馈并同步修改方案。\n\n评审结论如下：\n【2025.06.10】15.36.341263×471 76.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/1f6e098aa4bf4b057ae92dbd006db04eb11f06f1.png, https://discuss.openubmc.cn/uploads/default/original/1X/22c9c9cc2715ec8b4e6df37e0517b8655a1315b7.png, https://discuss.openubmc.cn/uploads/default/original/1X/47e65000fc2aaf856405a028abfeaa2a54f129ea.png, https://discuss.openubmc.cn/uploads/default/original/2X/d/d6f54348ad0fb90e3404efc1df83847e463e0803.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0fed68ae557eadc9d7ede054210b9f294adc00cb.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/fe41d4e002243bbb94f002a76b898508db681090.png",
+    "topic_user_name": "baode_luoyin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Chengxiaoju",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1316/2",
+            "text": "openubmc有没有类似V2的mnsend模拟测试命令呢？"
+        }
+    ]
+}

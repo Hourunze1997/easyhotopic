@@ -1,0 +1,7 @@
+{
+    "topic_id": 543,
+    "question": "【已评审】支持获取网卡SN需求新增pcie_device私有复位持久化表PCIeVPDInfo - content: 背景（必填，文字描述议题背景，如需求来源、问题场景）:\n互联网需求，支持web界面显示网卡SN\n决策点（必填，一句话描述待决策点）：\n\n新增私有复位持久化属性表：pcie_device新增PCIeVPDInfo承载BIOS上报的VPD信息\n\n整体架构/方案（可选，文字/图描述接口设计背后的整体管理架构/方案）：\n32AC5DFA-33F3-4AAD-83E1-15E37A25298A808×332 143 KB\n详细描述（必填，描述待评审的详细内容）：\n\n新增私有复位持久化属性表：pcie_device新增PCIeVPDInfo承载BIOS上报的VPD信息\n\n    \"PCIeVPDInfo\": {\n        \"tableName\": \"t_pcie_vpd_info\",\n        \"tableLocation\": \"Local\",\n        \"tableType\": \"ResetPer\",\n        \"properties\": {\n            \"DevBus\": {\n                \"baseType\": \"U8\",\n                \"primaryKey\": true\n            },\n            \"DevDevice\": {\n                \"baseType\": \"U8\",\n                \"primaryKey\": true\n            },\n            \"DevFunction\": {\n                \"baseType\": \"U8\",\n                \"primaryKey\": true\n            },\n            \"SerialNumber\": {\n                \"baseType\": \"String\"\n            },\n            \"PartNumber\": {\n                \"baseType\": \"String\"\n            }\n        }\n    }\n\n评审结论\n1.SystemId目前没有实际意义，先不添加\n2.同意新增该表\n待确认\n1.需要确认是否支持3个主键复合使用–已确认支持\nlinks: #p-1051-h-1, #p-1051-h-2, #p-1051-h-3, https://forum.openubmc.cn/uploads/default/original/1X/a7645d826e01e5a07d9978f5cc1f1159e7487746.png, #p-1051-h-4, #p-1051-h-5, #p-1051-h-6",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "",
+    "reply_posts": []
+}

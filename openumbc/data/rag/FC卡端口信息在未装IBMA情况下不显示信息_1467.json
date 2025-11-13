@@ -1,0 +1,22 @@
+{
+    "topic_id": 1467,
+    "question": "FC卡端口信息在未装IBMA情况下不显示信息 - content: 问题背景：\n目前测试环境上有三张FC卡，LPe32002-AP、LPE31002-AP和LPe32000-AP；前两张是社区版已经适配的，LPe32000-AP是这次新适配的。\n在未装IBMA情况下，卡端口无信息显示：\nimage1169×304 20 KB\nimage1192×294 18.7 KB\n安装IBMA后，卡端口信息有显示：\nimage1176×501 17.5 KB\nimage1129×497 17.3 KB\nimage1133×356 11.9 KB\n问题：\n当前openUBMC版本是不是还没做FC卡的带外信息管理？\n如果是没做的话，这块儿有预期什么时间点会加上吗？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4f30a86a84d3bc86d2591580ec602e19ecd0b360.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/2f4884f75cbf6cd1a612151324605baf00832b5e.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/19adfec0497e11e648aa8d5e0b4aab9b51ddfd3d.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0b1354a65bfee4c2bafbf171204b7474087679a3.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/605c1d721f45d4ab1cd8217315f8e6c6396e1bed.png",
+    "topic_user_name": "Hkzy Pengcheng",
+    "best_answer_url": "/t/topic/1467/2",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1467/2",
+            "text": "content: emulex厂商的预计在Q3支持，当前Q2暂只支持了QLogic厂商的带外协议。\n相关issue如下，支持使用pldm协议获取网卡相关信息\nlinks: https://gitcode.com/openUBMC/network_adapter/issues/19"
+        },
+        {
+            "user_name": "Hkzy Pengcheng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1467/3",
+            "text": "多谢回复"
+        }
+    ]
+}

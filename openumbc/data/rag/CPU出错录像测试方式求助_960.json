@@ -1,0 +1,29 @@
+{
+    "topic_id": 960,
+    "question": "CPU出错录像测试方式求助 - content: 问题求救：\n维护诊断>>录像截屏>>CPU出错录像测试方法，有主动注错的测试方法吗。\nimage1898×887 112 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/5f193ecc5a57f5a630b3b3581ba3d12d7488a163.png",
+    "topic_user_name": "Zxl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/960/2",
+            "text": "注入故障方式：\nmdbctl setprop set Scanner_Cpu1CATERRAccessor_010101 bmc.kepler.Scanner Value 1"
+        },
+        {
+            "user_name": "Zxl",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/960/3",
+            "text": "content: 在我们的机器上执行mdbctl setprop set Scanner_Cpu1CATERRAccessor_010101 bmc.kepler.Scanner Value 1报如下错：\n~ ~ # mdbctl setprop set Scanner_Cpu1CATERRAccessor_010101 bmc.kepler.Scanner Value 1\niBMC.Error.Unknow: ./opt/bmc/libmc/lualib/sd_bus/object.lua:583: ./opt/bmc/apps/hwproxy/lualib/chip.lua:277: ./opt/bmc/apps/hwproxy/lualib/driver/smc.lua:139: request error, error para, para: 0, size: 2, read_len: 1\n一键收集日志如下：\ndump_info.zip (768.7 KB)\nlinks: /uploads/short-url/Ap42RLlabAN02dfqydA6aUaRi6L.zip"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/960/4",
+            "text": "通过mdbctl lsprop查询该属性呢"
+        }
+    ]
+}

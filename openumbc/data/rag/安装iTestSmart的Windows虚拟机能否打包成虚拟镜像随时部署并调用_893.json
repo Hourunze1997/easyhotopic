@@ -1,0 +1,15 @@
+{
+    "topic_id": 893,
+    "question": "安装iTestSmart的Windows虚拟机能否打包成虚拟镜像，随时部署并调用 - 目前在远程调用这方面，我们这边尝试通过pywinauto模拟GUI动作远程调用iTestSmart，但无法满足多并发的场景。想咨询下华为这边是否尝试过将整套流程打包到虚拟化镜像并随调随用，或者是否有别的方法应对。目前了解到docker是可以模拟命令行动作，但在iTestSmart用户指南里并没有写。",
+    "topic_user_name": "Yctco Caos",
+    "best_answer_url": "/t/topic/893/2",
+    "reply_posts": [
+        {
+            "user_name": "openubmc-jianghu",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/893/2",
+            "text": "自行在windows虚拟机中安装iTestSamrt及相关的工具依赖，然后复制虚拟机镜像即可。\n因合规因素，不提供已部署工具及依赖的虚拟机镜像。"
+        }
+    ]
+}

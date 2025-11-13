@@ -1,0 +1,15 @@
+{
+    "topic_id": 2016,
+    "question": "求问BMA获取硬盘丝印的方式 - content: 请问BMA是如何获取硬盘丝印的，目前SR配置了硬盘，bdf也与带内一致，但丝印一直为空导致硬盘信息不显示。\nBMA版本：2.16.0\nBMA日志：\nimage1316×252 45.9 KB\nhost_agent显示丝印为null：\nimage1013×738 22.2 KB\nBMC丝印文件：\nimage1556×110 6.76 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/32551580d69fd9f6938ecea73196f251ea886419.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/6d241e43975854a0ea2272148eb069608993a2c5.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c6827093586fc65f8ea677d581abcd1d5d0378d1.png",
+    "topic_user_name": "lihang111",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2016/2",
+            "text": "就是通过SilkScreen来匹配硬盘的，匹配上了才能更新信息。\n具体可能涉及其他领域的联合会诊，我会让PAE拉你们联合看一下"
+        }
+    ]
+}

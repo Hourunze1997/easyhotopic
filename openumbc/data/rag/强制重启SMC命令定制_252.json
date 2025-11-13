@@ -1,0 +1,43 @@
+{
+    "topic_id": 252,
+    "question": "强制重启SMC命令定制 - % 1970-01-01 03:58:19.489090 fructrl NOTICE: fructrl_obj_mgnt.lua(240): [System:1]call PowerCtrl method, PowerCtrlType=ForceRestart, RestartCause=ChassisControlCommand.\n1970-01-01 03:58:19.489813 fructrl NOTICE: fructrl_obj_mgnt.lua(40): host 1 call power ctrl, ctrl_type=ForceRestart, reason=ChassisControlCommand\n1970-01-01 03:58:19.490459 fructrl NOTICE: powerapi.lua(160): pctrl_type=ForceRestart, restart_cause=ChassisControlCommand, fruid=0\n1970-01-01 03:58:19.669335 fructrl ERROR: force_reset.lua(33): Execute force restart, set prop failed. prop=[ForceRst], err=[iBMC.Error.Unknow: ./opt/bmc/libmc/lualib/mc/context.lua:176: ./opt/bmc/libmc/lualib/sd_bus/init.lua:215: ./opt/bmc/libmc/lualib/mc/context.lua:176: ./opt/bmc/libmc/lualib/mc/signal.lua:257: ./opt/bmc/apps/hwproxy/lualib/hwproxy_objects/app_bus.lua:106: ...bmc/apps/hwproxy/lualib/hwproxy_objects/work_objects.lua:75: chip: Smc_ExpBoardSMC_0101, bus: I2c_5, write failed: smc.lua:89: request error, opcode not su\n1970-01-01 03:58:19.670095 fructrl NOTICE: force_reset.lua(52): [System:1]execute force restart failed, and fruid is 0\n\n%\n%\n%\n% bye\nByebye. See you next time.\n\n~ ~ $ busctl --user call bmc.kepler.hwproxy /bmc/kepler/Chip/Smc/Smc_ExpBoardSMC_0101 bmc.kepler.Chip.BlockIO Write a{ss}uay 0 3489662464 1 1\n~ ~ $ timed out waiting for input: auto-logout\n\n\"Accessor_ForceRst\": {\n            \"Chip\": \"#/Smc_ExpBoardSMC\",\n            \"Offset\": 3489662464,\n            \"Size\": 1,\n            \"Mask\": 1,\n            \"Type\": 0,\n            \"Value\": 0\n        },\n\n利用ubmc原有的Accessor_ForceRst对象，将smc命令字改成我们的smc命令字。强制重启不生效，但实际手动下该命令是可以实现重启的。报错信息如上，没有显示完整，但看着像是opcode not supported。\n请问这样修改是不被允许的吗？如果不允许这么操作，那改怎么实现这个功能呢？",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "/t/topic/252/6",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/252/2",
+            "text": "本身不会做这种限制，operation not supported是直接从驱动读取来的错误信息，可能是opcode，mask等配置存在问题。\n能提供一下你们的smc命令字定义吗？\n还有，你是使用BlockIO进行手动下发的吗？如果这里mask配成1，应该会对应到BitIO操作，可以尝试改一下"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/252/3",
+            "text": "content: ~ ~ $ busctl --user call bmc.kepler.hwproxy /bmc/kepler/Chip/Smc/Smc_ExpBoardSMC_0101 bmc.kepler.Chip.BitIO Write a{ss}uyuay 0 3489662464 1 1 1 1\n\n用BitIO的方法确实会有和之前一样的报错.命令字是 func:34h, cmd:1, MS:1, RW:0，写入的数据bit0有效，bit[7:1]保留。这个命令在上述sr中的配置有什么错误吗？\nimage453×639 13.5 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/058595a0d3da4c6c50729d5e93e2d605c1b46cd5.png"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/252/4",
+            "text": "尝试一下将Type配成1，即表示使用块写进行操作。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/252/5",
+            "text": "BitIO操作失败，可以跟CPLD一起联调一下，应该是在smc命令字实现的时候有缺陷"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/252/6",
+            "text": "感谢，换用块写后实现功能，掩码用255的时候BitIO也能成功，应该就是smc命令字实现的时候有缺陷了。"
+        }
+    ]
+}

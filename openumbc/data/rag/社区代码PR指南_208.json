@@ -1,0 +1,29 @@
+{
+    "topic_id": 208,
+    "question": "社区代码PR指南 - content: 写在最前面\nopenUBMC的组件代码仓库均被SIG组进行管理，按照不同的功能领域分为不同的SIG组进行管理。具体SIG组以及组件的管理范围请参考( SIG中心 | openUBMC)\n社区上进行代码开发，那么避免不了提交PR。openUBMC社区提交代码PR需要满足以下条件：\n\n提交的PR描述需要采用统一的范式\n提交的PR必须关联issue\n【可选】提交的PR涉及接口则需要在PR的描述中增加 interface SIG 的评审帖链接（评审帖必须是关闭状态）\n\nPR描述范式\nPR提交之时，意味着当前的代码仓库中的文件必定发生了变化，那么PR的描述上就要做到 言之有物。常见的变化场景有两种：\n\n修复问题类：对于历史代码中存在的问题进行修复，情况包括但不限于：代码错误，拼写错误，文档资料错误，功能错误等\n新增功能类：相比于历史代码，需要新增加代码来支持新的功能，情况包括但不限于：新的特性支持，新的规范支持，新的硬件支持，新的接口支持等\n\n因此，针对上述两种场景，PR的描述范式参考如下：\n\n修复问题类：【修改描述】修复XXX问题，比如：修复Redfish查询版本的提示显示问题\n新增功能类：【修改描述】支持XXX功能，比如：支持Redfish接口查询BMC厂商\n\nPR必须关联issue\nPR提交之时，意味着当前的代码仓库中的功能必定发生了变化，那么PR在结构上就要做到 言之有据。因此对应的PR提交时必须要关联 issue。\n关联 issue\n具体的 PR 关联 issue 的地方如下图，点击之后会弹出当前组件仓库未关闭的 issue：\nimage1810×501 44.9 KB\n那么就有另外一个问题：如果当前未关闭的 issue 中没有当前 PR 需要的 issue 时如何处理？\n答复就是：新建一个 issue\n创建 issue\n第一步，在对应的代码仓库的首页，进入到 issue 页面（如下图），然后点击 新建 issue：\nimage1737×381 27 KB\n第二步，选择对应的 issue 模板，如下图：\nimage1763×576 31.2 KB\n第三步，填写 issue 的内容，并且点击 创建，如下图：\nimage1664×764 37.3 KB\n填写说明：\n\nissue 类型：根据上面说的 #PR描述范式 来进行填写，如果是修复问题，则选择 缺陷；如果时新增功能，则选择 需求。（备注：当前 任务 类型暂时不需要选择）\n负责人：可以配置自己，或者是期望谁来解决这个问题的人\n标题：当前 issue 的标题，就一句话具体描述问题，或者需求（尽量描述成句子）\n内容：当前 issue 具体的内容，如果是问题，则可以根据三要素原则（背景，现象，预期）描述当前的问题；如果是需求，则可以根据结构化进行描述（包括但不限于需求是什么，给谁用，怎么用，在哪儿用，有什么规格限制等）\n\n【可选】接口的变更类PR关联评审纪要\n常见的接口变更类型\n\n资源协作接口，包括资源协作类，属性，方法，信号，错误引擎\n北向接口，包括：CLI/Redfish/WebUI/WebRest/SNMP\n配置类接口，包括：定制化项，配置导入导出项\n其他接口，包括：协作接口或者私有类型的CSR配置，持久化配置\n\nPR提交要求以及指导\n对于接口的变更类PR（如：接口新增，修改，行为变化，返回信息，错误码等），在PR的描述中需要增加对应的 interface SIG 的评审帖子链接，PR合入的前提是帖子已经进行评审并且归档关闭。\n\n接口变更评审以及处理 快速入口：>> 前往社区论坛接口评审专区\n接口评审的要求可以参考：>> 前往接口评审流程\n\nPR提交样例\nPR：bmc.kepler.CertificateService.CA资源下新增RedfishSchemaVersion属性\nimage1171×377 24.1 KB\nlinks: #p-297-h-1, https://website.openubmc.cn/sig, #p-297-pr-2, #p-297-prissue-3, #p-297-issue-4, https://discuss.openubmc.cn/uploads/default/original/1X/587636bba3e7858c43218e359e0230fbc283f7a0.png, #p-297-issue-5, https://discuss.openubmc.cn/uploads/default/original/1X/b2afcc16fc7fea0eabd6ffedf1a1a0916a71f3a4.png, https://discuss.openubmc.cn/uploads/default/original/1X/69965e61d3e46a73293f4cf82d5f6e6d1a2aece1.png, https://discuss.openubmc.cn/uploads/default/original/1X/2f8ac52dbad29513058e3aaa7a1df6133457deee.png, #PR%E6%8F%8F%E8%BF%B0%E8%8C%83%E5%BC%8F, #p-297-pr-6, #p-297-h-7, #p-297-pr-8, https://discuss.openubmc.cn/c/interface/40-category/40, https://discuss.openubmc.cn/t/topic/262, #p-297-pr-9, https://gitcode.com/openUBMC/mdb_interface/pull/43, https://discuss.openubmc.cn/uploads/default/original/1X/6884ecc0e11ba8ef210c7e11cbe2955d16cb1502.png",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/208/2",
+            "text": "content: 如何在PR中关联其他仓库的issue？\n1个issue需要几个仓库协同解决时，避免在多个仓库提交多个重复的issue，可以在不同仓库的PR关联同一个issue。\ngitcode不支持PR直接关联其他仓库的issue，只能通过issue反向关联其他仓库的PR。\n操作指导\n\n找到需要关联issue所在的仓库\n进入issue页面，点击进行对应的issue详情页\n在右侧边栏，点击关联PR栏的齿轮按钮\n搜索关联PR的仓库，点击对应仓库\n再勾选需要关联的PR\nlinks: #p-4994-prissue-1, #p-4994-h-2"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/208/3",
+            "text": "请问下如果是提交关于QA仓的测试报告呢，这个issue是新增的issue，还是pr关联到需求的issue"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/208/4",
+            "text": "关联到对应的需求issue即可，这样子查找起来都比较方便"
+        }
+    ]
+}

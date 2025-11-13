@@ -1,0 +1,7 @@
+{
+    "topic_id": 1354,
+    "question": "话说如何关闭社区GitCode平台的ISSUE? - content: 目前社区支持三种方法来关闭社区GitCode平台的ISSUE?\n1、在创建PR的时候关联对应的ISSUE，并勾选\"合并后关闭已关联的ISSUE\"。\nimage1228×773 43.8 KB\n2、在ISSUE详情页面中设置ISSUE状态为已完成。\nimage1259×813 54.8 KB\n3、在ISSUE详情页面评论/close，社区机器人会自动帮你关闭这个ISSUE。\nimage923×603 22.8 KB\n欢迎各位使用。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/3c23051436b0ed9aae8e19b89d6ae8997f8d4b8c.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/30c347adc6b9059b21780689e113ac0f707cded6.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c96e7fe3b1dda1a73be6dbde23198f49dded9455.png",
+    "topic_user_name": "zhuchao",
+    "best_answer_url": "",
+    "reply_posts": []
+}

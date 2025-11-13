@@ -1,0 +1,15 @@
+{
+    "topic_id": 1757,
+    "question": "使用 Web API 登录已达最大会议数，如何删除旧会话？ - content: 各位大佬好，\n我在使用 web-api 登录系统时，提示“已达到最大会议数”。\n如图所示：\n请问有没有办法可以删除或清理旧的会话？感谢大家的指点！\nredfish删除会话这个token，创建时候没有拿，不用token，直接删除没法删除。\nimage498×631 11 KB\nimage1371×588 68.8 KB\nimage1166×923 29.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/6f9e0ebcf8b69786b90a7421db7f6372168b32ef.png, https://discuss.openubmc.cn/uploads/default/original/2X/d/dd65168f0ba48fa077a270a13a2751d269f2a602.png, https://discuss.openubmc.cn/uploads/default/original/2X/b/b2bb7fc507c39c3d0cf8a966685673bda8462d7e.png",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/1757/2",
+    "reply_posts": [
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1757/2",
+            "text": "content: 本地验证使用DELETE可行，DELETE发送的时候需要认证，我用Postman Basic Auth认证可以删除。\nimage1500×838 31.4 KB\nRedfish单次会话应该不会建立一个Session。可以先GET查到当前在线的会话列表，然后挑选删除。\nimage1462×673 33.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/6793968c6ef28a91825bc4abaa00f8ce804eb59a.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a9246a25c1e3fab25d8a3819e12cdc69efd8c174.png"
+        }
+    ]
+}

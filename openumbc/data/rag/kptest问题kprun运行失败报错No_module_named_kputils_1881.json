@@ -1,0 +1,22 @@
+{
+    "topic_id": 1881,
+    "question": "kptest问题：kprun运行失败，报错：“No module named 'kputils'”。 - content: 按照《 KPTest定制化用例开发指南》搭建kptest自动化开发框架，执行kprun报错。\nkptest运行失败1920×885 143 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/3e10141802c2fa9b39ffaf8cd8b4900e7b4c4cef.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/1881/2",
+    "reply_posts": [
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1881/2",
+            "text": "问题已解决。指路贴“ iTestSmart运行报错”。根据这个贴子，再将申请到的iTestSmart的license文件改名为license.dat，放到config目录下，就可以了。"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1881/3",
+            "text": "content: kprun执行成功1920×925 98.2 KB\n在iTestSmart的首页，“配置设备和用例”栏，先选择一个设备，再执行“导出测试床”。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/29540ddf793b394175b9289710afddac762d87f0.jpeg"
+        }
+    ]
+}

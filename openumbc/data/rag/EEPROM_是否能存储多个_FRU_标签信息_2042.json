@@ -1,0 +1,36 @@
+{
+    "topic_id": 2042,
+    "question": "EEPROM 是否能存储多个 FRU 标签信息 - 现状\n\n920 模组天池规范中提到，EEPROM 用于存储电子标签信息，空间为 2KB。\n按照常规 FRU（Field Replaceable Unit）信息结构，一个 FRU 标签数据（FRUDATA）通常 < 256Bytes，单个 FRU 占用不会用满 2KB。\n\n疑问\n\n是否可以在 单个 EEPROM 中存储多个 FRU 的标签信息？\n如果可以，如何组织存储结构和偏移？\n\n推测\n\n从空间上看，2KB 足以容纳多个 FRU，可能需要修改CSR中FRUDATA关联的EEPROM对象来区分不同 空间？",
+    "topic_user_name": "Limingfeng",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2042/2",
+            "text": "当前是不支持的"
+        },
+        {
+            "user_name": "Limingfeng",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2042/3",
+            "text": "请问有其他方案可以记录多个FRU信息吗，比如可否将FRU标签信息存储到文件中， 如果存储到文件需要修改哪些配置呀"
+        },
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2042/4",
+            "text": "你可以参考下面这个对象配置存储多个文件里面，非要搞一个要适配代码的\n“FruData_BMCCard”: {\n“FruId”: 80,\n“StorageLoc”: “/data/opt/bmc/conf/BMCCardFru.dat”,\n“BoardManufacturer”: “”,\n“BoardProductName”: “”,\n“BoardSerialNumber”: “”,\n“BoardPartNumber”: “”,\n“StorageType”: “File”\n},"
+        },
+        {
+            "user_name": "Limingfeng",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2042/5",
+            "text": "好的，请问如果将电子标签存储在文件中的话能持久化保存吗，升级BMC会导致数据丢失吗，还有就是适配代码是说要调整FRUDATA组件的代码， 还是说修改CSR？"
+        }
+    ]
+}

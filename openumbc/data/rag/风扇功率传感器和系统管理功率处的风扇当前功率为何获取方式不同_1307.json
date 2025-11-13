@@ -1,0 +1,29 @@
+{
+    "topic_id": 1307,
+    "question": "风扇功率传感器和系统管理功率处的风扇当前功率为何获取方式不同 - content: 风扇功率传感器是在扩展板读取的\n系统管理->电源&功率->功率是通过speedrange和powerange去估算的\n这两个地方为啥会分开去计算，是不想把功率值上树吗？\nimage772×122 2.19 KB\nimage504×274 5.38 KB\nimage2315×711 41.1 KB\nimage671×919 15.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0500881f563f3bc89496fb98bfca738f3701a8a7.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/8e1ae92feaf3deab101a2b95d942741d73dcdec8.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/94598fbce56cdc23deb6e64510834bfdd6d7bc35.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/ce2cf3b9022438d1a062f8f413aab0a2fc5b02b3.png",
+    "topic_user_name": "Kui Tai Fan Chun Yang",
+    "best_answer_url": "/t/topic/1307/2",
+    "reply_posts": [
+        {
+            "user_name": "Weber Chen",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1307/2",
+            "text": "当通过硬件无法获取风扇功耗读值时，会使用speedrange和powerrange进行功耗的估算"
+        },
+        {
+            "user_name": "Kui Tai Fan Chun Yang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1307/3",
+            "text": "那这里为啥不使用阈值传感器已经上树的功率值在北向rackmount使用，而是要去估算"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1307/4",
+            "text": "rackmount中存在对应的计算逻辑，请先阅读源码。\n无法获取时使用估算值，当存在时不会使用估算值"
+        }
+    ]
+}

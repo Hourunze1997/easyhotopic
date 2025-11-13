@@ -1,0 +1,29 @@
+{
+    "topic_id": 1670,
+    "question": "【已评审】新增资源协作接口方法获取固件管理的CRL列表 - content: ISSUE链接\n暂无\n前置评审\n\n【已评审】支持用于查询固件完整性保护证书的资源协作接口与Redfish接口 Interface评审\n\n背景\n在伙伴签名场景，SP需要使用整机厂商的签名证书，完成对签名固件的校验。需要将整机厂商的签名证书，同步到SP侧，让SP使用此证书对固件进行签名校验。 \n触发原因\n新需求 \n关联issue\n【需求】支持用于查询固件完整性保护证书的资源协作接口与Redfish接口\n决策点\n1、新增资源协作路径 \npath：/bmc/kepler/Managers/:ManagerId/FirmwareInteg…\n  \n\n评审背景\n在伙伴签名场景，SP需要使用整机厂商的签名证书，完成对签名固件的校验。需要将整机厂商的签名证书，同步到SP侧，让SP使用此证书对部件进行签名校验。\n升级组件含单独存在的吊销列表，因此需要新增资源协作接口，用于查询升级吊销列表文本\n当前现状以及差距\n现状\n升级管理允许导入吊销列表\n差距\n伙伴需要升级吊销列表内容，升级吊销列表内容没有对外展示，无法满足需求\n解决方案\n新增资源协作接口方法，对外提供吊销列表文本\n评审点\n新增资源协作接口方法，用于返回升级所用吊销列表文本\n\n资源路径 ：/bmc/kepler/UpdateService/SignatureCertificate(原有)\n资源接口：bmc.kepler.UpdateService.Certificate(原有)\n方法 : GetCRLStrings\n权限：ReadOnly\n请求签名 : 无\n请求参数 :无\n响应签名 : as\n响应参数 ： CRLString，字符串数组，每个字符串表示一个具体吊销列表文本信息\n\n评审结论\n通过，同意在资源协作接口 bmc.kepler.UpdateService.Certificate 新增方法 GetCRLStrings，用于获取固件签名证书的吊销列表文本信息，权限为 ReadOnly，无请求参数，响应签名为 as，表示吊销列表文本信息集合，其中数组中的每个元素都是一个吊销列表（CRL）的完整文本字符串。\nlinks: #p-4060-issue-1, #p-4060-h-2, https://discuss.openubmc.cn/t/topic/1643, /c/sig-interface/40-category/40, #p-3987-h-1, #p-3987-h-2, #p-3987-issue-3, https://gitcode.com/openUBMC/rackmount/issues/186, #p-3987-h-4, #p-4060-h-3, #p-4060-h-4, #p-4060-h-5, #p-4060-h-6, #p-4060-h-7, #p-4060-h-8, #p-4060-h-9",
+    "topic_user_name": "Zhangbaocun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1670/2",
+            "text": "zhangbaocun:\n\n响应参数 ：\nCRLString string 类型，吊销列表文本信息\n\n响应做成数组形式，便于后续扩展；\nGetCRLString也可以考虑GetCRLContent"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1670/3",
+            "text": "zhangbaocun:\n\n资源路径 ：/bmc/kepler/UpdateService/SignatureCertificate(原有)\n资源接口：bmc.kepler.UpdateService.Certificate(原有)\n方法 : GetCRLString\n权限：ReadOnly\n请求签名 : 无\n请求参数 :无\n响应签名 : s\n\n这地方关于固件的CA证书的吊销列表可能会存在多个（BMC固件自身带有一个CRL吊销列表；现网运行时可以通过北向接口导入CRL吊销列表），因此签名应该是 as，表征当前BMC管理下的多个吊销列表（至少有1个）"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1670/4",
+            "text": ""
+        }
+    ]
+}

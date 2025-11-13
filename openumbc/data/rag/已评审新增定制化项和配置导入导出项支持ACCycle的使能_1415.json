@@ -1,0 +1,15 @@
+{
+    "topic_id": 1415,
+    "question": "【已评审】新增定制化项和配置导入导出项支持ACCycle的使能 - content: 背景\n前置评审\n\n【已评审】IPMI接口支持ACCycle Interface评审\n\n背景\n客户有需求，需要在现网BMC版本的IPMI命令中支持 AC cycle 功能。 \n差距： 目前 openUBMC 仅有资源协作接口支持 AC cycle 功能，无对应的IPMI命令支持。 \n评审点\n整体方案：AC Cycle 由于操作影响面很大，因此属于受限提供功能。具体如下： \n\n需要 fructrl 组件资源协作接口提供AC功能使能接口，在使能的情况下才能执行 AC cycle 的IPM…\n  \n\n对于 ACCycleEnabled 的控制选项配置，在现网运维阶段需要支持配置的导入导出，以及快速定制化的能力。因此需要新增该控制标记的配置导入导出项和定制化项。\n评审点\n评审点1：新增定制化项，用于定制 ACCycle 使能配置\n\n项目\n值\n\n定制化项\nACCycle 北向接口使能配置\n\n定制化接口名称\nBMCSet_ACCycleEnabled\n\n取值类型\nstring\n\n默认值\noff\n\n处理逻辑\nif (BMCSet_ACCycleEnabled == on) ACCycleEnabled标记为trueelse ACCycleEnabled标记为false\n\n取值说明\non：打开 ACCycle 使能，打开使能之后可以进行 AC 操作off：关闭 ACCycle 使能，关闭之后不可以进行 AC 操作\n\n评审点2：新增配置导入导出项，用于配置 ACCycle 使能\n\n项目\n值\n\n配置项归属对象\nPayload\n\n配置子项\nACCycleEnabled\n\n取值类型\nboolean\n\n导入导出类型\nImportAndExport\n\n导出之后是否支持直接导入\ntrue\n\n取值说明\ntrue：打开 ACCycle 使能，打开使能之后可以进行 AC 操作false：关闭 ACCycle 使能，关闭之后不可以进行 AC 操作\n\n评审结论\nlinks: #p-3307-h-1, #p-3307-h-2, https://discuss.openubmc.cn/t/topic/1387, /c/sig-interface/40-category/40, #p-3224-h-1, #p-3224-h-2, #p-3307-h-3, #p-3307-h-1-accycle-4, #p-3307-h-2-accycle-5, #p-3307-h-6",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1415/2",
+            "text": "评审问题：\n\n当前配置项会对 ACCycle 的资源协作接口有限制，对北向的 accycle 能力以及自动化用例等影响需要明确清楚。（备注：对于当前的调测命令的影响确认之后需要取消限制）"
+        }
+    ]
+}

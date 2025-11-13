@@ -1,0 +1,7 @@
+{
+    "topic_id": 2166,
+    "question": "BMC固件安全启动可靠性证明 - content: 本问题是以下问题的衍生问题：BMC固件可靠性验证方法\n前面已了解到：BMC 支持安全启动功能，固件损坏时，在启动阶段校验不通过，会自动回退到原有版本。\n诉求：1、能否提供方法去创造BMC固件损坏场景，验证自动恢复过程。\n2、如果不能提供具体的破坏方法，社区能否能提供支撑这一结论的测试报告，包括具体测试过程截图。\nlinks: https://discuss.openubmc.cn/t/topic/1907",
+    "topic_user_name": "Huangyuxuan",
+    "best_answer_url": "",
+    "reply_posts": []
+}

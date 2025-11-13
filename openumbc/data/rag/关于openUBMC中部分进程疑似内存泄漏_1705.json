@@ -1,0 +1,22 @@
+{
+    "topic_id": 1705,
+    "question": "关于openUBMC中部分进程疑似内存泄漏 - content: 在内部测试中，使用openUBMC Q1社区版本进行长稳测试，在设备静置状态下，部分进程内存持续增长，未见收敛。\n想咨询下是否可能存在内存泄漏问题，或是因为未到该进程的内存上限，需要持续测试，谢谢。\nimage1299×577 51 KB\nimage1304×609 39.8 KB\nimage1305×599 37.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/414f3b934ec6dc859354d5c7221dc3312ce8e347.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/9c1bc68b4e704f4ab9f49fedb5307b5b7c72e1a4.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/679e76e8847bfd4be7aebc60e95d9d448e2b7242.png",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "/t/topic/1705/3",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1705/2",
+            "text": "已收到问题反馈，正在确认。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1705/3",
+            "text": "社区已经针对相关进程增加长时间验证，如果确定社区版本存在内存泄漏会提issue跟踪。"
+        }
+    ]
+}

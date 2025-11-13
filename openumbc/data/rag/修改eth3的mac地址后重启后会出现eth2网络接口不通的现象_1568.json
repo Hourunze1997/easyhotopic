@@ -1,0 +1,29 @@
+{
+    "topic_id": 1568,
+    "question": "修改eth3的mac地址后，重启后会出现eth2网络接口不通的现象。 - content: 现象：使用如下的原子命令修改eth3的mac地址后，重启后会出现eth2网络接口不通的现象。\nimage865×755 137 KB\nvpd相关配置如下：\n“EthMac_Eth3”: {\n“EthId”: 3,\n“EthName”: “eth3”,\n“GroupId”: “EthGroup_InnerEthGroup2”,\n“Mac”: “20:22:01:75:BC:61”,\n“MacUseEnabled”: true,\n“SpeedDuplexEnable”: true,\n“SpeedSetting”: 0,\n“DuplexSetting”: 0\n},\n“EthGroup_InnerEthGroup2”: {\n“Name”: “InnerEthGroup2”,\n“GroupId”: 8,\n“ActiveEthId”: 3,\n“VLANEnabled”: false,\n“VLANId”: 0,\n“IpAddr”: “”,\n“SubnetMask”: “”,\n“IpPolicy”: 0,\n“Status”: false,\n“Channel”: 18\n},\n需求：能够单独修改eth3的mac地址，并保持持久化\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/553632e645c5b75171b8b7c214f6b6f212e2fe67.jpeg",
+    "topic_user_name": "Byosoft Liyuxin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "wangxin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1568/2",
+            "text": "请将相关日志发送到zhangbaocun1@huawei.com"
+        },
+        {
+            "user_name": "Byosoft Liyuxin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1568/3",
+            "text": "感谢支持，日志已发送至指定邮箱"
+        },
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1568/4",
+            "text": "通过看日志没看到异常，和修改mac关系感觉不大，先看看能不能ping通，如果ping不了说明是网络问题，能ping但是不能web/ssh登录可能是ssh等问题"
+        }
+    ]
+}

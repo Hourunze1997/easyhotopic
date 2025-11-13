@@ -1,0 +1,29 @@
+{
+    "topic_id": 262,
+    "question": "【操作指导】接口设计与开发流程 - content: 以下流程旨在帮助开发者理解接口设计与开发需要遵循的规则和完成的活动，目的是保证接口的规范性和合理性，避免出现接口反复变更、接口冲突等问题\nimage315×1052 15 KB\n申报模板参考 【申报模板】【待评审】redfish新增XXX接口 - #3，来自 huanghan - Interface SIG - openUBMC 论坛\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/c7dc44c225c678fe40db964587a5a967b033769b.png, https://forum.openubmc.cn/t/topic/189/3",
+    "topic_user_name": "huanghan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/262/2",
+            "text": ""
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/262/3",
+            "text": ""
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/262/4",
+            "text": ""
+        }
+    ]
+}

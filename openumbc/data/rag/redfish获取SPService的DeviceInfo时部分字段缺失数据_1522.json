@@ -1,0 +1,57 @@
+{
+    "topic_id": 1522,
+    "question": "redfish获取SPService的DeviceInfo时部分字段缺失数据 - content: image1258×633 38.1 KB\nS920X20机型获取SPService的设备信息部分字段信息缺失，初步分析应该和Smart Provisioning软件信息推送有关，是否为Smart Provisioning软件适配问题，如何解决\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/3fa1146f11be3c9a45cd586909ab66e1f7df9a1f.png",
+    "topic_user_name": "baixin_lipengbo",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1522/2",
+            "text": "接口返回体来自sp分区的文件 deviceinfo.json，该文件由SP启动后扫描设备信息得到。"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1522/3",
+            "text": "我检查了一键日志中的deviceinfo.json中，和redfish接口显示一致，也就是说这是因为SP软件扫描设备信息不全导致的吗？"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1522/4",
+            "text": "有可能本身就获取不到一些字段，有可能是没有适配。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1522/5",
+            "text": "BCM957508-P2100G这张卡是新适配的吗"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1522/6",
+            "text": "请把一键收集发到caiyesheng1@huawei.com"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1522/7",
+            "text": "是的 新适配的卡"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1522/8",
+            "text": "已发送 请查收"
+        }
+    ]
+}

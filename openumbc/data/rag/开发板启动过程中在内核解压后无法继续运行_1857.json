@@ -1,0 +1,64 @@
+{
+    "topic_id": 1857,
+    "question": "开发板启动过程中在内核解压后无法继续运行 - content: 参考文档：《米尔电子Hi3093开发板调试手册》\n硬件环境：米尔电子Hi3093开发板\n问题：\n参考《米尔电子Hi3093开发板调试手册》在19页 等待openUBMC RTOS系统启动过程中卡住，没有正常启动。请问是什么原因？需要调整内存大小么？\nimage554×265 24.2 KB\nimage554×447 95 KB\nimage554×330 47.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/7c222058a081d20aa8388e2f754daa1f5c6462e8.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/e/ebe2147168c4874d3b0380140e7bbcc122cbffaf.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/3/34ecb491422a41505c592afe856fe9d072f182ef.jpeg",
+    "topic_user_name": "Guoxin",
+    "best_answer_url": "/t/topic/1857/6",
+    "reply_posts": [
+        {
+            "user_name": "FXX",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1857/2",
+            "text": "尝试一下是否能够ping通192.168.2.100这个网关。BMC应该是正常启动了，但串口日志没有在该界面打印。继续按照第20页的动作进行操作。如果还有问题请继续留言。"
+        },
+        {
+            "user_name": "Guoxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1857/3",
+            "text": "content: pc已做了以下配置\nimage714×197 2.06 KB\nimage846×288 5.4 KB\nimage479×572 12.8 KB\nwindows下始终无法ping通192.168.2.100\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/9b4115d2cebaf6bbf8b342bbf7dba9b1412523d4.png, https://discuss.openubmc.cn/uploads/default/original/2X/4/487050849be52fb7998bdaec54b43c6ca9e90e1f.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/e104db398c9cd3b3a687f758a9e384904a2c7aee.png"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1857/4",
+            "text": "一样的情况，也卡在了这里。Windows下的ip网关都配置正常，ping不通192.168.2.100"
+        },
+        {
+            "user_name": "FXX",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1857/5",
+            "text": "已在解决中，后续解决方案会放到此评论中。"
+        },
+        {
+            "user_name": "FXX",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1857/6",
+            "text": "这个是由于dtb不配套导致。解决方法：\n执行 run tftp_network_boot 之后 直接执行run run_linux。\n不要执行run load_ext4_dtb，这会使用内置的dtb文件。"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1857/7",
+            "text": "可以进BMC了，感谢支持。\n同时发现文档中还有个小问题 23页 openUBMC密码⽣成 这部分中\nbusctl --user call bmc.kepler.account /bmc/kepler/AccountService/Accounts/2\nbmc.kepler.AccountService.ManagerAccount ChangePwd a{ss}ay 3 Interface Web UserName Administrator ClientAddr 127.0.0.1 \n11 65 100 109 105110 64 57 48 48 48 \n\n这里传入密码长度是11，但实际只有10，应该再补一个48（只是把长度改10会提示弱密码），最终密码是Admin@90000"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1857/8",
+            "text": "10 65 100 109 105110 64 57 48 48 48\n确实，长度需要改成10"
+        },
+        {
+            "user_name": "Guoxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1857/9",
+            "text": "BMC已可正常起来，感谢。"
+        }
+    ]
+}

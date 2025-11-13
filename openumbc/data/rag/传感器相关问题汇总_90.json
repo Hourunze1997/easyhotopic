@@ -1,0 +1,15 @@
+{
+    "topic_id": 90,
+    "question": "传感器相关问题汇总 - 对于传感器相关的求助，问题反馈请在本话题中集中反馈，SIG组会进行整体和例行审视，并且进行及时答复",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/90/2",
+            "text": "传感器SDR在生成预约标识时从0开始，在查询的时候又判断了不为0，因此存在特殊场景下的问题"
+        }
+    ]
+}

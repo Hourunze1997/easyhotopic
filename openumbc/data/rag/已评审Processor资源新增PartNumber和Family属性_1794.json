@@ -1,0 +1,15 @@
+{
+    "topic_id": 1794,
+    "question": "【已评审】Processor资源新增PartNumber和Family属性 - content: ISSUE链接（必填，此议题关联的issue）：\n支持Processor资源升级\n背景（必填，文字描述议题背景，如需求来源、问题场景）:\nProcessor资源升级，参考Redfish标准协议，在/redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorsId}接口增加PartNumber和Family属性，由后台资源协作接口提供\n决策点（必填，一句话描述待决策点）：\nRedfish接口/redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorsId}新增PartNumber和Family属性\n详细描述（必填，描述待评审接口的详细内容）：\nuri：/redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorsId}\n变化类型：新增属性\n操作类型： GET\n详细描述：\n\n属性名称\n取值类型\n取值范围\n默认值\n说明\n操作权限\n是否频繁变化并需要屏蔽变化事件\n\nPartNumber\nstring/null\n-\n‘’\n处理器的部件编码，获取失败显示null\nReadOnly\n否\n\nFamily\nstring/null\n-\n‘’\n处理器的所属家族，获取失败显示null\nReadOnly\n否\n\n评审结论\n1、同意redfish接口/redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorsId}新增属性PartNumber和Family，类型为string/null，只读，读权限：ReadOnly，不发送变化通知事件，默认值为“”\nlinks: #p-4412-issueissue-1, https://gitcode.com/openUBMC/rackmount/issues/216, #p-4412-h-2, #p-4412-h-3, #p-4412-h-4, #p-4412-h-5",
+    "topic_user_name": "Zck19950826 Pzet5",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1794/2",
+            "text": ""
+        }
+    ]
+}

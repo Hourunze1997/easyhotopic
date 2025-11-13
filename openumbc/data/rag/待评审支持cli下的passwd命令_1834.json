@@ -1,0 +1,50 @@
+{
+    "topic_id": 1834,
+    "question": "【待评审】支持cli下的passwd命令 - content: ISSUE链接\n【需求】支持cli接口下的passwd命令-rackmount-GitCode\n评审背景\n当前版本:\n未支持passwd命令\n客户希望支持的配置:\n增加linux shell命令中的passwd命令,该命令用于允许用户通过命令行界面修改用户密码以及锁定和解锁用户\n决策点\n1.希望新增cli接口下的passwd命令\n命令格式: passwd [-l / -u] [username]\n提示:\nUsage: passwd [options] [LOGIN]\nOptions:\n      -l, --lock         lock the password of the named account\n      -u, --unlock       unlock the password of the named account\n\n应用场景:在命令行界面使用\n2.希望新增资源树协作接口,用来使能passwd命令\n具体配置:\npath:/bmc/kepler/:Customer/Cli/Command/:Id\ninterface:bmc.kepler.Cli.Command\nproperty: Name\n类型 : String\n默认值 : passwd\nproperty: Enabled\n类型 : boolean\n默认值 : true\n整体方案\n1.支持passwd命令修改密码\n2.支持passwd命令中的可选参数-l/-u判断启动锁定和解锁用户,如果当前用户的角色为管理员,则可以锁定和解锁用户\n详细描述\n1.命令说明:\n\n命令\n操作类型\n操作描述\n权限要求\n成功\n失败\n\npasswd\n修改密码\n用户修改自身密码\nConfigureSelf\npasswd: all authentication tokens updated successfully.\npasswd: all authentication tokens updated failed.\n\npasswd [username]\n修改密码\n管理员修改其他用户密码,其他用户修改自己的密码\nConfigureSelf\npasswd: all authentication tokens updated successfully.\npasswd: all authentication tokens updated failed.\n\npasswd -l username\n锁定用户\n管理员锁定指定用户账户，禁止其登录\nUserMgmt\npasswd: Success\npasswd:failed\n\npasswd -u username\n解锁用户\n管理员解锁被锁定用户账户，允许其登录\nUserMgmt\npasswd: Success\npasswd:failed\n\n2.支持属性显示和隐藏passwd命令\n资源path：/bmc/kepler/:Customer/Cli/Command/:Id\n资源interface：bmc.kepler.Cli.Command\n变化类型：新增资源树\n应用场景：客户定制组件能够显示和隐藏passwd命令，来满足客户特定诉求。\n详细描述：\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nName\n新增属性\ns\n只读：ReadOnly\n不持久化\nfalse\n已有组件支持功能命令名称\n方法使能\n\nEnabled\n新增属性\nb\n只读：ReadOnly\n不持久化\nfalse\n已有组件支持功能命令名称\n方法使能\n取值范围：[false , true]\n\n使用示例:\n//修改密码\npasswd\nChanging your current password.\nCurrent password:输入当前登录用户的密码,进行鉴权\nNew password: 输入密码\nRetype new password: 再次输入密码\n成功: passwd: all authentication tokens updated successfully.\n失败: passwd: all authentication tokens updated failed.\n输入的当前密码错误:Incorrect password or locked account.\n两次输入的新密码不一致: Confirm password error.\npasswd username\nChanging password for user.\nCurrent password:输入当前登录用户的密码,进行鉴权\nNew password: 输入密码\nRetype new password: 再次输入密码\n成功: passwd: all authentication tokens updated successfully\n失败: passwd: all authentication tokens updated failed.\n输入的当前密码错误:Incorrect password or locked account.\n两次输入的新密码不一致: Confirm password error.\n//锁定或解锁\npasswd -l/-u username\nLocking/Unlocking password for user .\nCurrent password:输入当前登录用户的密码,进行鉴权\n成功: passwd: Success\n失败:  passwd:failed\n输入的当前密码错误:Incorrect password or locked account.\n遗留问题\n-u 的操作类型：解锁用户\nName：新增属性\n属性值来源：已有组件支持功能命令名称\n说明：去掉“定制”相关字眼\n示例中的回显需要修正\n评审结论\nlinks: #p-4474-issue-1, https://gitcode.com/openUBMC/rackmount/issues/231, #p-4474-h-2, #p-4474-h-3, #p-4474-h-4, #p-4474-h-5, #p-4474-h-6, #p-4474-h-7",
+    "topic_user_name": "sun_xm",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "system",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1834/2",
+            "text": "由于大量社区举报，此话题被临时关闭至少 4 小时。"
+        },
+        {
+            "user_name": "Discourse AI Spam Scanner",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1834/3",
+            "text": ""
+        },
+        {
+            "user_name": "system",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1834/4",
+            "text": "此话题已在 8 小时后被自动打开。"
+        },
+        {
+            "user_name": "system",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1834/5",
+            "text": ""
+        },
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1834/6",
+            "text": "补充一下命令执行的 操作权限 、 使用示例\n针对功能补充描述信息，比如哪些权限可以修改其他用户的密码，哪些权限只能修改自己的密码\n针对修改密码过程中的回显信息进行补充，参考标准的passwd命令进行说明"
+        },
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1834/7",
+            "text": "sun_xm:\n\n     username       Modify account password\n\n sun_xm:\n\n管理员启用被锁定用户账户，禁止其登录\n\n这里写错了，是允许其登录\n另外，重新确认下锁定和解锁是否有二次认证，和ipmcset的操作保持一致"
+        }
+    ]
+}

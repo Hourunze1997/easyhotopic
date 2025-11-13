@@ -1,0 +1,43 @@
+{
+    "topic_id": 556,
+    "question": "事件定制开发中遇到的问题 - content: 起初按照社区上的 事件定制 | openUBMC 做了开发，但没有实现对应的告警事件，发帖求助过。\n详见该帖 如何配置自定义事件\n有伙伴回答是要配置在vendor/event_def.json当中，后续也尝试在该文件中添加了定义，还是没有实现告警。配置如下：\n \"EventDefinition\": [\n {\n            \"EventCode\": \"0x1A0000F1\",\n            \"ReportChannel\": 65535,\n            \"OldEventCode\": \"\",\n            \"EventType\": 0,\n            \"LifeCycleId\": 1,\n            \"DeassertFlag\": 1,\n            \"EventKeyId\": \"BMC.VoltLowerNoneCritical\",\n            \"SeverityId\": 1,\n            \"ActionId\": 0,\n            \"EventName\": \"VoltLowerNoneCritical\"\n        },\n        {\n            \"EventCode\": \"0x1A0000F3\",\n            \"ReportChannel\": 65535,\n            \"OldEventCode\": \"\",\n            \"EventType\": 0,\n            \"LifeCycleId\": 1,\n            \"DeassertFlag\": 1,\n            \"EventKeyId\": \"BMC.VoltHigherNoneCritical\",\n            \"SeverityId\": 1,\n            \"ActionId\": 0,\n            \"EventName\": \"VoltHigherNoneCritical\"\n        },\n\n    \"EventDescription\": [\n        {\n            \"Suggestion\": {\n                \"En\": \"\",\n                \"Zh\": \"\"\n            },\n            \"EventKeyId\": \"BMC.VoltLowerNoneCritical\",\n            \"Description\": {\n                \"En\": \"Voltage %1(%2) is lower than the undervoltage threshold(%3).\",\n                \"Zh\": \"\"\n            },\n            \"Influence\": {\n                \"En\": \"\",\n                \"Zh\": \"\"\n            },\n            \"Cause\": {\n                \"En\": \"\",\n                \"Zh\": \"\"\n            }\n        },\n        {\n            \"Suggestion\": {\n                \"En\": \"\",\n                \"Zh\": \"\"\n            },\n            \"EventKeyId\": \"BMC.VoltHigherNoneCritical\",\n            \"Description\": {\n                \"En\": \"Voltage %1(%2) is over the overvoltage threshold(%3).\",\n                \"Zh\": \"\"\n            },\n            \"Influence\": {\n                \"En\": \"\",\n                \"Zh\": \"\"\n            },\n            \"Cause\": {\n                \"En\": \"\",\n                \"Zh\": \"\"\n            }\n        },\n\n收集了一键日志\nframework.log 里看着好像是没有找到class: EventDefinition,和class: EventDescriptionEn\n1970-01-01 00:00:25.186870 hwdiscovery WARNING: analyse.lua(372): ignore object: EventDefinition_VoltHigherNoneCritical_00, class: EventDefinition, error: fail to get class information\n1970-01-01 00:00:25.187199 hwdiscovery WARNING: analyse.lua(372): ignore object: EventDescriptionEn_VoltHigherNoneCritical_00, class: EventDescriptionEn, error: fail to get class information\n1970-01-01 00:00:25.187483 hwdiscovery WARNING: analyse.lua(372): ignore object: EventDefinition_VoltLowerNoneCritical_00, class: EventDefinition, error: fail to get class information\n1970-01-01 00:00:25.187851 hwdiscovery WARNING: analyse.lua(372): ignore object: PCIeRASCollector_00, class: PCIeRASCollector, error: fail to get class information\n1970-01-01 00:00:25.188140 hwdiscovery WARNING: analyse.lua(372): ignore object: CoolingRequirement_1_24_00, class: CoolingRequirement, error: fail to get class information\n1970-01-01 00:00:25.188420 hwdiscovery WARNING: analyse.lua(372): ignore object: DataAcquisitionService_00, class: DataAcquisitionService, error: fail to get class information\n1970-01-01 00:00:25.188697 hwdiscovery WARNING: analyse.lua(372): ignore object: FaultPrediction_00, class: FaultPrediction, error: fail to get class information\n1970-01-01 00:00:25.189050 hwdiscovery WARNING: analyse.lua(372): ignore object: RASErrorCode_CpuMemoryCfgErr_00, class: RASErrorCode, error: fail to get class information\n1970-01-01 00:00:25.189363 hwdiscovery WARNING: analyse.lua(372): ignore object: RASErrorCode_MemoryInitErr_00, class: RASErrorCode, error: fail to get class information\n1970-01-01 00:00:25.189638 hwdiscovery WARNING: analyse.lua(372): ignore object: RASErrorCode_MemoryMRCErr_00, class: RASErrorCode, error: fail to get class information\n1970-01-01 00:00:25.190049 hwdiscovery WARNING: analyse.lua(372): ignore object: RASErrorCode_SystemNoAvailableMem_00, class: RASErrorCode, error: fail to get class information\n1970-01-01 00:00:25.190450 hwdiscovery WARNING: analyse.lua(372): ignore object: DICEConfig_1_00, class: DICEConfig, error: fail to get class information\n1970-01-01 00:00:25.192216 hwdiscovery WARNING: analyse.lua(372): ignore object: EventDescriptionEn_VoltLowerNoneCritical_00, class: EventDescriptionEn, error: fail to get class information\n1970-01-01 00:00:25.192944 hwdiscovery WARNING: analyse.lua(372): ignore object: RASErrorCode_SystemMemoryConfigErr_00, class: RASErrorCode, error: fail to get class information\n1970-01-01 00:00:25.193555 hwdiscovery WARNING: analyse.lua(372): ignore object: FDMService_00, class: FDMService, error: fail to get class information\n\nalarm.log 里面显示no definition，这个应该感觉就是静态配置没找到\n[1970-01-04 14:45:27] [register] [Event_V12VPLowerNon_0102] [error_msg: no definition]\n[1970-01-04 14:45:27] [register] [Event_V12VCCUpperNon_0102] [error_msg: no definition]\n[1970-01-04 14:45:27] [register] [Event_V5VLowerNon_0102] [error_msg: no definition]\n[1970-01-04 14:45:27] [register] [Event_V5VSLowerNon_0102] [error_msg: no definition]\nlinks: https://openubmc.cn/docs/zh/development/develop_guide/feature_development/event.html, https://forum.openubmc.cn/t/topic/471",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "/t/topic/556/5",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/556/2",
+            "text": "检查下是否配置了EventDefinition和EventDescriptionEn"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/556/3",
+            "text": "配置了， framework.log 里面有我配置sr的对象\nEventDefinition_VoltHigherNoneCritical_00，EventDescriptionEn_VoltHigherNoneCritical_00\n同时，我在event_def.json也有配置"
+        },
+        {
+            "user_name": "sunpeijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/556/5",
+            "text": "当前文档中的配置方式不适用于openubmc，文档需要更新，预计1h左右"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/556/6",
+            "text": "好的，感谢"
+        },
+        {
+            "user_name": "sunpeijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/556/7",
+            "text": "已合入，稍后重启构建"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "topic_id": 1334,
+    "question": "【维护通知】关于延长社区Conan制品仓公共账号使用期限的公告 - content: 致全体开发者：\n    为保障研发工作平稳过渡，现就社区Conan制品仓访问事宜公告如下：\n一、问题背景\n       自本周一（原公共账号注销日）起，我们陆续收到关于\"通过个人社区账号访问Conan制品仓时存在制品拉取异常\"的反馈。经技术团队紧急评估，决定采取过渡期解决方案。\n二、解决方案\n\n原社区Conan公共账号服务期限将延长至2025年9月30日18:00\n过渡期内保留双轨访问机制，技术团队将持续优化个人账号体系\n\n三、操作指引\n       请受影响伙伴按以下步骤配置访问凭证：\nconan remote add openUBMC https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/ false\nconan user cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_2eb25cae2cfc433298c5b7c5dc24ca34 -p=\"^7Fk^f1X_h\" -r=openUBMC\n\n       衷心感谢各位伙伴在技术演进过程中的理解与配合。让我们携手共建高效协同的技术生态，在持续交付的道路上相互成就，共筑卓越。\nopenUBMC CICD\n2025年6月11日\nlinks: #p-3023-h-1, #p-3023-h-2, #p-3023-h-3",
+    "topic_user_name": "Wuyupeng",
+    "best_answer_url": "",
+    "reply_posts": []
+}

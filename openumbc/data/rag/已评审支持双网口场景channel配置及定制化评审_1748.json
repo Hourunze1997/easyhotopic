@@ -1,0 +1,22 @@
+{
+    "topic_id": 1748,
+    "question": "【已评审】支持双网口场景channel配置及定制化评审 - content: 背景介绍：\n诉求： BMC双网口场景，eth0固定为NCSI口，eth2固定为专用口，双网口有独立IP。该场景两个网口分别会作为一个IPMI的LAN通道，需要支持CSR配置以及定制会对应LAN通道的channel nunmber。\n现状： 由于ipmi相关组件内部已经固定分配LAN2的channel number为2，channel number 8也被用作其他通道，预期LAN2的channel number配置为8，且可支持定制。\n差距： 由于业务内部已经写死通道号，直接修改适配会有兼容性问题。\n方案： 直接在IPMI服务前后增加一个映射层，用于将对外channel number与内部使用的channel number做转换，比如：要将NCSI口channel number设置为8，内部写死为2，则在映射层做转化：场景一，在rmcp服务收到NCSI口的报文后，将上下文中的channel number设置为2；场景二，ipmi命令req中的channel number在使用时做一次映射转换，有8转换为2，后再使用该参数进行业务处理，rsp的处理也是类似；\n\n基于以上背景，有以下两个评审点：\n评审点一：新增资源协作接口用于承载channel nunber映射相关对象\n资源path：/bmc/kepler/IpmiService/ChannelNumberMappings/:Id（新增path）\n资源interface：bmc.kepler.IpmiService.ChannelNumberMappings（新增interface）\n变化类型：新增资源协作接口及相关属性和方法\n应用场景：\n\n生产装备场景，定制ipmi通道号\n业务流程中将外部channel number转换为内部使用的channel number\n\n详细描述：\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nExternalChannelNumber\n新增属性\ny\n读：ReadOnly写：不支持\n掉电\ntrue\n业务动态新增对象\n对外的通道号\n取值范围 [1, 11]\n\nInternalChannelNumber\n新增属性\ny\n读：ReadOnly写：不支持\n掉电\nfalse\n业务动态新增对象\n对内的通道号\n取值范围 [1, 11]\n\n评审点二：新增定制化项用于定制NCSI口LAN通道channel number\n\n项\n说明\n\n定制化项名称\nCustom_NCSILanChannelNumber\n\n归属组件\nipmi_core\n\n类型\ninteger\n\n默认值\n2\n\n处理逻辑\nif(Custom_NCSILanChannelNumber != 空) NCSI口LAN通道的通道号设置为Custom_NCSILanChannelNumberelse 无动作\n\n说明\n取值范围 [1, 11]\n\n评审结论\n\n评审点1：不通过，需要明确整体方案之后再行进行资源协作接口评审\n评审点2：通过，同意新增定制化项 Custom_NCSILanChannelNumber，用于定制NCSI网口的IPMI LAN通道编号，类型为 integer，取值范围限定为 [1, 11]，默认值为 2\nlinks: #p-4252-h-1, #p-4252-channel-nunber-2, #p-4252-pathbmckepleripmiservicechannelnumbermappingsidpath-3, #p-4252-interfacebmckepleripmiservicechannelnumbermappingsinterface-4, #p-4252-h-5, #p-4252-h-6, #p-4252-h-7, #p-4252-ncsilanchannel-number-8, #p-4252-h-9",
+    "topic_user_name": "lixiaoning",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1748/2",
+            "text": "content: L_Ling:\n\n背景介绍：\n\nBMC双网口场景，eth0固定为NCSI口，eth2固定为专用口，双网口有独立IP。该场景两个网口分别会作为一个IPMI的LAN通道，需要支持CSR配置以及定制会对应LAN通道的channel nunmber\n由于ipmi相关组件内部已经固定分配LAN2的channel number为2，channel number 8也被用作其他通道，预期LAN2的channel number配置为8；\n\n整体方案：\n由于业务内部已经写死通道号，直接修改适配会有兼容性问题，故直接在IPMI服务前后增加一个映射层，用于将对外channel number与内部使用的channel number做转换，比如：要将NCSI口channel number设置为8，内部写死为2，则在映射层做转化：场景一，在rmcp服务收到NCSI口的报文后，将上下文中的channel number设置为2；场景二，ipmi命令req中的channel number在使用时做一次映射转换，有8转换为2，后再使用该参数进行业务处理，rsp的处理也是类似；\n\n@L_Ling 当前评审需要答复和闭环以下问题：\n问题1：背景介绍请按照评审的发帖模板，拆分成为 现状，诉求，差距，方案进行描述\n问题2：评审接口 bmc.kepler.IpmiService.ChannelNumberTranslation 以及属性说明太简单，按照评审模板进行补充\nlinks: /u/l_ling"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1748/3",
+            "text": ""
+        }
+    ]
+}

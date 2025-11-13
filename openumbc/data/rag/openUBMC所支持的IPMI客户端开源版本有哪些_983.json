@@ -1,0 +1,29 @@
+{
+    "topic_id": 983,
+    "question": "openUBMC所支持的IPMI客户端开源版本有哪些？ - 如题所问，是否支持1.8.11、1.8.15、1.8.18三个版本？",
+    "topic_user_name": "Kun Lun Lizhuang",
+    "best_answer_url": "/t/topic/983/2",
+    "reply_posts": [
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/983/2",
+            "text": "openUBMC项目支持IPMI 2.0协议规范，用户可通过兼容该协议的工具直接发送IPMI命令"
+        },
+        {
+            "user_name": "Kun Lun Lizhuang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/983/3",
+            "text": "好的，核对一下，2.0版本向下兼容1.8.*版本是吧"
+        },
+        {
+            "user_name": "yctco_zhanglei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/983/4",
+            "text": "通常我们可以认为ipmi规范只有1.5和2.0两种规范文档，你说的1.8版本是ipmitool工具的版本，两种不是一回事；好像1.8.11 ，1.8.15都不支持-C 17这个安全套件（可以直接试试看加这个参数会不会报错），1.8.18是可以的，因此建议用1.8.18更稳。"
+        }
+    ]
+}

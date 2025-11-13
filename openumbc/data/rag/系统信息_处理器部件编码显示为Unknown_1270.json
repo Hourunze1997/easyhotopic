@@ -1,0 +1,15 @@
+{
+    "topic_id": 1270,
+    "question": "系统信息-处理器：部件编码显示为Unknown。 - content: image1849×670 185 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/b067fb38ec2dd5a7dfcbf19635263251c3ddc754.png",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/1270/2",
+    "reply_posts": [
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1270/2",
+            "text": "这是带内bios上报的内存SMBIOS文件解析出来的，带内上报的编码是未知的"
+        }
+    ]
+}

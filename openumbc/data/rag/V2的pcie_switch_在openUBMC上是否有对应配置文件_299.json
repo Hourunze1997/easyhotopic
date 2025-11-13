@@ -1,0 +1,43 @@
+{
+    "topic_id": 299,
+    "question": "V2的pcie switch 在openUBMC上是否有对应配置文件 - V2上是有专门的PcieSwitch类对其进行处理，openUBMC上是否也有该类？\n如果没有PcieSwitch类应该是模仿Riser卡配置文件去配置还是模仿PCIe设备去配置具有类似部件的板卡？",
+    "topic_user_name": "KunTai_WangJiaKai",
+    "best_answer_url": "/t/topic/299/8",
+    "reply_posts": [
+        {
+            "user_name": "Yelvsub",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/299/2",
+            "text": "openubmc暂时没有pcieswitch的定义。至于要参考riser卡还是参考pcie设备来配置，这可能要根据具体的业务场景来分析"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/299/5",
+            "text": "使用场景和riser卡比较类似，是用来扩展pcie插槽的，插槽可以接网卡等pcie 部件"
+        },
+        {
+            "user_name": "Yelvsub",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/299/6",
+            "text": "pcie switch一般来说作为一种专用芯片，既可能存在独立的板卡形态，也可能集成于复杂的设备中。如果说你的硬件形态类似于riser卡，那么参考riser卡来配置是合理的。如果需要新增一种新的部件类型，请在hardware-sig组申报议题"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/299/7",
+            "text": "content: @yelvsub 您提到如果需要新增一种新的部件类型，请在hardware-sig组申报议题：\n现在要适配的板卡上有TCA9548（I2C switch）、TPM75 温感，这类器件也是需要申报议题吗？伙伴能不能自己适配这类器件？\nlinks: /u/yelvsub"
+        },
+        {
+            "user_name": "Yelvsub",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/299/8",
+            "text": "这里可能要明确“部件”和“器件”的定义。这些器件听起来与当前已经支持的i2c选路芯片、温感芯片的特性一致，如果是这样的话复用已有的芯片数据模型就可以，不用额外评审。如果是需要扩展已有的芯片数据模型能力，需要在interface-sig申报议题"
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "topic_id": 1134,
+    "question": "BMC使用双管理网口需求 - content: 业务场景\nBMC通过SGMII0、SGMII1提供了eth2、eth3两个网口，在自研产品中，希望将eth2、eth3作为两个独立网口使用。\n需求细节\neth2作为面板网口，IP地址支持按组网要求灵活配置，提供完整的运维管理功能，如ssh、WEB、日志上报等。\neth3用于机箱内部网络，IP地址根据设备所在机箱、槽位进行设置，子网为固定网段，不能随意修改，支持机箱内部的telnet、ssh、管理程序的socket通信。\n@pengqiang-gs 有老师可以解答一下吗\nlinks: #p-2453-h-1, #p-2453-h-2, /u/pengqiang-gs",
+    "topic_user_name": "恒扬-胡田野",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1134/2",
+            "text": "content: @pengqiang-gs @huanghan\nlinks: /u/pengqiang-gs, /u/huanghan"
+        },
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1134/3",
+            "text": "当前默认使用Eth2作为对外网口，支持完整的运维管理功能；Eth3要作为内网的话，需要在platform里面进行配置，参考如下配置\n“EthGroup_InnerEthGroup2”: {\n“Name”: “InnerEthGroup2”,\n“GroupId”: 8,\n“OutType”: 1,\n“ActiveEthId”: 3,\n“InnerNetWork”: “192.168.202.0”,\n“VLANId”: 4091,\n“VLANEnabled”: true,\n“EthAlias”: 255,\n“IpAddr”: “192.168.202.128”,\n“BaseIpAddr”: “192.168.202.128”,\n“SubnetMask”: “255.255.255.0”,\n“DefaultGateway”: “”,\n“IpPolicy”: 1,\n“Status”: true,\n“Channel”: 18\n},\nActiveEthId表示当前内网ip使用是哪个eth，配置3代表eth3"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1134/4",
+            "text": "这里的platform是指bmc_network组件的配置吗？"
+        },
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1134/5",
+            "text": "vpd仓库里面的platform.sr这个文件"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1134/6",
+            "text": "eth3通常作为聚合网口使用，配置为内网使用后：\n1 是否会和聚合网口的功能冲突\n2 是否需要修改CLI/WEB进行适配，比如支持IPMC命令配置eth3的IP地址、屏蔽聚合网口的功能"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1134/7",
+            "text": "你好，请教一下，如果想实现灵活的对eth3相关信息例如ipv4 ipv6 vlan设置（不是固件配置），有什么好的实现办法吗？"
+        },
+        {
+            "user_name": "sunpeijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1134/8",
+            "text": "你好 此问题麻烦单独开贴哦，避免此贴讨论多个不同问题"
+        }
+    ]
+}

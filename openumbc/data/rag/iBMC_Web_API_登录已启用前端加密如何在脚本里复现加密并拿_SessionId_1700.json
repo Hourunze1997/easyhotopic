@@ -1,0 +1,64 @@
+{
+    "topic_id": 1700,
+    "question": "iBMC Web-API 登录已启用前端加密，如何在脚本里复现加密并拿 SessionId？ - 现在 iBMC 登录接口 /UI/Rest/Login 似乎启用了前端加密，用户名和密码都是加密后的字符串。\nF12 network 名称，找到post UI/Rest/Login，点击载荷后看到加密后发过去登录信息，用web-api明文发就会返回错误。\n请问：\n\n如果我用脚本调用 web-api，该怎么加密？\n这个加密规则在哪里能查到？\n有没有现成的加密方法可以用？\n\n我只是想用 web 接口登录并获取 session，用来后续访问 API。\n不走 redfish。",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/1700/7",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1700/2",
+            "text": "1、通过post login接口得到 XCSRFToken\n2、访问其他rest接口，header中添加字段 X-CSRF-Token，值使用login接口返回的 XCSRFToken"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1700/3",
+            "text": "content: 前端加密算法对用户名和密码进行加密，再以密文形式调用。如果直接使用会报错\nimage1690×259 5.96 KB\nimage830×504 9.44 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/b3936516a4c18fc42d829223fe455463d763c379.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/8becff53556d60e83a49ce399196dd1bfb83bd7f.png"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1700/4",
+            "text": "content: -----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvxwkIHa/H2iF1CwT9l0B\nxBNZfyfaLCzcRP4BFrvBsbgS+32YjJXbIfriTJbLRFXUrvG7dHbeEMPDo6zVhIOy\njwB9w9FMC6uUv4tI5wfoU0SzXekq8NvNVXAZcOBT6BvOuCC/doao8xw/lFH5zlA8\ny2nxx4+gPv6HCqysb4R09o91mZZ8W4vLozpBXtl8kYhmRXsy60EvgXkywOq0quRE\nTxF47KSnL6uzJX/HRdu337h9Hwm/Lv7ZeYUr8q6AJ+OXZ8415Vs5jncXqpQbPXFU\nRtMjA7h8m+r7AJnYwkqya+jNsemQNY8zs2GrRx9G/rBVx0933Ln/OQYuEvQZK9vn\nICBy7mRfsDs6g4UfeLSK0pXEnbuhyFGrtXHq7LLqVBuZ5bx/SmddyaWM/ZCKKbJB\nPWAu8+gv5UMovyIUtoqtRyRdS0ev2o0qgSN3MLYfNyQItyfjRc6tH1bR3rXUeEEC\nHNENRFjnXkqZ5CKonALlXFoVZu8mqEho4lG+FYYT4prwp3nIZUtwPZ9Gv+taNQ/7\naDKwaw1TC+MefEvzoV4iMi+1HfRTX8qsfL2q05UEa1emQKfFdfVYEYfo5CE6a4S7\n6YZ093vUTyp5euz2AMT8uJUl/iNrxVjw5P4EeTTaAK1uJXYps6xEpwjAIeTFuTrj\nUFK15WjJ+qQdkr/dIQXCf5cCAwEAAQ==\n-----END PUBLIC KEY-----\n请问下是这个接口吗\nimage1880×554 58.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/3f0be7955c9d0746ccf773a02c01932ed30bc666.png"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1700/5",
+            "text": "旁边的 Login 接口响应体里面的 XCSRFToken，可以用来直接发送rest接口请求。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1700/6",
+            "text": "大佬。我login操作时候也想走web-api，这个也可以直接用吗"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1700/7",
+            "text": "login接口可以直接发请求的。请求体里面放用户名和密码原文就行。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1700/9",
+            "text": "content: image1417×657 26.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/891163205d3ecc87748765bb4a76fdaaac69f954.png"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1700/10",
+            "text": "之前配置没配好，还以为要加密"
+        }
+    ]
+}

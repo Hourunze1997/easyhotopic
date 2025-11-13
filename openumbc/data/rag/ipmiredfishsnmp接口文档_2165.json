@@ -1,0 +1,15 @@
+{
+    "topic_id": 2165,
+    "question": "ipmi、redfish、snmp接口文档 - ipmi、redfish、snmp接口文档与iBMC是否通用？可以从哪儿获取openUBMC相关接口文档",
+    "topic_user_name": "Jerome Luo",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "nathanael yu",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2165/2",
+            "text": "当前还是共用一份。"
+        }
+    ]
+}

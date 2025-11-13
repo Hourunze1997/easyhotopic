@@ -1,0 +1,15 @@
+{
+    "topic_id": 519,
+    "question": "BMC出现raid卡通信异常后恢复，如何通过BMC 查看hisportI2c 链路数据状态 - content: 背景\nOS load 10分钟后产生 raid 产出通信异常\n截图_202504171037591071×145 62.5 KB\n截图_202504171039351174×146 125 KB\n分析\n1、刚上电raid 卡未准备就绪，已osload 10分钟，可排除raid 卡未准备就绪情况\n2、hisport I2c 链路 不稳定 需继续分析\n截图_202504171040381279×283 172 KB\n诉求\n1、请问org.freedesktop.DBus.Error.NoReply: 是什么情况\n2、请问如何通过日志查看问题时的  hisport I2c 链路数据及状态\n3、hisport I2c 链路 问题有无思路指导？\n4、是否是已知问题？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/b98f6e9fd8ae04598cd9cfec797b43da6e4c21fd.png, https://discuss.openubmc.cn/uploads/default/original/1X/acb36f6dafea1cec391d5913eece10e1c8838541.png, https://discuss.openubmc.cn/uploads/default/original/1X/9bab53e8980f407834838685a1d0ec033669187a.jpeg",
+    "topic_user_name": "Yctco Huaconghui",
+    "best_answer_url": "/t/topic/519/2",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/519/2",
+            "text": "I2c 链路的错误日志可以通过一键收集日志，LogDump目录下framework.log或者linux_kernel_log日志查看对应时间点是否有报错信息"
+        }
+    ]
+}

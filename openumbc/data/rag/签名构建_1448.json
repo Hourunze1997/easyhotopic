@@ -1,0 +1,43 @@
+{
+    "topic_id": 1448,
+    "question": "签名构建 - content: 问题 : 添加自签名文件后,编译构建失败\n[2025-06-23 17:23:12,805 INFO] task_hpm_envir_prepare.py:49 tar BMC_rootfs.tar.gz successfully\n[2025-06-23 17:23:12,824 DEBUG] worker.py:282 任务 work.task_hpm_envir_prepare 开始安装步骤\n[2025-06-23 17:23:12,829 DEBUG] worker.py:251 任务名: work.task_buildgppbin, 类: bmcgo.tasks.task_buildgppbin) 已就绪\n[2025-06-23 17:23:12,830 DEBUG] worker.py:212 工作路径: bmcgo.tasks.task_buildgppbin, 类名: TaskClass\n[2025-06-23 17:23:12,852 INFO] task_buildgppbin.py:95 切换工作目录到: /root/workspace/manifest/temp/build_openUBMC_debug_dev/sdk\n[2025-06-23 17:23:12,854 INFO] config.py:373 不能从 yaml 文件中获取到键值 base/signature/simple_signer_server, 没有相关配置\n[2025-06-23 17:23:12,857 INFO] worker.py:237 Traceback (most recent call last):\n  File \"/usr/local/lib/python3.12/dist-packages/bmcgo/worker.py\", line 227, in run\n    ret = self._run(self.config, self.args)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/dist-packages/bmcgo/worker.py\", line 270, in _run\n    ret = work_x.run()\n          ^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/dist-packages/bmcgo/tasks/task_buildgppbin.py\", line 89, in run\n    self.move_dependency()\n  File \"/usr/local/lib/python3.12/dist-packages/bmcgo/tasks/task_buildgppbin.py\", line 105, in move_dependency\n    raise errors.BmcGoException(\"打开了自签名模式但未找到待签名的uboot文件，构建失败\")\nbmcgo.errors.BmcGoException: 打开了自签名模式但未找到待签名的uboot文件，构建失败\n\n[2025-06-23 17:23:12,857 ERROR] worker.py:239 打开了自签名模式但未找到待签名的uboot文件，构建失败\n[2025-06-23 17:23:12,858 DEBUG] worker.py:243 任务名: work.task_buildgppbin, 类名: bmcgo.tasks.task_buildgppbin 退出状态错误\n[2025-06-23 17:23:12,871 DEBUG] worker.py:174 任务personal/TOP执行失败，原因其等待的任务personal/work.prepare_env失败\n[2025-06-23 17:23:14,874 ERROR] cli.py:280 任务 personal 执行失败\n[2025-06-23 17:23:14,876 ERROR] cli.py:281 请查看日志信息\n[2025-06-23 17:23:14,902 INFO] worker.py:133 timed out\n[2025-06-23 17:23:14,903 DEBUG] worker.py:168 任务personal/work.task_build_rootfs_img执行失败，原因是未能获取到任务personal/work.task_hpm_envir_prepare的状态\n[2025-06-23 17:23:14,930 INFO] worker.py:133 timed out\n[2025-06-23 17:23:14,931 INFO] worker.py:133 timed out\n[2025-06-23 17:23:14,931 DEBUG] worker.py:168 任务personal/work.task_hpm_envir_prepare执行失败，原因是未能获取到任务personal/work.task_buildgppbin的状态\n[2025-06-23 17:23:14,932 DEBUG] worker.py:168 任务personal/work.create_interface_config执行失败，原因是未能获取到任务personal/work.task_build_rootfs_img的状态\n[2025-06-23 17:23:16,910 INFO] worker.py:133 timed out\n[2025-06-23 17:23:16,935 INFO] worker.py:133 timed out\n[2025-06-23 17:23:16,935 INFO] worker.py:133 timed out\n[2025-06-23 17:23:16,936 DEBUG] worker.py:254 等待任务 work.create_interface_config 类 bmcgo.tasks.task_create_interface_config 发生错误\n[2025-06-23 17:23:18,917 INFO] worker.py:133 timed out\n[2025-06-23 17:23:18,919 ERROR] worker.py:293 运行子任务 work.task_build_rootfs_img 类 bmcgo.tasks.task_build_rootfs_img失败\n[2025-06-23 17:23:18,938 INFO] worker.py:133 timed out\n[2025-06-23 17:23:18,939 INFO] worker.py:133 timed out\n[2025-06-23 17:23:18,939 ERROR] worker.py:293 运行子任务 work.task_hpm_envir_prepare 类 bmcgo.tasks.task_hpm_envir_prepare失败\n[2025-06-23 17:23:18,940 DEBUG] worker.py:243 任务名: work.create_interface_config, 类名: bmcgo.tasks.task_create_interface_config 退出状态错误\n[2025-06-23 17:23:20,924 INFO] worker.py:133 timed out\n[2025-06-23 17:23:20,926 DEBUG] worker.py:243 任务名: work.task_build_rootfs_img, 类名: bmcgo.tasks.task_build_rootfs_img 退出状态错误\n[2025-06-23 17:23:20,942 INFO] worker.py:133 timed out\n[2025-06-23 17:23:20,943 DEBUG] worker.py:243 任务名: work.task_hpm_envir_prepare, 类名: bmcgo.tasks.task_hpm_envir_prepare 退出状态错误\n\n环境:\nroot@Microsoft:~/workspace/manifest# bingo -v\nbingo 版本为: 0.5.258\nbmc-studio 版本为: 1.1.71\nroot@Microsoft:~/workspace/manifest# conan -v\nConan version 1.62.0\n\n问题1 : 为什么会出现 “未找到待签名的uboot文件” 的问题,该如何解决\n问题2 : config.py:373 不能从 yaml 文件中获取到键值 base/signature/simple_signer_server, 没有相关配置 ,有没有文档说明manifest.yml的配置参数说明,simple_signer_server参数配什么内容呀\nlinks: #p-3431-h-1, #p-3431-h-2, #p-3431-h-1-uboot-3, #p-3431-h-2-configpy373-yaml-basesignaturesimple_signer_server-manifestymlsimple_signer_server-4",
+    "topic_user_name": "Lifei",
+    "best_answer_url": "/t/topic/1448/4",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1448/3",
+            "text": "content: bingo 签名构建 为openUBMC 25.06 版本需求，25.06版本还未发布，当前不支持使用。预计6月底7月初发布openUBMC 25.06。\n这是INFO提示，不是报错，不影响构建。\nmanifest.yml配置参考：\n自签名CA创建以及HPM签名指导\nlinks: https://discuss.openubmc.cn/t/topic/215"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1448/4",
+            "text": "content: 关于构建策略的学习路径，建议：\n\n请开启manifest.yml头部配置的yaml-language-server配置的schema文件，所有构建配置策略都使用json schema描述，看不明白的可以学习 json schema相关知识: https://json-schema.apifox.cn/\n请在vscode中安装yaml插件，使用vscode的\"触发建议\"功能可以提醒配置项。\n在社区论坛搜索关键词，可以复用之前的答复。\n\n如果你在schema文件中找不到相关策略的描述，说明社区暂不支持相关能力。\nlinks: https://json-schema.apifox.cn/"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1448/5",
+            "text": "要用25.03版本，我记得我用commit版本时候改成bmcgo，也会有这种问题，建议直接等到25.06出来后再用季度版本，期间commit版本不要使用了。我改成25.03版本后就正常构建了"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1448/6",
+            "text": "content: 25.06已发布。\n前提条件：\n向PAE获取crypto_tool工具用于加密，以及datatocheck_upgrade.dat和 pme_profile_en.dat文件用于替换build/manufacture/misc/中占位的空文件。\n\n签名实现设计参考：\nGitCode - 全球开发者的开源社区,开源代码托管平台\n\n使用指导参考验证报告：\nGitCode - 全球开发者的开源社区,开源代码托管平台\nlinks: https://gitcode.com/openUBMC/bingo/issues/5?ref=&did=a074d61c60ee254bee288e3c87e13a0b60cf3164#tid-100886700, https://gitcode.com/openUBMC/bingo/issues/5?ref=&did=30c220b42edcc109a6596ea9d4817c072b1bc7cc#tid-100910724"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1448/7",
+            "text": "之所以出现  未找到待签名的uboot文件 的问题，根本原因是~/.sdk目录下不存在伙伴的sdk，带一串数字的tar.gz文件"
+        }
+    ]
+}

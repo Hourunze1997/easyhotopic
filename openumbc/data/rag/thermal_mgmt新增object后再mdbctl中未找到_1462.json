@@ -1,0 +1,22 @@
+{
+    "topic_id": 1462,
+    "question": "thermal_mgmt新增object后再mdbctl中未找到 - 当前在vendor/Inspur/CLU/14220293_0302Y701.sr中新增一个Drawer类，并且在thermal_mgmt中的model.json文件中已经声明 ，但是在环境中使用mdbctl查询Drawer类时，并未找到该类，Drawer不上资源树，只在mdbctl中使用，请问该检查哪些方面呢？感谢",
+    "topic_user_name": "Jiaoxinchao",
+    "best_answer_url": "/t/topic/1462/3",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1462/2",
+            "text": "mdbctl查询必须是在资源协作接口中的对象"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1462/3",
+            "text": "不上树的对象应该是没法被外部查询和调用的，以为没有对外接口\nmdbctl也只是一个资源协作接口封装的命令行工具而已"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 227,
+    "question": "openUBMC怎么使用qemu运行 - 学习验证openUBMC过程中实际服务器资源紧张，如果能使用qemu会方便很多。\nbmcgo qemu似乎表明openUBMC支持通过qemu构建虚拟运行环境，但不清楚参数怎么配置。",
+    "topic_user_name": "百信-罗昊",
+    "best_answer_url": "/t/topic/227/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/227/2",
+            "text": "当前qemu还在研发阶段，暂时未提供整体能力，计划Q1季度会上线。"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "topic_id": 1090,
+    "question": "uREST工具使用带内接口导出配置失败 - content: image953×141 10.8 KB\n说明：\n1.使用的uREST的版本为uREST-Linux-2.2.2_aarch64-pro\n2.使用带外方式导出配置正常\niBMA的版本如下：\nimage920×536 70.3 KB\n机器上的ssl证书如下：\nimage685×437 22.7 KB\n使用的证书见ibmc_client压缩包\nibmc_client.zip (18.1 KB)\n搜集的日志如下：\ndump_info.zip (3.2 MB)\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/508b0cc494d4447a997c690c9b1f077b2f881819.png, https://discuss.openubmc.cn/uploads/default/original/1X/74ef2ea5d7eb5d598bd6e34374fc152c74679729.png, https://discuss.openubmc.cn/uploads/default/original/1X/ed67578d9dc8f6796ffc6fedb08720c7a7e353a5.png, /uploads/short-url/aQNlrC201JCjNUzjRMwbfEon9zH.zip, /uploads/short-url/knM6z8ogy105xCBCtKFoSNiaMUt.zip",
+    "topic_user_name": "yctco_zhanglei",
+    "best_answer_url": "/t/topic/1090/5",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1090/2",
+            "text": "此问题不属于CICD领域，像是urest与ibmc交互的问题，建议寻求urest帮助。\n另外，从你日志看，像是权限错误，可以检查是否本机权限配置错误（工具权限、参数指定的配置文件权限或者其它权限错误），如果你的系统可以安装或手工编译strace工具，可以使用strace xxx（xxx是你要执行的命令）执行命令检查输出的日志，如果是本机权限问题，一般都会看到系统调用返回no permission相关错误信息。"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1090/3",
+            "text": "看看BMC的日志是否有相应的报错信息呢"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1090/4",
+            "text": "日志显示仅有一次配置导出的操作，此次是路径格式校验失败，若是图中的这一次导出导致的话，需要看看urest给redfish发送的请求体中的路径是否正常。"
+        },
+        {
+            "user_name": "yctco_zhanglei",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1090/5",
+            "text": "需更新uREST工具源码，已解决"
+        }
+    ]
+}

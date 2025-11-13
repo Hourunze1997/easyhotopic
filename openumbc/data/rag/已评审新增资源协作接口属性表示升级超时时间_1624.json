@@ -1,0 +1,36 @@
+{
+    "topic_id": 1624,
+    "question": "【已评审】新增资源协作接口属性，表示升级超时时间 - content: ISSUE链接\n暂无\n评审背景\n\n为了避免BMC升级异常后BMC长时间无法升级和重启，支持BMC升级处理异常时进行自恢复，自自恢复的方式是进行BMC复位。即：当BMC进入升级模式后，如果出现升级异常情况，对端的固件升级处理如果长时间没有完成升级（没有升级完成的响应），此时需要进行DFX处理，当前固件的升级异常退出。\n\n当前现状以及差距\n现状\nBMC进入升级模式之后，固定等待 120min。如果在这个时间之内没有固件升级成功的响应，则当前升级流程退出，并且上报升级失败的错误。\n差距\n客户有需求，需要等待固定的时间（比如A客户是Xmin），超过时间之后需要进行BMC的自恢复。当前BMC是固定时间，无法满足客户需求。\n解决方案\n采用 “客户定制 + 产品配置 + 默认值” 的方式进行三步走的处理策略。具体策略如下：\n\n优先级1：采用 定制升级超时（单位：min），定制之后BMC的升级模式最长等待时间按照定制项进行处理；\n优先级2：采用 产品配置（单位：min），CSR配置之后如果在没有定制的情况下采用该超时时间，超时时间默认是 120min。\n\n决策点1：新增资源协作接口属性\npath： /bmc/kepler/UpdateService\ninterface: bmc.kepler.UpdateService\nproperties: TimeoutThreshold/TimeoutPolicy\n新增属性1：升级超时时间\n\n项\n说明\n\n属性名称\nTimeoutThreshold\n\n属性类型\nU16\n\n属性读写\n只读\n\n属性权限\nR：ReadOnlyW：不涉及\n\n属性值来源\n产品CSR配置/定制化项\n\n是否发送信号\n否\n\n持久化\n否\n\n属性说明\n升级管理监控每个升级任务的最大超时时间，单位：min，取值范围 1 ~ 120，默认 120\n\n新增属性2：升级超时策略\n\n项\n说明\n\n属性名称\nTimeoutPolicy\n\n属性类型\nU8\n\n属性读写\n只读\n\n属性权限\nR：ReadOnlyW：不涉及\n\n属性值来源\n产品CSR配置/定制化项\n\n是否发送信号\n否\n\n持久化\n否\n\n属性说明\n升级管理对于升级超时之后的处理策略，0：无动作；1：复位BMC，默认0\n\n决策点2：新增定制化项\n新增定制项1：升级超时时间\n\n项\n说明\n\n定制化项名称\nCustom_UpgradeTimeout\n\n归属组件\nfirmware_mgmt\n\n类型\ninteger\n\n默认值\n120\n\n处理逻辑\nif(Custom_UpgradeTimeout != 空)  BMC升级超时时间设置为Custom_UpgradeTimeoutelse BMC升级超时时间设置为默认值\n\n说明\n取值范围 [1, 120]，单位：分钟（min）\n\n新增定制项1：升级超时策略\n\n项\n说明\n\n定制化项名称\nCustom_FirmwareUpdateTimeoutPolicy\n\n归属组件\nfirmware_mgmt\n\n类型\ninteger\n\n默认值\n0\n\n处理逻辑\nif(Custom_FirmwareUpdateTimeoutPolicy != 空)  BMC升级超时策略设置为Custom_FirmwareUpdateTimeoutPolicyelse BMC升级超时策略设置为默认值\n\n说明\n升级超时策略，取值如下：0：无动作1：复位BMC\n\n决策点3：新增配置导入导出项\n新增配置导入导出项1：升级超时时间\n\n项\n说明\n\n导出项\nUpgradeService\n\n导出子项\nUpgradeTimeout\n\n归属组件\nfirmware_mgmt\n\n类型\ninteger\n\n导入导出类型\n导入导出\n\n属性类型\nImportAndExport\n\n导出后是否可以直接导入\ntrue\n\n说明\n升级超时时间，取值范围 [1, 120]，单位：分钟（min）\n\n新增配置导入导出项1：升级超时策略\n\n项\n说明\n\n导出项\nUpgradeService\n\n导出子项\nFirmwareUpdateTimeoutPolicy\n\n归属组件\nfirmware_mgmt\n\n类型\ninteger\n\n导入导出类型\n导入导出\n\n属性类型\nImportAndExport\n\n导出后是否可以直接导入\ntrue\n\n说明\n升级超时策略，取值如下：0：无动作1：复位BMC\n\n评审结论\n部分通过，同意新增超时策略，不同意新增超时时间。具体结论如下：\n\n同意在资源协作接口 bmc.kepler.UpdateService 增加属性 TimeoutPolicy，表示固件升级超时之后的处理策略，签名为 y，只读，读权限：ReadOnly，取值有：0 - 无动作；1 - 复位BMC；默认值为 0\n同意新增定制化项 Custom_FirmwareUpdateTimeoutPolicy，类型为 integer，表示固件升级超时之后的处理策略，取值有：0 - 无动作；1 - 复位BMC；默认值为 0\n同意新增配置导入导出项 FirmwareUpdateTimeoutPolicy, 类型为 integer，表示固件升级超时之后的处理策略，取值有：0 - 无动作；1 - 复位BMC；默认值为 0\nlinks: #p-3943-issue-1, #p-3943-h-2, #p-3943-h-3, #p-3943-h-4, #p-3943-h-5, #p-3943-h-6, #p-3943-h-1-7, #p-3943-h-1-8, #p-3943-h-2-9, #p-3943-h-2-10, #p-3943-h-1-11, #p-3943-h-1-12, #p-3943-h-3-13, #p-3943-h-1-14, #p-3943-h-1-15, #p-3943-h-16",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1624/2",
+            "text": "linyao:\n\nTimeoutThreshold\n\nTimeoutThreshold属性类型为U16，建议单位为秒，否则不需要U16的类型；单位为秒可以更精确控制超时门限"
+        },
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1624/3",
+            "text": "linyao:\n\n新增定制项1：升级超时时间\n\n项\n说明\n\n定制化项名称\nCustom_UpgradeTimeout\n\n归属组件\nfirmware_mgmt\n\n类型\nnumber\n\n默认值\n120\n\n处理逻辑\nif(Custom_UpgradeTimeout != 空)\n\nBMC升级超时时间设置为Custom_UpgradeTimeout\n\nelse\n\nBMC升级超时时间设置为默认值\n\n说明\n取值范围 [1, 120]，单位：分钟（min）\n\n新增定制项1：升级超时策略\n\n项\n说明\n\n定制化项名称\nCustom_UpgradePolicy\n\n归属组件\nfirmware_mgmt\n\n类型\nnumber\n\n默认值\n0\n\n处理逻辑\nif(Custom_UpgradePolicy != 空)\n\nBMC升级超时策略设置为Custom_UpgradePolicy\n\nelse\n\nBMC升级超时策略设置为默认值\n\n说明\n升级超时策略，取值如下：\n\n0：无动作\n\n1：复位BMC\n\nBMC升级超时策略设置为默认值：else分支是不是啥都不做就可以"
+        },
+        {
+            "user_name": "Linyao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1624/4",
+            "text": "不设置成复位BMC，则按照原有流程，超时则升级流程退出，并且上报升级失败"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1624/5",
+            "text": ""
+        }
+    ]
+}

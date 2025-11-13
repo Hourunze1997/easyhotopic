@@ -1,0 +1,15 @@
+{
+    "topic_id": 1021,
+    "question": "syslog功能咨询 - syslog功能里面的传输协议TLS指的是RELP协议么？",
+    "topic_user_name": "yctco_zhanglei",
+    "best_answer_url": "/t/topic/1021/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1021/2",
+            "text": "TLS是加密协议，RELP是可靠性日志传输协议"
+        }
+    ]
+}

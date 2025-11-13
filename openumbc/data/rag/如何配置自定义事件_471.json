@@ -1,0 +1,29 @@
+{
+    "topic_id": 471,
+    "question": "如何配置自定义事件 - 背景\n线性传感器配置了告警阈值，在触发门限后 传感器事件 中可以看到对应的事件，但是没有在 当前告警 中有任何信息。这里发现 当前告警 的信息实质都是 系统事件 中的，与 传感器事件 没有联系。\n昨天另一个帖子中有提问过，似乎只能另外自己配置对应的Event事件，尝试使用\"EventKeyId\": \"ExpBoard.ExpBoardLowerVoltage\"这个事件，发现该事件是严重级别的告警。现有的事件好像都没法满足，所以想添加自定义的事件。\n代码实现\n1、参考社区的文档，在platform.sr里面配置了事件的静态配置，\n\"EventDefinition_xxx\"和\"EventDescriptionEn_xxx\"\n\"EventDefinition_VoltHigherNoneCritical\": {\n            \"EventName\": \"VoltHigherNoneCritical\",\n            \"ReportChannel\": 65535,\n            \"DeassertFlag\": 1,\n            \"EventKeyId\": \"BMC.VoltHigherNoneCritical\",\n            \"EventCode\": \"0xFF000003\",\n            \"ActionId\": 0,\n            \"SeverityId\": 1,\n            \"EventType\": 0,\n            \"OldEventCode\": \"\",\n            \"LifeCycleId\": 1\n        },\n        \"EventDescriptionEn_VoltHigherNoneCritical\": {\n            \"Suggestion\": \"\",\n            \"Cause\": \"\",\n            \"Description\": \"Voltage %1(%2) is over the undervoltage threshold(%3)\",\n            \"Influence\": \"\",\n            \"EventKeyId\": \"BMC.VoltHigherNoneCritical\"\n        },\n        \"EventDefinition_VoltLowerNoneCritical\": {\n            \"EventName\": \"VoltLowerNoneCritical\",\n            \"ReportChannel\": 65535,\n            \"DeassertFlag\": 1,\n            \"EventKeyId\": \"BMC.VoltLowerNoneCritical\",\n            \"EventCode\": \"0xFF000001\",\n            \"ActionId\": 0,\n            \"SeverityId\": 1,\n            \"EventType\": 0,\n            \"OldEventCode\": \"\",\n            \"LifeCycleId\": 1\n        },\n        \"EventDescriptionEn_VoltLowerNoneCritical\": {\n            \"Suggestion\": \"\",\n            \"Cause\": \"\",\n            \"Description\": \"Voltage %1(%2) is lower than the undervoltage threshold(%3)\",\n            \"Influence\": \"\",\n            \"EventKeyId\": \"BMC.BMCDDRSelfTestFail\"\n        }\n\n2、然后配置了事件的CSR配置（这里我是放在PSR的sensor.sr文件中）\n\"Event_V12VPUpperNon\": {\n            \"EventKeyId\": \"BMC.VoltHigherNoneCritical\",\n            \"Condition\": 12.600000,\n            \"Hysteresis\": 0,\n            \"Reading\": \"<=/Scanner_V12VP_L.Value;<=/Scanner_V12VP_H.Value |> expr(($1 + ($2 & 15) * 256) / 4096 * 2.5 * 11 )\",\n            \"@Default\": {\n                \"Reading\": 12\n            },\n            \"OperatorId\": 4,\n            \"Enabled\": true,\n            \"Component\": \"#/Component_ComBMC\",\n            \"DescArg1\": \"VOUT_V12VP\",\n            \"DescArg2\": \"#/Event_V12VPUpperNon.Reading |> string.format('%0.3f', $1)\",\n            \"DescArg3\": \"12.6\"\n        },\n        \"Event_V12VPLowerNon\": {\n            \"EventKeyId\": \"BMC.VoltLowerNoneCritical\",\n            \"Condition\": 11.400000,\n            \"Hysteresis\": 0,\n            \"@Default\": {\n                \"Reading\": 12\n            },\n            \"Reading\": \"<=/Scanner_V12VP_L.Value;<=/Scanner_V12VP_H.Value |> expr(($1 + ($2 & 15) * 256) / 4096 * 2.5 * 11 )\",\n            \"OperatorId\": 2,\n            \"Enabled\": true,\n            \"Component\": \"#/Component_ComBMC\",\n            \"DescArg1\": \"VOUT_V12VP\",\n            \"DescArg2\": \"#/Event_V12VPLowerNon.Reading |> string.format('%0.3f', $1)\",\n            \"DescArg3\": \"11.4\"\n        },\n\n问题\n1、按照社区文档做了以上配置，好像还是没有对应的告警事件生成，请问配置存在什么问题？是否还缺失了相关的配置？\n2、EventKeyId的定义是自己随便起的吗？这里我用了BMC的主体，请问如果我想增加新的比如Sensor.VoltLowerNoneCritical这样，那这个有什么地方要做相应的配置呢？\n3、现有的告警相关的静态配置好像都没有找到，所有的EventKeyId都只看到了引用，没有定义，那这部分定义在了哪边？",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "/t/topic/471/3",
+    "reply_posts": [
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/471/2",
+            "text": "content: EventCode前两位代表事件所属部件，部件类型可以在ipmitool工具源码中找到\nEventKeyId原则上应该和所属部件有关，不能随便起\n事件的静态配置应该配置在vendor/event_def.json\nlinks: #p-937-eventcodeipmitool-1, #p-937-eventkeyid-2, #p-937-vendorevent_defjson-3"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/471/3",
+            "text": "content: vendor/event_def.json 没有看到这个文件呢？\n\nopenubmc.cn\n\n事件定制 | openUBMC\nopenUBMC\n\n社区这个上面也没有提到这个文件，说的是在csr文件中配置，请问event_def.json文件有可以参考的示例吗？\nlinks: https://openubmc.cn/docs/zh/development/develop_guide/feature_development/event.html#%E4%BA%8B%E4%BB%B6%E7%9A%84%E9%9D%99%E6%80%81%E9%85%8D%E7%BD%AE, https://openubmc.cn/docs/zh/development/develop_guide/feature_development/event.html#%E4%BA%8B%E4%BB%B6%E7%9A%84%E9%9D%99%E6%80%81%E9%85%8D%E7%BD%AE"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/471/4",
+            "text": "是我们的代码仓比较旧，最新的社区代码有这个文件了，希望这部分配置的文档也能尽快更新。"
+        }
+    ]
+}

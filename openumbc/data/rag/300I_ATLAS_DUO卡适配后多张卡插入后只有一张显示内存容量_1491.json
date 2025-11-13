@@ -1,0 +1,127 @@
+{
+    "topic_id": 1491,
+    "question": "300I ATLAS DUO卡适配后，多张卡插入后只有一张显示内存容量 - content: 【问题求助】多张 NPU 卡内存容量显示异常，重启后部分信息缺失\n一、环境信息\n软件版本：\n\n代码版本：25.03\nbingo版本：0.5.317\nNPU卡MCU固件版本：24.5.9\nNPU卡系统固件版本：7.7.0.1.231\n\n硬件配置：\n\n主板型号：S920X20\nRISER卡型号：BC83PRUR\nNPU卡型号：300I Duo\n\n二、问题描述\n\n单独插入一张 NPU 卡时，内存容量信息正常显示；\n插入多张 NPU 卡时，仅有一张卡的内存容量信息能显示；\n若BMC重启（不AC下电），可正常显示2张卡的内存容量信息，但剩余卡的内存容量仍显示为0；\n若AC下电重启，则又只剩1张卡的内存容量能显示。\n\n以下是Web截图，可见部分 NPU 卡的内存容量为 --：\n图示11628×1061 51.8 KB\n图示21569×1049 50.4 KB\n资源树结构如下图所示：\n图示31479×890 94 KB\n三、排查情况\n\n代码逻辑是通过扫描资源树获取内存容量信息；\n当内存容量显示为 0 时，资源树本身就未获取到正确值；\n卸载 iBMA 后，NPU卡信息依然能显示，说明这部分信息与 iBMA 无强依赖；\n当前不清楚：内存容量信息是如何从 NPU 卡传递到 BMC 的？\n\n四、疑问与求助\n该问题在多次测试中表现稳定、必现，目前存在以下几个关键疑问：\n\nNPU 卡内存容量是通过什么方式上传到 BMC 的？\n为什么在 BMC 重启后信息部分恢复，但 AC 下电重启后又失效？\n如何进一步定位或规避此问题？该问题应该怎么解决？\nlinks: #p-3603-npu-1, #p-3603-h-2, #p-3603-h-3, https://discuss.openubmc.cn/uploads/default/original/2X/2/28060a1cd58949228767ff86d8586e6e85745dfa.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/791adf21c85eeab664d54cae4f81f45006330f6b.png, #p-3603-h-3upload4lbpujfg00xaudbbpono3s94k88jpeg-4, https://discuss.openubmc.cn/uploads/default/original/2X/1/1e6debfdec5cad235c4aa68231510a14c1116eb8.jpeg, #p-3603-h-5, #p-3603-h-6",
+    "topic_user_name": "百信-张滨",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/2",
+            "text": "请提供下一键收集"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/3",
+            "text": "老师您好，当前论坛的上传压缩包的功能暂时关闭了，麻烦您提供一下邮箱地址，我发您"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/4",
+            "text": "Pro卡不支持获取内存容量"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/5",
+            "text": "content: 老师您好，当前我们是300I DUO的卡，插多张相同型号的卡的时候只有两张卡能正常显示内存容量，其余的卡都不显示\nimage1206×334 20 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/22711ad085482a470c4705326ff23f920a751df5.png"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/6",
+            "text": "目前我们也是遇到了这种情况，在接入多张300idou后，有时候能够显示一张，有时候全部不能显示。请问您该问题解决了吗？有什么解决和排查思路吗？"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/7",
+            "text": "content: @zybwh @caiyesheng_b48v3 大佬们可以帮忙看看这个问题吗？经过实验，在接入两张300idou卡的情况下，我们在AC之后只有一张卡的内存容量可以显示，BMC重启之后可以恢复正常，即两张卡的内存容量都可以显示。可以提供一下排查思路吗？感谢\nlinks: /u/zybwh, /u/caiyesheng_b48v3"
+        },
+        {
+            "user_name": "王祝炜",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/8",
+            "text": "content: wangzhuwei3@h-partners.com 日志麻烦转发我一份。\nlinks: mailto:wangzhuwei3@h-partners.com"
+        },
+        {
+            "user_name": "王祝炜",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/9",
+            "text": "content: 之前有类似的问题其他卡的内存容量读不上来是因为taskName没有保持每张卡唯一。排查下是否有这个问题：\nimage1669×126 13.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a3f28538bf733f355778f97b3eef5bc6373f540c.png"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/10",
+            "text": "content: 目前还没解决，使用了社区最新的vpd组件后仍然只有两张卡显示内存容量\nimage1920×945 51.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e6fa88804f8afa7119642a5e574c82ee7c6ddbde.png"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/11",
+            "text": "已发送，请查收"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/12",
+            "text": "请问这部分代码是在哪个组件下的？"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/13",
+            "text": "发现另外一个问题 我们的300idou的内存容量显示的是87974，正常来说应该是87973"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/14",
+            "text": "已定位，原因是多张卡查询内存容量的轮询任务是同一个名称，导致查询的内存容量只有一个"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/15",
+            "text": "您好，这部分和闭源组件有关，这个问题有什么解决方案嘛"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/16",
+            "text": "是的"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/17",
+            "text": "您好，那这个问题应该怎么解决呢，是您这边修改完之后，新版本的组件再发嘛"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1491/18",
+            "text": "是的 修改闭源组件"
+        }
+    ]
+}

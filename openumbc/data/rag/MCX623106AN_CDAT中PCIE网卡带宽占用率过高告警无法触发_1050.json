@@ -1,0 +1,15 @@
+{
+    "topic_id": 1050,
+    "question": "MCX623106AN-CDAT中PCIE网卡带宽占用率过高告警无法触发 - 我想手动触发Event_Port1BWUsageMntr告警，但是修改BandwidthUsagePercent的值超出100后还是无法触发该告警，发现mdb_interface组件中mdb_interface/json/intf/mdb/bmc/kepler/Systems/NetworkPort/Metrics.json中BandwidthUsagePercent的emitsChangedSignal属性设置为了false，是否跟这个有关呢",
+    "topic_user_name": "Jiaoxinchao",
+    "best_answer_url": "/t/topic/1050/2",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1050/2",
+            "text": "content: 问题已解决，issue如下：\nissue\nlinks: https://gitcode.com/openUBMC/network_adapter/issues/26"
+        }
+    ]
+}

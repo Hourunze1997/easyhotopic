@@ -1,0 +1,85 @@
+{
+    "topic_id": 1347,
+    "question": "【问题求助】通过ipmitool设置PSU主备模式不生效 - 问题现象：根据iBMC IPMI接口参数手册“配置供电信息参数”命令设置电源主备模式不生效。\n测试步骤：\n1、登陆web，“”电源&功率“”查看电源模式为负载均衡；\n2、使用raw 0x30 0x93 0xdb 0x07 0x00 0x2d 0x1 16 0 0 4 1 0 0 0设置psu1为备用；\n问题现象：\n1、PSU1电源输出功率会变成10W，但是过一会儿就还原了，切换备用不生效。\n2、另外通过web设置成主备模式，再通过raw 0x30 0x93 0xdb 0x07 0x00 0x2d 0x1 16 0 0 4  0 0 0 0设置成主用不生效；\n请问：如何通过ipmi命令设置主备、均衡模式？",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "/t/topic/1347/12",
+    "reply_posts": [
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1347/2",
+            "text": "看源码"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1347/3",
+            "text": "可以通过整机模式的ipmi进行设置，该命令为单电源模式设置ipmi，请优先使用整机的配置。单电源设置后会被整机设置的覆盖"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1347/4",
+            "text": "看样子是被覆盖了，我在suooirt上下载的鲲鹏服务器主板ipmi接口参考里没有找到这种整机配置命令，请问在哪个文档里可以看到？"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1347/5",
+            "text": "给一下你使用的手册地址"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1347/6",
+            "text": "content: 配置供电信息参数（Set Power Supply Info Configuration） - 鲲鹏服务器主板 iBMC IPMI 接口参考 03 - 华为\nlinks: https://support.huawei.com/enterprise/zh/doc/EDOC1100372760/e75f9b41"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1347/7",
+            "text": "content: 请参考章节\nimage1400×1095 36.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/cd4665ad8d8c3cd8bb247b2a651b64a8365463ef.png"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1347/8",
+            "text": "感谢回复，使用raw 0x30 0x93 0xdb 0x07 0x00 0x25 0x3 0x0 0x1可以获取到主备模式，但是使用raw 0x30 0x93 0xdb 0x07 0x00 0x24 0x4 0x0 0x0 0x1 0x0（或0x1）设置模式报错了，cannot execute command，command disabled，不知道是我的命令配错了还是有啥需要提前配置的"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1347/9",
+            "text": "是否存在报错请查看app.log日中"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1347/10",
+            "text": "没有报错日志"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1347/11",
+            "text": "content: S920X20_2102315HBW10R3100002_20250616-1949.targz (1.2 MB)请把targz后缀改成tar.gz\nlinks: /uploads/short-url/f4fa6iGAaF4hVakWG5XKDfejzXI.targz"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1347/12",
+            "text": "当前社区还未归档最新的IPMI。\n若需使用设置命令如下：\nipmitool raw 0x30 0x93 0xdb 0x07 0x00 0x24 0x06 0x00 0x00 0x05 0x00(负载均衡，0x01为主备) 再跟4个字节的电源id  4个字节的拼写为32个电源，顺序为从第一个字节开始往后数，0表示主用，1表示非主用，例如若设置电源1为主用，则后4个字节为0x7F 0XFF 0XFF 0XFF"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 1082,
+    "question": "阈值传感器不显示在web - Scanner可以扫到Value，status也正常，但是ThresholdSensor的资源树上的值没有同步过来，web上也没有显示出来这个传感器，这种问题要怎么排查？",
+    "topic_user_name": "Kui Tai Fan Chun Yang",
+    "best_answer_url": "/t/topic/1082/4",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1082/2",
+            "text": "content: @KuiTai_FanChunYang\n\n当前问题先迁移到 bmc-core SIG 板块进行答复\n对于这类问题，首先要在资源协作接口中查看对应的值的同步情况，如果没有同步过来，需要查看对应的 vpd 中的 CSR 配置，检查当前传感器的 Reading 属性是否配置正确（A：有没有关联正确的 Scanner 数据源属性；B：是否配置的是同步的语法（</=））\n如果按照上述步骤排查还无法确定，请提供对应的 vpd 配置信息，以及传感器名称，和一键日志收集，联系 PAE 对接人员进行进一步确认\nlinks: /u/kuitai_fanchunyang"
+        },
+        {
+            "user_name": "Kui Tai Fan Chun Yang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1082/3",
+            "text": "这些配置都是没问题的，之前还能显示的，但是最近突然不能显示了，看日志的话，我要关注那个文件呢？"
+        },
+        {
+            "user_name": "Duzhou13 51cdj",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1082/4",
+            "text": "content: 北向接口（如web）传感器值不显示问题的定位思路参考：\nstep1 北向接口传感器的值直接受本传感器的ReadingStatus属性及Status属性影响，查看ReadingStatus值是否非0或Status是否为Disabled，在这两种情况下传感器不会显示出读值。\nstep2 ReadingStatus值完全来源于csr配置，若ReadingStatus值非0，则通过csr配置进行分析其值非0的原因。\nstep3 Status的取值来源于传感器关联的Entity，若传感器的Capabilities属性的bit7配置为1，如下图所示，则表示传感器会受到Entity失效影响会被禁止。\nimage1118×110 13.7 KB\n因此当Entity的PowerState或Presence属性为0，则Entity失效，会进一步导致传感器Status为Disabled。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/64d7b29ddf59033517385a83e5008046834215aa.png"
+        }
+    ]
+}

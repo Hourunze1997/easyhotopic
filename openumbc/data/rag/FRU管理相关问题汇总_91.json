@@ -1,0 +1,92 @@
+{
+    "topic_id": 91,
+    "question": "FRU管理相关问题汇总 - 对于FRU管理相关的求助，问题反馈请在本话题中集中反馈，SIG组会进行整体和例行审视，并且进行及时答复",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Ocy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/91/2",
+            "text": "你好，请问fru有自定义域吗？fru的存储格式是怎么样的？有相关文档吗？"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/91/3",
+            "text": "content: 碰到一个fru读写问题：\n查看fru信息报如下错误：\n\n猜测是因为eeprom中数据不符合fru规范，导致无法识别，因此烧录器刷正确格式的fru进eeprom，刷过之后eeprom内数据为：\nimage1223×111 7.09 KB\n对应的fru信息为：\nimage466×291 7.24 KB\n但是此时实际查看到的fru信息却是：\n\n请问这是为何。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a2e242ebff941c63f8b4aaeac71cbd2488fee32f.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/ad51deecae9166cdfc18253f72d5726c08cc7716.png"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/91/4",
+            "text": "你好，客户使用1711模组+920模组+自行设计的载板，载板上有eeprom和1711 i2c连接，\n目前想把fru功能用起来，交流过程中提了三个问题，还得麻烦指导一下啊。\n1、fru数据文件格式，已经答复fru数据格式肯定是按ipmi规范来的。\n2、有没有fru数据文件制作的工具。\n3、产线上一般有哪些途径可以把fru数据文件烧录到载板的eeprom。"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/91/5",
+            "text": "content: 我的问题原因如下：\n\nopenubmc Fru信息修改问题 交流互助区\n\n    对于上面链接中我提的问题，是因为eeprom中不只有fru信息，还存在其他的信息。根据csr中FruData对象的StorageType值的不同，这些信息的偏移也不同，比如\"StorageType\": \"TianChi\"时，EEPROM前100个字节为天池头，从101字节开始为fru信息。因此，如果直接通过烧录器将fru.bin烧录进EEPROM，会导致缺少天池头，进而导致读出的fru信息与烧…\nlinks: https://discuss.openubmc.cn/t/topic/1250/11, /c/42-category/42"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/91/6",
+            "text": "你好  我还想了解一些关于华为fru的配置信息\n①\"StorageType\"在vpd中发现有多种配置：TianChi、EepromV2、MCU、File、Power、EepromStandard、Others，希望可以给出表格说明每种StorageType对应的eeprom头部信息是什么格式？\n②华为是否有工具用来给fru.bin文件加上StorageType对应的头部信息"
+        },
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/91/7",
+            "text": "找一个正常的eeprom把数据读出来 在给这个eeprom写进去，你这eeprom的头数据明显不满足tianchi架构eeprom定义"
+        },
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/91/8",
+            "text": "定义表格倒是有一个，可以联系社区支持找我发你们看看"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/91/9",
+            "text": "这样操作不适合工厂批量进行\n请问支不支持CSR文件一样，将fru.bin打包成hpm文件然后通过升级写进去？"
+        },
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/91/11",
+            "text": "升级是写的csr数据，没办法升级电子标签数据，电子标签的头数据应该是装备阶段给写进去的，这个可能得问一下装备的同事了"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/91/12",
+            "text": "好的   感谢解答"
+        },
+        {
+            "user_name": "Limingfeng",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/91/13",
+            "text": "content: image1660×430 46.4 KB\nBMC上读取fru信息和通过ipmitool读取到的信息不一致，比如EXU的FRU，ipmitool显示不可读，然后BCU的产品信息我增加了一个拓展标签，ipmitool就没有读到。\n贴上部分app.log的报错日志\nimage1234×117 19.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/75563b19b79ac1b2f656773d74140222a322ad1e.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a6be3b1ce36b8637a67aec11ce376b8b3eb98c01.png"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/91/14",
+            "text": "求助，我们目前的frudata对象的\"StorageType\"属性为\"TianChi\"，在对应板卡上也写入了天池头，包含了uid和正确的crc校验码，但还是无法实现自加载，有什么排查定位的思路吗？"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 753,
+    "question": "【已评审】支持外购FRU电子标签起始地址偏移可配置 - content: 关联Issuse\n支持自定义偏移的FRU电子标签读取-frudata-issue#5\n评审背景\nBMC需要支持外购的板卡进行FRU电子标签管理，其中不同的FRU存储电子标签的偏移地址不同，因此需要支持对于不同电子标签的头部偏移地址进行配置。\n评审点\nFrudata 类新增私有属性 HeaderOffset，表征当前FRU电子标签头在存储介质中的偏移地址。具体新增属性的详细信息如下：\n\n项目\n值\n\n对象名称\nFruData\n\n属性名称\nHeaderOffset\n\n属性类型\nU16\n\n属性持久化\n否\n\n属性默认值\n0\n\n属性配置\n可选配置，如果不配置则默认为0\n\n属性说明\n电子标签数据在存储介质中的起始地址偏移\n\n评审结论\n通过，同意 Frudata 类新增私有属性 HeaderOffset\nlinks: #p-1570-issuse-1, https://gitcode.com/openUBMC/frudata/issues/5, #p-1570-h-2, #p-1570-h-3, #p-1570-h-4",
+    "topic_user_name": "Iss Duanyl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/753/2",
+            "text": "content: 评审的 FruOffset 是一个什么属性，需要明确清楚，具体可以参考一下 【待评审】主备管理新增资源树协作接口\n@iss_duanyl 请关注上述问题，尽量讲清楚背景以及评审点的详细信息\nlinks: https://discuss.openubmc.cn/t/topic/751, /u/iss_duanyl"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/753/3",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 831,
+    "question": "BMC恢复出厂设置之后无法更新固件 - content: 企业微信截图_174677447861271034×429 16.8 KB\n基于2503出包的固件执行恢复出厂设置操作后无法更新固件。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/945faf1bed1b0547b24d71a477e180733dffa6b0.png",
+    "topic_user_name": "Baode_zhujunjie",
+    "best_answer_url": "/t/topic/831/3",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/831/2",
+            "text": "你好，请提供操作对应app.log报错"
+        },
+        {
+            "user_name": "Baode_zhujunjie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/831/3",
+            "text": "content: 固件包升级失败 交流互助区\n\n背景\n\n在升级了一个包之后，发现从web进去之后页面空白，但ssh可以进入\n遂尝试在命令行中回滚/升级均成功，web页面依旧空白\n回滚/升级之后，在命令行中又尝试进行恢复出厂设置，恢复成功，web页面能够显示数据，也可以进行分区置换，ssh能够登录\n但在恢复出厂设置之后进行升级时，升级失败\n\n设备信息\n\nS920X20\n\n目前初步分析的日志如下\n2025-05-12 09:26:29.354039…\n  \n\n在此贴子继续跟踪\nlinks: https://discuss.openubmc.cn/t/topic/867, /c/42-category/42, #p-1787-h-1, #p-1787-h-2, #p-1787-h-3"
+        }
+    ]
+}

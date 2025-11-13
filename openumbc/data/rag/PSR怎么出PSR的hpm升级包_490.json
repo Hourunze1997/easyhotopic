@@ -1,0 +1,29 @@
+{
+    "topic_id": 490,
+    "question": "【PSR】怎么出PSR的hpm升级包？ - 使用 bmc_devkit.py ，执行 python3 bmc_devkit.py -p 00000001040302023953.sr 生成出来的压缩包里面取出来的.hpm包升级。\n升级之后，iBMC重启了，web上看到版本号变更成3.31版本了，但通过一键式导出的日志查看还是3.27版本。\n想咨询一下怎么出可以正常升级的PSR的hpm包？",
+    "topic_user_name": "HKZY_YangBo",
+    "best_answer_url": "/t/topic/490/4",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/490/2",
+            "text": "content: 你好，是怎么判断出还是3,27版本的？\n可以把具体现象、截图、一键收集日志发送至我的邮箱 caiyesheng1@huawei.com\nlinks: mailto:caiyesheng1@huawei.com"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/490/3",
+            "text": "通过Connector_PSR_EEP_0101.sr文件查看版本到3.27版本：{\"FormatVersion\":\"3.00\",\"DataVersion\":\"3.27\",\";\n通过 app_revision.txt查看到 PSR            Version:           3.31.\n一键式日志已发送邮件。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/490/4",
+            "text": "content: 社区当前整体通过vpd sr文件形式集成，PSR出包可以通过studio提供。\n\nopenUBMC编译后，VPD新增的sr文件未生效 交流互助区\n\n    新增组件仓库，参考示例组件。\n在mds/service.json文件中将vpd作为build依赖\n新增单板配置目录（不能与vpd仓库中vendor下的第一级子目录同名），如TaiShan\n\n - TaiShan\n   profile.txt\n   - xxx\n      xx.sr\n\n添加需要vpd中的sr到profile.txt中，或自开发的sr添加到profile.txt中。 \n\n进行组件构…\nlinks: https://discuss.openubmc.cn/t/topic/903/10, /c/42-category/42, https://gitcode.com/Larry_Li_006/openUBMC_VPD_Example"
+        }
+    ]
+}

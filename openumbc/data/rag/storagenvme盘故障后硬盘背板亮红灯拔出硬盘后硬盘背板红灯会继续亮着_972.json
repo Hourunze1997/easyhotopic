@@ -1,0 +1,36 @@
+{
+    "topic_id": 972,
+    "question": "【storage】nvme盘故障后硬盘背板亮红灯，拔出硬盘后硬盘背板红灯会继续亮着 - content: 问题流程：\n这边在做GEN5的24 NVMe硬盘背板的测试时，盘出现故障告警，查看对应的盘位亮红灯，拔出盘后，硬盘背板依然亮红灯。\nimage896×141 11.4 KB\n目前分析：\n查看storage的代码，发现src/lualib/drive/drive_object.lua里面，NVMe盘拔出后，是停掉了 update_dynamic_info的任务，但点故障灯的操作没有进行灭掉的操作。\n疑问：\n想咨询一下，这个是设计期望如此，抑或说这种场景的故障灯亮着更容易提醒使用者，还是说遗漏了这种场景。\n其他截图：\nimage164×155 27.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/a1b708fcf2f8eaa40fd7ec4b045f7a2b60b47b73.png, https://discuss.openubmc.cn/uploads/default/original/1X/602634d7500c99cb552d86571b0defe3ac1ee254.png",
+    "topic_user_name": "HKZY_YangBo",
+    "best_answer_url": "/t/topic/972/4",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/972/2",
+            "text": "1、如果raid卡管理的盘故障了，拔盘也会亮故障灯不会做清除\n2、如果是手动下发的点灯命令没有清除，这个正在确定历史设计方案"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/972/3",
+            "text": "1、是没有RAID卡管理。是NVMe盘，直连的。\n2、看storage的实现， NVMe盘拔出后，是触发停掉了 update_dynamic_info 的任务，但点故障灯的操作没有进行灭掉的操作，这个是设计期望如下哇？"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/972/4",
+            "text": "新的版本，通过在停止任务的时候设置默认值   self.Failure = false 已解决。"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/972/5",
+            "text": "补充：故障告警通过self.Failure = false的方式来消除拔盘后的告警；故障灯不会被单独点灭。"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 1496,
+    "question": "华为1711从某个旧版本的iBMC，网页更新到最新编译的UBMC固件失败，显示无效的升级包 - rt",
+    "topic_user_name": "Leon.Li",
+    "best_answer_url": "/t/topic/1496/2",
+    "reply_posts": [
+        {
+            "user_name": "恒扬-李天亮",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1496/2",
+            "text": "content: 1,  需要制作BMC的hpm过渡版本。 可以参考 hpm包格式说明以及重新签名指导 - CICD SIG - openUBMC 论坛\n2，iBMC升级到过渡版本。\n3，过渡版本升级到openUbmc版本。\nlinks: https://discuss.openubmc.cn/t/topic/204"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1496/3",
+            "text": "此帖超过10天无新的消息和答复，标记为已解决，如有疑问可重新发帖或跟帖。"
+        }
+    ]
+}

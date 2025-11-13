@@ -1,0 +1,22 @@
+{
+    "topic_id": 1148,
+    "question": "北向事件日志相关问题咨询 - 目前发现部分event日志，在REDFISH、WEB和SNMP实现的情况不统一。\n例如PCIeCardOMOverTemp，\n在vpd\\vendor\\event_def.json中的定义为\n{\n“EventCode”: “0x08000063”,\n“ReportChannel”: 65535,\n“OldEventCode”: “”,\n“EventType”: 0,\n“LifeCycleId”: 0,\n“DeassertFlag”: 1,\n“EventKeyId”: “PcieCard.PCIeCardOMOverTemp”,\n“SeverityId”: 1,\n“ActionId”: 0,\n“EventName”: “PCIeCardOMOverTemp”\n},\n这条event，在rackmount\\interface_config\\redfish\\static_resource\\redfish\\v1\\registrystore\\messages\\en\\ibmcevents.v3_0_0.json中 可以找到相关定义\n    \"PCIeCardOMOverTemp\": {\n        \"Description\": null,\n        \"Message\": \"The %1 %2 optical module %3 temperature (%4 degrees C) exceeds the overtemperature threshold (%5 degrees C).\",\n        \"Severity\": \"Warning\",\n        \"NumberOfArgs\": 5,\n        \"ParamTypes\": [\n            \"string\",\n            \"string\",\n            \"string\",\n            \"string\",\n            \"string\"\n        ],\n        \"Resolution\": \"1. Check for fan alarms. 2. Check the equipment room temperature. 3. Check for air inlet or outlet blockage. 4. Replace the optical module.\",\n        \"Oem\": {\n            \"{{OemIdentifier}}\": {\n                \"@odata.type\": \"#HwBMCEvent.v1_0_0.HwBMCEvent\",\n                \"EventId\": \"0x08000063\",\n                \"EventName\": \"PCIeCardOMOverTemp\",\n                \"EventEffect\": null,\n                \"EventCause\": null\n            }\n在rackmount\\interface_config\\snmp\\mib\\HUAWEI-SERVER-iBMC-MIB.mib中也可以找到相关定义，\t\t\n\nhwPCIeCardOMOverTemp NOTIFICATION-TYPE\nOBJECTS { hwTrapSeq, hwTrapSensorName, hwTrapEvent, hwTrapSeverity, hwTrapEventCode, hwTrapEventData2, hwTrapEventData3, hwTrapServerIdentity, hwTrapLocation, hwTrapTime }\nSTATUS current\nDESCRIPTION\n“PCIe card optical module overheating minor alarm. (Generated)”\n::= { hwPCIeCardEvent 99 }\nhwPCIeCardOMOverTempDeassert NOTIFICATION-TYPE\nOBJECTS { hwTrapSeq, hwTrapSensorName, hwTrapEvent, hwTrapSeverity, hwTrapEventCode, hwTrapEventData2, hwTrapEventData3, hwTrapServerIdentity, hwTrapLocation, hwTrapTime }\nSTATUS current\nDESCRIPTION\n“PCIe card optical module overheating minor alarm. (Cleared)”\n::= { hwPCIeCardEvent 100 }\n这个日志是否就意味着在REDFISH、WEB和SNMP三个接口都有实现？\n但是像例如 PCIeCardTempFail，只在vpd\\vendor\\event_def.json中有定义，在REDFISH和SNMP里面都没有找到，是否就意味着在REDFISH和SNMP接口没有实现这个事件告警？类似的还有很多，例如DiskLinkSpeedReduced、DiskMaxTempMajorInfo、VPDReadFail、Event_FirmwareFailure、Event_InspectFail\n    {\n        \"EventCode\": \"0x08000005\",\n        \"ReportChannel\": 65535,\n        \"OldEventCode\": \"0x2800FFFF\",\n        \"EventType\": 0,\n        \"LifeCycleId\": 1,\n        \"DeassertFlag\": 1,\n        \"EventKeyId\": \"PcieCard.PCIeCardTempFail\",\n        \"SeverityId\": 1,\n        \"ActionId\": 0,\n        \"EventName\": \"PCIeCardTempFail\"\n    },\n\n综上，想了解一下上述问题的解释。\n然后我们一般情况下新增一个事件，应该做哪些步骤。",
+    "topic_user_name": "Hudi",
+    "best_answer_url": "/t/topic/1148/2",
+    "reply_posts": [
+        {
+            "user_name": "sunpeijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1148/2",
+            "text": "关于不一致的问题\n\nibmcevents.v3_0_0.json文件会在构建阶段根据event_def.json动态生成，所以redfish接口查询的和event_def是一致的，static_resource目录下的文件可以理解为旧文件，不需要维护\nsnmp和告警码肯定是一一对应的（错配漏配除外），只是定义方式不同，通过你这边的关键字是无法索引的，而是通过hwPCIeCardEvent 100匹配，snmp的具体配置逻辑可以咨询rackmount onwer"
+        },
+        {
+            "user_name": "sunpeijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1148/3",
+            "text": "content: 新增事件参考事件定制DOC\n如果还有疑问可再提，我会补充到文档中\nlinks: https://www.openubmc.cn/docs/zh/development/develop_guide/feature_development/event.html"
+        }
+    ]
+}

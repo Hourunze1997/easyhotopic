@@ -1,0 +1,29 @@
+{
+    "topic_id": 550,
+    "question": "work.build.conan conan构建等待时间超过千秒 - 切换工作目录到: /home/workspace/manifest/temp/build_openUBMC_debug_dev/sdk\n任务 task_download_dependency 完成\n目标 personal 正在等待任务: work.build.conan, 当前已等待 60 秒\n目标 personal 正在等待任务: work.build.conan, 当前已等待 60 秒\n目标 personal 正在等待任务: work.build.conan, 当前已等待 120 秒\n目标 personal 正在等待任务: work.build.conan, 当前已等待 120 秒\n目标 personal 正在等待任务: work.build.conan, 当前已等待 180 秒\n目标 personal 正在等待任务: work.build.conan, 当前已等待 180 秒\n目标 personal 正在等待任务: work.build.conan, 当前已等待 240 秒\n目标 personal 正在等待任务: work.build.conan, 当前已等待 240 秒  conan构建等待时间超过千秒",
+    "topic_user_name": "wuzhou-xiaokaili",
+    "best_answer_url": "/t/topic/550/4",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/550/2",
+            "text": "应该是哪里卡住了，试试LOG=DEBUG"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/550/3",
+            "text": "content: 之前还有发现，由于gitcode https clone的时候要求输入账户密码，可能导致bingo卡住\n可以看看是不是这个问题：\n具体解决方法可以参考这篇文章：Ubuntu开发环境搭建 | openUBMC\n里面ssh替换https的命令\nlinks: https://openubmc.cn/docs/zh/development/quick_start/prepare_environment/ubuntu_env.html"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/550/4",
+            "text": "content: 本质原因是部分组件触发了源码构建，尝试去gitcode拉取源码，当前组件在gitcode还未正式开源，需要配置gitcode令牌才能有权限拉取。\n执行以下步骤进行配置（其中xxx为gitcode令牌）：\ngit config --global credential.helper 'store --file ~/.git-credentials'\necho https://xxx:xxx@gitcode.com\n\n获取gitcode令牌方式如下：\n\ndocs.gitcode.com\n\n访问令牌(PAT) | GitCode 帮助文档\n个人访问密钥（PAT）是一种安全凭据，允许你的应用程序、脚本或其他工具安全地与 GitCode API 进行通信，执行各种操作，如创建项目、管理 Issue、拉取和推送代码等。通过使用 PAT，你可以代替密码来访问你的 GitCode 帐户，同时维护更高级别的安全性。\nlinks: https://docs.gitcode.com/docs/help/home/user_center/security_management/user_pat/, https://docs.gitcode.com/docs/help/home/user_center/security_management/user_pat/"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 1499,
+    "question": "9500HBA卡web无法获取信息 - content: 背景：\n项目需要适配9500HBA卡。已经获取libmgmt_protocol的调试包，并完成集成。\n调试问题：\n通信失败，web无法获取信息。\nimage1506×685 32.2 KB\n查看i2c是通的，可以读取raid chip数据：\n\n查看Controller属性，EID为0：\nimage430×276 4.61 KB\n查看log，PHY通信错误：\nimage1858×278 45.5 KB\napp.txt (528.0 KB)\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/caa4988a41dc2cd609fc0d6e964ce163acb5d50f.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/f0280ba20637e05e885ecdb3195c822f6aca1037.png, https://discuss.openubmc.cn/uploads/default/original/2X/d/d728330fdc370feaa6eb4968bbc39273722dedee.png, /uploads/short-url/mzf2Cf23SiGlls9ePcNZ5JdYWoF.txt",
+    "topic_user_name": "Chengxiaoju",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1499/2",
+            "text": "content: phy_biter打印的Error信息，不会影响到Raid卡的属性更新流程。\n也就是不会影响web属性显示。\n建议追加打印：确认raid卡的c_controller:register()流程是否正常结束，重点关注如下几个日志：\nimage863×282 17.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/ce5fb72728c617299fc468c3a1e663f6378e2c2b.png"
+        },
+        {
+            "user_name": "Lanqiao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1499/3",
+            "text": "content: 查看注册流程，9500-16I已经成功注册上了，未识别，有报错，报错log如下：\nimage1920×875 370 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/c37655f21c58439642a0bb1045b799acb0fa8d2f.jpeg"
+        },
+        {
+            "user_name": "Chengxiaoju",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1499/4",
+            "text": "content: 1.更新了2506版本，9500-16i raid卡信息还是无法获取，注册流程都成功了，但是get_ctrl_ld_list失败。同一张riser下面的另外两张9560-16i raid卡和9440-8i raid卡信息都能正常获取。\n2.9500-16i raid卡拿到V2的天翼云环境是可以正常显示的，但是这张卡信息获取非常慢，每次刷新一个数据，所有数据显示完整大约需要10多分钟。\nlog已经同步weelink。\nV2天翼云环境显示正常：\nimage1318×785 33.7 KB\nopenUBMC环境显示异常：\nimage1510×788 36.5 KB\n同一张riser下面的9560-16i显示正常：\nimage1545×783 40.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/f8c131250a2abd3cbdf0f95619b33de273d24689.png, https://discuss.openubmc.cn/uploads/default/original/2X/4/4bfdd370cd0be83ead6caa3ea1ea4701f52a8733.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c0b912cdf11bec629c6e6efeecfa895128b2589a.png"
+        }
+    ]
+}

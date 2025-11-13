@@ -1,0 +1,64 @@
+{
+    "topic_id": 204,
+    "question": "hpm包格式说明以及重新签名指导 - content: 说明\nopenubmc升级真机环境时会验证hpm包的cms签名，确保软件包来源可信且完整。\n本文档用于指定开发者完成hpm包签名。\n\n注意： 签名依赖的工具由bmcgo提供，openubmc社区版本的bingo还不支持签名。\n\n签名hpm包格式\n签名hpm包由包头、签名原文、CMS签名、CRL吊销列表、裸HPM包共五部分组成。\n包头\n包头记录了签名文件的数量和每个文件的大小，每8个字符组成一个大端的十六进制数字，格式为<file_count><file1_id><file1_len><file2_id><file2_len><file3_id><file3_len>。\n\n<file_count>：表示签名由几个文件组成，当前格式签名由3个文件组成，故值一般为00000003\n<filex_id>：第x个文件的文件ID，从1开始编码，如文件1为00000001\n<filex_len>：第x个文件的文件长度。\n\n例如：00000003000000010000001800000002000000280000000300000038表示签名由3个文件组成，每1个文件长度为0x18，第二个文件长度为0x28，第3个文件长度为0x38。\n签名原文\n内容是一段文本，内容由Manifest Version、Create By、Name、SHA256-Digest组成，其中：\n\nManifest Version：一般为1.0\nCreate By：签名者，一般为厂商包\nName：文件名\nSHA256-Digest：裸HPM包的sh256\n\nCMS签名\n签名工具生成的cms签名文件\nCRL吊销列表\n签名根证书的吊销列表\nhpm裸包\n由hpm打包工具生成的裸包。\n重签HPM包\n某些场景我们需要将已签名的hpm包重新签名，需要执行以下步骤：\n\n按文件头描述的依次从hpm包中剥离出包头、签名原文、CMS签名、CRL吊销列表、裸HPM包\n修改签名原文，只能修改Create By和Name，\n使用hpm_signer工具生成新的签名cms文件，同时需要签名根证书最新的CRL吊销列表文件。\n将所有文件放置在同一目录并重命名文件，要求签名原文文件名为name.filelist、CMS签名文件名为name.filelist.cms、吊销列表为cms.crl、裸HPM包为name.hpm，其中name可以修改但要保持一致。\n执行打包命令：cms_sign_hpm.sh 2 name.hpm，该命令会生成一个名为name.hpm.signed为签名hpm包。\n正式升级的hpm包尾缀必须是.hpm，需要将name.hpm.signed重命名为name.hpm。\n\n示例\n假设有一个名为origin.hpm包的hpm包，其包头为00000003000000010000001800000002000000280000000300000038，重新签名流程：\n# 导出name.filelist，文件大小为0x18(24字节)，偏移为56\ndd if=origin.hpm of=name.filelist bs=1 skip=56 count=24\n# 导出name.filelist.cms，文件大小为0x24（40字节），偏移为80（56 + 24）\ndd if=origin.hpm of=name.filelist.cms bs=1 skip=80 count=40\n# 导出cms.crl，文件大小为0x38（56字节），偏移为120（80 + 40）\ndd if=origin.hpm of=cms.crl bs=1 skip=120 count=56\n# 导出hpm裸包，文件偏移为176（120 + 56），截取剩余内容\ndd if=origin.hpm of=name.filelist bs=1 skip=176\n# 执行签名，签名name.filelist文件并生成name.filelist.cms\nhpm_signer -s signer.pem.enc -t ts_signer.pem.enc -T tsa.cnf -i name.filelist -o name.filelist.cms -p <签名证书加密密码>\n# 重新打包，生成name.hpm.signed\ncms_sign_hpm.sh 2 name.hpm\n# 重命名\nmv name.hpm.signed name.hpm\nlinks: #p-288-h-1, #p-288-hpm-2, #p-288-h-3, #p-288-h-4, #p-288-cms-5, #p-288-crl-6, #p-288-hpm-7, #p-288-hpm-8, #p-288-h-9",
+    "topic_user_name": "xuhaijun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "南京百敖",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/204/2",
+            "text": "content: 按文档已经重新签名了bios hpm包，在ubmc web界面已经可以更新了 ，以下是一些实践记录\n#容器中文件所在路径\n/usr/local/bin/mkhpm.sh\n/usr/local/bin/hpm_signer\n\n#新建/usr/local/bin/_hpm目录，专门用来签名包，文件如下\nhpm_signer（从上级目录拷贝）\nmkhpm.sh（从上级目录拷贝）\nrootca.crl\nserial\nsigner.pem\nts_signer.pem\ntsa.cnf\n\n#清除_hpm目录临时文件\nrm -rf *.hpm\nrm -rf bios.filelist\nrm -rf bios.cms\nrm -rf bios.crl\nrm -rf bios.bin\nrm -rf bios.cms1\n\n#查看hpm包头信息\n\n00000003 00000001 00000081 00000002 00000db1 00000003 000002ab\n0x81 = 129\n0xdb1 = 3505\n0x2ab = 683\n#生成新的hpm包\nmv /workdir/bjuci_bios.hpm /usr/local/bin/_hpm\n\ndd if=bjuci_bios.hpm of=bios.filelist bs=1 count=129 skip=56\ndd if=bjuci_bios.hpm of=bios.cms bs=1 count=3505 skip=185\ndd if=bjuci_bios.hpm of=bios.crl bs=1 count=683 skip=3690\ndd if=bjuci_bios.hpm of=bios.bin bs=1 skip=4373\n\nhpm_signer -s signer.pem -t ts_signer.pem -T tsa.cnf -i bios.filelist -o bios.cms1\n\nmkhpm.sh bios.filelist bios.cms1 rootca.crl bios.bin bjuci_bios_new.hpm\n\nmv bjuci_bios_new.hpm /workdir/\n\na81cc1ebf768aef35f1654a765ef1b5905×153 26.2 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/11dfc74e80f5617d1a89a863077d1844f7026d91.png"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/204/3",
+            "text": "hpm_signer和mkhpm.sh不用拷贝，可以直接执行。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/204/4",
+            "text": "海军哥，这个是转华为或者其他厂商版本的过渡包的操作方法吗。"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/204/5",
+            "text": "content: 此方法主要用于像电源、风扇、cpld、bios、bbu等非bmc固件升级。\n如果是BMC的固件，切换签名会比较复杂，我们需要将B签名的根证书导入到环境，A签名过渡到B签名的流程请参考：\n\n将B签名的根证书预置到opt/bmc/trust/partner/rootca.der，使用A签名出hpm包。\n注意：如果是华为的签名可以从官方网站下载，链接是https://support.huawei.com/pki/pkidetail!loadCatagoryPkiData.action?type=PKI_TYPE-ROOT，证书名为Huawei Integrity Root CA - G2\n升级A签名的hpm包。\n升级B签名的hpm包。\n\n上述步骤中的第二步会将B根证书升级到环境上，第三步的升级程序将在校验cms签名时执行双根校验，B签名的固件也能通过校验。\nlinks: https://support.huawei.com/pki/pkidetail!loadCatagoryPkiData.action?type=PKI_TYPE-ROOT%EF%BC%8C%E8%AF%81%E4%B9%A6%E5%90%8D%E4%B8%BAHuawei"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/204/7",
+            "text": "content: image1898×513 58.3 KB\n海军哥，没有这路径opt/bmc/trust/partner/，只能看到opt/bmc/trust/路径\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/ff4271da5210c6479aaa2a6b84860bc255f92118.png"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/204/8",
+            "text": "了解一下manifest.yml同级目录的rootfs，里面的内容会原样打包到环境上。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/204/9",
+            "text": "content: 谢谢海军哥指导。珊瑚灌顶。牛蛙。给你个大赞\nimage787×532 7.25 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/76044efe63c84c7330db86564675ddc165cc5783.png"
+        },
+        {
+            "user_name": "Pengshuang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/204/10",
+            "text": "content: 海军哥，请问现在社区版本docker镜像swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.1里的bingo支持签名了吗？\nlinks: http://xn--dockerswr-g31os6s56m5o6cur6ahoed00a7x6ehm9a5ic.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.1%E9%87%8C%E7%9A%84bingo%E6%94%AF%E6%8C%81%E7%AD%BE%E5%90%8D%E4%BA%86%E5%90%97%EF%BC%9F"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 807,
+    "question": "V3无法获取GPU Atlas 300功耗 - content: V3是怎么获取Atlas 300功耗的，后台没看到任何信息，如何调试这个问题。\n232941b466ab357e90f185d53da4825636×728 15.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/5c715885a25ee0e592b331e2a16dfe0964a97ba9.png",
+    "topic_user_name": "Zxl",
+    "best_answer_url": "/t/topic/807/2",
+    "reply_posts": [
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/807/2",
+            "text": "功率获取命令：\nmdbctl call Chip_Dmini_0101010302 bmc.kepler.Chip.BlockIO ComboWriteRead 0 0x20 0x0e 0x0c 0x80 0x00 0x04 0x00 0x00 0x00 0x00 0x00 0x02 0x00 0x00 0x00 0x87 0x21 32"
+        },
+        {
+            "user_name": "Zxl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/807/3",
+            "text": "content: huangjiapei_o2800:\n\nmdbctl call Chip_Dmini_0101010302 bmc.kepler.Chip.BlockIO ComboWriteRead 0 0x20 0x0e 0x0c 0x80 0x00 0x04 0x00 0x00 0x00 0x00 0x00 0x02 0x00 0x00 0x00 0x87 0x21 32\n\n我们的sr没有这个，是因为我们缺少什么吗。附件是sr文件\n14140130_19e5d500_02000110_old.zip (1.6 KB)\nlinks: /uploads/short-url/nGBqI7j2NaNPpJR8WD98vqMCBNx.zip"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/807/4",
+            "text": "~ ~ $ mdbctl call Chip_Dmini_0101010104   bmc.kepler.Chip.BlockIO ComboWriteRead 0 0x20 0x0e 0x0c 0x80 0x00 0x04 0x00 0x00 0x00 0x00 0x00 0x02 0x00 0x00 0x00 0x87 0x21 32\niBMC.Error.Unknow: ./opt/bmc/libmc/lualib/mc/context.lua:176: ./opt/bmc/libmc/lualib/sd_bus/init.lua:106: ./opt/bmc/apps/hwproxy/lualib/hwproxy_objects/app_bus.lua:106: …bmc/apps/hwproxy/lualib/hwproxy_objects/work_objects.lua:75: chip: Chip_Dmini_0101010104, bus: Hisport_5, write failed: hisport.lua:94: response error, ioctl(HISPORT_CMD_WRITE) failed: Unknown error 290"
+        }
+    ]
+}

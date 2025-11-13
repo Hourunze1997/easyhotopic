@@ -1,0 +1,29 @@
+{
+    "topic_id": 1044,
+    "question": "【已评审】支持柜内设备间通信的资源协作接口与导入CA证书的ipmi命令 - content: Issue链接\n【需求】支持柜内设备间通信相关资源\n背景\n需要支持管理板通过柜内设备间通信对BMC进行管理\n决策点\n1、bmc.kepler.AccountService.CertificateAuthentication接口下新增属性\n结论：同意新增属性\n资源path：/bmc/kepler/AccountService/CertificateAuthentication\n资源interface：bmc.kepler.AccountService.CertificateAuthentication\n变化类型：新增属性\n应用场景：用于柜内设备间内部通信的证书认证\nimage1489×306 24.9 KB\n2、ipmi命令File Action系列下新增文件类型参数取值10h （CA证书）\n结论：同意新增ipmi命令参数取值\nnetfn: 30h\ncmd: 93h\nsub_cmd: 57h\nimage1561×764 24.4 KB\nlinks: #p-2208-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/78, #p-2208-h-2, #p-2208-h-3, https://discuss.openubmc.cn/uploads/default/original/1X/3e641d63cf0d5a0879b39b24e5be07d4f7d57f45.png, https://discuss.openubmc.cn/uploads/default/original/1X/d4c485405104e2474f0f5ec5579071c2cd396b92.png",
+    "topic_user_name": "pengxianglin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1044/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1044/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1044/4",
+            "text": ""
+        }
+    ]
+}

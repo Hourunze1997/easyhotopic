@@ -1,0 +1,36 @@
+{
+    "topic_id": 1469,
+    "question": "920X20问题 - 针对S920X20高性能机型，有几个问题想询问一下：\n1.Web端能否展示SOL信息，展示SOL信息是否为tail 500行，能否下载为原文件？\n2.BMC能否同通过ipmi 命令切换BIOS的Normal、debug模式？\n3.关于风扇调试。当BMC与CPLD通讯异常时，CPLD是否能快速接管风扇控制？\n4.是否有DIMM PPR修复SEL？\n5.当前BMC板是否是双Flash(知道有多个分区，但是不确定是不是多flash芯片)？",
+    "topic_user_name": "dh_qiuming",
+    "best_answer_url": "/t/topic/1469/4",
+    "reply_posts": [
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1469/2",
+            "text": "content: @wwhh\nlinks: /u/wwhh"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1469/3",
+            "text": "风扇调试中，若BMC与CPLD通讯异常，CPLD会在10~15s左右时间接管，将转速提升至100%保证散热可靠性"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1469/4",
+            "text": "Tzyy_Q_wbdc2:\n\n1.Web端能否展示SOL信息，展示SOL信息是否为tail 500行，能否下载为原文件？\n\n1.Web端能否展示SOL信息，展示SOL信息是否为tail 500行，能否下载为原文件？ — 暂不支持，如果有需求可以通过RM SIG提出\n2. 没有命令\n4. 问题4建议单独发帖跟踪\n5. 多个分区"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1469/5",
+            "text": "前阵子也有客户咨询web sol功能，因为openbmc上有这个功能，客户应该是在对比。"
+        }
+    ]
+}

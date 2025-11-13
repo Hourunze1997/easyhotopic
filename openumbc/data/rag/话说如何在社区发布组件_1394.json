@@ -1,0 +1,7 @@
+{
+    "topic_id": 1394,
+    "question": "话说如何在社区发布组件？ - content: 社区提供两种方法支持在社区发布组件：\n1、在待合入的PR中评论/publish（任何人都可以操作），当PR合入后，会触发组件构建编译出conan产物推送conan中心仓，并打tag推送到gitcode平台上， 当处理成功后会评论已成功发布。\n示例PR见：示例PR\nimage1041×271 12.9 KB\n2、在openlibing发布平台上发布（仓库的maintainer或者committer才有权限发布）\n\n1、访问openlibing平台openlibing平台\n\n2、选择登录方式为openUBMC，点击登录\n\nimage423×555 22.8 KB\n\n3、登录成功后，点击构建——>流水线——>PublishComponent ——> 执行 ——> 选择仓库和分支——>执行\nimage1916×578 62.2 KB\n\nimage1885×941 63.7 KB\nlinks: https://gitcode.com/openUBMC/mdb_interface/pull/138, https://discuss.openubmc.cn/uploads/default/original/2X/c/ca4aa73e822265880a9487f9c277bc2aacfc5dc5.png, https://www.openlibing.com/, https://discuss.openubmc.cn/uploads/default/original/2X/2/2949d0f976b3293c701ac0c354e66adc09f5ac72.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c9b4ed2f7c5b36e84c133b0173e7ebfbe7eabae8.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a51efcb9571e5e74cf4aa03db9b888ecf14362a5.png",
+    "topic_user_name": "zhuchao",
+    "best_answer_url": "",
+    "reply_posts": []
+}

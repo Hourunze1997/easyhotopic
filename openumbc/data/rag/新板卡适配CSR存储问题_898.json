@@ -1,0 +1,15 @@
+{
+    "topic_id": 898,
+    "question": "新板卡适配CSR存储问题 - 新适配的板卡，如何在FRU中存储板卡的CSR文件，有具体格式要求吗？",
+    "topic_user_name": "dh_qiuming",
+    "best_answer_url": "/t/topic/898/2",
+    "reply_posts": [
+        {
+            "user_name": "yctco_zhanglei",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/898/2",
+            "text": "eeprom里面存储的都不是简单的csr文件，都是二进制文件，需要把sr文件通过bmc studio工具转成.bin(用于硬件烧录）和hpm文件（web升级）后弄到板卡上的eeprom里面；\ncsr文件格式可以参考华为现有的csr，根据具体的硬件改动来修改sr文件即可。"
+        }
+    ]
+}

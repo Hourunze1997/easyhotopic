@@ -1,0 +1,29 @@
+{
+    "topic_id": 804,
+    "question": "无法通过snmp创建、删除用户 - content: 通过snmp创建、删除用户都失败了，请问是哪里配置错了还是用法有问题？\n新增用户操作记录：\nimage553×260 47.7 KB\nimage553×288 49.2 KB\nimage553×219 46.5 KB\n删除用户操作：\nimage554×276 42.4 KB\nimage554×278 38.5 KB\nimage554×241 42.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/d9dc6af36feceedc3f31656d94fc9fd005712b9e.png, https://discuss.openubmc.cn/uploads/default/original/1X/fa9884c9047752ebe7fda5da2096086c7b50d327.png, https://discuss.openubmc.cn/uploads/default/original/1X/cdd960c259cb09d016fee49ff3006f9ed2292e0c.png, https://discuss.openubmc.cn/uploads/default/original/1X/3c7cad29a66f693591fdf83c58ff3f03316d984e.png, https://discuss.openubmc.cn/uploads/default/original/1X/82fd4188dec3de42857e4828094a35db1a7f5cd0.png, https://discuss.openubmc.cn/uploads/default/original/1X/20b541daa0e5ac1bf529ca8a7a4a53d356b8871e.png",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "/t/topic/804/3",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/804/2",
+            "text": "图片放大后看不清了。根据报错窗口的信息定位吧。结合bmc的操作日志可以确定请求是否走到了业务侧。"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/804/3",
+            "text": "也可以修改snmpd服务的启动命令以增加日志进一步确认"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/804/4",
+            "text": "好的，我先收集下日志看看"
+        }
+    ]
+}

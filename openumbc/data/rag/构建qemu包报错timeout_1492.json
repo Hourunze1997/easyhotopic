@@ -1,0 +1,22 @@
+{
+    "topic_id": 1492,
+    "question": "构建qemu包报错，timeout - content: image1519×457 224 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/fa0862a6621b60783d5cc46b9b09f76701686023.jpeg",
+    "topic_user_name": "Leon.Li",
+    "best_answer_url": "/t/topic/1492/3",
+    "reply_posts": [
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1492/2",
+            "text": "看起来似乎是bingo打包的问题，请切换root用户尝试"
+        },
+        {
+            "user_name": "Leon.Li",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1492/3",
+            "text": "换docker环境了，没遇到过这些报错"
+        }
+    ]
+}

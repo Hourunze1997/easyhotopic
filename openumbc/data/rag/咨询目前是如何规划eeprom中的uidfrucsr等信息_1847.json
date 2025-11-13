@@ -1,0 +1,22 @@
+{
+    "topic_id": 1847,
+    "question": "咨询目前是如何规划eeprom中的uid，fru，csr等信息 - 想咨询以下两个问题\n1.目前是如何规划uid，fru，csr等信息是在哪一个环节写入到eeprom的呢？\n2.在生产天池架构硬件的时候能否直接通过一个bin文件，将上述的全部信息一次性写入到eeprom里呢?\n3.整个eeprom的存储格式，偏移量，区域信息，可存储哪些内容，有相关文档说明提供吗？",
+    "topic_user_name": "Ocy",
+    "best_answer_url": "/t/topic/1847/2",
+    "reply_posts": [
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1847/2",
+            "text": "第一个问题咨询对应项目支持人员获取电子标签存储格式材料；\n第二个问题也只能一次性写入电子标签数据，csr是单独烧录的 uid也是出厂烧录的，bin只能写电子标签数据；\n第三个问题同第一个，咨询对应项目支持人员\n\n ocy:\n\n环节写入到eeprom的呢？"
+        },
+        {
+            "user_name": "nathanael yu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1847/3",
+            "text": "EEPROM原则上在装备生产阶段写入，基于整机厂商要求内容写入即可"
+        }
+    ]
+}

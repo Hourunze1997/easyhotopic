@@ -1,0 +1,15 @@
+{
+    "topic_id": 1629,
+    "question": "【已评审】新增资源协作接口设置节点信息 - content: gitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n评审背景：\n服务器节点组网新增配置信息 通过用户下发相关配置至北向接口 需要资源协作属性和相关方法进行承载 实现下发属性生效\n决策点1：\n新增资源协作接口\npath: /bmc/kepler/Products/Ascend/SuperPodLabel\ninterface: bmc.kepler.Products.SuperPodLabel\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n默认值\n\nChassisId\n新增属性\nq\nR：ReadOnly；W：BasicSetting\n掉电持久化\n否\n超节点机框号\n0xffff\n\nTopologyType\n新增属性\ny\nR：ReadOnly；W：BasicSetting\n掉电持久化\n否\n节点拓扑类型\n0\n\nInterconType\n新增属性\ny\nR：ReadOnly；W：BasicSetting\n掉电持久化\n否\n节点互联类型（如何实现最终拓扑）\n0\n\nPresentDPUCount\n新增属性\ny\nR：ReadOnly；W：BasicSetting\n掉电持久化\n否\n物理在位的DPU数量\n0\n\nNPUBootOption\n新增属性\ny\nR：ReadOnly；W：BasicSetting\n掉电持久化\n否\nNPU启动方式\n0\n\nUBManagedBy\n新增属性\ny\nR：ReadOnly；W：BasicSetting\n掉电持久化\n否\nUB管理方式\n0\n\nNPUBoxSlotNumber\n新增属性\ny\n只读 R：ReadOnly\n否\n是\nNPU节点槽位号\n255\n\n方法名称\n变化类型\n签名\n权限\n接口说明\n\nRestoreDefaults\n新增方法\nNA\nBasicSetting\n恢复节点配置信息至默认值\n\n决策点2：修改SuperPodLabel超节点信息emitchange属性\npath: /bmc/kepler/Chassis/1/SuperPodLabel\ninterface: bmc.kepler.Chassis.SuperPodLabel\n\n属性名称\n变化类型\n说明\n\nSuperPodId\n修改属性\n“不发送变更事件通知” 改为 “发送变更事件通知”\n\nServerIndex\n修改属性\n“不发送变更事件通知” 改为 “发送变更事件通知”\n\nSuperPodSize\n修改属性\n“不发送变更事件通知” 改为 “发送变更事件通知”\n\n评审结论\n决策点1：\n同意在/bmc/kepler/Products/Ascend/SuperPodLabel下新增资源协作接口bmc.kepler.Products.SuperPodLabel\n该接口新增属性：\n\nChassisId，表示超节点机框编号，签名q，读写，读权限：ReadOnly，写权限：BasicSetting，不发送变更通知事件\nTopologyType，表示超节点拓扑类型，签名y，读写，读权限：ReadOnly，写权限：BasicSetting，不发送变更通知事件\nInterconType，表示超节点互联类型，签名y，读写，读权限：ReadOnly，写权限：BasicSetting，不发送变更通知事件\nPresentDPUCount，表示在位的DPU数量，签名y，读写，读权限：ReadOnly，写权限：BasicSetting，不发送变更通知事件\nNPUBootOption，表示NPU启动方式，签名y，读写，读权限：ReadOnly，写权限：BasicSetting，不发送变更通知事件\nUBManagedBy，表示UB管理方式，签名y，读写，读权限：ReadOnly，写权限：BasicSetting，不发送变更通知事件\nNPUBoxSlotNumber，表示NPU节点槽位号，签名y，只读，读权限：ReadOnly，不发送变更通知事件\n\n该接口新增方法：\n\nRestoreDefaults，表示恢复超节点配置为默认值，签名无，操作权限BasicSetting\n\n决策点2\n同意资源协作接口bmc.kepler.Chassis.SuperPodLabel的属性SuperPodId、ServerIndex、SuperPodSize 发送变更事件通知\nlinks: https://gitcode.com/openUBMC/mdb_interface/pull/190, https://gitcode.com/openUBMC/mdb_interface/pull/190",
+    "topic_user_name": "liumengda",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1629/2",
+            "text": ""
+        }
+    ]
+}

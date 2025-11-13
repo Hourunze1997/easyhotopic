@@ -1,0 +1,43 @@
+{
+    "topic_id": 1549,
+    "question": "openubmc是否支持mctp over smbus进行带外管理？ - 【0257Y438】BCM957416A4160C网卡经确认只支持MCTP over SMBus，不支持MCTP over PCIE，\n那当前openUbmc是否支持MCTP over SMBus协议，如果未支持是否有支持计划或者开发指导。",
+    "topic_user_name": "Baijing",
+    "best_answer_url": "/t/topic/1549/2",
+    "reply_posts": [
+        {
+            "user_name": "Changxing Open Ubmc",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1549/2",
+            "text": "content: 1、openUBMC当前已支持 MCTP over SMBus 协议；\n2、网卡部分的适配需要在network_adapter组件进行 SMBus 报文的封装和解析，具体可以参考指导：\nhttps://gitcode.com/openUBMC/network_adapter/pull/87\nlinks: https://gitcode.com/openUBMC/network_adapter/pull/87"
+        },
+        {
+            "user_name": "Kunlun Liuchenxi",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1549/3",
+            "text": "当前mctp over smbus在standby场景下是否可通。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1549/4",
+            "text": "软件实现和场景没直接关系吧？只要standby下i2c还通就行"
+        },
+        {
+            "user_name": "Kunlun Liuchenxi",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1549/5",
+            "text": "据了解，Bios不启动，mctp不通，路由在OS侧，endpoint创建不起来。目前没有在standby下BMC切成主给网卡分配eid的机制，可能无法获取信息。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1549/6",
+            "text": "smbus不走imu那边，smbus的机制是BMC直接给对端分配eid，因为链路是BMC直连对端设备的"
+        }
+    ]
+}

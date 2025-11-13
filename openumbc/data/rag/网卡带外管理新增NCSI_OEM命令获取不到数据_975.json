@@ -1,0 +1,50 @@
+{
+    "topic_id": 975,
+    "question": "网卡带外管理新增NCSI OEM命令获取不到数据 - content: 【注】网卡带外管理问题属于很典型的问题，以后还有很多要适配，现放在论坛，请指导解决下问题\n【背景】\n        需要在社区版本上适配 Intel 的 E810 网卡，该网卡支持 NCSI 协议获取网卡信息，对该网卡进行了SR 的配置，但由于当前 network_adapter 组件中支持的 CX5、CX6…等芯片不满足 Intel E810 网卡的芯片类型，需要针对 E810 进行单独适配，于是在 network_adapter 组件的 hardware_config 目录下新增了一个 E810.lua 用于该网卡的带外信息的获取。\n【问题描述】\n        由于 E810 网卡的带外信息获取通过标准的 NISC 协议获取，当前network_adapter 组件的 hardware_config 目录下 BoradCom.lua 中使用的是标准 NCSI 协议获取，我们尝试新增的 E810.lua 文件直接继承 BoradCom.lua，并在此基础上新增了 Intel E810 的 NCSI OEM 命令去获取芯片温度和光模块温度，现在代码编译出的包在机器上现象如下：\n\n继承的 BoradCom.lua 后光模块的链接状态可以正常获取；\n网卡的网络属性速率能够获取，但断开的网口速率显示为 10Mbps；\n芯片温度传感器、光模块温度传感器能够显示但是芯片温度的读数始终为0，光模块无论在不在位，光模块温度传感器读数始终显示 --；\n\n网络适配器2560×1238 154 KB\n门限传感器2560×1238 166 KB\n【E810 OEM 命令】\n\n芯片温度\n\nACSITemp_request1359×841 60.7 KB\nACSITemp_response1384×1040 115 KB\n\n光模块温度\nSSFTemp1076×970 68.4 KB\n\n（尝试过在 E810.lua 中加入 respone 的 bitstring unpack的打印，确实进入了respone流程但解析的 r 为空）\n【求助点】\n\n开源社区的MCTP为闭源组件，无法在MCTP组件添加打印，怎么确定 MCTP 有没有走通，怎么添加打印查看 NCSI OEM命令的 MCTP 报文和响应？\n现在南向硬件协议库中接口能否提供一下文档说明支持哪些属性的带外获取？例如 E810 的 properties中的ChipTemp、OpticalTemp 等字段只能查看已有的CX4等lua文件去配置。\n\n【代码&日志】\n当前 E810.lua 内容如下\nlocal bs = require 'mc.bitstring'\nlocal log = require 'mc.logging'\nlocal libmgmt_protocol = require 'libmgmt_protocol'\nlocal utils = require 'mc.utils'\n\nlocal BroadCom = require 'hardware_config.BroadCom'\n\nlocal E810_ncsi = {\n    protocol_dependencies = {ncsi_standard = {endpoint = nil}},\n    properties = {\n        -- 芯片结温\n        ChipTemp = {\n            protocol = 'ncsi_standard',\n            action = 'on_schedule',\n            period_in_sec = 2,\n            request = {\n                packet_type = 0x50,\n                expect_rsp_packet_type = 0xD0,\n                data = {\n                    manu_id = { 0x00, 0x00, 0x01, 0x57 },\n                    intel_cmd = 0x4B,\n                    pad_data = { 0x00, 0x00, 0x00 }\n                }\n            },\n            response = function(data)\n                local r = bs.new([[<<\n                    rsp_code:16,\n                    reason_code:16,\n                    manu_id:32,\n                    intel_cmd:8,\n                    reserved:8,\n                    max_temp:8,\n                    current_temp:8\n                >>]]):unpack(data, true)\n                return r.current_temp\n            end\n        },\n        -- 光模块温度\n        OpticalTemp = {\n            protocol = 'ncsi_standard',\n            action = 'on_schedule',\n            period_in_sec = 2,\n            request = {\n                packet_type = 0x50,\n                expect_rsp_packet_type = 0xD0,\n                data = {\n                    manu_id = { 0x00, 0x00, 0x01, 0x57 },\n                    intel_cmd = 0x4B,\n                    intle_prams = 0x02,\n                    pad_data = {0x00, 0x00}\n                }\n            },\n            response = function(data)\n                local r = bs.new([[<<\n                    rsp_code:16,\n                    reason_code:16,\n                    manu_id:32,\n                    intel_cmd:8,\n                    intle_prams:8\n                    reserved:16,\n                    alarm_temp:16,\n                    warning_temp:16,\n                    current_temp:16,\n                    pad_data:16\n                >>]]):unpack(data, true)\n                local optical_temp = r.current_temp >> 8\n                return optical_temp\n            end\n        }\n    }\n}\n\nreturn {\n    smbus = nil,\n    mctp = function(endpoint)\n        local broadcom = BroadCom.mctp(endpoint)\n        for k, v in pairs(E810_ncsi.properties) do\n            broadcom.properties[k] = v\n        end\n        return broadcom\n    end\n}\n\n详细配置的代码以及一键收集的日志需提供邮箱后上传。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/58fabbc91f78564664ac845fda5c21014e20458f.png, https://discuss.openubmc.cn/uploads/default/original/1X/f4330e1d85b7d2b2d9d3f49d5258d60c786f1f41.png, https://discuss.openubmc.cn/uploads/default/original/1X/c63f6d9c6b396d3aa8c334ffdc8a31048f32b9ac.png, https://discuss.openubmc.cn/uploads/default/original/1X/4586c00a2d2d234deea66ec8d2c936bd14fb1c3c.png, https://discuss.openubmc.cn/uploads/default/original/1X/a5c1a0b0f0d22f0e7a6fcba5aaa2fdabc0ba997d.png",
+    "topic_user_name": "baode_luoyin",
+    "best_answer_url": "/t/topic/975/8",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/975/2",
+            "text": "content: 详细信息可发至 maoyuhao@huawei.com 后分析\nlinks: mailto:maoyuhao@huawei.com"
+        },
+        {
+            "user_name": "baode_luoyin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/975/3",
+            "text": "详细信息已发送至该邮箱"
+        },
+        {
+            "user_name": "baode_luoyin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/975/4",
+            "text": "content: 已尝试在 E810.lua 中添加 response 的 data 长度、data 按单个字节解析的打印后发现 data 的长度仅为 4 个字节与 Intel 的响应体长度不符，说明 MCTP 报文未正确发通，于是将 request 中的 data 由\ndata = {\n          manu_id = { 0x00, 0x00, 0x01, 0x57 },\n          intel_cmd = 0x4B,\n          pad_data = { 0x00, 0x00, 0x00 }\n         }\n\n改为\ndata = '\\x00\\x00\\x01\\x57\\x4B\\x00\\x00\\x00'\n\n后 response 中的 data 长度为正确的 12 字节，且能够解析到 Intel 的 ManufacturerID: 0 0 1 87 (0x00157) 和 OEM 命令字: 75 (0x4B), 说明 MCTP 报文发通\n将data 按单字节解析1143×799 129 KB\n根据响应码：01，原因码：05，查看 NCSI 的标准文档\n响应码908×390 96.6 KB\n原因码891×568 171 KB\n发现是报文中给出有的效载荷长度不正确。\n        将 MCTP 报文打印后与 V2 的 MCTP 报文进行比较：\nV2 芯片结温报文2239×127 11.4 KB\nV3 芯片结温报文1041×612 142 KB\n\nV2 中 NCSI 的有效载荷长度被定义为 5，Intel 未将 padding 的长度算入有效载荷长度中；\nV3 中标准 NCSI 头给出的有效载荷长度被定义为 8 为 request 中 data 的长度(含 padding 长度)。\n\n        现判断是由于 NCSI 有效载荷长度的值 在 V3 框架中未能正确给出导致无法获取到数据，在network_adapter组件中使用 ncsi_standard 标准头，NCSI 有效载荷长度似乎是根据  request 中 data 的长度 计算给出，我们无法修改，这个问题怎么解决？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/98ea173e88e7d94a86247e31b96b85d6f6465b03.png, https://discuss.openubmc.cn/uploads/default/original/1X/22c9c9cc2715ec8b4e6df37e0517b8655a1315b7.png, https://discuss.openubmc.cn/uploads/default/original/1X/47e65000fc2aaf856405a028abfeaa2a54f129ea.png, https://discuss.openubmc.cn/uploads/default/original/1X/d0133afe84de5eff6a4451e7f1c2f883fa4714fa.png, https://discuss.openubmc.cn/uploads/default/original/1X/1f6e098aa4bf4b057ae92dbd006db04eb11f06f1.png"
+        },
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/975/5",
+            "text": "content: 该问题已上sig-hardware评审，问题按评审结论解决\nimage882×303 31.8 KB\n评审链接\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/313d25f0880f2745e4cac160da8174c577d7d61d.png, https://etherpad.openubmc.cn/p/sig-hardware"
+        },
+        {
+            "user_name": "baode_luoyin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/975/6",
+            "text": "社区25.06版本已经修复ncsi 计算payload length机制，但是由于是闭源mctpd 组件，不知道同步改了什么，按照原来的request中data字段data = payload + padding，修复后的request字段中的data、payload、padding等应该如何处理？"
+        },
+        {
+            "user_name": "baode_luoyin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/975/8",
+            "text": "已解决，NCSI报文已正确发送，将原本data中padding部分移除即可。"
+        }
+    ]
+}

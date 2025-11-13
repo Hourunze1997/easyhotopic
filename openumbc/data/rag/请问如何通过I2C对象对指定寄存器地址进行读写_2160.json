@@ -1,0 +1,29 @@
+{
+    "topic_id": 2160,
+    "question": "请问如何通过I2C对象对指定寄存器地址进行读写？ - content: image639×684 12.4 KB\nV3版本的读写方法提供的参数说明只有器件地址和读取长度，没有指定寄存器地址/偏移，如何指定寄存器/偏移进行读写呢\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4486a3353674d127337dfa5fe10fdca04ea165d4.png",
+    "topic_user_name": "Limingfeng",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2160/2",
+            "text": "content: 首先，你需要分清楚是对I2C Bus对象操作还是对I2C Chip对象进行操作，其接口名分别是bmc.kepler.Bus.BlockIO和bmc.kepler.Chip.BlockIO。例：假设I2C1下挂了一颗地址为0XA0的EEPROM芯片，\n(1) 通过I2C Bus对象去访问, 需要使用一次I2C写加I2C读来完成对器件的一次指定地址读取\nbusctl --user call bmc.kepler.hwproxy  /bmc/kepler/Bus/I2c/I2c_1 bmc.kepler.Bus.BlockIO  Write a{ss}yay 3 Interface Busctl UserName Administrator ClientAddr 127.0.0.1   0xA0 1 0X00\nbusctl --user call bmc.kepler.hwproxy  /bmc/kepler/Bus/I2c/I2c_1 bmc.kepler.Bus.BlockIO  Read a{ss}yy 3 Interface Busctl UserName Administrator ClientAddr 127.0.0.1   0xA0 1\n或\nbusctl --user call bmc.kepler.hwproxy  /bmc/kepler/Bus/I2c/I2c_1 bmc.kepler.Bus.BlockIO  WriteRead a{ss}yayy 3 Interface Busctl UserName Administrator ClientAddr 127.0.0.1   0xA0 1 0X10 6\n从E2PROM额0x10偏移处读取6个字节的数据\n(2) 通过I2C Chip对象访问\n2.1 首先在CSR内需要先定义Chip对象，配置芯片地址，偏移宽度等属性，见社区CSR配置指导文档\n2.2 调用Chip对象的Read方法，参数格式见资源协作接口 | openUBMC\n示例：Chip_Eeprom_xxx替换为真实环境的对象名, 从Chip_Eeprom_xxx的0x10偏移处读取2个字节\nbusctl --user call bmc.kepler.hwproxy  /bmc/kepler/Chip/Complex/Chip_Eeprom_xxxx  bmc.kepler.Chip.BlockIO  Read a{ss}uu 3 Interface Busctl UserName Administrator ClientAddr 127.0.0.1   0X20 2\nlinks: https://www.openubmc.cn/docs/zh/development/specifications/SDK.html#bmc-kepler-chip-bitio"
+        },
+        {
+            "user_name": "Limingfeng",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2160/3",
+            "text": "对I2CBUS对象进行读写的话，这里的这个  0xA0 1 0X00我想再问一下，0XA0是I2C的从设备地址，后面的这个0X00是什么，是写入的内容吗， 这个内容又是写到哪里去的呢"
+        },
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2160/4",
+            "text": "这个代表使用I2C总线向从机0XA0发送一个字节的数据，内容是0x00, 针对E2EPROM就代表是先指定偏移地址。针对其他类型的I2C器件，需查阅具体数据手册，发送的数据也并非都表示偏移地址。"
+        }
+    ]
+}

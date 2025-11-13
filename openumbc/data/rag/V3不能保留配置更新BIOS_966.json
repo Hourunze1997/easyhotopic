@@ -1,0 +1,29 @@
+{
+    "topic_id": 966,
+    "question": "V3不能保留配置更新BIOS - content: 求助点：\nimage1907×419 29.5 KB\n一键收集日志：\nAppDump.zip (740.5 KB)\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/f3e637ea0a6c22e6b66a093bfbd6d5bf85730d12.png, /uploads/short-url/uIgCh31mGYLcAIQQBxXckZcWuWn.zip",
+    "topic_user_name": "Zxl",
+    "best_answer_url": "/t/topic/966/4",
+    "reply_posts": [
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/966/2",
+            "text": "请描述问题详情，预期是什么，实际是什么"
+        },
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/966/3",
+            "text": "web升级界面下面的保留配置选项是说是否要保留BMC的配置，如果选择“不保留配置”，则升级完BMC只会会进行恢复出厂设置；\nBIOS的升级默认是保留BIOS配置的；"
+        },
+        {
+            "user_name": "曾启健",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/966/4",
+            "text": "请确认bmc是否装备版本，bmc装备场景下升级bios默认为全擦升级，全擦升级无法保留配置"
+        }
+    ]
+}

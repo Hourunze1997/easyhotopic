@@ -1,0 +1,7 @@
+{
+    "topic_id": 1686,
+    "question": "【issue】【redfish】BMC复位后集合资源ready慢，导致查询数据重复和丢失 - 机型：Atlas 200T A3 Box8（A+X定制）\n背景：npu板CPLD 3.08 - 3.09 升降级测试100圈，有13圈出现部分NPU板CPLD、MCU版本号读不到，概率性出现两个名称重复的NPU FW版本\n分析：升降级时nBMC复位起来，上层网管查询版本集合及下面的所有url，确认升级是否成功。redfish查询有翻页机制，出问题时，首页的查询还没加载完固件，memberid的总数统计是少的，查询到第二页，加载上来部分固件，排序重新更新了，本来上一页的固件A，查第二页的时候也显示了，导致重复\n期望的目标：1）提供BMC 资源ready的标志；2）redfish可以响应外部请求时，不要让用户感知资源没有准备好，特别是版本资源，高频发生在BMC复位后立马来查，极易让客户感知异常",
+    "topic_user_name": "Ji You",
+    "best_answer_url": "",
+    "reply_posts": []
+}

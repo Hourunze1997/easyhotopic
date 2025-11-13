@@ -1,0 +1,36 @@
+{
+    "topic_id": 326,
+    "question": "板卡的环温调速配置 - 网卡的环温调速要如何配置？目前只看见如下代码所示的，新增了一个CoolingArea关联了网卡的目标调速。只要ID确认，目标调速是可以根据槽位号区分开，从而保证不冲突。\n\"CoolingRequirement_1_2\": {\n      \"RequirementId\": 2,\n      \"Description\": \"进风口调速\",\n      \"MonitoringStatus\": \"<=/ThresholdSensor_PCIeInletTemp.Reading |> expr($1 >= 200 ? 1 : 0)\",\n      \"MonitoringValue\": \"<=/ThresholdSensor_PCIeInletTemp.Reading\",\n      \"FailedValue\": 80,\n      \"TargetTemperatureCelsius\": 60,\n      \"MaxAllowedTemperatureCelsius\": 65\n    },\n    \"CoolingArea_1_2\": {\n      \"AreaId\": 2,\n      \"RequirementIdx\": 2,\n      \"PolicyIdxGroup\": [],\n      \"FanIdxGroup\": [\n        1,\n        2,\n        3,\n        4\n      ]\n    },\n\n但是环温的PolicyIdx没有这个机制，似乎是全局唯一的，也不做偏移和根据槽位号区分。目前代码仓上已有的若干CoolingPolicy_PCIE，都不满足我们热设计的要求。我要如何新增一个环温，保证环温的ID不与已有的重复呢？\n14100513_00000001040302023953.sr\n    \"CoolingPolicy_PCIE_A_2\": {\n      \"PolicyIdx\": 29,\n      \"ActualCondVal\": \"<=/CoolingConfig_1.SmartCoolingMode\",\n      \"Hysteresis\": 1,\n      \"TemperatureRangeLow\": [\n        -127,\n        25,\n        30,\n        35,\n        40\n      ],\n      \"TemperatureRangeHigh\": [\n        25,\n        30,\n        35,\n        40,\n        127\n      ],\n      \"SpeedRangeLow\": [\n        35,\n        35,\n        50,\n        70,\n        100\n      ],\n      \"SpeedRangeHigh\": [\n        35,\n        35,\n        50,\n        70,\n        100\n      ],\n      \"FanType\": [\n        \"02314EWC 8080+\"\n      ],\n      \"HDDBackPlaneName\": [\n        \"BC83HBBA\",\n        \"BC83NHBN\",\n        \"BC83NHBC\",\n        \"BC83NHBB\",\n        \"BC83HBBH\"\n      ],\n      \"PCIeCardName\": [\n        \"SP333\",\n        \"LPE31002-AP\",\n        \"SF200T\",\n        \"Radeon Pro W6800\",\n        \"SF400HT-A\"\n      ]\n    },",
+    "topic_user_name": "kunlun_luzhanghui",
+    "best_answer_url": "/t/topic/326/4",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/326/2",
+            "text": "content: 若不能获取网卡温度值，则按照进风口曲线调速配置，配置方法如下：\n\n配置CoolingRequirement；（CoolingRequirement_1_6为进风口调速策略）\n配置CoolingPolicy调速曲线，可参考CoolingPolicy_PCIE_A_1；\nimage778×870 11.2 KB\n配置CoolingArea，将配置的CoolingPolicy中的PolicyIdx添加至PolicyIdxGroup中\nimage726×796 6.56 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/49e9a45f23af4289c98e40db577d315a002ac532.png, https://forum.openubmc.cn/uploads/default/original/1X/fd08e4205078ba1882481a2794c31697d06c934f.png"
+        },
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/326/3",
+            "text": "不能获取网卡温度值时，需要配置环温，没法配置CoolingRequirement吧；\n目前的问题就是配置网卡的CoolingPolicy，无法保证PolicyIdx不与已有的重复，因为代码没有做这个事情，而其他渠道如何维护的不太清楚；"
+        },
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/326/4",
+            "text": "沟通结论：\nCoolingPolicy需要统一配置在PSR内，通过PCIeCardName等属性关联生效条件，不单独配置在板卡内部，可以避免多个文件内配置的冲突。\n在同一个文件内部配置方便区分PolicyIdx是否重复，按需分配。后续会补充门禁以及拦截手段进行查重处理。"
+        },
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/326/5",
+            "text": "不能获取网卡温度的；在主板有一个环温调速，可以把网卡名放在那里；v2也有类似实现"
+        }
+    ]
+}

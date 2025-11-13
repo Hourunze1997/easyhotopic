@@ -1,0 +1,22 @@
+{
+    "topic_id": 1387,
+    "question": "【已评审】IPMI接口支持ACCycle - content: 背景\n客户有需求，需要在现网BMC版本的IPMI命令中支持 AC cycle 功能。\n差距： 目前 openUBMC 仅有资源协作接口支持 AC cycle 功能，无对应的IPMI命令支持。\n评审点\n整体方案：AC Cycle 由于操作影响面很大，因此属于受限提供功能。具体如下：\n\n需要 fructrl 组件资源协作接口提供AC功能使能接口，在使能的情况下才能执行 AC cycle 的IPMI命令\n需要 fructrl 组件注册和实现IPMI命令，实现 AC cycle 的功能；如果 fructrl 组件的 AC cycle 功能使能为 Disabled 状态（默认状态），则IPMI响应码返回 0xD5(Command not supported in present state)\n\n评审点1：fructrl 支持AC功能使能\npath： /bmc/kepler/Systems/:SystemId/FruCtrl\ninterface： bmc.kepler.Systems.FruCtrl\n新增属性：ACCycleEnabled\n\n项\n取值说明\n\n属性名称\nACCycleEnabled\n\n属性类型\nBoolean\n\n属性类型\nrw\n\n属性权限\nread：ReadOnlywrite：PowerMgmt\n\n属性持久化\n掉电持久化\n\n是否发送通知\nfalse\n\n属性来源\n由代码直接写值\n\n属性说明\nAC功能是否使能，默认为false，使能之后可以使用北向接口进行 AC cycle 操作\n\n其他说明\n设置之后需要记录操作日志，日志内容为：Set chassis AC cycle enabled\n\n评审点2：fructrl 支持IPMI命令执行 AC cycle 操作\nIPMI命令： ipmitool raw 0x00 0x02 {option}\n请求参数：\n\n字节顺序\n取值说明\n\n1\nNetFn，Chassis 00h，固定值\n\n2\nCmd，02h，固定值\n\n3\noption，机框控制的选项，取值有：[7:4] reserved[3:0] option，取值如下：  0h=power down  1h=power up  2h=power cycle(optional)  3h=hard reset  4h=pulse Diagnostic Interrupt(optional)  5h=Initiate a soft-shutdown os OS via ACPI(optional)  6h=graceful power cycle(extend, optional)  7h=AC cycle(extend, additional, optional)\n\n响应参数：\n\n字节顺序\n取值说明\n\n1\nCompletion Code\n\nNote: option 7h can be executed additionally while the AC cycle function is enabled. The completion code 0xD5(Command not supported in present state) while the AC cycle function is disabled\n使用实例\n\n请求：ipmitool raw 0x00 0x02 0x07\n响应：空\n\n评审结论\n通过，具体评审结论如下：\n\n同意在资源协作接口 bmc.kepler.Systems.FruCtrl 下新增属性 ACCycleEnabled，属性为可读写，权限为 read：ReadOnly; write：PowerMgmt；属性是掉电持久化，默认值为 false\n同意新增 ACCycle 的IPMI命令，NetFn 为 Chassis 00h， Cmd 为 02h，扩展对应的 option 为 07h，表征 AC Cycle 操作\nlinks: #p-3224-h-1, #p-3224-h-2, #p-3224-h-1fructrl-ac-3, #p-3224-h-2fructrl-ipmi-ac-cycle-4, #p-3224-h-5",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "/t/topic/1387/2",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1387/2",
+            "text": "content: pengqiang:\n\nACCycleEnabled\n\n评审问题：需要考虑支持 配置导入导出以及定制化项\n— 答复 pengqiang-gs\n已经增加新的议题：新增定制化项和配置导入导出项支持ACCycle的使能\nlinks: https://discuss.openubmc.cn/t/topic/1415"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1387/3",
+            "text": ""
+        }
+    ]
+}

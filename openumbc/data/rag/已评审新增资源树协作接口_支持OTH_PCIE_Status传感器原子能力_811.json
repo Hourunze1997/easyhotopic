@@ -1,0 +1,15 @@
+{
+    "topic_id": 811,
+    "question": "【已评审】新增资源树协作接口-支持OTH_PCIE_Status传感器原子能力 - content: SSUE链接：\n【修改描述】支持OTH_PCIE_Status传感器原子能力\n评审背景\n\n实现RAS事件可灵活配置、扩展和能力对外开放；满足IPMI、Redfish RAS相关规范；支持原始数据查询，支撑伙伴/客户实现自规划差异化特性。\n\n需求\n\n支持OTH_PCIE_Status传感器\n\n当前现状与差距/问题分析：\n\n现有PCIeRASCollector类负责PCIe设备RAS故障中断汇聚操作，提供已知PCIe设备故障汇聚上报能力；带内上报未知PCIe设备故障，即通过上报的SBDF无法匹配到PCIE设备时，该故障无相应类/属性承载，不能满足客户需求，需要新增UnknownPCIeRASCollector类去承载\n\n决策点\n\n新增UnknownPCIeRASCollector接口\n\n评审点\n\n新增UnknownPCIeRASCollector接口，承载带内上报未知PCIe设备故障中断汇聚类\n\n详细描述\n1、资源协作接口新增接口\n路径： /bmc/kepler/Systems/:SystemId/FDMDomain/PCIeRASCollector\n接口： bmc.kepler.Systems.FDMDomain.UnknownPCIeRASCollector\n变化类型：新增接口和属性\n应用场景：PCIe类型故障上报，但不能匹配到具体PCIE设备\n持久化类型： 不持久化\n操作权限： ReadOnly\n具体如下：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nCorrectableError\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\ntrue\nPCIe设备发生可纠正错误，取值: 0-未发生，1-发生，默认值0。PCIe设备发生故障触发属性置位。\n无\n\nCorrectableErrorStorm\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\ntrue\nPCIe设备发生可纠正错误风暴，取值: 0-未发生，1-发生，默认值0。PCIe设备发生故障触发属性置位。\n无\n\nUncorrectableError\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\ntrue\nPCIe设备发生不可纠正错误，取值: 0-未发生，1-发生，默认值0。PCIe设备发生故障触发属性置位。\n无\n\nFatalError\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\ntrue\nPCIe设备发生致命错误，取值: 0-未发生，1-发生，默认值0。PCIe设备发生故障触发属性置位。\n无\n\nParityError\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\ntrue\nPCIe设备发生奇偶校验错误，取值: 0-未发生，1-发生，默认值0。PCIe设备发生故障触发属性置位。\n无\n\nSystemError\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\ntrue\nPCIe设备发生系统错误，取值: 0-未发生，1-发生，默认值0。PCIe设备发生故障触发属性置位。\n无\n\nBandwidthReduction\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\ntrue\nPCIe设备发生降带宽事件，取值: 0-未发生，1-发生，默认值0。PCIe设备发生故障触发属性置位。\n无\n\nLinkSpeedReduced\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\ntrue\nPCIe设备发生降速率事件，取值: 0-未发生，1-发生，默认值0。PCIe设备发生故障触发属性置位。\n无\n\nDevSegment\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\nfalse\nPCIe设备的root port Segment，默认值：255。随错误上报赋值。\n无\n\nDevBus\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\nfalse\nPCIe设备的root port Bus，默认值：255。随错误上报赋值。\n无\n\nDevDevice\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\nfalse\nPCIe设备的root port Device，默认值：255。随错误上报赋值。\n无\n\nDevFunction\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\nfalse\nPCIe设备的root port Function，默认值：255。随错误上报赋值。\n无\n\n评审结论\n同意新增资源协作接口\n路径： /bmc/kepler/Systems/:SystemId/FDMDomain/PCIeRASCollector\n接口： bmc.kepler.Systems.FDMDomain.UnknownPCIeRASCollector\n变化类型：新增接口和属性\n应用场景：PCIe类型故障上报，但不能匹配到具体PCIE设备\n持久化类型： 不持久化\n操作权限： ReadOnly\n遗留问题\n一、3秒自动恢复机制可能会丢事件，需要和Event组件讨论可靠性方案\n结论： 属性恢复方案修改\n恢复方案：某次故障事件发生时，先恢复属性（恢复上一次故障），延时后再置位\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/46, #p-1676-h-1, #p-1676-h-2, #p-1676-h-3, #p-1676-h-4, #p-1676-h-5, #p-1676-h-6, #p-1676-h-1-7, #p-1676-h-8, #p-1676-h-9",
+    "topic_user_name": "Huangrenjie Wtss6",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/811/2",
+            "text": ""
+        }
+    ]
+}

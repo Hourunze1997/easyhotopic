@@ -1,0 +1,36 @@
+{
+    "topic_id": 625,
+    "question": "社区版本openUBMC博通BCM957414A4142CC网卡加载异常 - 【问题现象】环境上已正确连接该网卡，但在web 网络适配器及PCIE卡界面均未见该网卡信息\n查看日志，BIOS上报BDF信息正常，对应Connector在位状态为1，日志提示未找到sr文件，但文件名看起来未正确拼接，缺少Bom编码\n2025-04-23 05:01:55.342553 hwdiscovery ERROR: hwcomponent.lua(146): position: 0101010903, get component sr failed, error: Local file not found, open file failed: /opt/bmc/sr/14e416d7_14e41402.sr, status: 4, count: 1\n2025-04-23 05:01:55.344309 hwdiscovery ERROR: hwcomponent.lua(146): position: 0101010903, get component sr failed, error: Local file not found, open file failed: /opt/bmc/sr/14e416d7_14e41402.sr, status: 4, count: 2\n\nConnector信息\nConnector_PCIE_SLOT3_01010109:\n.AuxId                 : \"14e41402\"\n.Bom                   : \"14140130\"\n.Buses                 : [\"I2cMux_Pca9545_PCA9545_3_01010109\"]\n.ChassisId             : \"\"\n.GroupId               : 66\n.GroupPosition         : \"0101010903\"\n.Id                    : \"14e416d7\"\n.IdentifyMode          : 2\n.LoadStatus            : 4\n.ManagerId             : \"1\"\n.Presence              : 1\n.SilkText              : \"RiserCard2\"\n.Slot                  : 6\n.SystemId              : 1\n.Type                  : \"PCIe\"",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "/t/topic/625/4",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/625/2",
+            "text": "这张卡的路径应该是/opt/bmc/sr/14140130_14e416d7_14e41402才能正常加载的。\n理论上不应该有不拼接的情况，看看对应的连接器有没有异常打印。"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/625/3",
+            "text": "content: framework.log (1.1 MB)\n没有检索到有异常的\nlinks: /uploads/short-url/6CqHxX8XqpyQQGfuaRMK0xNyGcG.log"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/625/4",
+            "text": "此处加载csr逻辑为先尝试寻找带Bom字段的名称，未找到的话再找不带Bom字段的，最后报错报的是不带Bom字段的名称；先检查一下拼接Bom字段的sr是否存在"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/625/5",
+            "text": "使用openUBMC出包时确实没有包含这张卡的sr，感谢解答"
+        }
+    ]
+}

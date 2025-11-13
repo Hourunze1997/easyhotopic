@@ -1,0 +1,15 @@
+{
+    "topic_id": 317,
+    "question": "调速配置求助 - 【问题背景】新增一张OCP卡的调速策略，不知道RequirementId、CoolingPolicy的PolicyIdx如何配置能确保值不重复，功能正常。\nV3的调速配置主要有三个类，配置目标调速的CoolingRequirement、CoolingArea和环温调速的CoolingPolicy，但是不太理解为什么设计成这样。\nCoolingRequirement的RequirementId、CoolingPolicy的PolicyIdx，分别与CoolingArea的RequirementIdx和PolicyIdxGroup关联。如果没有配置CoolingArea，目前实测目标调速会不生效，环温还没有测试。\n但是这几个ID的重复是不可控的，这几个调速的ID如此重要，配置重复就会导致调速策略不生效出现问题。但是V3又有大量的SR保存在硬件上，也有对应的调速配置，这种通过人为跟踪的ID不重复就完全不可控了，如何分配设计ID，能保证新增的ID与所有现网存量不冲突？尤其是版本变动较小，仅仅新增适配板卡的时候，最容易出现这种问题。\n想了解下目前这部分是怎么处理的，新增调速策略的话，ID又该如何确定。",
+    "topic_user_name": "kunlun_luzhanghui",
+    "best_answer_url": "/t/topic/317/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/317/2",
+            "text": "1、已有的场景会有个表格在跟踪各ID的分配确保不冲突\n2、后续新增温度点上SIG-hardware组评审"
+        }
+    ]
+}

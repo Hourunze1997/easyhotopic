@@ -1,0 +1,15 @@
+{
+    "topic_id": 312,
+    "question": "咨询私有类的使用方式 - model.json下定义了一个类，不需要挂到bus上，主要用类结构化数据，通过实例化对象 给对象赋值 然后将赋值后的对象扔出去\n{\n    \"ModuleInfo\": {\n        \"properties\" : {\n            \"CompletionCode\": {\n                \"baseType\": \"U8\"\n            },\n            \"ItemCount\": {\n                \"baseType\": \"U8\"\n            },\n            \"SubPacketField\": {\n                \"baseType\": \"U8\"\n            },\n            \"ItemInfoCollection\": {\n                \"baseType\": \"Array\",\n                \"items\": {\n                    \"baseType\": \"Struct\",\n                    \"$ref\": \"types.json#/defs/ModuleItemInfo\"\n                }\n            }\n        }\n    }\n}\n\n在src下的 _app.lua中，用的时候 是直接引用model吗？\nself.my_mds_model = self:CreateMyMDSModel(1, function(object)      -- 创建一个mds对象实例\n        object.ObjectName = \"MyMDSModel_1\"                             -- 在回调函数中进行对象的属性赋值\n        object.WelcomeMessage = \"Hello OpenUBMC!\"\n        object.SecretNumber = 330\n    end)\n\n这边文档中自动生成的代码中gen下面有CreateMyMDSModel方法可以取到对象实例，但是没有bus的path的时候 不生成这个方法\n还需要间接通过引用server.lua还是直接引用model.lua来使用\n或者说 上面定义的私有类  怎么在_app.lua中实例化  赋值 这些操作",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/312/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/312/2",
+            "text": "这是一个问题，短期内会处理"
+        }
+    ]
+}

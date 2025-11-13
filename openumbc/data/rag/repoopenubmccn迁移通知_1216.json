@@ -1,0 +1,15 @@
+{
+    "topic_id": 1216,
+    "question": "《 repo.openubmc.cn迁移通知》 - repo.openubmc.cn链接会在今晚十点至十二点（6月3号22:00-24:00）进行文件迁移，请勿在此时间段访问此链接。\n此次迁移对该链接的的内容和访问权限无影响。",
+    "topic_user_name": "特别的名字_wangningbo",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "特别的名字_wangningbo",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1216/2",
+            "text": "文件迁移已完成，此链接可继续访问，内容无变化"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "topic_id": 1935,
+    "question": "【iTestSmart】snmp设置SysContact信息测试，测试后原始信息未恢复。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\n二、问题描述\nOpenUBMC->融合运维->snmp设置SysContact信息测试，测试后”联系人“原始信息未恢复。\n联系人没有恢复1732×1197 126 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/2eec6b076379212a1f0e1c4ac00513a274f70d67.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": []
+}

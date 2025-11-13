@@ -1,0 +1,22 @@
+{
+    "topic_id": 586,
+    "question": "【已评审】cli命令SDI卡(PCIe)新增CPLD版本号属性 - content: ISSUE链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景（必填，文字描述议题背景，如需求来源、问题场景）\nSDI卡是特殊的PCIe卡，内置的有个CPLD，该CPLD在web和redfish接口上都有承载的地方，但是cli命令查询结果里面没有CPLD版本号。\n决策点（必填，一句话描述待决策点）\n在ipmcget -d v的回显中，SDI卡对应的PCIe Card INFO下新增CPLD信息的展示\n整体架构/方案（可选，文字/图描述接口设计背后的整体管理架构/方案）\n如果PCIe卡是SDI卡这种的特殊卡，则在PCB和CSR版本号之间增加CPLD Version的展示\nimage1612×553 21.5 KB\nimage774×167 36.7 KB\n评审结论\n决策点1：是否同意在PCIe Card INFO下增加CPLD Version的展示\n评审结论：同意\n结论详情：\n1、如果PCIe设备只有一个CPLD的时候显示格式为：“PCIe2 CPLD Version: xxx”\n2、如果PCIe设备有多个CPLD版本的时候依次显示为：“PCIe2 CPLD1 Version: xxx”、“PCIe2 CPLD2 Version: xxx”…\n3、如果获取CPLD版本失败，字段显示为N/A\n4、类似CSRVersion、ProductName这种人造词汇中间需要加空格，形成规则\nlinks: #p-1154-issue-1, https://gitcode.com/openUBMC/rackmount/issues/25, https://gitcode.com/openUBMC/rackmount/issues/25, #p-1154-h-2, #p-1154-h-3, #p-1154-h-4, https://forum.openubmc.cn/uploads/default/original/1X/98e4ebdb959cb158401c97317f4994de164555cb.png, https://forum.openubmc.cn/uploads/default/original/1X/a2b037305df040344e6dfba1c3b67ddbaed43650.png, #p-1154-h-5",
+    "topic_user_name": "I Bmc 001 843rs",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/586/2",
+            "text": "请在社区代码托管仓创建issue并关联，不要使用企业内部的IT系统链接"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/586/3",
+            "text": ""
+        }
+    ]
+}

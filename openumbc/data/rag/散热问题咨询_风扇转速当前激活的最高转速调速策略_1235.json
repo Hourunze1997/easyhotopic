@@ -1,0 +1,36 @@
+{
+    "topic_id": 1235,
+    "question": "散热问题咨询--风扇转速、当前激活的最高转速调速策略 - 一个服务器环境，在bmc里是配有大量调速策略的；此时如何确定当前风扇转速是由受哪一个调速策略影响的呢？\n找到一个貌似有点像的bmc.kepler.Systems.FanSnapshot\tGetActivatedPolicyFactors方法参数为填写0；返回的结果为 true 1 80 “CPU1_Temp”; 80为转速； CPU1_Temp为sensor name；再往下推感觉也不是很直观\n\n对于风扇转速；web显示75，看接口计算（假设只有后转子）RearSpeed * Coefficient * 100 // RearMaxSpeed; 但是问题1里的80应该是 HardwarePWM / MaxSupportPWM  204/255=80; 所以一个是速率比一个是占空比是吧；对于调速策略来说，例如环温调速，里面的那个速度区间每一个值指的是速率比还是占空比呢?",
+    "topic_user_name": "Iss Tanghaibin",
+    "best_answer_url": "/t/topic/1235/5",
+    "reply_posts": [
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1235/3",
+            "text": "问题1问的是一个服务器环境，在bmc里是配有大量调速策略的；此时如何确定当前风扇转速是由受哪一个调速策略影响的呢？其次这里的80是占空比，而非速率比\n你解释的不清晰；到底是速率比还是占空比？对于环温调速下发的是速率比还是占空比？"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1235/4",
+            "text": "1.一键收集中LogDump下有cooling_control.log文件中，记录了当前生效的温度点id或区间调速id；这个SensorName是每个温度点都会关联一个温度来源的SensorName，根据SensorName去反推温度点对象确实不太方便，不过也能大致定位到，根据传感器名找到传感器对象，再根据对象的position找到对应的温度点所在的sr，在sr中搜下应该就能找到"
+        },
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1235/5",
+            "text": "content: 一键收集日志里 LogDump/cooling_control.log 日志\nimage554×220 65.5 KB\nDevID:0x404, Type:0—404就是风扇4的意思，非重点\nReqId:255 关联CoolingRequirement目标调速的ReqiuirementId\nT:-127 目标调速的当前温度值\nTarT:-127, 目标调速的目标值\nTarPWM:51 目标调速影响风扇转速的pwm\nEnvTNum:3 环温调速生效的数量\nEnvReqId:6 CoolingArea.AreaId 然后其PolicyIdxGroup就是关联的环温调速策略\nEnvT:19 环境温度\nEnvPWM:102 环温调速影响风扇转速的pwm\nPIDPWM:102 当前环境实际的pwm\n速率比非占空比\nWeb的转速百分比是风扇转子的转速百分比；这里的pwm是硬件占空比；两者是有一定的差别的\nimage554×210 31.7 KB\n当前速率比为 34%\nimage387×464 96.6 KB\n5120/15000 = 34% 速率比\n102 / 255 = 40 % 占空比\n查看当前影响最大的调速策略因子\nSsh登录bmc；发送\nbusctl --user call bmc.kepler.thermal_mgmt /bmc/kepler/Systems/1/AirCoolingConfig bmc.kepler.Systems.FanSnapshot GetActivatedPolicyFactors a{ss} 0\n\n如图所示显示现在占空比为40%；受进风口温度影响\n从LogDump/cooling_control.log知道当前主控的是环温调速，且调速域id为6\nlsobj CoolingArea\n找到调速域id为6的\nimage554×220 56.1 KB\n从PolicyIdxGroup来看；此调速域关联的调速策略很多；但从EnvTNum:3 来看；生效的只有3个\nimage322×405 136 KB\n环温调速可以看isValid来看是否生效\nimage554×290 104 KB\n所以当前环境起决定性作用的是这个环温调速策略；-127到30之间（当前是16°）风扇占空比为40%；与实际吻合\nlinks: #p-2814-logdumpcooling_controllog-1, https://discuss.openubmc.cn/uploads/default/original/2X/e/ecb86d3ff2ebfc64986d5b7c19134ddfca0b88a4.jpeg, #p-2814-h-2, https://discuss.openubmc.cn/uploads/default/original/2X/6/607c777a98669f5117cf871f4bee8b9c227fa5bc.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/6eae5ae53968790bb4d1d7805eefce627877f66a.png, #p-2814-h-3, https://discuss.openubmc.cn/uploads/default/original/2X/4/426f2b8ca39b97e168a3664875074c49cc4cccf3.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/026b56526ba50ddf0190fbb5eea22b09c60ae887.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/e97041f6a4235947116ec4c5f52519b02d995a68.png"
+        },
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1235/6",
+            "text": "环温调速下发的占空比而非速率比"
+        }
+    ]
+}

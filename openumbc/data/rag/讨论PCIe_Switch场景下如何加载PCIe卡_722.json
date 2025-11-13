@@ -1,0 +1,29 @@
+{
+    "topic_id": 722,
+    "question": "【讨论】PCIe Switch场景下如何加载PCIe卡 - content: 当前的加载方式：\n幻灯片11280×720 84.2 KB\n一些设想：\npcie switch1280×720 60.5 KB\n关于PCIe Switch场景下的一些其他交流结论：\n1、芯片温度如果需要通过复杂协议才能获取，可以放在general_hardware组件实现。或者由CPLD完成，BMC做简单读取\n2、PCIe Switch板比较接近IEU，可以放在general_hardware\n3、PCIe Switch芯片的flash升级也可以放在general_hardware\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/6fdd5d2ab396d3ac3b8c00d5ec786debd9d9843a.jpeg, https://discuss.openubmc.cn/uploads/default/original/1X/9a4e2c8abbacf676794a9f184fda691d8c5703cb.png",
+    "topic_user_name": "Yelvsub",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/722/2",
+            "text": "有几个疑问，请教一下\n\n        \"UnitConfiguration_IEU1\": {\n            \"SlotType\": \"IEU\",\n            \"SlotNumber\": 1,\n            \"SlotSilkText\": \"IEUSlot1\",\n            \"Configurations\": [\n                {\n                    \"UID\": \"343437351\",\n                    \"Index\": 1,\n                    \"SrcPortName\": [\n                        \"A3a\",\n                        \"A3c\"\n                    ],\n                    \"TargetPortID\": [\n                        49,\n                        50\n                    ],\n                    \"Slot\": [\n                        2,\n                        3\n                    ],\n                    \"Device\": []\n                },\n\n1.如上代码块，UnitConfiguration对象中的SrcPortName、TargetPortID、Slot属性如何确定？找谁可以获取。\n        \"BusinessConnector_CPU1UBCDD1\": {\n            \"Direction\": \"Downstream\",\n            \"BCUIndex\": \"${Slot}\",\n            \"Slot\": 3,\n            \"LinkWidth\": \"X16\",\n            \"MaxLinkRate\": \"PCIe 4.0\",\n            \"ConnectorType\": \"UBCDD\",\n            \"SilkText\": \"CPU1 UBCDD1\",\n            \"UpstreamResources\": [\n                {\n                    \"Name\": \"SerDes_0_8\",\n                    \"ID\": 8,\n                    \"Offset\": 0,\n                    \"Width\": 8\n                },\n                {\n                    \"Name\": \"SerDes_0_7\",\n                    \"ID\": 7,\n                    \"Offset\": 0,\n                    \"Width\": 4\n                },\n                {\n                    \"Name\": \"SerDes_0_10\",\n                    \"ID\": 10,\n                    \"Offset\": 0,\n                    \"Width\": 4\n                }\n            ],\n            \"ActualResourceOrder\": [\n                \"SerDes_0_10\",\n                \"SerDes_0_7\",\n                \"SerDes_0_8\"\n            ],\n            \"Ports\": [\n                {\n                    \"Name\": \"A3a\",\n                    \"ID\": 9,\n                    \"Offset\": 0,\n                    \"Width\": 8\n                },\n                {\n                    \"Name\": \"A3c\",\n                    \"ID\": 11,\n                    \"Offset\": 8,\n                    \"Width\": 8\n                }\n            ],\n            \"Port1LinkInfo\": \"\",\n            \"Port2LinkInfo\": \"\"\n        },\n\n2.如上代码块，UnitConfiguration对象的srcportname和slot属性是否要和BCU中BusinessConnector对象的Name、ID属性对应？文档说是需要对应的，但是实际上默认的配置并没有对应上。\n\"SerDes_1_10\": {\n    \"Name\": \"SerDes_1_10\",\n    \"ID\": 10,\n    \"SocketID\": 1,\n    \"LinkWidth\": 4,\n    \"WorkMode\": 1,\n    \"ModeConfigs\": [\n        {\n            \"Mode\": 1,\n            \"Device\": [14,14,15,15],  \n            \"ControllerIndex\": [1,1,1,1]\n        }\n    ]\n}\n\n3.如上代码块，为什么能够确认portid为14，而不是15？如何根据portid，SocketId计算rootbdf？在文档中，“对于以上的案例，可知socketId和portId分别为1和14，随后可以在root_bdf表中查询对应的RootBDF。最终找到对应的RootBDF为[0xAA, 0x2, 0]。”不知道这是如何计算得到0xaa,0x2,0x0的。"
+        },
+        {
+            "user_name": "王祝炜",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/722/3",
+            "text": "content: wuzhou-xiaokaili:\n\nSrcPortName、TargetPortID、Slot属性\n\n1、跟基础板SMC命令字对应，在代码里用来比对读取到的高速线缆信息。\nimage1879×205 30.7 KB\nSrcPortName：当前上报的拓扑发现信息对应的Area端口号\nTargetPortID：组件端口信息，用于BMC判断线缆是否插错\nSlot：全局的槽位号\n这些信息都是找硬件板主获取。硬件规划接线方式，再在PSR里配置线缆白名单。\n2、UnitConfiguration对象的SrcPortName和BCU里BusinessConnector对象Port的Name对应，比如SrcPortName的A3a，就会找到BusinessConnector_CPU1UBCDD1的A3a（宽度是x8），对应SerDes_0_10（宽度是x4）和SerDes_0_7（宽度是x4）\n3、portid为14是因为取匹配到的SerDes里最小的值作为portid。 socketId 和portId和RootBDF的对应关系是一个table，默认是在代码里override_root_bdf对象里，或者配置在PSR的BDFConfig对象里。数据来源是带内bios的同事bus号分配规划的。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/741577c394b1a1dffedfcabe072cac2b58322143.png"
+        },
+        {
+            "user_name": "system",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/722/4",
+            "text": "由于大量社区举报，此话题被临时关闭至少 4 小时。"
+        }
+    ]
+}

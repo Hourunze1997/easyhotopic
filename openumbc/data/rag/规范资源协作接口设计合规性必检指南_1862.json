@@ -1,0 +1,22 @@
+{
+    "topic_id": 1862,
+    "question": "【规范】资源协作接口设计合规性必检指南 - content: 背景\n本文档为社区开发者提供资源协作接口的标准化设计规范，确保接口的可维护性、安全性与协作效率。\n合规审计条目\n\n属性采用大驼峰命名，其中基本属性采用名词或形容词+名词（如DiskSize、ActiveStatus），布尔属性采用Is/Has+形容词或名词（如 IsActive、HasPermission），特殊属性要求：\n\n属性类型\n命名规则\n示例\n\n状态属性\n名词+ Status\nCommunicationStatus\n\n标识符\nId 后缀\nResourceId\n\n集合类属性\n复数名词\nConnectedDevices\n\n使能状态\n必须使用Enabled，禁止使用Enable\nServiceEnabled\n\n属性命名禁止使用Info等模糊词汇，必须采用领域精准术语替代，常见替代方案：\n\n场景\n推荐命名\n反例\n\n基础信息\nUserDetails\nUserInfo\n\n配置参数\nConfiguration\nConfigInfo\n\n元数据\nFileMetadata\nFileInfo\n\n度量数据\nThermalMetrics\nThermalInfo\n\n状态扩展\nRuntimeStatus/RuntimeContext\nRuntimeInfo\n\n当属性值包含物理量单位或特殊语义时，必须在属性名称后缀明确标注单位标识符，禁止无量纲属性（如状态码、比率值）和枚举型属性（如HealthStatus）添加单位后缀。常见单位属性示例：\n\n单位名称\n标准后缀\n示例属性\n\n瓦特\nWatts\nPowerWatts\n\n伏特\nVolts\nReadingVolts\n\n电量\nkWh\nEnergykWh\n\n摄氏度\nCelsius\nTemperatureCelsius\n\n每秒转速\nRPM\nRotationSpeedRPM\n\n带宽\nMbps、Gbps\nPortSpeedMbps、LinkSpeedGbps\n\nCPU速度\nMHz\nProcessorSpeedMHz\n\n毫秒\nMilliseconds\nSensorPollingIntervalMilliseconds\n\n秒\nSeconds\nKeepaliveIntervalSeconds\n\n分钟\nMinutes\nHeartbeatIntervalMinutes\n\n小时\nHours\nPowerOnHours\n\n天\nDays\nPasswordExpirationDays\n\n周\nWeeks\nBackupIntervalWeeks\n\n月\nMonths\nBillingCycleMonths\n\n年\nYears\nWarrantyYears\n\n位\nbit\nTransferInhibit\n\n字节\nBytes\nMemoryBytes\n\nKibibyte\nKiB\nFreeStorageSpaceKiB\n\nMebibyte\nMiB\nMemorySizeMiB\n\nGibibyte\nGiB\nTotalSystemMemoryGiB\n\nTebibyte\nTiB\nTotalCapacityTiB\n\n百分比\nPercent\nPowerLoadPercent\n\n计数\nCount\nProcessorCount\n\n资源状态\nState\nPowerState\n\n当属性存在预定义枚举值时，应优先使用字符串枚举（历史兼容与性能敏感场景除外），并在enum字段中显式声明取值范围（持久化场景例外）。枚举值类型必须与属性类型严格匹配，且禁止删除已发布的枚举值。\n属性的emitsChangedSignal字段定义规范：\n\n取值\n含义\n适用场景\n\n\"true\"\n属性值变化时自动发送PropertiesChanged信号\n1. 触发Redfish的StatusChange事件所关联的资源协作接口属性，对应Redfish规范中Status对象下的以下字段：Conditions，Health，HealthRollup，State，Oem 2. 触发Redfish的ResourceChanged事件所关联的资源协作接口属性（网管关注）  3. 组件订阅属性变更  4. CSR中被同步（<=/）的属性\n\n\"false\"\n不自动发送属性变更信号，需开发者手动触发\n1. 需要精确控制信号时序，避免无效通知干扰总线  2. 高频易变属性，避免信息风暴\n\n\"const\"\n属性为常量，值永不改变，无需发送变更信号\n只读软件或硬件信息（如设备固件版本号、固定序列号）\n\n\"invalidates\"\n属性变化时仅发送信号但不携带新值\n接收方收到信号即可，不关注具体变更内容，比如只记录时间戳，完全不读数据\n\n属性的description字段为必填，描述属性在业务或系统中的核心作用，禁止使用\"相关\"、\"等\"等模糊术语。\n属性的example字段为可选描述性字段，用于说明属性值的合法格式或典型取值，基础类型（string/number/boolean）无特殊格式要求时无须添加example，枚举型属性必须通过enum字段定义取值范围，禁止使用example替代，符合要求的格式样例：\n\n数据类型\n示例\n\n十六进制数值\n\"0x1A3F\"\n\n日期时间\n\"2025-07-18T14:30:00Z\"\n\n正则约束\n\"/^[A-Z]{3}-\\\\d{4}$/\"\n\n属性的constraint为可选字段，用于声明以下核心约束关系：\n\n互斥关系： 多个属性不可同时存在或赋值（如PowerState与StandbyMode）\n依赖关系： 属性存在性或取值依赖其他属性（如GPUEnabled依赖PCIE3.0Support）\n唯一性要求：属性值需全局唯一标识实体（如SerialNumber）\n兼容性要求： 需满足外部系统/协议/硬件的交互规则（如FileFormat需兼容FAT32/NTFS）\n\n所有方法的错误返回优先通过错误引擎统一处理，禁止在方法响应体中自定义error_id或其他冗余错误标识字段。（例外情况额外审视）\n在资源协作接口中，涉及创建资源的方法时，其响应消息体必须包含唯一标识字段（如Id），且该标识在资源的整个生命周期内禁止修改。\n新增类型资源时，应直接继承标准接口定义（如板卡类资源必须复用bmc.kepler.Systems.Board接口），禁止重复定义语义相同的接口。\nlinks: #p-4532-h-1, #p-4532-h-2",
+    "topic_user_name": "Data Sculptor",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1862/2",
+            "text": ""
+        },
+        {
+            "user_name": "Lllliiii",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1862/3",
+            "text": "赞。。"
+        }
+    ]
+}

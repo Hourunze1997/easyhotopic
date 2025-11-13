@@ -1,0 +1,78 @@
+{
+    "topic_id": 688,
+    "question": "双CPLD硬盘背板疑问 - content: 当前我们在开发前后硬盘背板。由于硬盘较多，两种硬盘背板上均有两个CPLD。在CPLD挂在I2C上操作上有几个疑问。\n\n前背板与拓展板通过I2C链接，其中主CPLD挂在I2C上，另外一个CPLD2链接在主CPLD上，如图1所示。这种链接方式在openUBMC上是否支持？部分硬盘由CPLD2控制时，能否通过透传方式将信息从主CPLD传送到CPLD2中？\n\n方案一708×340 4.84 KB\n图1\n\n如果主CPLD与CPLD2都挂在I2C上，如图2所属，这种情况下openUBMC是否支持分开控制？如果控制由CPLD2控制的硬盘，是否可以直接操作？\n\n方案二872×414 6.39 KB\n图 2\n\nCPLD升级问题。两个CPLD都挂在同一个JTAG上，这种情况下能否单独升级两个CPLD中的一个？\n\nCSR加载问题。目前看到CSR文件命名规则为BOM_UID.sr。请问BOM是根据板卡类型来确定的吗？BOM，UID设置规则或者要求是什么？\n\nCSR加载时，如何确定使用的时能够SR文件了？是根据什么来确定使用具体哪一个SR文件的？以soft.sr结尾的SR文件有什么作用？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/5a39c9c261e055bea143e2a2bc11cf7c5bd5d4b0.png, https://discuss.openubmc.cn/uploads/default/original/1X/4353639ee5ea9952f63ab95e367d07a499954260.png",
+    "topic_user_name": "dh_qiuming",
+    "best_answer_url": "/t/topic/688/2",
+    "reply_posts": [
+        {
+            "user_name": "Changxing Open Ubmc",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/688/2",
+            "text": "content: 问题1：\n\n如图一所示，主CPLD挂在I2C上，BMC硬件代理看到就是一个挂在I2C下面的从设备（单个SMC芯片），硬盘的管理通过SMC命令字发到主CPLD，如果要发命令字给CPLD2，我理解要主CPLD做区分；\n如图二所示，主CPLD与CPLD2都挂在I2C上，BMC硬件代理看到就是两个挂在I2C下面的从设备（两个SMC芯片），给不同的CPLD发命令字，可以通过不同的地址区分；\n\n问题2：\n\n可以单独升级其中的一个，通过chip index区分，可以代码看看CPLD热升级\n\n问题3：\n\n【下级组件的BOM ID】仅作为标识\n【单板UID】vendor（00000001）+单板类型（02）+单板编码（xxxxxxxxxx）\n\n问题4： CSR加载\n加载顺序和关联方式\nroot.sr → EXU → BCU/SEU/CLU/PSR → IEU → PCIe\n每两份SR之间一定以 Connector 相关联，故一定可以在上一级的SR中找到其连接器。\nConnector\n加载方式1 : 读取eeprom加载 (需要符合华为天池规范)\n加载方式2：预置csr加载\n\"Connector_EXU_1\": {\n  \"Bom\": \"14100513\", -\n  \"Slot\": 1, // 槽位\n  \"Position\": 1,\n  \"Presence\": 1, // 在位信号，通常关联在位寄存器\n  \"Id\": \"EXU\",\n  \"AuxId\": \"0\",\n  \"Buses\": [],\n  \"SystemId\": 1,\n  \"ManagerId\": \"1\",\n  \"ChassisId\": \"1\",\n  \"SilkText\": \"\",\n  \"IdentifyMode\": 2,\n  \"Type\": \"ExpandBoard\"\n},\n\n找下一级 Bom_Id_AuxId： 14100513_EXU_0.sr\n“IdentifyMode”: 与加载方式相关，3 - - 采用天池方式（读取eeprom），2 – 预置csr加载（拼接文件名）方式加载\nsoft.sr表示存放软件相关的配置，最终使用是soft.sr+.sr合并之后数据\nlinks: #p-1493-h-1, #p-1493-connector-2, #p-1493-softsrsoftsrsr-3"
+        },
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/688/3",
+            "text": "使用图1的方式进行升级CPLD，但是对BMC而言只是看到一个从设备，这种情况下也可以升级？"
+        },
+        {
+            "user_name": "Changxing Open Ubmc",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/688/4",
+            "text": "当前暂不支持，后续会规划，升级前设置透传开启，通过主CPLD将升级数据发到从CPLD"
+        },
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/688/5",
+            "text": "I2C使用图二的的方式进行链接，JTAG将两个CPLD串联。这种情况下升级是否可行？"
+        },
+        {
+            "user_name": "Changxing Open Ubmc",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/688/6",
+            "text": "可以升级，当前BCU板上面的两个CPLD都是同一个JTAG"
+        },
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/688/7",
+            "text": "图1的链接方式是I2C,但是图1、图2的JTAG链接方式都是一样的。是不是说BMC硬件代理没有找到CPLD2，JTAG就算是联通的也没办法升级。是这个意思吗？"
+        },
+        {
+            "user_name": "Changxing Open Ubmc",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/688/8",
+            "text": "当前只能升级主CPLD，从CPLD升级当前不支持"
+        },
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/688/9",
+            "text": "明白了。感谢解答"
+        },
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/688/10",
+            "text": "关于CSR加载，我还是有一些疑问。有些 Connector的AuxID与ID是空的。这种情况下，是如何确定下一级的sr文件了"
+        },
+        {
+            "user_name": "Changxing Open Ubmc",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/688/11",
+            "text": "content: 1、与Connector里面配置的“IdentifyMode”相关;\n2、IdentifyMode = 3就是直接从eeprom读取uid;\n3、IdentifyMode = 2是会通过bios上报的bdf信息去查询网卡的4元组，然后通过VID+DID组合为id，SVID+SDID组合为auxid，可以看看非天池组件加载方式\nlinks: https://discuss.openubmc.cn/t/topic/610"
+        }
+    ]
+}

@@ -1,0 +1,71 @@
+{
+    "topic_id": 173,
+    "question": "最新 source 包烧录异常问题 - content: 我们目前在编译构建过程中遇到了一些问题，如果需要完整日志，我们可以邮件提供\n在实际操作过程中，我们发现以下问题：\n1. 旧版本测试情况\n●使用 12 月 31 号的 commit 对应的 source 包，可以成功构建、烧录，并正常运行。\n● 烧录不需要过渡包，可以直接升级并启动正常。\n2. 最新上游 commit source 包问题\n●构建、烧录均可完成，但烧录后系统启动异常：\n○设备显示加载完成，升级成功，但串口持续出现部分报错，例如：\n■ [certificate_mgmt] StartupCheck failed ....check count:2,3,4\n○ BMC 无法正常启动，大约 15-20 分钟后自动回滚至升级前的版本。\n● 烧录不需要过渡包，但新版本仍然无法正常启动。\n3. 过渡包及固件更新问题\n●目前我们可以稳定重复更新 12 月 31 号版本的 source 包，且无需过渡包（这一点有些疑问，希望确认下是否符合预期？）。\n● 过渡包升级时报错“升级无效”。\n● 更新华为白牌固件时同样提示“升级无效”。\n○ 回退时出现异常，无法正常回退，目前 backup 和当前 image 为 12 月 31 号版本的 source 固件，已经没有过渡包版本和华为白牌时候的版本了。\n● 使用最新 commit source 包升级也不需要过渡包，但尽管显示“升级成功”，新固件仍无法正常加载。\n麻烦帮忙分析下这些问题，非常感谢！\nimage1186×604 39.8 KB\n以下是烧录成功的所用所有代码仓库，我们git pull最新的commit后各个组件能构建成功，但是不能成功烧录\nimage512×526 11 KB\nlinks: #p-236-h-1-1, #p-236-h-2-commit-source-2, #p-236-h-3-3, https://forum.openubmc.cn/uploads/default/original/1X/9601a5dea232d3d8f81da08f4e84893652b5db0e.png, https://forum.openubmc.cn/uploads/default/original/1X/679313a700411a077bcda57440b185073649994e.png",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/173/8",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/173/2",
+            "text": "content: @lwj\nlinks: /u/lwj"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/173/3",
+            "text": "我理解烧录是指bmc的升级功能，过渡包是指不同签名包之间切换。\n问题：过渡包的使用。\n解答：过渡包只需要在需要切换签名时执行一次，不需要每次都升级过渡包。\n问题：升级过渡包和白牌包时报“升级失效”\n解答：请查看环境上的运行日志，确保升级失效的原因。猜测是升级了不匹配根证书签名的hpm包，例如在伙伴签名的环境上升级华为签名的hpm包会报错。"
+        },
+        {
+            "user_name": "李文杰",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/173/4",
+            "text": "过渡包的作用可以参考@xuhaijun的回复\n一般是某个环境，已经运行了A厂商签名的固件（如华为），需要通过hpm包升级到B厂商签名的固件，需要使用过渡包\n\n出现升级无效的情况，需要参考app.log中，是否存在升级校验的信息，提示校验失败（或其他问题）\n出现这种情况的原因，大概率是当前环境上运行的固件由A签名，但是HPM包本身由B签名的情况。\n解决策略是需要将B签名的HPM固件重新签名变为A签名的固件\n\n提示升级成功，但是无法启动，或者依旧使用升级前的分区启动\n这种场景需要排查m3_log日志，可能是因为升级HPM校验正常，但是安全启动已开启，导致安全启动校验失败\n\n[certificate_mgmt] StartupCheck failed的问题，请提供一下日志\n主要的日志需要参考app.log、framwork.log"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/173/5",
+            "text": "你好，麻烦提供一下所使用的hica组件仓的commit节点信息。我们在6天前刷新了hica仓的配置，不知道这次的构建有没有带上"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/173/7",
+            "text": "老版本能烧录进去的commit和组件数量都是如最后一张图上。\n在最后一张图片上，我们已经删除了 web 代码和 direct-repo 。\n然后，我们拉取了新的 web 代码，并将其定位到 commit 101 。\nmanifest 也已定位到 31号15点 的 commit 。\nsource 包组件均为 31号同步 下来的版本。"
+        },
+        {
+            "user_name": "李文杰",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/173/8",
+            "text": "content: @arch\n请看下当前出问题的 最新上游 commit source 包问题 这个版本，有没有带上\nGitCode - 全球开发者的开源社区,开源代码托管平台 这个修改\n当前certificate_mgmt组件还在调整，后续可能变化为certificate二进制组件，提供完整证书管理功能，对您造成的不便，十分抱歉\nlinks: /u/arch, https://gitcode.com/openUBMC/hica/pull/4"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/173/9",
+            "text": "content: 您好，我们更新最新的hica组件并且构建出包，将固件包烧录到机器后，出现bmc web无法连接的情况，同时回退到上一个正常的固件版本后点击web的上电功能出现机器无法上电，同时用机器的物理开关按键也无法开机，显示操作失败，如果需要日志信息请与我们联系，非常感谢！\nimage868×123 4.95 KB\n以下是所用构建的组件的commit节点：\nbios: commit 270147cdf8a6f14fdfbf63e6c986ed0c76546d33\ncapability_agent: commit 417c034b5be2aaa4ee2a50a3e54bab1551db9383\ncertificate_mgmt: commit 891b7278440d58fe617bede4cb868cc92dc43234\nchassis: commit cbde755e25ad99b531c0aad9251b5dcb7a5cf2cf\nfructrl: commit e6ea6a9782c20d2bbfe8a1cd1eae032867a9f0cf\nfrudata: commit 0b5331ee1e5a11954001b2a8c4ef16db64ceab75\ngeneral_hardware: commit e7c087586ce5ed353fc310365979bd249bc6f2e3\nhica: commit 976494690940de97309a7af2b3561bc08af7bffd\niam_lite: commit a955e6905810f8f1bba69986d0408197258edfcb\nmanufacture: commit 8d38af2d4be2f22522a6398fc3966317bddee5a0\nmdb_interface:  commit 801f016abc6a7e9595b083d53540df83aaea34cf\nnetwork_adapter:  commit aaaf375a8c9b53cc81133af55205ab534cb40c50\npcie_device：commit 6351c787b8fc17fa972dc4c8274daf98410d7877\npower_mgmt：commit ca3699ee5b347db6500f0006ec0d306fd187f873\nprofile_schema：commit 751c3de6d73694b8ff28937ea1c2258d06437318\nrack_mgmt：commit 1c983dcbde3be233666009da435c8f7270374ed3\nrackmount：commit ea9c0cc8dfe27692b902929071545030d3c271e3\nrootfs_user：commit 17c77939c48f94b40404e9d99d485ce082bc502d\nsensor：commit 8a9bcedd0e1dde0148f8614b9d355593f501d1df\nstorage：commit d48e16eeebcce3dda6bf353e6951b8e41c83bde0\nthermal_mgmt：commit b61cc18bf7d70b179c6715bb216ba8a09c907d92\nuser：commit c9667cd93182d5cc8de5608e7724ebf46af24379\nvpd：commit 7f77f91dfd059b1400389fda609537927764aaf0\nwebui：commit 21c36268ba17226199cbe9025c328069ee32c331\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/168b38b6a115f8090c2848e667b3578efe9f3aef.png"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/173/10",
+            "text": "content: 建议在 GitCode - 全球开发者的开源社区,开源代码托管平台 提issue。\nlinks: http://gitcode.com/openubmc"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/173/11",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1240,
+    "question": "【已评审】NetworkPort接口增加属性OSLinkStatus - content: ISSUE链接（必填，此议题关联的issue）：\nhttps://gitcode.com/openUBMC/mdb_interface/issues/108\n背景（必填，文字描述议题背景，如需求来源、问题场景）:\n早期网口连接状态实际逻辑不一致，没有带内（BMA）方式获取的网口连接状态，本需求进行重构\n插了IB卡的情况下，识别IB卡信息，连接状态不显示，显示为‘- -’，影响功能性。\n原因为BMA上报了Disabled，但是BMC认为Disabled不是标准状态，所以显示‘- -’ 。\nBMA上报IB卡状态包括：Sleep、Polling、Disabled、PortConfigurationTraining、LinkUp、LinkErrorRecovery、Phy_Test、。\n当前BMC内部识别的IB卡状态为非NoLink、LinkUp、LinkDown外的状态都当做NA，与BMA上报状态不匹配。\n决策点（必填，一句话描述待决策点）：\nbmc.kepler.Systems.NetworkPort新增OSLinkStatus字段\n详细描述（必填，描述待评审接口的详细内容）：\n资源path： /bmc/kepler/Systems/:SystemId/NetworkAdapters\n资源Interface：bmc.kepler.Systems.NetworkPort\n变化类型：新增属性 OSLinkStatus\n应用场景：支持带内（BMA）方式获取的网口连接状态\n持久化类型：不持久化\n取值类型：string，默认值空字符串\n操作权限：ReadOnly\n详细描述：\n\n方法名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nOSLinkStatus\n新增属性\ns\n只读: ReadOnly\n不持久化\n否\n网口连接状态\n取值来源于OS侧的agent\n\n评审结论：\n同意在资源协作接口路径：\npath：/bmc/kepler/Systems/:SystemId/NetworkAdapters\ninterface：bmc.kepler.Systems.NetworkPort\n变化类型：新增属性，具体如下\nOSLinkStatus：OS侧网口连接状态，签名为s，只读，权限ReadOnly，不发送变化通知事件\nlinks: #p-2695-issueissue-1, https://gitcode.com/openUBMC/mdb_interface/issues/108, #p-2695-h-2, #p-2695-h-3, #p-2695-h-4, #p-2695-h-5",
+    "topic_user_name": "Wuxiaochong",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1240/2",
+            "text": ""
+        }
+    ]
+}

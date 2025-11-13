@@ -1,0 +1,15 @@
+{
+    "topic_id": 363,
+    "question": "解析SMBIOS协议04Type时出现异常 - content: SMBios原始数据\nimage683×292 8.3 KB\n代码使用数组下标没有保护\nimage356×125 4.66 KB\n修改后代码\nimage491×133 5.6 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/a759df30a5645f7bacc43aa336abf23baeb4314c.png, https://forum.openubmc.cn/uploads/default/original/1X/8c0aaa584a43acb7b1eeee6b8a317df1ae62a351.png, https://forum.openubmc.cn/uploads/default/original/1X/721c749cf4ea5a4bd19dc6a2156b276f189004cb.png",
+    "topic_user_name": "Kunlun Luxiaomu",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/363/2",
+            "text": "content: gitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n已转换成issue，欢迎将您的修复方案贡献到社区\nlinks: https://gitcode.com/openUBMC/bios/issues/1, https://gitcode.com/openUBMC/bios/issues/1"
+        }
+    ]
+}

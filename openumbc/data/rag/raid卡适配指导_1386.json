@@ -1,0 +1,64 @@
+{
+    "topic_id": 1386,
+    "question": "raid卡适配指导 - content: 1. 基础设备对象\n1.1 PCIe设备对象 (PCIeDevice_1)\n{\n    \"PCIeDevice_1\": {\n        \"DeviceName\": \"PCIe Card $ (设备型号)\",\n        \"FunctionClass\": 1,  // 功能类型\n        \"Position\": \"\", // 设备位置（容器名称）\n        \"Container\": \"${Container}\", // 载板对象\n        \"GroupPosition\": \"PCIeDevice_${GroupPosition}\", // 板卡组位置\n        \"PCIeDeviceType\": \"SingleFunction\",  // 设备类型\n        \"SlotType\": \"HalfLength\",  // 插槽类型\n        \"FunctionProtocol\": \"PCIe\",  // 协议类型\n        \"FunctionType\": \"Physical\"  // 功能类型\n    }\n}\n\n用途：定义PCIe设备的基本属性和类型\n必须配置：是\n关键属性：设备名称、功能类型(1是raid卡)、设备类型、插槽类型\n\n1.2 raid卡对象 (PCIeCard_1)\n{\n    \"PCIeCard_1\": {\n        \"Name\": \"设备型号\",\n        \"Description\": \"设备描述\",\n        \"VendorID\": \"厂商ID\",\n        \"DeviceID\": \"设备ID\",\n        \"SubVendorID\": \"子厂商ID\",\n        \"SubDeviceID\": \"子设备ID\",\n        \"Manufacturer\": \"制造商\",\n        \"PartNumber\": \"部件号\",\n        \"RefChip\": \"关联的芯片\",\n        \"Model\": \"型号\",\n        \"FirmwareVersion\": \"固件版本\",\n        \"SerialNumber\": \"序列号\"\n    }\n}\n\n1.3 Riad适配器对象(Controller_1)\n环境会先加载pcie对象，再加载controller对象\n{\n    \"Controller_1\": {\n        \"Name\": \"raid卡名称\",\n        \"TypeId\": \"raid卡类型Id\",\n        \"OOBSupport\": \"是否支持带外管理\",\n        \"CtrlOption1\": \"raid控制器策略\",\n        \"CtrlOption2\": \"raid控制器策略\",\n        \"CtrlOption3\": \"raid控制器策略\",\n        \"BOMNumber\": \"BOM编码\",\n        \"ChipManufacturer\": \"raid卡芯片厂商\"\n    }\n}\n\n定义raid卡的功能属性\n必须配置：是\n关键属性：\n\nTypeId：存储组件基于typeid判断raid卡的类型，根据判断出的类型会决定存储组件使用的回调函数库，以及判断raid卡支持的带外管理通道类型\nOOBSupport：表征raid卡是否支持带外管理，0表示不支持，1表示支持，支持带外管理的raid卡存储模块才能正常获取信息\nCtrlOption1：表明raid卡支持的相关功能，存储组件会基于该属性判断raid卡支持的读策略、写策略、IO策略、访问策略，具体参数含义见storage代码仓common_def.lua中option1_format定义\nCtrlOption2：表明raid卡支持的相关功能，存储组件会基于该属性判断raid卡支持的硬盘缓存策略、工作模式，具体参数含义见storage代码仓common_def.lua中option2_format定义\nCtrlOption3：表明raid卡支持的相关功能，存储组件会基于该属性判断raid卡支持的写缓存策略、raid级别，具体参数含义见storage代码仓common_def.lua中option3_format定义\nBOMNumber：raid卡硬件资产编号，也是raid卡四元组信息的一部分\n\n1.4 电容对象(Battery_1)\n{\n    \"Battery_1\": {\n       \"@Parent\": \"关联的raid卡对象\",\n       \"RefControllerDeviceName\": \"关联的raid资源名称\",\n       \"RefControllerSlotId\": \"关联的raid卡槽位id\",\n       \"RefControllerTypeId\": \"关联的raid卡类型id\"\n    },\n}\n\n电容对象非必须配置，raid支持bbu时可配置\n2 raid卡功能对象\n2.1 phy误码诊断(SASphy_)\n{\n        \"SASPhy_1\": {\n            \"@Parent\": \"关联的raid卡对象\",\n            \"PhyId\": 255,\n            \"InvalidDwordCount\": 0,\n            \"LossDwordSyncCount\": 0,\n            \"PhyResetProblemCount\": 0,\n            \"RunningDisparityErrorCount\": 0\n        },\n}\n\n对应Raid卡的Phy误码诊断通道，相关功能在Storage组件的：phy_object.lua\n2.2 raid卡告警对象\n{\n        \"Component_PCIeCard\": {\n            \"FruId\": 255,\n            \"Type\": 8,\n            \"Health\": 0,\n            \"PowerState\": 1,\n            \"GroupId\": 1,\n            \"Instance\": 1,\n            \"Name\": \"<=/PCIeDevice_1.DeviceName\",\n            \"Presence\": 1,\n            \"ReplaceFlag\": 0,\n            \"PreviousSN\": \"N/A\",\n            \"SerialNumber\": \"<=/PCIeCard_1.SerialNumber\"\n        },\n}\n\n在soft文件中配置，表征pcie对象，关联raid相关的告警，由fru模块管理，触发告警时会根据告警级别设置关联的raid卡的健康状态\n3 raid卡加载流程\n加载到CSR，加载了Controller对象会进入流程：\nfunction c_controller:ctor(obj)\nfunction c_controller:init()\n日志打印：\nlog:notice(‘controller init obj.Id = %s, object_id = %s’, self.obj.Id, self.object_id)\n然后会进入Raid卡的注册流程：\nfunction c_controller:register()\n日志打印：\nlog:notice(‘controller%s begin register’, self.Id)\nlog:notice(‘ctrl%s add_controller_to_link_topo successfully’, self.Id)\nlog:notice(‘ctrl%s add_controller_to_sml successfully’, self.Id)\nlog:notice(‘ctrl%s register_controller_to_sml successfully’, self.Id)\n如果以上日志都打印出来了，那么注册流程就算是走完了，也就意味Raid卡识别到了。\n下一步就是一些例测任务。\nlinks: #p-3222-h-1-1, #p-3222-h-11-pcie-pciedevice_1-2, #p-3222-h-12-raid-pciecard_1-3, #p-3222-h-13-riadcontroller_1-4, #p-3222-h-14-battery_1-5, #p-3222-h-2-raid-6, #p-3222-h-21-physasphy_-7, #p-3222-h-22-raid-8, #p-3222-h-3-raid-9",
+    "topic_user_name": "yangqinghua",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1386/2",
+            "text": "content: 非天池模式加载，在pcie slot上接过9560-8i这张raid卡在bmc上是可以正常使用的。现在因需求变化，需要适配SAS 3152卡，修改为对应raid卡的sr文件后，发现在bmc web中存储管理页面无raid卡的详细信息。怀疑是和mctp相关通信有关，\n经过调试 发现在下面的地方return了\nfunction c_controller:register()\n             ......\n            if not mctp_service.get_instance().mctp_state then\n                return\n            end            \n ......\n\nstorage版本：storage/1.80.40@openUBMC.release/stable\nimage1035×480 28.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0ea4f0e2f038cba33b87dacca1894fd67811364f.png"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1386/3",
+            "text": "你这个看上去像是mctp没有通，\n有看mctp的资源树有没有对应的endpoint创建？"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1386/4",
+            "text": "content: 这是我们的资源树，请问一下这种情况，排查的思路方法是什么？\n企业微信截图_17503386383620895×532 13.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/21aa2ecf1b8570b4e56b5fb16d5c272ba9e9ad4d.png"
+        },
+        {
+            "user_name": "yangqinghua",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1386/5",
+            "text": "看一下/bmc/kepler/Systems/1/Mctp/MctpBinding里面的BmcPhyAddr和BmcEid两个属性，mctp_state是在storage组件mctp_service.lua文件的prepare函数设置的，前提条件是get_mctp_pcie_binding拿到对象，这个函数拿到对象需要上面的两个属性均不为0"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1386/6",
+            "text": "content: image1457×940 173 KB\n看起来bmc.kepler.Systems.Mctp.MctpBinding.PCIe接口下的.BmcEid和.BmcPhyAddr均不为0，bmc.kepler.Systems.Mctp.MctpBinding.SMBus下的.BmcEid和.BmcPhyAddr均为0，有什么排查思路可以分享一下吗？在日志app.log storage组件打印中发现mctp 建立链路失败\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/94b94a3e75710ec684e9d99b6e8612f10be3907a.png"
+        },
+        {
+            "user_name": "yangqinghua",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1386/7",
+            "text": "可以着重看一下storage组件mctp_service.lua文件的prepare()函数，预期如果能获取mctp对象的话mctp_state会被置为true的，但是按照问题发的图来看明显没有，建议在函数中加打印判断没有置true。判断的BmcEid和BmcPhyAddr是bmc.kepler.Systems.Mctp.MctpBinding.PCIe接口下的，按逻辑来说是可以正常获取的"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1386/8",
+            "text": "function mctp_service:prepare()\n    log:notice('mctp_service:prepare')\n    if not self.os_state then\n        log:notice('not self.os_state')\n        return\n    end\n    local obj = mctp_lib.get_mctp_pcie_binding(self.bus)\n    if not obj then\n        log:notice('[Storage] Get BMC Mctp info failed')\n        return\n    end\n    -- 将BMC的mctp信息传递给C库的线程\n    sml.mctp_infos.set_bmc_mctp_info(obj.BmcEid, obj.BmcPhyAddr)\n    self.mctp_state = true\n    log:notice('[Storage] mctp prepare finished. bmc_eid = %s bmc_phy = %s state = %s',\n        obj.BmcEid, obj.BmcPhyAddr, self.mctp_state)\nend\n\n日志打印提示卡在了[Storage] Get BMC Mctp info failed"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1386/9",
+            "text": "content: E1400_ewdvw:\n\n{\n    \"Controller_1\": {\n        \"Name\": \"raid卡名称\",\n        \"TypeId\": \"raid卡类型Id\",\n\nvpd仓有个提交，Controller下的Name属性改成ControllerName了呢，这里的指导文档是不是也要更新一下。\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\nlinks: https://gitcode.com/openUBMC/vpd/pull/167, https://gitcode.com/openUBMC/vpd/pull/167"
+        }
+    ]
+}

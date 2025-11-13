@@ -1,0 +1,57 @@
+{
+    "topic_id": 1264,
+    "question": "bingo 本地sign server云签名 - content: 背景：\nopenubmc使用的是 华为 openUBMC 工程自带的 hpm_signer 工具，用于对固件镜像（如 uboot.bin）进行签名，并通过本地 tsa.cnf 配置添加 RFC 3161 时间戳，形成一个完整的 CMS Detached 签名 + 时间戳结构（即 CAdES-T）。目前这套流程效果如下：\n\n hpm_signer 实际做了哪些操作？\n我们直接拿cms文件用openssl查看结构后确认，它完成了如下完整签名流程：\n\n步骤\n说明\n\n① 读取cms文件，如 uboot.bin.cms\n\n② 计算 SHA-256 摘要\n\n③ 构造 CMS SignedData 结构，签名算法为 sha256WithRSAEncryption，生成 Detached 签名（不嵌入原始内容）\n\n④ 添加 SignedAttributes：包括 contentType、signingTime、messageDigest、id-smime-aa-signingCertificateV2\n\n⑤ 使用 RSA 私钥签名 SignedAttributes\n\n⑥ 将签名值进行 SHA-256 摘要\n\n⑦ 根据 tsa.cnf 配置，通过本地 HTTP 或本地私钥生成 RFC 3161 TimeStampToken\n\n⑧ 将时间戳（TimeStampToken）封装为 UnsignedAttributes，OID 为 1.2.840.113549.1.9.16.2.14（即 signatureTimeStampToken）\n\n⑨ 输出最终 CMS 签名文件：例如 uboot.bin.cms\n\n签名结果结构见 openssl cms -inform DER -cmsout -print 可确认，确实嵌入了 RFC 3161 时间戳。\n\n问题：\n我们希望将签名操作迁移至云签名架构，即使用 SignServer 作为 TSA 或 CMS 签名服务。\n但发现如下问题：\n\nhpm_signer 当前必须依赖本地 tsa.cnf 文件；\n而 SignServer 提供的是基于 HTTP 接口的 TSA，不会提供 .cnf 文件；\n因此初步判断，要替换掉 hpm_signer，要么需要重写它，要么需要替代工具完成类似功能吗。\n\n我想请教社区以下问题：\n\n是否有大佬实现过类似迁移，把 hpm_signer 的 TSA 机制替换为 SignServer（例如通过 SignServer 的 Extended CMS Signer 或其他接口）？\n是否有办法用 openssl cms、openssl ts 等命令结合脚本完成同样流程（包括时间戳嵌入）？\n如果要重写一个精简版的 hpm_signer，是否有示例代码?\nlinks: #p-2765-h-1, #p-2765-hpm_signer-2, #p-2765-h-3, #p-2765-h-4",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/1264/11",
+    "reply_posts": [
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1264/2",
+            "text": "content: 我们目前的证书和签名服务器不是基于 OpenSSL 的，也没有 tsa.cnf 文件，因此现有的 hpm_signer 不太适配。\n但应该是支持通过 OpenSSL 调用 URL 方式发起签名请求，在其他帖子上有验证。\n能否提供 hpm_signer 内部对应的 OpenSSL 命令步骤，方便我们评估是否可通过修改命令适配现有流程？\nimage1666×998 30.7 KB\nimage1891×700 28.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/d208ee628de5b477eab11bb9f1747c8a72079c65.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/3dfde17b8c90d71a1933e13fc04deafd6219e2f5.png"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1264/5",
+            "text": "content: 测试背景：\n我用如下命令（OpenSSL 3.0.13，Ubuntu 24.04）重新生成了签名：\nopenssl cms -sign -binary  \\\n-signer signer.pem -inkey signer.pem -in uboot.bin -md sha256 -cades \\\n -nosmimecap  -outform DER -out step.cms\n\n然后用 hpm_verify 进行验证：\nhpm_verify -r rootca.pem -C cms.crl.pem -c uboot.bin -s step.cms\n\n结果：Verification successfully \n但我注意到，这个 step.cms 文件：\n\n完全是 OpenSSL 生成的；\n没有添加时间戳（没有 unsignedAttrs，没有 OID 1.2.840.113549.1.9.16.2.14）；\n和 hpm_signer 最终生成的 .cms（含时间戳）在结构上有明显差异。\nimage1894×132 8.92 KB\nlinks: #p-3816-h-1, https://discuss.openubmc.cn/uploads/default/original/2X/6/6092a45e1e1b4e839b7fdca704a289142e5dec51.png"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1264/6",
+            "text": "目前来看，OpenSSL 的本地时间戳签名流程（基于 tsa.cnf 配置）中，通常需要手动提取 CMS 中的签名值作为时间戳请求输入；签名完成后，还需通过工具将时间戳重嵌入 CMS。从现有实现看，hpm_signer 内部似乎是直接通过 OpenSSL 库将时间戳 token 写入 CMS 的。\n但如果使用云端或第三方签名中心（非 OpenSSL TSA），则一般不依赖 tsa.cnf，签名值的提取步骤可能也不是必要的（这部分仍有待验证）。\n不过仍有一个问题：在使用外部签名中心返回的时间戳 token（.tsr）时，是否仍需要依赖 OpenSSL 库将其注入原始 CMS 中？"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1264/9",
+            "text": "content: 需要进行二次嵌入，使用openssl库，因为24.04的openssl版本过于低。\n目前使用openssl命令签名+生成时间戳token+openssl库的C代码实现签名+二次嵌入CMS验证目前应该是没问题。\n后续需要将tsa.cnf文件删除，时间戳签名使用openssl+url配合云签名中心\n268ec907452ce42611409769c84dad01377×258 16.7 KB\n3812853a7d7cab4f9ae99048a5d0f4e1072×232 15.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/c4591b746ba12e685a614a439102ac11e8f657f0.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/1c0881504650a60801fad0cc98a2c2d9061b7594.png"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1264/10",
+            "text": "通过重新学习 SignServer 的架构后了解到：在开源社区版中，虽然支持基础 CMS 签名和时间戳响应（TSR）的生成，但仍需基于签名值手动创建时间戳请求（TSQ）再获取 TSR，再手动将其嵌入至 CMS 签名中，即仍需二次处理签名结果。而在企业付费版中，提供了更高的集成度，可通过一条 curl 命令自动完成 TSQ 生成、TSR 请求及其注入 CMS 签名的全过程，显著简化操作流程。"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1264/11",
+            "text": "content: 参考 hpm_signer 的源码：\nGitCode - 全球开发者的开源社区,开源代码托管平台\nlinks: https://gitcode.com/openUBMC/bingo/blob/main/tools/src/signer"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1264/12",
+            "text": "谢谢大佬，原来代码是开源的 。"
+        }
+    ]
+}

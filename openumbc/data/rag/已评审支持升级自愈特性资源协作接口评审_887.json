@@ -1,0 +1,36 @@
+{
+    "topic_id": 887,
+    "question": "【已评审】支持升级自愈特性资源协作接口评审 - content: 背景说明:\n\n固件管理过程中，有如下异常场景需要固件管理支持异常处理机制：\n\n固件升级过程中，有AC、BMC强制复位等异常场景导致固件升级失败未完成，需要支持BMC启动后继续升级；\n器件自检（如CPLD器件）异常，需要固件管理支持对应固件的修复机制；\n\n评审点一：固件自愈相关资源协作接口评审：\n说明：固件管理统一管控固件的自愈与升级流程，但是器件自检是做在其他组件，固件管理需要提供资源协作接口支持其他组件注册自愈对象，由固件管理组件统一管理自愈、升级等任务；整体方案如下：\n固件自愈流程1027×1027 34.1 KB\n为支持通过CSR配置固件是否支持自愈，需要在FirmwareComponentInfo私有对象新增属性承载\n\n属性名称\n签名\n是否持久化\n默认值\n更新类别\n描述\n\nComponentID\nU8\n否\n无\n不变\n用于区分组件\n\nComponentIDEx\nU32\n否\n0xffffffff\n不变\n用于区分细分组件\n\nName\ns\n否\n无\n不变\n固件名\n\nRevisionNumber\nU8\n否\n无\n不变\nSR配置的Revision值，0代表无防回退\n\nRevisionNumber4User\nU8\n是\n无\n不变\n用户定义的Revision值，0代表无防回退\n\nFirmwareRestoreSupported\nBoolean\n否\ntrue\n新增\n是否支持固件自愈\n\n为支持子组件注册自愈任务到firmware_mgmt以及对自愈对象做管理，需要新增资源协作接口：\npath: /bmc/kepler/UpdateService/FirmwareRestore\ninterface : bmc.kepler.UpdateService.FirmwareRestore\nproperties&methods:\nInitiateRestoreAction：用于注册固件修复任务\n\n类型\n属性/方法名称\n权限\n请求签名\n请求参数说明\n响应签名\n响应参数说明\n\nmethod\nInitiateRestoreAction\nBasicSetting\nyua{ss}\ny：ComponentID 固件ID u：ComponentIDEx 固件扩展ID a{ss}：AdditionalOptions 其他扩展选项，便于后续扩展\n无\n无\n\n评审点二：升级异常恢复机制私有对象评审：\n说明：针对升级过程中有AC、BMC强制复位等异常场景导致固件升级失败未完成，支持BMC启动后恢复升级\n为支持通过CSR配置固件是否支持升级异常恢复机制， ，需要在FirmwareComponentInfo私有对象新增属性承载\n\n属性名称\n签名\n是否持久化\n默认值\n更新类别\n描述\n\nComponentID\nU8\n否\n无\n不变\n用于区分组件\n\nComponentIDEx\nU32\n否\n0xffffffff\n不变\n用于区分细分组件\n\nName\ns\n否\n无\n不变\n固件名\n\nRevisionNumber\nU8\n否\n无\n不变\nSR配置的Revision值，0代表无防回退\n\nRevisionNumber4User\nU8\n是\n无\n不变\n用户定义的Revision值，0代表无防回退\n\nFirmwareRestoreSupported\nBoolean\n否\ntrue\n不变\n是否支持固件修复\n\nUpgradeResumeSupported\nBoolean\n否\ntrue\n新增\n是否支持恢复升级\n\n说明：固件修复与恢复升级是不同的流程，固件修复是固件自检异常后针对器件的修复机制，恢复升级是升级中断后对上次外完成流程的恢复机制，二者相互独立\n评审结论\n\n评审点1：通过，同意新增固件初始化修复动作，方法名称为 InitiateRestoreAction\n评审点2：通过，同意新增固件修复标识 FirmwareRestoreSupported 和固件自愈支持标识 UpgradeResumeSupported，默认值均为 true\nlinks: #p-1826-h-1, #p-1826-h-2, https://discuss.openubmc.cn/uploads/default/original/1X/668e95623243adca655790018e1715910e0392eb.png, #p-1826-csrfirmwarecomponentinfo-3, #p-1826-firmware_mgmt-4, #p-1826-h-5, #p-1826-csr-firmwarecomponentinfo-6, #p-1826-h-7",
+    "topic_user_name": "lixiaoning",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/887/2",
+            "text": "两个评审点上的结构高度一致，可以采用一个表格进行说明，将新增加的属性说明各自的应用场景和影响范围限制\n背景中还是要讲清楚 固件自愈 和 升级恢复 两种不同的场景"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/887/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/887/4",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/887/5",
+            "text": ""
+        }
+    ]
+}

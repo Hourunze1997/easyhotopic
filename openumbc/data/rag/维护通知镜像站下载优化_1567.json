@@ -1,0 +1,15 @@
+{
+    "topic_id": 1567,
+    "question": "【维护通知】镜像站下载优化 - content: 亲爱的社区成员们：\n为提升服务质量，openUBMC社区计划于北京时间7月4日晚上22:00-22:10 进行镜像站(repo.openubmc.cn)下载优化。在此期间您可能会遇到以下情况：\n 22:00起：\n部分用户可能遇到页面加载失败或空白提示，请刷新页面或重试下载操作\n我们已通过技术方案将停机影响缩至最短范围，但仍建议您：\n避开此时段进行关键操作\n如22:10后仍无法访问，请联系运维团队：\n值班电话：+8613428004050\n感谢您对平台升级的理解与支持！\nopenUBMC运维团队\n2025年7月4日\nlinks: http://repo.openubmc.cn",
+    "topic_user_name": "Ly777",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1567/2",
+            "text": ""
+        }
+    ]
+}

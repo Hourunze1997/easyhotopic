@@ -1,0 +1,15 @@
+{
+    "topic_id": 1312,
+    "question": "VGA外接monitor显示器，KVM界面分辨率低，画质模糊 - content: VGA外接monitor显示器，KVM界面分辨率低，画质模糊\nimage543×247 25.8 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/7de924fd214e5fb5652d6a2dad52e1bbfd2850a1.jpeg",
+    "topic_user_name": "KunTai_WangJiaKai",
+    "best_answer_url": "/t/topic/1312/2",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1312/2",
+            "text": "分辨率是由带内OS决定的，目前不支持设置，清晰度可以在KVM界面调整"
+        }
+    ]
+}

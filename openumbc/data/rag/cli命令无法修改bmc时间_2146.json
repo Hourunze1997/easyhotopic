@@ -1,0 +1,36 @@
+{
+    "topic_id": 2146,
+    "question": "cli命令无法修改bmc时间 - content: 用ipmcset -d time -v 2025-08-04 16:10:40无法设置时间\nimage591×184 4.1 KB\n命令是在https://discuss.openubmc.cn/t/topic/1054看到的\nmdb_interface组件已经更新成最新的git版本mdb_interface/1.90.36@hw.ibmc.release/rc\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e69c051be972fbf01d6142e44e16938e5ced6991.png, https://discuss.openubmc.cn/t/topic/1054",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2146/2",
+            "text": "此命令只适用于BMC有外部RTC芯片，且BMC能向RTC芯片写入时间的单板或产品"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2146/3",
+            "text": "现在是通过i2c连接的rtc外部芯片，可以这么操作吗？怎么判断BMC能不能向RTC芯片写入时间？"
+        },
+        {
+            "user_name": "sunpeijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2146/4",
+            "text": "就是说社区版本是没有实现此命令的，这条命令只能用来设置时区\n你这边看的接口评审材料仅表示接口通过评审，允许实施\ninterface sig不负责看护具体在哪些产品落地\n所以社区版本关注rackmount仓即可\n可以看此接口是否有过变更"
+        },
+        {
+            "user_name": "nathanael yu",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2146/5",
+            "text": "rtc时钟代表的是整机的时间（业务侧，OS启动的时候会从RTC读取），所以禁止通过BMC修改"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "topic_id": 923,
+    "question": "【已评审】支持FRU扩展域Product域的Product Extra格式定制 - content: 关联Issuse\n支持电子标签Product域的Product Extra格式定制-frudata-GitCode\n评审背景\n当前FRU电子标签的 Product 域扩展域 Product Extra 格式，默认为 K-V 格式，具体的格式可以是 K=V 或者 K:V 两种形式。\n差异点\n客户有需求，需要FRU电子标签的 Product 域扩展域 Product Extra 格式为 V 格式，即直接内容平铺的方式。当前BMC不支持FRU电子标签 Product 域的 Product Extra 格式定制，因此无法满足客户需求。\n评审点\n新增定制化项，用于定制FRU电子标签 Product 域的 Product Extra 格式\n方案1： 新增定制化项，仅定制电子标签 Product 域的 Product Extra 格式\n\n项目\n值\n\n定制化项\nProduct域的Product Extra格式\n\n定制化接口名称\nBMCSet_FRUProductExtraFormat\n\n取值类型\nnumber\n\n默认值\n0\n\n处理逻辑\nif(BMCSet_FRUProductExtraFormat== 1)  Product域扩展域电子标签格式设置为 v 格式else  Product域扩展域电子标签格式设置为 k-v 格式\n\n取值范围\n0或1\n\n说明\n0代表 k-v 格式，1表示 v 格式注意：一旦修改为 v 格式后则无法自动还原为 k-v 格式，需要重新定制化\n\n方案2： 新增定制化项，定制电子标签 所有 域的 扩展域 格式\n\n项目\n值\n\n定制化项\nFRU扩展域的Extra格式定制化项\n\n定制化接口名称\nBMCSet_FRUExtraFormat\n\n取值类型\nnumber\n\n默认值\n0\n\n处理逻辑\nif(BMCSet_FRUExtraFormat== 1)  Product域扩展域电子标签格式设置为 v 格式 else  Product域扩展域电子标签格式设置为 k-v 格式\n\n取值范围\n0或1\n\n说明\n0代表 k-v 格式，1表示 v 格式注意：一旦修改为 v 格式后则无法自动还原为 k-v 格式，需要重新定制化\n\n评审结论\n通过，同意新增定制化项，采用方案一，新增定制化项，仅定制电子标签 Product 域的 Product Extra 格式，定制化项名称为 BMCSet_FRUProductExtraFormat\nlinks: #p-1894-issuse-1, https://gitcode.com/openUBMC/frudata/issues/4, #p-1894-h-2, #p-1894-h-3, #p-1894-h-4",
+    "topic_user_name": "Iss Duanyl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/923/2",
+            "text": "定制化项的名称和 BMCSet_FRUProductExtraDescription 保持一致，内容也需要更新，建议属性名称就叫：BMCSet_FRUProductExtraMode\n这个取值格式要增加一个开关或者枚举值，不需要体现什么XXX格式，就写具体的处理方式，就两种：一种是 K-V 格式，一种是 V 格式"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/923/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/923/4",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/923/5",
+            "text": ""
+        }
+    ]
+}

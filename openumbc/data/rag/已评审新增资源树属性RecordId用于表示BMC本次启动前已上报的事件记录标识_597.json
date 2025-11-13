@@ -1,0 +1,15 @@
+{
+    "topic_id": 597,
+    "question": "【已评审】新增资源树属性RecordId，用于表示BMC本次启动前已上报的事件记录标识 - content: 关联issue\n新增资源树属性RecordId，用于表示已上报事件的事件记录标识\n背景\n旧版本redfish事件上报采用event_policy组件通知redfish组件方式(已上报的事件记录序号RecordId存储在event_policy)，新版本事件上报功能不再采用通知机制，完全由redfish组件从event组件获取事件后进行上报(已上报的事件记录序号RecordId存储在redfish，并且未从event_policy同步)。从旧版本升级到新版本存在首次升级后会有重复事件上报的问题。\n1920×1358 42.4 KB\n决策点\n新增资源树属性RecordId，用于显示已上报event类型的事件记录标识\n整体方案\n807×714 31.4 KB\n说明：\n\n当redfish组件的数据库中，RecordId为0时才会获取资源树的RecordId\n多次获取资源树RecordId的上限为50次，每次睡眠3s。若超过上限仍获取资源树RecordId失败，则不再获取未上报事件，进入下一步：监听事件上报信息。\n为了防止重复上报，需要在获取未上报事件后，再监听事件上报信息。所以无法一直获取资源树RecordId\n多次获取资源树RecordId的上限（50次，每次睡眠3s）根据启动时间规格确定，超上限时已经超过启动时间规格。\n\n详细描述\n资源path：/bmc/kepler/EventService/Event\n资源interface：bmc.kepler.EventService.Event\n变化类型：新增属性 RecordId\n应用场景：表示BMC本次启动前已上报的事件记录标识\n持久化类型： 不持久化\n操作权限：ReadOnly\n详细描述：\n\n属性名称\n取值类型\n变化类型\n读写&权限\n持久化\n变化通知\n接口说明\n\nRecordId\nU64\n新增属性\nR：ReadOnly\n无\nfalse\n表示BMC本次启动前已上报的事件记录标识\n\n评审结论\n同意bmc.kepler.EventService.Event接口新增属性RecordId，类型为U64，表示BMC本次启动前已上报的事件记录标识\nlinks: #p-1180-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/22, #p-1180-h-2, https://discuss.openubmc.cn/uploads/default/original/1X/bdebaa671a77860261e26de0fe015f1492519d22.jpeg, #p-1180-h-3, #p-1180-h-4, https://discuss.openubmc.cn/uploads/default/original/1X/c5f1dec537c9d415ba9531efcf114b5f0419a9f5.png, #p-1180-h-5, #p-1180-h-6",
+    "topic_user_name": "Zhengzege",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/597/2",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "topic_id": 1382,
+    "question": "bmc studio工具使用问题 - content: 【bmc studio版本】1.1.86.250521\n【bingo 版本】0.5.317\n【conan 仓库】本地搭的Jfrog仓库，包括本地仓和远程仓\n【镜像】可以正常出bmc包的镜像\n【当前问题】：按照社区教程运行bmc studio后，正常设置仓库和部署manifest，manifest地址是本地gitea仓库地址\n1、在点击一键仓库部署后，页面上方显示部署成功，但是右侧有很多的获取失败，不清楚这是什么出现了错误\nimage1920×945 76.8 KB\n2、在板卡定制板块看不到csr文件，并且点击同步代码显示错误\nimage1920×945 35.3 KB\nimage1899×636 69.6 KB\n【求助】不知道当前遇到的是什么问题，想请教一下怎么解决这些问题，正常使用工具\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4dce626acfa1dc0b5bf6929b133e54722ea0e8dd.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/96451d8901b38f4a7dfb721d8d7fc679f434b70b.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0f830c596fda1c8227add04852a6e9bde727f7a7.png",
+    "topic_user_name": "百信-张滨",
+    "best_answer_url": "/t/topic/1382/4",
+    "reply_posts": [
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1382/2",
+            "text": "想请问一下，您的wsl可以访问gitcode的代码仓吗？感觉可能是这方面出了问题。"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1382/3",
+            "text": "content: 您好，我这边用的是镜像，镜像是可以正常访问gitcode的\nimage929×178 7.99 KB\nWSL也是可以正常访问gitcode的\nimage887×181 8.05 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/31f2b447f7f6c369839c6f0fb2d0b205f9777f95.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c35fe1c6147e6536a4099430327ecea5899783f8.png"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1382/4",
+            "text": "content: 这个应该是和这里同款的问题，您可以参考这个回复处理。account组件单元测试执行报错 - #11，来自 Larry_Li\nlinks: https://discuss.openubmc.cn/t/topic/1329/11"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1382/5",
+            "text": "就是换用社区版的bingo工具是吗"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1382/6",
+            "text": "对的"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1099,
+    "question": "25.03版本第一次maca组件检测会出现53组件只有7个起来，maca重新拉起后所有组件才起来 - content: image1900×749 134 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/07af12e820b3a354d6a39ba918022dcbc55ad5f1.png",
+    "topic_user_name": "He wei",
+    "best_answer_url": "/t/topic/1099/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1099/2",
+            "text": "看下framework.log里面没起来的对应组件是否有类似日志打印[:00000006] bmc_core: LAUNCH，如果没有说明都没有执行main.lua，看下app.log、journalctl.log里是否有什么错误日志，如果有LAUNCH日志就在组件的main.lua里面加pcall打印观察，这种有可能是因为跨进程通信异常导致的问题，起来的7个组件应该都是framework进程的吧"
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "topic_id": 305,
+    "question": "【storage】定期获取SAS盘的SMART信息会导致东芝SAS盘高概率出现IO性能跌0 - content: 1、storage模块会定期获取SAS盘的SMART信息，其中包括PList信息；\n2、东芝2.4T SAS盘在处理PList请求的时候，会先将IO缓存写入后再返回；\n3、当进行性能IO测试的时候，storage模块的定期获取SMART信息会导致东芝SAS盘出现性能跌0.\n4、考虑到PList（主缺陷列表）是出厂后不变更（参考文档：https://www.t10.org/ftp/t10/document.05/05-344r0.pdf ），是否可以考虑获取SMART信息的时候不去获取PList\nlinks: https://www.t10.org/ftp/t10/document.05/05-344r0.pdf",
+    "topic_user_name": "HKZY_YangBo",
+    "best_answer_url": "/t/topic/305/4",
+    "reply_posts": [
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/305/2",
+            "text": "目前考虑到收集硬盘日志对IO性能的影响，已经规划了需求：\n1.提供接口，可以停止/开启硬盘日志的周期收集；\n2.提供接口，手动收集硬盘日志\n感谢反馈的建议：\n我们会继续分析日志收集的合理，降低对IO性能的影响;   如果上诉规划需求不能解决问题，欢迎继续跟帖讨论"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/305/3",
+            "text": "我理解硬盘日志收集和SMART信息收集都有发送read_defect_data(0xb7)，\n但只有SMART信息收集才发送了获取PList（第一个字节：0xb7(read_defect_data)  第二个字节： 0x15(获取PList)），\n硬盘日志收集应该是只发送了获取GList。\n考虑到东芝性能跌0是获取PList触发的，我理解需要从限制PList，也就是SMART信息收集。\n所以，想的是，考虑到PList（主缺陷列表）是出厂后不变更，是否可以考虑获取SMART信息的时候不去获取PList。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/305/4",
+            "text": "建议在hardware sig例会上申报议题，讨论一下这种场景的合理性，如果必要的话，可以规划需求到storage来支持这种场景。"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/305/5",
+            "text": "content: 已申报议题：Etherpad\nlinks: https://etherpad.openubmc.cn/p/sig-hardware"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/305/6",
+            "text": "问一下，到时候这个会议链接怎么上哇？可以呼叫上其他没有welink的账号不呢？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/305/7",
+            "text": "content: hardware sig组会定期举办例会，可以通过订阅hardware-sig的邮件获取到会议通知。\n会议链接是公开的\n@changxingOpenUBMC 关注一下\nlinks: /u/changxingopenubmc"
+        }
+    ]
+}

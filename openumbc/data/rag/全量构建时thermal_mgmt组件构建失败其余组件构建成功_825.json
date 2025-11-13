@@ -1,0 +1,43 @@
+{
+    "topic_id": 825,
+    "question": "全量构建时，thermal_mgmt组件构建失败，其余组件构建成功 - content: 【构建报错求助】thermal_mgmt 构建失败，疑似依赖冲突导致\n环境信息：\n\nBingo 版本：0.5.317\n镜像：根据最新 manifest 中 Dockerfile 制作的镜像\nthermal_mgmt 版本：1.70.28\n\n【问题描述】\n在进行全量构建时，thermal_mgmt 组件构建失败，报错截图如下：\n报错截图1505×767 41.9 KB\n组件 mds/service.json 中声明的依赖如下：\n依赖截图700×920 30.9 KB\n\n【初步分析】\n怀疑是 key_mgmt 组件对 persistence 的版本要求与 thermal_mgmt 冲突：\n\nkey_mgmt/1.50.8 要求：persistence/[>=1.60.10 <1.61.0]\n实际使用版本：persistence/1.70.2（由 thermal_mgmt/1.70.28 指定）\n\n由于版本不兼容，Conan 无法解析依赖，导致构建失败。\n\n【当前诉求】\n\n希望协助确认上述依赖冲突是否为构建失败的根本原因？\n如分析准确，该如何解决此类组件间依赖版本冲突的问题？是否需要：\n\n升级 key_mgmt 组件版本？\n修改 thermal_mgmt 的依赖声明？\n或有其他推荐方案？\n\n感谢支持！\nlinks: #p-1695-thermal_mgmt-1, #p-1695-h-2, https://discuss.openubmc.cn/uploads/default/original/1X/90b8bb9936ade18164cec4043bfb079e93f48c98.png, https://discuss.openubmc.cn/uploads/default/original/1X/4582b8f2fc78126e3bd3366fadbb60297995396b.png, #p-1695-h-3, #p-1695-h-4",
+    "topic_user_name": "百信-张滨",
+    "best_answer_url": "/t/topic/825/6",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/825/2",
+            "text": "构件失败的原因为版本冲突；\n构建失败是指manifest中构建失败，还是thermal_mgmt组件单独构建失败？\n当前使用最新的manifest，进行bingo build构建时为成功，其中key_mgmt版本为1.70.5，persistence版本为1.70.7。截图中的版本为1.50.8和1.70.2，请问是如何执行的构建，以及选择的manifest版本。"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/825/3",
+            "text": "content: 1、构建失败是指单独构建 thermal_mgmt 组件失败，manifest 构建没有问题。\n2、组件构建是在各个组件仓库中分别执行如下命令完成的：\nbingo build -r artifactory --user=openUBMC.release --stage rc\n\n其中 artifactory 是我们内部使用的 Conan 仓库，已包含社区仓库内容。当前各组件采用的是 25.03 版本，manifest 使用的是带高可用特性的版本。\n我已对比了 key_mgmt 和 persistence 的版本，与你提供的一致，分别为 1.70.5 和 1.70.7。\nimage793×282 11.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/fb0d2f9cf74eec0b9c917e1001451a53ccd782cd.png"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/825/4",
+            "text": "当前在thermal_mgmt中，使用bingo build --user=openUBMC.release --stage rc命令构建不存在问题，建议排查 artifactory内部使用的Conan仓库是否存在版本依赖问题"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/825/5",
+            "text": "content: 您好，\n经过排查后，发现使用社区 Conan 仓库时可以成功构建，但使用我们的 Artifactory 虚拟仓时却出现了版本冲突问题。以下是我对问题的初步分析：\n初步分析：\n\n二进制包版本一致：\n\nkey_mgmt/1.50.8 和 persistence/1.70.2 在两个仓库中的版本是一致的。\nimage860×598 15.5 KB\n\n不同仓库的 recipes：\n\n尽管二进制包版本相同，但 recipes 内容存在差异。在 Artifactory 虚拟仓库中的 local-conan 本地仓库中，存在我们上传的 12.30 版本二进制。\n在 Artifactory 仓库中使用 conan search key_mgmt/1.50.8@hw.ibmc.release/rc -r=artifactory --revisions 指令可以获取到相关的 recipes，而在 openubmc_dev 仓库中却无法获取到。\n\n不同仓库的 key_mgmt 依赖策略：\n\nopenubmc_dev 中的 key_mgmt 可能没有显式要求 persistence/[>=1.60.10 <1.61.0]。\n而在 Artifactory 中的 key_mgmt 版本较旧，依赖策略更为严格，要求的版本范围更加明确。\n\n我的疑问：\n我推测，问题可能是由于相同版本的 Conan 组件（如 key_mgmt）在不同仓库中进行了修改，导致在 Artifactory 虚拟仓库中构建失败。特别是 Artifactory 中 key_mgmt 的依赖版本策略可能更加严格，导致构建失败。\n是否是这种原因导致了使用 Artifactory 虚拟仓构建失败？\nimage1154×124 9.93 KB\nlinks: #p-1795-h-1, https://discuss.openubmc.cn/uploads/default/original/1X/f34872f985646d6a8e7fc28ed2a2360508c4b76e.png, #p-1795-h-2, https://discuss.openubmc.cn/uploads/default/original/1X/cd5ca161291b810323ed8e41bd57e2335425de1a.png"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/825/6",
+            "text": "content: 补充：\n问题描述与排查过程\n在构建过程中遇到依赖冲突，经过进一步排查发现：\n\n社区仓库中的 key_mgmt 组件的 recipe 曾经更新；\n我们在 社区更新之后，将本地保存的 旧版 recipe 重新上传到了本地仓库；\n导致 Conan 在使用 虚拟仓 构建时，优先匹配到了本地旧 recipe；\n最终引发了依赖版本或构建行为不一致的问题。\n\n解决方案\n\n删除本地仓库中的旧 key_mgmt recipe；\n构建时通过虚拟仓获取最新组件；\n重新构建，依赖冲突问题解决，构建成功。\nlinks: #p-1799-h-1, #p-1799-h-2, #p-1799-h-3"
+        }
+    ]
+}

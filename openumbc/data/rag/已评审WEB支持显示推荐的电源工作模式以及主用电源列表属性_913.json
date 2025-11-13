@@ -1,0 +1,15 @@
+{
+    "topic_id": 913,
+    "question": "【已评审】WEB支持显示推荐的电源工作模式以及主用电源列表属性 - content: 评审背景\n针对客户存在节能减排场景的诉求，在系统业务处于稳定状态时，通过监控电源功耗、状态等信息，结合电源效率转换曲线， 计算出当前推荐的电源工作模式及优选的主用电源列表， 为用户在进行电源模式设置时提供配置参考。\n评审点\n一、资源协作接口新增推荐的电源工作模式和推荐的主用电源列表属性\npath：/bmc/kepler/Chassis/:ChassisId/EnergySavingMeasurement\ninterface：bmc.kepler.Chassis.EnergySavingMeasurement\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nRecommendedPowerMode\n新增属性\ns\n只读 R：ReadOnly\n不持久化\nfalse\n推荐的电源工作模式\n取值范围： N/A ：无推荐Active/Standby ：表示主备模式Sharing：表示负载均衡\n\nRecommendedActivePowerSupplies\n新增属性\nay\n只读 R：ReadOnly\n不持久化\nfalse\n推荐的主用电源\n\n二、rest接口新增推荐的电源工作模式和推荐的主用电源列表属性\nuri：/UI/Rest/System/PowerSupply\n操作类型：GET\n\n属性名称\n取值类型(string/integer/number/object/array/null)\n取值范围\n默认值\n操作权限(仅针对当前说明的操作类型，可选值为UserMgmt/BasicSetting/KVMMgmt/VMMMgmt/SecurityMgmt/PowerMgmt/DiagnoseMgmt/ReadOnly/ConfigureSelf)\n约束\n\nRecommendedPowerMode\nstring\nN/A ：无推荐Active/Standby ：表示主备模式Sharing：表示负载均衡\nN/A\nReadOnly\n\nRecommendedActiveSupplies\narray，数组每个元素类型为number\n1 – x（最大电源数）\n空数组\nReadOnly\n\n评审结论\n决策点1：资源协作接口新增推荐的电源工作模式和推荐的主用电源列表属性\n结论：\n1、同意资源协作接口bmc.kepler.Chassis.EnergySavingMeasurement新增RecommendedPowerMode属性用于获取推荐的电源工作模式，签名为s，只读，读权限：ReadOnly，不发送变更通知事件\n2、同意在资源协作接口bmc.kepler.Chassis.EnergySavingMeasurement新增RecommendedActiveSupplies属性用于获取推荐的主用电源列表，签名为ay，只读，读权限：ReadOnly，不发送变更通知事件\n决策点2： webrest接口新增推荐的电源工作模式和推荐的主用电源列表属性\n结论\n1、同意webrest接口/UI/Rest/System/PowerSupply新增优选电源工作模式和优选主用电源的属性：\nURI：/UI/Rest/System/PowerSupply\n操作类型：GET\n新增属性：RecommendedPowerMode，类型为string，读权限ReadOnly\n新增属性：RecommendedActiveSupplies，类型为array，数组每个元素类型为number，读权限ReadOnly\n遗留问题及确认结论：\n1、RecommendedActiveSupplies为string类型需要考虑电源转换器如何显示。\n结论：RecommendedActiveSupplies数组元素从string类型（PSUx）调整为number类型（槽位号）\nlinks: #p-1877-h-1, #p-1877-h-2, #p-1877-h-3, #p-1877-rest-4, #p-1877-h-5, #p-1877-h-1-6, #p-1877-h-2-webrest-7",
+    "topic_user_name": "Fumingquan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/913/2",
+            "text": ""
+        }
+    ]
+}

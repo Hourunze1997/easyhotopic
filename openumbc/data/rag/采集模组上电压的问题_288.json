@@ -1,0 +1,15 @@
+{
+    "topic_id": 288,
+    "question": "采集模组上电压的问题 - 1、请问这里提到的电压主要是指什么的电压？\n2、印象里在v2上有CPU相关的电压，并且我在告警处理的文档中有找到这部分电压，VCCIO、VPP、VCCP、VSA、VMCP。在ubmc的代码中好像并没有找到相关的电压配置，请问该如何获取这些电压呢？\n3、另外VCC_12V，STBY_3V3 这样的电压是通过载板cpld获取的吗？",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "/t/topic/288/2",
+    "reply_posts": [
+        {
+            "user_name": "王宇航",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/288/2",
+            "text": "1、具体什么电压，需要模组硬件提供软硬件接口文档\n2、社区ubmc代码支持一款典配机型，属于天池机型，电压相关配置在基础板csr承载，这个csr配置不在社区\n3、需要看硬件原理图，这些都是硬件设计强相关的"
+        }
+    ]
+}

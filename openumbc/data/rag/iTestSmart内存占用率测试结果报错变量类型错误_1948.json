@@ -1,0 +1,7 @@
+{
+    "topic_id": 1948,
+    "question": "【iTestSmart】内存占用率，测试结果报错：变量类型错误。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\n二、问题描述\nOpenUBMC->融合运维->内存占用率（不做升级操作），测试结果报错。根据报错信息，疑似计算得到的内存使用率的平均值类型错误。\n获取整型值失败1920×787 137 KB\n”预置“有Error，是否不影响测试结果？\n预置Error是否影响测试结果1920×719 145 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/163a9dbafa5e414f5d467afb381e08a573bcc563.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/2/25c658b33eedc1a85657b2156243261980e627a1.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": []
+}

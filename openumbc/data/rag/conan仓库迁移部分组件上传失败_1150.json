@@ -1,0 +1,57 @@
+{
+    "topic_id": 1150,
+    "question": "conan仓库迁移，部分组件上传失败 - content: 问题背景\n需要将conan二进制转移到内网自建的conan仓\n当前已经在外网通过构建的方式将conan二进制缓存打包转移到内网，但上传到自建conan仓时出现问题\n问题现象\n上传到自建conan仓的命令：\nconan search \"*\" | tail -n +3  | xargs -P 12 -I {{}} conan upload {{}} -c --all -r cbmc_release\n\n出错打印：\n\nERROR: boost/1.82.0.B001@openUBMC.release/rc: Upload recipe to 'cbmc_release' failed: The 'boost/1.82.0.B001@openUBMC.release/rc' package has 'exports_sources' but sources not found in local cache.\nProbably it was installed from a remote that is no longer available.\n\n涉及的组件有：\nComputing_Component_RAID/V100R001C00SPC512B020@openUBMC.release/stable\nCyrus_SASL/2.1.28-h1.computing.ibmc.r1@openUBMC.release/rc\nEditline_Library_-_libedit/3.1-20230828-htrunk2@openUBMC.release/rc\nSignature_Verify_CBB_Library/24.1.0.B006_001@openUBMC.release/rc\nboost/1.82.0.B001@openUBMC.release/rc\ncurl/7.79.1-25.oe2203sp3-htrunk31@openUBMC.release/rc\nhisec_tls/24.1.0.B039@openUBMC.release/rc\nhuawei_secure_c/1.0.2@openUBMC.release/rc\njson/B003_00002@openUBMC.release/rc\nkmc/24.0.0.B020_002@openUBMC.release/rc\nlibjpeg/9f@openUBMC.release/rc\nlibssh2/1.10.0-5.oe2203sp3-htrunk4-1@openUBMC.release/rc\nlldpd/1.0.17-h1@openUBMC.release/stable\nluajit/2.1.0.B012@openUBMC.release/rc\nmuparser/2.3.4@openUBMC.release/stable\nnet-snmp/5.9.1-6.oe2203sp3-htrunk4.B005@openUBMC.release/rc\nnginx/1.27.1-htrunk3.1@openUBMC.release/stable\nntp/4.2.8p17-3.oe2403-htrunk3-1@openUBMC.release/rc\nopenldap/2.6.6-htrunk1@openUBMC.release/rc\nopenssh/8.8p1-23.oe2203sp3.r6@openUBMC.release/rc\nsecbox/24.0.10.B066_00001@openUBMC.release/rc\nskynet/1.7.0.B016@openUBMC.release/rc\nsqlite3/3.37.2-6.oe2203sp3-h2.B001@openUBMC.release/rc\nvpp/V300R024C10SPC002B100_002@openUBMC.release/rc\n\n初步分析和尝试\n这些组件都是openUBMC.release通道发布，实际上这些组件在本地缓存都有hw.ibmc.release，而hw.ibmc.release通道的组件推送没报错。\n应该是组件的conanfile.py文件定义了源码，但是这些闭源组件包并没有源码快照，因此报错，目前通过注释 exports_sources 变量和source函数能推送大部分：\n#!/usr/bin/python\n# -*- coding: utf-8 -*-\n# Copyright © Huawei Technologies Co., Ltd. 2022-2025. All rights reserved.\nimport os\n\nfrom conans import ConanFile, tools, CMake\n\nclass hi1880_conan(ConanFile):\n    name = \"Computing_Component_RAID\"\n    description = \"Computing_Component_RAID\"\n    settings = \"os\", \"arch\", \"compiler\"\n    _env_build = None\n    generators = \"cmake\"\n    #exports_sources = [\"permissions.ini\"]                注释变量exports_sources \n    _cmake = None\n\n    @property\n    def _source_subfolder(self):\n        return \"sorce_subfolder\"\n\n    #def source(self):                                                  注释函数 source\n    #    git = tools.Git(verify_ssl=False, folder=\"hi1880_code\")\n    #    git.clone(**self.conan_data[\"sources\"][self.version][\"HI1880V100_DEVELOP\"])\n\n    def build(self):\n        # 修改工作目录\n        lib_path = \"hi1880_code/src/host/tools/lib\"\n        os.chdir(lib_path)\n\n        # 修改脚本 适配构建环境，并只编译64位\n        self.run(\"sed -i 's/buildtools\\///g' Makefile\")\n        self.run(\"sed -i '76c all : $(OBJS64LE)' Makefile\")\n        self.run(\"sed -i '77,79d' Makefile\")\n        self.run(\"make\")\n\n    def package(self):\n        hs_h_dir = \"hi1880_code/src/include/open_api\"\n        hs_lib_dir = \"hi1880_code/src/host/tools/lib\"\n\n        self.copy(\"*\", src=hs_h_dir, dst=\"include\", symlinks=True)\n        self.copy(\"tool_lib.h\", src=hs_lib_dir, dst=\"include\", symlinks=True)\n        self.copy(\n            \"raidlib.so*\", src=f\"{hs_lib_dir}/bin/64le\", dst=\"usr/lib64\", symlinks=True\n        )\n        self.copy(\"permissions.ini\", src=\"\", dst=\"\")\n\n    def package_info(self):\n        self.cpp_info.libdirs = [\"usr/lib64\"]\n\n尽管做这样的修改，但是仍然有部分组件无法推送：\n\nERROR: luajit/2.1.0.B012@openUBMC.release/rc: Upload recipe to 'cbmc_release' failed: No remote 'openubmc_dev' defined in remotes\n\nERROR: Errors uploading some packages\n\n涉及的组件有：\nluajit/2.1.0.B012@openUBMC.release/rc\nnginx/1.27.1-htrunk3.1@openUBMC.release/stable\nskynet/1.7.0.B016@openUBMC.release/rc\n\n实际上nginx/1.27.1-htrunk3.1@openUBMC.release/stable和skynet/1.7.0.B016@openUBMC.release/rc是依赖luajit/2.1.0.B012@openUBMC.release/rc的。\n诉求\n1、应该如何修改才能将luajit、nginx、skynet推送到远端\n2、为解决package has ‘exports_sources’ but sources not found in local cache.的问题，目前是挨个去改每个出问题的组件，工作量很大，且不方便做自动化，有没有更方便的办法， 或者发布组件时不强制源码校验？\nlinks: #p-2488-h-1, #p-2488-h-2, #p-2488-h-3, #p-2488-h-4",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/1150/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1150/2",
+            "text": "content: 按如下方式进行迁移。\n前提条件：\n规避措施：\n执行以下命令规避openUBMC的conan仓下载不了package的问题：\necho $(pip3 show conan |  grep -oP 'Location:\\s*\\K.*')/conans/client/remote_manager.py | xargs sed -i 's/recipe_hash/recipeHash/g'\n\n下载组件包\n示例：\nconan download xxx/xxx@openUBMC.release/rc -r openubmc_dev\nconan download xxx/xxx@openUBMC.release/stable -r openubmc_dev\n自行编写脚本下载需要的所有组件包。\n打包\n将~/.conan/data的组件打包，转移。\n上传组件包\nconan upload \"*\"  -c  --all --no-overwrite --parallel  -r  xx\nlinks: #p-2503-h-1, #p-2503-h-2, #p-2503-h-3, #p-2503-h-4"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1150/3",
+            "text": "社区的conan download 接口有问题，不能下载完整的组件包。\n见社区每日答疑中 conan download相关"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1150/5",
+            "text": "见前提条件规避措施"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1150/6",
+            "text": "content: 这就来验证：\nimage592×210 8.17 KB\n看起来真的行，我推一推试试\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/33c27153c253794241dfff72fc526f58804fbf43.png"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1150/7",
+            "text": "conan upload 的时候，只有一个组件失败了：libsomp/1.80.3@openUBMC.dev/dev。\nERROR: libsomp/1.80.3@openUBMC.dev/dev: Upload recipe to 'cbmc_release' failed: The recipe contains invalid data in the 'scm' attribute (some 'auto' values or missing fields 'type', 'url' or 'revision'). Use '--force' to ignore this error or export again the recipe ('conan export' or 'conan create') to fix these issues.\n\nERROR: Errors uploading some packages"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1150/8",
+            "text": "dev 的组件为调试版本组件，跳过该组件。"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1150/9",
+            "text": "因为你本地存在git 变更，编译组件的时候没有计算出正确的scm，是没法upload的。"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "topic_id": 1315,
+    "question": "os下执行ipmitool mc reset warm 失败 - content: img_v3_02n4_69d187f3-236c-4a03-9241-e3b33ad8db2g842×566 119 KB\nos下执行ipmitool mc reset warm 失败，执行ipmitool mc reset cold 可以正常执行。\n查看日志可见cold reset相关的ipmi cmd\nimage662×310 9.53 KB\n但是warm reset 没有相关的ipmi cmd 命令字\nimage599×348 17 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/d3a35a5cbf7b54a11633526c9b8ddac24d9d3dec.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/6/660661b869813601835e9fc7eafe03f550b4ec99.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/2e27870c1da6b95a6585d818b8a7386e7594d94f.png",
+    "topic_user_name": "KunTai_WangJiaKai",
+    "best_answer_url": "/t/topic/1315/2",
+    "reply_posts": [
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1315/2",
+            "text": "openubmc当前不支持热复位bmc"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1315/3",
+            "text": "有支持的计划吗？测试部有对warm rest压测的需求，要去sig组提需求吗？"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1315/4",
+            "text": "暂无计划"
+        },
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1315/5",
+            "text": "openubmc后续对warm reset命令的支持计划请@pengqiang-gs 同步一下"
+        }
+    ]
+}

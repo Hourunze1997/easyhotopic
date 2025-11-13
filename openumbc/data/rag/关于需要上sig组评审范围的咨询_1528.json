@@ -1,0 +1,22 @@
+{
+    "topic_id": 1528,
+    "question": "关于需要上sig组评审范围的咨询 - 关于开发过程中哪些内容需要上sig组评审，目前不太清楚具体的范围。\n1.资源树属性、接口、私有属性、类：关于内部评估后不适合上社区的需求新增资源树属性、接口等是否需要上sig组评审报备。如何避免与后续社区的接口冲突\n2.ipmi命令：BMC V2给每个伙伴都分配了ipmi字段，BMC V3是否也延续这个策略（BMC v2实现的命令可能会继续继承之前定义的命令字），分配给伙伴的字段的命令是否可不上社区评审。哪些ipmi命令是需要上社区评审的。\n3.redfish：redfish接口新增字段与接口是否需要评审（包括不贡献社区需求）。是否有不需要经过社区的评审范围。\n4.贡献社区的需求是否均需要需要在社区评审详设，有没有不需要社区评审详设的可接受合入的，比如新增一张板卡适配的。",
+    "topic_user_name": "Kunlun Liuchenxi",
+    "best_answer_url": "/t/topic/1528/3",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1528/2",
+            "text": "content: @zybwh @huanghan @changxingOpenUBMC @pengqiang-gs @nathanael\nlinks: /u/zybwh, /u/huanghan, /u/changxingopenubmc, /u/pengqiang-gs, /u/nathanael"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1528/3",
+            "text": "content: 其实本质的问题在于社区开发流程是什么样的，围绕着开发流程，设置了各评审组织。\n最近RM SIG也在总结Q2遇到的问题，整体流程今天在TC进行了评审，后续会同步到社区开发者。可以参考：https://gitcode.com/openUBMC/release_management/issues/13\n首先社区的评审组织是为了保障大家的贡献不冲突、且符合社区长期规划，并非为了评审而评审。评审的过程、内容也都是开放透明的，符合开源社区的目标和愿景。\n针对接口类的评审，由Interface SG负责，核心是为了建设openUBMC社区的接口规范。那评审的内容都会作为社区接口的一部分。IPMI也是一样，如果开发者决定不在社区开发，则不需要上社区评审，同时社区也不会负责接口冲突导致的问题。\n因此对于接口来说，推荐将接口的设计贡献至社区，成为社区规范之一。具体的细节可以参考Interface SIG组的接口评审规范。\n针对需求类的详设、测试报告，由各SIG组承载。为了保证社区版本的质量，当前要求社区的需求/特性设计都需要在社区公开，并在SIG组进行公开评审。Q3社区版本也会按照这个模式来执行。\n当然针对板卡适配的，代码设计不是关键，核心是看板卡适配了哪些能力，是否能符合兼容性要求，保障社区开发者都能可直接商用而非需要二次开发。具体细节可以参考Hardware SIG的要求，也可以加入到Hardware SIG中，提出自己的要求，确保自己在使用社区版本时不需要二次开发。\n最后，社区的最高决策组织是TC，如果拿不准的，或者SIG组不认可的，可以上升到TC来进行讨论决策。\nlinks: https://gitcode.com/openUBMC/release_management/issues/13"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 1037,
+    "question": "【已评审】新增监控BMC的内存占用度量类 - content: ISSUE链接：\n【需求】新增MemoryUsageMetrics类支持监控BMC的内存占用度量机制-vpd-GitCode\n评审背景\n\n客户需求，要求支持BMC的内存占用度量预警机制；当前尚未支持，因此为实现该功能需要新增类对象承载是否支持该机制，以及预警门限和持续时间的属性\n\n评审点\n\n新增MemoryUsageMetrics类，用于BMC的内存占用度量预警机制使用\n\n详细描述\n新增MemoryUsageMetrics类\n变化类型：新增类\n应用场景：承载BMC的内存占用度量预警机制相关属性配置\n具体如下：\n\n属性名称\n变化类型\n签名\n单位\n默认值\n\nMetricsSupported\n新增属性\nb\ntrue：支持 false：不支持\nfalse\n\nMaxMemoryUsageThreshold\n新增属性\ny\n1~100的整数，表示内存占用率\n80\n\nMaxMemoryUsageDuration\n新增属性\nq\n最大值为65535，单位为分钟\n1\n\n方案一(推荐)：\n采用定制化方案,对于内存告警的支持,门限以及持续时间,通过定制化解决\nBMC的内存占用度量预警机制相关属性配置，具体的定制化项信息如下：\n\n项目\n值\n\n定制化项\n是否开启内存告警的支持\n\n定制化接口名称\nCustom_BMCMemoryMetricsSupported\n\n默认值\nfalse\n\n类型\n布尔值\n\n说明\n默认为false，空定制化按照默认值处理\n\n项目\n值\n\n定制化项\n内存占用率告警门限值\n\n定制化接口名称\nCustom_BMCMaxMemoryUsageThreshold\n\n默认值\n80\n\n类型\n1~100的整数\n\n说明\n空定制化按照默认值处理\n\n项目\n值\n\n定制化项\n内存占用率告警门限持续时间，内存占用率超限且超过该时间后触发bmc内存超限告警\n\n定制化接口名称\nCustom_BMCMaxMemoryUsageDuration\n\n默认值\n1\n\n类型\n正整数，最大为65535\n\n说明\n空定制化按照默认值处理\n\n优点\n同机型可以灵活配置\n方案二：\n采用配置方案,对于内存告警的支持采用机型差异化配置\n需要新增资源协作接口对外提供设置属性\n新增path\n/bmc/kepler/Chassis/:ChassisId/MemoryUsageMetrics\n新增接口\nbmc.kepler.Chassis.MemoryUsageMetrics\n读写权限\n读:readonly\n写:basicsetting\n缺点\n同机型无法差异化配置,需要单独提供接口进行设置\n评审结论\n不通过，当前告警的策略不需要在通用能力中展示，建议增加资源协作接口，将资源的使用率以及持续时间在资源协作接口上承载，提供给下游（产业）进行消费。\nlinks: https://gitcode.com/openUBMC/vpd/issues/49, #p-2199-h-1, #p-2199-h-2, #p-2199-h-3, #p-2199-memoryusagemetrics-4, #p-2199-h-5, #p-2199-h-6, #p-2199-h-7, #p-2199-path-8, #p-2199-h-9, #p-2199-h-10, #p-2199-h-11, #p-2199-h-12",
+    "topic_user_name": "wangxin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1037/2",
+            "text": "hxmygcs:\n\n新增MemoryUsageMetrics类\n\n评审的背景说清楚客户的需求以及当前的差距即可\n当前评审点是必须要做的，因此不需要决策是否需要做\n对于实施方案增加一种定制化方案，然后标注明确对应的决策要素"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1037/3",
+            "text": ""
+        }
+    ]
+}

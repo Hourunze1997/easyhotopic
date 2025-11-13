@@ -1,0 +1,36 @@
+{
+    "topic_id": 863,
+    "question": "目标调速 - 目标调速是基于PID的，那么对于PID的微分、积分、比例等参数有可修改的手段么？查看相关文档是没有的\n\n我想通过bmc.kepler.Systems.CoolingRequirement下的SetBasicCoolingTargetTemperature修改目标温度值，但是参数是a{ss}y; 这个a{ss} 字典应该填什么？y应该是期望修改的目标值\n\n目前thermal_mgmt的readme文档内容过于落后，希望更新；以及CoolingRequirement中SetTargetTemperature 这个方法是修改自定义目标温度值，是不是改成SetCustomTargetTemperature比较直观",
+    "topic_user_name": "Iss Tanghaibin",
+    "best_answer_url": "/t/topic/863/5",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/863/2",
+            "text": "已转专家分析。"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/863/3",
+            "text": "当前不支持对PID的微分，积分、比例等参数的修改；\na{ss}为signature，填写为0即可，即a{ss} 0 目标温度值；\nthermal_mgmt中的readme文档计划于5月底前完成更新；SetTargetTemperature为已有资源树方法，涉及北向接口的使用，若对其进行修改，则可能存在兼容性问题，例如使用修改后的thermal_mgmt组件版本和修改前的北向版本（rackmount）"
+        },
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/863/4",
+            "text": "CoolingRequirement中 SetSmartCoolingTargetTemperature设置SmartCooling数组 我发现设置目标值和max值都有一个origin来约束，为什么到了SmartCooling数组，用的是当前值约束；这就导致了每次修改只能小于等于上次修改值；这是已知问题还是设计如此\n热设计同事有需要去修改目标调速里目标值、max值等；从mbdctl里lsobj CoolingRequirement可以看到很多个对象，如何从对象找到对应sr文件？我目前是通过对象名去掉后面position以及hwdiscovery加载的sr对比分析；有没有更好的方法"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/863/5",
+            "text": "content: 已知问题，需修改，当前以issue进行跟踪；GitCode - 全球开发者的开源社区,开源代码托管平台\n当前无对应方法查看，仅可通过position对应关系对比分析\nlinks: https://gitcode.com/openUBMC/thermal_mgmt/issues/29"
+        }
+    ]
+}

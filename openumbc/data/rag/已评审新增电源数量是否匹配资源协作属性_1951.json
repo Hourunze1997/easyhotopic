@@ -1,0 +1,15 @@
+{
+    "topic_id": 1951,
+    "question": "【已评审】新增电源数量是否匹配资源协作属性 - content: Issue链接\n新增电源数量是否匹配资源协作属性\n背景\n机柜管理场景需新增电源数量不匹配告警，而电源数量不匹配无相关字段承载，因此需新增相关资源属性用于表示期望的电源数量，实际在位的电源数量和电源数量不匹配状态，前两个属性用于问题可定位性，最后一个属性用于满足产业适配告警要求\n决策点\n新增path：/bmc/kepler/Chassis/:ChassisId/PowerSubsystem\n新增interface：bmc.kepler.Chassis.PowerSubsystem.Status\n新增属性：ExpectedPSUCount用于表示期望的电源数量，PresentPSUCount用于表示实际在位的电源数量，PsuCountMismatch用于表示电源数量不匹配状态\n详细描述\n资源path：/bmc/kepler/Chassis/:ChassisId/PowerSubsystem\n资源interface：bmc.kepler.Chassis.PowerSubsystem.Status\n变化类型：新增属性\n应用场景：根据实际环境，刷新期望电源数量和在位电源数量，并且在非装备模式下，在位电源数量和预期电源数量不匹配时刷新不匹配属性状态值，用于告警上报\n持久化类型：见表格中的描述\n操作权限：ReadOnly\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nExpectedPSUCount\n新增属性\ny\n读: ReadOnly\n掉电持久化\ntrue\n定制化配置\n表示期望的电源数量，默认值为0xff，表示未被设置\n无\n\nPresentPSUCount\n新增属性\ny\n读: ReadOnly\n不持久化\nfalse\n代码业务逻辑刷新\n表示当前环境实际在位的电源数量，默认值为0\n无\n\nPSUCountMismatch\n新增属性\nb\n读: ReadOnly\n不持久化\ntrue\n代码业务逻辑刷新\ntrue表示电源数量不匹配，false表示电源数量匹配，默认值为false\n无\n\n评审结论\n同意新增如下资源协作接口，具体如下：\n新增path：/bmc/kepler/Chassis/:ChassisId/PowerSubsystem\n新增interface：bmc.kepler.Chassis.PowerSubsystem.Status\n新增属性：ExpectedPSUCount用于表示期望的电源数量，PresentPSUCount用于表示实际在位的电源数量，PsuCountMismatch用于表示电源数量不匹配状态\n\n属性\n访问权限\n持久化\n变化通知\n\nExpectedPSUCount\n只读，读：ReadOnly\n掉电持久化\ntrue\n\nPresentPSUCount\n只读，读：ReadOnly\n不持久化\nfalse\n\nPSUCountMismatch\n只读，读：ReadOnly\n不持久化\ntrue\n\n遗留问题\n\n问题：针对ExpectedPSUCount属性，确认其是否需要变化通知，以及需对说明和约束描述进行修改\n结论：①. 经确认，ExpectedPSUCount需要变化通知，原因：电源数量不匹配告警描述中会使用该属性值。②. 已对说明描述进行修改完成。③. 该属性无约束要求。\n针对PresentPSUCount属性，确认其是否需要持久化，变化通知，以及需对说明描述进行修改\n结论：①. 经确认，PresentPSUCount不需要持久化，且不需要变化通知。②. 已对说明描述进行修改完成\n针对PSUCountMismatch属性，需对说明描述进行修改\n结论：已对说明描述进行修改完成\nlinks: #p-4788-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/160, #p-4788-h-2, #p-4788-h-3, #p-4788-h-4, #p-4788-h-5",
+    "topic_user_name": "Wwhh",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1951/2",
+            "text": ""
+        }
+    ]
+}

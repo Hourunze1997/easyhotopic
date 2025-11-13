@@ -1,0 +1,22 @@
+{
+    "topic_id": 721,
+    "question": "PCIe Switch 芯片的Flash升级 - 当前openUBMC如果要实现PCIe Switch的 FLash升级，当前识别到需要在PCIe Switch板子的sr文件中新增Switch升级的类以及对应的升级流程代码；\n请问：\n1.如何新增一个类似于LogicFirmware的类来用于Switch Flash的升级？\n2.是否firmware_mgmt组件中也需要同步修改来支持新的固件类型？\n3.后续Switch芯片的Flash升级流程是否可以放在general_hardware/src/lualib/PCIeSwitch中实现？",
+    "topic_user_name": "yctco_zhanglei",
+    "best_answer_url": "/t/topic/721/2",
+    "reply_posts": [
+        {
+            "user_name": "Changxing Open Ubmc",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/721/2",
+            "text": "问题2：目前新增新的固件类型，平台是需要适配修改，比如：一些细节的地方（记录操作日志、升级判断等）\n问题1、问题3：建议到hardware-sig组申报议题讨论，方案确定后将输出开发指导，包括如何新增类支持升级等"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/721/3",
+            "text": "建议报sig议题"
+        }
+    ]
+}

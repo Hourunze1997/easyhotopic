@@ -1,0 +1,15 @@
+{
+    "topic_id": 1788,
+    "question": "适配GPU卡传感器遇到的问题 - 目前适配一个国产的GPU卡，它的技术文档中获取温度是需要通过smbus先写再读寄存器才能获取到值，而我看代码里已适配的GPU卡的sr文件的温度传感器都是直接读就行了。sr文件配置的传感器好像也都只有读操作没有先写再读的操作。如果我要配置给它配置温度传感器，那读写的逻辑不能在sr文件里面配置，那应该在哪个组件中的代码里面去配置传感器的逻辑，然后怎么和sr文件里面的传感器联系起来，然后可以在web上展示。希望有大佬能解答一下。",
+    "topic_user_name": "wuzhou-Lsx",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "王祝炜",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1788/2",
+            "text": "lsx:\n\n在哪个组件中的代码里面去配置传感器的逻辑\n\nGPU是在general_hardware组件管理，相关的逻辑也是在那个组件。\n\n lsx:\n\n怎么和sr文件里面的传感器联系起来\n\n需要寄存器读、写的，可以参考general_hardware组件里cpld自检，CSR里配置的这个属性CpldTestReg，就是在代码里设置属性来写，获取属性表示读。\nCSR配置：\n\"CpldTestReg\": \"#/Accessor_CpldTest.Value\",\n\n代码：\nself:set_prop('CpldTestReg', val_write)\nself:get_prop('CpldTestReg')\n\n lsx:\n\n可以在web上展示\n\nweb展示涉及到资源协作接口属性和北向rackmount组件，一般是在CSR里用表达式把scanner的值同步到GPU对象的温度属性，然后在rackmount组件使用。"
+        }
+    ]
+}

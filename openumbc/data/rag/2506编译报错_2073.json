@@ -1,0 +1,64 @@
+{
+    "topic_id": 2073,
+    "question": "2506编译报错 - content: 使用社区25.06版本编译\nmanifest: e6c13de7d4e5c2b1d97de0a7ba72a60ccfa17af3 (HEAD, tag: 25.06)\nbmc_sdk.zip：25.06版本\nbingo版本：0.5.230\nconan版本：1.62.0\n在执行bingo build时libsoc_adapter报错，提示找不到./infected/drivers/hisport，请问是什么原因？\nimage1895×984 16.4 KB\nimage1889×726 13.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/64fe8733b06f6c3dbd9ae34f389d70c3939eaf40.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/035f4036adb9e82de164eeee1888f933ae0a5eed.png",
+    "topic_user_name": "Guoxin",
+    "best_answer_url": "/t/topic/2073/9",
+    "reply_posts": [
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2073/2",
+            "text": "sdk目标有误，module_symvers值应为:1a31c297fffaca189f4d0ba34955c46c3ad287687886596314dc893b7498e033"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2073/3",
+            "text": "可在本地/opt/sdk执行sha256sum查看"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2073/4",
+            "text": ""
+        },
+        {
+            "user_name": "Guoxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2073/5",
+            "text": "root@6433c44fc197:/opt/hi1711sdk# sha256sum Module.symvers\nc61ed460fefe0c2aeec85ee4e224a2ea8d555b1e45ac085d855123812dfcd6e4  Module.symvers\n请问有什么原因会导致该值改变，如何处理，谢谢。"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2073/6",
+            "text": "这个文件来自hi1711_sdk.tar.gz，需要审视下来源"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2073/7",
+            "text": "只要你触发了从源码编译, 就一定会出错.\n为什么会触发? conan配置不一致. 99%都是你的sdk没有正确安装;\n所以, 你应该重新安装一下25.06的SDK"
+        },
+        {
+            "user_name": "Guoxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2073/8",
+            "text": "替换了/opt下的hi1711sdk文件夹，重新安装25.06SDK，问题已解决。"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2073/9",
+            "text": "方案应是替换~/sdk目录下的整个文件"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 2135,
+    "question": "使用C语言的conan组件怎么正确链接libsystemd - content: 需求背景\n我使用C语言写的bus_tools原来使用的是系统命令busctl调用资源树接口，想改成使用libsystemd的sd-bus库实现，减少开销\n但在使用conan create . bus_tools/1.0.0@openUBMC.release/stable -pr profile.ini构建时无法正确链接libsystemd\n个人尝试\n我尝试在组件的conanfile.py添加了：\ndef _configure_autotools(self):\n        if self._autotools:\n            return self._autotools\n        self._autotools = AutoToolsBuildEnvironment(self)\n        # 添加头文件路径\n        self._autotools.flags.append(\"-I/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk/usr/include\")\n        # 添加库路径和链接库\n        self._autotools.link_flags.extend([\n        \"-L/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk/lib64\",\n        \"-lsystemd\"\n    ])\n        return self._autotools\n\n结果是预处理阶段可以找到头文件#include <systemd/sd-bus.h>\n但是链接阶段会报错：\naarch64-target-linux-gnu-gcc -L/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk/lib64 -lsystemd -o i2c_tools/i2cdetect i2c_tools/i2cdetect.o i2c_tools/i2cbusses.o \naarch64-target-linux-gnu-gcc -L/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk/lib64 -lsystemd -o i2c_tools/i2ctransfer i2c_tools/i2ctransfer.o i2c_tools/i2cbusses.o \n/opt/hcc_arm64le/bin/../lib64/gcc/aarch64-target-linux-gnu/7.3.0/../../../../aarch64-target-linux-gnu/bin/ld: warning: liblzma.so.5, needed by /opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk/lib64/libsystemd.so, not found (try using -rpath or -rpath-link)\n/opt/hcc_arm64le/bin/../lib64/gcc/aarch64-target-linux-gnu/7.3.0/../../../../aarch64-target-linux-gnu/bin/ld: warning: libcap.so.2, needed by /opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk/lib64/libsystemd.so, not found (try using -rpath or -rpath-link)\n/opt/hcc_arm64le/bin/../lib64/gcc/aarch64-target-linux-gnu/7.3.0/../..//.opt.//hcc_arm64le./.bin//aarch64../-lib64/gcctarget/-aarch64linux--targetgnu-/linuxbin-/gnuld/:7.3.0 //.opt.//RTOS./.208.9.0//.arm64le_5.10_ek_preempt_pro.//sdk./.lib64//aarch64libsystemd.so-:target -undefinedlinux -referencegnu /tobin/ ld`:lzma_stream_decoder @warningXZ_5.0:' \nliblzma.so.5/,opt /neededhcc_arm64le /bybin //.opt.//RTOSlib64//gcc208.9.0//arm64le_5.10_ek_preempt_proaarch64/-sdktarget/-lib64linux/-libsystemd.sognu,/ 7.3.0not/ .found. /(.try. /using. .-/rpath. .or/ aarch64--rpathtarget--linklinux)-\ngnu//optbin//hcc_arm64leld/:bin //.opt.//RTOSlib64//208.9.0gcc//arm64le_5.10_ek_preempt_proaarch64/-sdktarget/lib64-/linuxlibsystemd.so-:gnu /undefined7.3.0 /reference to. .`/lzma_end.@.XZ_5.0/'.\n/.opt//.hcc_arm64le/.bin//aarch64.-.target/-lib64linux/-gccgnu//aarch64bin-/targetld-:linux -warninggnu:/ 7.3.0libcap.so.2/,. .needed/ .by. //.opt.//RTOS./.208.9.0//aarch64arm64le_5.10_ek_preempt_pro-/targetsdk-/linuxlib64-/gnu/binlibsystemd.so/,ld :not  /foundopt /(RTOStry/ 208.9.0using/ arm64le_5.10_ek_preempt_pro-/rpathsdk /orlib64 /-libsystemd.sorpath:- linkundefined) \nreference/ optto/ hcc_arm64le`/lzma_codebin@/XZ_5.0.'.\n/lib64/gcc/aarch64-target-linux-gnu/7.3.0/../../../../aarch64-target-linux-gnu/bin/ld: /opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk/lib64/libsystemd.so: undefined reference to `lzma_stream_decoder@XZ_5.0'\n/opt/hcc_arm64le/bin/../lib64/gcc/aarch64-target-linux-gnu/7.3.0/../../../../aarch64-target-linux-gnu/bin/ld: /opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk/lib64/libsystemd.so: undefined reference to `lzma_end@XZ_5.0'\n/opt/hcc_arm64le/bin/../lib64/gcc/aarch64-target-linux-gnu/7.3.0/../../../../aarch64-target-linux-gnu/bin/ld: /opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk/lib64/libsystemd.so: undefined reference to `lzma_code@XZ_5.0'\ncollect2: error: ld returned 1 exit status\ncollect2: error: ld returned 1 exit status\n\n述求\n想知道规范的处理是修改profile.ini还是conanfile.py，以及怎么正确指定头文件路径和动态库路径\nlinks: #p-5368-h-1, #p-5368-h-2, #p-5368-h-3",
+    "topic_user_name": "百信-罗昊",
+    "best_answer_url": "/t/topic/2135/4",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2135/2",
+            "text": "content: conan使用profile文件(~/.conan/profile.ini)管理构建工具，不要在conanfile中硬编码跟构建工具链相关的路径。\nlibsystemd在编译工具链中提供了libsystemd.pc文件，你可以使用PkgConfig管理你的依赖。\n例如CMakeLists.txt中可以使用pkg_search_module(SYSTEMD REQUIRED libsystemd)自动查询到libsystemd依赖，可在后续脚本中使用SYSTEMD_INCLUDE_DIRS、SYSTEMD_LIBRARIES和SYSTEMD_LIBRARY_DIRS等变量管理头文件、库文件和库目录，可参考  FindPkgConfig\nlinks: https://cmake.org/cmake/help/latest/module/FindPkgConfig.html"
+        },
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2135/3",
+            "text": "content: 可以参考conan_index中的做法，从环境变量中获取sysroot的路径，添加添加到编译参数中image779×465 26.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0c12a72185259a62f45a35a07a4d21f67deeecc5.png"
+        },
+        {
+            "user_name": "百信-罗昊",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2135/4",
+            "text": "经过测试，最简洁的方案为\n1、修改conanfile.py，将sysroot环境变量添加到flags和link_flags\ndef build(self):\n        with tools.chdir(os.path.join(self.build_folder, \"src\")):\n            autotools = self._configure_autotools()\n            chost = os.environ.get(\"CHOST\")\n            if chost:\n                os.environ[\"CROSS_COMPILE\"] = chost + \"-\"\n            # autotools.make(target=\"defconfig\")\n            sysroot = os.environ.get(\"CONAN_CMAKE_SYSROOT\", default=\"\")\n            autotools.flags.append(f\"--sysroot={sysroot}\")\n            autotools.link_flags.append(f\"--sysroot={sysroot}\")\n            autotools.make()\n            autotools.install()\n\n2、Makefile添加\nLDFLAGS += -lsystemd"
+        }
+    ]
+}

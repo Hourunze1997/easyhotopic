@@ -1,0 +1,57 @@
+{
+    "topic_id": 1509,
+    "question": "smbios字段修改 - 请问能否提供dmi信息修改指导文档，指导一下smbios每个字段如何更新？",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "/t/topic/1509/8",
+    "reply_posts": [
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1509/2",
+            "text": "是smbios文件解析流程？"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1509/3",
+            "text": "如何修改smbios每个字段的信息。\n比如我使用dmidecode -t 2查看Base Board Information的信息，然后要修改Product Name这个属性的值，应该如何修改？"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1509/4",
+            "text": "这个是带内的命令吧，意思是bmc修改吗"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1509/5",
+            "text": "smbios里的值，部分是bios在启动阶段向BMC发送获取fru信息的ipmi命令来获取的。但是我们不知道smbios里的字段对应什么fru信息，而且部分smbios字段只有特定机型支持修改。这些规则如果单纯靠我们试错来发现非常耗费时间。  \n不过我也不确定这个规则是要找BIOS要还是BMC来要，两边都同时在问。"
+        },
+        {
+            "user_name": "Lishuol",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1509/6",
+            "text": "smbios文件不是bios主动发给bmc的吗，bmc是接收方，怎么能在bmc侧修改。文件的数据结构解析你找bios的同事了解下，如果某些字段的数据源是从bmc拿然后bios写进文件里的，单独看。Fru信息BMC是有接口读写的，Ipmi手册里有说明怎么修改哪个字段，0x30 0x90 0x04、0x30 0x90 0x05、0x30 0x90 0x06这三个命令"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1509/7",
+            "text": "现在就是不知道SMBIOS里的字段与fru的字段是怎么对应的，只能通过修改fru来看SMBIOS里哪个字段变了。\n而且这个对应规则也和机型有关，这个规则要靠我们试错试出来的话，费时太多了。"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1509/8",
+            "text": "content: bmc修改smbios相关信息的途径 可参考这个topic，解答了smbios是如何解析的\nlinks: https://discuss.openubmc.cn/t/topic/1545"
+        }
+    ]
+}

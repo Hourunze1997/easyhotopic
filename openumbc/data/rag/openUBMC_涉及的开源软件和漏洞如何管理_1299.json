@@ -1,0 +1,22 @@
+{
+    "topic_id": 1299,
+    "question": "openUBMC 涉及的开源软件和漏洞如何管理? - Q1：openUBMC涉及到的开源软件, 三方软件, 构建工具等的版本依赖以及license声明,  从哪里获取到完整清单和列表, 以便在内部系统上进行关联和管理.\nQ2：这些开源软件的漏洞修复又是什么样的公开策略和修复节奏呢?",
+    "topic_user_name": "河南昆仑-郑豪伟",
+    "best_answer_url": "/t/topic/1299/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1299/2",
+            "text": "content: bmc_sdk的开源软件依赖在bmc_sdk.zip里面的Open Source Software Notice.docx\nbmc_sdk涉及的开源软件、三方软件暂时没有独立出来，漏洞等问题由bmc_sdk统一处理。\nopenUBMC社区上的漏洞管理可以参考https://www.openubmc.cn/vulnerability-management\nlinks: https://www.openubmc.cn/vulnerability-management"
+        },
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1299/3",
+            "text": "A1: 目前查看完整的第三方 conan 包清单的方式可以按照如下步骤获取：\n\n构建 mainfest\nmanifest/temp/build_<你传入的board_name(默认 openUBMC)><你传入的 build_type (默认 debug)><你传入的 stage (默认 dev)>/tmp_root/etc/package_info 文件记录了当前所依赖的所有包及其版本\n如果需要每个包的源码信息，需要查看 ~/.conan/data/<包名>/<版本>/<user_channel>//export/conandata.yml 查看 scm 内容"
+        }
+    ]
+}

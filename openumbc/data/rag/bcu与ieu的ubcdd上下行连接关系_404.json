@@ -1,0 +1,57 @@
+{
+    "topic_id": 404,
+    "question": "bcu与ieu的ubcdd上下行连接关系 - \"BusinessConnector_1\": {\n            \"Name\": \"Up_1\",\n            \"Direction\": \"Upstream\",\n            \"Slot\": 1,\n            \"LinkWidth\": \"X16\",\n            \"MaxLinkRate\": \"PCIe 4.0\",\n            \"ConnectorType\": \"UBCDD\",\n            \"Ports\": [\n                {\n                    \"Name\": \"Down_1\",\n                    \"ID\": 49,\n                    \"Offset\": 0,\n                    \"Width\": 8\n                },\n                {\n                    \"Name\": \"Down_2\",\n                    \"ID\": 50,\n                    \"Offset\": 8,\n                    \"Width\": 8\n                }\n            ]\n        },\n        \"BusinessConnector_2\": {\n            \"Name\": \"Down_1\",\n            \"Direction\": \"Downstream\",\n            \"Slot\": 1,\n            \"LinkWidth\": \"X8\",\n            \"MaxLinkRate\": \"PCIe 4.0\",\n            \"ConnectorType\": \"PCIe CEM\",\n            \"UpstreamResources\": [\n                {\n                    \"Name\": \"Up_1\",\n                    \"ID\": 255,\n                    \"Offset\": 0,\n                    \"Width\": 8\n                }\n            ],\n            \"RefMgmtConnector\": \"#/Connector_PCIe_1\",\n            \"RefPCIeAddrInfo\": \"#/PcieAddrInfo_1\"\n        },\n\n请问，BusinessConnector_1中的Ports是通过UnitConfiguration对象中TargetPortID，SrcPortName属性联系起来的，这是bcu到ieu的上行数据链路，那BusinessConnector_2中的下行，也就是ieu到bcu的下行是怎么确认的？",
+    "topic_user_name": "wuzhou-xiaokaili",
+    "best_answer_url": "/t/topic/404/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/404/2",
+            "text": "wuzhou-xiaokaili:\n\nBusinessConnector_2\n\n1、bcu → ieu → pcie这个过程是下行、所以bcu到ieu是下行\n2、ieu到bcu称为上行，上行就是通过BusinessConnector_1来描述的，这里的ID对应到的UnitConfiguration的TargetPortID，然后找到SrcPortName，也就是对应的UBC/UBCDD。"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/404/3",
+            "text": "BusinessConnector_2的作用看起来应该是ieu → pcie的下行吧"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/404/4",
+            "text": "是的"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/404/5",
+            "text": "请问SrcPortName与ubc/ubcdd的关系是什么？SrcPortName，TargetPortID，slot属性怎么获取？"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/404/6",
+            "text": "\"I2cMux_9548Chan4\": {\n        \"ChannelId\": 3\n    },\n\nChannelId属性是指IIC3吗？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/404/7",
+            "text": "这个是i2c分流器的通道"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/404/8",
+            "text": "根据天池定义来规划的"
+        }
+    ]
+}

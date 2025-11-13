@@ -1,0 +1,22 @@
+{
+    "topic_id": 2064,
+    "question": "ipmitool raw 0x06 0x37查询UUID，结果前8个字节顺序是颠倒的。 - content: 一、测试环境\n硬件：S920X20\nBMC version：25.03\n二、问题描述\nipmitool raw 0x06 0x37查询UUID，查询结果的前8个字节顺序是颠倒的，这是为什么呢？\nimage1466×576 32.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/9f3befa678cf2e7a496356b6f8e7a759d64bf085.png",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/2064/2",
+    "reply_posts": [
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2064/2",
+            "text": "这个ipmi和web/redfish显示格式是不一样的，可能是不同协议要求格式不一样，这个和v2也是一样的"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2064/3",
+            "text": "ok，谢谢：）"
+        }
+    ]
+}

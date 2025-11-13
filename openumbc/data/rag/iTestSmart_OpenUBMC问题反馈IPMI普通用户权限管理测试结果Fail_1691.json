@@ -1,0 +1,57 @@
+{
+    "topic_id": 1691,
+    "question": "【iTestSmart OpenUBMC问题反馈】IPMI普通用户权限管理，测试结果Fail。 - content: 一、测试环境\n硬件：S920X20\nBMC Version：25.03\niTestSmart Version: 1.0.34\n二、问题描述\nOpenUBMC->安全管理->IPMI普通用户权限管理，测试结果Fail。\nuser_management_00081920×836 166 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/d186664a57fc9eaaf7b5c4af8a5e092ff9d6c497.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/1691/7",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1691/2",
+            "text": "报错指的是会话连接失败。需要确认一下使能开关是否打开，端口是否正确。"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1691/3",
+            "text": "content: OpenUBMC_端口服务1851×939 82.2 KB\n端口服务已开启，端口号是默认的。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/9a9d9f5f68fecf53a0f27780bcded8a0dacd3973.jpeg"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1691/4",
+            "text": "content: image998×161 61.7 KB\n那再确认一下这个 test 用户是否有管理员权限呢？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0f79335b59884cb4ccfd6e8c9a0728b0234b3553.png"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1691/5",
+            "text": "content: 这个test用户应该没有管理员权限，test用户就是一个commonuser。\n测试报告中增加了“INFO”信息，发现ipmi命令虽然报错，但这是符合预期的。\n所以就不清楚这个报错信息是什么命令引起的，这个报错信息上一行的\"INFO\"是“带内发送命令”，不清楚是什么命令。\nipmi命令虽失败但成功2117×589 200 KB\ntest用户不能获取开门狗状态1200×279 134 KB\n是何带内命令1920×694 155 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/ac0b41c0c5bd25258e31375a159264230ed3b06e.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/8/8c3d95774d6bb65eb5200336caeb23679cbbcc4d.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/b/bacb1ee90453f439d49e9bf355f91095989b6aaf.jpeg"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1691/6",
+            "text": "1、没有管理员权限的话，这个回显是这正常的，可以参考 ipmitool 帮助中的 -L 参数。\n2、ipmi命令是失败的，需要看看测试逻辑是如何判断查询是否成功的。\n3、需要看看测试的代码确认，该报错最后一行写的是没有 get 属性"
+        },
+        {
+            "user_name": "Hdq",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1691/7",
+            "text": "该用例需要在带内执行ipmi命令，所以需要在设备详情中配置OS的ip、用户名、密码。"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1691/8",
+            "text": "已配置OS的IP/用户名/密码，测试用例PASS。多谢：）"
+        }
+    ]
+}

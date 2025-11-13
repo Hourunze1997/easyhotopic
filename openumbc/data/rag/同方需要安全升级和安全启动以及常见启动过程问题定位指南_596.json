@@ -1,0 +1,15 @@
+{
+    "topic_id": 596,
+    "question": "【同方】需要安全升级和安全启动以及常见启动过程问题定位指南 - content: 背景\n在 bmc-core SIG 例会（2025/04/22） 上，伙伴提出一个关于安全启动的可定位性的问题，具体的问题如下：\n问题现象：\n在openUBMC的过渡包的基础上升级伙伴包，伙伴包升级成功但是启动过程中失败，自动回退到过渡包版本。\n问题初步分析：\n经过多次的定位，对于升级之后BMC启动失败的原因定位出来过，有以下原因：\n\n第一次定位：缺少SR文件导致BMC启动失败\n第二次定位：缺少伙伴根文件导致BMC启动失败\n\n困难求助\n困难\n目前伙伴无法了解全部的启动过程，以及签名文件的作用，以及存储在eMMC上的位置，导致遇到上述相关问题时开发人员定位很困难（无法从启动日志中寻找定位信息等）\n求助\n需要社区提供安全升级/启动的全流程介绍以及输出常见问题定位指南 @lwj11223344\nlinks: #p-1177-h-1, https://etherpad.openubmc.cn/p/sig-bmc-core, #p-1177-h-2, #p-1177-h-3, #p-1177-h-4",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/596/2",
+            "text": "content: 针对安全启动的介绍与定位，计划在sig重新组织一次。安全升级的流程与定位，security-sig难以完全覆盖，请bmc-core sig关注并输出 @pengqiang-gs\nlinks: /u/pengqiang-gs"
+        }
+    ]
+}

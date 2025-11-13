@@ -1,0 +1,22 @@
+{
+    "topic_id": 1459,
+    "question": "新增I2C chip资源树操作报错 - content: I2C_5新增Chip，资源树操作报错。\nCSR配置\n    \"I2c_5\": {\n        \"Chips\": [\n            \"Cpld_Exu\"\n        ]\n    },\n    ……\n    \"Cpld_Exu\": {\n        \"Address\": 36,\n        \"AddrWidth\": 1,\n        \"OffsetWidth\": 1,\n        \"WriteTmout\": 0,\n        \"ReadTmout\": 0,\n        \"HealthStatus\": 0\n    },\n\n资源树操作\n通过I2c_5对象操作没报错，读取数据都是0。\n~ ~ # busctl --user call bmc.kepler.hwproxy /bmc/kepler/Bus/I2c/I2c_5 bmc.kepler.Bus.BlockIO Read a{ss}yy 0 36 10\nay 10 0 0 0 0 0 0 0 0 0 0\n~ ~ #\n通过Cpld_Exu_0101对象操作报错。\n~ ~ # busctl --user call bmc.kepler.hwproxy /bmc/kepler/Chip/Cpld/Cpld_Exu_0101 bmc.kepler.Chip.BlockIO Read a{ss}uu 0 0 2\nCall failed: {“name”:“BMC.Error.Unknow”,“format”:“./opt/bmc/libmc/lualib/mc/context.lua:185: ./opt/bmc/libmc/lualib/sd_bus/init.lua:117: ./opt/bmc/apps/hwproxy/lualib/hwproxy_objects/app_bus.lua:104: …bmc/apps/hwproxy/lualib/hwproxy_objects/work_objects.lua:74: chip: Cpld_Exu_0101, bus: I2c_5, read failed: kepler.hwproxy.IOError: Input/Output Error.”}\n~ ~ #\n疑问\n1 使用I2c_5对象时，如何指定读取的offset\n2 使用Cpld_Exu_0101对象读取报错是什么原因\n对比iBMC\n读取0x24设备的0地址\n% i2cread 5 2 0x24 0\n0x22 0x00\n%\nlinks: #p-3472-csr-1, #p-3472-h-2, #p-3472-h-3, #p-3472-ibmc-4",
+    "topic_user_name": "恒扬-胡田野",
+    "best_answer_url": "/t/topic/1459/2",
+    "reply_posts": [
+        {
+            "user_name": "Chenshengfan",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1459/2",
+            "text": "WH11003:\n\n1 使用I2c_5对象时，如何指定读取的offset\n2 使用Cpld_Exu_0101对象读取报错是什么原因\n\n问题1：使用I2c_5对象进行读取的时候，可以通过WriteRead的方法来指定对应的偏移。\nbusctl --user call bmc.kepler.hwproxy /bmc/kepler/Bus/I2c/I2c_5 bmc.kepler.Bus.BlockIO WriteRead a{ss}yayy 0     … \n假设此处是offsetWidth:1, offset:2的时候，可以使用\nbusctl --user call bmc.kepler.hwproxy /bmc/kepler/Bus/I2c/I2c_5 bmc.kepler.Bus.BlockIO WriteRead a{ss}yayy 0 36 1 0x2 10\n问题2：Cpld这个器件类型是用于做Cpld升级的，不支持读。可以将Cpld_Exu修改成通用chip，如Chip_Exu使用"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1459/3",
+            "text": "WriteRead 方法可以成功读取，社区没看到Read/Write/WriteRead使用方法、使用场景的说明，是否可以提供"
+        }
+    ]
+}

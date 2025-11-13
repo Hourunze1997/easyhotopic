@@ -1,0 +1,29 @@
+{
+    "topic_id": 403,
+    "question": "【已评审】资源树协接口关键字使用规范评审 - content: 关联issue\n资源树协作接口关键字满足使用原则和规范\n评审背景\n\n当前资源树协作接口关键字使用范围不明确，导致社区开发者以及interface-sig组在评审和维护资源树协作接口时缺少评审和看护标准。\n\n当前现状与差距/问题分析：\n\n组件模型对属性的约束范围与资源树协作接口属性的约束范围不一致：可能导致开发者基于资源树协作接口开发的属性设置功能失效，例如minLength、maxLength， 接口定义[10, 20]，实现范围[10, 15]。\n组件模型约定的组件内部实现暴露到资源树协作接口：可能影响开发者基于资源树协作接口的组件二次开发，例如usage、refInterface\n\n评审点\n资源树协作接口关键字使用原则\n\n资源树接口作为接口规范，开发者基于接口规范的开发行为必须受到保护和满足，在此前提下，组件模型定义不得影响和干扰资源树接口规范的实施\n私有属性由组件自行管理，不在此原则约束范围\n\n资源树协作接口关键字使用范围\n资源协作接口属性关键字\n{\n  \"bmc.demo.IDemo\": {\n    \"properties\": {\n      \"Property1\": {\n        \"baseType\": \"U8\",\n        \"default\": 0,\n        \"maximum\": 127,\n        \"minimum\": 1,\n        \"description\": \"abc\"\n      }\n    }\n  }\n}\n\n属性关键字\n属性关键字说明\n决策点及推荐方案\n\nbaseType\n表示属性的基本类型\n■仅资源树接口可定义 □仅组件模型可定义\n\nitems\n表示结构体数组类型的元素定义，通过$ref指向元素定义\n■仅资源树接口可定义 □仅组件模型可定义\n\ndecription\n表示属性的描述信息\n■仅资源树接口可定义 □仅组件模型可定义\n\ndefault\n表示属性的默认值\n□仅资源树接口可定义 □仅组件模型可定义 □资源树接口未定义时允许组件模型定义■允许组件模型定义覆盖资源树接口定义\n\nminimummaximum\n表示数值类型属性的取值范围\n■仅资源树接口可定义 □仅组件模型可定义\n\nmaxLengthminLength\n表示字符串类型属性的长度范围\n■仅资源树接口可定义 □仅组件模型可定义\n\npattern\n表示字符串类型属性的格式要求，正则式匹配\n■仅资源树接口可定义 □仅组件模型可定义\n\nenum\n表示属性的枚举值范围\n■仅资源树接口可定义 □仅组件模型可定义\n\nreadOnly\n表示属性是否只读\n■仅资源树接口可定义 □仅组件模型可定义\n\ndeprecated\n表示属性废弃\n■仅资源树接口可定义 □仅组件模型可定义\n\nprivilege\n表示资源树接口属性的访问权限，分为读权限和写权限\n□仅资源树接口可定义 ■仅组件模型可定义\n\nconstrait\n表示属性使用约束，包括属性互斥、依赖关系、唯一性要求、兼容性要求等\n■仅资源树接口可定义 □仅组件模型可定义\n\nexample\n表示属性样例，用于描述属性格式等信息\n■仅资源树接口可定义 □仅组件模型可定义\n\noptions/volatile\n表示属性是否易变，如果取值为true，则表示该属性的值不稳定，组件可以选择不监听该属性的变化信号，默认为false；\n□仅资源树接口可定义 ■仅组件模型可定义\n\noptions/explicit\n表示属性值在属性名明确指定时才可见，如果取值为true，则表示属性在introspect（list操作，不指定属性名）时不显示，只能在单独Get（需要明确属性名）时才显示，默认为false；\n□仅资源树接口可定义 ■仅组件模型可定义\n\noptions/emitsChangedSignal\n表示是否发送属性变化信号，默认为\"true\"i） 如果取值为false，表示属性变化时不发送信号；ii）如果取值为const，表示属性永不变化，不需要发送信号；iii) 如果取值为true，表示属性变化时发送信号，信号携带属性值；iv) 如果取值为invalidates，表示属性变化时发送信号，但信号不携带属性值；\n■仅资源树接口可定义 □仅组件模型可定义\n\nprimaryKey\n表示该属性在数据库中是否是主键\n□仅资源树接口可定义 ■仅组件模型可定义\n\nuniqueKey\n表示该属性是否是唯一键\n□仅资源树接口可定义 ■仅组件模型可定义\n\nsensitive\n表示属性是否是敏感数据\n□仅资源树接口可定义 ■仅组件模型可定义\n\ncritical\n表示属性是否是关键数据\n□仅资源树接口可定义 ■仅组件模型可定义\n\nnotAllowNull\n表示属性在数据库中是否可以为空\n□仅资源树接口可定义 ■仅组件模型可定义\n\nusage\n表示属性的用途\n□仅资源树接口可定义 ■仅组件模型可定义\n\nalias\n表示属性的别名，用于CSR配置、持久化等场景解决资源接口属性与其他资源树属性或私有属性同名冲突的问题\n□仅资源树接口可定义 ■仅组件模型可定义\n\nrefInterface\n表示属性属性通过该接口下的方法获取或设置对象数据\n□仅资源树接口可定义 ■仅组件模型可定义\n\n资源协作接口方法关键字\n{\n  \"bmc.demo.IDemo\": {\n    \"methods\": {\n      \"Method1\": {\n        \"req\": {\n          \"ReqArg1\": {\n            \"baseType\": \"U8\"\n          }\n        },\n        \"rsp\": {\n          \"RspArg1\": {\n            \"baseType\": \"U16\"\n          }\n        }\n      }\n    }\n  }\n}\n\n方法关键字\n方法关键字说明\n决策点及推荐方案\n\ndecription\n表示方法或参数的描述信息\n■仅资源树接口可定义 □仅组件模型可定义\n\ndisplayDescription\n表示方法或参数显示描述信息，主要用于组件自定义命令描述，包括方法描述和参数描述\n□仅资源树接口可定义 ■仅组件模型可定义\n\nfeatureTag\n表示表示资源树公共方法和私有方法对应的特性标签\n□仅资源树接口可定义 ■仅组件模型可定义\n\nbaseType\n表示参数的基本类型\n■仅资源树接口可定义 □仅组件模型可定义\n\nitems\n表示结构体数组类型的元素定义，通过$ref指向元素定义\n■仅资源树接口可定义 □仅组件模型可定义\n\ndefault\n表示参数的默认值，组件自定义命令\n□仅资源树接口可定义 ■仅组件模型可定义\n\nminimummaximum\n表示数值类型参数的取值范围\n■仅资源树接口可定义 □仅组件模型可定义\n\nmaxLengthminLength\n表示字符串类型参数的长度范围\n■仅资源树接口可定义 □仅组件模型可定义\n\npattern\n表示字符串类型参数的格式要求，正则式匹配\n■仅资源树接口可定义 □仅组件模型可定义\n\nenum\n表示参数的枚举值范围\n■仅资源树接口可定义 □仅组件模型可定义\n\nprivilege\n表示资源树接口属性的访问权限，分为读权限和写权限\n□仅资源树接口可定义 ■仅组件模型可定义\n\n资源协作接口信号关键字\n{\n  \"bmc.demo.IDemo\": {\n    \"signals\": {\n        \"demoSignal\": {\n            \"Property1\": {\n                \"baseType\": \"U32\",\n                \"minimum\":1,\n                \"maximum\":100\n            }\n        }\n    }\n}\n\n信号关键字\n信号关键字说明\n决策点及推荐方案\n\ndecription\n表示信号或参数的描述信息\n■仅资源树接口可定义 □仅组件模型可定义\n\nbaseType\n表示参数的基本类型\n■仅资源树接口可定义 □仅组件模型可定义\n\nitems\n表示结构体数组类型的元素定义，通过$ref指向元素定义\n■仅资源树接口可定义 □仅组件模型可定义\n\ndefault\n表示参数的默认值\n□仅资源树接口可定义 ■仅组件模型可定义\n\nminimummaximum\n表示数值类型参数的取值范围\n■仅资源树接口可定义 □仅组件模型可定义\n\nmaxLengthminLength\n表示字符串类型参数的长度范围\n■仅资源树接口可定义 □仅组件模型可定义\n\npattern\n表示字符串类型参数的格式要求，正则式匹配\n■仅资源树接口可定义 □仅组件模型可定义\n\nenum\n表示参数的枚举值范围\n■仅资源树接口可定义 □仅组件模型可定义\n\n评审结论\n总体结论\n\n同意资源树协作接口关键字使用原则\n同意资源树协作接口关键字使用范围\n\n问题跟踪\n\n基于评审结论，整改资源树接口和组件模型定义，并明确落地计划\n\n结论：分解需求到社区项目，通过社区项目运作落地，计划630完成。\nlinks: #p-733-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/6, #p-733-h-2, #p-733-h-3, #p-733-h-4, #p-733-h-5, #p-733-h-6, #p-733-h-7, #p-733-h-8, #p-733-h-9, #p-733-h-10, #p-733-h-11",
+    "topic_user_name": "许强",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/403/2",
+            "text": ""
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/403/3",
+            "text": "待补充资源树协作接口方法关键字：optional（仅组件模型可定义）、cmdName（仅组件模型可定义）"
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/403/4",
+            "text": "content: 2025/5/28：组件模型mds新增引用对象的属性关键字refInterfaces。\n评审链接：【待评审】支持引用同对象不同接口方案评审\nlinks: https://discuss.openubmc.cn/t/topic/1138"
+        }
+    ]
+}

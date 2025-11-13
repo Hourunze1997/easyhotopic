@@ -1,0 +1,78 @@
+{
+    "topic_id": 2143,
+    "question": "在WEB固件升级界面重启BMC后，风扇一直满转。 - content: 【BMC版本】5.05.12.21\n【问题现象】 S920X20机器，下电后在WEB固件升级界面点击重启BMC，风扇一直满转，直到按电源键开机后才正常。\n【日志】\noperation.log日志信息如下：\nimage926×241 12.6 KB\ncooling_control.log日志信息如下：\nimage1273×589 25 KB\n从日志来看，在下电后重启BMC之前有出现DevID为0xffff的异常情况，请问该如何进一步定位该问题，谢谢！\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/01441e01bc1926b40dcb06130a8a109775d54e63.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0219630f8f113f9a2fe083c646477a2363491807.png",
+    "topic_user_name": "Dengnianqin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2143/2",
+            "text": "提供相关日志"
+        },
+        {
+            "user_name": "Dengnianqin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2143/4",
+            "text": "content: fan.doc (105 KB)\n社区无法直接上传压缩格式的文件，我将部分日志文件放入doc了，帮忙看一下是否还有需要补充的。\nlinks: /uploads/short-url/dOZ2Dg4DaBbOmQFSO9QPipLKs2m.doc"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2143/5",
+            "text": "从app.log日志中确认，当前还处于BMC启动阶段，启动阶段时下发固定风扇转速100，需要在BMC启动完成后（风扇加载完成），才会按照相应调速策略进行调速"
+        },
+        {
+            "user_name": "Dengnianqin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2143/7",
+            "text": "我们等待了一段时间，等BMC启动完成后，查看风扇依然是满转的。\n收集的日志fan_info.txt中风扇也是满转的。"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2143/8",
+            "text": "调速组件启动过程初始化阶段会对所有风扇下发一个满转（默认值100，可以出厂定制或ipmi修改 ），之后自动调速接管，这时候你的环境么有生效的目标调速，所以算不出来新的转速。"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2143/9",
+            "text": "没有目标调速生效的时候，调速日志reqid显示 就是0xffff"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2143/10",
+            "text": "需要排查调速策略了，预期下电 至少 是有一条目标调速生效。否则DC下电重启bmc，那么必然满转"
+        },
+        {
+            "user_name": "Dengnianqin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2143/11",
+            "text": "下电状态下风扇应该是不转的，这个是通过调速策略的配置控制的，还是业务代码直接控制的？\n因为是现网出现的问题（多台机器都出现），我们在家里用同样的版本和步骤暂未复现问题，从收集的日志能进一步定位吗？"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2143/12",
+            "text": "下后电后风扇在以下几种场景下会转的，Ncsi线缆在位，插入了OCP卡（还有什么其他的场景需要问hw专家，或者你们硬件做了新供电场景适配）这是通过风扇板cpld代码控制是否对风扇板供电的。"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2143/13",
+            "text": "让硬件看当前风扇板的cpld代码，看供电逻辑，再排查服务器配置看为什么供电了"
+        }
+    ]
+}

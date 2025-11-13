@@ -1,0 +1,36 @@
+{
+    "topic_id": 760,
+    "question": "【已评审】定制项新增电子标签ProductVersion - content: 关联Issuse\n支持资产编号Product Version定制化处理-frudata-issue#3\n评审背景\n客户需求，要求在服务器出厂前将套餐的编号写入到电子标签Product Version的需求\n差异点\n当前BMC不支持电子标签Product Version的定制，因此无法满足客户需求\n评审点\n评审点1：新增定制化项\n新增定制化项1：  电子标签ProductVersion定制开关。具体的定制化项信息如下：\n\n项目\n值\n\n定制化项\n电子标签ProductVersion定制化项开关\n\n定制化接口名称\nBMCSet_CustomProductVersion\n\n取值类型\nstring\n\n默认值\n“off”\n\n取值范围\n“on\"或\"off”\n\n说明\n设置电子标签ProductVersion定制项开关\n\n新增定制化项2：  电子标签ProductVersion定制内容。具体的定制化项信息如下：\n\n项目\n值\n\n定制化项\n电子标签ProductVersion\n\n定制化接口名称\nCustom_ProductVersion\n\n取值类型\nstring\n\n字符串长度\n1~48\n\n默认值\n“”（空字符串）\n\n处理逻辑\nif(BMCSet_CustomProductVersion == “on”)    设置电子标签ProductVersion为Custom_ProductVersion的值 else 空定制化，无动作\n\n取值说明\n需要设置的电子标签ProductVersion，取值是1-48个ASCII字符\n\n说明\n设置电子标签ProductVersion。生产测试系统可能会写入默认值，因此在没有定制时，不采取任何动作，避免清除生产测试系统写入的默认值\n\n新增配置导入导出项：  电子标签ProductVersion信息。具体的配置项信息如下：\n\n项目\n值\n\n导入导出项\nFru\n\n导入导出子项\nProductVersion\n\n含义说明\n电子标签产品版本信息\n\n取值类型\nstring\n\n导入默认设置\nfalse\n\n属性类型\nImportAndExport\n\n备注\n新增导入导出项\n\n评审结论\n同意新增如下定制化项和配置导入导出项：\n\n定制化项：BMCSet_CustomProductVersion ，Custom_ProductVersion\n配置导入导出项：ProductVersion\nlinks: #p-1586-issuse-1, https://gitcode.com/openUBMC/frudata/issues/3, #p-1586-h-2, #p-1586-h-3, #p-1586-h-1-4, #p-1586-h-5",
+    "topic_user_name": "Iss Duanyl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/760/2",
+            "text": "补充取值类型，取值说明，取值范围等信息"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/760/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/760/4",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/760/5",
+            "text": ""
+        }
+    ]
+}

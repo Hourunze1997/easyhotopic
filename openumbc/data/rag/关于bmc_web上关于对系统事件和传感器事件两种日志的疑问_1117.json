@@ -1,0 +1,50 @@
+{
+    "topic_id": 1117,
+    "question": "关于bmc web上关于对系统事件和传感器事件两种日志的疑问。 - content: 在bmc web的维护诊断页面，有系统事件和传感器事件两种日志，SEL是系统事件日志，按理说指代就是web上系统事件这个日志。但是我使用命令ipmitool sel elist 显示的内容与web上的传感器事件日志是保持一致的。然后我看两个的URL，系统事件的请求URL是/UI/Rest/Maintenance/QueryEvent，传感器事件的请求URL是/UI/Rest/Maintenance/QuerySel。然后看日志格式也是web上的传感器事件日志的格式更符合SEL事件格式。所以希望能有人解答一下。\n如图：\n企业微信截图_174832858993622427×1349 248 KB\n企业微信截图_174832863066922463×1411 272 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/be2a9a2f1c964a2b110840f301fda53a9c951671.png, https://discuss.openubmc.cn/uploads/default/original/1X/669e5f35bca321b50c6b71f51a27c28815e85228.png",
+    "topic_user_name": "wuzhou-Lsx",
+    "best_answer_url": "/t/topic/1117/6",
+    "reply_posts": [
+        {
+            "user_name": "吴振",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1117/2",
+            "text": "方面\n系统事件\n传感器事件\n\n事件来源\n由计算机系统本身发起，如计时器事件、硬件中断或系统通知。\n由服务器上的各类传感器产生，用于监测物理健康特征，如温度、电压、风扇工作状态、电源供应及机箱入侵等。\n\n事件功能\n记录和报告系统层面的操作和状态变化，如系统启动、关机、重启，以及软件相关的事件等。它反映了系统的整体运行状况和操作历史，对于管理员了解系统的运行流程、排查软件故障等方面具有重要意义。\n监控服务器硬件的物理状态，确保硬件在正常条件下运行。当监测到的物理量超出或低于预设阈值时，传感器会触发相应事件，提醒管理员关注硬件健康状况，以便及时采取措施预防硬件故障对系统运行造成的影响。\n\n事件记录与处理\n一般记录在系统事件日志（SEL）中，通过 IPMI 工具等可以查看和分析这些事件，以了解系统的运行历史和问题发生的时间顺序，从而进行故障诊断和性能优化等工作。\n相关数据记录在传感器数据记录（SDR）中，管理员可以通过 IPMI 工具等查看传感器的当前状态和历史事件，以便对硬件状态进行实时监控和历史数据分析，及时发现潜在的硬件问题。\n\n事件触发机制\n通常由系统内部的软件或硬件中断机制触发，例如当某个系统服务启动或停止、硬件设备发出中断请求等时，会生成相应的系统事件。\n基于传感器对物理量的持续监测，当监测值超过预设的阈值或满足特定条件时，传感器会触发事件。这些阈值可以根据服务器的实际运行需求和硬件规格进行设置和调整。\n\n事件影响范围\n其影响范围通常涉及整个系统，可能会影响系统的性能、稳定性和可用性。例如系统崩溃、蓝屏等系统事件会导致整个系统无法正常工作，需要及时进行处理和恢复。\n主要影响的是服务器的硬件部分，但如果不及时处理，也可能进一步影响系统的运行。例如风扇故障传感器事件若未及时处理，可能导致服务器过热，进而影响系统性能甚至造成硬件损坏。"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1117/3",
+            "text": "那我使用命令ipmitool sel elist 显示的内容与web上的传感器事件日志是一样是否是有问题的？"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1117/4",
+            "text": "ipmitool sel elist 显示的内容与web上的传感器事件日志一样是正常的，二者等价"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1117/5",
+            "text": "那它ipmitool sel elist 显示的内容，只是和web上的传感器事件日志一样，但是命令没有显示web上的系统事件的日志，这是否是有问题的。"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1117/6",
+            "text": "没有问题，这块命名上确实容易产生歧义，刚接触的时候我也分不清 \nopenUBMC web上的系统事件实际对应的是BMC的“精细化告警”（在sr中由Event类配置，可以视作是sel的加强版，但没有强对应关系）；传感器事件对应的是ipmi标准中定义的sel，即用ipmitool sel list/elist查询的内容"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1117/7",
+            "text": "好的，感谢回复"
+        }
+    ]
+}

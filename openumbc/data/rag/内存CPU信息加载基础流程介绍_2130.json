@@ -1,0 +1,7 @@
+{
+    "topic_id": 2130,
+    "question": "内存CPU信息加载基础流程介绍 - content: 概述\n\nCPU的静态信息包括家族、型号、ID、序列号、部件号等，内存的静态信息包括容量、位宽、厂商、序列号等，这些静态信息来自BIOS上报的SMBIOS信息\n\nSMBIOS信息的上报通常发生在BIOS完成对系统硬件的基本检测和初始化之后，在操作系统加载之前\n\nSMBIOS协议简介\n\nSMBIOS协议官方网站\n\nSMBIOS是DMTF制定的开放标准，用于规范主板及系统厂商如何存储和管理产品信息。通过统一格式让厂商在BIOS中记录硬件信息，便于管理软件获取硬件配置数据\n\n当前openUBMC支持对Processor Information(4)/Cache Informaiton(7)/Physical Memory Array(16)/Memory Device(17)部分字段解析上报\n\n详细流程\n\n1、BIOS通过IPMI命令ReadFileFromBmc从BMC读取内存丝印信息，包含Memory对象的CpuId、LogicalChannelId、DimmId等属性\n\n2、BIOS将丝印信息填充到SMBIOS表格中，通过IPMI命令WriteSmbiosData上报给BMC，写成SMBIOS_CONF文件\n\n3、bios组件读取这个文件并解析，最终将CPU、内存信息更新到资源协作路径上。内存信息通过丝印信息来匹配Memory对象，CPU信息通过LogicalLd来匹配CPU对象\n\nsequenceDiagram\n\nparticipant A as BIOS\n\nparticipant B as bios组件\n\nparticipant C as CPU/Memory对象\n\nA ->> +B: 获取丝印信息（含内存）\n\nB ->> B: 准备丝印信息\n\nB -->>- A: 响应\n\nA ->> +A: 填充到SMBIOS信息\n\nA ->> B: 上报SMBIOS信息\n\nB ->> C: 更新静态信息到资源协作路径\nlinks: #p-5362-h-1, #p-5362-smbios-2, https://www.dmtf.org/standards/smbios, #p-5362-h-3",
+    "topic_user_name": "Yelvsub",
+    "best_answer_url": "",
+    "reply_posts": []
+}

@@ -1,0 +1,43 @@
+{
+    "topic_id": 1907,
+    "question": "BMC固件可靠性验证方法 - 有客户想让我们证明BMC的可靠性，要求如下：BMC 应支持安全启动功能，实现固件启动前的完整性校验，在 BMC 固件损坏时，自动完成软件恢复，增强系统固件可靠性。\n诉求：1、确认BMC是否满足该可靠性要求。2、如果满足还请提供证明的操作方法",
+    "topic_user_name": "Huangyuxuan",
+    "best_answer_url": "/t/topic/1907/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1907/2",
+            "text": "BMC 支持安全启动功能，在固件启动前进行完整性校验。 固件损坏时，在启动阶段校验不通过，会自动回退到原有版本。\n可以通过一键日志收集获取日志查看校验日志，在LogDump/M3LogDump/m3_log*里，搜索verify单词。"
+        },
+        {
+            "user_name": "Huangyuxuan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1907/3",
+            "text": "感谢，另外请问是否有方法去损坏环境上的BMC固件，以展现校验不过后恢复的过程呢？"
+        },
+        {
+            "user_name": "Huangyuxuan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1907/4",
+            "text": "您好，请问能提供破坏方法不？"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1907/6",
+            "text": "我回答不了这个问题。\n您可以单独发帖求助。"
+        },
+        {
+            "user_name": "Huangyuxuan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1907/7",
+            "text": "明白了，感谢支持"
+        }
+    ]
+}

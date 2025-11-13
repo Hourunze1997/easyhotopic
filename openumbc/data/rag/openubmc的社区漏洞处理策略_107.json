@@ -1,0 +1,36 @@
+{
+    "topic_id": 107,
+    "question": "openubmc的社区漏洞处理策略 - content: 整体的漏洞管理策略已发布，请参考：\nhttps://openubmc.cn/security/vulnerability-management#311-漏洞上报方式\n针对代码漏洞，请使用pgp加密邮件联系openUBMC 安全小组邮箱（请参考上述官方网站信息）\n针对开源组件漏洞，会定期在漏洞管理页面同步\n\n总结\n此文本将被隐藏\nlinks: https://openubmc.cn/security/vulnerability-management#311-%E6%BC%8F%E6%B4%9E%E4%B8%8A%E6%8A%A5%E6%96%B9%E5%BC%8F",
+    "topic_user_name": "李文杰",
+    "best_answer_url": "/t/topic/107/5",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/107/2",
+            "text": ""
+        },
+        {
+            "user_name": "Kun Lun Wangqindong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/107/3",
+            "text": "content: 漏洞管理页面地址：https://www.openubmc.cn/security-advisories\nlinks: https://www.openubmc.cn/security-advisories"
+        },
+        {
+            "user_name": "discobot",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/107/4",
+            "text": "content: 你好！这个连接的信息可能对你解决本问题有所帮助，请参考，谢谢！\nlinks: https://discuss.openubmc.cn//t/topic/1299/1"
+        },
+        {
+            "user_name": "discobot",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/107/5",
+            "text": "content: 你好！这个连接的信息可能对你解决本问题有所帮助，请参考，谢谢！\nlinks: https://discuss.openubmc.cn//t/topic/1299/1"
+        }
+    ]
+}

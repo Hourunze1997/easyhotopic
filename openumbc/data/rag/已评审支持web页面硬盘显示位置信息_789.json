@@ -1,0 +1,15 @@
+{
+    "topic_id": 789,
+    "question": "【已评审】支持web页面硬盘显示位置信息 - 背景：\n支持WEB接口可以准确显示SATA/SAS/NVME盘在机箱前后的物理位置和准确ID\n决策点：\nwebrest接口UI/Rest/System/Storage/Drives/Drives_ID新增属性Position\n整体架构/方案：\nURL: UI/Rest/System/Storage/Drives/Drives_ID\n操作类型：GET\n变化类型：新增属性\n应用场景：web页面显示硬盘所属板卡\n读写&权限：只读\n类型：string/null  （返回null时，web不显示）\n\n属性名称\n取值类型\n读写&权限\n约束\n\nPosition\nstring/null\n只读，读权限\n返回null时web页面不显示位置信息\n\n评审结论：\n同意webrest接口UI/Rest/System/Storage/Drives/Drives_ID新增属性Position\n类型为string/null，只读，读权限ReadOnly",
+    "topic_user_name": "Dli Bmc Vigaq",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/789/2",
+            "text": ""
+        }
+    ]
+}

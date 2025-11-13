@@ -1,0 +1,29 @@
+{
+    "topic_id": 495,
+    "question": "【已评审】Eth新增资源协作接口属性网口速率 - content: 关联issue\nBMC支持网口速率\n评审背景\n需求\n\nRedfish 标准规范在 EthernetInterfaces 接口中有标准资源 SpeedMbps\n客户有需求需要支持 Redfish 规范 EthernetInterfaces 接口\n\n差距\n当前BMC的网口协商速率没有资源协作接口承载，Redfish接口以及社区无法进行二次开发\n评审点\n新增资源协作接口方法，承载当前网口的速率信息。具体的信息如下：\npath： /bmc/kepler/Managers/:ManagerId/EthernetInterfaces/${EthId}\ninterface: bmc.kepler.Managers.EthernetInterfaces.MgmtPort\n\n项目\n值\n\n属性名称\nNegotiatedSpeedMbps\n\n属性类型\ny\n\n属性模式\nrw\n\n属性权限\nRead：ReadOnlyWrite：BasicSetting\n\n属性持久化\n复位持久化\n\n属性是否发送变更信号\n否\n\n属性说明\n表征当前网口的协商速率，取值有：   0：不涉及协商速率    1：10M    2：100M    3：1000M\n\n评审结论\n同意接口 bmc.kepler.Managers.EthernetInterfaces.MgmtPort 新增 NegotiatedSpeedMbps 属性。\nlinks: #p-936-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/13, #p-936-h-2, #p-936-h-3, #p-936-h-4, #p-936-h-5, #p-936-h-6",
+    "topic_user_name": "lilinyang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Likun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/495/2",
+            "text": "按照模板来申请吧"
+        },
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/495/3",
+            "text": "已修改"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/495/4",
+            "text": ""
+        }
+    ]
+}

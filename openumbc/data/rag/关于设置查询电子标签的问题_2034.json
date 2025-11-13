@@ -1,0 +1,43 @@
+{
+    "topic_id": 2034,
+    "question": "关于设置、查询电子标签的问题。 - content: 使用ipmi接口命令设置电子标签，设置成功后，可以从web、CLI等其它接口查询到吗？\nimage1834×1077 50.3 KB\n设置、查询电子标签命令：\nimage1752×197 12.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/7c9b156805a625a305b2390c0e69fce0e9ae5a71.png, https://discuss.openubmc.cn/uploads/default/original/2X/4/4414057f5866d8e36a89012efa50f7baf79b428d.png",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/2034/2",
+    "reply_posts": [
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2034/2",
+            "text": "可以，cli：ipmcget -d fru"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2034/3",
+            "text": "content: 找到了。截图中画框的内容都可以用ipmi命令更新。多谢：）\nimage1679×632 37.5 KB\nimage701×217 6.72 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0f8de7e029ebe479680791fca8f79864034ea0d1.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/6d0901476dae891c4db7d644accb99090b897595.png"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2034/4",
+            "text": "举个例子\n修改“生产厂商标签”后的同步：\n修改这个“生产厂商标签”后，它的值会自动同步到几个地方：\n\nFRU信息： 硬件上的FRU信息会更新。\nWeb管理界面： Web界面上显示的相关厂商信息也会跟着变。\n\n需要注意几点：\n\n部分参数与SMBIOS关联： 有些标签里的参数是和BIOS里的SMBIOS信息关联的。\n必须重启生效： 修改之后，需要重启服务器/主机操作系统。 重启完成进入系统后，上面SMBIOS里相关的信息会更新成新设置的值。\n\n流程：\n修改标签 → 触发同步到FRU和Web → (部分参数关联BIOS/SMBIOS) → 重启服务器 → 重启后所有地方（FRU, Web, SMBIOS相关项）生效。"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2034/5",
+            "text": "content: @hdq iTestSmart->OpenUBMC->平台功能->电子标签信息持久化测试，修改了上面的内容（名称、厂商、部件编码），但是测试后未恢复原始值，请看一下这个用例。\nlinks: /u/hdq"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2034/6",
+            "text": "content: @hdq iTestSmart->OpenUBMC->平台功能->UUID掉电持久化测试，这个测试用例修改UUID后，也没有恢复，应该加上恢复的步骤。请看一下这个用例。\nlinks: /u/hdq"
+        }
+    ]
+}

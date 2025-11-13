@@ -1,0 +1,57 @@
+{
+    "topic_id": 1246,
+    "question": "bios升级失败问题求助 - content: 背景：\n升级BIOS时出现报错：\nimage891×140 7.83 KB\n\n求助一下：\n1、V3上，总线切换是否还需要BMC上层配置，如果需要，该如何配置？如果不需要，那能否详细介绍一下底层实现的机制？\n2、V3上，安装spi驱动过程是否跟V2一样由BMC上层来做？另外驱动名称是什么？\n3、针对当前bios升级报错，有什么建议排查思路？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0e698ef51ed4e14444563a4bc0255a613045dd6d.png",
+    "topic_user_name": "Kun Lun Lizhuang",
+    "best_answer_url": "/t/topic/1246/5",
+    "reply_posts": [
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1246/2",
+            "text": "不需要配置，由底层接口实现"
+        },
+        {
+            "user_name": "Kun Lun Lizhuang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1246/3",
+            "text": "想多了解一些：\n1、是指sdk那边直接实现了吗？\n2、升级时，是firmware_mgmt和底层交互实现管脚上下拉吗？能否具体描述一下过程。\n3、V2上不同的产品之间有不同的accessor地址，那V3上是怎么处理的？"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1246/4",
+            "text": "sdk组件的libmgmt会实现与底层交互的逻辑"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1246/5",
+            "text": "1、总线切换目前是在sdk实现的，没有配置接口\n2、按照驱动跟v2一致，sfc_drv\n3、排查硬件spi链路是否松动"
+        },
+        {
+            "user_name": "Kun Lun Lizhuang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1246/6",
+            "text": "好的，感谢，另外\n1、安装驱动的动作是不是放到闭源模块里了？\n2、当前全局搜索sfc驱动，可以找到：\n\n但报错中提示 spi_driver(executor)：before fail，我找硬件确认一下链路问题"
+        },
+        {
+            "user_name": "Kun Lun Lizhuang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1246/7",
+            "text": "另外嘉培：\n总线切换在SDK实现的，那么有没有办法确认切换是否成功？我们发现设备没有/dev/mtd 目录。\n此外有没有什么命令，可以手动去做总线切换？这样我们自己可以大体定位一下哪一环节出了问题。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1246/8",
+            "text": "huangjiapei_o2800:\n\n3、排查硬件spi链路是否松动\n\n已确定原因，是硬件链路连到了sfc1上，规范要求接到sfc0。"
+        }
+    ]
+}

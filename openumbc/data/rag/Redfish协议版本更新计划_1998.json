@@ -1,0 +1,36 @@
+{
+    "topic_id": 1998,
+    "question": "Redfish协议版本更新计划 - content: DMTF于2025.6已更新2025.2的版本，但是630的版本上，目前RedfishVersion版本还是1.20.1，想了解一下这块的版本更新计划。\nimage1141×696 76.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4e26dc444db43c0a2a38dcf6b59468ef5310f8d2.png",
+    "topic_user_name": "Hudi",
+    "best_answer_url": "/t/topic/1998/3",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1998/3",
+            "text": "1、openUBMC在孵化阶段主动规划了redfish协议版本的升级，是基于Redfish Specification 1.20.1和Redfish Resource and Schema Guide 2024.2分析的，目前已支持了JobService、TelemetryService等新特性，其它资源也在不断增加对规范新增属性/Action的支持范围；\n2、redfish规范的演进速度比较快，每年发布2-3个新版本，针对新版本变化的内容，openUBMC从规划、分析到实际落地，是需要一个刚性周期的，openUBMC TC和SIG会优先识别高价值的特性进行主动规划，也欢迎社区的开发者参与进来贡献，建议到interface SIG申报议题，针对诉求和价值详细讨论更新范围和计划；"
+        },
+        {
+            "user_name": "Zmcheng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1998/4",
+            "text": "建议重点考虑下固件分步更新这个技术标准的落地"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1998/5",
+            "text": "这个具体指的是哪个章节？"
+        },
+        {
+            "user_name": "Hudi",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1998/6",
+            "text": "主要涉及以下部分的更新（6.148、6.130）\nUpdateService v1.16.0\nAdded Stage to SimpleUpdate and multipart HTTP push updates\nAdded Activate action\nAdded UpdateServiceCapabilities"
+        }
+    ]
+}

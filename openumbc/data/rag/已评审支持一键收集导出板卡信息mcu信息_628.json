@@ -1,0 +1,15 @@
+{
+    "topic_id": 628,
+    "question": "【已评审】支持一键收集导出板卡信息，mcu信息 - content: ISSUE链接 支持一键收集导出板卡信息，mcu信息\n背景 支持一键收集导出板卡信息，mcu信息\n决策点 文件存放路径以及文件名称\n详细描述\n在一键收集dump_info\\AppDump\\general_hardware目录下新增card_info，mcu_info\ncard_info 服务器上所有板卡信息\nmcu_info 服务器上所有mcu信息\n评审结论 （评审结束后录入，描述全面且清晰，不能是通过或不通过、同意或不同意）\nlinks: https://gitcode.com/openUBMC/general_hardware/issues/10",
+    "topic_user_name": "maoyuhao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/628/2",
+            "text": "请到hardware SIG评审，通过后更新相应的资料即可"
+        }
+    ]
+}

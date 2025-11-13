@@ -1,0 +1,29 @@
+{
+    "topic_id": 258,
+    "question": "串口波特率问题 - content: 在上电状态使用IPMI命令切换到BMC串口：ipmitool raw 0x30 0x91 0xdb 0x07 0x00 0x17 0x01 0x04\n使用115200波特率连接失败：\nimage1044×588 19.3 KB\n使用9600波特率可以连接：\n\nimage600×547 42.2 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/970ebfaaf1faae6c619221a7a77cbc07e5d88017.png, https://forum.openubmc.cn/uploads/default/original/1X/70b2fe6778ca182071909036614a639a69ccc24c.png",
+    "topic_user_name": "百信-罗昊",
+    "best_answer_url": "/t/topic/258/3",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/258/2",
+            "text": "问题已收到，组织分析中。"
+        },
+        {
+            "user_name": "百信-罗昊",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/258/3",
+            "text": "更换串口线后已经可以使用波特率115200连接，该问题应该与代码无关，可以关闭"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/258/4",
+            "text": ""
+        }
+    ]
+}

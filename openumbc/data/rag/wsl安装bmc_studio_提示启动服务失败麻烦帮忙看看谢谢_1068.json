@@ -1,0 +1,64 @@
+{
+    "topic_id": 1068,
+    "question": "wsl安装bmc studio 提示启动服务失败，麻烦帮忙看看，谢谢 - content: 图片1920×919 53.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/0fae75d53ac7ba66a3e499f91502bd04cb234bc2.jpeg",
+    "topic_user_name": "Mr Chen",
+    "best_answer_url": "/t/topic/1068/3",
+    "reply_posts": [
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1068/2",
+            "text": "能提供一下您的运行信息吗？就是启动bmc studio后wsl终端里的信息"
+        },
+        {
+            "user_name": "Mr Chen",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1068/3",
+            "text": "打开12888端口是OK的，我把 /etc/nginx/nginx.conf中的端口改成了12889，重启了nginx服务，目前ok了"
+        },
+        {
+            "user_name": "Mr Chen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1068/4",
+            "text": "没有修改之前，wsl中只有这两行信息。"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1068/5",
+            "text": "对的，我要看的就是端口号，因为打开有前端页面但启动服务失败十有八九都是这个原因。想再问一下您使用的ubuntu系统用户是非root用户吗"
+        },
+        {
+            "user_name": "Mr Chen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1068/6",
+            "text": "是root用户"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1068/7",
+            "text": "好的好的，那再问一下您有没有这个文件：/usr/share/bmc_studio/server/ports.conf？然后能不能运行一下这个命令：echo $SUDO_UID，然后贴一下结果？\n因为照理来说root用户的端口应该就是12888"
+        },
+        {
+            "user_name": "Mr Chen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1068/8",
+            "text": "content: image712×122 2.82 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/3404547ba33bba68a51f1577abb710a504a30529.png"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1068/9",
+            "text": "话说对于SUDO_UID为啥是1000您有啥头绪吗，照理来说一般的root用户的SUDO_UID应该是空才对"
+        }
+    ]
+}

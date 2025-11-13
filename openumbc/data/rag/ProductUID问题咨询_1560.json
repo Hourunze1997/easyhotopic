@@ -1,0 +1,36 @@
+{
+    "topic_id": 1560,
+    "question": "ProductUID问题咨询 - content: image1356×901 80.6 KB\n坂田官网发布软件包S920X20-S920X21-iBMC_5.05.12.15.zip内的Version.xml，仅包含0x00000001030ABF00;0x00000001030ABF01这两个UID\n但是实际上还有其它的UID，比如截图左侧的0x10307bf00\n我看OpenUBMC内配置的UID是全量的\nsource/manifest/build/product/BMC/openUBMC/update_ext4.cfg\nimage1142×133 8.66 KB\n\n希望提供这些UID对应的机型的区别，比如主板、CPU、背板等区别。\n030ABF00和030ABF01在现网有对应路径，S920X20。其它UID的软件包希望提供下载路径，没有下载路径的话希望后续可以共包，否则遇见新UID环境，使用工具无法升级。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/53bdd66ccfbc8d394ae9c32d1d51fc5165248701.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/f36a207b5a3bcde1d7f4c1890cb71c9aef25b6c5.png",
+    "topic_user_name": "kunlun_luzhanghui",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "I Bmc 001 843rs",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1560/3",
+            "text": "该字段是支持的机型，主干包是支持全机型的，所以配置的比较全。 S920X20-S920X21-iBMC_5.05.12.15.zip只支持两个机型，所以这里只配置了两个UID。"
+        },
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1560/4",
+            "text": "但是这两个包的二进制实际是一样的，按理来说应该也是全部支持啊。外层做区分的意义是什么呢？"
+        },
+        {
+            "user_name": "I Bmc 001 843rs",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1560/5",
+            "text": "能看下你指的二进制一样是哪里嘛，这两个升级包是不一样的。"
+        },
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1560/6",
+            "text": "二进制一样是参考的V2 BM320的机制。就是TS开头的和S920开头的两个BM320的包，二进制内容一样，zip包的差异仅仅是version.xml内UID范围不一致，这对工具还是挺有影响的，我估计的V3也会有类似问题。\n那可以提供不同UID机型的差异在哪吗？我们好跟测试做澄清，说明这是不同的机型。"
+        }
+    ]
+}

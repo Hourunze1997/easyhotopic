@@ -1,0 +1,36 @@
+{
+    "topic_id": 1357,
+    "question": "openUBMC中打包开源组件成conan包，编译报错 - content: 背景：在conan_index中新增了一个开源软件的配置，并定义了对应的conanfile.py中的打包操作，在执行conan create命令时，build操作出现报错，未找到问题源\n命令\nconan create . librelp/1.11.0@openUBMC.release/stable -pr profile.ini\n报错\n  CCLD     librelp.la\n/opt/hcc_arm64le/bin/../lib64/gcc/aarch64-target-linux-gnu/7.3.0/../../../../aarch64-target-linux-gnu/bin/ld: cannot find /lib64/libc.so.6: No such file or directory\n/opt/hcc_arm64le/bin/../lib64/gcc/aarch64-target-linux-gnu/7.3.0/../../../../aarch64-target-linux-gnu/bin/ld: cannot find /usr/lib64/libc_nonshared.a: No such file or directory\n/opt/hcc_arm64le/bin/../lib64/gcc/aarch64-target-linux-gnu/7.3.0/../../../../aarch64-target-linux-gnu/bin/ld: cannot find /lib64/ld-linux-aarch64.so.1: No such file or directory\ncollect2: error: ld returned 1 exit status\n\nbuild函数定义\n    def _configure_autotools(self):\n        if self._autotools:\n            return self._autotools\n        self._autotools = AutoToolsBuildEnvironment(self)\n        return self._autotools\n    def build(self):\n        if self.settings.arch == \"x86_64\":\n            return\n        autotools = self._configure_autotools()\n        chost = os.environ.get(\"CHOST\")\n        if chost:\n            os.environ[\"CROSS_COMPILE\"] = chost + \"-\"\n        os.chdir(self.build_folder)\n        self.run(\"autoreconf -i\")\n        autotools.configure()\n        autotools.make()\n\n查看生成的Makefile中相关的ld操作\nLIBS =  -L/opt/RTOS/208.8.0/arm64le_5.10_ek_preempt_pro/sdk/usr/lib64 -lssl -lcrypto  -L/opt/RTOS/208.8.0/arm64le_5.10_ek_preempt_pro/sdk/usr/lib64 -lssl -lcrypto \nlibrelp.la: $(librelp_la_OBJECTS) $(librelp_la_DEPENDENCIES) $(EXTRA_librelp_la_DEPENDENCIES) \n\t$(AM_V_CCLD)$(librelp_la_LINK) -rpath $(libdir) $(librelp_la_OBJECTS) $(librelp_la_LIBADD) $(LIBS)\n\n报错的文件在sysroot都能找到，一开始怀疑是ld命令指定的lib可能有问题，从Makefile这个配置看LIBS中带了2个重复的目录（不清楚是否有问题），另一方面上述报错的libc_nonshared.a其实可以在LIBS中的目录找到，但也报了错误，这个怀疑似乎有些不成立了 \n自此正向定位有些进行不下去，不知道还有没有什么思路\n转而尝试逆向定位一下–手动去编译这个开源软件，看是否可以成功出包，再对比配置文件是否有差异\n先进行autoconf，补齐所需配置文件，再参考conan create日志中的的configure命令执行\n./configure '--prefix=/root/.conan/data/librelp/1.11.0/openUBMC.release/stable/package/aacb32d7e5fb90e909b8c75f4dc8567c412d3619' '--bindir=${prefix}/bin' '--sbindir=${prefix}/bin' '--libexecdir=${prefix}/bin' '--libdir=${prefix}/lib' '--includedir=${prefix}/include' '--oldincludedir=${prefix}/include' '--datarootdir=${prefix}/share' --build=x86_64-linux-gnu --host=aarch64-linux-gnu\n\n发现生成的Makefile与直接执行conan create命令生成的差距非常大，甚至都没有引入RTOS sdk这个sysroot变量，这里又有些疑问，profile.ini文件里的设置是怎么被conan解析，又被AutoTools这个类使用，这些都不清晰，待进一步调试确认\n先将问题记录晾晒在此，还请大佬路过可以提供些思路\nconan create命令过程中生成完整版本的Makefile文件如下\nMakefile.txt (40.9 KB)\nlinks: /uploads/short-url/e7ThPvxxAaMGmyNyUI7BXm5QfaS.txt",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "/t/topic/1357/3",
+    "reply_posts": [
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1357/2",
+            "text": "这个问题我这里看一下，稍后尝试给您解答"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1357/3",
+            "text": "content: 使用bingo的构建命令bingo build -cp  librelp/1.11.0 --stage stable试一下。 conanfile.py可以参考conan_index仓库的其他组件\nlinks: https://gitcode.com/openUBMC/conan_index/tree/main/recipes"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1357/4",
+            "text": "该问题是否得到解决，如未解决请提供最新信息。"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1357/5",
+            "text": "此帖超过10天无新的消息和答复，标记为已解决，如有疑问可重新发帖或跟帖。"
+        }
+    ]
+}

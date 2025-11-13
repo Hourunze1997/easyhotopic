@@ -1,0 +1,36 @@
+{
+    "topic_id": 1556,
+    "question": "openUBMC ipmi 中的白名单黑名单打开命令配置白名单类名 - 背景\n客户提出关闭带内发ipmi 命令能力，经了解 ipmi 黑白名单可实现\n诉求\n1、open UBMC 如何打开 白/黑 名单 命令是啥\n2、功能类名叫啥",
+    "topic_user_name": "Yctco Huaconghui",
+    "best_answer_url": "/t/topic/1556/4",
+    "reply_posts": [
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1556/2",
+            "text": "content: 查询防火墙黑白名单状态\nipmitool -I lanplus -H xx -U xx-P xx -C 17 raw 0x30 0x93 0xdb 0x07 0 0x4c\n返回\ndb 07 00 status mode\nstatus 0-关闭 1-开启\nmode 0-黑名单 1-白名单 ff-关闭\nimage863×128 8.82 KB\n\n配置类名\nRestrictedIPMICmdList\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/5527a713c169b0865f8e3d60468dc3360f7e1896.png"
+        },
+        {
+            "user_name": "Duzhou13 51cdj",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1556/3",
+            "text": "content: 防火墙黑白名单相关命令\nimage1029×172 3.15 KB\n1、Set Firmware Firewall\nipmitool raw 0x30 0x93 <manu_id> 0x4a <status> <mode> <clear_flag>\nrsp: <completion_code> <manu_id>\n\n字段名称\n字段说明\n\nmanu_id\n厂商ID，固定3个字节\n\nstatus\n防火墙使能状态  0：Disable  1：Enable\n\nmode\n防火墙模式当status为Disable：  mode配置为0xff当status为Enable：  0：BlackList  1：WhiteList\n\nclear_flag\n清除标记当status为Disable：  该字段不生效当status 为Enable：  0：防火墙使能不清空黑白名单  1：防火墙使能同时清空黑白名单\n\n2、Query Black or White List IPMI\nipmitool raw 0x30 0x93 <manu_id> 0x4b <type> <id>\nrsp: <completion_code> <manu_id> <count> <length> <item>\n\n字段名称\n字段说明\n\nmanu_id\n厂商ID，固定3个字节\n\ntype\n查询的名单类型  0：BlackList  1：WhiteList\n\nid\n查询的黑白名单条目的索引，如id为1，表示查询第一条id取值为0时同1\n\ncount\n查询的名单的条目数量\n\nlength\n返回的条目的长度\n\nitem\n条目的内容\n\n3、Get Firmware Firewall\nipmitool raw 0x30 0x93 <manu_id> 0x4c\nrsp: <completion_code> <manu_id> <status> <mode>\n\n字段名称\n字段说明\n\nmanu_id\n厂商ID，固定3个字节\n\nstatus\n防火墙使能状态  0：Disable  1：Enable\n\nmode\n防火墙模式当status为Disable：  mode返回0xff当status为Enable：  0：BlackList  1：WhiteList\n\n功能类名\nFirewall\nlinks: #p-3822-h-1, https://discuss.openubmc.cn/uploads/default/original/2X/a/ae44c760780a95ab9029128144200de19c9187c8.png, #p-3822-h-2"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1556/4",
+            "text": "content: IPMI 固件防火墙配置与黑 / 白名单验证全攻略\n(适用于 NetFn 0x30 专用命令)\n\n1 名词解释与通用字段\n\n字段\n值 / 说明\n\nNetFn\n0x30（厂商自定义）\n\nCMD (防火墙)\n0x93\n\nCMD (升级控制)\n0x91\n\nManufacturer ID\n3 Byte 小端序；示例 (0x0007DB) → 0xDB 0x07 0x00\n\nBT 通道号\n0x08\n\n全通道通配\n0xFF\n\n下文所有原始报文及脚本参数均以 十六进制字节、带 0x 前缀 给出，确保可直接复制到 ipmitool raw。\n\n2 子命令速查表\n\n子命令码\n功能\n章节\n\n0x4A\n设置固件防火墙（启用 / 模式 / 清表）\n§ 3\n\n0x3F\n添加 / 删除黑白名单条目\n§ 4\n\n0x4B\n查询黑 / 白名单条目\n§ 5\n\n0x4C\n获取防火墙启用状态与模式\n§ 6\n\n3 设置固件防火墙  (Sub Cmd 0x4A)\n\nByte\n字段\n取值\n说明\n\n1‑3\nManufacturer ID\n0xDB 0x07 0x00\n\n4\nSub Cmd\n0x4A\n固定\n\n5\nFirewall Status\n0x01=Enable 0x00=Disable\n\n6\nMode\nStatus=1 时有效：0x01=WhiteList 0x00=BlackList；Status=0 时填 0xFF\n\n7\nClear Flag\nStatus=1 时有效：0x01=清空表 0x00=保留\n\n8‑10\nReserved\n0x00 0x00 0x00\n\n示例：启用白名单并清空旧表\n0x30 0x93  0xDB 0x07 0x00  0x4A  0x01  0x01  0x01  0x00 0x00 0x00\n\n4 管理黑 / 白名单  (Sub Cmd 0x3F)\n\nByte\n字段\n取值\n说明\n\n1‑3\nManufacturer ID\n0xDB 0x07 0x00\n\n4\nSub Cmd\n0x3F\n\n5\nParameter\n0x00=黑名单 0x01=白名单\n\n6\nOption\n0x00=添加 0x01=删除\n\n7\nRead / Write\n0x00=read 0x01=write\n\n8\nNetFn\n—\n目标指令 NetFn\n\n9\nCMD\n—\n目标指令 CMD\n\n10\nChannel\n黑名单：0x08=BT通道 0xFF=所有通道；白名单：0x08=BT通道 0xFF=无效\n\n11‑n\nData\n≤ 30 Byte\n目标指令 Request Data；无参数可省略。\n\n若报文中未包含 data 段，则表示屏蔽整个 netfn + cmd 命令，不论其携带何种 data，一律禁止执行。\n若报文中包含 data 段，则表示仅屏蔽该命令在携带特定 data 参数时的执行行为。若 data 内容不同，该命令仍可被允许执行。\n\n5 查询黑 / 白名单  (Sub Cmd 0x4B)\n\nByte\n字段\n说明\n\n1‑3\nManufacturer ID\n0xDB 0x07 0x00\n\n4\nSub Cmd\n0x4B\n\n5\nList Type\n0x00=黑名单 0x01=白名单\n\n6\nID\n0x00‑0xFF (0=第 1 条)\n\n响应要点\n\nByte 5 = 名单总条数 M；\nByte 6 … = Len NetFn CMD Chan Data…（单条记录）。\n\n6 获取防火墙状态  (Sub Cmd 0x4C)\n\nByte\n字段\n说明\n\n1‑3\nManufacturer ID\n0xDB 0x07 0x00\n\n4\nSub Cmd\n0x4C\n\nByte\n返回字段\n说明\n\n5\nFirewall Status\n0x00=关闭 0x01=开启\n\n6\nMode\nStatus=1：0x00=黑名单 0x01=白名单；Status=0：0xFF\n\n7 用例合集（含 固件升级命令 验证）\n\n被测指令：NetFn 0x30 / CMD 0x91 / Sub Cmd 0x06 / Op 0xAA（启动升级）。\n\n7‑1 黑名单：阻断升级命令\n# 1) 启用黑名单\n0x30 0x93 0xDB 0x07 0x00  0x4A 0x01 0x00 0xFF 0x00 0x00 0x00\n# 2) 将升级命令加入黑名单\n0x30 0x93 0xDB 0x07 0x00  0x3F 0x00 0x00 0x01  0x30 0x91 0x08\n\n7‑2 白名单：仅允许升级命令\n# 1) 启用白名单并清空\n0x30 0x93 0xDB 0x07 0x00  0x4A 0x01 0x01 0x01 0x00 0x00 0x00\n# 2) 仅添加升级命令到白名单\n0x30 0x93 0xDB 0x07 0x00  0x3F 0x01 0x00 0x01  0x30 0x91 0x08\n\n7‑3 批量添加两条指令到黑名单\n# 切回黑名单模式但保留列表\n0x30 0x93 0xDB 0x07 0x00  0x4A 0x01 0x00 0x00 0x00 0x00 0x00\n# 仅添加升级命令到黑名单\n0x30 0x93 0xDB 0x07 0x00  0x3F 0x00 0x00 0x01  0x30 0x91 0x08\n\n8 Shell 批量脚本示例（一次操作 20 台 BMC）\n脚本文件： ipmi_firewall_batch.sh\n#!/usr/bin/env bash\n# 批量为 20 台 BMC 启用白名单并仅放行升级命令\n# 固定参数：\n#   Manufacturer ID  : 0xDB 0x07 0x00 (示例厂商)\n#   升级命令 NetFn/CMD: 0x30 0x91\n#   BT 通道          : 0x08\n#   默认账户         : admin / pass\n\nMANUF=\"0xDB 0x07 0x00\"                     # 厂商 ID，带 0x 前缀\nENABLE_WHITE=\"0x4A 0x01 0x01 0x01 0x00 0x00 0x00\" # 启用白名单 + 清表\nADD_UPGRADE=\"0x3F 0x01 0x00 0x01 0x30 0x91 0x08\"  # 将升级命令加入白名单\nGET_STATUS=\"0x4C\"                                 # 查询状态\n\n# 20 台 BMC IP（示例段 192.168.1.100–119）\nHOSTS=(192.168.1.{100..119})\n\nfor HOST in \"${HOSTS[@]}\"; do\n  echo \"==== $HOST ====\"\n  # 1) 启用白名单并清空旧表\n  ipmitool -I lanplus -H \"$HOST\" -U admin -P pass raw 0x30 0x93 $MANUF $ENABLE_WHITE\n  # 2) 仅添加升级命令\n  ipmitool -I lanplus -H \"$HOST\" -U admin -P pass raw 0x30 0x93 $MANUF $ADD_UPGRADE\n  # 3) 读取防火墙状态（返回 0x00 0x01 ⇒ Enabled / WhiteList）\n  STATUS=$(ipmitool -I lanplus -H \"$HOST\" -U admin -P pass raw 0x30 0x93 $MANUF $GET_STATUS)\n  echo \"Status Bytes: $STATUS\"\ndone\n\n说明：大多数 ipmitool 版本支持 0x 前缀；如遇异常，可移除前缀并保持空格分隔。\nlinks: #p-3825-ipmi-1, #p-3825-h-1-2, #p-3825-h-2-3, #p-3825-h-3-sub-cmd-0x4a-4, #p-3825-h-4-sub-cmd-0x3f-5, #p-3825-h-5-sub-cmd-0x4b-6, #p-3825-h-6-sub-cmd-0x4c-7, #p-3825-h-7-8, #p-3825-h-71-9, #p-3825-h-72-10, #p-3825-h-73-11, #p-3825-h-8-shell-20-bmc-12"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1556/5",
+            "text": "如果你觉得我的教程对你有帮助，不妨点个赞+解决方案支持一下～\n顺带提一句，前面几篇教程大多没有涉及添加/删除命令的实际操作，可能只是照文档复述了一遍。\n我这边提供了完整可用的解决方案，欢迎优先参考！"
+        }
+    ]
+}

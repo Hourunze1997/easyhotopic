@@ -1,0 +1,15 @@
+{
+    "topic_id": 1687,
+    "question": "【redfish】当使用expand扩展查询资源时，响应时间8s以上，不满足性能要求 - content: 机型：Atlas 200T A3 Box8（腾讯定制）\n背景：升级后查询版本时间长，65个固件，需翻3页，带expand参数查询耗时23s以上\n分析：当前expand参数查询不满足性能要求\n预期的目标：即使带上expand参数，任意url的响应时间应小于3s，查询固件版本的响应时间预期在5s内\n单次响应示例：\n截图1491×605 50.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/bc9e80f7162e04f8c800781cf24078fcef5f376d.png",
+    "topic_user_name": "Ji You",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1687/2",
+            "text": "是否有一键收集的日志呢？需要通过日志初步确认时间耗在哪里？ 有日志的话发至邮件：ouwenjian@huawei.com"
+        }
+    ]
+}

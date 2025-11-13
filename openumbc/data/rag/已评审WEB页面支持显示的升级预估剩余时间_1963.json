@@ -1,0 +1,22 @@
+{
+    "topic_id": 1963,
+    "question": "【已评审】WEB页面支持显示的升级预估剩余时间 - content: issue 链接\n支持Web界面展示升级预估时间 rackmount #240\n评审背景\n当前WEB界面仅展示升级进度，固件升级时，用户在升级时无法得知大致升级等待时间\n当前现状以及差距\n现状\n\n当前固件升级的页面展示情况如下：\nimage2097×422 18.9 KB\n\n差距\n固件升级没有预估剩余时间\n解决方案\nWEB页面上展示当前固件的生效方式，每个升级固件的进度条右边多一个预估时间\n预估时间：\n（1）如果当前剩余时间超过 1 分钟，则展示格式为 “XX分XX秒”\n（2）如果当前剩余时间小于等于 1 分钟，则展示格式为 “XX秒”\n比如：BMC 升级时间预估为 3min，当前升级进度是 20%，则对应WEB页面上显示的进度是：\n[=======>] 20%（预计剩余 2 分 24 秒）\n升级固件中如果升级预估时间，则返回 null，前端不展示当前剩余时间\n评审点\n评审点1：UIRest查询升级进度接口响应新增属性\nURI：“/UI/Rest/BMCSettings/UpdateService/UpdateProgress”\n方法：GET\n响应：\n\"RspBody\": {\n      \"UpgradeMode\": \"${ProcessingFlow[1]/Destination/UpgradeMode}\",\n      \"UpgradeTasks\": \"${Statements/GetUpgradeTasks()}\"\n }\n\nUpgradeTasks中新增属性EstimatedRemainingTime，表征当前升级任务预估剩余时间。属性信息如下：\n\n项\n说明\n\n名称\nEstimatedRemainingTime\n\n类型\nnumber/null\n\n读写\n只读\n\n说明\n固件预计升级的剩余时间，单位：秒注意：如果当前固件不支持升级的预估时间，则取值为 null\n\n评审点2： 新增WEB页面上升级进度上展示升级预估剩余时间\n展示的格式为：\n\n如果当前剩余时间超过 1 分钟，则展示格式为 “XX分XX秒”\n如果当前剩余时间小于等于 1 分钟，则展示格式为 “XX秒”\n\n属性的取值来源为查询升级任务的剩余预估时间，如果不支持（属性为 null）则整个升级预估剩余时间不展示。\n示例如下：\n（1）剩余时间超过 1 分钟：\nimage1947×249 6.21 KB\n（2）剩余时间小于等于 1 分钟：\nimage1489×281 5.88 KB\n评审结论\n\n评审点1：通过，同意升级任务进度查询UIRest接口 /UI/Rest/BMCSettings/UpdateService/UpdateProgress 响应体中增加属性 EstimatedRemainingTime，表征当前升级任务预估剩余时间，属性类型为 Number, 单位为 秒，如果固件不支持升级预估时间，则属性取值为 null\n评审点2：通过，同意升级WEB页面上升级进度上展示升级预估剩余时间，展示的格式以及样例见评审点。\nlinks: #p-4806-issue-1, https://gitcode.com/openUBMC/rackmount/issues/240, #p-4806-h-2, #p-4806-h-3, #p-4806-h-4, https://discuss.openubmc.cn/uploads/default/original/2X/6/6d277f818c9383c15e9a9d7891f719bc0bb9cda6.png, #p-4806-h-5, #p-4806-h-6, #p-4806-h-7, #p-4806-h-1uirest-8, #p-4806-h-2-web-9, https://discuss.openubmc.cn/uploads/default/original/2X/9/9f16fbb1e1c850be2385740ee7db60b0c54f6b6a.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/3801b4cf9aa724a272701468a78afeb3ee7928cc.png, #p-4806-h-10",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "/t/topic/1963/2",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1963/2",
+            "text": "linyao:\n\n剩余时间小于等于 1 分钟\n\n【预审】\n\n当前评审仅评审 UX 设计？还是连同 UIRest 接口一起？"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1963/3",
+            "text": ""
+        }
+    ]
+}

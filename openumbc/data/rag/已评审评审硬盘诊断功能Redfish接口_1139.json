@@ -1,0 +1,29 @@
+{
+    "topic_id": 1139,
+    "question": "【已评审】评审硬盘诊断功能Redfish接口 - content: 关联issue\n支持硬盘诊断功能控制\n评审背景\n\nBMC带外硬盘日志自动收集可能会影响客户带内的性能（跟具体的硬盘有关，有的盘会出现IO跌零的现象），客户希望改成手动控制，因此需要支持通过BMC接口查询和设置硬盘诊断功能的状态，包括日志收集等。\n\n评审点\n\n新增Redfish接口\n\n1、新增Redfish接口\n1.1 新增GET接口查询属性DrivesLogCollectEnable、DrivesLogCollectInterval\n\nDrivesLogCollectEnable：硬盘日志自动收集开启状态，取值为boolean，默认值true\nDrivesLogCollectInterval：硬盘日志自动收集开启周期，取值为integer，范围1~255，默认值24（小时）\n操作权限：ReadOnly\n请求类型：GET\n请求URL：/redfish/v1/Managers/:managerid/DiagnosticService\n请求头：无\n请求体：无\n响应体:{“DrivesLogCollectEnable”: true,“DrivesLogCollectInterval”: 24}\n\n1.2 新增PATCH接口设置属性DrivesLogCollectEnable、DrivesLogCollectInterval\n\nDrivesLogCollectEnable：硬盘日志自动收集开启状态，取值为boolean，默认值true\nDrivesLogCollectInterval：硬盘日志自动收集开启周期，取值为integer，范围1~255，默认值24（小时）\n请求类型：PATCH\n请求URL：/redfish/v1/Managers/:managerid/DiagnosticService\n操作权限：BasicSetting\n请求头：If-Match\n请求体：{“DrivesLogCollectEnable”: true,“DrivesLogCollectInterval”: 24}\n\n1.3 新增POST接口手动触发收集硬盘日志信息\n\n请求类型：POST\n请求URL：/redfish/v1/Managers/:managerid/DiagnosticService/Actions/DiagnosticService.StartCollectDrivesLog\n操作权限：BasicSetting\n请求头：无\n请求体：{“DriveName” : “Disk0”}\n参数说明\n\n参数\n参数说明\n取值\n\nDriveName\n硬盘名称\n指定硬盘名称：收集指定硬盘日志信息不指定硬盘名称：“*”表示收集所有硬盘日志信息\n\n1.4 新增GET接口查询手动触发收集硬盘日志接口请求参数\n\n请求类型：GET\n请求URL：/redfish/v1/Managers/:managerid/DiagnosticService/StartCollectDrivesLogActionInfo\n操作权限：ReadOnly\n请求体：无\n请求头：无\n响应体：{“@odata.context”:“/redfish/v1/$metadata#ActionInfo.ActionInfo”,“/redfish/v1/Managers/:managerid/DiagnosticService/StartCollectDrivesLogActionInfo”,“@odata.type”:“#ActionInfo.v1_0_1.ActionInfo”,“Id”:“StartCollectDrivesLogActionInfo”,“Name”:“Start Collect Drives Log Action Info”,“Parameters”:[{“Name”:“DriveName”,“Required”:true,“DataType”:“string”}],“Oem”:{}}\n\n评审结论\n1、同意GET操作新增属性DrivesLogCollectEnable、DrivesLogCollectInterval\nuri: /redfish/v1/Managers/:managerid/DiagnosticService\n操作类型：GET\n属性：\n1）DrivesLogCollectEnable：硬盘日志自动收集开启状态，类型boolean，默认为true\n2）DrivesLogCollectInterval：硬盘日志自动收集开启周期，类型integer，取值范围1~255，单位：小时，默认为24\n权限：ReadOnly\n2、同意PATCH操作支持设置属性DrivesLogCollectEnable、DrivesLogCollectInterval\nuri: /redfish/v1/Managers/:managerid/DiagnosticService\n操作类型：PATCH\n属性：DrivesLogCollectEnable、DrivesLogCollectInterval\n权限：BasicSetting\n3、同意新增POST操作手动触发收集硬盘日志信息\nuri:/redfish/v1/Managers/:managerid/DiagnosticService/Actions/DiagnosticService.StartCollectDrivesLog\n操作类型：POST\n参数：无\n权限：BasicSetting\n4、同意新增GET操作查询手动触发收集硬盘日志接口请求参数\nuri: /redfish/v1/Managers/:managerid/DiagnosticService/StartCollectDrivesLogActionInfo\n操作类型：GET\n权限：ReadOnly\n遗留问题\n1、/redfish/v1/Managers/:managerid/DiagnosticService下的PATCH属性、POST接口权限是否有特殊要求？\n结论：\n（1）已确认，没有特殊限制\n（2）uri下的属性写权限部分是BasicSetting、部分是DiagnoseMgmt\nlinks: #p-2460-issue-1, https://gitcode.com/openUBMC/storage/issues/7, #p-2460-h-2, #p-2460-h-3, #p-2460-h-1redfish-4, #p-2460-h-11-getdriveslogcollectenabledriveslogcollectinterval-5, #p-2460-h-12-patchdriveslogcollectenabledriveslogcollectinterval-6, #p-2460-h-13-post-7, #p-2460-h-14-get-8, #p-2460-h-9, #p-2460-h-10",
+    "topic_user_name": "Fangzq",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1139/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1139/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1139/4",
+            "text": ""
+        }
+    ]
+}

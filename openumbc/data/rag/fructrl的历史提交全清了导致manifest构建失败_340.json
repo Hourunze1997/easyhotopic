@@ -1,0 +1,15 @@
+{
+    "topic_id": 340,
+    "question": "fructrl的历史提交全清了，导致manifest构建失败 - content: fructrl的历史提交全清了05ed90d1629b81d7bf0276ec20ee027a7df90c33：\nimage636×434 16.8 KB\n本地代码也同步更新了manifest，但是还是构建失败：\nInstalling (downloading, building) binaries...\nfructrl/1.70.11@hw.ibmc.release/rc: Configuring sources in /root/.conan/data/fructrl/1.70.11/hw.ibmc.release/rc/source\nfructrl/1.70.11@hw.ibmc.release/rc: SCM: Getting sources from url: 'https://gitcode.com/openUBMC/fructrl.git'\nfructrl/1.70.11@hw.ibmc.release/rc: WARN: Build folder is dirty, removing it: /root/.conan/data/fructrl/1.70.11/hw.ibmc.release/rc/build/ded551da8fa3f9b86d2a2e032320257dc3fdefa4\nfructrl/1.70.11@hw.ibmc.release/rc: WARN: Trying to remove corrupted source folder\nfructrl/1.70.11@hw.ibmc.release/rc: WARN: This can take a while for big packages\nERROR: Couldn't checkout SCM: Command 'git -c http.sslVerify=true checkout \"22162057a5595b4892b908b6e16c86e66b35d877\"' returned non-zero exit status 128.\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)\nfatal: reference is not a tree: 22162057a5595b4892b908b6e16c86e66b35d877\n\n新的manifest 2af8b00085dc8cc81e17611b0cb6c8270bf30b68 还是依赖fructrl/1.70.11@hw.ibmc.release/rc，但是这个版本的源码记录没有了，导致编译失败。\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/b22361a2e3373e513d7eaa6088ff9f5176d497b8.png",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/340/2",
+    "reply_posts": [
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/340/2",
+            "text": "你好，我们当前正在对社区仓进行正式公开前的发布准备，给您带来的不便我们深感歉意。\n整改完成后社区组件仓仅会保留最终通过集成测试的commit节点以及整改完成前最新的commit节点，并基于这两个节点形成tag。\n您所说的1.70.11节点并不属于这两个节点，所以被清除了。"
+        }
+    ]
+}

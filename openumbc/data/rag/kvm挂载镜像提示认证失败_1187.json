@@ -1,0 +1,15 @@
+{
+    "topic_id": 1187,
+    "question": "kvm挂载镜像提示认证失败 - content: 使用社区25.03版本发现会出现kvm挂载镜像提示认证失败的问题，日志见附件\nkvm挂载镜像认证失败.zip (3.4 MB)\nimage932×574 24.9 KB\nlinks: /uploads/short-url/5dQ30clGPFJ3Akli38tp1X3H5uA.zip, https://discuss.openubmc.cn/uploads/default/original/1X/83368aab4cab337e64b32e3c872a1dcba96687ca.png",
+    "topic_user_name": "长江-涂华能",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "ZhangNing",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1187/2",
+            "text": "当前最新版本问题还存在吗？如果有，麻烦提供一下完整日志"
+        }
+    ]
+}

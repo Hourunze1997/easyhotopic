@@ -1,0 +1,15 @@
+{
+    "topic_id": 1495,
+    "question": "1711模组更新openUBMC固件 - 1711模组自带的V2版本iBMC如何在线更新到UBMC固件，有操作说明吗",
+    "topic_user_name": "Cuiych",
+    "best_answer_url": "/t/topic/1495/2",
+    "reply_posts": [
+        {
+            "user_name": "王宇航",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1495/2",
+            "text": "content: 参考这里：基础通用问题FAQ  需要先升级过渡包，请问您是哪家企业的，我们联系您\nlinks: https://discuss.openubmc.cn/t/topic/292"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 1007,
+    "question": "openUBMC中是否所有硬盘槽位(无论硬盘是否插入)都能在dbus上查询到信息 - openUBMC中是否所有硬盘槽位(无论硬盘是否插入)都能在dbus上bmc.kepler.storage服务下的/bmc/kepler/Systems/1/Storage/Drives对象路径下查询到具体的硬盘对象信息？",
+    "topic_user_name": "Luguangyang",
+    "best_answer_url": "/t/topic/1007/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1007/2",
+            "text": "是的，Drive对象是在硬盘背板上的，不取决于硬盘是否插入。\n硬盘插入信号会影响在位状态。"
+        },
+        {
+            "user_name": "Luguangyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1007/3",
+            "text": "好的谢谢"
+        }
+    ]
+}

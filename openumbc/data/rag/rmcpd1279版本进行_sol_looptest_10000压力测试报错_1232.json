@@ -1,0 +1,43 @@
+{
+    "topic_id": 1232,
+    "question": "【rmcpd】1.27.9版本进行 sol looptest 10000压力测试报错 - 执行命令为：\nipmitool -I lanplus -H <IP> -U <user> -P <passwd> sol looptest 10000\n...\nremain loop test counter: 8510\n[SOL Session operational.  Use ~? for help]\nremain loop test counter: 8509\n[SOL Session operational.  Use ~? for help]\nremain loop test counter: 8508\n[SOL Session operational.  Use ~? for help]\nremain loop test counter: 8507\nSOL looptest failed: -1\n\nrmcpd报错日志：\n2025-06-03 11:25:49.150738 bmc_soc NOTICE: serial_mgmt.lua(152): Set serial direction to (PANEL COM <-> BMC COM) successfully\n2025-06-03 11:25:49.186791 bmc_soc NOTICE: serial_mgmt.lua(328): Setting uart 1 interconnect with port 1\n2025-06-03 11:25:49.227328 bmc_soc NOTICE: serial_mgmt.lua(328): Setting uart 2 interconnect with port 2\n2025-06-03 11:25:49.313522 bmc_soc NOTICE: serial_mgmt.lua(328): Setting uart 3 interconnect with port 3\n2025-06-03 11:25:49.358534 bmc_soc NOTICE: serial_mgmt.lua(328): Setting uart 4 interconnect with port 4\n2025-06-03 11:25:49.445705 bmc_soc NOTICE: serial_mgmt.lua(328): Setting uart 5 interconnect with port 5\n2025-06-03 11:25:49.454114 rmcpd ERROR: uart_mgmt.lua(84): Get sys baud failed: ioctl(GET_HOST_BAUDRATE_INFO) failed: Invalid argument, uart_index:1 (repeated 4 times)\n2025-06-03 11:25:49.454350 rmcpd ERROR: init.lua(238): send rmcp plus message failed: invalid session\n2025-06-03 11:25:49.469311 bmc_soc NOTICE: serial_mgmt.lua(328): Setting uart 0 interconnect with port 0\n2025-06-03 11:25:49.514874 bmc_soc NOTICE: serial_mgmt.lua(328): Setting uart 6 interconnect with port 6\n2025-06-03 11:25:49.552831 bmc_soc NOTICE: serial_mgmt.lua(328): Setting uart 1 interconnect with port 1\n2025-06-03 11:25:49.594779 bmc_soc NOTICE: serial_mgmt.lua(328): Setting uart 7 interconnect with port 7\n2025-06-03 11:25:49.596663 bmc_soc NOTICE: serial_mgmt.lua(348): reset uart connect successfully\n2025-06-03 11:25:49.641008 bmc_soc NOTICE: serial_mgmt.lua(328): Setting uart 2 interconnect with port 2\n2025-06-03 11:25:49.681754 bmc_soc NOTICE: serial_mgmt.lua(217): Setting uart 2 interconnect with port 2\n2025-06-03 11:25:49.683385 bmc_soc NOTICE: serial_mgmt.lua(152): Set serial direction to (PANEL COM <-> BMC COM) successfully\n2025-06-03 11:25:49.686101 rmcpd ERROR: init.lua(238): send rmcp plus message failed: invalid session (repeated 2 times)\n2025-06-03 11:25:49.686302 rmcpd ERROR: uart_mgmt.lua(240): uart 5 close failed: uart port is not open:5\n2025-06-03 11:25:49.717013 bmc_soc NOTICE: serial_mgmt.lua(328): Setting uart 3 interconnect with port 3\n2025-06-03 11:25:49.765138 bmc_soc NOTICE: serial_mgmt.lua(328): Setting uart 4 interconnect with port 4\n\n更新rmcpd为1.27.10版本后，进入DPU的SOL敲回车没反应，进入DPU SOL的命令如下：\nipmcset -t sol -d ac -v 5 0\n主干版本为5.5分支，场内环境可复现。",
+    "topic_user_name": "HKZY_YangBo",
+    "best_answer_url": "/t/topic/1232/6",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1232/2",
+            "text": "content: 当前日志信息只能看出来会话异常，一键收集的日志发送至邮箱 ouwenjian@huawei.com 吧。看描述是有两个问题，都发一份一键收集的日志吧。\nlinks: mailto:ouwenjian@huawei.com"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1232/3",
+            "text": "一键式日志已发送，场内补发了问题2（rmcpd 1.27.10版本）的日志。"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1232/4",
+            "text": "content: 问题原因：在执行sol looptest过程中，在activate payload和deactivate payload切换间隙因从串口中读到数据返回给ipmitool工具，导致ipmitool端looptest流程出现失败。官方issue：https://github.com/ipmitool/ipmitool/issues/254\n数据来源：os侧串口切换后根据/etc/issue返回的登录提示信息。\n解决方案：\n1、删掉/etc/issue下的登录提示信息。\n2、looptest测试时，os下电。\nlinks: https://github.com/ipmitool/ipmitool/issues/254"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1232/5",
+            "text": "content: 企业微信截图_174909243123641053×109 3.23 KB\n实验了此方法，不行。使用了这个方法，删掉issue里面的内容，OS下电，默认的200圈sol looptest失败\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/349f277359b58ca0cbd005d5b44a392d09a78d6e.png"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1232/6",
+            "text": "根因同上，sol activate和deactivate间隙有sol数据返回客户端，导致客户端失败。已修改逻辑为先发送IPMI命令响应,再使能SOL发送,防止工具先收到SOL包,将SOL包作为命令响应。"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1143,
+    "question": "关于bmc登录密码的问题 - 在串口登录bmc显示不正确（同样的用户名和密码在网页上可以登录）\n用户名：Administrator\n密码：Admin@9000\n\n登录画面：",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/1143/2",
+    "reply_posts": [
+        {
+            "user_name": "Niegsh",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1143/2",
+            "text": "密码是Admin@90000"
+        }
+    ]
+}

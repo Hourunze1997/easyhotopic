@@ -1,0 +1,15 @@
+{
+    "topic_id": 781,
+    "question": "【已评审】支持刷新基准值的资源协作接口 - content: 关联Issue\n支持TPCM扩展能力资源树\n背景\n在硬件身份度量的能力基础上，当部件发生替换变更等行为时，会导致度量失败，此时需要提供刷新基准值的能力\n决策点\n1、在资源协作接口bmc.kepler.Managers.TPCM.Config下新增方法支持刷新硬件身份度量的基准值\n结论：同意新增方法\n资源path：/bmc/kepler/Managers/:ManagerId/TPCM/Config\n资源interface：bmc.kepler.Managers.TPCM.Config\n变化类型：新增方法\n应用场景：部件发生变更后，用于刷新部件基准值\n\n属性名称\n变化类型\n请求签名\n响应签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nRefreshComponentStandardDigest\n新增方法\ny\n无\nUserMgmt\nNA\nNA\n用于部件发生变更后，刷新各部件的身份度量基准值 请求参数： SystemId：OS Id 当取值为255时，代表刷新所有System下的部件基准值, 其它值代表刷新指定System的部件基准值\n仅在TCM在位场景下可用\n\n2、在资源协作接口bmc.kepler.Inventory.Hardware下新增属性Model，承载各硬件资产的型号\n结论：同意新增属性\n资源path：各类硬件资产的资源路径\n资源interface: bmc.kepler.Inventory.Hardware\n变化类型：新增属性\n应用场景：呈现部件的型号信息\n\n属性名称\n变化类型\n请求签名\n响应签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nModel\n新增属性\ns\n无\n只读\n不持久化\nfalse\n用于呈现部件型号\n\n3、在资源协作接口bmc.kepler.AssetService.AssetList下新增方法支持获取指定的资产信息\n结论：同意新增方法\n资源path：/bmc/kepler/AssetService/AssetList\n资源interface：bmc.kepler.AssetService.AssetList\n变化类型：新增方法\n应用场景：用于获取指定的资产信息\n\n属性名称\n变化类型\n请求签名\n响应签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nGetSpecificAssetList\n新增方法\nysas\ns\nReadOnly\nNA\nNA\n获取指定的资产清单 请求参数： 1、SystemId：OS Id 取值范围：0~255, 255时代表获取所有System的资产清单, 其它值代表获取指定System的资产清单   2、AssetType：资产类型 取值范围：“”/“CPU”/“NetworkAdapter”/“NPU”/“GPU”, 为空字符串时代表获取所有资产清单, 为其它时表示获取指定部件类型的资产清单   3、AssetProperties：资产属性 字符串数组，为空数组时表示获取资产的所有信息，非空时表示获取指定的资产信息  响应参数： List：资产清单的json字符串\nlinks: #p-1620-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/23, #p-1620-h-2, #p-1620-h-3",
+    "topic_user_name": "pengxianglin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/781/2",
+            "text": ""
+        }
+    ]
+}

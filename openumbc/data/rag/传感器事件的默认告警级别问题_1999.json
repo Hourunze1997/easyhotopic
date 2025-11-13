@@ -1,0 +1,15 @@
+{
+    "topic_id": 1999,
+    "question": "传感器事件的默认告警级别问题 - content: 开发sel的时候发现sensor公共仓的data.yaml文件配置的很多事件级别都是不准确的，这个有办法定制吗，如果不能定制，是否可以直接修改公共仓的data.yaml文件\nimage443×274 9.63 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/bb414a122424111b8cccc7acfe371a8a7e948c88.png",
+    "topic_user_name": "Songwen",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Iss Szyaoh",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1999/2",
+            "text": "content: 如果需要定制事件等级，则需要在客户定制仓配置Severity属性，如果不定制的场景下事件等级也不准确，则直接修改sensor仓的data.yaml文件配置即可，具体配置方法可以参考 DiscreteEvent离散事件等级定制功能 - bmc_core SIG - openUBMC 论坛\nlinks: https://discuss.openubmc.cn/t/topic/2159"
+        }
+    ]
+}

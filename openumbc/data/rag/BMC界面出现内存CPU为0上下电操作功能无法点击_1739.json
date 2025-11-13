@@ -1,0 +1,22 @@
+{
+    "topic_id": 1739,
+    "question": "BMC界面出现内存、CPU为0，上下电操作功能无法点击 - content: image1758×824 128 KB\nssh登录BMC收集日志，看RTOSDump有一个异常点，如下：\nimage1055×805 73.2 KB\n麻烦帮忙看看，是这个异常导致的不呢？是BMC板子哪里坏了之类的哇？\n补充：\n看app.log，看起来日志没有记录上一样。因为我通过telnet登录上看app.log，是1970-01-01的时间。\n这边尝试通过 ipmcset -d reset 重启BMC来恢复，发现无法恢复。\n版本：基础版本5.5版本\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e7347790ca1488a6c5f1a6c8e6408174790e1749.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c2cf47fe20257cd624b80b819e2793c4fb2de471.png",
+    "topic_user_name": "HKZY_YangBo",
+    "best_answer_url": "/t/topic/1739/3",
+    "reply_posts": [
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1739/2",
+            "text": "上下电操作功能无法点击—这个需要提供更多信息。\n至于CPU、内存、网络处理器在位数量为0，这些都是BIOS启动过程中上报的，AC后处于下电状态的环境确实获取不到这些信息。\nRTOS打印：这个感觉是驱动有点问题，但是跟上下电关系应该不大，等专家答复。"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1739/3",
+            "text": "content: 已解决。通过重新检查接线后恢复。\n补充后续排查方法：\n1、排查Connector，看确认加载情况，其中从Connect_BCU加载出现了异常：\nimage617×248 10.8 KB\n2、从framework.log排查到日志，确认为加载CSR失败：\nimage1294×237 38.3 KB\n3、对于CSR加载失败，排查接线或者板子本身\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/5960e6ad8be774735936918e0d6e6d740aa9224e.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/8584d08acfa09e0bef3efec4fef1817cfe7648ec.png"
+        }
+    ]
+}

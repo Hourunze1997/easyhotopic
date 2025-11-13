@@ -1,0 +1,15 @@
+{
+    "topic_id": 2084,
+    "question": "【论坛BUG反馈】相似度检查BUG导致话题无法创建 - content: BUG描述\n例如输入的内容中只要包含\n\n似乎就会被识别为非法字符，导致话题无法创建，报错418\nimage1561×568 30.3 KB\n原因分析\n论坛后台会持续检查新创建的帖子内容是否和之前的帖子雷同，我们输入的shell命令被当成一种攻击行为了\nimage755×400 14.7 KB\nlinks: #p-5211-bug-1, https://discuss.openubmc.cn/uploads/default/original/2X/7/76a6f32e67322c240ef20a44e8a278fffe24018c.png, #p-5211-h-2, https://discuss.openubmc.cn/uploads/default/original/2X/a/a8864eb528630c8bd180981c722bbe5b33b049f9.png",
+    "topic_user_name": "百信-罗昊",
+    "best_answer_url": "/t/topic/2084/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2084/2",
+            "text": "是的，shell脚本会被当成危险注入\n我的做法是类似百度贴吧那种方式，在里面加表情。。。\nsource /etc /profile"
+        }
+    ]
+}

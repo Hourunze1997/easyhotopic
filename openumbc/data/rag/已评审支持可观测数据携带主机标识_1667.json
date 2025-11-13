@@ -1,0 +1,29 @@
+{
+    "topic_id": 1667,
+    "question": "【已评审】支持可观测数据携带主机标识 - content: ISSUE链接\n支持可观测数据携带主机标识-rackmount-GitCode\n背景\n为了便于在可视化后端系统上对bmc上报可观测数据区分来源的服务器设备，因此需要在上报数据中添加主机标识，从而用于在可视化系统中区分和筛选可观测数据。\n决策点\n一、资源协作接口新增属性\n资源协作path：/bmc/kepler/ObservabilityService\n资源协作intf：bmc.kepler.ObservabilityService\n变化类型：新增属性\n应用场景 ：用户更改可观测相关配置\n持久化类型：掉电持久化\n操作权限：\n读：ReadOnly\n写：DiagnoseMgmt\n\n属性名称\n签名\n变化通知\n默认值\n操作权限\n说明\n接口约束\n\nServerIdentity\ns\nfalse\nBoardSN\nr:ReadOnlyw:DiagnoseMgmt\n可观测数据携带的主机标识类型，取值包括：BoardSN（单板序列号）ProductAssetTag（产品资产标签）HostName（主机名）\n取值不可为空字符串\n\n二、web rest接口新增属性\n接口名：/UI/Rest/ObservabilityService\n变化类型：新增属性\n操作类型：GET/PATCH\n应用场景 ：用户更改可观测相关配置\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n说明\n\nServerIdentity\nstring\nBoardSN（单板序列号）ProductAssetTag（产品资产标签）HostName（主机名）\nBoardSN\nGET:ReadOnlyPATCH:DiagnoseMgmt\n可观测数据携带的主机标识类型，不可为空字符串\n\n三、redfish接口新增属性\n接口名：/redfish/v1/Oem/{{OemIdentifier}}/ObservabilityService\n变化类型：新增属性\n操作类型：GET/PATCH\n应用场景 ：用户更改可观测相关配置\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n说明\n\nServerIdentity\nstring\nBoardSN（单板序列号）ProductAssetTag（产品资产标签）HostName（主机名）\nBoardSN\nGET:ReadOnlyPATCH:DiagnoseMgmt\n可观测数据携带的主机标识类型，不可为空字符串\n\n评审结论\n1、同意新增资源协作接口属性\npath：/bmc/kepler/ObservabilityService\ninterface：bmc.kepler.ObservabilityService\n变化类型：新增属性\n应用场景 ：用户更改可观测相关配置\n持久化类型：掉电持久化\n操作权限：\n读：ReadOnly\n写：DiagnoseMgmt\n\n属性名称\n签名\n变化通知\n默认值\n操作权限\n说明\n接口约束\n\nServerIdentity\ns\nfalse\nBoardSN\nr:ReadOnlyw:DiagnoseMgmt\n可观测数据携带的主机标识类型，取值包括：BoardSN（单板序列号）ProductAssetTag（产品资产标签）HostName（主机名）\n取值不可为空字符串\n\n2、同意web rest接口/UI/Rest/ObservabilityService新增属性\nuri：/UI/Rest/ObservabilityService\n变化类型：新增属性\n操作类型：GET/PATCH\n应用场景 ：用户更改可观测相关配置\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n说明\n\nServerIdentity\nstring\nBoardSN（单板序列号）ProductAssetTag（产品资产标签）HostName（主机名）\nBoardSN\nGET:ReadOnlyPATCH:DiagnoseMgmt\n可观测数据携带的主机标识类型，不可为空字符串\n\n3、同意redfish接口/redfish/v1/Oem/{{OemIdentifier}}/ObservabilityService新增属性\nuri：/redfish/v1/Oem/{{OemIdentifier}}/ObservabilityService\n变化类型：新增属性\n操作类型：GET/PATCH\n应用场景 ：用户更改可观测相关配置\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n说明\n\nServerIdentity\nstring\nBoardSN（单板序列号）ProductAssetTag（产品资产标签）HostName（主机名）\nBoardSN\nGET:ReadOnlyPATCH:DiagnoseMgmt\n可观测数据携带的主机标识类型，不可为空字符串\nlinks: #p-4046-issue-1, https://gitcode.com/openUBMC/rackmount/issues/191, #p-4046-h-2, #p-4046-h-3, #p-4046-h-4",
+    "topic_user_name": "HuoJianCong",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1667/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1667/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1667/4",
+            "text": ""
+        }
+    ]
+}

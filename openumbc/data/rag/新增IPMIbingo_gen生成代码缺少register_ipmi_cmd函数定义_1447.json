@@ -1,0 +1,71 @@
+{
+    "topic_id": 1447,
+    "question": "新增IPMI,bingo gen生成代码缺少register_ipmi_cmd函数定义 - 我新增了一个OEM组件，然后在组件的mds中新增了ipmi.json文件，定义了2个cmd命令，使用bingo gen自动生成代码。生成的代码在相对路径/gen/app/service.lua中没有看到生成类似function account_service:register_ipmi_cmd(ipmi_cmd, cb)的函数定义，在其他以后组件里面，都有register_ipmi_cmd这个函数的定义，是bingo版本的问题还是哪里有差异？\n我现在是需要自行编写这样的注册函数吗？\n我的bingo -v\nbmcgo 版本为：0.5.317\nmdb_interface的组件版本mdb_interface/1.70.99@openUBMC.release.rc",
+    "topic_user_name": "Hudi",
+    "best_answer_url": "/t/topic/1447/8",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1447/2",
+            "text": "试试用bingo？\n还有gen之后的日志能贴一下吗"
+        },
+        {
+            "user_name": "Hudi",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1447/3",
+            "text": "gen之后的日志如下：\nroot@8a87fee23271:/home/workspace/source/yctco_app# bingo gen -r cbmc_dev\nConan 1 is on a deprecation path, please consider migrating to Conan 2\nConfiguration:\n[settings]\narch=x86_64\nbuild_type=Dt\ncompiler=gcc\ncompiler.libcxx=libstdc++11\ncompiler.version=9\nos=Linux\n[options]\n[build_requires]\n[env]\nAR=ar\nAS=as\nCC=gcc\nCFLAGS=-Wall -fPIC -fstack-protector-all -Wl,-z,relro -Wl,-z,noexecstack -Wl,-z,now -pie -g -fno-common -std=gnu11\nCONAN_BUILD_TYPE=DT\nCONAN_CMAKE_SYSTEM_VERSION=3.16\nCONAN_DISABLE_STRICT_MODE=1\nCONAN_REVISIONS_ENABLED=1\nCONAN_SKIP_BROKEN_SYMLINKS_CHECK=True\nCXX=g++\nCXXFLAGS=-I\"$standalone_toolchain/$target_host/lib/include\" -Wall -fPIC -fstack-protector-all -Wl,-z,relro -Wl,-z,noexecstack -Wl,-z,now -pie -fno-common -std=c++17\nHOSTCC=gcc\nLD=ld\nSTRIP=strip\nInstalling package: mdb_interface/1.70.101@cbmc.release/rc\nRequirements\nmdb_interface/1.70.101@cbmc.release/rc from local cache - Cache\nPackages\nmdb_interface/1.70.101@cbmc.release/rc:a49a2cb5c5c787c5f49ecd419fe1553f1bada9c8 - Cache\nInstalling (downloading, building) binaries…\nmdb_interface/1.70.101@cbmc.release/rc: Already installed!\nGenerator deploy created deploy_manifest.txt\nAggregating env generators\nmake[1]: warning: jobserver unavailable: using -j1.  Add ‘+’ to parent make rule.\nmake[1]: Entering directory ‘/home/workspace/source/yctco_app/temp/lua_codegen’\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/check_intfs.py -d /home/workspace/source/yctco_app/temp/lua_codegen/../../temp/opt/bmc/apps/mdb_interface/ -n yctco_app -m /home/workspace/source/yctco_app/mds -o /home/workspace/source/yctco_app/temp/lua_codegen/script/../temp/check_intfs.json\nmake[2]: Entering directory ‘/home/workspace/source/yctco_app/temp/lua_codegen/proto’\nmake[2]: Nothing to be done for ‘default’.\nmake[2]: Leaving directory ‘/home/workspace/source/yctco_app/temp/lua_codegen/proto’\nmake[2]: Entering directory ‘/home/workspace/source/yctco_app/temp/lua_codegen/templates’\nmake[3]: Entering directory ‘/home/workspace/source/yctco_app/temp/lua_codegen/templates/apps’\nmake[3]: warning: jobserver unavailable: using -j1.  Add ‘+’ to parent make rule.\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/gen_intf_rpc_json.py -i /home/workspace/source/yctco_app/mds/service.json -o /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/client.json -d /home/workspace/source/yctco_app/temp/lua_codegen/../../temp/opt/bmc/apps/mdb_interface/  -s /home/workspace/source/yctco_app/mds/service.json -c\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/gen_rpc_msg_json.py -i /home/workspace/source/yctco_app/mds/service.json -o /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/json_types/ -d /home/workspace/source/yctco_app/temp/lua_codegen/../../temp/opt/bmc/apps/mdb_interface/ -n yctco_app -x\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/template.py -d /home/workspace/source/yctco_app/proto -v 3 -j /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/json_types/ -n yctco_app -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/client.json -f /home/workspace/source/yctco_app/temp/lua_codegen/script/lua_format.py -t client.lua.mako -o /home/workspace/source/yctco_app/gen/yctco_app/client.lua\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/merge_model.py -i /home/workspace/source/yctco_app/mds/model.json -o /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/_model.json -d /home/workspace/source/yctco_app/temp/lua_codegen/../../temp/opt/bmc/apps/mdb_interface/ -c /home/workspace/source/yctco_app/temp/lua_codegen/script/../temp/check_cmd.json\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/gen_intf_rpc_json.py -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/_model.json -o /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/service.json -s /home/workspace/source/yctco_app/mds/service.json -p /home/workspace/source/yctco_app/mds/ipmi.json\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/gen_rpc_msg_json.py -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/_model.json -o /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/json_types/ -d /home/workspace/source/yctco_app/temp/lua_codegen/../../temp/opt/bmc/apps/mdb_interface/ -n yctco_app -m\nls: cannot access ‘/home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/device_types/’: No such file or directory\n{‘package’: ‘Properties’, ‘name’: ‘GetPropertiesByOptionsReq’, ‘options’: {‘has_struct’: True}, ‘type’: ‘Message’, ‘properties’: [{‘original_name’: ‘Interface’, ‘name’: ‘Interface’, ‘type’: ‘string’, ‘options’: {‘validate’: ‘’, ‘allow_null’: True, ‘critical’: False}, ‘id’: 0, ‘repeated’: False, ‘is_enum’: False, ‘description’: ‘接口名’}, {‘original_name’: ‘Options’, ‘name’: ‘Options’, ‘type’: ‘Properties.Options’, ‘options’: {‘validate’: ‘’, ‘allow_null’: True, ‘critical’: False}, ‘id’: 1, ‘repeated’: False, ‘is_enum’: False, ‘description’: ‘属性能力选项，例如是否弃用、是否是易变属性等’}], ‘nested_type’: }\n{‘package’: ‘Properties’, ‘name’: ‘GetOptionsRsp’, ‘options’: {‘has_struct’: True}, ‘type’: ‘Message’, ‘properties’: [{‘original_name’: ‘Options’, ‘name’: ‘Options’, ‘type’: ‘Properties.Options’, ‘options’: {‘validate’: ‘’, ‘allow_null’: True, ‘critical’: False}, ‘id’: 0, ‘repeated’: False, ‘is_enum’: False, ‘description’: ‘属性能力选项，例如是否弃用、是否是易变属性等’}], ‘nested_type’: }\n{‘package’: ‘Properties’, ‘name’: ‘ObjectIdentifier’, ‘options’: {‘has_struct’: True}, ‘type’: ‘Message’, ‘properties’: [{‘original_name’: ‘ObjectIdentifier’, ‘name’: ‘ObjectIdentifier’, ‘type’: ‘Properties.StructIdentifier’, ‘options’: {‘readonly’: True, ‘validate’: ‘’, ‘allow_null’: True, ‘critical’: False}, ‘id’: 0, ‘repeated’: False, ‘is_enum’: False, ‘description’: ‘对象标志符’}], ‘nested_type’: }\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/template.py -d /home/workspace/source/yctco_app/proto -v 3 -j /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/json_types/ -n yctco_app -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/service.json -f /home/workspace/source/yctco_app/temp/lua_codegen/script/lua_format.py -t service.lua.mako -o /home/workspace/source/yctco_app/gen/yctco_app/service.lua\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/gen_schema.py -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/_model.json -n yctco_app -o /home/workspace/source/yctco_app/mds/schema.json\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/template.py -d /home/workspace/source/yctco_app/proto -v 3 -j /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/_model.json -f /home/workspace/source/yctco_app/temp/lua_codegen/script/lua_format.py -t model.lua.mako -n yctco_app -o /home/workspace/source/yctco_app/gen/class/model.lua\nmkdir -p /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/model_types/\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/gen_rpc_msg_json.py -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/_model.json -o /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/model_types/ -d /home/workspace/source/yctco_app/temp/lua_codegen/../../temp/opt/bmc/apps/mdb_interface/ -p\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/gen_historical_local_db_json.py -i /home/workspace/source/yctco_app/temp/lua_codegen/../../gen_bak/yctco_app/local_db.lua -o /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/historical_local_db.json\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/gen_db_json.py -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/_model.json -m /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/historical_local_db.json -o /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/db_json.json\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/template.py -d /home/workspace/source/yctco_app/proto -j /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/ -n yctco_app -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/db_json.json -f /home/workspace/source/yctco_app/temp/lua_codegen/script/lua_format.py -t db.lua.mako -o /home/workspace/source/yctco_app/gen/yctco_app/db.lua\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/template.py -d /home/workspace/source/yctco_app/proto -j /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/ -n yctco_app -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/local_db_json.json -f /home/workspace/source/yctco_app/temp/lua_codegen/script/lua_format.py -t local_db.lua.mako -o /home/workspace/source/yctco_app/gen/yctco_app/local_db.lua\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/gen_ipmi_json.py -i /home/workspace/source/yctco_app/mds/ipmi.json -v 3 -o /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/ipmi/ipmi.proto.json\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/template.py -d /home/workspace/source/yctco_app/proto -j /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app -n yctco_app -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/ipmi/ipmi.proto.json -f /home/workspace/source/yctco_app/temp/lua_codegen/script/lua_format.py -v 3 -t ipmi.lua.mako -o /home/workspace/source/yctco_app/gen/yctco_app/ipmi/ipmi.lua\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/template.py -d /home/workspace/source/yctco_app/proto -j /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app -n yctco_app -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/ipmi/ipmi.proto.json -t ipmi_message.lua.mako -o /home/workspace/source/yctco_app/gen/yctco_app/ipmi/ipmi_message.lua\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/sep_ipmi_message_cmds.py /home/workspace/source/yctco_app/mds/ipmi.json /home/workspace/source/yctco_app/gen/yctco_app/ipmi/ipmi_message.lua /home/workspace/source/yctco_app/gen/yctco_app/ipmi/cmds yctco_app /home/workspace/source/yctco_app/temp/lua_codegen/script/lua_format.py\npython3 /home/workspace/source/yctco_app/temp/lua_codegen/script/template.py -d /home/workspace/source/yctco_app/proto -j /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/ -n yctco_app -i /home/workspace/source/yctco_app/temp/lua_codegen/temp/yctco_app/db_json.json -f /home/workspace/source/yctco_app/temp/lua_codegen/script/lua_format.py -t orm_classes.lua.mako -o /home/workspace/source/yctco_app/gen/yctco_app/orm_classes.lua\nmake[3]: Leaving directory ‘/home/workspace/source/yctco_app/temp/lua_codegen/templates/apps’\nmake[2]: Leaving directory ‘/home/workspace/source/yctco_app/temp/lua_codegen/templates’\nmake[1]: Leaving directory ‘/home/workspace/source/yctco_app/temp/lua_codegen’\n我尝试手动增加register_ipmi_cmd的函数定义后，IPMI命令可以正常注册并使用，应该就是bmcgo版本的问题吧？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1447/4",
+            "text": "content: @wnb 有空看一下\nlinks: /u/wnb"
+        },
+        {
+            "user_name": "Hudi",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1447/5",
+            "text": "在组件mds的service.json中新增codegen_policy的定义，配置version 15，再执行bingo gen,就可以自动生成register_ipmi_cmd的定义。这个codegen_policy的版本之间具体有哪些区别？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1447/6",
+            "text": "理论上没有太多区别，版本区别主要在生成代码的优化上面\n已与CICD SIG讨论，后续会把codegen_policy的版本说明公示出来。\n能方便提供一下是哪个版本生成有问题吗？用来分析下为什么会无法生成"
+        },
+        {
+            "user_name": "Hudi",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1447/7",
+            "text": "1、通过命令新增组件 bingo new -n yctco_app -t application -l lua\n2、新增组件mds的service.json中默认并没有codegen_policy的定义，不确认默认使用的是哪个版本。"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1447/8",
+            "text": "在mds/service.json手动添加codegen_policy定义, 示例如下：\n{\n    \"name\": \"appname\",\n    \"version\": \"0.0.1\",\n    \"codegen_policy\": {\n        \"version\": 15\n    }\n}"
+        },
+        {
+            "user_name": "Hudi",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1447/9",
+            "text": "是的，已新增这块定义，新增以后IPMI的注册函数可以自动生成。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1447/10",
+            "text": "先按照这么使用吧，待CICD SIG排查后，看看在社区哪里承载codegen_policy版本说明关系"
+        }
+    ]
+}

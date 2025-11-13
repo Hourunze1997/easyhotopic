@@ -1,0 +1,15 @@
+{
+    "topic_id": 1860,
+    "question": "打印过多被折叠，如何指定一个模块不让打印折叠 - 项目开发中，打印会被折叠，例如[repeated 1000 times in 8s from 这种字样，\n如何如何指定一个模块不让打印折叠，利于需求开发打印跟踪时序",
+    "topic_user_name": "Kunlun Xiechuanguan",
+    "best_answer_url": "/t/topic/1860/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1860/2",
+            "text": "该字样代表已启用日志限流，调试时希望针对某个组件或某条日志不限流有如下方式\n\n使用log:error_easy()接口进行调试打印，注:建议只在调试使用\n使用mdbctl dloglimit命令 在attach模块后可通过lscmd查询可用组件自定义命令\n\n% attach maca\nSuccess\n\n% dloglimit true 60\n\n需要重启进程也能够维持日志不被限流除了使用第一条的easy接口外，也可以在/dev/shm/dbus/.dbus里加一行MCC_DEBUG=1,重启相关进程或所有进程即可关闭日志限流功能，该操作会使得所有日志解除限流(不包括c组件)。"
+        }
+    ]
+}

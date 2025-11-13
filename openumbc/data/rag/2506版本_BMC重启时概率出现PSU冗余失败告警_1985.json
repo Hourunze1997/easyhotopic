@@ -1,0 +1,29 @@
+{
+    "topic_id": 1985,
+    "question": "2506版本 BMC重启时，概率出现PSU冗余失败告警 - content: 问题现象\n跑BMC循环重启脚本时，概率出现PSU冗余失败告警\nimage1273×460 102 KB\n复现方法：\n在OS下循环发IPMI命令：\nipmitool mc cold reset\n\nbmc cold reset 656次，出现56次PSU Lost power supply redundancy告警：\n初步定位\n由告警码0x03000007出发：\nimage338×230 22.4 KB\n检索到事件 PSU.PSURedundancyLost：\nimage347×127 6.76 KB\n定位到事件源 Event_PSURedundancyLost：\nimage417×117 5.6 KB\n\"RedundancyFailure\"是静态值，数值由代码进行更新\nimage351×292 13.9 KB\n在开源组件power_mgmt中没有此 RedundancyFailure 关键字，推测为闭源组件 power_strategy的实现\n诉求\n1、 从现象来看应该是问题，社区这边是否已有相同的问题在处理\n2、如何从日志的角度分析此问题\n如有需要，请留下邮箱，我发一键日志辅助定位\nlinks: #p-4875-h-1, https://discuss.openubmc.cn/uploads/default/original/2X/c/cdbe1d5bb7f5b998507c2d69fde3eeff0d9241e9.jpeg, #p-4875-h-2, https://discuss.openubmc.cn/uploads/default/original/2X/a/a450a70813727d35ea1e16df7478104a03d8ff4c.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a5165364fc7960dbb8d8e83465df5d33cddeb84e.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/cd9b66f70f9bcbade793c0d8599871606c548d99.png, https://discuss.openubmc.cn/uploads/default/original/2X/5/5ecd028bf7cfaad5d062b6a3b8a8c04ecbd27963.png, #p-4875-h-3",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "易重辉",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1985/2",
+            "text": "content: 持续定位跟进\n通过日志文件查到最新的PSU冗余失效的sel事件是：\n\n查询2025-07-21 07:56:45这个时间左右的app.log，并搜索关键字：Redundancy\nimage1281×473 108 KB\n由上述日志可知：\n07:48:11、07:52:28、07:56:19、07:59:49均有Set RedundancyFailure to true的记录，唯有07:56:19这次持续了28秒才设置false，其他的时间点均是6秒内恢复。\n推测：因RedundancyFailure设置为true后恢复时间过长才触发事件，恢复时间短不触发事件。\n再次回查sel日志：\nimage971×432 60.5 KB\n07:48:11 对应 07:47:53 openUBMC is reset and started.\n07:52:28 对应 07:52:23 openUBMC is reset and started.\n07:56:19 对应 07:56:14 openUBMC is reset and started.\n07:59:49 对应 07:59:45  openUBMC is reset and started.\n推测：每次BMC启动都会有Set RedundancyFailure to true/false的过程，且恢复时间变长会触发事件。\n回查07:24:15那次的告警是否能印证推测：\nimage1123×192 38 KB\n07:24:15这次非常特殊，07:24:14设置RedundancyFailure true，07:24:15就直接告警，6s后恢复RedundancyFailure false，07:24:27 告警恢复。\n再次回查其他时间点的日志：\nimage1104×162 43 KB\n可以印证恢复时间为6~20s\n查询Set RedundancyFailure to true前后的日志：\nimage992×389 172 KB\n发现是先设置了RedundancyFailure to true然后才加载了OnePower，加载完OnePower才RedundancyFailure to false。考虑RedundancyFailure的数值更新时序是否有问题。\n小结\n每次BMC重启都会有Set RedundancyFailure to true/false的过程，持续时间6~20s，期间如果Event检测到了RedundancyFailure to true，则会告警，否则不会告警，从而有了概率性告警的现象。\n诉求\n1、每次BMC重启都会有Set RedundancyFailure to true/false的过程是否正常？这涉及到power_strategy组件的energy_metric.lua(187)的代码走读，需要社区支撑。如果正常，考虑为该数值配置防抖；如果不正常，需要进一步解决。\nlinks: #p-4923-h-1, https://discuss.openubmc.cn/uploads/default/original/2X/9/91590329181c92e30dd3aa612b7790f03de169d6.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/6fec1752e9c341e7d16d71534b7dd5fa1d316423.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/34cb4105b52708d3228c0a1f5152e9d216b5d67b.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/16152e959332c3295d534553c1bb0adc6e8ab615.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/90619d0ca78a2417f9dee12d93e7e890727ec217.png, #p-4923-h-2, #p-4923-h-3"
+        },
+        {
+            "user_name": "Fumingquan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1985/3",
+            "text": "app.log日志搜索下alarm_delay_time = ，看下bmc启动的打印是什么"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1985/4",
+            "text": "无此打印"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "topic_id": 1934,
+    "question": "【已评审】 DiscreteEvent对象新增属性Severity - content: ISSUE链接\n【需求】支持传感器事件等级自定义设置-sensor-GitCode\n背景\n客户需求支持定制传感器对应事件等级的严重级别。\n\n离散传感器事件依赖于对离散传感器事件对象的配置，且客户定制事件等级的前提是对该传感器事件有配置诉求，因此可以考虑将事件等级绑定到离散传感器事件对象上。若离散传感器配置了Severity，则采用配置对象的值，否则从datas.yaml中获取。默认配置为0xff，可取范围是0(normal)、1(minor)、2(major)、3(critical)，和标准IPMI规范SEL事件等级关系如下\n\nSEL事件等级\n标准IPMI规范的门限传感器SEL事件等级\n\nnormal\nok\n\nminor\nnc, non-critical\n\nmajor\ncr, critical\n\ncritical\nnr, non-recoverable\n\n决策点\n\nDiscreteEvent 对象新增私有属性 Severity 属性表示离散传感器事件自定义等级\n\n新增属性 Severity 具体信息如下：\n\n属性名称：Severity\n属性签名：y\n默认值：255\n变化类型：新增属性\n应用场景：离散传感器事件自定义等级\n持久化类型： 不持久化\n接口说明：当前离散事件的严重等级，取值有：0 : Normal 1 : Minor 2 : Major 3 : Critical\n\n评审结论\n通过，同意离散事件类 DiscreteEvent 新增私有属性 Severity，属性签名为 y，默认值为 255，表示离散事件的自定义等级，如果是默认值，则离散事件的等级由BMC的默认配置决定。\nlinks: #p-4764-issue-1, https://gitcode.com/openUBMC/sensor/issues/30, #p-4764-h-2, #p-4764-h-3, #p-4764-h-4",
+    "topic_user_name": "Iss Szyaoh",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1934/2",
+            "text": "iss_szyaoh:\n\n对离散传感器事件对象的配置，且客户定制事件等级的前提是对该传感器事件有配置诉求，因此可以考虑将事件等级绑定到离散传感器事件对象上。若离散传感器配置了Severity，则采用配置对象的值，否则从datas.yaml中获取。默认配置为0xff，可取范围是0、1、2、3。\n\n【预审】\n\n背景中说明清楚 0/1/2/3 分别代表什么级别，和标准的IPMI规范的级别如何映射"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1934/3",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1934/4",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1934/5",
+            "text": ""
+        }
+    ]
+}

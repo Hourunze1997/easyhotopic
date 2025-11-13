@@ -1,0 +1,22 @@
+{
+    "topic_id": 2060,
+    "question": "v2升级openubmc指导 - content: 摘要\nv2版本可直接升级openubmc，第一次升级需要在出包时和升级后做一些操作，此后可以根据自己的选择（社区版本或伙伴自签名版本）来升级后续的版本，第一次升级失败报错或者升级后回退请联系pae。\n流程\n1.出包\na）默认用户名密码，出包时在manifest代码中对应manifest.yml中将account的option，改为manufacture: true\n\n默认用户名密码为Administrator/openUBMC@2025\n第一次升级后建议自行调整修改\nb）第一次升级组件添加busybox，以方便升级后的ssl证书导入\n参考 openUBMC调试工具安装指导\n2.升级后导入ssl证书\n升级后可以telnet到23端口\n先通过date -s TIME设置当前时间，时间不对ssl证书会导入失败\n后使用ipmcset -t certificate -d import -v /tmp/server.p12 1 123456（文件名和最后的密码参数按自己生成ssl证书的为准）\n若提示找不到ipmcset命令，则先执行source /etc/profile\n导入证书后可正常访问web，后续可正常升级自己开发的包。\n3. 自签名\n如果选择使用自签名固件包，则后续只能升级该签名证书生成的hpm包\n此包也可以从v2版本直接升级\n参考 使用bingo进行自签名BMC固件包指导\nlinks: #p-5120-h-1, #p-5120-h-2, #p-5120-h-1-3, #p-5120-amanifestmanifestymlaccountoptionmanufacture-true-4, #p-5120-bbusyboxssl-5, https://discuss.openubmc.cn/t/topic/415, #p-5120-h-2ssl-6, #p-5120-h-3-7, https://discuss.openubmc.cn/t/topic/1665",
+    "topic_user_name": "陈芝奔",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "恒扬-李天亮",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2060/2",
+            "text": "content: 过渡版本升级伙伴自签名版本升级失败报错。\nOpenUBMC2506 BMC固件升级失败 - 交流互助区 - openUBMC 论坛\nlinks: https://discuss.openubmc.cn/t/topic/1698"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2060/3",
+            "text": "content: 陈工，我们用社区2506的代码和sdk， 只改了manifest.yml中account的option，成功出包；然后在v2上升级提示”无效的升级包“。\n以前从v2到openUBMC，都是要先升级过渡包，直接用社区版本证书签名校验应该通不过吧。\nimage1201×477 24.8 KB\nimage1137×846 38.5 KB\nv2升级过渡包一直是ok的\nimage668×357 10.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/36f1273dc19d55e1d0735edfca9b14ea3b4f6888.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/f1af530d3bf652e11d36b1cf3329b6b6e00771c1.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/8889e99dcb49c7e70c5e2cefc42724464f386240.png"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 428,
+    "question": "【已评审】web接口新增syslog配置与查询日志类型 - content: ISSUE链接： web支持syslog配置和查询系统串口/BMC串口/故障诊断/板卡芯片日志-rackmount-GitCode\n评审背景： 25年Q1落地syslog支持系统串口日志、BMC串口日志、故障诊断日志和板卡芯片日志通过syslog服务进行日志上报需求，但是只支持redfish接口和ipmi接口进行查询与配置，现需支持web接口进行查询与配置\n决策点：\n是否同意web接口/UI/Rest/Maintenance/SyslogNotification的LogType属性的取值范围新增：\n系统串口日志：SysComLog\nBMC串口日志：BmcComLog\n故障诊断日志：DiagnosticLog\n板卡芯片日志：ChipLog\n详细描述：\nuri：/UI/Rest/Maintenance/SyslogNotification\n变化类型：新增属性取值范围\n操作类型： GET/PATCH\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n\nLogType\narray\n“OperationLog”, “SecurityLog”, “EventLog”, “IntrusionDetectionLog”,“SysComLog”,“BmcComLog”,“DiagnosticLog”,“ChipLog”\n“OperationLog”, “SecurityLog”, “EventLog”\nSecurityMgmt\n\n评审结论：\n同意web接口/UI/Rest/Maintenance/SyslogNotification的LogType属性的取值范围新增：\n系统串口日志：SysComLog\nBMC串口日志：BmcComLog\n故障诊断日志：DiagnosticLog\n板卡芯片日志：ChipLog\nlinks: https://gitcode.com/openUBMC/rackmount/issues/5",
+    "topic_user_name": "HuoJianCong",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/428/2",
+            "text": ""
+        }
+    ]
+}

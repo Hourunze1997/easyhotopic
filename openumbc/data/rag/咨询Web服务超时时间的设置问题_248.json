@@ -1,0 +1,15 @@
+{
+    "topic_id": 248,
+    "question": "咨询Web服务超时时间的设置问题 - content: 11043×551 14.7 KB\n如上图这个超时时间如何通过配置文件来设置呢？\n在iam_lite组件中有下面的配置文件\n21004×490 52.6 KB\n但是修改后  编译的时候 也带了 -O 参数带上了 manufacture这个参数 True 仍然不生效。\n查阅代码后发现\nimage594×170 11.6 KB\n在此处写死的  这个地方要自己去实现吗？还是有其他方式 比方运行脚本来触发配置文件？\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/eaf4f130727ee1f1711d9a4f0c9cd4e77995bfa7.png, https://forum.openubmc.cn/uploads/default/original/1X/a25e57e0ce4d40271803f18c75659c8825a4aa0b.png, https://forum.openubmc.cn/uploads/default/original/1X/a4c6b170c79ecb9726d46dde43d4dcdaa6104fb7.png",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/248/2",
+    "reply_posts": [
+        {
+            "user_name": "李文杰",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/248/2",
+            "text": "如果需要支持属性修改，确实得手动实现。\n当前iam_lite模块能力有限，还在持续构建中，后续可能会有更完整功能的版本"
+        }
+    ]
+}

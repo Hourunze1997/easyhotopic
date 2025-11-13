@@ -1,0 +1,29 @@
+{
+    "topic_id": 2088,
+    "question": "在fructrl下自定义ipmi命令失败 - content: 在ipmi.json中添加了一个示例命令\nimage904×399 30.4 KB\n之后用bingo gen自动生成代码\n然后build构建组件，最后编译hpm整包\n更新之后通过busctl --user tree bmc.kepler.fructrl无法在资源树中看到自定义的命令\n请问为什么添加失败？bingo gen之后是否需要有别的操作？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/80bd3541dcd4495d2bd81137ce8e6625ea42af8a.png",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/2088/3",
+    "reply_posts": [
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2088/2",
+            "text": "给出调测时看不到命令的截图"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2088/3",
+            "text": "content: 新增自定义ipmi命令方法 - bmc_core SIG - openUBMC 论坛\nlinks: https://discuss.openubmc.cn/t/topic/2142"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2088/4",
+            "text": "按照帖子中的教程可以成功添加命令，感谢指导"
+        }
+    ]
+}

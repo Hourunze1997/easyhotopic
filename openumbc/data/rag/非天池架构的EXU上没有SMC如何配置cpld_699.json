@@ -1,0 +1,15 @@
+{
+    "topic_id": 699,
+    "question": "非天池架构的EXU上，没有SMC，如何配置cpld？ - 背景：\n\nV2上，硬件提供的很多在位、pg信号等，都在cpld1或cpld2的某个偏移的某几位上，软件适配时，会在底板上定义 <OBJECT NAME=\"cpld1\" CLASS=\"Chip\" TYPE=\"Physical\">\n定义Accessor对象，Chip关联cpld1，offset填写对应的偏移，结合mask等参数来实现硬件信号读取；\n当前在openUBMC的项目上，除BCU以外，所有单板均非天池架构，没有smc；\n\n求助：\n\n在这种项目场景上，我们该如何配置cpld信息？TaiShan9000上看到定义了Localbus_1，但并没有地方使用，找不到借鉴的地方。",
+    "topic_user_name": "Kun Lun Lizhuang",
+    "best_answer_url": "/t/topic/699/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/699/2",
+            "text": "使用CpldRegister，相当于v2的cpld1，通过accessor访问对象，例如：\n## 在ManagementTopology中声明拓扑关系 ##\n\"LocalBus_1\": {\n \"Chips\": [\n\"CpldRegister_1\"\n ]\n},\n...\n},\n\"Objects\": {\n## 在Objects中增加CpldRegister_1对象 ##\n\"CpldRegister_1\": {\n\"Address\": 0,\n\"AddrWidth\": 4,\n\"OffsetWidth\": 1\n },\n## 增加Accessor对象 ##\n\"Accessor_BT_1\": {\n\"Chip\": \"#/CpldRegister_1\",\n\"Offset\": 80,\n \"Size\": 1,\n \"Mask\": 0,\n \"Type\": 1,\n \"Value\": 0\n}"
+        }
+    ]
+}

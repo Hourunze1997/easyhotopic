@@ -1,0 +1,15 @@
+{
+    "topic_id": 669,
+    "question": "【已评审】DPU卡支持获取bios启动状态，新增属性 - content: ISSUE链接 （必填，此议题关联的issue）\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景 （必填，文字描述议题背景，如需求来源、问题场景）\n支持智能网卡系统运行状态记录，并刷新固件版本号\n在系统上电、BIOS启动完成、OS启动完成时，上报事件，更新CPLD/BIOS/MCU版本号\n决策点 （必填，一句话描述待决策点）\n1、bmc.kepler.Systems.DPUCard.System新增BiosBootStage属性，获取BIOS启动状态\n2、PowerState和SystemLoadedStatus改为复位持久化\n详细描述（必填，描述待评审接口的详细内容）\n1、bmc.kepler.Systems.DPUCard.System新增BiosBootStage属性\n资源path： /bmc/kepler/Systems/${SystemId}/PCIeDevices/PCIeCards/DPUCards/${Id}\n资源interface： bmc.kepler.Systems.DPUCard.System\n变化类型：新增属性\n应用场景：DPUCard启动获取BIOS启动状态\n持久化类型： ResetPer\n操作权限：ReadOnly\n详细描述：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nBiosBootStage\n新增属性\ny\nR：ReadOnly\nResetPer\ntrue\nDPU卡的BIOS启动状态\n0：BIOS未启动 1：BIOS启动中 2：BIOS启动完成 3：BIOS启动超时\n\n2、PowerState和SystemLoadedStatus改为复位持久化\n资源path： /bmc/kepler/Systems/${SystemId}/PCIeDevices/PCIeCards/DPUCards/${Id}\n资源interface： bmc.kepler.Systems.DPUCard\n变化类型：修改属性\n应用场景：获取OS启动状态，记录事件；获取智能网卡上电状态，记录事件/北向呈现\n持久化类型： ResetPer\n操作权限：ReadOnly\n详细描述：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nSystemLoadedStatus\n修改属性\ny\nR：ReadOnly\nResetPer\ntrue\nDPU卡的OS启动状态\n0：OS未启动1：BIOS开始引导启动OS2：BIOS引导启动OS失败3：OS启动完成4：OS启动超时5: 未获取到硬盘启动项\n\nPowerState\n修改属性\ns\nR：ReadOnly\nResetPer\ntrue\nDPU卡电源状态\nOn：上电Off：下电\n\n遗留问题\n1、DPU卡下电后，是否能从MCU读取到DPU卡对应的状态\n确认结果：DPU卡下电后，BMC能从MCU读取到DPU卡对应的状态，不需要BMC额外修改BiosBootStage、PowerState和SystemLoadedStatus属性；\n评审结论 （评审结束后录入，描述全面且清晰，不能是通过或不通过、同意或不同意）\n1、同意bmc.kepler.Systems.DPUCard.System接口新增BiosBootStage属性，类型y，变化时发送事件，复位持久化；\n2、同意bmc.kepler.Systems.DPUCard接口中的PowerState和SystemLoadedStatus属性改为复位持久化，SystemLoadedStatus属性变化时发送事件；\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/35, https://gitcode.com/openUBMC/mdb_interface/issues/35",
+    "topic_user_name": "Gerard Jay X7t7x",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/669/2",
+            "text": ""
+        }
+    ]
+}

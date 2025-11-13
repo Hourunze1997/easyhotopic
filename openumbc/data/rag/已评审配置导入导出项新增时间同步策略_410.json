@@ -1,0 +1,57 @@
+{
+    "topic_id": 410,
+    "question": "【已评审】配置导入导出项新增时间同步策略 - content: 关联issue\n配置导入导出项和定制化项新增时间同步策略\n评审背景\n需求\n客户提出需求，要求在NTP时间有主备NTP服务器同步，如果同步失败则使用RTC同步，如果所有的时间源都同步失败则需要告警。\n现状\nBMC当前同步时间时从NTP的主备服务器进行同步，如果NTP启用同步则不会从RTC进行同步，并且NTP同步失败时产生告警\n评审点\n\n新增定制化项，用于服务器出厂定制当前的时间同步策略。\n新增配置导入导出项，用于时间同步策略配置的导出和导入。\n\n评审点1：新增定制化项\n\n项目\n值\n\n定制化项\n时间同步策略\n\n定制化接口名称\nCustom_TimeSynchronizationPolicy\n\n默认值\n0\n\n处理逻辑\nif(Custom_TimeSynchronizationPolicy== 1)  设置时间同步策略为NTP优先 else  设置时间同步策略为仅NTP\n\n说明\n0： 仅NTP，即NTP开启时仅从NTP同步，其他时间源不同步 1： NTP优先，即NTP开启时优先同步NTP，NTP同步失败后再同步RTC\n\n评审点2：新增配置导入导出项\n\n项目\n值\n\n导出项\nBMC\n\n导出子项\nTimeSynchronizationPolicy\n\n含义说明\n时间同步策略\n\n取值类型\nnumber\n\n属性类型\nImportAndExport\n\n导出后是否可以直接导入\n是\n\n取值说明\n0： 仅NTP，即NTP开启时仅从NTP同步，其他时间源不同步 1： NTP优先，即NTP开启时优先同步NTP，NTP同步失败后再同步RTC\n\n备注\n新增导入导出项\n\n备注说明\n\n每种策略同步失败之后会有对应的事件产生\n策略进行切换时需要恢复对应已经assert的事件\n\n评审结论\n通过,同意新增定制化项 Custom_TimeSynchronizationPolicy 和 配置导入导出项 TimeSynchronizationPolicy\nlinks: #p-753-issue-1, https://gitcode.com/openUBMC/profile_schema/issues/1, #p-753-h-2, #p-753-h-3, #p-753-h-4, #p-753-h-5, #p-753-h-1-6, #p-753-h-2-7, #p-753-h-8, #p-753-h-9",
+    "topic_user_name": "sunpeijun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/410/2",
+            "text": "这里涉及多个策略点\n1、NTP开启，但是NTP时间同步失败后是否改为用RTC同步\n2、NTP同步失败后就产生告警，还是所有时间源同步失败后产生告警\n建议分开进行设计，同时配置导入导出项也要同步增加"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/410/3",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/410/4",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/410/5",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/410/6",
+            "text": "content: 关于时间同步失败的告警策略单独使用 issue #13 跟踪\nlinks: https://gitcode.com/openUBMC/profile_schema/issues/13"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/410/7",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/410/8",
+            "text": ""
+        }
+    ]
+}

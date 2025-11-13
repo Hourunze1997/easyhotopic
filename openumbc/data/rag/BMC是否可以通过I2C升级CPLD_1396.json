@@ -1,0 +1,29 @@
+{
+    "topic_id": 1396,
+    "question": "BMC是否可以通过I2C升级CPLD - CPLD升级现状：\n从代码已有的配置看，BMC升级CPLD都是通过jtag通道。\n问题：\n我们自研的switch背板，硬件上只能通过I2C升级CPLD。\n诉求：\n请问bmc是否支持通过I2C升级CPLD，应该如何实现？",
+    "topic_user_name": "Chengxiaoju",
+    "best_answer_url": "/t/topic/1396/4",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1396/2",
+            "text": "content: 当前支持通过I2C升级CPLD，具体代码位置如下，在开源组件general_hardware中。\nimage1247×546 59.4 KB\n大致实现：根据升级文件hpm包中的配置文件，可以配置升级的链路，并且通过实际的拓扑关系配置sr文件后，即可支持走I2C升级CPLD\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/8d20ab67cbef2432977b5d9e0213fa6473d1710e.png"
+        },
+        {
+            "user_name": "Chengxiaoju",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1396/3",
+            "text": "content: 1.能不能再进一步指点一下SR的配置。针对I2C升级，下图中的route要怎么配置？Location代表什么含义？\n2.cpld打包hpm的cfg文件是不是也需要做更改？\nimage485×370 9.65 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/485f4e9b56abc93c03bf587dc75edfe710187b22.png"
+        },
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1396/4",
+            "text": "content: 1、Location代表的是逻辑位号，是固定配置的。会在后台进行转换，在接口查询时展示为Uxx\n2、Routes属性关联的寄存器，会在升级cpld前切换至预期的升级通道，与FirmwareRoute属性相匹配\n相关cpld升级实现在社区有源码，在general_hardware仓，代码实现可以与对象匹配\nlinks: https://gitcode.com/openUBMC/general_hardware"
+        }
+    ]
+}

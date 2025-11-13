@@ -1,0 +1,15 @@
+{
+    "topic_id": 1494,
+    "question": "扩展板配置咨询 - content: source/vpd/vendor/Huawei/TianChi/EXU/14100513_00000001010302044492.dds\nimage461×237 6.22 KB\n有没有大佬知道的，天池EXU下的这个.dds文件是做什么用的？四个EXU配置文件，有些有有些没有，光看dds文件本身也不是很能理解其功能。\nimage609×240 8.03 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/ee3fab27b4b251933dbb912692edf8cd980ebe57.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/6997d0491d9319a01b8b020e062b8d103a5a599e.png",
+    "topic_user_name": "kunlun_luzhanghui",
+    "best_answer_url": "/t/topic/1494/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1494/2",
+            "text": "content: 嗯，这个是南向部件驱动里面的概念，当前还在孵化期，因此社区没有相关文档\n如果感兴趣可以订阅“部件驱动SIG”的例会，参与SIG活动来了解。https://www.openubmc.cn/sig/component-drivers\nlinks: https://www.openubmc.cn/sig/component-drivers"
+        }
+    ]
+}

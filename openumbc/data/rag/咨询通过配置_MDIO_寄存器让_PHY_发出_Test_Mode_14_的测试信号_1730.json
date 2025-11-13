@@ -1,0 +1,29 @@
+{
+    "topic_id": 1730,
+    "question": "咨询通过配置 MDIO 寄存器让 PHY 发出 Test Mode 1~4 的测试信号 - content: 如题，客户使用的PHY芯片型号为YT8521，想测试它的信号完整性. 怎么发出如下4个pattern\ne77c8085b4776516afb429d7adb643d71082×465 86.2 KB\nopenbmc中可以通过MDIO 工具写PHY 的寄存器，想问下UBMC中目前有类似工具可以实现吗？\n8c5e3230a4ca7f4750aa47259c537dc5810×254 5.48 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/25b085c2c940e973e4262b63b1e0b5b944b53926.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/9a82cbae80dc5d8c2289426c1b9860c4c70fca49.png",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "南京百敖",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1730/2",
+            "text": "更新一下，希望有大佬能看到"
+        },
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1730/3",
+            "text": "你好，请问问题中测试的认为，预期是通过什么链路访问什么器件上的寄存器呢"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1730/4",
+            "text": "content: image995×457 78.7 KB\nimage986×705 67 KB\n感谢回复，主要涉及到MDIO接口，模组手册上写到“软件可以通过配置MDIO相应寄存器实现对PHY芯片内部寄存器的读写”。顺便问一下，这里的软件应该是指BMC吧，BMC里面是怎么配置MDIO的？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e98f0a20b70befdf155ecc3daa58dea75ab5a330.png, https://discuss.openubmc.cn/uploads/default/original/2X/5/5b9e58c6247d72b809d2169f1b81d1fc8ff68b11.png"
+        }
+    ]
+}

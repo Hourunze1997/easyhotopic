@@ -1,0 +1,22 @@
+{
+    "topic_id": 1867,
+    "question": "读取fru显示Device not present - content: 问题背景：\n适配过程中读取fru提示打印Device not present (Destination unavailable)\n该机型无挂耳，但是有ExpBoard并且eprom地址为0xAE\nimage459×140 11.9 KB\n排查过程：\n1.通过cat /var/log/app.log|grep frudata查看关键日志报错如下\nfrudata NOTICE: frudata_app.lua(72): frudata add object, obj.FruId = 0, frudata name = FruData_Fru0_010104, type = TianChi\nfrudata NOTICE: frudata_app.lua(72): frudata add object, obj.FruId = 1, frudata name = FruData_Expander_0101, type = TianChi\n\nimage1899×440 105 KB\n2.修改配置文件，将TianChi修改为Eepromv2，则不会报错Device not present (Destination unavailable)，证明硬件链路是通的\n        \"FruData_Expander\": {\n            \"FruId\": 1,\n            \"FruDev\": \"#/Eeprom_EXU\",\n            \"EepromWp\": \"#/Accessor_EXUWP.Value\",\n            \"BoardSerialNumber\": \"\",\n            \"StorageType\": \"TianChi\" -->修改为Eepromv2\n        },\n\nimage542×195 17.1 KB\n3.附带app.log日志\napp.log.1.txt (2.1 MB)\n问题：\n1.出现该问题的原因是什么呢？\n2.eeprom内应该是为空，会是这个导致天池加载错误报错吗？报错的代码指向为闭源，无法进一步分析代码\n3.能否通过软件的方式直接为空eeprom写入符合天池架构的信息(csr，uid，fru)\n4.os下执行dmidecode -t 2 回显的主板序列号，产品名称，这些信息是bmc主动通过smbios传输给bios，还是bios通过ipmi向bmc获取的呢？方便说明一下这个链路吗？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e8baac7fbbff28726fc9cb9153c05d80584c7634.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0b133f95229572522bbd0faca9902991278cc558.png, https://discuss.openubmc.cn/uploads/default/original/2X/b/ba37718fa9debed1befd45a61173ddf3693a08e9.png, /uploads/short-url/fzp6lezz4CdAH5M5Bbxq6Z5qVPd.txt",
+    "topic_user_name": "Ocy",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Lishuol",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1867/2",
+            "text": "1、StorageType不同bmc会按照不同的公式解析Fru的内容，天池规范每个域对应的寻址方式和偏移和非天池规范不一样；\n2、csr、fru都是存在eep里的，如果eep是空没有csr，bmc带外都不会识别这个组件，没理解你是什么意思；\n3、可以，天池和非天池主要区别就是eep里的天池头；\n4、dmidecode不走带外，从bios拿的信息"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1867/3",
+            "text": "问题三还有疑问\n天池头的格式可以提供一下吗？"
+        }
+    ]
+}

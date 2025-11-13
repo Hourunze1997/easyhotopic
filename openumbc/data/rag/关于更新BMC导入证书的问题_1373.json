@@ -1,0 +1,92 @@
+{
+    "topic_id": 1373,
+    "question": "关于更新BMC导入证书的问题 - content: 为什么我的证书会导入失败？\n\n证书用https://discuss.openubmc.cn/t/topic/215中生成的rootca.pfx可以吗\nlinks: https://discuss.openubmc.cn/t/topic/215",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/1373/11",
+    "reply_posts": [
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1373/2",
+            "text": "这里导入的是SSL证书"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1373/3",
+            "text": "openssl pkcs12 -export -out rootca.pfx -in rootca.pem -inkey rootca_pri.pem生成的不是ssl证书吗"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1373/4",
+            "text": "排查了几个可能都不是：\n1.时间问题，目前已通过date设置了时间，排除\n\n2.密码不对，目前通过openssl pkcs12 -in /tmp/rootca.pfx -info -nodes -passin pass:123456命令可以显示证书内容，排除\n3.文件权限，文件权限修改为644后仍无法导入，排除"
+        },
+        {
+            "user_name": "Chenxinxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1373/5",
+            "text": "看一下导入时运行日志打印了什么内容"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1373/6",
+            "text": "请问怎么看运行日志？"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1373/7",
+            "text": "怀疑可能有问题的点：证书时效太长了"
+        },
+        {
+            "user_name": "Chenxinxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1373/8",
+            "text": "root登录tail -f /var/log/app.log，或者执行导入后一键收集日志，查看app.log"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1373/9",
+            "text": "这是log内的内容，我现在登录不上web，只能通过ssh操作，所以无法一键收集日志\n\n~ # tail -n 20  /var/log/app.log\n2025-06-19 20:00:58.693544 cli WARNING: init.lua(97): nil:46 > nil:-1 > common.lua:34: The value ****** of the property path does not contain the file name or does not exist in the tmp directory.\n2025-06-19 20:00:58.696801 cli WARNING: init.lua(97): nil:46 > nil:-1 > common.lua:35: Import weak password dictionary failed.\n2025-06-19 20:00:58.784137 security ERROR: comm_utils.c(250): [certificate] dal_check_cert_basic_constraints : check basic constraints(0xff) failed.\n2025-06-19 20:00:58.784239 security ERROR: comm_utils.c(1231): [certificate] check_p12_valid : check certificate basic constraints failed.\n2025-06-19 20:00:58.784366 security ERROR: cert_handler.c(423): [certificate] get_current_cert_pwd_and_verify:check p12 cert failed, ret_code: -1\n2025-06-19 20:00:58.784792 certificate ERROR: certificate_collection_ssl.lua(151): get cert info failed! ret code: -1!\n2025-06-19 20:00:58.785293 certificate WARNING: init.lua(97): certificate_collection_ssl.lua:202 > certificate_collection_base.lua:312 > certificate_collection_ssl.lua:157: Failed to import the encrypted certificate.\n2025-06-19 20:00:58.785641 certificate ERROR: operation_logger.lua(85): ImportCertWithKey: EncryptedCertImportFailed\n2025-06-19 20:05:20.264819 storage NOTICE: bus_monitor_service.lua(105): [init] old power state is , new is [repeated 301 times in 301s from 2025-06-19 20:00:19.203126 to 2025-06-19 20:05:20.264819]\n2025-06-19 20:10:21.337034 storage NOTICE: bus_monitor_service.lua(105): [init] old power state is , new is [repeated 301 times in 301s from 2025-06-19 20:05:20.264819 to 2025-06-19 20:10:21.337034]\n2025-06-19 20:11:12.778080 cli WARNING: init.lua(97): nil:46 > nil:-1 > common.lua:32: Failed to import the public key.\n2025-06-19 20:11:12.779214 cli WARNING: init.lua(97): nil:46 > nil:-1 > common.lua:33: Failed to import the certificate.\n2025-06-19 20:11:12.780171 cli WARNING: init.lua(97): nil:46 > nil:-1 > common.lua:34: The value ****** of the property path does not contain the file name or does not exist in the tmp directory.\n2025-06-19 20:11:12.781076 cli WARNING: init.lua(97): nil:46 > nil:-1 > common.lua:35: Import weak password dictionary failed.\n2025-06-19 20:11:12.878696 security ERROR: comm_utils.c(250): [certificate] dal_check_cert_basic_constraints : check basic constraints(0xff) failed.\n2025-06-19 20:11:12.878819 security ERROR: comm_utils.c(1231): [certificate] check_p12_valid : check certificate basic constraints failed.\n2025-06-19 20:11:12.878952 security ERROR: cert_handler.c(423): [certificate] get_current_cert_pwd_and_verify:check p12 cert failed, ret_code: -1\n2025-06-19 20:11:12.879481 certificate ERROR: certificate_collection_ssl.lua(151): get cert info failed! ret code: -1!\n2025-06-19 20:11:12.879973 certificate WARNING: init.lua(97): certificate_collection_ssl.lua:202 > certificate_collection_base.lua:312 > certificate_collection_ssl.lua:157: Failed to import the encrypted certificate.\n2025-06-19 20:11:12.880364 certificate ERROR: operation_logger.lua(85): ImportCertWithKey: EncryptedCertImportFailed"
+        },
+        {
+            "user_name": "Chenxinxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1373/10",
+            "text": "根据日志结果看，这里是导入的ssl证书需要满足Basic Constraints为End Entity，而导入的证书为CA证书"
+        },
+        {
+            "user_name": "Chenxinxin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1373/11",
+            "text": "这里的证书是bmc验签用的ca证书，不能直接用来导入ssl证书"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1373/12",
+            "text": "好的，我换成ssl证书试一下"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1373/13",
+            "text": "换成ssl证书之后解决了，感谢您的指导！"
+        }
+    ]
+}

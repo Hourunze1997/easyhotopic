@@ -1,0 +1,43 @@
+{
+    "topic_id": 1602,
+    "question": "CICD构建环境的稳定性讨论 - 伙伴内部的不同的项目依赖的源码版本不一致，如果新的构建环境不能兼容旧的源码，就存在多版本构建环境同时存在的情况，这对伙伴的流水线建设就有一定要求：比如不同的分支引用的构建环境不同。\n1、630的构建环境是否兼容330的构建环境？\n2、如果目前不能兼容，未来是否考虑做兼容？",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/1602/2",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1602/2",
+            "text": "对工具的管理有两个视角：\n\n组件视角：当需要更新构建工具或不同的构建参数时（profile.ini），conan包管理器会自动判断是否需要从源码构建。因此，组件构建默认使用最新版本的构建工具一般都不会有问题。\n产品视角：不同的产品基于社区的不同编译工具链构建，这些构建工具有明确的配套profile.ini文件，当工具变更时会触发部分二进制发布的组件构建失败，因此产品构建时构建工具必须配套。\n\n当前的差距主要是：manifest产品仓不具备自动安装构建工具的能力，需要开发者在环境中提前安装，推高了CI流水线和开发者的构建环境维护成本。\n支持“manifest仓自动安装构建工具”功能是有规划，但Q3季度sig-CICD暂无法抽出人力去实现，期望能够有社区伙伴能够参与进来。\n具体的方案是：bingo增加构建工具下载和安装的机制，并在manifest.yml中新增构建工具配置策略。"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1602/3",
+            "text": "xuhaijun:\n\nbingo增加构建工具下载和安装的机制，并在manifest.yml中新增构建工具配置策略。\n\n比如，在manifest.yml中的指定SDK、uboot等工具的版本和下载地址，构建过程中如果当前的构建环境不满足，则自动下载安装指定版本的SDK、uboot ？"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1602/4",
+            "text": "是的。"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1602/5",
+            "text": "这个想法和我们设想的一致, 但是有点奇怪, 坂田也应该是需要这个能力的, 坂田是如何管理manifest和构建环境的对应关系的呢? 应该也是代码仓上有个配置文件才对."
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1602/6",
+            "text": "自动管理构建工具，有配套配置文件。\n构建工具管理功能因为对接的基础设施有巨大的差异，无法在社区使用，在社区暂时需要手工管理。"
+        }
+    ]
+}

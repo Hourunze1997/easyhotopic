@@ -1,0 +1,22 @@
+{
+    "topic_id": 1313,
+    "question": "禁用当前登录的用户，用户未被强制退出，且可对BMC进行设置，如端口设置，虚拟控制台设置等。 - content: 禁用当前登录的用户，用户未被强制退出，且可对BMC进行设置，如端口设置，虚拟控制台设置等。\nimage1920×1031 60.3 KB\nimage1920×1032 56.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0581149302a5b2d37c39d37075e46a2e8d254a1c.png, https://discuss.openubmc.cn/uploads/default/original/2X/b/b940c0d7e7476c66e0abb27bbe89d5c5673b8e68.png",
+    "topic_user_name": "KunTai_WangJiaKai",
+    "best_answer_url": "/t/topic/1313/3",
+    "reply_posts": [
+        {
+            "user_name": "ZhangNing",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1313/2",
+            "text": "你好 请提供相关日志方便问题定位"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1313/3",
+            "text": "content: 当时是用未加高可用组件的版本验证的。在加了高可用组件的后经验证该问题已修复。关闭此贴。\nimg_v3_02n4_8278a5d6-154d-4c6f-98cf-f236f4fe4c6g2478×807 175 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4a91ef57edb604c562fee844d146882c2d2a4301.jpeg"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1351,
+    "question": "qemu启动以后，一直报错 - content: image982×805 50.4 KB\n不知道是什么错误\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/b3b5a3a1f389af51acd00678f46053f341e62d1b.png",
+    "topic_user_name": "qin-xiupup",
+    "best_answer_url": "/t/topic/1351/2",
+    "reply_posts": [
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1351/2",
+            "text": "当前存在bmc_soc和soctrl组件未适配qemu的问题，正在适配中，bmc_soc和soctrl的报错暂时对qemu拉起的仿真环境影响较小，请尝试能否连接ssh和登录web，图中network_adapter的报错与预期不符能否提供一键收集日志文件"
+        }
+    ]
+}

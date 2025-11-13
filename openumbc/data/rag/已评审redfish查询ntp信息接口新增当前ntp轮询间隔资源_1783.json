@@ -1,0 +1,36 @@
+{
+    "topic_id": 1783,
+    "question": "【已评审】redfish查询ntp信息接口新增当前ntp轮询间隔资源 - content: ISSUE\n【需求】支持Redfish接口查询NTP Server信息 rackmount #207\n评审背景\n需求\n支持Redfish接口查询 NTPService 信息，Redfish接口/redfish/v1/Managers/1/NtpService\n差距\n\nRedfish NTPService 资源中对于 当前轮询时间 属性不支持\n\n评审点\nURI： /redfish/v1/Managers/1/NtpService\n操作类型： GET\n变化类型： 新增属性\n应用场景： redifsh查询当前NTP信息，NTP信息中要包括 当前轮询时间\n新增属性信息如下：\n\n属性名称\n属性说明\n取值类型\n约束\n\nCurrentPollingIntervalInSeconds\n当前NTP轮询间隔，单位为秒\nintegernull\nNTP开启时如果获取成功，则取值为当前的轮询间隔秒数，如果获取失败则取值为nullNTP关闭时取值为0\n\n响应体实例\n{\n    \"@odata.context\": \"/redfish/v1/$metadata#Managers/Members/1/NtpService/$entity\",\n    \"@odata.id\": \"/redfish/v1/Managers/1/NtpService\",\n    \"@odata.type\": \"#HwNtpService.v1_0_0.HwNtpService\",\n    \"Description\": \"NtpService Settings\",\n    \"ServiceEnabled\": false,\n    ...\n    ...\n    \"CurrentPollingIntervalInSeconds\": 60, # 当前的轮询间隔为60秒\n    ...\n    ...\n    }\n}\n\nSchema说明\n{\n   \"CurrentPollingIntervalInSeconds\": {\n   \"type\": \"integer\",\n   \"readonly\": true,\n   \"description\": \"This is the current interval in seconds of NTP synchronization.\",\n   \"longDescription\": \"The value of this property shall be the current interval in seconds. The current value is within the range of the MaxPollingInterval and MinPollingInterval in seconds.\"\n   }\n}\n\n评审结论\n通过，同意 Redfish NtpService 资源新增属性 CurrentPollingIntervalInSeconds，属性取值类型为 integer，只读属性，表征当前NTP的轮询间隔秒数。\nlinks: #p-4366-issue-1, https://gitcode.com/openUBMC/rackmount/issues/207, #p-4366-h-2, #p-4366-h-3, #p-4366-h-4, #p-4366-h-5, #p-4366-h-6, #p-4366-schema-7, #p-4366-h-8",
+    "topic_user_name": "sunpeijun",
+    "best_answer_url": "/t/topic/1783/3",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1783/2",
+            "text": "spjisgood_2lbdb:\n\n需求\n\nRedfish接口查询NTP Server信息，需要查看当前NTP轮询间隔\n\n差距\nRedfish资源未实现此属性\n\n预审：\n\n需求的背景和当前的差距，评审点写清楚\nRedifsh的类型没有  y，要明确清楚对应的数据类型\n响应体实例中减少实例不相关的属性，补充 schema 部分属性"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1783/3",
+            "text": "spjisgood_2lbdb:\n\nCurrentPollingInterval\n\n属性名称上增加单位答复：已经修改为 CurrentPollingIntervalInSeconds，名称上带有单位秒数\n约束中增加当前NTP轮询时间间隔的取值范围，以及更新schema答复：已修改"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1783/4",
+            "text": "Add：包括 MinPollingIInterval / MinPollingIInterval"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1783/5",
+            "text": ""
+        }
+    ]
+}

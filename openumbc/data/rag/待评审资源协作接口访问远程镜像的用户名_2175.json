@@ -1,0 +1,7 @@
+{
+    "topic_id": 2175,
+    "question": "【待评审】资源协作接口：访问远程镜像的用户名 - content: ISSUE链接\n暂无\n评审背景\n客户要求查询虚拟媒体资源的redish接口返回UserName属性(访问远程镜像的用户名），资源协作接口现有的Image中不包含用户名，需要新增资源协作接口下的属性承载访问远程镜像的用户名\n决策点\n在已有资源协作接口下增加一个属性\n方案\nRedfish调用资源协作接口新增的UserName属性来满足客户在虚拟媒体资源接口显示访问远程镜像的用户名的需求\n评审点\n评审点1：新增资源协作接口，用于承载虚拟媒体访问远程镜像的用户名\npath： /bmc/kepler/Managers/:Id/VirtualMedia/CD\ninterface： bmc.kepler.Managers.VirtualMedia.CD\n新增属性如下：\n\n属性名称\n签名\n权限\n持久化\n变化通知\n属性值来源\n说明\n默认值\n\nUserName\ns\nR：ReadOnly W：不支持\n否\nfalse\n业务更新\n访问远程镜像的用户名\n空字符串\n\n评审结论\nlinks: #p-5521-issue-1, #p-5521-h-2, #p-5521-h-3, #p-5521-h-4, #p-5521-h-5, #p-5521-h-1-6, #p-5521-h-7",
+    "topic_user_name": "Lizhuolong",
+    "best_answer_url": "",
+    "reply_posts": []
+}

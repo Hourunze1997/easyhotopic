@@ -1,0 +1,106 @@
+{
+    "topic_id": 717,
+    "question": "更新白牌包卡在15%，如何reset或rollback - content: image2540×1297 132 KB\nimage654×171 8.43 KB\nfirmware_mgmt NOTICE: init.lua(116): task_id=2868473634, fw_type=WhiteBranding, result_code=0, process=15, result_detail=Starting [repeated 147 times in 302s]\n更新白牌包过程遇到一直卡在15%\n请问大概是什么情况，如何处理？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/35b41dcadbe8086ce8ea7920f462b922b6661e50.png, https://discuss.openubmc.cn/uploads/default/original/1X/d7b6ae6e584f13086ddc43822efc6492bddda1ef.png",
+    "topic_user_name": "Tim",
+    "best_answer_url": "/t/topic/717/15",
+    "reply_posts": [
+        {
+            "user_name": "Linyao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/2",
+            "text": "强制重启可以采取clp命令reboot -f。\n操作方式：\n输入clp_commands 再输入reboot -f\n出现的卡在15%的问题麻烦附一下一键收集日志，或者发送至邮箱linyao12@h-partners.com"
+        },
+        {
+            "user_name": "Tim",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/3",
+            "text": "content: 邮件已发送至 linyao12@h-partners.com\nlinks: mailto:linyao12@h-partners.com"
+        },
+        {
+            "user_name": "Tim",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/4",
+            "text": "content: 更新过程卡15%通过修改代码已经解决，reboot能重启\n现在更新过程卡95%后失败\nimage2560×1309 134 KB\n日志已发邮箱\n我想请问一下如何排查，如何修改\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/7d8f64ce65c7ea46b133705377385aafcd50c4a5.png"
+        },
+        {
+            "user_name": "Linyao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/6",
+            "text": "两份日志已收到，已知会相关组件责任人，后续给您回复"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/7",
+            "text": "content: 1.出现的卡在15%的问题是否可以发送白牌包到linyao12@h-partners.com,用来复现问题\n2.出现的卡在95%的问题是否可提供更完整的日志信息,用来定位问题\nlinks: #p-1534-h-115linyao12h-partnerscom-1, #p-1534-h-295-2"
+        },
+        {
+            "user_name": "Tim",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/8",
+            "text": "content: 1、15%问题是由于白牌包配置有问题导致，按照openUBMC品牌包定制指南 此指南修改后不复现，请问还需要么，还需要的话我可以将配置改错回去出包。\n2、日志为一键收集，请问还有什么其他方法收集更详细日志\nlinks: https://discuss.openubmc.cn/t/topic/355"
+        },
+        {
+            "user_name": "Tim",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/9",
+            "text": "2025-05-06 06:19:00.898989 firmware_mgmt NOTICE: control.lua(124): waiting for firmware reply...\n2025-05-06 06:19:21.367900 bmc_core ERROR: lldp_proc.c(296): Can't find port name from LLDP [repeated 61 times in 305s from 2025-05-06 06:14:16.345546 to 2025-05-06 06:19:21.367900]\n2025-05-06 06:20:00.991679 firmware_mgmt ERROR: control.lua(118): info_key(1WhiteBranding) Wait message reply timeout=600, stage=CLEAR\n2025-05-06 06:20:00.992094 firmware_mgmt NOTICE: info_mgmt.lua(220): info_key(1WhiteBranding) upgrade failed, set_stage: DIFF_FINISH -> COMPLETED\n2025-05-06 06:20:01.194753 firmware_mgmt NOTICE: info_mgmt.lua(169): info_key(1WhiteBranding) upgrade set_stage: COMPLETED -> COMPLETED, 100\n2025-05-06 06:20:01.195873 firmware_mgmt ERROR: task_service.lua(83): Update task failed, task_id: 4078383025, res: -9\n2025-05-06 06:20:01.197793 firmware_mgmt NOTICE: state_simple_upgrading.lua(76): simple upgraded, current active mode is:nil, wait restart seconds:30000\n2025-05-06 06:20:01.207446 firmware_mgmt NOTICE: init.lua(33): update status to FS_IDLE.\n\n请问这个是不是就是更新失败的log，firmware_mgmt这个组件场外看不到代码。"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/10",
+            "text": "此处日志表示等待超时了,需要前一段的日志定位问题,至少要在2025-05-06 06:10之前"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/11",
+            "text": "1的问题已解决,不需要出包"
+        },
+        {
+            "user_name": "Tim",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/12",
+            "text": "因/usr/share/bmcgo/wbd-packet/afteraction_remove_busctl.sh中存在清空日志操作，导致之前日志不完整。现已注释并收集日志发送至linyao12@h-partners.com"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/13",
+            "text": "是否可提供卡在95%的升级包,发送至linyao12@h-partners.com"
+        },
+        {
+            "user_name": "Tim",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/14",
+            "text": "升级包已发送至linyao12@h-partners.com"
+        },
+        {
+            "user_name": "Linyao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/717/15",
+            "text": "升级95%失败的升级包内xml文件内容格式有误，解析失败，单标签写法案例：<exampleTag VALUE=\"example\" />"
+        },
+        {
+            "user_name": "Tim",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/717/16",
+            "text": "已解决，非常感谢。"
+        }
+    ]
+}

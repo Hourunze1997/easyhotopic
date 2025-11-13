@@ -1,0 +1,226 @@
+{
+    "开发者需要解决Conan仓库配置异常、代码生成依赖混淆、构建签名中断及调试组件集成等共性问题。": [
+        {
+            "title": "open-repo仓dev_tools_with_bmcgo.zip提供的bingo工具问题",
+            "url": "https://discuss.openubmc.cn//t/topic/701/1"
+        },
+        {
+            "title": "manufacture 代码仓 bingo gen",
+            "url": "https://discuss.openubmc.cn//t/topic/978/1"
+        },
+        {
+            "title": "conan 远端仓访问出错",
+            "url": "https://discuss.openubmc.cn//t/topic/467/1"
+        },
+        {
+            "title": "社区conan仓库不通",
+            "url": "https://discuss.openubmc.cn//t/topic/339/1"
+        },
+        {
+            "title": "25.03 fructrl源码构建时出文件找不到的错",
+            "url": "https://discuss.openubmc.cn//t/topic/510/1"
+        },
+        {
+            "title": "历史提交全清导致历史版本无法源码构建",
+            "url": "https://gitcode.com/openUBMC/fructrl/issues/1"
+        },
+        {
+            "title": "不指定远端conan仓编译失败",
+            "url": "https://discuss.openubmc.cn//t/topic/970/1"
+        },
+        {
+            "title": "社区conan仓无法在虚拟仓配置中使用",
+            "url": "https://discuss.openubmc.cn//t/topic/705/1"
+        },
+        {
+            "title": "bingo gen 代码生成问题咨询",
+            "url": "https://discuss.openubmc.cn//t/topic/1074/1"
+        },
+        {
+            "title": "conan仓remote地址不能被Jfrog聚合",
+            "url": "https://gitcode.com/openUBMC/infrastructure/issues/24"
+        },
+        {
+            "title": "openubmc社区conan仓使用指导",
+            "url": "https://discuss.openubmc.cn//t/topic/186/1"
+        },
+        {
+            "title": "Q1 main分支f8acc985 bmcgo 构建失败：not found in ibmc_dev",
+            "url": "https://discuss.openubmc.cn//t/topic/848/1"
+        },
+        {
+            "title": "busybox作为conan组件编入openUBMC实践分享",
+            "url": "https://discuss.openubmc.cn//t/topic/406/1"
+        },
+        {
+            "title": "openUBMC调试工具安装指导",
+            "url": "https://discuss.openubmc.cn//t/topic/415/1"
+        },
+        {
+            "title": "bingo build -b openUBMC -r openubmc_dev报错签名失败",
+            "url": "https://discuss.openubmc.cn//t/topic/1056/1"
+        },
+        {
+            "title": "Jfrog绑定新的社区conan仓地址无效",
+            "url": "https://discuss.openubmc.cn//t/topic/500/1"
+        },
+        {
+            "title": "fructrl的历史提交全清了，导致manifest构建失败",
+            "url": "https://discuss.openubmc.cn//t/topic/340/1"
+        },
+        {
+            "title": "支持telnetd以及i2c_tools等工具",
+            "url": "https://gitcode.com/openUBMC/conan_index/issues/2"
+        }
+    ],
+    "BMC开发者如何验证QEMU网络参数及IPMI配置与固件网卡的适配性": [
+        {
+            "title": "Qemu运行跑起固件后SSH、web、ipmi不通的问题求助",
+            "url": "https://discuss.openubmc.cn//t/topic/661/1"
+        },
+        {
+            "title": "openUBMC怎么使用qemu运行",
+            "url": "https://discuss.openubmc.cn//t/topic/227/1"
+        },
+        {
+            "title": "qemu启动之后，ssh可以访问，但是web和ipmi都无法访问",
+            "url": "https://discuss.openubmc.cn//t/topic/718/1"
+        },
+        {
+            "title": "Qemu常见问题归纳",
+            "url": "https://discuss.openubmc.cn//t/topic/726/1"
+        },
+        {
+            "title": "Qemu使用指南",
+            "url": "https://discuss.openubmc.cn//t/topic/636/1"
+        },
+        {
+            "title": "如何快速启动Qemu",
+            "url": "https://discuss.openubmc.cn//t/topic/544/1"
+        }
+    ],
+    "社区镜像中BMC工具QEMU与Bingo的一键部署配置": [
+        {
+            "title": "社区镜像支持集成BMCStudio和Bingo及工具依赖",
+            "url": "https://gitcode.com/openUBMC/infrastructure/issues/1"
+        },
+        {
+            "title": "支持Qemu工具和仿真镜像的本地一键部署",
+            "url": "https://gitcode.com/openUBMC/manifest/issues/9"
+        },
+        {
+            "title": "社区镜像支持集成BMCStudio和Bingo工具",
+            "url": "https://gitcode.com/openUBMC/manifest/issues/13"
+        },
+        {
+            "title": "支持Qemu工具和仿真镜像的本地一键部署",
+            "url": "https://gitcode.com/openUBMC/qemu/issues/2"
+        },
+        {
+            "title": "社区镜像支持集成Qemu工具和仿真镜像",
+            "url": "https://gitcode.com/openUBMC/infrastructure/issues/9"
+        }
+    ],
+    "OpenUBMC25.06版本需通过QEMU实现板卡器件多路转换器及EEPROM仿真读写功能，依托i2c总线与hi1711 soc能力完成硬件解耦验证": [
+        {
+            "title": "【需求】支持eeprom器件功能仿真和验证",
+            "url": "https://gitcode.com/openUBMC/qemu/issues/13"
+        },
+        {
+            "title": "【需求】支持板卡寄存器的设备仿真",
+            "url": "https://gitcode.com/openUBMC/qemu/issues/11"
+        },
+        {
+            "title": "【需求】支持板卡多路转换器的设备仿真",
+            "url": "https://gitcode.com/openUBMC/qemu/issues/10"
+        }
+    ],
+    "实现BMC对多型号网卡的CSR适配、带内外信息采集及Redfish/Web/SNMP接口集成，确保告警配置验证与调速功能兼容性": [
+        {
+            "title": "【需求】支持管理网卡SWIFT-2200N",
+            "url": "https://gitcode.com/openUBMC/vpd/issues/31"
+        },
+        {
+            "title": "【需求】支持管理网卡SP625D",
+            "url": "https://gitcode.com/openUBMC/vpd/issues/36"
+        },
+        {
+            "title": "【需求】支持管理网卡SP680",
+            "url": "https://gitcode.com/openUBMC/vpd/issues/34"
+        },
+        {
+            "title": "【需求】支持管理网卡SF221Q",
+            "url": "https://gitcode.com/openUBMC/vpd/issues/35"
+        },
+        {
+            "title": "【需求】支持管理网卡MCX631432AN-ADAB的能力",
+            "url": "https://gitcode.com/openUBMC/network_adapter/issues/22"
+        },
+        {
+            "title": "【需求】支持管理网卡SF400HT",
+            "url": "https://gitcode.com/openUBMC/vpd/issues/38"
+        },
+        {
+            "title": "【需求】支持管理网卡SF223D-H",
+            "url": "https://gitcode.com/openUBMC/vpd/issues/37"
+        },
+        {
+            "title": "【需求】支持管理网卡MCX755106AS-HEAT",
+            "url": "https://gitcode.com/openUBMC/vpd/issues/33"
+        },
+        {
+            "title": "【需求】支持管理网卡MCX631102AN-ADAT的能力",
+            "url": "https://gitcode.com/openUBMC/network_adapter/issues/23"
+        },
+        {
+            "title": "【需求】支持管理网卡MCX512A-ACAT",
+            "url": "https://gitcode.com/openUBMC/vpd/issues/41"
+        },
+        {
+            "title": "【需求】支持管理网卡QLE2742",
+            "url": "https://gitcode.com/openUBMC/vpd/issues/40"
+        },
+        {
+            "title": "【需求】支持管理网卡SF200HT",
+            "url": "https://gitcode.com/openUBMC/vpd/issues/39"
+        },
+        {
+            "title": "【需求】支持管理网卡MCX512A-ACUT",
+            "url": "https://gitcode.com/openUBMC/network_adapter/issues/24"
+        }
+    ],
+    "BMC固件开发中如何实现风扇模式切换与持久化兼容性": [
+        {
+            "title": "【需求】支持查询风扇手自动控制模式原子能力",
+            "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/18"
+        },
+        {
+            "title": "【需求】新增设置/查询风扇控制模式持久化属性/方法",
+            "url": "https://gitcode.com/openUBMC/rackmount/issues/26"
+        },
+        {
+            "title": "【需求】支持设置风扇手自动控制模式原子能力",
+            "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/19"
+        }
+    ],
+    "BMC开发者如何验证双CPLD硬盘背板的I2C配置与独立控制能力": [
+        {
+            "title": "双CPLD硬盘背板疑问",
+            "url": "https://discuss.openubmc.cn//t/topic/688/1"
+        },
+        {
+            "title": "硬盘背板CSR配置疑问",
+            "url": "https://discuss.openubmc.cn//t/topic/756/1"
+        }
+    ],
+    "新增OCP卡调速策略时如何确保CoolingPolicy的ID唯一性与正确关联": [
+        {
+            "title": "调速配置求助",
+            "url": "https://discuss.openubmc.cn//t/topic/317/1"
+        },
+        {
+            "title": "板卡的环温调速配置",
+            "url": "https://discuss.openubmc.cn//t/topic/326/1"
+        }
+    ]
+}

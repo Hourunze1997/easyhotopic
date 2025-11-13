@@ -1,0 +1,99 @@
+{
+    "topic_id": 1894,
+    "question": "漏洞扫描报告和对应策略相关问题咨询 - content: 最近通过绿盟扫描出一些低危漏洞，如下：\n漏洞信息505×685 58.4 KB\n请问社区的安全扫描结果在哪里可以查看？针对这些扫描漏洞有没有对应策略或解释？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/62fac16b2e8e90215fb878162e942f2375b8fdac.png",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "/t/topic/1894/11",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1894/2",
+            "text": "你好，请问附图是哪里来的？"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1894/3",
+            "text": "是通过绿盟扫出来的，是网络安全漏洞扫描系统安全评估报告中的"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1894/4",
+            "text": "请问这个扫描的是调测包，还是正式包（构建命令bingo build -t  publish --stage release）？\n能提供每项漏洞名称对应的问题详细报告么？"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1894/5",
+            "text": "content: index.pdf (286.0 KB)\n这个完整的报告文件，不确定是不是你想要的内容，请查收。\n这个版本是调测版本\nlinks: /uploads/short-url/g147T9TL6WXZA8zvoOIHYSZ10Uy.pdf"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1894/6",
+            "text": "使用正式版本再扫描一下\n这个报告里面没有每项漏洞名称对应的问题详细内容， 无法进行进一步分析。"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1894/7",
+            "text": "好，稍后再去扫一下看看。另外咋们社区的安全扫描结果在哪里可以查看？针对这些扫描漏洞有没有对应策略或解释？"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1894/8",
+            "text": "这些漏洞只有名称，没有漏洞详情和问题详情，无法给出对应的策略和解释。"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1894/9",
+            "text": "好的，那社区自己扫的报告可以在哪里看呢"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1894/10",
+            "text": "正式版本也用绿盟扫了一下，比调测版本少了一个telnet的漏洞提醒，其他的是一样的"
+        },
+        {
+            "user_name": "李文杰",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1894/11",
+            "text": "content: 当前社区有版本发布时的安全扫描报告，可以参考：GitCode - 全球开发者的开源社区,开源代码托管平台\n当前没有详细的列出漏洞扫描条目\nlinks: https://gitcode.com/openUBMC/QA/blob/main/Test_Result/openUBMC_25.06/openUBMC_25.06%E7%89%88%E6%9C%AC%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1894/12",
+            "text": "好的看到了，f非常感谢。另外补充问一下，咋们社区以后会补充绿盟等其他的扫描工具吗？"
+        },
+        {
+            "user_name": "李文杰",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1894/13",
+            "text": "社区暂时没有计划提供绿盟这种商业工具，后续会进一步与基础设施沟通，看看能不能提供一些其他的工具"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1894/14",
+            "text": "好的，感谢"
+        }
+    ]
+}

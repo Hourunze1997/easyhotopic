@@ -1,0 +1,134 @@
+{
+    "topic_id": 1741,
+    "question": "关于系统上下电的问题 - content: 添加内置sr文件之后，在网页能够看到正确的上下电状态，但是进行下电操作时会显示操作失败，是在sr中缺了某些object吗\n企业微信截图_175255223034571912×924 42.8 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/9196e80d7ed3b367e192315cb8f60558e3817721.png",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/1741/19",
+    "reply_posts": [
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/2",
+            "text": "busctl --user call bmc.kepler.fructrl /bmc/kepler/Systems/1/FruCtrl/FruCtrl_1_0_00 bmc.kepler.Systems.FruCtrl FruPowerCtrl a{ss}ssy 0 On ChassisControlCommand 1\n通过busctl命令操作上电看一下打印，然后在fructrl模块内定位一下"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/3",
+            "text": "会报错\nCall failed: {“name”:“BMC.Error.Unknow”,“format”:“./opt/bmc/libmc/lualib/mc/context.lua:185: ./opt/bmc/libmc/lualib/sd_bus/init.lua:117: ./opt/bmc/apps/fructrl/lualib/fructrl_obj_mgnt.lua:42: attempt to index field ‘powerapi’ (a nil value)”}"
+        },
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/4",
+            "text": "content: 上环境看下\"FruCtrl\", “PGSignal”, “PowerButton”, “ThermTrip”, “RecordFault”，这几个类是不是都有？没有的话会报你当前的这个错误。\n或者关注一下app.log内有没有73行的打印，可以看见哪个类没被初始化成功。\n大概率是某个器件的软件SR没有加载成功，导致部分类缺失从而影响了功能\nimage624×159 7.23 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4610d1e4ade46369941abc0c21f547f124d04e05.png"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/5",
+            "text": "content: 请问为什么在sr中加了PGSignal这个类但是log中还是会显示分配失败呢？\nimage563×159 14.7 KB\n企业微信截图_175263678799301920×367 17.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/026327de2f099b721ddb7e8b1a472d4d7f458854.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/2629e707f89b027c1363bbe66e8851e56d2c20fb.png"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/6",
+            "text": "以及我观察到 “ThermTrip”, “RecordFault”这两个类是依赖于Smc_CpuBrdSMC这个chip的，也就是说Smc_ExpBoardSMC是无法实现的是吗？我们的模块是通过smc连接cpld控制模块上下电的，需要加载Smc_CpuBrdSMC吗？"
+        },
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/7",
+            "text": "检查一下这个SR文件是否被正常加载了，PGSignal在mdbctl内能否查到。"
+        },
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/8",
+            "text": "ThermTrip与RecordFault这两个类必须要在，但是本质上是关联一些硬件信号，监控CPU的状态等信息。如果不通过SMC提供，需要咨询你们的硬件提供CPLD寄存器"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/9",
+            "text": "content: 通过添加ThermTrip与RecordFault这两个类，已经可以实现强制下电了，但是安全下电和上电还是无法实现，选择安全下电和上电的时候，虽然会显示操作成功，但是实际并没有给系统下电或上电\n企业微信截图_175271687398081912×924 48.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/02990edaab0579a4b2bfcdb143fad18bbadcbbb2.jpeg"
+        },
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/10",
+            "text": "下电状态下才能发上电指令，上电发了肯定没效果。\n安全下电你设置下电超时看下呢"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/11",
+            "text": "content: 上电指令是在下电状态发的，安全下电设置了时限还是没反应\n企业微信截图_175273456014811912×924 43.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/887e0b400d7e2f8416ea780690d0091694f26a80.png"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/12",
+            "text": "content: 强制重启会显示操作失败\n企业微信截图_175273499280641912×924 48.7 KB\n上电会显示操作成功但系统不会上电\n企业微信截图_175273503786671912×924 37.8 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/caf135edd25ce98044c8403f9355d245f4be5253.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/2/2d7daa9bcbfc2e99d729063a081f4a0f43e0e95b.png"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/13",
+            "text": "app.log里查看ForceRestart对象有没有正常分发"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/14",
+            "text": "content: image1920×367 44.6 KB\n这个是app.log里有关ForceRestart的内容，怎么看有没有正常分发呢\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/2103c157179dadca65bd69ce665cb5f6ac8a4591.png"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/15",
+            "text": "复位bmc后，查看组件初始化时ForceRestart这个对象是否分发"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/16",
+            "text": "应该是正常分发了的"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/17",
+            "text": "在sr中添加了ForceReset_1类之后，强制重启可以实现了，但是安全下电和上电还是一样的现象，会显示操作成功但是无法将系统下电或上电"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1741/18",
+            "text": "怀疑无法通过短按进行上下电，请排查对应csr配置"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1741/19",
+            "text": "修改cpld之后已经可以了，感谢指导！"
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "topic_id": 951,
+    "question": "【已评审】NTP资源协作接口新增当前轮询间隔 - content: 关联issue\n【需求】NTP资源协作接口新增当前轮询间隔 \n评审背景\nNTP的轮询机制是使用内部算法，根据最小轮询时间（MinPollingInterval）和最大轮询时间（MaxPollingInterval）之间进行确认轮询时间。\n客户在北向接口定制中，要求在Redfish资源 NtpService 下支持NTP的当前轮询时间。\n评审点\npath：/bmc/kepler/Managers/:id\ninterface：bmc.kepler.Managers.Ntp\n\n项\n值\n\n属性名称\nCurrentPollingIntervalSeconds\n\n类型\nU32\n\n读写\nro\n\n默认值\n0\n\n持久化\n否\n\n变更信号\n不发送\n\n属性来源\n由BMC时间管理进行更新\n\n说明\nNTP当前轮询时间，单位为秒；在BMC运行时且NTP功能打开时有效，关闭时为0\n\n评审结论\n通过，同意资源协作接口 bmc.kepler.Managers.Ntp 新增属性 CurrentPollingIntervalSeconds，签名u，只读，不发送变更通知事件\nlinks: #p-1938-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/67, #p-1938-h-2, #p-1938-h-3, #p-1938-h-4",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/951/2",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/951/3",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/951/4",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/951/5",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/951/6",
+            "text": ""
+        }
+    ]
+}

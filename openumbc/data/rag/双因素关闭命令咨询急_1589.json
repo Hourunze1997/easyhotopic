@@ -1,0 +1,29 @@
+{
+    "topic_id": 1589,
+    "question": "双因素关闭命令咨询急 - ipmitool -I lanplus -H  bmcipaddr -U username -P password raw 0x30 0x93 0xdb 0x07 0x00 0x35 0x53 0x00 0x01 0x00 0x00 0x00 0xff 0xff 0x79 0x01 0x00 0x01 0x00 0x79 0x01 0x00\n\n执行上面的命令报\nUnable to send RAW command (channel=0x0 netfn=0x30 lun=0x0 cmd=0x93 rsp=0xd6): Cannot execute command, command disabled\n\n如上命令鲲鹏服务器用户指南以及ipmi命令文档\n该命令应该是通的只不过该功能出于什么原因被禁用了？\n另外在源码中没找到相关0x35的子命令  该命令属于闭源组件中的吗？",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1589/2",
+            "text": "content: 如果使用iBMC300 5.x版本，用这个命令来关闭双因素\n相比旧版本，0x35系列命令均有调整，参考配套的产品文档如（https://support.huawei.com/enterprise/zh/doc/EDOC1100078642/52bbb84f）\nipmitool -H ${server} -I lanplus -p 623 -U ${username} -P ${password} -C 17 raw 0x30 0x92 0xdb 0x07 0x00 0x52 0x00 0x00\nlinks: https://support.huawei.com/enterprise/zh/doc/EDOC1100078642/52bbb84f%EF%BC%89"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1589/3",
+            "text": "content: 上面 文档链接没权限查看呢\n在社区的公开的ipmi OEM命令中 是存在0x35的 这个命令是闭源仓里面的吗？\nimage1077×130 2.29 KB\n另外关闭的命令 变更了 相关文档 操作手册  命令手册是否同步\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/d0a9719dd8a59b877113385e8f8cb43631f4b8b6.png"
+        },
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1589/4",
+            "text": "0x35作为历史版本的命令，已经在新版本的资料里去掉了，可能是你看到的产品文档不一致？\n双因素命令在iBMC300 的实现为：\n\n字节顺序\n域内容\n\nNetFn\n30h\n\nCMD\n92h\n\n1:3\nManufacturer ID，LS Byte first。长度固定3个字节，例如，某厂家ID是2011，对应十六进制为0x0007DB，则字节序为第1个字节为DBh、第2个字节为07h、第3个字节为00h。\n\n4\nSub command，子命令=52h\n\n5\n双因素认证使能状态，MutualAuthenticationState\n\n6\n双因素认证OCSP检查使能状态，MutualAuthenticationOCSP"
+        }
+    ]
+}

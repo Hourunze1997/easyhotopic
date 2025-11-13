@@ -1,0 +1,29 @@
+{
+    "topic_id": 1852,
+    "question": "静态扫描规则 - 伙伴门禁的静态扫描规则是否能提供一些开源文档，关于这方面有没有规划多久能同步给伙伴",
+    "topic_user_name": "Tf Wenchenglong",
+    "best_answer_url": "/t/topic/1852/2",
+    "reply_posts": [
+        {
+            "user_name": "zhuchao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1852/2",
+            "text": "content: 你好，很开心收到你的咨询，正如之前（静态扫描规则）讨论所说：目前社区的静态代码规则是使用的华为云的能力，目标是给华为相关的开源社区提供与内部一致的研发能力。根据最新消息没有打算提供变成IaaS，因此如果需要复用的话最好是在社区协同开发，复用社区已有基础设施功能。或者你也可选择开源的静态代码扫描工具。\nlinks: https://discuss.openubmc.cn/t/topic/1777"
+        },
+        {
+            "user_name": "Tf Wenchenglong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1852/3",
+            "text": "是否可以开放一些基础的静态扫描的规则"
+        },
+        {
+            "user_name": "zhuchao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1852/5",
+            "text": "目前暂时没有这个计划"
+        }
+    ]
+}

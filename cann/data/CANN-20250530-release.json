@@ -1,0 +1,406 @@
+{
+    "坛帖和issue无回复，回复无有效信息或者无进一步跟踪": [
+        {
+            "title": "https://www.hiascend.com/forum/thread-0205183810029336013-1-1.html",
+            "url": "使用多进程进行算法推理，同时硬件编码，无法使用硬件编码。"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02108183690515604221-1-1.html",
+            "url": "把onnx转换成om后，执行推理，图片分割结果不正确"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02102183375078257181-1-1.html",
+            "url": "对 onnxruntime-cann 的一些想法"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0279183092874474014-1-1.html",
+            "url": "通过docker执行samples样例时失败"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0255182665850182119-1-1.html",
+            "url": "在Ascend310B1上执行模型推理时，开启自动混合精度，反而造成内存占用上升明显，正常吗"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02102182490376750089-1-1.html",
+            "url": "在适配GroundingDINO模型时，安装mmcv==2.1.0出现问题，有大佬知道怎么解决吗？急急急！"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02102182483467735087-1-1.html",
+            "url": "atb算子测试报错：[ERROR] TBE Subprocess[task_distribute] raise error[], main process disappeared!"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0237182315435088089-1-1.html",
+            "url": "如何用yolov5的c++版本直接读取Mat图像队列"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0255181304377969037-1-1.html",
+            "url": "Orange PiA I Pro烧录系统盘时可能遇到的问题"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0201178956294531140-1-1.html",
+            "url": "容器内安装torch_npu获取NPU资源不正确问题"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02101178804967429131-1-1.html",
+            "url": "ACL,pyACL推理结果后续数据处理"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0236176540727797023-1-1.html",
+            "url": "[DSL]  from tbe import tvm 和 import tvm的区别"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0236176463454994013-1-1.html",
+            "url": "单线程多输入多输出 ，多stream串联模型报错"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0292176091068234172-1-1.html",
+            "url": "Hisi3519使用 atc时会有mapper_error.log"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02112175913669687146-1-1.html",
+            "url": "求助！训练模型报错 RuntimeError: call aclnnForeachAddList failed, detail:EZ1001: Get path and read config failed."
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0292175252902563080-1-1.html",
+            "url": "cann8.0.0使用300I Duo卡，安装Qwen2-VL-7B-Instruct模型，运行时报错"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02113174822711087044-1-1.html",
+            "url": "中国区自然资源行业林草局森林防火和生物多样性识别算法如何适配Atlas 500"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02108173815438515275-1-1.html",
+            "url": "sensevoice推理报错"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02108173814998442274-1-1.html",
+            "url": "sensevoice推理报错，返回错误码500002"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0246172984876137283-1-1.html",
+            "url": "CANN8.0.RC1问题导致训练任务启动失败，错误码EI0009"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0215172745978133265-1-1.html",
+            "url": "静态和动态模型输入，都是如何给模型创建需要的输入？"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02108183286974580193-1-1.html",
+            "url": "OM模型推理出错"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0297177756742392029-1-1.html",
+            "url": "对算子的编译、调用流程不是很清楚"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0201177644078168003-1-1.html",
+            "url": "aclnn_online_model是怎么调用的用户算子开发中的shape推导，kernel和函数等接口的"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0240175252856772078-1-1.html",
+            "url": "昇腾对于模型的兼容性"
+        },
+        {
+            "title": "https://gitee.com/ascend/catlass/issues/ICAHGF",
+            "url": "docs/quickstart.md文档报错"
+        },
+        {
+            "title": "https://gitee.com/ascend/cann-ops/issues/IC4LXE",
+            "url": "[Question|问题咨询]: cann-ops是否能够像cutlass或者flashinfer一样当库在生产环境集成使用吗？"
+        },
+        {
+            "title": "https://gitee.com/ascend/cann-ops-adv/issues/IBSZQR",
+            "url": "[Bug-Report|缺陷反馈]: ffn examples代码存在bug 导致输出y的shape错误"
+        },
+        {
+            "title": "https://gitee.com/ascend/torchair/issues/IC56X2",
+            "url": "AttributeError: 'LinearAllreduce' object has no attribute 'hcomm_info'"
+        },
+        {
+            "title": "https://gitee.com/ascend/cann-ops-adv/issues/IBYCEK",
+            "url": "[Question|问题咨询]: 如果想要优化核间、vector的策略，可以调整哪些部分的参数呢"
+        },
+        {
+            "title": "https://gitee.com/ascend/cann-ops-adv/issues/IBVC86",
+            "url": "[Bug-Report|缺陷反馈]: 调ffnV3得到的output会出现inf、-inf"
+        },
+        {
+            "title": "https://gitee.com/ascend/samples/issues/IC29ZE",
+            "url": "Ascend C样例中建议将pipe放在对象外进行声明"
+        },
+        {
+            "title": "https://gitee.com/ascend/ACLLite/issues/IBTR5X",
+            "url": "acl lite-python是否支持动态batch推理，"
+        },
+        {
+            "title": "https://gitee.com/ascend/torchair/issues/IC52F6",
+            "url": "[版本匹配] 现在Llama2是不是可以使用新的transformers==4.44.2"
+        },
+        {
+            "title": "https://gitee.com/ascend/torchair/issues/IBZ59K",
+            "url": "torchair入图进行训练时，expand扩维后模型出现精度问题， 推理时无精度问题"
+        },
+        {
+            "title": "https://gitee.com/ascend/torchair/issues/IBOB0Z",
+            "url": "torch.compile还不支持torch.all_to_all算子以及torch.all_gather算子"
+        },
+        {
+            "title": "https://gitee.com/ascend/torchair/issues/IBKZ9U",
+            "url": "deepseek MLA"
+        },
+        {
+            "title": "https://gitee.com/ascend/torchair/issues/IBH9F0",
+            "url": "运行上手代码时报错，显示undefined symbol"
+        },
+        {
+            "title": "https://gitee.com/ascend/ascend-transformer-boost/issues/IC5ZXP",
+            "url": "优化 PagedMultiLatentAttentionCombineCacheMaskNdKernel 算子 性能"
+        },
+        {
+            "title": "https://gitee.com/ascend/tools/issues/IC3CNC",
+            "url": "check i:0 name:input in size:38400 needsize:102400 not match  "
+        },
+        {
+            "title": "https://gitee.com/ascend/cann-ops/issues/IC8IUT",
+            "url": "[Bug-Report|缺陷反馈]: isamax算子在香橙派 Ascend310b 大部分样例结果错误 "
+        },
+        {
+            "title": "https://gitee.com/ascend/cann-ops/issues/IC8IR8",
+            "url": "[Bug-Report|缺陷反馈]: sasum在香橙派 Ascend310b 大部分样例结果错误"
+        },
+        {
+            "title": "https://gitee.com/ascend/torchair/issues/IC7IKY",
+            "url": "cann7.1又支持的torchair版本吗"
+        },
+        {
+            "title": "https://gitee.com/ascend/cann-ops/issues/IC8IQV",
+            "url": "[Bug-Report|缺陷反馈]: sscal在Atlas 200I DK A2测试泛化性不足，部分shape运行结果精度异常"
+        },
+        {
+            "title": "https://gitee.com/ascend/cann-ops/issues/IC8ITQ",
+            "url": "[Bug-Report|缺陷反馈]: isamin 在Atlas 200I DK A2测试大部分均result error"
+        },
+        {
+            "title": "https://gitee.com/ascend/cann-ops/issues/IC5ZWC",
+            "url": "[Requirement|需求建议]:  QuantBatchMatmulV3性能优化"
+        },
+        {
+            "title": "https://gitee.com/ascend/cann-ops/issues/IC8IJC",
+            "url": "[Bug-Report|缺陷反馈]: scasum在Atlas 200I DK A2测试泛化性不足，部分shape运行结果精度异常"
+        },
+        {
+            "title": "https://gitee.com/ascend/cann-ops/issues/IC8IQX",
+            "url": "[Bug-Report|缺陷反馈]: sscal在Atlas 200I DK A2测试泛化性不足，部分shape运行结果精度异常"
+        },
+        {
+            "title": "https://gitee.com/ascend/tools/issues/IC346C",
+            "url": "使用Ais_bench推理多次报错[-1][ACL: general failure]"
+        },
+        {
+            "title": "https://gitee.com/ascend/ascend-transformer-boost/issues/IC7C2N",
+            "url": "模型推理中使用torch_atb linear报错"
+        },
+        {
+            "title": "https://gitee.com/ascend/ascend-transformer-boost/issues/IC5XO8",
+            "url": "编译失败，有未开源代码仓：ascend-op-common-lib 和 secodefuzz"
+        },
+        {
+            "title": "https://gitee.com/ascend/ascend-transformer-boost/issues/IC5ZY1",
+            "url": "优化 PpMatmulEinSumKernel 算子性能"
+        }
+    ],
+    "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持": [
+        {
+            "title": "https://www.hiascend.com/forum/thread-0237183711764026242-1-1.html",
+            "url": "Onnx转om模型失败 "
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02102183693864736207-1-1.html",
+            "url": "模型转换失败"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02102183371294732180-1-1.html",
+            "url": "onnx转om模型报错，Segmentation fault (core dumped)"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02102183352936556174-1-1.html",
+            "url": "onnx使用atc 模型转换"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0279183282947107045-1-1.html",
+            "url": "atc转换模型失败"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02108183024048495158-1-1.html",
+            "url": "量化后的onnx模型转成om模型失败"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0255182415578200087-1-1.html",
+            "url": "【Atlas 200I DK A2】onnx转om失败"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0237182402660926094-1-1.html",
+            "url": "ATC转换RT-DERT时报错"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02108182090148789073-1-1.html",
+            "url": "使用CANN-8.0.0 生成OM后，在使用OM时报错：received signal SIGSEGV, Segmentation fault"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0255182080502021072-1-1.html",
+            "url": "resnet50.mindir（是由ckpt文件导出的）怎么转换为om格式的模型以在atlas500盒子上运行运行推理呢？之前用过pytorch的能转到onnx再转到om可以运行推理。但是mindir或者ckpt的不知道怎么做"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0237181022913671008-1-1.html",
+            "url": "GroundingDino在Altas300上模型转换失败"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02113175152884692058-1-1.html",
+            "url": "om推理报错"
+        }
+    ],
+    "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败": [
+        {
+            "title": "https://www.hiascend.com/forum/thread-0226183785107239008-1-1.html",
+            "url": "Atlas800I A2安装CANN报错：opp_uninstall.sh不存在"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0237183564175545220-1-1.html",
+            "url": "triton-ascend示例找不到CANN的组件npuc"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0237183196156024184-1-1.html",
+            "url": "安装 Ascend-cann-toolkit_8.1.RC1_linux-aarch64.run 失败"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02108182014042089064-1-1.html",
+            "url": "atlas300i-3000的对应CANN二进制算子包应该选哪个版本"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02113175593420797113-1-1.html",
+            "url": "编译安装基于CANN的opencv的cannops模块报错"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0284179983532114019-1-1.html",
+            "url": "【Ascend C标准算子编译报错问题解决方案(持续更新)】"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02108183654631289220-1-1.html",
+            "url": "根据CANN社区版8.0.0.alpha001的文档调用单算子API，编译成功，但是运行报错：aclnnAddGetWorkspaceSize failed. ERROR: 561103"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02108183279341336192-1-1.html",
+            "url": "怎么部署环境上要有昇腾NPU，且CANN版本为8.0.0.beta1"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02108183029427616162-1-1.html",
+            "url": "使用aclnnMatmul的时候报错：aclnnMatmulGetWorkspaceSize failed. ERROR: 56110"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0237180980015919006-1-1.html",
+            "url": "Ascend C使用vscode开发时遇到的#include\"kernel_oprator.h\"报错以及解决方法"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0263180173899246050-1-1.html",
+            "url": "找不到libmedia_mini.so文件的解决方法"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0275179975724822015-1-1.html",
+            "url": "【解决方案】【FAQ】解决OpenEuler24.03系统编译时fatal error: 'cstdint' file not found报错问题"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0243177061603902064-1-1.html",
+            "url": "在运行bash.sh时出现失败问题"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0266177061552103065-1-1.html",
+            "url": "在编译时CMakeLists.txt中的路径出错，导致无法运行"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0236177061362063063-1-1.html",
+            "url": "在运行run.sh时出现报错"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0215172418221605255-1-1.html",
+            "url": "昇腾生态下，类似 nvitop 这样的 TUI"
+        },
+        {
+            "title": "https://gitee.com/ascend/samples/issues/ICA9P3",
+            "url": "编译cplusplus/level2_simple_inference/0_data_process/vdec失败"
+        },
+        {
+            "title": "https://gitee.com/ascend/samples/issues/IC9OY5",
+            "url": "w-为什么显示resizexxV2D算子不支持"
+        },
+        {
+            "title": "https://gitee.com/ascend/samples/issues/IC8OJZ",
+            "url": "w-最新cann版本在哪里"
+        },
+        {
+            "title": "https://gitee.com/ascend/samples/issues/IC8KRJ",
+            "url": "编译aclLite报错/交叉编译开发环境如何搭建"
+        },
+        {
+            "title": "https://gitee.com/ascend/torchair/issues/IBF9U4",
+            "url": "测试deepseekv3，手动切分与调整权重时出错。"
+        },
+        {
+            "title": "https://gitee.com/ascend/samples/issues/IC8OTN",
+            "url": "w-盒子200DK报错peripheral_api.h"
+        },
+        {
+            "title": "https://gitee.com/ascend/samples/issues/IC2FR1",
+            "url": "Ascend310B4 运行 4_addn_frameworklaunch 时报错 No such file or directory：CustomOp/build_out/op_kernel/binary/ascend310b/binary_info_config.json"
+        }
+    ],
+    "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰": [
+        {
+            "title": "https://www.hiascend.com/forum/thread-02108183259037650191-1-1.html",
+            "url": "使用atc工具生成离线模型，如果把原始的f32模型转换为int8，一定要用到aipp是吗？如果是的话，aipp_op那个insert_op.cfg文件怎么写?"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0237183096692632168-1-1.html",
+            "url": "yolov7转换得到的om模型对高宽比大于1.5左右的图片识别结果错误"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0237182962578442157-1-1.html",
+            "url": "Ascend-cann-device-sdk_x.x.x_linux-aarch64.的作用"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02102182244292644079-1-1.html",
+            "url": "基于昇腾CANN的机器狗基础知识 点击认证提示找不到页面"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02108183627883965216-1-1.html",
+            "url": "如何实现类似CUDA中atomicCAS和atomicAdd的原子操作？"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0237183279958496198-1-1.html",
+            "url": "昇腾310B1 Matmul支持float类型矩阵运算吗"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0237182788764362141-1-1.html",
+            "url": "进行文档中的kernel直调算子工程实现，出现找不到头文件的问题"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-02102181354769801037-1-1.html",
+            "url": "msOpGen编写复杂算子原型定义文件"
+        },
+        {
+            "title": "https://www.hiascend.com/forum/thread-0236177061428378064-1-1.html",
+            "url": "add算子下载的过程中发现存在samples文件夹导致出错"
+        },
+        {
+            "title": "https://gitee.com/ascend/catlass/issues/IC8DD4",
+            "url": "Clarify tensor variable names in MLA epilogue"
+        },
+        {
+            "title": "https://gitee.com/ascend/cann-ops-adv/issues/IBWG1K",
+            "url": "[Question|问题咨询]: 根目录下的cmakelists不是很懂怎么加-g，用msprof工具时无法显示源码，求助"
+        },
+        {
+            "title": "https://gitee.com/ascend/EdgeAndRobotics/issues/IC229I",
+            "url": "YOLOV5MultiInput里面使用的模型怎么才能通过yolov5训练得到"
+        }
+    ]
+}

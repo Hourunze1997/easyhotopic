@@ -1,0 +1,15 @@
+{
+    "topic_id": 1162,
+    "question": "海光4号处理器上适配openUBMC - 我司想在海光4号处理器上搭配openUBMC，想请论坛的高手帮忙看看这个是否可行，对于BIOS开发来说难度有多大。",
+    "topic_user_name": "Weijiang1010",
+    "best_answer_url": "/t/topic/1162/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1162/2",
+            "text": "取决于需要多少的CPU管理功能，对于bios的话核心还是在BIOS-BMC交互上，bios app已经全开源了，可以针对这个进行改造。\n我对这块了解的不多，建议先从特性功能和芯片规格能力进行分析，如果想进一步讨论，可以在TC上报议题进行方案讨论。"
+        }
+    ]
+}

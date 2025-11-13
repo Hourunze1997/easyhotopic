@@ -1,0 +1,15 @@
+{
+    "topic_id": 595,
+    "question": "pcie_device新增IPMI命令导致组件异常问题 - content: 在ipmi.json中新增IPMI命令，并使用bmcgo gen自动生成代码；还未在代码中进行注册，此时进行版本打包升级后，pcie_device组件启动异常\n03CAE109-30E9-4C8F-A857-6C615ED1E0881636×296 43.2 KB\n使用bmcgo版本\n\n未做任何修改情况下，gen后的版本可以正常启动\n新增如下内容\nimage1018×446 24.1 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/72f6a892b22141374d7c6b61d7c5bcd1c1f6bcaf.png, https://forum.openubmc.cn/uploads/default/original/1X/50c94ea4505d6a0a347d42e7cae4a81a8a991b5d.png",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "/t/topic/595/2",
+    "reply_posts": [
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/595/2",
+            "text": "content: 组件异常调试方式，以pcie_device组件为例，在src/service/main.lua中添加如下打印\nimage949×569 28.3 KB\n启动后，可以在app.log中看见启动错误的打印，如下\n\n根据以上信息进行定位\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/169449757f112d492dbc3212f39b96b1edd1cb22.png"
+        }
+    ]
+}

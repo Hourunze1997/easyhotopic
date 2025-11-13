@@ -1,0 +1,43 @@
+{
+    "topic_id": 500,
+    "question": "Jfrog绑定新的社区conan仓地址无效 - content: 在Jfrog中添加社区远程仓库地址https://conan.openubmc.cn/conan_1/，   点击test显示Connection failed:Target remote URL return error 404:Not Found，具体搭建流程参考的openubmc社区conan仓使用指导\nJfrog1872×954 75.8 KB\n在构建镜像中，使用手动执行conan remote add openubmc_dev 后，是可以正常使用远程社区仓库的，网络无问题，但是使用已经包含了社区远程仓库的Jfrog虚拟仓却获取不到社区仓库的conan包\n\nconan search887×124 7.96 KB\n问题：是否Jfrog需要的URL和conan服务端的URL有差别，如果有区别，希望提供新的URL地址供Jfrog使用\nlinks: https://conan.openubmc.cn/conan_1/%EF%BC%8C, https://forum.openubmc.cn/t/topic/186, https://forum.openubmc.cn/uploads/default/original/1X/a87eadc3e207f0557feba8a85412c42dd8f7b9cf.png, https://forum.openubmc.cn/uploads/default/original/1X/7c93dafcf63fd15a38f5f7fb99fd8a19c8941898.png",
+    "topic_user_name": "百信-张滨",
+    "best_answer_url": "/t/topic/500/6",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/500/2",
+            "text": "content: 已在gitcode上提issue跟踪\nlinks: https://gitcode.com/openUBMC/infrastructure/issues/24"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/500/4",
+            "text": "content: 请问https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/ 这个仓库是已经禁用了吗，登录的时候显示账户密码错误，社区的 https://conan.openubmc.cn/conan_1/当前好像还是没有办法集成到Jfrog\nlinks: https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/, https://conan.openubmc.cn/conan_1/%EF%BC%8C"
+        },
+        {
+            "user_name": "discobot",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/500/5",
+            "text": "content: 你好！这个连接的信息可能对你解决本问题有所帮助，请参考，谢谢！\nlinks: https://discuss.openubmc.cn/t/topic/339"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/500/6",
+            "text": "content: 参考 【维护通知】关于延长社区Conan制品仓公共账号使用期限的公告\nlinks: https://discuss.openubmc.cn/t/topic/1334"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/500/7",
+            "text": "收到，已添加，现可正常使用"
+        }
+    ]
+}

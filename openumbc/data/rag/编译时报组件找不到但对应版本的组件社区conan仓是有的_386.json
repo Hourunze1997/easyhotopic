@@ -1,0 +1,50 @@
+{
+    "topic_id": 386,
+    "question": "编译时报组件找不到，但对应版本的组件社区conan仓是有的 - content: 4.7日拉取gitcode最新的manifest进行编译出包，指定社区conan，编译时报缺包：\nimage1229×213 10.4 KB\nconan search是能找到对应组件的,看log里检查conan仓缓存也能检测到：\nimage603×145 2.91 KB\n看报错像是对应版本的conan组件的ID不对，但我们build/subsys/rc/下的yml文件中只指定了组件版本，没有指定ID吧，这里为什么要检测组件ID？\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/c51bd213876c84b54884fecde408f7af4dc22963.png, https://forum.openubmc.cn/uploads/default/original/1X/82ffbc016828bd6dae504663d4155b77f6960e98.png",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "/t/topic/386/7",
+    "reply_posts": [
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/386/2",
+            "text": "Id是根据conan的setting、options、env、dependencies等多种因素动态计算"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/386/3",
+            "text": "现在是没办法拉到这几个组件，是conan仓里没有对应二进制制品么？"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/386/4",
+            "text": "我本地拉下vpd和chassis仓进行编译，还是会报missing\nERROR: Missing binary: chassis/1.70.9@hw.ibmc.dev/dev:af373bb2172abab31cdc10e5c37e761824428ada\n\nERROR: Missing binary: ipmi_core/1.70.39@openUBMC.release/rc:ed4e4c43fdb1806643d073c0a895e7bb10bb1b12\n\nERROR: Missing binary: libsoc_adapter/1.70.43@openUBMC.release/rc:1ab00626c23acf1656d4eba8884629c8f7b373bb\n\nERROR: Missing binary: vpd/1.70.84@hw.ibmc.dev/dev:480f8b6d2392934795634e230e5e6a59e7de35d5\n\nvpd/1.70.84@hw.ibmc.dev/dev: WARN: Can't find a 'vpd/1.70.84@hw.ibmc.dev/dev' package for the specified settings, options and dependencies:\n\n- Settings: arch=armv8, build_type=Debug, compiler=gcc, compiler.libcxx=libstdc++, compiler.luajit=1.7.x, compiler.version=7.3, os=Linux\n\n- Options: asan=False, board_name=openUBMC, gcov=False, manufacture=False\n\n- Dependencies:\n\n- Requirements:\n\n- Package ID: 480f8b6d2392934795634e230e5e6a59e7de35d5"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/386/5",
+            "text": "content: package_id定义请参考conan官方的文档：https://docs.conan.io/1/creating_packages/define_abi_compatibility.html#define-abi-compatibility\nlinks: https://docs.conan.io/1/creating_packages/define_abi_compatibility.html#define-abi-compatibility"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/386/6",
+            "text": "好的 感谢  这个我会去学习一下   我当前的编译问题应该如何解决？"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/386/7",
+            "text": "content: 问题原因：sdk版本未更新，导致conan仓组件的*:module_symvers属性对不上\n解决方案：下载社区最新sdk，使用bmc_sdk/sdk目录下的文件替换构建环境中/root/skd下的同名文件：\nimage717×260 17.3 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/31702c6fa88db9c357fa98119c37c23ee21f1eb2.png"
+        }
+    ]
+}

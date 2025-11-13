@@ -1,0 +1,29 @@
+{
+    "topic_id": 1333,
+    "question": "conan user登录远端conan仓使用的用户名和密钥保存在了哪里？ - 如题，执行 conan user <openUBMC社区用户名> -p <openUBMC社区用户密码> -r openubmc_dev命令后，在 ~/.conan/ 目录下没有 registry.json，不知道这个登录用户名和密钥缓存在了哪个位置。\n当前偶尔会遇到 conan 下载失败发现是没有权限，需要重新登录 或者需要登录 社区网站 就可以下载成功，想看一下什么原因。",
+    "topic_user_name": "Niegsh",
+    "best_answer_url": "/t/topic/1333/3",
+    "reply_posts": [
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1333/2",
+            "text": "用户信息缓存在~/.conan/.conan.db，从实践经验看，似乎conan user命令会影响当前shell环境，退出shell重进，需要使用conan user命令再次认证来避免构建过程中出现用户认证。"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1333/3",
+            "text": "你的问题可能是公司层面的代理导致.\n\n需要网页登陆才可以下载\n\n可以用环境变量配置用户密码.从而自动登陆 export CONAN_PASSWORD=mypassword\n\n需要使用conan user命令再次认证来避免构建过程中出现用户认证"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1333/4",
+            "text": "收到，我试一下。\n另外默认的登录名应该是：export CONAN_LOGIN_USERNAME=myusername"
+        }
+    ]
+}

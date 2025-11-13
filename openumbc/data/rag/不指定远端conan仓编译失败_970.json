@@ -1,0 +1,15 @@
+{
+    "topic_id": 970,
+    "question": "不指定远端conan仓编译失败 - content: 操作步骤：\n\n指定远端conan仓的地址，可以编译成功：\nbingo build -b openUBMC -r openubmc_dev\n不指定远端conan仓的地址，直接用本地conan缓存的数据编译，编译失败，还是会去找远端conan依赖。\n编译命令：bingo build -b openUBMC\n报错信息：远端没有定义\"ibmc_dev\"\nimage1898×685 94.2 KB\n诉求：\n该编译问题如何解决？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/cd7a340a36f451352bfebeb6aade8b3ecc1b8afe.png",
+    "topic_user_name": "Chengxiaoju",
+    "best_answer_url": "/t/topic/970/2",
+    "reply_posts": [
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/970/2",
+            "text": "如果想不指定远程conan仓，需要将当前conan配置的远程仓名字改为ibmc_dev，当前伙伴初始化内置remote为openubmc_dev。\n如果想不带-r参数，需要rename remote，命令为：conan remote rename openubmc_dev ibmc_dev，但不推荐此种做法，正确做法是bingo命令带-r openubmc_dev。"
+        }
+    ]
+}

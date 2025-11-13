@@ -1,0 +1,15 @@
+{
+    "topic_id": 1468,
+    "question": "【已评审】内存资源支持Technology获取 - content: ISSUE链接（必填，此议题关联的issue）：\nRedfish查询内存信息Technology字段显示错误\n背景（必填，文字描述议题背景，如需求来源、问题场景）:\n当前Redfish接口查询内存信息包含Technology属性，该属性可通过标准smbios解析获得，需要后台提供资源协作接口\n决策点（必填，一句话描述待决策点）：\nbmc.kepler.Systems.Memory接口新增Technology属性，供北向接口查询内存信息时使用\n详细描述（必填，描述待评审接口的详细内容）：\n资源path： /bmc/kepler/Systems/:SystemId/Memory/:ID\n资源interface： bmc.kepler.Systems.Memory\n变化类型：新增属性\n应用场景：用户通过北向接口查询内存资源的内存技术信息\n持久化类型： 不持久化\n操作权限：ReadOnly\n详细描述：\n\n属性名称\n取值类型\n默认值\n操作权限\n说明\n持久化\n信号\n\nTechnology\nString\n“”\n只读，读权限：ReadOnly\n内存资源的内存技术，参考SMBIOS规范Memeory Device (Type 17)定义\n否\n否\n\n评审结论\n1、同意资源协作接口bmc.kepler.Systems.Memory新增属性Technology，签名为s，只读，读权限：ReadOnly，不发送变化通知事件，默认值为“”\nlinks: #p-3502-h-1, #p-3502-issueissue-2, https://gitcode.com/openUBMC/mdb_interface/issues/130, #p-3502-h-3, #p-3502-h-4, #p-3502-h-5, #p-3502-h-6",
+    "topic_user_name": "Zck19950826 Pzet5",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1468/2",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "topic_id": 1180,
+    "question": "关于bingo的若干诉求与建议 - 1.bingo publish打包生产包时，期望支持以文件目录为单位进行配置，以使manifest.yml文件更加简洁；\n2.bingo publish时，build_type若没有在命令中显式指定，是否可以从manifest.yml文件中配置的中取值，而不是默认为debug；\n3.bingo publish是否可以支持批量出包，比如-z参数支持携带多个0502编码，-z -sc支持同时输入",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "/t/topic/1180/2",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1180/2",
+            "text": "content: 第一点：已在每日答疑第48期答复，详见纪要：社区工程能力每日答疑纪要 - #7，来自 wnb\n第二点：之所以考虑强制比对build_type主要是确保构建参数和结果一致：如果用户指定了build_type为debug，但实际构建出来的结果是release，可能会造成开发者疑问。\n第三点：暂无规划支持多包批量构建功能，主要原因是为了保持构建流程、CI工程、构建策略以及构建参数简洁，建议使用shell脚本同时构建。\nlinks: https://discuss.openubmc.cn/t/topic/246/7#p-2402-mainfestyml-5"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1180/3",
+            "text": "content: bingo代码在社区，希望您能向社区贡献代码。\n代码仓地址： GitCode - 全球开发者的开源社区,开源代码托管平台\nlinks: https://gitcode.com/openUBMC/bingo.git"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1180/4",
+            "text": "感谢答复，关于第二点还有一些建议，看下是否合理–\nbuild_type的取值可以考虑优先级\n1.用户在命令中显式指定时可以是第一优先级，按当前的逻辑去判断；\n2.yml文件中配置的build_type为第二优先级，如果用户在命令中没有显式指定build_type，按照yml文件中配置的来构建；\n3.如果命令中和yml文件中都没有配置build_type，使用默认值debug构建"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1180/5",
+            "text": "好主意。可以将build_type的默认值设置为None，这样可以区分默认值场景和用户指定场景。\n请在社区提一个issue，如果可以，希望昆仑能够贡献适配代码。"
+        }
+    ]
+}

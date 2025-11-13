@@ -1,0 +1,36 @@
+{
+    "topic_id": 959,
+    "question": "itestsmart添加设备，BMC和OS只能使用默认端口吗，是否可自定义配置呢 - content: image2806×1072 75.1 KB\n这里只能填IP，怎么输入端口呢；因为部分机器是需要映射登录的，非默认端口号\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/0970cd1e7aac5903675f63c9a82871e6995f6fb5.png",
+    "topic_user_name": "Gxd",
+    "best_answer_url": "/t/topic/959/4",
+    "reply_posts": [
+        {
+            "user_name": "Young Yang007",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/959/2",
+            "text": "端口可自定义修改问题已提需求给工具团队，预计5月底可以解决"
+        },
+        {
+            "user_name": "Young Yang007",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/959/3",
+            "text": "该端口可自定义功能已经交付，可联系itestSmart工具接口人获取最新版本使用"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/959/4",
+            "text": "工具现在连接BMC支持自定义端口了，在内部测试中。下个版本会提供。OS目前没有明确的场景需要自定义端口，所以还是支持22端口连接。"
+        },
+        {
+            "user_name": "Gxd",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/959/5",
+            "text": "伙伴的部分机器非在岸状态，所以OS也需要映射，这个OS端口可以提供下吗"
+        }
+    ]
+}

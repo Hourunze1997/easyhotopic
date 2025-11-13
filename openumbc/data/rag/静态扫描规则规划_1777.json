@@ -1,0 +1,15 @@
+{
+    "topic_id": 1777,
+    "question": "静态扫描规则规划 - 关于门禁的静态扫描规则是否有开源的规划，伙伴流水线静态扫描规则是否有可以参考的文档",
+    "topic_user_name": "Tf Wenchenglong",
+    "best_answer_url": "/t/topic/1777/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1777/2",
+            "text": "当前门禁静态扫描使用的是华为外溢的基础设施能力，目标是给华为相关的开源社区提供与内部一致的研发能力。据我了解并没有打算提供变成IaaS，因此如果需要复用的话最好是在社区协同开发，复用社区已有基础设施功能"
+        }
+    ]
+}

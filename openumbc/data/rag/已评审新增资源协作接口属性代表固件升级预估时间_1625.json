@@ -1,0 +1,22 @@
+{
+    "topic_id": 1625,
+    "question": "【已评审】新增资源协作接口属性代表固件升级预估时间 - content: ISSUE链接\n暂无\n前置评审\n\n【待评审】后端任务机制新增预估完成时间、任务描述、任务阶段属性 Interface评审\n\n    关联issue \n后端任务机制新增属性 \n背景 \n客户对任务机制存在定制诉求，同时也针对redfish task资源标准能力存在诉求 \n\n当前后台任务机制尚未支持标准redfish资源预估完成时间参考链接（6.137小节 Task 1.7.4），无法满足业务诉求。后端task资源需要支持预估完成时间，供相关业务在自身任务对象上更新EstimatedDuration属性，属性满足ISO 8601持…\n  \n\n评审背景\n\n为了满足客户对任务机制的定制诉求，升级管理需要在升级时更新升级任务的预估完成时间。\n各个固件升级时间不同，因此需要由子固件组件注册预估时间至升级管理\n当前升级管理没有提供固件升级预估时间注册\n\n当前现状以及差距\n现状\n当前升级管理没有更新升级任务的预估完成时间\n差距\n客户有需求，需要task资源支持预估完成时间。当前升级管理无法获取各固件预估升级时间，因此无法在task资源上更新，无法满足客户需求\n解决方案\n升级管理提供统一机制进行注册固件升级预估时间\n新增资源协作接口属性，供其他组件注册固件升级预估时间至升级管理。在升级时，由升级管理更新升级任务的预估时间\n决策点1\npath：/bmc/kepler/UpdateService/FirmwareInventory/:Id （原有）\ninterface： bmc.kepler.UpdateService.FirmwareInfo（原有）\nproperties：EstimatedDuration（新增）\n新增属性：升级预估时间：\n\n项\n说明\n\n属性名称\nEstimatedDuration\n\n属性类型\nU32\n\n属性读写\n只读\n\n属性权限\nR：ReadOnlyW：不涉及\n\n属性广播\nfalse\n\n属性值来源\n其他组件注册\n\n持久化\n否\n\n属性说明\n固件预计升级的总时间，单位：秒\n\n评审结论\n评审通过，同意在资源协作接口 bmc.kepler.UpdateService.FirmwareInfo 新增属性 EstimatedDuration，表示预估的固件升级需要的总时间，单位：秒，签名为 u，只读，读权限：ReadOnly， 不发送变更通知事件。\nlinks: #p-3944-issue-1, #p-3944-h-2, https://discuss.openubmc.cn/t/topic/1621, /c/sig-interface/40-category/40, https://gitcode.com/openUBMC/mdb_interface/issues/139, https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2025.2.pdf, #p-3944-h-3, #p-3944-h-4, #p-3944-h-5, #p-3944-h-6, #p-3944-h-7, #p-3944-h-1-8, #p-3944-h-9, #p-3944-h-10",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "/t/topic/1625/2",
+    "reply_posts": [
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1625/2",
+            "text": "linyao:\n\nUpgradeEstimatedDuration\n\nbmc.kepler.UpdateService.FirmwareInfo接口有Updateable属性，此处建议保持同意，使用Update"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1625/3",
+            "text": ""
+        }
+    ]
+}

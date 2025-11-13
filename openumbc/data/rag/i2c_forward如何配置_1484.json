@@ -1,0 +1,29 @@
+{
+    "topic_id": 1484,
+    "question": "i2c forward如何配置 - content: I2C7_CH3出了fru和cpld，i2c进入switch板cpld后通过iic forward出了多路i2c，像使用这种iic forward的场景在sr文件中和9548的配置一样吗，是需要如何配置。\nimg_v3_02nl_6db45df5-c12a-4f03-a329-dfc60f3dbc3g1436×962 50 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/db4df2722532869739a0ecfafc0e809721b30b86.jpeg",
+    "topic_user_name": "Kui Tai Fan Chun Yang",
+    "best_answer_url": "/t/topic/1484/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1484/2",
+            "text": "取决于cpld forward的方式\n当前openUBMC只支持基于天池smc forward的i2c forward能力。\n感觉不太好复用pca9548"
+        },
+        {
+            "user_name": "Kui Tai Fan Chun Yang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1484/3",
+            "text": "content: 类似这样的配置吧\nimage846×669 10.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/1b7f76ee9baf94776f560a47be36a5abf0bc066c.png"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1484/4",
+            "text": "是的，在Smc下创建新的bus"
+        }
+    ]
+}

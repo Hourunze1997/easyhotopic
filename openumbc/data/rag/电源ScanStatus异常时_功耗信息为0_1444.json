@@ -1,0 +1,29 @@
+{
+    "topic_id": 1444,
+    "question": "电源ScanStatus异常时 功耗信息为0 - content: 背景：天池服务器，配置了4个Onepower。插入两个电源，1个连接电源线，ScanStatus为15，该状态为正常；1个未连接电源线，ScanStatus为13，该状态为异常。\n现象：在以上背景下功率页当前功耗为0。\n企业微信截图_17506554607810647×353 8.29 KB\n以下为两个ScanStatus状态：\n企业微信截图_17506555809003719×209 3.69 KB\n手动修改ScanStatus的值为15\n\n修改后可以正常读值\n企业微信截图_17506558717024701×366 8.81 KB\n问题：是否时power_strategy模块对ScanStatus为异常时统计功率有问题？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/9565249e701f27dd4bf708e1f9d999ff8ab84d67.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a7584a35d72f3b26bfbdc09cb0af6edcc5a31ab2.png, https://discuss.openubmc.cn/uploads/default/original/2X/b/bd159a218250c3151db3bdfd9e66781aaa7df0e1.png",
+    "topic_user_name": "Huangmincai-wuzhou",
+    "best_answer_url": "/t/topic/1444/4",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1444/2",
+            "text": "电源状态异常，无法获取功耗"
+        },
+        {
+            "user_name": "Huangmincai-wuzhou",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1444/3",
+            "text": "多个电源存在的情况下，其中一个电源异常。是否可以把非异常状态的电源功耗返回。当前情况看着是不可以的。"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1444/4",
+            "text": "已规划至社区Q2发布版本，待正式版本发布后可支持该功能。"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 1508,
+    "question": "咨询1711模组GPIO使用细节 - content: 客户想找BMC上可用的6个gpio端口用做输入，但是看手册还没有gpio相关的说明，\n查阅代码发现有gpio相关配置，所以想问下还有哪些gpio可以使用？\nimage248×394 4.31 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e07299fce163e38e7aa4c2c2e85ae84996cb58f2.png",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/1508/3",
+    "reply_posts": [
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1508/2",
+            "text": "更新一下，希望有大佬能看到"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1508/3",
+            "text": "请联系芯片模组技术支持"
+        }
+    ]
+}

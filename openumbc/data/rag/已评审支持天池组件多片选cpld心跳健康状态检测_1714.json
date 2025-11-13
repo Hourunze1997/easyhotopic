@@ -1,0 +1,22 @@
+{
+    "topic_id": 1714,
+    "question": "【已评审】支持天池组件多片选cpld心跳健康状态检测 - content: ISSUE链接（必填，此议题关联的issue）：\n【需求】支持多片选cpld心跳检测-mdb_interface-GitCode\n背景介绍\n当前bmc对扩展板的心跳健康检测，只支持一个cpld的心跳检测，当存在localbus访问多个片选cpld时，不支持其他片选cpld的自检\n当前差距/问题分析\nV3当前仅支持一片cpld自检，无法满足业务要求，多片选localbus直接访问cpld时，硬件上只有一块cpld，但是要保证localbus多片选访问cpld异常时，能上报告警\n触发原因\n支持多片选cpld心跳检测\n决策点\n新增器件测试类，支持多chip的心跳检测\n详细介绍\n方案一\n\n新增类：ChipSelfTest\n新增path:  /bmc/kepler/Systems/${SystemId}/Boards/ExpBoard/${Id}/ChipSelfTest/${ChipSelfTestId}\n新增interfaces：bmc.kepler.Systems.Board.ChipSelfTest\n接口可以扩展到CpuBoard、FanBoard等其他Path下\n变化类型：新增path，interfaces\n操作权限：ReadOnly\n详细描述：\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nTestResult\n新增属性\ny\nR:ReadOnly W:不涉及\n不持久化\ntrue\nCSR,SHM\nChip检测结果。0 正常， 1 异常 默认值255 表示未知\n无\n\n新增私有属性\n\n类：ExpBoardChipSelfTest\n变化类型：新增私有属性 ChipTestReg，InputTestValue\n应用场景：器件心跳检测关联寄存器\n持久化类型： 不持久化\n操作权限：ReadOnly\n详细描述：\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nChipTestReg\n新增属性\nU\nR:ReadOnly W:不涉及\n不持久化\nfalse\nCSR\n器件检测试关联寄存器\n无\n\nInputTestValue\n新增属性\nay\nR:ReadOnly W:不涉及\n不持久化\nfalse\nCSR\n测试输入\n无\n\nExpectValue\n新增属性\nay\nR:ReadOnly W:不涉及\n不持久化\nfalse\nCSR\n预期输出\n无\n\n评审结论\n不通过，新增的interfaces与path合理性不足，私有属性关联Accessor限制较多，可扩展性不强，需重新考虑设计\nlinks: #p-4146-issueissue-1, https://gitcode.com/openUBMC/mdb_interface/issues/153, #p-4146-h-2, #p-4146-h-3, #p-4146-h-4, #p-4146-h-5, #p-4146-h-6, #p-4146-h-7, #p-4146-h-8",
+    "topic_user_name": "Shijunguo N3joj",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1714/2",
+            "text": "请先在hardware SIG评审方案，为什么属性名要跟体现器件的编号，难道未来如果有第三个CPLD了，又增加一个Cpld3Status吗？"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1714/3",
+            "text": ""
+        }
+    ]
+}

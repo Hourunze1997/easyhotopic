@@ -1,0 +1,29 @@
+{
+    "topic_id": 1983,
+    "question": "通过web也没修改snmp报文通知中的trap地址，升级后设置的信息被还原了 - content: 操作步骤：\n1、如下图所示，“网络管理系统”中有两个目的地地址：\nsnmp报文通知1590×916 81 KB\n2、编辑序号2的地址为空，当前状态关闭，点击保存，提示保存成功；\n3、保留配置更新bmc固件，更新完后，之前删除的序号2信息又恢复了；\n其他：\n1、在一台机器上必现，换另一台机器则复现不到。\n2、以下附件为完整的app.log。\napp.txt (700.2 KB)\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a0cf8cf9cdc68846f39d58d1aa5c474c2d5dad1b.png, /uploads/short-url/8t4JIdBM6hI3Vz2ELu1inFfvuNM.txt",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1983/2",
+            "text": "设置该属性时，提供的app日志不会有相关的日志信息。是否有一键收集日志呢？有的话发送到邮件：ouwenjian@huawei.com\n可以先看看操作日志，确认设置成功。也可以看看资源树对应的属性及其持久化的值。"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1983/3",
+            "text": "你好，日志已通过邮件发送请查收。操作日志里是显示成功的。"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1983/4",
+            "text": "请问有啥结论吗"
+        }
+    ]
+}

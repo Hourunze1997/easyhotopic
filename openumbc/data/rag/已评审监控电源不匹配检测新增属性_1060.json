@@ -1,0 +1,15 @@
+{
+    "topic_id": 1060,
+    "question": "【已评审】监控电源不匹配检测新增属性 - content: ISSUE链接 GitCode - 全球开发者的开源社区,开源代码托管平台\n背景\n对于不支持电源混插的服务器，要实现实时监控服务器多个输入电源模块的型号和厂商是否一致匹配，不一致则上报告警\n决策点\n\n新增电源厂商是否一致属性\n新增电源型号是否一致属性\n\n详细描述\n资源path：/bmc/kepler/Systems/:SystemId/PowerMgmt/\n资源interface：bmc.kepler.Systems.PowerMgmt\n属性：\n\nIsManufacturerMismatch 电源厂商是否一致\n签名：b\n读写&权限：R：ReadOnly\n持久化类型：不持久化\n变化通知：true\n\nIsModelMismatch 电源型号是否一致\n签名：b\n读写&权限：R：ReadOnly\n持久化类型：不持久化\n变化通知：true\n\n评审结论\n\n同意资源协作接口bmc.kepler.Systems.PowerMgmt新增属性IsManufacturerMismatch 和IsModelMismatch，表示服务器多个输入电源模块的型号、厂商是否一致匹配，签名为b，只读，读权限：ReadOnly，发送变更通知事件\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/79",
+    "topic_user_name": "songdianpeng",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1060/2",
+            "text": ""
+        }
+    ]
+}

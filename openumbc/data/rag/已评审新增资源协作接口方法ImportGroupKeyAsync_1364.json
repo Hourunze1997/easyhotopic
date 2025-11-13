@@ -1,0 +1,29 @@
+{
+    "topic_id": 1364,
+    "question": "【已评审】新增资源协作接口方法ImportGroupKeyAsync - content: 关联issue\n评审背景\n现状：\nRedfish支持远程导入NTP组密钥，NTP组秘钥导入的资源协作接口方法没有返回值，是通过错误引擎直接抛错导入结果\n问题：\n远程导入在文件传输处耗时较大，超过30s没有响应，需要以Task的形式返回\n在历史版本BMC中，存在仅远程传输涉及Task的情况，例如ImportCert、ImportWeakPasswordDictionary、ExportWeakPasswordDictionary\n响应体中存在参数 TaskId，仅远程上传涉及\n如果是远程传输，则返回TaskId，如果是本地传输，则无返回值\n评审点\n目前，已有资源协作接口方法ImportGroupKey可以导入NTP组密钥，但无响应体。\n方案一\n修改原有方法ImportGroupKey响应体\n\n资源路径 ：/bmc/kepler/Managers/:id\n资源接口：bmc.kepler.Managers.Ntp.Auth\n方法 :ImportGroupKey\n权限 :BasicSetting\n请求签名 : s\n请求参数 :\n\nFilePath：上传密钥的路径\n\n响应签名 : u32\n响应参数 ：\n\nTaskId：远程上传秘钥的任务Id\n\n方案二\n新增方法ImportGroupKeyAsync，\n\n资源路径 ：/bmc/kepler/Managers/:id\n资源接口：bmc.kepler.Managers.Ntp.Auth\n方法 :ImportGroupKeyAsync\n权限 :BasicSetting\n请求签名 : s\n请求参数 :\n\nFilePath：上传密钥的路径\n\n响应签名 : u\n响应参数 ：\n\nTaskId：远程上传秘钥的任务Id\n\n评审结论\n通过，同意采用方案二，在资源协作接口下 bmc.kepler.Managers.Ntp.Auth 新增方法 ImportGroupKeyAsync，权限为 BasicSetting，请求签名为 s，响应签名为 u；方法用于异步的方式导入NTP GroupKey，并且返回异步任务的 TaskId\nlinks: #p-3155-issue-1, #p-3155-h-2, #p-3155-h-3, #p-3155-h-4",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "/t/topic/1364/2",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1364/2",
+            "text": "在评审背景中补充历史BMC版本中对于这种情况的支持情况\n能否考虑直接修改 ImportGroupKey 的响应进行处理，如果是 local 的则返回0，如果是 remote 的就返回 TaskId"
+        },
+        {
+            "user_name": "Linyao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1364/3",
+            "text": "已补充"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1364/4",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 787,
+    "question": "RAID卡的温度获取 - 请教一下：RAID卡的温度获取方式有几种？大概是怎么实现的",
+    "topic_user_name": "Makun",
+    "best_answer_url": "/t/topic/787/2",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/787/2",
+            "text": "content: raid卡温度目前获取方式只有通过raid卡侧获取。对应代码如下图\nimage1045×368 57.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/6ceab7842f0b5a012d76384fc2cbfa1edad1aaf1.png"
+        }
+    ]
+}

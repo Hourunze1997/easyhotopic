@@ -1,0 +1,15 @@
+{
+    "topic_id": 1319,
+    "question": "security sig页面中有个组件gitcode地址失效 - content: 刚浏览网页正好看到，记录一下\nhttps://www.openubmc.cn/sig/security\nimage499×324 9.29 KB\nlinks: https://www.openubmc.cn/sig/security, https://discuss.openubmc.cn/uploads/default/original/2X/c/cb440e1d8d45df42f9fddc4601aa8d01411b14f1.png",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/1319/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1319/2",
+            "text": "content: 这个组件已经归档了，设置有些问题，已创建issue\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\nlinks: https://gitcode.com/openUBMC/community/issues/17, https://gitcode.com/openUBMC/community/issues/17"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 700,
+    "question": "BMC Studio用户指南链接错误 - content: image2101×1270 278 KB\n这个链接是404\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/fe104448ff5c5619067da749268f1136170a023b.png",
+    "topic_user_name": "Iss Tanghaibin",
+    "best_answer_url": "/t/topic/700/3",
+    "reply_posts": [
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/700/2",
+            "text": "content: 应用市场 | openUBMC\nlinks: https://www.openubmc.cn/marketplace"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/700/3",
+            "text": "content: 已提交ISSUE跟踪https://gitcode.com/openUBMC/docs/issues/1\nlinks: https://gitcode.com/openUBMC/docs/issues/1"
+        }
+    ]
+}

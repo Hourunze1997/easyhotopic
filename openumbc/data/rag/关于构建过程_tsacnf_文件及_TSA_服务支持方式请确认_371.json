@@ -1,0 +1,43 @@
+{
+    "topic_id": 371,
+    "question": "关于构建过程 tsa.cnf 文件及 TSA 服务支持方式请确认 - 您好，security社区的大佬们\n目前我们已完成自建证书服务器（EJBCA）的部署，并生成了相关的 CA、终端代码签名证书及时间戳证书。\n但在实际构建二进制并进行加密的过程中，我们发现该流程依赖的 OpenSSL，其对 tsa.cnf 文件有需求。\n由于 EJBCA 本身不包含 TSA 模块，我们考虑是否需要额外部署 SignServer 来提供兼容的 TSA 服务以满足构建要求。\n烦请各位security大佬确认是否可按此方向推进，或是否需要将该问题作为议题纳入后续会议中讨论。\n谢谢！",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/371/6",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/371/2",
+            "text": "ejbca签名平台听起来很棒，我建议您在sig-cicd组织一次会议，可以先了解一下ejbca的能力和期望，我们一起分析让openubmc的工具默认支持该平台的可行方案。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/371/3",
+            "text": "content: 目前我已经成功部署并跑通了 SignServer 的 TSA 时间戳服务！\n通过 OpenSSL 生成 .tsq 请求并提交到 SignServer 的 接口，顺利收到了 .tsr 响应，解析内容符合预期，整个链路工作正常 。\n虽然这只是初步验证，但能跑通这一链路，振奋人心的！\n\n想咨询下security ，CI/CD sig组大佬们：\n我们现在采用的是 EJBCA + SignServer 的组合方案，是否适合作为 BMC 构建流程中承担 TSA、代码签名、证书发放的一种方向？\n目前看起来技术上是可行的，但是目前也仅仅是验了tsa服务的流程，也还并没有实际到ibmc构建中，但还不太确定这种架构是否符合预期的集成方式、可信链要求。\n 附上我当前的一些配置和验证截图。\nimage1584×732 86 KB\nimage1902×846 28.8 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/b913f9301a1a61277ba6f6fa643b62d325cebad4.png, https://forum.openubmc.cn/uploads/default/original/1X/1519ed36304c0e1fc7d7cc200beda950dffe0cdd.png"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/371/5",
+            "text": "海军哥，有个关于构建流程的问题想咨询下：\n目前 iBMC 构建过程中使用了这 5 个关键文件进行代码签名和时间戳处理：\n\ntsa.cnf\nsigner.pem\nts_signer.pem\nrootca.der\nrootca.crl\n\n我现在想进一步搞清楚的是 —— 这几个文件在构建脚本/流程中分别是怎么参与二进制加密或签名的？\n我这边想尝试替换成 SignServer 的 TSA 服务接口。"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/371/6",
+            "text": "签名过程分为签名机制和签名策略：\n1、签名机制：由hpm_signer工具调用openssl命令&库，使用签名策略配置的签名证书完成签名，输出cms签名文件，最终按hpm包格式组合出签名包。\n2、签名策略：manifest.yml配置签名使用的证书，具体定义可以查看\n/usr/share/bmcgo/schema/manifest.schema.json文件的base/signature/certificates配置。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/371/9",
+            "text": "如果确认可行，我会申请组织一次会议，评估 OpenUBMC 工具能力，并讨论可行的方案！"
+        }
+    ]
+}

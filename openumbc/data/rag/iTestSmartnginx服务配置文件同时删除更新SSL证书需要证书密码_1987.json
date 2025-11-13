@@ -1,0 +1,7 @@
+{
+    "topic_id": 1987,
+    "question": "【iTestSmart】nginx服务配置文件同时删除，更新SSL证书，需要证书密码。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\n二、问题描述\nOpenUBMC->融合运维->nginx服务配置文件同时删除，更新SSL证书。更新证书的ipmi命令，需要证书密码。\n更新证书需要密码1856×367 107 KB\n测试日志显示，更新SSL证书命令，缺少密码：\n测试日志缺少证书密码1920×811 183 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/6be02543cde82bb7011ecdcd238953515810d947.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/2/2472eca27e655e1164a96671fd4cd86600db69fb.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": []
+}

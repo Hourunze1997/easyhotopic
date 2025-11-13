@@ -1,0 +1,15 @@
+{
+    "topic_id": 603,
+    "question": "【已评审】新增vlan取值范围配置 - content: 关联Issue:\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n评审背景\n\n当前部分机型存在配置VLANId取值范围的诉求，需提供配置能力\n\n评审点1：\n\n新增资源树属性\npath:\n\n/bmc/kepler/Managers/:ManagerId/EthernetInterfaces\n\ninterface:\n\nbmc.kepler.Managers.EthernetInterfaces\n\nproperty:\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nMinVLANId\n新增属性\nq\n读:ReadOnly;写:BasicSetting\n掉电持久化\nfalse\n可配置的VLAN取值范围下限\n默认值为1\n\nMaxVLANId\n新增属性\nq\n读:ReadOnly;写:BasicSetting\n掉电持久化\nfalse\n可配置的VLAN取值范围上限\n默认值为4094\n\n评审点2\n\n新增资源树属性\npath:\n\n/bmc/kepler/Managers/:ManagerId/EthernetInterfaces/:Id\n\ninterface:\n\nbmc.kepler.Managers.EthernetInterfaces.MgmtPort\n\nproperty:\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nMinVLANId\n新增属性\nq\n读:ReadOnly;写:BasicSetting\n掉电持久化\nfalse\n可配置的VLAN取值范围下限\n默认值为1\n\nMaxVLANId\n新增属性\nq\n读:ReadOnly;写:BasicSetting\n掉电持久化\nfalse\n可配置的VLAN取值范围上限\n默认值为4094\n\n评审点3\n\n新增私有属性\npath:\n\n私有对象DedicatedPort\n\nproperty:\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nMinVLANId\n新增属性\nq\nReadOnly\n不持久化\nfalse\n可配置的VLAN取值范围下限\n默认值为1\n\nMaxVLANId\n新增属性\nq\nReadOnly\n不持久化\nfalse\n可配置的VLAN取值范围上限\n默认值为4094\n\n评审点4\n\nweb后端URI新增字段MinVLANId，MaxVLANId\n\nUri: /UI/Rest/BMCSettings/NetworkSettings\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n约束\n\nMinVLANId\nnumber\n\n1\nReadOnly\n大于等于MinVLANId\n\nMaxVLANId\nnumber\n\n4094\nReadOnly\n大于等于MaxVLANId\n\n评审结论：\n1.同意资源树接口新增MinVLANId 和MaxVLANId属性\n2.同意web后端接口新增MinVLANId 和MaxVLANId属性\nlinks: #p-1188-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/24, https://gitcode.com/openUBMC/mdb_interface/issues/24, #p-1188-h-2, #p-1188-h-1-3, #p-1188-h-2-4, #p-1188-h-3-5, #p-1188-h-4-6, #p-1188-h-7",
+    "topic_user_name": "lijiabao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/603/2",
+            "text": ""
+        }
+    ]
+}

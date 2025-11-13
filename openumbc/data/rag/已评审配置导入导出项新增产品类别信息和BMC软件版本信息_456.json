@@ -1,0 +1,29 @@
+{
+    "topic_id": 456,
+    "question": "【已评审】配置导入导出项新增产品类别信息和BMC软件版本信息 - content: 关联issue\n配置导出文件提供产品类别信息和BMC软件版本信息\n背景\n客户需要配置导出文件提供产品类别信息和BMC软件版本信息\n决策点\n决策点1：新增配置导入导出项BMCVersion，用于显示BMC软件版本信息\n决策点2：新增配置导入导出项ProductUniqueID，用于显示产品类别信息\n详细描述\n决策点1：新增配置导入导出项BMCVersion，用于显示BMC软件版本信息\n\n项目\n值\n\n父项\nGeneralInfo\n\n导出子项\nBMCVersion\n\n含义说明\nBMC软件版本信息\n\n取值类型\nString\n\n备注\n新增导入导出项\n\n决策点2：新增配置导入导出项ProductUniqueID，用于显示产品类别信息\n\n项目\n值\n\n父项\nGeneralInfo\n\n导出子项\nProductUniqueID\n\n含义说明\n产品类别信息\n\n取值类型\nString\n\n备注\n新增导入导出项\n\n示例\n{\n       “GeneralInfo”: {\n               “BMCVersion”: “5.08.00.02”,\n                “ProductName”: “TaiShan 200 (Model 2280)”,\n               “ProductUniqueID”: “0x0207BE00”,\n               “ProductSN”: “2102314BLD10NB100088”,\n               “TimeStamp”: “2025-04-10T17:48:05+08:00”\n       },\n        “Components”: {\n               …\n        }\n}\n评审结论\n同意新增以下两项配置导出项，置于配置导出的GeneralInfo字段中\nBMC软件版本信息：BMCVersion\n产品类别信息：ProductUniqueID\n剩余事项\n 客户定制之后，是否可以直接从资源树获取版本号\n 剩余事项闭环 ：客户定制后也可以直接从资源树上获取版本号，即Version属性\npath:/bmc/kepler/UpdateService/FirmwareInventory/ActiveBMC\ninterface:bmc.kepler.UpdateService.FirmwareInfo\n属性：Version\nlinks: #p-846-issue-1, https://gitcode.com/openUBMC/profile_schema/issues/2, #p-846-h-2, #p-846-h-3, #p-846-h-1bmcversionbmc-4, #p-846-h-2productuniqueid-5, #p-846-h-6, #p-846-h-1bmcversionbmc-7, #p-846-h-2productuniqueid-8, #p-846-h-9, #p-846-h-10, #p-846-h-11",
+    "topic_user_name": "Zhengzege",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/456/2",
+            "text": "建议在导出后直接在一级节点直接显示\n{\n“BMCVersion”: “xxx”,\n“PruductName”: “xxx”,\n“PruductUniqueId”:  “0x00010A02”,\n“Configurations” {\n…\n}\n}"
+        },
+        {
+            "user_name": "Zhengzege",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/456/3",
+            "text": "content: 配置导入导出项新增产品类别信息和bmc软件版本信息。添加导出项的示例，见标红字体。\n示例\n{\n       “GeneralInfo”: {\n               “BMCVersion”: “5.08.00.02”,\n                “ProductName”: “TaiShan 200 (Model 2280)”,\n               “ProductUniqueID”: “0x0207BE00”,\n               “ProductSN”: “2102314BLD10NB100088”,\n               “TimeStamp”: “2025-04-10T17:48:05+08:00”\n       },\n        “Components”: {\n               …\n        }\n}\nlinks: #p-911-h-1"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/456/4",
+            "text": ""
+        }
+    ]
+}

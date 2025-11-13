@@ -1,0 +1,29 @@
+{
+    "topic_id": 1284,
+    "question": "如何安装bmcgo工具并构建出签名hpm包 - content: 首先，按照社区的操作手册，配置好docker环境，以及下载manifest源码等，都可以正常编译出包~\nimage1240×409 16.7 KB\n我需要在华为的远程server上刷新自编译的image，就需要自签名使用我们insyde的证书（根证书也已按照 topic/215的帖子制作完成，同时由华为的伙伴 生成了 过渡包，并成功刷新至机器上）\n后续就是需要刷新我自编译出来的hpm包并签名，涉及到使用bmcgo工具启动构建，如下图\nimage902×514 52.5 KB\n但是目前我的环境没有bmcgo工具，所以再次按照 新镜像出包流程指导文档 安装bmcgo工具\nimage1084×499 35.2 KB\n执行dpkg -i bingo…deb 时报错，bingo冲突导致\nimage1336×486 34 KB\n然后执行apt remove openubmc-bingo后再次安装就可以通过了，但是bingo 版本还是5.230,并且bmcgo工具也没有安装成功~\n哪位伙伴可以提供下有效信息和解决方案，谢谢！！！\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/df8f1eddd7c90cd495c223ddf03c3c8cf2f283d1.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/33c9ea2a6b9b0ee37e7cc5492ad0e52c4fcf792b.png, https://discuss.openubmc.cn/uploads/default/original/2X/5/5b426e1d4d11287305469f9110471c2a4c78cc23.png, https://discuss.openubmc.cn/uploads/default/original/2X/b/b2056d98d7591f5b679cee19f4ea013da98224aa.png",
+    "topic_user_name": "Insyde_ander",
+    "best_answer_url": "/t/topic/1284/4",
+    "reply_posts": [
+        {
+            "user_name": "Insyde_ander",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1284/2",
+            "text": "content: 补一份截图，hw-ibmc-bmcgo 和openubmc-bingo两个包只能存在一个，否则就报错\nimage1109×195 9.95 KB\n这两个包什么区别？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/b5d15825ee436f50790368d23f19879115a6a767.png"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1284/3",
+            "text": "bmcgo由deb包和pip包组成，都需要安装，请确认是否都已成功安装。\nbmcgo命令由pip包提供的，或许你没有安装pip3包，请参考第二章节“openUBMC构建”中的pip3 install *.whl命令再次安装pip包。"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1284/4",
+            "text": "pip3 uninstall -y openubmc-bingo\ndpkg -P openubmc-bingo\n\n上面是我看到bingo组件里面卸载bingo的命令，先手动卸载一下旧版\n然后安装的时候加上 --break-system-packages参数\npip3 install *.whl --break-system-packages\n我在我的wsl环境里是这样解决问题的"
+        }
+    ]
+}

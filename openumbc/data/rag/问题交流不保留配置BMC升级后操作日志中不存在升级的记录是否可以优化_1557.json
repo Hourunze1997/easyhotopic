@@ -1,0 +1,15 @@
+{
+    "topic_id": 1557,
+    "question": "【问题交流】不保留配置BMC升级后，操作日志中不存在升级的记录，是否可以优化 - content: 测试中发现BMC不保留配置升级后，操作日志中之后恢复出厂设置的操作记录，没有升级的日志\nimage1231×466 85.1 KB\n部分客户要求不保留配置升级后需要有升级的日志，请教下这边是否可以优化\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/025a9630cdd6cdf3d79fb029e077d6cc3ac8c692.png",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "/t/topic/1557/2",
+    "reply_posts": [
+        {
+            "user_name": "Linyao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1557/2",
+            "text": "不保留配置升级是升级+恢复出厂设置动作，升级动作是在恢复出厂设置动作之前。恢复出厂设置之后会把所有日志给清空，因此日志不会留存。"
+        }
+    ]
+}

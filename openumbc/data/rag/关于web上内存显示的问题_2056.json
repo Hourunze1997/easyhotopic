@@ -1,0 +1,22 @@
+{
+    "topic_id": 2056,
+    "question": "关于web上内存显示的问题 - content: image645×256 3.11 KB\nimage1629×440 22.5 KB\nimage1616×348 8.31 KB\nimage1478×794 19.2 KB\n客户反馈了内存相关的问题，但这一块好像涉及闭源组件compute，不知道如何分析。\n1、在模组项目中，CPU的信息一直有，但是内存信息概率没有，请问是为什么呢？\n2、为什么内存信息没有，但是离散传感器的内存却是在位的？内存的0x8040这个状态在规范中就是presence detected吧\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/198592ec1889d394d0809e9aa4a0c9779bcf2742.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/6a61d1e942a56ecd863d2161b1f732a55f07bfc7.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/e74e96a88170418fd6233e0780667cacb2330de0.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a0ad71359101f516fbe20ee7d60e2593fd39ddcb.png",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2056/2",
+            "text": "请提供下一键收集"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2056/3",
+            "text": "好的，之后再出现这个情况的话，收集一下日志。暂时日志好像被刷掉了"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1255,
+    "question": "源码编译报错 - content: bingo build出现如下问题，请问为什么呢？\nimage1883×523 44.8 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/d7b845edf129a2f80cba46c9de19c78624e9de3d.png",
+    "topic_user_name": "Ljx Open Ubmc",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Niegsh",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1255/2",
+            "text": "content: wsl环境使用root权限进行环境搭建和编译，可以解决权限。\n参考docker环境搭建的这个处理\nimage1116×471 8.34 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/cb62e4529bb560ea290aef3f41fbcfd310128bfa.png"
+        }
+    ]
+}

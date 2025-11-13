@@ -1,0 +1,29 @@
+{
+    "topic_id": 488,
+    "question": "议题申报流程咨询 - 请问申报议题的正确流程是怎样的？是直接在会议日历中的 Etherpad 链接里填写相关内容即可，还是需要将议题通过邮件发送到对应 SIG 的公共邮箱？目前看到很少有人通过sig组公共邮箱提交议题，因此想确认一下标准流程是怎样的，避免遗漏。谢谢！",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/488/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/488/2",
+            "text": "直接在Etherpad中申报即可，例会都会围绕着etherpad进行开展\n邮箱的话可以作为确认手段等方式进行通讯"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/488/3",
+            "text": "感谢大佬耐心解答，信息清晰且具有指导意义，受益良多！"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/488/4",
+            "text": "如果有发现议题申报了，但是并没有被关注/直接被忽略，可以在论坛咨询，或者在TC进行投诉，SIG组运作也是TC会例行审视的一环"
+        }
+    ]
+}

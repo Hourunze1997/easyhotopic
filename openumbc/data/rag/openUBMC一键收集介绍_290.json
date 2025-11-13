@@ -1,0 +1,7 @@
+{
+    "topic_id": 290,
+    "question": "openUBMC一键收集介绍 - content: 简介\n一键收集是在BMC WEB页面上手动触发获取到的当时环境、日志集合，对于问题定位非常有用。\n持续补充中，欢迎提意见。\nLogDump\n\napp.log\n1、组件在代码中主动打印的日志，即组件运行日志，通过log:error和log:notice打印。过多的日志可能会触发防刷屏功能，通过log:error_easy和log:notice_easy可屏蔽防刷屏功能。\n2、可以通过搜索app的名字过滤出app某段时间所有的打印，比如pcie_device、bios等\n默认打印NOTICE和ERROR日志，若需要手动打开需要输入命令，以pcie_device为例\nbusctl --user set-property  bmc.kepler.pcie_device /bmc/kepler/pcie_device/MicroComponent bmc.kepler.MicroComponent.Debug DlogLevel 's' debug\n\nframework.log\n主要是框架打印，包括maca、hwdiscovery、hwproxy\n\nmaca：服务启动日志、服务异常日志，maca会对服务进行检查健康，15秒一次，超过5次检查失败会重启服务所属子系统。\n\nhwdiscovery：自发现组件，csr对象加载卸载都在其中会有打印\n\nhwproxy：硬件代理相关，scanner、chip等操作、状态变化会有打印\n\nbmc_health.log\n实时CPU占用率信息，会有启动阶段不同时间的CPU信息，非常有用！\n\nlinux_kernel_log\nSDK打印的底层驱动加载、卸载日志\n\noperation.log\n操作日志，记录了所有北向操作记录\n\nsecurity.log\n安全类日志，记录了用户登录、校验动作\n\ncooling_control.log\n实时调速策略\n\nAppDump\n非常重要，记录了各个组件的资源树信息和定制的收集内容\n\n资源树信息：mdb_info.log\n\nsel日志：存放历史告警记录\n路径：dump_info\\AppDump\\event\\sel.txt\n\nRTOSDump\n\nRTOSDump\\versioninfo\\app_version.txt BMC、CSR、BIOS等版本相当于ipmcget -d version\n\nRTOSDump\\versioninfo\\package_info.txt BMC内组件版本\n\nOSDump\nOS启动日志/BIOS启动日志，记录了最近一次OS、BIOS启动的日志。\n里面可能会有一些BIOS枚举PCIE卡的报错、BT通报的报错。\nCoreDump\ncoredump文件\nlinks: #p-451-h-1, #p-451-logdump-2, #p-451-appdump-3, #p-451-rtosdump-4, #p-451-osdump-5, #p-451-coredump-6",
+    "topic_user_name": "社区技术支持",
+    "best_answer_url": "",
+    "reply_posts": []
+}

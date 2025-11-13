@@ -1,0 +1,43 @@
+{
+    "topic_id": 1866,
+    "question": "对于没有挂耳的天池机型，推荐做法是什么？ - 背景：\n符合天池架构有扩展板，无挂耳\n问题：\n原本存放在挂耳eeprom的如产品名称，序列号等信息需要怎么处理呢，共用扩展板的eeprom吗？还是采用配置文件的方式？现有架构下还有其他更好的方式吗，或者推荐的方式？",
+    "topic_user_name": "Ocy",
+    "best_answer_url": "/t/topic/1866/5",
+    "reply_posts": [
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1866/2",
+            "text": "PSR加载写死吧。本来里面也没有太多的信息，没有挂耳应该没有太多机型候选，直接写死机型配置好了。"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1866/3",
+            "text": "不是很明白，我的问题是，原本应该存在挂耳fru0的整机信息，如产品名称，产品序列号这些信息，eeprom里面的数据是更推荐存在eeprom里面还是配置文件的形式呢"
+        },
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1866/4",
+            "text": "理解错了，我以为是放在挂耳Eeprom内的PSR。没有挂耳的话，这个PSR是可以配置在代码仓内，然后修改扩展板的配置文件然后不从Eeprom加载PSR的。\n如果是FRU对象的话，看你们的需要。我们目前是把这些信息放在基础板上的。\n这个还是需要专业人士解答一下。"
+        },
+        {
+            "user_name": "nathanael yu",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1866/5",
+            "text": "这个方案比较多，我简单说两个，你可以参考下：\n方案1：使用扩展板EEPROM存储原来挂耳EEPROM存储的信息，扩展板本身的CSR存储在BMC本地；另外，电子标签整机和扩展板归一；\n优点：产品在使用上差异较小，与之前大主板模式类似。\n缺点：主要是硬件配置存储在本地了，硬件CSR与BMC固件耦合到一起了。\n方案2：扩展板新增一个EEPROM，作为整机配置存储使用（也可以EEPROM容量扩大一倍）\n优点：天池架构下，挂耳原来也是扩展板延伸的一部分，现在将新增的EEPROM放到扩展板上，BMC侧无感知，整体机制与带挂耳硬件方案实现相同；\n缺点：装备侧存在维护问题，因为存在两个软件编码，整机PSR和单板的CSR，装备生产需要适配；同时，电子标签一个是单板的，一个是整机的，两个放在一块板子上，加工的时候装备流程也需要适配"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1866/6",
+            "text": "感谢两位回复"
+        }
+    ]
+}

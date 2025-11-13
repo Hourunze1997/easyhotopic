@@ -1,0 +1,22 @@
+{
+    "topic_id": 1693,
+    "question": "【iTestSmart OpenUBMC问题反馈】自检类型LM75测试，测试结果失败。 - content: 一、硬件环境：\n主板：S920X20\nBMC Version：25.03\niTestSmart Version: 1.0.34\n二、问题描述\nopenUBMC->安全管理->自检类型LM75测试，测试结果失败。\nipmi_0361920×983 184 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/32a964fa2cecd828c205e4bda409bc967368069a.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Hdq",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1693/2",
+            "text": "提供一键收集日志后支撑问题定位"
+        },
+        {
+            "user_name": "Hdq",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1693/3",
+            "text": "这个用例之前在25.06的debug包测试通过的，建议升级到25.06及以上的版本重试。"
+        }
+    ]
+}

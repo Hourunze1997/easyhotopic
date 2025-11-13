@@ -1,0 +1,43 @@
+{
+    "topic_id": 122,
+    "question": "test - ",
+    "topic_user_name": "Chm Lxt",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/122/2",
+            "text": ""
+        },
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/122/3",
+            "text": ""
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/122/4",
+            "text": "请勿水贴。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/122/5",
+            "text": ""
+        },
+        {
+            "user_name": "discobot",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/122/6",
+            "text": "test for solution"
+        }
+    ]
+}

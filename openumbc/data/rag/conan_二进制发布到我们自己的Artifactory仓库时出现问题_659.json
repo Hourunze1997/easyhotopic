@@ -1,0 +1,29 @@
+{
+    "topic_id": 659,
+    "question": "conan 二进制发布到我们自己的Artifactory仓库时出现问题 - content: 背景\n基于manifest执行构建，将下载的conan组件推送到我们自己的conan仓出现问题。\n问题现象\n执行 conan upload opendesign/1.0.3@hw.ibmc.release/rc -c --all -r ibmc_dev 出现错误：\nconan upload opendesign/1.0.3@hw.ibmc.release/rc -c --all -r ibmc_dev\nUploading to remote 'ibmc_dev':\nUploading opendesign/1.0.3@hw.ibmc.release/rc to remote 'ibmc_dev'\nERROR: opendesign/1.0.3@hw.ibmc.release/rc: Upload recipe to 'ibmc_dev' failed: The 'opendesign/1.0.3@hw.ibmc.release/rc' package has 'exports_sources' but sources not found in local cache.\nProbably it was installed from a remote that is no longer available.\n\nERROR: Errors uploading some packages\n\n初步分析\n1、 其他conan包都推送成功，只有这一个包出现问题\n2、opendesign/1.0.3@hw.ibmc.release/rc这个包通过conan search能够在本地缓存找到\n3、基于本地缓存的opendesign/1.0.3@hw.ibmc.release/rc能够构建manifest成功，但是使用我们自己的conan 仓会失败，提示缺失opendesign/1.0.3@hw.ibmc.release/rc\n诉求\n1、为什么其他包推送无此问题，只有这个包有问题，是没有recipe么\n2、是否是这个包opendesign/1.0.3@hw.ibmc.release/rc有问题\n3、如果是conan问题，华为会怎么处理\n4、我们要离场构建，临时解决方案是什么？\nlinks: #p-1324-h-1, #p-1324-h-2, #p-1324-h-3, #p-1324-h-4",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/659/4",
+    "reply_posts": [
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/659/2",
+            "text": "yizhonghui:\n\nopendesign\n\nopendesign 1230版本 webui组件里会依赖，2503版本都删掉了，社区conan仓 openUBMC.release目录里也没有了"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/659/3",
+            "text": "现在是我本地缓存有这个包，但是这个包推不到我们的conan仓库上去"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/659/4",
+            "text": "新的webui组件已不依赖opendesign组件，opendesign组件已被废弃，请执行conan remove opendesign -f删除该本地缓存，并删除manifest.yml中opendesign配置。"
+        }
+    ]
+}

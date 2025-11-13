@@ -1,0 +1,22 @@
+{
+    "topic_id": 1733,
+    "question": "除SDK外，BMC是否有地方配置1711芯片GPIO32 33的管脚复用关系 - content: 背景：\n1、当前项目上遇到了1711芯片上GPIO32管脚默认的模式不符合预期的情况，期望为I2C模式，实际是GPIO模式\nimage580×250 5.35 KB\nBMC启动后，我们通过./devmem_1711 0x876e054  方法，读到的结果是2，期望是1.\n2、和SDK确认，SDK不会配置上述管脚为GPIO模式，建议BMC排查有没有地方设置过；\n问题：\n1、当前我在开源出来的代码里找不到哪里会设置GPIO32 33复用关系的地方，BMC会去做这样的操作吗？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/b8d648126de1393aad2847a6820b64570b0ea7b3.png",
+    "topic_user_name": "Kun Lun Lizhuang",
+    "best_answer_url": "/t/topic/1733/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1733/2",
+            "text": "1、CSR里面配置了gpio对象就会调用框架的接口将管脚给设置成gpio\n2、闭源组件直接调用libsoc_adapter里面的gpio设置，当前已知的电源模块会去设置gpio"
+        },
+        {
+            "user_name": "Kun Lun Lizhuang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1733/3",
+            "text": "已确认，是sr配置中gpio的id配错了，感谢~"
+        }
+    ]
+}

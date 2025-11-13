@@ -1,0 +1,15 @@
+{
+    "topic_id": 2026,
+    "question": "【问题】gitcode 上开源扫描工具扫描开源协议并且上报冲突 - content: 问题\n问题现象\ngitcode 上现在部署了开源引入扫描工具，该工具扫描时会连同代码文件开头的 license 部分一起扫描，如果有重复则上报开源引入扫描失败，并且需要进行确认。具体现象如下图：\n1. 扫描工具问题确认\nimage1624×122 4.96 KB\n2. 代码扫描部分确认\nimage805×214 22.4 KB\n问题分析\n目前 openUBMC 使用的开源协议是 Mulan 协议，该协议是一个很宽松的开源协议，并且其他开源软件均可以使用（取决于不同开源软件的开源协议策略），因此开源代码中关于开源协议的部分是公共的，不应该被扫描。\n处理建议\n优化 openUBMC 的开源引入扫描工具，代码头部的开源协议声明部分应该跳过扫描。\nlinks: #p-5008-h-1, #p-5008-h-2, https://discuss.openubmc.cn/uploads/default/original/2X/7/719822516efcb32488b65628c7fd923b55b2bf5e.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a28188b559172548ccf2f4b0172c7f0fe632518c.png, #p-5008-h-3, #p-5008-h-4",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "zhuchao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2026/2",
+            "text": "嗯，这个需要majun平台进一步确认。"
+        }
+    ]
+}

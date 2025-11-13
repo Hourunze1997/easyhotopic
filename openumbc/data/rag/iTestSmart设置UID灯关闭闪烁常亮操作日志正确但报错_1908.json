@@ -1,0 +1,7 @@
+{
+    "topic_id": 1908,
+    "question": "【iTestSmart】设置UID灯关闭/闪烁/常亮，操作日志正确，但报错。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 22.03\n二、问题描述\nOpenUBMC->多样化硬件->设置UID灯关闭/闪烁/常亮，查看操作日志测试，操作日志正确，但报错。疑似脚本问题。\n日志显示灯已关1920×1061 249 KB\n日志显示灯已开1920×1051 249 KB\n日志显示灯已闪烁1920×1024 241 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/d270e9c173803439145a4440db55da08cb655702.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/e/e601d31f47bb4aae10dc12e5e36fd3d397378c2b.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/4/4017e6188d37649e4d1ac5d0ac3a14d456fa2fe4.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": []
+}

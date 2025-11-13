@@ -1,0 +1,15 @@
+{
+    "topic_id": 1282,
+    "question": "BMC的VGA外接monitor显示器，KVM界面分辨率低，画质模糊 - content: image543×247 65 KB\nBMC的VGA外接monitor显示器，KVM界面分辨率低，画质模糊。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/09dbee87e35f7125e2db92056892916918c9cecb.png",
+    "topic_user_name": "Gaogao2178",
+    "best_answer_url": "/t/topic/1282/2",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1282/2",
+            "text": "KVM界面不支持设置分辨率，分辨率由带内OS决定。"
+        }
+    ]
+}

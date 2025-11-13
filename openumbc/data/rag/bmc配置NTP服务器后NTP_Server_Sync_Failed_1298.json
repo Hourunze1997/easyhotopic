@@ -1,0 +1,22 @@
+{
+    "topic_id": 1298,
+    "question": "bmc配置NTP服务器后，NTP Server Sync Failed - content: 在web界面配置NTP使能及服务器地址：\nimage535×164 3.78 KB\nimage438×156 2.06 KB\nbmc_time组件日志调到info级别，保存后，日志提示\n\n2001-01-02 03:03:05.228185 bmc_time NOTICE: ntp.lua(288): before change property(MinPoll) value = 4, after = 6, sender = :1.112\n2001-01-02 03:03:05.230207 bmc_time NOTICE: ntp.lua(915): restart ntp process\n2001-01-02 03:03:05.237786 bmc_time NOTICE: ntp.lua(731): update ntp config file\n2001-01-02 03:03:05.340998 chassis NOTICE: chassis_service.lua(137): Open the chassis cover(AC Off), intrusion_ac_off: 1, cover_status: 1,intrusion_ac_on: 0 [repeated 50 times in 301s from 2001-01-02 02:58:04.752133 to 2001-01-02 03:03:05.340998]\n2001-01-02 03:03:08.932310 bmc_time NOTICE: ntp.lua(85): stop ntp process\n2001-01-02 03:03:09.988643 bmc_core ERROR: ntp_config.c(276): get_proc_name_by_state: path is invalid, ret= -1\n2001-01-02 03:03:09.993000 bmc_time NOTICE: ntp.lua(900): start ntp process\n2001-01-02 03:03:16.986418 certificate ERROR: certificate_parser.lua(265): The certificate start time is greater than the current time\n2001-01-02 03:03:21.292325 pcie_device ERROR: topo_reader.lua(147): [BizTopoMonitor] read topo info fail, position=010101\n2001-01-02 03:03:21.292821 pcie_device ERROR: topo_monitor.lua(570): [BizTopoMonitor] Read topo info failed.\n2001-01-02 03:03:29.372056 power_strategy NOTICE: power_strategy_utils.lua(89): Time difference(10022), update power monitor last tick(978375809371)\n2001-01-02 03:03:45.893623 power_strategy ERROR: power_strategy_utils.lua(89): Unhealthy power monitor status\n2001-01-02 03:04:03.747576 firmware_mgmt INFO: debug.lua(466): firmware_mgmt set debug log type to file\n2001-01-02 03:04:03.747835 firmware_mgmt INFO: debug.lua(472): firmware_mgmt clear trace properties\n2001-01-02 03:04:03.748337 firmware_mgmt INFO: debug.lua(475): firmware_mgmt detached debug console\n2001-01-02 03:04:03.748556 firmware_mgmt INFO: debug.lua(477): firmware_mgmt stopped heartbeat check of debug console\n2001-01-02 03:04:03.748862 firmware_mgmt INFO: debug.lua(466): firmware_mgmt set debug log type to file\n2001-01-02 03:04:03.749038 firmware_mgmt INFO: debug.lua(472): firmware_mgmt clear trace properties\n2001-01-02 03:04:03.749249 firmware_mgmt INFO: debug.lua(475): firmware_mgmt detached debug console\n2001-01-02 03:04:03.754436 firmware_mgmt INFO: debug.lua(477): firmware_mgmt stopped heartbeat check of debug console\n2001-01-02 03:04:11.015173 bmc_time INFO: persist_client_lib.lua(173): persist saving, op: update, table: _t_mc_properties_bmc_time, primary_key: [[“Id”,1]], data_size: 132\n2001-01-02 03:04:21.423489 pcie_device ERROR: topo_reader.lua(147): [BizTopoMonitor] read topo info fail, position=010101\n2001-01-02 03:04:21.423888 pcie_device ERROR: topo_monitor.lua(570): [BizTopoMonitor] Read topo info failed.\n2001-01-02 03:04:23.649248 bmc_time NOTICE: ntp.lua(552): base_count = 1\n2001-01-02 03:04:24.710207 bmc_time ERROR: ntp.lua(529): Sync to NTP server failed, count = 1\n2001-01-02 03:04:30.424495 power_strategy NOTICE: power_strategy_utils.lua(89): Time difference(10999), update power monitor last tick(978375870424)\n\n有2个怀疑点：\n1、正常环境配置相同的ntp服务器后点击确认，有如下信息会打印服务器ip：\n\n异常环境没有ntp服务器ip信息打印；\n2、异常日志中有一处报错不止是否有关：\nbmc_core ERROR: ntp_config.c(276): get_proc_name_by_state: path is invalid, ret= -1\n由于涉及闭源组件，看不到更多信息，求助大佬帮忙提供一下思路\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/369341ba64c601b65be12244c55ff95aa42420fe.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/fd29c2ba090d0276c1c62e4f34a70d3f48c5dd2e.png",
+    "topic_user_name": "Kun Lun Lizhuang",
+    "best_answer_url": "/t/topic/1298/3",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1298/2",
+            "text": "ntp同步失败排查方法\n1.      确认是“没有同步成功”，还是NTP同步状态暂时没有更新过来。iBMC开启NTP功能后，并不会立即与配置的NTP服务器同步成功，而需要等待若干分钟来更新NTP同步状态（failed或者successful）。快则一分钟内可同步成功，慢则十分钟才同步成功。所以，刚开启NTP功能后，如果15分钟后通过CLI命令：ipmcget –d ntpinfo查询依然显示fail，才可断定没有和NTP服务器同步成功（查看下图中红框中提示）。\n\n2.      确认iBMC配置的NTP服务器地址是否正确；\n\n3.      确认iBMC和NTP服务器的网络是否连通。如果有root权限，可以使用\"ntpdate -uD 服务器ip\" 命令查询配置的服务器是否可用，如下为可用NTP服务器。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1298/3",
+            "text": "经过排查，使用ntpdate -uD命令排查，网络不通，实测ping不通，为网络问题。"
+        }
+    ]
+}

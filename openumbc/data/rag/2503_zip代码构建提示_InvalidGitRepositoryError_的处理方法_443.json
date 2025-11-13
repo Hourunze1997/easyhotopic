@@ -1,0 +1,22 @@
+{
+    "topic_id": 443,
+    "question": "25.03 .zip代码构建提示 InvalidGitRepositoryError 的处理方法 - content: 代码版本\nhttps://repo.openubmc.cn/25.03/sourcecode/repositories.zip\n构建环境\n使用上述代码中manifest的dockerfile配置基础构建环境\nbingo --version                            \nbingo 版本为: 0.5.230\n\n构建命令\nLOG=DEBUG bingo build -b openUBMC -bt debug\n问题现象\nimage866×343 11.3 KB\n初步分析\nzip解压的代码没有.git文件夹，导致bmcgo执行失败。\n没有.git文件夹的原因参考 部分组件在gitcode能查到但是在2503开放版本上没有 - 交流互助区 - openUBMC 论坛\nzip包没有.git文件夹，目前可见的问题是：\n1、很难将开放的版本和gitcode仓库的主线版本对的上，唯一办法是靠组件版本号，但这个不够准。而且manifest连个版本号都没有，没法对应。\n2、其他组件的构建估计也会略微麻烦，如果不做git初始化处理，组件构建一定出错\n3、华为代码的每次同步都会丢失历史提交记录，不便伙伴维护\n尝试：初始化git仓库\ngit init\ngit add .\ngit commit -m \"build\"\ngit remote add origin https://gitcode.com/openUBMC/manifest.git\n\n清理temp和output后，不再报InvalidGitRepositoryError，但是还有其他错（https://forum.openubmc.cn/t/topic/445），不在此处讨论\n建议与诉求\n1、zip代码，还是带上git提交记录吧\n2、如果实在带不上，附上各个组件的原始仓库地址和提交号也行\nlinks: #p-809-h-1, https://repositories.zip, #p-809-h-2, #p-809-h-3, #p-809-h-4, https://forum.openubmc.cn/uploads/default/original/1X/e50734f3bbbd1cad62aa3d0504a64fa5d8f5a8c1.png, #p-809-h-5, https://forum.openubmc.cn/t/topic/413, #p-809-git-6, https://forum.openubmc.cn/t/topic/445, #p-809-h-7",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/443/2",
+            "text": "content: gitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n已提单优化\nlinks: https://gitcode.com/openUBMC/infrastructure/issues/21, https://gitcode.com/openUBMC/infrastructure/issues/21"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/443/3",
+            "text": "下次如果有任何优化意见，也欢迎在infrastructure组件中提issue"
+        }
+    ]
+}

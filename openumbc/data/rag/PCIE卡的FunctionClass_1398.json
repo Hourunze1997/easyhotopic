@@ -1,0 +1,15 @@
+{
+    "topic_id": 1398,
+    "question": "PCIE卡的FunctionClass - content: pciedevice\nimage2487×397 48.4 KB\npciecard\nimage1906×400 25.8 KB\nrackmount\nimage1582×1341 165 KB\n这里对FunctionClass的定义略微有点不一样；rackmount不会解析FunctionClass为10的pcie卡\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/69209da4cff3aadc1651aaf67869ce6b940c2631.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c60217bb34f2b7bb03d54b78b7810fb10d054d08.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/6cdcfa467231cd83918cc23f2d965e95ccd7c727.png",
+    "topic_user_name": "Iss Tanghaibin",
+    "best_answer_url": "/t/topic/1398/2",
+    "reply_posts": [
+        {
+            "user_name": "王祝炜",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1398/2",
+            "text": "10：IB卡是未使用的定义，文件路径是mdb_interface/json/intf/mdb/bmc/dev/PCIeDevice.json，这个文件是未使用的。IB卡应该是属于2：网卡。北向使用的11 DPU Card是参考的v2。"
+        }
+    ]
+}

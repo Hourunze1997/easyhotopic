@@ -1,0 +1,22 @@
+{
+    "topic_id": 1140,
+    "question": "【建议】bingo 新增调试模式 - content: 在我之前的问题反馈帖中当前社区版本的network_adapter和mdb_interface存在同名属性;\n使用了pdb 去拉起bingo执行的子进程代码，从而在抛出异常时，能够在pdb调试器中打印出错时的class_data数据，进而定位。\n当前bingo没有类似的调试模式，有时候定位就需要自己找到当前执行的python代码是什么，手动执行复现，然后通过几次修改python代码加print打印定位\n或者通过找到执行的python命令，通过pdb挂载调试。\n如果可能的话，bingo支持调试参数，pdb直接启动调试，出问题的时候就能打印变量定位了。\nlinks: https://discuss.openubmc.cn/t/topic/1098",
+    "topic_user_name": "河南昆仑-郑豪伟",
+    "best_answer_url": "/t/topic/1140/3",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1140/2",
+            "text": "bingo支持LOG=info环境变量用于打开堆栈追踪模式。\n\n其中info是日志等级，可选debug、info、error"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1140/3",
+            "text": "如果想详细了解执行过程，可以使用strace工具，如strace bingo build，可以详细打印系统调用情况。\n\nstrace安装命令：apt install strace"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "topic_id": 1383,
+    "question": "SAS 3152 在BMC web上无法正常显示数据 - content: 非天池模式加载，在pcie slot上接过9560-8i这张raid卡在bmc上是可以正常使用的。现在因需求变化，需要适配SAS 3152卡，修改为对应raid卡的sr文件后，发现在bmc web中存储管理页面无raid卡的详细信息。怀疑是和mctp相关通信有关\nimage1615×750 75.7 KB\nstorage版本：storage/1.80.40@openUBMC.release/stable\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/8271dd42a2f8cdd5cba807c402f9dafee33f6b5a.png",
+    "topic_user_name": "wuzhou-xiaokaili",
+    "best_answer_url": "/t/topic/1383/5",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1383/2",
+            "text": "请将一键收集日志和raid的sr配置发送至maoyuhao@huawei.com邮箱，我们将尽快分析"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1383/3",
+            "text": "content: mao_0v0_q7rci:\n\nmaoyuhao@huawei.com\n\n日志已发送\nlinks: mailto:maoyuhao@huawei.com"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1383/4",
+            "text": "经过调试 发现在下面的地方return了\nfunction c_controller:register()\n             ......\n            if not mctp_service.get_instance().mctp_state then\n                return\n            end            \n ......"
+        },
+        {
+            "user_name": "yangqinghua",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1383/5",
+            "text": "content: 已在https://discuss.openubmc.cn/t/topic/1386/6话题下提供定位思路\nlinks: https://discuss.openubmc.cn/t/topic/1386/6%E8%AF%9D%E9%A2%98%E4%B8%8B%E6%8F%90%E4%BE%9B%E5%AE%9A%E4%BD%8D%E6%80%9D%E8%B7%AF"
+        }
+    ]
+}

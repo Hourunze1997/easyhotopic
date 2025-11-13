@@ -1,0 +1,92 @@
+{
+    "topic_id": 1329,
+    "question": "account组件单元测试执行报错 - content: 问题背景\n以account为例子，测试bingo的组件单元测试功能时错误\naccount版本为main分支最新提交：6ff89df3a997c8d2f75e85aba0fd139d40813af9（6月4日）\n问题现象\n在account组件下执行单元测试命令：\nbingo test -ut -r openubmc_dev\n\n报错：\nimage1098×205 19.4 KB\n初步分析\n应该是依赖mdb_interface/1.70.101@hw.ibmc.release/rc，远端没二进制，需要源码构建，虽然拉得到代码，但是没有aa252c7f4bee3b977acaf63dc6d50d8073738db8这个提交\n去组件仓搜索，确认没有此提交：\nimage837×276 14.3 KB\nimage803×290 15.1 KB\n查看组件历史tag，发现mdb_interface没有1.70.101这个tag\nimage422×341 17.3 KB\n查看service.json的test依赖，发现account并没有严格限制1.70.101这个版本\nimage501×565 23.6 KB\n分析总结\n1、account 的单元测试依赖mdb_interface/1.70.101@hw.ibmc.release/rc，但是仓库已经没有对应提交号来参与源码构建，导致单元测试执行失败\n2、account并没有严格限制mdb_interface的1.70.101这个版本\n诉求\n1、如何修改才能让account的单元测试正常进行\n2、怎么追溯非组件自身的conan依赖，比如在这个例子中，如何才能知道具体是哪个组件依赖mdb_interface/1.70.101@hw.ibmc.release/rc\nlinks: #p-3013-h-1, #p-3013-h-2, https://discuss.openubmc.cn/uploads/default/original/2X/f/fde807fb553ab9e839deb3eba00e8f6142c5612d.png, #p-3013-h-3, https://discuss.openubmc.cn/uploads/default/original/2X/b/bf674cb3f23e634dd563af9797df21f49be20be8.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/cf3cf0aad988331fe159a91d65b617859f6b8b35.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/79642fd5ab03e9a1cfcd590ef73ce17a98601093.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/278d26e5f7000e9e477bacb4f0a66c29d1329d8e.png, #p-3013-h-4",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/1329/14",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1329/2",
+            "text": "执行rm -rf ~/.conan/data/mdb_interface/1.70.101删除本地缓存的mdb_interface/1.70.101版本。\n按当前的配置来看，没有哪个组件依赖mdb_interface的固定版本，都是定义的mdb_interface范围版本。\n从account组件的mds/service.json中可以看到到build（构建依赖）、test（测试依赖）中定义的组件依赖及版本。 如果本地环境中有满足定义的范围的最大版本，conan 会使用本地缓存的版本。"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1329/3",
+            "text": "已经使用conan remove \"*\" -f 清理本地所有缓存，但还是会自动去找mdb_interface/1.70.101版本"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1329/4",
+            "text": "mdb_interface经过一次git仓库切换，git历史被清理了，mdb_interface/1.70.101@hw.ibmc.release/rc 里包含的commitid也不存在了。 如果是在本地conan仓库，可以删除这个版本的conan包\n社区版本的user/channel是以 openUBMC.release/rc  结尾的。 请安装社区的bingo，执行测试时依赖到openUBMC.release/rc结尾的mdb_interface\n\ngit clone https://gitcode.com/openUBMC/bingo.git\ncd  bingo\nsh install_local.sh"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1329/5",
+            "text": "content: 这太迷惑了，构建和UT测试用不同的环境（工具）。\n且问题源头又追到了历史commit被清的事情上了。\n是否可以通过改bingo来解决？我看与1.70.101最近的有openUBMC版本的是1.70.102：\nimage425×167 3.49 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e5ea1f5c5347c2ff1bc348f5bdb121b4ec9ea486.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1329/6",
+            "text": "方案一： 使用社区版本bingo用于组件开发，社区版本bingo可以用来构建和UT测试。"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1329/7",
+            "text": "yizhonghui:\n\nmdb_interface/1.70.101\n\n方案二、方案三有问题。\n\n1.70.101就没有openUBMC.release/rc的这个版本\n我按方案二、方案三去做，也还是去找mdb_interface/1.70.101@hw.ibmc.release/rc了"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1329/8",
+            "text": "content: 方案二、三确认有误，已删除。\n这个openUBMC_dev 是你们自己搭建的conan仓库么， 官方的conan仓库里有更新版本的。\nimage885×352 35.5 KB\n该问题会反馈给开发团队进行解决。\n目前执行UT、IT测试请暂时使用社区版bingo。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/46549c0d027ae24e96bb237ab147dad27be313f4.png"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1329/9",
+            "text": "content: 环境\nbingo版本：0.5.317\n现象\nbingo build --user openUBMC.release可以在生成openUBMC.release包\n\nbingo test -it --user openUBMC.release还是使用了hw.ibmc.release\nimage1064×263 14.6 KB\nlinks: #p-3199-h-1, #p-3199-h-2, https://discuss.openubmc.cn/uploads/default/original/2X/1/1a31aa425063f5e1ba299d35e81533c94e1ea6eb.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1329/11",
+            "text": "目前执行UT或IT请安装社区的bingo，安装方法\ngit clone https://gitcode.com/openUBMC/bingo.git\ncd  bingo\nsh install_local.sh"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1329/12",
+            "text": "社区版本的bingo是不能执行签名吧。"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1329/13",
+            "text": "不知道新版本有没有解决。"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1329/14",
+            "text": "content: 我找到一个好办法，并且可行！\n思路\n.317版本的bingo会去找user为hw.ibmc.release的最新mdb_interface 版本，目前最新的版本就是1.70.101，但是这个版本没法源码构建，导致种种操作失败。\n那主动推一个有源码的并且离1.70.101最近的并且将user设置为hw.ibmc.release的mdb_interface 到远端就行了，这样bingo就会找更新版本的mdb_interface。\n版本已经给大家找好了，就是1.70.102（当然，可以找更新的，以下以1.70.102为例）\n实践\n1.70.102 对应的提交号是：4115a0b213a439247d3bf00d99455b2078b54341\n在mdb_interface仓库目录执行：\ngit switch -c 1.70.102 4115a0b213a439247d3bf00d99455b2078b54341\n\n确保构建环境对conan远端仓有读写权限\n然后一口气发：\nbingo build -r <你的远端> -bt release --upload --stage rc --user=hw.ibmc.release\nbingo build -r <你的远端> -bt release --upload --stage stable --user=hw.ibmc.release\nbingo build -r <你的远端> -bt debug --upload --stage rc --user=hw.ibmc.release\nbingo build -r <你的远端> -bt debug --upload --stage stable --user=hw.ibmc.release\n\n记得清本地的1.70.101缓存\n小结\n这个方法可以解决伙伴.317 bingo 对 mdb_interface/1.70.101的依赖问题。\nlinks: #p-3306-h-1, #p-3306-h-2, #p-3306-h-3"
+        }
+    ]
+}

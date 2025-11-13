@@ -1,0 +1,29 @@
+{
+    "topic_id": 665,
+    "question": "怎么申请使用kptest框架和itestsmart工具呢 - 怎么申请使用kptest框架和itestsmart工具呢？可以下载使用吗",
+    "topic_user_name": "Gxd",
+    "best_answer_url": "/t/topic/665/2",
+    "reply_posts": [
+        {
+            "user_name": "Openubmc Liuyujie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/665/2",
+            "text": "kptest框架和itestsmart工具当前处于内部测试阶段，具体诉求可以发邮件到caiyesheng1@huawei.com，会有专人与你联系沟通。"
+        },
+        {
+            "user_name": "Gxd",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/665/3",
+            "text": "收到，谢谢杰哥"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/665/4",
+            "text": "收到，谢谢杰哥"
+        }
+    ]
+}

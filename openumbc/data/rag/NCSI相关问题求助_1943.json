@@ -1,0 +1,15 @@
+{
+    "topic_id": 1943,
+    "question": "NCSI相关问题求助 - content: 涉及到OpenUBMC NCSI的需求，有两个疑问需要帮忙澄清一下。\n\nOpenUBMC的NCSI网口优先级是怎样的？\n在V2上，NCSI网口优先级是专用网口 > 板载网卡，然后再是OCP卡、PCIe网卡等。\n官方IPMI手册中，设置NCSI端口参与自适应，没有说明OCP与OCP2，请问是否支持？\nimage554×416 55 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/27ac1bb63129b6e9e4da7a67e527f245134aee28.png",
+    "topic_user_name": "kunlun_luzhanghui",
+    "best_answer_url": "/t/topic/1943/2",
+    "reply_posts": [
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1943/2",
+            "text": "NCSI网口优先级是专用口->PCIE卡->OCP->OCP2。\n当前只支持专用口和PCIE卡设置端口自适应。"
+        }
+    ]
+}

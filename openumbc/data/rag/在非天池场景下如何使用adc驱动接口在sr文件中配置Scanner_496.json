@@ -1,0 +1,43 @@
+{
+    "topic_id": 496,
+    "question": "在非天池场景下如何使用adc驱动接口在sr文件中配置Scanner - content: 如题，之前在 关于《BMC模组硬件指南》中ADC接口和PWM接口的问题 这篇帖子中提到了非天池场景下如何使用adc和pwm的接口。\n这里有c接口和lua的接口，但这个是属于代码侧的。那如果要在sr文件中配置传感器，这部分的Scanner该如何去配置呢？有相应的配置示例吗？\nlinks: https://forum.openubmc.cn/t/topic/402",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "/t/topic/496/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/496/2",
+            "text": "首先需要将ADC作为一个bus，在root.sr中进行申明\n在root.sr添加对象Adc_xxx\nAdc类定义如下：\n\nprop\ntype\ndescription\n\nScanRate\nU32\nADC采样频率，默认32768\n\nVoltRefSrc\nU32\n参考电压类型：0 外部参考电压；1 内部参考电压；默认1\n\nVoltRefVal\nU32\n参考电压值，单位毫伏，默认2400\n\n拓扑中将Adc_1添加到bus中，并通过EXU连接器传递下去，传到你需要的板子的CSR。\n在对应的板子CSR中，定义Adc器件\n\"Chip_Adc_xxx\": {\n    \"Address\": xxx,\n    \"AddrWidth\": xxx,\n    \"OffsetWidth\": xxx\n}\n\n并把Adc器件挂在ADC总线下：\n\"ManagementTopology\": {\n    \"Anchor\": {\n        ...\n        \"Adc_xxx\": {\n            \"Chips\": [\n                \"Chip_Adc_xxx\"\n            ]\n        }\n        ...\n    }\n}\n\n然后Scanner就按照正常器件配置即可：\n\"Scanner_Adc_xxx\": {\n    \"Chip\": \"#/Chip_Adc_xxx\",\n    \"Offset\": xxx,\n    \"Size\": xxx,\n    \"Period\": xxxx\n}\n\nBMC Studio应该支持配置，可以考虑使用BMC Studio进行辅助开发"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/496/3",
+            "text": "将ADC作为一个bus配置，这个好理解，后续的步骤也和平常的一致。\n但是在这种情况下的\"Chip_Adc_xxx\"的\"Address\"又该是什么呢？一共16路adc，难道就是写0~15或者1~16这样吗？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/496/4",
+            "text": "当前配置Chip主要是为了能访问\n具体的链路在Scanner上进行配置，即Offset： 0、1、2、3对应不同的adc每一路"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/496/5",
+            "text": "感谢张工。刚刚又想到了个问题，这个Scanner要读取几个字节，读出来的数据又要通过什么公式换算得到实际的电压结果。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/496/6",
+            "text": "具体取决于硬件吧，可以从4字节尝试一下，然后公式就从毫伏转成伏即可"
+        }
+    ]
+}

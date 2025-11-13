@@ -1,0 +1,15 @@
+{
+    "topic_id": 933,
+    "question": "刷了华为根的机器是否可以直接刷伙伴根 - 刷了华为根的机器是否可以刷伙伴根后就可以升级伙伴签名的openUBMC版本？\n是否有带外的命令可以刷伙伴根？",
+    "topic_user_name": "yctco_zhanglei",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/933/2",
+            "text": "content: 刷过伙伴根的机器，无法再刷新其他伙伴根，请联系PAE咨询解决策略\n带外可以使用IPMI命令导入伙伴根，需要先将伙伴根传输到BMC的/tmp目录下，例如文件名为/tmp/1.bin，可以尝试如下命令：\nipmitool -H ${server} -I lanplus -p 623 -U ${username} -P ${password} -C 17 raw 0x30 0x93 0xdb 0x07 0x00 0x57 0x00 0x02 0x03 0x00 0x00 0x0a 0x2f 0x74 0x6D 0x70 0x2f 0x31 0x2e 0x62 0x69 0x6e\n其中server为BMC的ipmi地址，username/password为对应的BMC管理员用户名和密码\n相关IPMI命令，请参考对应产品的IPMI命令手册，例如华为昇腾产品：（https://support.huawei.com/carrier/docview?nid=DOC1100890472&topicId=76ed6009）\nlinks: https://support.huawei.com/carrier/docview?nid=DOC1100890472&topicId=76ed6009%EF%BC%89"
+        }
+    ]
+}

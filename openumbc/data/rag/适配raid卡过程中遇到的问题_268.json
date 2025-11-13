@@ -1,0 +1,85 @@
+{
+    "topic_id": 268,
+    "question": "适配raid卡过程中遇到的问题 - content: 目前服务器实际的硬件情况是有raid卡的，但是我们在webui中无法正常查看到raid卡的数量和信息。\nraid卡是pmc/pm8204，由于还未了解天池架构中如何将csr文件写入到板卡上的eeprom，所以采用静态配置vpd的方法来进行适配raid卡。\n使用vpd/vendor/PMC-Sierra/Raid/14140130_9005028f_1cc40101.sr配置文件作为raid的csr，在webui上无法显示raid卡数量及信息。\nimage914×762 76.6 KB\nlinks: #p-412-raidwebuiraid-1, #p-412-raidpmcpm8204csreepromvpdraid-2, #p-412-vpdvendorpmc-sierraraid14140130_9005028f_1cc40101srraidcsrwebuiraid-3, https://forum.openubmc.cn/uploads/default/original/1X/04c2f18b97858ab93981c2ed49534c9d82b15637.png",
+    "topic_user_name": "wuzhou-xiaokaili",
+    "best_answer_url": "/t/topic/268/6",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/268/2",
+            "text": "1、如果是板卡是基于天池加载的，那么需要板卡的eeprom区域烧录了对应板卡的csr并且使用的riser卡是支持天池加载的\n2、如果是通过pcie标卡，不走天池加载的，需要os能正常识别到卡后（通过lspci -tv查看），在BIOS启动阶段上报给BMC去加载。"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/268/3",
+            "text": "content: 我想请问这个pmc/pm8204的sr文件这里chips是空的是正常的吗，我看其他型号的raid的sr文件这里都有数据的。\n企业微信截图_174279381044372877×1481 479 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/f28b3ea0bff0564ab55b82d736291df8e8120bdf.png"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/268/4",
+            "text": "感谢回复  。我们是通过配置vpd进行静态（IdentifyMode设置为2，Presence设置为1）加载的csr，csr没有烧录到板卡的eeprom。您的意思是，我们这种方式是否需要通过适配bios才能正常加载raid卡是吗？我的疑惑是，通过我们这种方法静态加载的和通过写eeprom加载的，会有区别吗？我怀疑问题的所在是csr本身。"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/268/5",
+            "text": "可以排查：\n1、 14140130_9005028f_1cc40101.sr是否添加到了profile.txt\n2、web 【系统信息】-【其他】界面是否有四元组信息为9005_028f_1cc4_0101的PCIE卡\n3、对应槽位的Connector的Id、AuxId、Presence数值是否正确"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/268/6",
+            "text": "1、可以参考yizhonghui同学的回答进行排查，确定配置和Connnector状态值是否正常，以确定为什么卡没有在BMC加载。\n2、通过我们这种方法静态加载的和通过写eeprom加载的，会有区别吗？我怀疑问题的所在是csr本身。 — 如果成功加载了，功能上没有区别。"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/268/7",
+            "text": "我们的raid卡是接在riser上的，具体型号是：转接卡-Riser-3*16X SLOT（PCIE X8）RISER1&2（华为鲲鹏/S920S10&S920X10/02580282）。 在 web 的 【系统信息】-【其他】页面，我们看到 6 张 PCIE 设备，它们的四元组信息均为 9005_028f_1cc4_0101。因为我们配置了三张riser卡，每张riser卡上有两个pcie连接着raid。但是我们在【系统管理】-【存储管理】中无法看到raid卡的数量和信息。我们使用的riser是vpd/vendor/Huawei/TianChi/IEU/14100513_00000001040302023940.sr。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/268/8",
+            "text": "content: 收到，那就是PCIE卡正常上报了，raid卡建链未成功，可以把一键收集发我的邮箱吗，我内部做进一步定位\ncaiyesheng1@huawei.com\nlinks: mailto:caiyesheng1@huawei.com"
+        },
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/268/9",
+            "text": "是正常的；\n排查建议：\n1.如果加载了raid卡的sr，就会创建里面的对象，可以看一下资源树是否有controller对象\n2.PMC的卡走MCTP链路，排查一下mctp链路是否正常；app.log里面搜索：\n‘[Storage] Successfully register_ctrl_mctp_transport’\n3.可以提供日志，进一步看一下细节"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/268/10",
+            "text": "已发送日志"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/268/11",
+            "text": "1.可以看一下资源树是否有controller对象，似乎没有找到controller对象。\n~ ~ $ source /etc/profile \n~ ~ $ busctl --user tree > tree\n~ ~ $ cat tree | grep raid\n~ ~ $ cat tree | grep controller\n\n2.dump_info/LogDump/app.log中没有找到Successfully register_ctrl_mctp_transport相关内容。"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/268/12",
+            "text": "提供一下邮箱，论坛无法上传日志"
+        }
+    ]
+}

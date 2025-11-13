@@ -1,0 +1,106 @@
+{
+    "topic_id": 510,
+    "question": "25.03 fructrl源码构建时出文件找不到的错 - content: 背景\n代码版本：manifest 25.03\n环境版本：dockerfile 25.03\nbingo版本：0.5.317\nconan远端：“https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/”\n问题现象\n发构建指令：bingo build -b openUBMC -r openubmc_dev\n报错信息：\n4663e5e4e9205e2ee592a0565f088fc1460×602 35.1 KB\n/bin/sh: line 1: /root/.conan/bin/luac: No such file or directory\n\n初步分析\n应该是像是环境上对fructrl的源码构建缺依赖\n我知道可以用https://conan.openubmc.cn/conan_1 这个源码，但是种种原因，暂时先用\"https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/\"这个临时的\n诉求\n如何解决这个构建错误？\nlinks: #p-971-h-1, https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/, #p-971-h-2, https://forum.openubmc.cn/uploads/default/original/1X/5a2aa8ea79a279e52f5ba785a57c402592531a22.png, #p-971-h-3, https://conan.openubmc.cn/conan_1, https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/, #p-971-h-4",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/510/17",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/2",
+            "text": "这个是conan环境搭建漏了一步，你是改了dockefile吗"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/3",
+            "text": "没有全自动做，是手动安装了bingo和flatbuffers。能告知一下具体漏了哪一步么"
+        },
+        {
+            "user_name": "特别的名字_wangningbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/4",
+            "text": "拉取manifest代码仓，执行一下init.py脚本"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/6",
+            "text": "这个执行过了"
+        },
+        {
+            "user_name": "特别的名字_wangningbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/7",
+            "text": "manifest代码是最新的吗？"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/9",
+            "text": "content: Commits详情 - manifest:manifest - GitCode\n这个\nlinks: https://gitcode.com/openUBMC/manifest/commit/49631ac21f2dc664943b7cb66da01f6a0890ce0c?ref=main"
+        },
+        {
+            "user_name": "特别的名字_wangningbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/10",
+            "text": "content: 需要使用25.03tag的代码执行init脚本，你这个不是发布版本，代码存在一些问题。\nlinks: https://gitcode.com/openUBMC/manifest/tags/25.03"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/11",
+            "text": "content: 使用25.03tag重新创建了构建镜像，构建出现另一个错：\n33362b487c10aad199ccfa0a49332ea1919×952 61 KB\n关键报错应该是：\nFile \"/usr/local/lib/python3.12/dist-packages/bmcgo/tasks/task_build_conan.py\", line 580, in install_ibmc\nlinks: https://gitcode.com/openUBMC/manifest/tags/25.03, https://forum.openubmc.cn/uploads/default/original/1X/fa5ee88b0f4d44ce84708f11eb8f1b7c4aaf90ae.png"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/12",
+            "text": "content: db0cc45a1c958e4358af5034a3ac32e1919×485 40.2 KB\n尝试切换到工作目录手动执行\nconan lock create conanfile.py --lockfile-out=ibmc.lock -pr=profile.luajit.ini -r ibmc_dev -s build_type=Debug  -o firmware_mgmt:community_enable=True -o bmc_time:manufacture=True -o skynet:enable_luajit=True -o vpd:board_name=openUBMC -o fructrl:manufacture=True -o chassis:manufacture=True -o help:board_name=openUBMC -o *:module_symvers=c61ed460fefe0c2aeec85ee4e224a2ea8d555b1e45ac085d855123812dfcd6e4 --build=missing\n\n报错如下：\n8804578f8cb0577a022b912a5df7e4f1919×125 13.5 KB\nERROR: Conanfile does not exist in /home/workspace/build/manifest/temp/oct_rtos/conanfile.py\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/d9f41a84490143aa13ddd10d96787d162d10c0ad.png, https://forum.openubmc.cn/uploads/default/original/1X/1cd978eb00bd0e862dee776eaa4b028dfbd09231.png"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/13",
+            "text": "yizhonghui:\n\nbingo和flatbuffers\n\n执行目录错误，在temp/conan_source_xx/openubmc/all目录下执行此命令"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/14",
+            "text": "1、 我们实际的路径是这个：temp/conan_source_debug_dev/ibmc/all/  ，有没有影响？\nroot@cec0aacdbc6a:/home/workspace/openubmc_0403/manifest/temp/conan_source_debug_dev/ibmc/all# conan lock create conanfile.py --lockfile-out=ibmc.lock -pr=profile.luajit.ini -r ibmc_dev -s build_type=Debug  -o firmware_mgmt:community_enable=True -o bmc_time:manufacture=True -o skynet:enable_luajit=True -o vpd:board_name=openUBMC -o fructrl:manufacture=True -o chassis:manufacture=True -o help:board_name=openUBMC -o *:module_symvers=c61ed460fefe0c2aeec85ee4e224a2ea8d555b1e45ac085d855123812dfcd6e4 --build=missing\nERROR: No remote 'ibmc_dev' defined in remotes\n\n看来应该设置一下远端名：\nbingo build -b openUBMC -r openubmc_dev\n目前来看，没有conan create 的错误了"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/15",
+            "text": "content: fructrl的源码构建问题再次复现，应该怎么处理呢：\nimage1025×483 34.1 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/99868f4572f661ca9b8a73a8113f0ec3963153f7.png"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/510/17",
+            "text": "要先按最新的的manifest的dockerfile创建环境，然后单独执行一次fructrl的构建，才能将luajit环境部署好"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/510/18",
+            "text": "是的，镜像中未预置luac工具。使用bingo构建组件或manifest时，bingo会安装好luac工具。"
+        }
+    ]
+}

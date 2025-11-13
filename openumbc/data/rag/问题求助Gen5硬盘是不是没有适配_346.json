@@ -1,0 +1,22 @@
+{
+    "topic_id": 346,
+    "question": "【问题求助】Gen5硬盘是不是没有适配？ - Gen5硬盘无法显示固件版本、正确的速率等。（不能依赖BMA）\n目前是否没有后适配？\n后续是否有适配计划？",
+    "topic_user_name": "Liaochaowan",
+    "best_answer_url": "/t/topic/346/3",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/346/2",
+            "text": "如果有诉求的话，可以在hardware-sig组申报议题讨论一下"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/346/3",
+            "text": "是的，Gen5硬盘的速率是需要单独适配的，请问是项目遇到了实际问题吗，可以联系我"
+        }
+    ]
+}

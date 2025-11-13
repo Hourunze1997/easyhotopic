@@ -1,0 +1,29 @@
+{
+    "topic_id": 610,
+    "question": "非天池组件加载方式 - 社区开发指南-特性开发-板卡适配-非天池组件的加载方式\nPCIe Device组件在初始化的时候会向BIOS发送ipmi命令\n这里描述是否有误？我理解应该是bios向bmc发送ipmi命令（类似set device info）；而不是向bios发送ipmi命令",
+    "topic_user_name": "Iss Tanghaibin",
+    "best_answer_url": "/t/topic/610/4",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/610/2",
+            "text": "嗯，这里实际上涉及多个IPMI交互，文档和你的理解都不能说是错的\nBIOS发送给BMC的是槽位和devbus对应信息，BMC利用这个信息确认对应槽位的pcie卡是否在位。但这点信息不足以让BMC确认卡的具体信息，所以BMC还需要再像BIOS查询此槽位的pcie卡的唯一标识，即PCIE四元组。\nBMC通过IPMI命令向IMU查询四元组，其中需要输入BIOS上报的devbus号。拿到四元组后，BMC加载对应四元组的CSR。"
+        },
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/610/3",
+            "text": "你好，在开发指南–特性开发–PCIe配置–PCIe卡的加载\nbios会上报BDF给BMC（slot+deviceBDF), BMC会根据BDF向pmu查询PCIe设备四元组，然后向bios发送ipmi命令，IMU根据BMC的BDF返回槽位上插的四元组信息\n我找到了更详细的信息\n但是对pmu和IMU的具体含义不太清楚\npmu可能是pcie管理单元？\n询问组内成员以及社区文档没有找到确切解释"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/610/4",
+            "text": "IMU是鲲鹏芯片中类似ME一样的管理芯片，负责将host侧的很多数据传递至BMC。\n比如PCIE建链、bus分配当前就是在IMU中实现的，因此BMC可以跟IMU进行通讯即可获取到PCIe相关信息。\nPMU是openUBMC中的一个抽象概念，是想将 ME、IMU这类CPU侧的管理芯片统一起来。"
+        }
+    ]
+}

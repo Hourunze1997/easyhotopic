@@ -1,0 +1,15 @@
+{
+    "topic_id": 1209,
+    "question": "【已评审】新增获取伙伴根在线调试客户端自定义命令 - content: 背景\n安全组件需支持在线调试自定义命令，debug包新增查询安全启动相关信息调试命令\n社区和伙伴独立开发场景下，客户系统不再为华为签名，提供调试命令，查看客户设备的伙伴签名hash是否符合预期\n决策点\n新增path: /bmc/kepler/Debug/Managers/:ManageId/SecureBoot\n新增interface: bmc.kepler.Debug.Managers.SecureBoot\n新增method: GetSecureBootConfiguration\n详细描述\npath: /bmc/kepler/Debug/Managers/:ManageId/SecureBoot\ninterface: bmc.kepler.Debug.Managers.SecureBoot\n变化类型：新增path、interface、方法\n应用场景：开发/维护人员在线通过调测命令查询安全启动相关信息，包括是否已经导入可信根，可信根是否符合预期\n持久化类型：不持久化\n操作权限：SecurityMgmt\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n描述displayDescription\ncmdName\n\nGetSecureBootConfiguration\n新增方法\n请求：is响应：s\nSecurityMgmt\n不涉及\n不涉及\n查询安全启动相关信息\n请求参数：Subcmd(0代表查询BMC根文件系统签名CA的摘要值),Args(当Subcmd为0时，取值为’pss’或者’pkcs’，表示CA证书的填充格式)响应参数：Configuration（为字符串，字符串中为k:v格式的json数组)\n方法描述：Get Secure Boot Configuration\ngetsecureboot\n\n样例\nUsage: getsecureboot <Subcmd> <Args>\nGet Secure Boot Configuration.\nSubcmd i  查询的内容类型。\n    当前仅支持0，表示查询BMC根文件系统签名CA的摘要值\nArgs      s  Subcmd的执行参数。\n    当Subcmd取值0时，该字段仅支持取值‘pss’ 或者 ‘pkcs’。\n返回样例\n‘{“RootfsCADigest”:“0102030A0Bxxx”}’\n评审结论\n同意新增资源树协作接口及方法\n新增path: /bmc/kepler/Debug/Managers/:ManageId/SecureBoot\n新增interface: bmc.kepler.Debug.Managers.SecureBoot\n新增method: GetSecureBootConfiguration，请求签名is，响应签名s，权限SecurityMgmt\n新增调测命令: getsecureboot\nlinks: #p-2619-h-1, #p-2619-h-2, #p-2619-h-3, #p-2619-h-4",
+    "topic_user_name": "Je Li",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1209/2",
+            "text": ""
+        }
+    ]
+}

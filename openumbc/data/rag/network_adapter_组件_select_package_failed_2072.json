@@ -1,0 +1,36 @@
+{
+    "topic_id": 2072,
+    "question": "network_adapter 组件 select package failed... - content: openUBMC 25.06 版本 network_adapter 组件 select package failed、Enable channel TX failed、Disable channel TX failed\n背景\n​\t\t      在适配 Intel E810-XXVDA2 网卡过程中，适配网卡 NCSI OEM 命令获取MAC地址、芯片温度及光模块温度的 NCSI 命令过程中，MAC地址、芯片温度已经正常获取，但获取光模块温度时获取失败。Intel 反馈获取光模块温度时网卡初始化时要先发select package 然后再发clear initial state，否则可能会导致光模块温度获取失败。一键收集日志中发现 25.06 版本中出现 select package failed、Enable channel tx failed、Disable channel TX failed 问题。\n基本信息\n\n组件信息：network_adapter/1.70.116@openUBMC.release/rc（openUBMC 25.06 版本）\n\n使用 E810-XXVDA2、MCX623106AN-CDAT 网卡均出现此问题；\n\n日志跟踪\n​\t\t      1. 通过一键收集，查看日志时，发现 openUBMC 25.06 版本 network_adapter 组件出现 select package failed、enable channel tx failed 三个报错：\nimage-202507291435474722159×778 104 KB\n对比 25.03 版本日志，25.03 版本并未发现 select package failed、enable channel tx failed、Disable channel TX failed 等报错。\n      2.在 25.06 版本中进一步添加打印发现 select package failed、enable channel tx failed、Disable channel TX failed 等操作在 write ncsi cmd 成功后 read ncsi rsp 失败，read ncsi rsp 中获取到的 rsp_data 为空导致后续失败：\nimage-202507291642290051287×695 109 KB\nimage-202507291646378031299×592 18 KB\n      3.根据代码跟踪，select package、enable channel tx、disable channel tx 等操作最终都在 ncsi_util.ncsi_cmd_ctrl函数中执行 read_ncsi_rsp 时获取 rsp_data 失败，引起的 NCSI FAIL:\nimage-202507291716380381154×770 101 KB\nimage-202507291717049961045×689 121 KB\n问题诉求\n\n麻烦确认是因社区代码引起的 select package failed、Enable channel tx failed、Disable channel TX failed还是网卡本身引起的？\nlinks: #p-5150-openubmc-2506-network_adapter-select-package-failedenable-channel-tx-faileddisable-channel-tx-failed-1, #p-5150-h-2, #p-5150-h-3, #p-5150-h-4, https://discuss.openubmc.cn/uploads/default/original/2X/c/c986f34f42820ed063f12bebef734f6249982e8b.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/30a23cf9308eadf002ceca3cad12535a0772c1c0.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/6fec25861bb7e1ce84244a432f08435ab2f1360a.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/9789396fa80bf426900488a2bbe7d40273aa980b.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/19e145a6fad1de4acfe687aeb4ce1dc95c576934.png, #p-5150-h-5",
+    "topic_user_name": "baode_luoyin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2072/2",
+            "text": "这个是边带ncsi吧，这个卡支持NCSI over RMII吗"
+        },
+        {
+            "user_name": "baode_luoyin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2072/3",
+            "text": "Intel E810-XXVDA2 支持NCSI over RMII的"
+        },
+        {
+            "user_name": "Fantao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2072/4",
+            "text": "这是边带ncsi的打印，有没有接ncsi线缆"
+        },
+        {
+            "user_name": "baode_luoyin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2072/5",
+            "text": "content: 没接线缆，网卡光模块温度已经正常获取了，是网卡FW固件版本问题导致光模块NCSI OEM命令失败，感谢解答\ned852fa013b039d66cd5e3e0976e5271887×1255 152 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/381c6a6d4b0e343308bb0b78dc89c8b2de28ca5a.png"
+        }
+    ]
+}

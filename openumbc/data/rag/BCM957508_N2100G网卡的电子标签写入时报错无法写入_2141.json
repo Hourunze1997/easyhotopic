@@ -1,0 +1,15 @@
+{
+    "topic_id": 2141,
+    "question": "BCM957508-N2100G网卡的电子标签写入时报错，无法写入 - BCM957508-N2100G网卡的电子标签写入时报错Destination unavailable\nipmitool -I lanplus -H xx.xxx.xx.xx -U user -P test -C 17 raw 0x30 0x90 0x04 0x0a 0x03 0x01 0x00 0x0E 0x4B 0x75 0x6E 0x4C 0x75 0x6E 0x20 0x32 0x32 0x38 0x30 0x20 0x56 0x32\nUnable to send RAW command (channel=0x0 netfn=0x30 lun=0x0 cmd=0x90 rsp=0xd3): Destination unavailable\n查看日志发现ipmi_dft_write_elabel返回错误码211：\n2025-08-01 08:33:55.529361 alarm NOTICE: l_frudata_intf.c(94): [frudata] fru(10) ipmi write area(3) filed(1) data(KunLun 2280 V2)\n2025-08-01 08:33:55.529421 alarm ERROR: ipmi.c(78): [frudata][ipmi_dft_write_elabel] get fru[10] priv failed\n2025-08-01 08:33:55.529437 alarm ERROR: l_frudata_intf.c(98): l_ipmi_write_elabel: ipmi_dft_write_elabel fail, ret = 211\n2025-08-01 08:33:55.543670 frudata WARNING: init.lua(97): reg_command.lua:187 > fru_ipmi.lua:62 > fru_ipmi.lua:54: Destination unavailable\nipmi_dft_write_elabel函数为闭源函数，无法看到具体实现，想请问一下，这种外购卡是否支持fru的写入呢，如果支持需要按照什么格式要求呢，感谢",
+    "topic_user_name": "Jiaoxinchao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "nathanael yu",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2141/2",
+            "text": "从网卡适配看，外购标卡一般不会进行电子标签的修改；这种标卡也不会提供EEPROM供外部访问，一般是通过协议，比如smbus，mctp over pcie等方式进行序列号，产品型号等关键信息获取。该卡的eeprom是否暴露在外部可供bmc访问，这部分信息建议先确认下。"
+        }
+    ]
+}

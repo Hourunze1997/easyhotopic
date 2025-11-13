@@ -1,0 +1,78 @@
+{
+    "topic_id": 415,
+    "question": "openUBMC调试工具安装指导 - content: busybox\nbusybox号称linux的瑞士军刀，功能多体积少。\nopenubmc镜像中自带的busybox功能做了裁剪，没有telnet、i2c tools等工具，社区conan脚本仓 增加了busybox工具构建脚本，内置了telnet服务拉起功能，开发者可以按以下步骤构建和使用自定义busybox。\n步骤一：构建busybox包\n自定义的busybox带了一些不安全协议和功能（telnet、tftp等），未推送到社区conan仓，需要开发者单独构建，构建命令:\n# 克隆conan_index仓\ngit clone https://gitcode.com/openUBMC/conan_index.git\n# 进入源码目录\ncd conan_index/recipes/busybox/all\n# 构建busybox/1.34.0@openUBMC.release/stable\nconan create . busybox/1.34.0@openUBMC.release/stable -pr profile.ini\n\n伙伴可以将busybox推送到自己的conan仓：\n# ` [openubmc_dev]`需要替换成自己的conan仓名（conan remote list可查询）\nconan upload  busybox/1.34.0@openUBMC.release/stable -r [openubmc_dev]  -pr profile.ini\n\n步骤二：集成busybox\n在manifest.yml增加debug_dependencies调试依赖，调试依赖仅在个人构建(bingo build或bingo build -t personal)时生效。\n配置示例：\ndebug_dependencies:\n  - conan: busybox/1.34.0@openUBMC.release/stable\n\n步骤三：使用busybox\ntelnet连接：自定义的busybox自带了telnet服务，可以在开发机上执行telnet [ip_addr] 23连接服务器。\n其它功能：默认将busybox打包到环境上的/opt/debug/busybox，执行命令的范式是/opt/debug/busybox [function name]，如：\n# 查看帮助，`Currently defined functions:`章节显示了支持的功能\n/opt/debug/busybox --help\n# 调用工具示例：调用i2cget\n/opt/debug/busybox i2cget --help\n\n变更日志\n\n2025.04.25: 修复 telnetd服务启动失败问题，需要更新conan_index代码，重新构建busybox包\nlinks: #p-774-busybox-1, https://gitcode.com/openUBMC/conan_index.git, #p-774-busybox-2, #p-774-busybox-3, #p-774-busybox-4, #p-774-h-5",
+    "topic_user_name": "xuhaijun",
+    "best_answer_url": "/t/topic/415/10",
+    "reply_posts": [
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/415/2",
+            "text": "自定义的busybox带了一些不安全协议和功能（telnet、tftp等），未推送到社区conan仓，需要开发者单独构建，构建命令:\n# 克隆conan_index仓\ngit clone https://gitcode.com/openUBMC/conan_index.git\n# 进入源码目录\ncd conan_index/recipes/busybox/all\n# 构建busybox/1.34.0@openUBMC.release/stable\nconan create . busybox/1.34.0@openUBMC.release/stable\n\n使用高可用组件版本，\n执行conan create 报错\n\nnetworking/tc.c: In function ‘cbq_print_opt’:\nnetworking/tc.c:236:20: error: ‘TCA_CBQ_MAX’ undeclared (first use in this function); did you mean ‘TCA_CBS_MAX’?\n236 |  struct rtattr *tb[TCA_CBQ_MAX+1];\n|                    ^~~~~~~~~~~\n|                    TCA_CBS_MAX\nnetworking/tc.c:236:20: note: each undeclared identifier is reported only once for each function it appears in\nnetworking/tc.c:249:9: error: ‘TCA_CBQ_RATE’ undeclared (first use in this function); did you mean ‘TCA_TBF_RATE64’?\n249 |  if (tb[TCA_CBQ_RATE]) {\n|         ^~~~~~~~~~~~\n|         TCA_TBF_RATE64\nnetworking/tc.c:255:9: error: ‘TCA_CBQ_LSSOPT’ undeclared (first use in this function)\n255 |  if (tb[TCA_CBQ_LSSOPT]) {\n|         ^~~~~~~~~~~~~~\nnetworking/tc.c:256:48: error: dereferencing pointer to incomplete type ‘struct tc_cbq_lssopt’\n256 |   if (RTA_PAYLOAD(tb[TCA_CBQ_LSSOPT]) < sizeof(*lss))\n|                                                ^~~~\n\n系统版本\n\ncat /proc/version\nLinux version 5.15.133.1-microsoft-standard-WSL2 (root@1c602f52c2e4) (gcc (GCC) 11.2.0, GNU ld (GNU Binutils) 2.37) #1 SMP Thu Oct 5 21:02:42 UTC 2023"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/415/3",
+            "text": "conan create . busybox/1.34.0@openUBMC.release/stable --pr profile.ini\n来调用对应的交叉编译器"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/415/4",
+            "text": "content: image1253×356 35.3 KB\n本来是这么处理的，感觉还是楼主的方法好啊\nimage1015×535 28.9 KB\n顺便问下，是调用的截图红框里的文件吧？其他几个什么时候会用到啊？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/522982f2edd44a9569c527fde81e043d67a04466.png, https://discuss.openubmc.cn/uploads/default/original/1X/062debd1af964f81b0f9a68f9ffb07ce80a5a435.png"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/415/5",
+            "text": "profile.dt.ini是dt模式用的，使用x86主机的编译器；profile.luajit.ini和profile.ini用产品模式用的，使用/opt/hcc_arm64le交叉编译工具链"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/415/6",
+            "text": "文档已更新，使用-pr profile.ini指定交叉编译器。"
+        },
+        {
+            "user_name": "百信-罗昊",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/415/7",
+            "text": "content: debug_dependencies参数在bingo build时不生效，可以看到没有生成/opt/debug目录，实际验证也是没有生效的\nimg_v3_02m1_196b2173-0d31-49c1-a85a-f55f4a3138ag872×380 81.5 KB\nimg_v3_02m1_8b5354b9-b204-418b-a958-577c5aee7a1g456×567 46.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/82b4adfd3d97e7ad0b57dc889f5435d6fdc87b61.jpeg, https://discuss.openubmc.cn/uploads/default/original/1X/efe68abac2c54cc454c72e8af2047cc5304238db.jpeg"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/415/8",
+            "text": "请执行bingo -v查看bingo版本，当前bmcgo不支持debug_dependencies"
+        },
+        {
+            "user_name": "百信-罗昊",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/415/9",
+            "text": ""
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/415/10",
+            "text": "content: 该/usr/local/bin/bingo实际上是bmcgo带出来的命令，非openUBMC社区提供的bingo。\n临时解决方案：\n\n执行pip show conan，在回显中获取Location字段的值xxx\n执行 vi  xxx/bmcgo/tasks/task_build_conan.py (其中xxx为步骤1获取的Location值), 在脚本最后删除and not self.config.partner_mode行，保存并退出。\nlinks: #p-1573-h-1"
+        },
+        {
+            "user_name": "百信-罗昊",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/415/11",
+            "text": "感谢，已验证该临时方案可行"
+        }
+    ]
+}

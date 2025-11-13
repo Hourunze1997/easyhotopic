@@ -1,0 +1,22 @@
+{
+    "topic_id": 362,
+    "question": "CPU类的ProcessorID属性定义为U32类型，与SMBIOS协议范围（QWORD）不一致 - content: 接口定义\nimage498×636 22.5 KB\n协议规范\nimage730×732 39.2 KB\n保存超32类型范围数据时出错，导致解析中断\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/389eb42335eca35b948aec6289aebcfe717079fd.png, https://discuss.openubmc.cn/uploads/default/original/1X/5b59a9b52990a9a938640f288ecfe7285ae27e59.png",
+    "topic_user_name": "Kunlun Luxiaomu",
+    "best_answer_url": "/t/topic/362/2",
+    "reply_posts": [
+        {
+            "user_name": "Yelvsub",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/362/2",
+            "text": "这确实是一个问题，非常感谢您的反馈，我们会尽快修复"
+        },
+        {
+            "user_name": "Yelvsub",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/362/4",
+            "text": "计划社区25.06版本修复"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1472,
+    "question": "RTC时间同步问题咨询 - content: 请问bmc_time组件是如何进行RTC时间同步的？\n当前载板上一组i2c连接了RTC芯片，可以读到时间，但不知道如何配置SR与Time_Bmc关联起来。\n当前SR配置如下：\nimage622×490 22.7 KB\n直接读RTC芯片可以读到数据：\n\n读值也关联到了Scanner\nimage521×357 7.02 KB\n但实际查看BMC的时间并没有与RTC同步。\n另外，看其他例子，RTC时间都是从CPU模组的CPLD读取的，想问下bmc_time组件是否支持配置这种直接读RTC芯片的方式，对CpuBrdRtc这个属性配置不是很理解。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/fb07dd1188def01156a8ea9a90fb5fbf82d2784d.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/3f2d1e85ad0f2fcb07c3b3d7ef9d2346bfe8c859.png",
+    "topic_user_name": "lihang111",
+    "best_answer_url": "/t/topic/1472/2",
+    "reply_posts": [
+        {
+            "user_name": "sunpeijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1472/2",
+            "text": "你好\nCpuBrdRtc并未限制数据源，最终都是调用关联数据源Read接口(Offset、Size)读取二进制数据\n格式为:年月日时分秒\n其中年占2个字节\n此数据格式是相对固定的\n例如如下读到的数据\n133 7 1 8 3 6 16 26\n实际可以理解为:\n年: 133+7*256+100 = 2025\n即字节数据是1925年，实际会减去YearOffset适配其他数据源,这里是0，所以未处理\n其他: 1月8日6:16:26秒\n所以看您这边的返回格式是有问题的\n注：\n除此问题外，也要关注是否开启了NTP，因为开启NTP时是不会同步RTC时间的"
+        }
+    ]
+}

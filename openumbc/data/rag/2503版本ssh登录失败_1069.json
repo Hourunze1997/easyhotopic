@@ -1,0 +1,36 @@
+{
+    "topic_id": 1069,
+    "question": "25.03版本ssh登录失败 - content: 问题现象\n在自研设备上从V2版本升级到V3的25.03版本，BMC启动后串口可以登录，但是ssh登录提示错误：\nPermission denied, please try again.\nAdministrator@192.168.3.99’s password:\n一键收集日志operate_log记录：\n1970-01-01 00:04:55 SSH,Administrator@192.168.2.40,iam,User Administrator authentication failed\n1970-01-01 00:05:43 SSH,Administrator@192.168.2.40,iam,User Administrator authentication failed\n问题分析\n每日答疑纪要提到要更新account仓，使用1.70.22版本的account仓构建的包还是有相同问题。\n同样是V3版本，场内构建的过渡版本可以支持ssh。\n社区工程能力每日答疑纪要 - CICD - openUBMC 论坛\nlinks: #p-2257-h-1, mailto:Administrator@192.168.3.99, mailto:SSH,Administrator@192.168.2.40, mailto:SSH,Administrator@192.168.2.40, #p-2257-h-2, https://discuss.openubmc.cn/t/topic/246/3",
+    "topic_user_name": "恒扬-胡田野",
+    "best_answer_url": "/t/topic/1069/5",
+    "reply_posts": [
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1069/2",
+            "text": "v2升级v3，数据区变动，导致数据无法保留(包括用户数据)\n解决办法是可以在带内重新设置一下Administrator的密码，\n1、bios中设置\n2、os带内设置 ipmitool user set password 2 Admin@1111"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1069/3",
+            "text": "content: 尝试结果\n设置密码失败，BIOS设置密码也报失败\n[root@localhost ~]# ipmitool user set password 2 Admin@9000\nIPMI command failed: Unspecified error\nSet User Password command failed (user 2)\n[root@localhost ~]#\nipmi通道验证\n[root@localhost ~]# ipmitool sdr\n1711 Core Temp   | 39 degrees C      | ok\nMngmnt Health    | 0x00              | ok\nWatchdog2        | 0x00              | ok\nSysRestart       | 0x00              | ok\nSEL Status       | 0x00              | ok\nOp. Log Full     | 0x00              | ok\nSec. Log Full    | 0x00              | ok\n[root@localhost ~]# ipmitool mc info\nDevice ID                 : 1\nDevice Revision           : 1\nFirmware Revision         : 25.00\nIPMI Version              : 2.0\nManufacturer ID           : 2011\nManufacturer Name         : Unknown (0x7DB)\nProduct ID                : 0 (0x0000)\nProduct Name              : Unknown (0x0)\nDevice Available          : yes\nProvides Device SDRs      : yes\nAdditional Device Support :\nSensor Device\nSDR Repository Device\nSEL Device\nFRU Inventory Device\nIPMB Event Generator\nChassis Device\nAux Firmware Rev Info     :\n0x00\n0x00\n0x00\n0x00\n[root@localhost ~]#\n版本使用的组件\n\nconan: “iam/1.0.0@openUBMC.release/rc”\nconan: “libiam/1.70.8@openUBMC.release/rc”\nconan: “certificate/1.0.29@openUBMC.release/rc”\nconan: “capability_proxy/1.70.7@openUBMC.release/rc”\nconan: “account/1.70.22@openUBMC.release/rc”\nconan: “libenergy/1.0.6@openUBMC.release/rc”\nlinks: #p-2325-h-1, #p-2325-ipmi-2, #p-2325-h-3"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1069/4",
+            "text": "Admin@9000在弱密码库里，换别的密码试试"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1069/5",
+            "text": "content: 更换其他密码可以修改成功，ssh还是存在问题。另外一个帖子有解决方法，还未亲自验证。\n25.03发行版出包上机验证发现的的问题反馈 - 交流互助区 - openUBMC 论坛\nlinks: https://discuss.openubmc.cn/t/topic/457/7"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 589,
+    "question": "【已评审】Redfish升级接口权限问题 - content: 关联issue\nrackmount issue#24 （Redfish升级接口权限问题）\n评审背景\nURI：/redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate\n操作类型：POST\n上述Redfish升级接口有可选项 RestoreFactorySettings，表示当前升级操作是否恢复出厂设置\n问题：\n升级接口的权限是 操作员权限，恢复出厂设置的权限是 管理员权限，会导致有升级权限的用户可以使用低权限的升级操作进行恢复出厂设置\n备注：\n当前问题涉及到接口行为和操作权限变更，因此需要发送接口变更公告。\n评审点\n\nRestoreFactorySettings 为 true 时校验接口传入的操作人员的身份权限，如果权限不为管理员权限，则进行无权限报错（InsufficientPrivilege，HTTPCode：403）\nRedfish资料中，RestoreFactorySettings 参数说明中增加注意选项：此参数为 true 时的操作需要管理员权限\n\n评审结论\n评审通过，同意Redfish升级接口 SimpleUpdate 接口进行以下处理：\n\n接口的参数 RestoreFactorySettings 为 true 时校验权限是否为管理员权限, 如果不是则进行无权限报错（InsufficientPrivilege，HTTPCode：403）\n接口说明文档中，关于参数 RestoreFactorySettings 的说明中增加注意选项：此参数为 true 时，该操作需要管理员权限\n\n剩余事项\n\n事项\n处理进展\n\n当前问题涉及到接口行为和操作权限变更，因此需要发送接口变更公告\n本事项由于当前基础设施还不满足，单独以 Redfish issue #32 进行跟踪，在5月份进行变更公告。\nlinks: #p-1157-issue-1, https://gitcode.com/openUBMC/rackmount/issues/24, #p-1157-h-2, #p-1157-h-3, #p-1157-h-4, #p-1157-h-5, https://gitcode.com/openUBMC/rackmount/issues/32",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/589/2",
+            "text": ""
+        }
+    ]
+}

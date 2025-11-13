@@ -1,0 +1,15 @@
+{
+    "topic_id": 1335,
+    "question": "【storage】后置4 NVMe的BDF和OS通过lspci -tv 查看的到 BDF不一致 - content: BMC看到的Device是0，在OS看到的Device是2。截图如下：\nimage332×291 70.6 KB\nimage844×417 29.5 KB\n后置4NVMe背板编号为： 00000001030302024340\n这个不知道主干是否存在次问题，或者怎么定界是CSR、BMC或者CPLD的问题呢？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/151bdab808e59709870d909d7b1f191c2f53fd8f.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/ea577225c98350d2dba93a9c7734b17a0c7233d7.png",
+    "topic_user_name": "HKZY_YangBo",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "王祝炜",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1335/2",
+            "text": "看着像是CSR配置的问题，设备BDF跟高速信号走的，与低速在位信号不是同一个硬盘但是配到了同一个硬盘，会导致显示错位。"
+        }
+    ]
+}

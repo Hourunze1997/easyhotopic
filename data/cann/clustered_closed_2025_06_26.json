@@ -1,0 +1,227 @@
+{
+    "0": {
+        "summary": "开发者安装配置时遇到漏装必要软件包、版本匹配等问题导致运行失败",
+        "discussion_count": 7,
+        "discussion": [
+            [
+                {
+                    "id": 972,
+                    "title": "atlas 200i DK 开发板 opencv  安装失败",
+                    "url": "https://gitee.com/ascend/samples/issues/ICFJ8M",
+                    "created_at": "2025-06-16T17:19:18+08:00",
+                    "source_type": "issue",
+                    "source_id": "20880166",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 911,
+                    "title": "sampleYOLOV7MultiInput安装报错",
+                    "url": "https://gitee.com/ascend/samples/issues/ICEX1K",
+                    "created_at": "2025-06-13T10:44:12+08:00",
+                    "source_type": "issue",
+                    "source_id": "20851400",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                }
+            ],
+            [
+                {
+                    "id": 1500,
+                    "title": "使用toolkit时报错，包括模型转换（模型可转换成功，环境报错）与推理过错",
+                    "url": "https://www.hiascend.com/forum/thread-0248185620582261169-1-1.html",
+                    "created_at": "2025-06-18T09:16:22+08:00",
+                    "source_type": "forum",
+                    "source_id": "0248185620582261169",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 1368,
+                    "title": "安装Ascend-cann-toolkit_8.2.RC1.alpha001_linux-x86_64.run报错  error code: 126",
+                    "url": "https://www.hiascend.com/forum/thread-0205185616166676141-1-1.html",
+                    "created_at": "2025-06-18T08:02:47+08:00",
+                    "source_type": "forum",
+                    "source_id": "0205185616166676141",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 116,
+                    "title": "RuntimeError: call aclnnAdd failed, detail:EZ9999: Inner Error!",
+                    "url": "https://gitee.com/ascend/triton-ascend/issues/ICCL9N",
+                    "created_at": "2025-06-04T17:21:28+08:00",
+                    "source_type": "issue",
+                    "source_id": "20742827",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 94,
+                    "title": "[Documentation|文档反馈]: 建议添加对CANN版本的需求说明",
+                    "url": "https://gitee.com/ascend/cann-ops/issues/ICB5ES",
+                    "created_at": "2025-05-28T15:17:56+08:00",
+                    "source_type": "issue",
+                    "source_id": "20675620",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 130,
+                    "title": "call aclnnCast failed",
+                    "url": "https://www.hiascend.com/forum/thread-02102182676529679115-1-1.html",
+                    "created_at": "2025-05-15T07:28:50+08:00",
+                    "source_type": "forum",
+                    "source_id": "02102182676529679115",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "1": {
+        "summary": "昇腾CANN开发者如何解决cmake无法启用WITH_CANN选项的编译问题",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 154,
+                    "title": "OpenCV编译 CANN没有打开",
+                    "url": "https://www.hiascend.com/forum/thread-0226184468452524060-1-1.html",
+                    "created_at": "2025-06-05T01:14:13+08:00",
+                    "source_type": "forum",
+                    "source_id": "0226184468452524060",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 142,
+                    "title": "编译安装基于CANN的opencv的cannops模块报错",
+                    "url": "https://www.hiascend.com/forum/thread-02113175593420797113-1-1.html",
+                    "created_at": "2025-02-22T07:57:01+08:00",
+                    "source_type": "forum",
+                    "source_id": "02113175593420797113",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "2": {
+        "summary": "开发者在ATC工具转换warpPerspective算子时输入类型配置失败",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 638,
+                    "title": "warpperspective功能问题",
+                    "url": "https://www.hiascend.com/forum/thread-0248184554080978079-1-1.html",
+                    "created_at": "2025-06-06T01:01:21+08:00",
+                    "source_type": "forum",
+                    "source_id": "0248184554080978079",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 863,
+                    "title": "利用atc进行单算子warpperspective转换失败",
+                    "url": "https://www.hiascend.com/forum/thread-0226184387156555053-1-1.html",
+                    "created_at": "2025-06-04T02:39:17+08:00",
+                    "source_type": "forum",
+                    "source_id": "0226184387156555053",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 864,
+                    "title": "转换warpperspective算子失败",
+                    "url": "https://www.hiascend.com/forum/thread-02115183968056430027-1-1.html",
+                    "created_at": "2025-05-30T06:14:16+08:00",
+                    "source_type": "forum",
+                    "source_id": "02115183968056430027",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "3": {
+        "summary": "开发者转换模型时在转换过程和推理过程中遇到报错",
+        "discussion_count": 5,
+        "discussion": [
+            [
+                {
+                    "id": 1087,
+                    "title": " sampleResnetRtsp推理om模型报错",
+                    "url": "https://gitee.com/ascend/samples/issues/ICFNO1",
+                    "created_at": "2025-06-17T09:58:23+08:00",
+                    "source_type": "issue",
+                    "source_id": "20885905",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 929,
+                    "title": "ATC成功，但是模型却推理不了，而且om文件看起来很多结构丢失了",
+                    "url": "https://www.hiascend.com/forum/thread-0248185093452423125-1-1.html",
+                    "created_at": "2025-06-12T06:50:52+08:00",
+                    "source_type": "forum",
+                    "source_id": "0248185093452423125",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.751
+                }
+            ],
+            [
+                {
+                    "id": 908,
+                    "title": "samples/ inference / modelInference / sampleResnetRtsp / python 转om报错",
+                    "url": "https://gitee.com/ascend/samples/issues/ICER0Z",
+                    "created_at": "2025-06-12T17:05:22+08:00",
+                    "source_type": "issue",
+                    "source_id": "20843603",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                }
+            ],
+            [
+                {
+                    "id": 2656,
+                    "title": "使用昇腾910跑模型dbet做推理，转模型成onnx的时候报错",
+                    "url": "https://gitee.com/ascend/tools/issues/ICG7WR",
+                    "created_at": "2025-06-19T09:17:42+08:00",
+                    "source_type": "issue",
+                    "source_id": "20912139",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 2039,
+                    "title": "使用c++加载动态宽度的OM模型，推理一直报错",
+                    "url": "https://www.hiascend.com/forum/thread-02115185703877094164-1-1.html",
+                    "created_at": "2025-06-19T08:24:37+08:00",
+                    "source_type": "forum",
+                    "source_id": "02115185703877094164",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    }
+}

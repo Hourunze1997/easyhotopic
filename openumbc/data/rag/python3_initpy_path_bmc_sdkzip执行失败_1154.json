@@ -1,0 +1,78 @@
+{
+    "topic_id": 1154,
+    "question": "python3 init.py -path ./bmc_sdk.zip执行失败 - content: 搭建WSL构建环境\nimage1328×653 61.4 KB\n从错误提示看像是工具包找不到？请帮忙看一下，多谢\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/b698fdd37d2a3d0c3b25b0fe16f4718b37f60ef6.png",
+    "topic_user_name": "Niegsh",
+    "best_answer_url": "/t/topic/1154/5",
+    "reply_posts": [
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1154/2",
+            "text": "content: 您好，想请问您一下您的manifest是最新的吗？最新版本的manifest应该没有这个问题，仓颉是可以正常下载的。\nimage1191×236 10 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/a068f03c5fd12396c57e962c300225c42ab9fea5.png"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1154/3",
+            "text": "name or server unknown  是你的域名解析不到这个地址。 基本上不是对端的问题，是你本地的问题。可能你需要配置代理。"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1154/4",
+            "text": "content: 看看仓颉网站是否能通\nping cangjie-lang.cn\n检查是否有域名服务器配置/etc/resolv.conf\nlinks: http://cangjie-lang.cn"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1154/5",
+            "text": "不是楼主网络的问题，问题在于之前有一个manifest的版本错误地把仓颉下载链接分成了两个部分，导致无法给wget传导正确的url。楼主看着很像这个问题。这个问题在最新版本的manifest里已经被修复了。"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1154/6",
+            "text": "content: 是这个问题，更新manifest后这个问题解决了。但是出现了新的问题，这个是什么原因？\nimage1290×579 25.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/a61e2ec4c7ae1965b229e151e927ce91a428293f.png"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1154/7",
+            "text": "这个应该需要先手动安装后，才能执行 python3 init.py -path ./bmc_sdk.zip。\n文档在环境搭建这里存在先后顺序的不太顺的问题。\n\n先是搭建WSL环境，是执行python3 init.py -path ./bmc_sdk.zip来搭建的，但是依赖了手动安装bmc studio里面的安装仓颉工具链的部分。\npython3 init.py -path ./bmc_sdk.zip中好像会自动安装bmc studio，那后面手动安装bmc studio是不是就是重复安装。\n\n不知道是不是这样？"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1154/8",
+            "text": "之前是脚本出了问题，现在又更新了一个版本把bug修了。目前的话init.py可以正常地安装仓颉"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1154/9",
+            "text": "我今天更新的manifest好像还不行啊，是不是修改没有更新到社区？不过我已经手工安装把问题解决了"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1154/10",
+            "text": "是我回复你的那段时间（大约2小时前）修的。您可能是今天早些时候更新的？"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1154/11",
+            "text": "content: 哦。那应该就是这块代码了。跟库分成两段一起合入的。\nimage1731×745 51.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/0644fbf97b09b93a7fd512fbcd19efc935e9656b.png"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 528,
+    "question": "【已评审】支持查询指定PCIEDevices资源信息，新增属性 - content: ISSUE链接（必填，此议题关联的issue）\nhttps://gitcode.com/openUBMC/mdb_interface/issues/16\n背景（必填，文字描述议题背景，如需求来源、问题场景）\n某运营商定制化需求：支持查询指定PCIEDevices资源信息\n涉及redfish接口URL: https://device_ip/redfish/v1/Chassis/chassis_id/PCIeDevices/PCIeDevice_id\n1、当前PCIeDevice对象已有属性PCIeType，用于表示PCIe设备所在槽位支持的协议版本。\n2、设备本身能支持的最高协议版本、设备实际协商的协议版本待新增。\n决策点（必填，一句话描述待决策点）\n新增资源树属性MaxPCIeType、NegotiatedPCIeType，表示设备本身能支持的最高协议版本、设备实际协商的协议版本。\n详细描述\n资源path： /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\n资源interface： bmc.kepler.Systems.PCIeDevices.PCIeDevice\n变化类型：新增属性\n应用场景：北向redfish接口查询指定PCIEDevices资源信息返回\n持久化类型： 不持久化\n操作权限：ReadOnly\n详细描述：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nMaxPCIeType\n新增属性\ns\nR：ReadOnly\nNA\nfalse\nPCIe设备本身能支持的最高协议版本\n字符串枚举类型，可取值“Gen1”~“Gen6”\n\nNegotiatedPCIeType\n新增属性\ns\nR：ReadOnly\nNA\nfalse\nPCIe设备实际协商的协议版本\n字符串枚举类型，可取值“Gen1”~“Gen6”\n\n评审结论\n1、同意新增资源树属性MaxPCIeType：\n\n资源树路径: /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\n资源树接口: bmc.kepler.Systems.PCIeDevices.PCIeDevice\n属性：MaxPCIeType，类型为字符串，PCIe设备本身能支持的最高协议版本\n权限：ReadOnly\n\n2、同意新增资源树属性NegotiatedPCIeType：\n\n资源树路径: /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\n资源树接口: bmc.kepler.Systems.PCIeDevices.PCIeDevice\n属性：NegotiatedPCIeType，类型为字符串，PCIe设备所在槽位支持的协议版本\n权限：ReadOnly\nlinks: #p-1018-issueissue-1, https://gitcode.com/openUBMC/mdb_interface/issues/16, #p-1018-h-2, #p-1018-h-3, #p-1018-h-4, #p-1018-h-5",
+    "topic_user_name": "王祝炜",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/528/2",
+            "text": ""
+        }
+    ]
+}

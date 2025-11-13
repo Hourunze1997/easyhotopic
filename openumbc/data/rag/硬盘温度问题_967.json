@@ -1,0 +1,29 @@
+{
+    "topic_id": 967,
+    "question": "硬盘温度问题 - 在openUBMC的csr配置文件文件中只看到了硬盘背板的温度，并未看到硬盘温度传感器的配置。对比华为V3，BMC页面能看到硬盘温度传感器，想问一下这个硬盘温度是怎么处理的？",
+    "topic_user_name": "dh_qiuming",
+    "best_answer_url": "/t/topic/967/2",
+    "reply_posts": [
+        {
+            "user_name": "Yelmh Kno07",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/967/2",
+            "text": "你好，csr中是配置了硬盘温度传感器的\nHDD的硬盘温度传感器在例如14100513_00000001040302023953_soft.sr “SensorName”: “Disks Temp”, 该传感器记录所有HDD盘的当前最高温度\nSDD的硬盘温度传感器在例如14140224_PROTOCOL_0_soft.sr中，“SensorName”: “SSD Disk${Slot} Temp”,该传感器记录各个槽位的SSD的当前温度"
+        },
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/967/3",
+            "text": "“SensorName”: “Disks Temp”是一个传感觉，能监控所有HDD盘的温度？"
+        },
+        {
+            "user_name": "Yelmh Kno07",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/967/4",
+            "text": "不是，会记录所有HDD盘的最高温度，不会记录每一个的"
+        }
+    ]
+}

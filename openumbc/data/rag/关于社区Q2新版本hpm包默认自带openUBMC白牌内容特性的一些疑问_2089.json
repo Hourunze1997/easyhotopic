@@ -1,0 +1,15 @@
+{
+    "topic_id": 2089,
+    "question": "关于社区Q2新版本hpm包默认自带openUBMC白牌内容特性的一些疑问 - 关于这个新特性，有以下几点疑问期望开发者帮忙解答一下\n\n自带的白牌包在什么时候会被刷新到环境上；目前按测试现象，在BMC包升级时，会自动刷一次，在BMC重启时，不会重新刷，不知道这个猜测是否正确；\n\n关于白牌包中定制的redfish oem厂商这一项，在使用中出了一些问题；\n当前我们出的包，将hpm自带的白牌包中的redfish oem厂商修改成了kunlun，升级BMC包后，redfish接口的oem厂商显示为kunlun；后续再使用额外制作的白牌包，试图将redfish oem厂商定制成Huawei，但白牌包升级后，redfish接口的oem厂商仍显示为kunlun，在此情况下重启BMC后，redfish接口的oem厂商显示为了openUBMC，对于这其中的逻辑感到比较迷惑，希望得到解答。",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "/t/topic/2089/2",
+    "reply_posts": [
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2089/2",
+            "text": "已交流确认\n1.hpm包自带的白牌包，在BMC hpm包升级时会刷，重启时不会\n2.白牌包中redfish oem厂商若配置为Huawei，会判断使用当前版本默认的oem厂商，社区版本即显示openUBMC；目前redfish oem厂商使用白牌包刷新后，需要重启bmc生效"
+        }
+    ]
+}

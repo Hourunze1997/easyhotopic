@@ -1,0 +1,36 @@
+{
+    "topic_id": 308,
+    "question": "【network_adapter】team创建后web不显示工作模式 - 5.5.12.15版本创建team不显示工作模式。是当前不支持工作模式显示？\n从bma中获取数据显示工作模式字段为非空，web界面不显示工作模式",
+    "topic_user_name": "Kunlun Liuchenxi",
+    "best_answer_url": "/t/topic/308/5",
+    "reply_posts": [
+        {
+            "user_name": "Tao A Z2rvg",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/308/2",
+            "text": "当前北向接口未适配，不支持"
+        },
+        {
+            "user_name": "Kunlun Liuchenxi",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/308/3",
+            "text": "web资料中提示包含工作模式，是否后续规划支持。BMC v2也是支持的\nTeam\n显示汇聚网口的名称、状态、工作模式、IPv4信息（地址/子网掩码/网关）、IPv6信息（地址/前缀长度/网关）、MAC地址、VLAN信息（VLAN ID、VLAN使能状态、VLAN优先级使能状态）。\n单击汇聚网口子菜单的网口名称，可以查看成员端口的详细信息，包括网卡名称、网口名称、端口号、MAC地址和状态。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/308/4",
+            "text": "可以提需求到hardware sig，规划至社区版本。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/308/5",
+            "text": "为需求未规划，已内部提单跟踪解决"
+        }
+    ]
+}

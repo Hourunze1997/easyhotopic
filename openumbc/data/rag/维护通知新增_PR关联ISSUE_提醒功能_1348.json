@@ -1,0 +1,7 @@
+{
+    "topic_id": 1348,
+    "question": "【维护通知】新增 PR关联ISSUE 提醒功能 - content: 亲爱的社区成员们：\n为提升服务质量，openUBMC基础设施计划于北京时间下周四（6月19日）晚上8点后 新增以下功能：\n在仓库提交PR时如果没有关联ISSUE则弹出评论提示，但是不会影响合入。\n仓库提PR和issue的指导链接：社区代码PR指南 - bmc-core - openUBMC 论坛\n感谢您对平台升级的理解与支持！\nopenUBMC运维团队\n2025年6月12日\nlinks: https://forum.openubmc.cn/t/topic/208",
+    "topic_user_name": "liyanghang",
+    "best_answer_url": "",
+    "reply_posts": []
+}

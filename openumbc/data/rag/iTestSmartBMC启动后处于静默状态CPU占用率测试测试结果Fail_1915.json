@@ -1,0 +1,7 @@
+{
+    "topic_id": 1915,
+    "question": "【iTestSmart】BMC启动后处于静默状态，CPU占用率测试，测试结果Fail。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 22.03\n二、问题描述\nOpenUBMC->融合运维->BMC启动后处于静默状态，CPU占用率测试，测试结果Fail。请查看测试日志。\nCPU利用率已经读取到1920×873 145 KB\n获取浮点类型参数失败1920×767 146 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/c11466cd45215ffd99d9c91131f07e57bab24b54.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/0/064250bb8d58aff4f793e905b801751c9752799d.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": []
+}

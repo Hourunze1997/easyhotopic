@@ -1,0 +1,176 @@
+{
+    "0": {
+        "summary": "昇腾310P3机型使用CANN 8.1 RC1时出现NPU显存卡死现象，所有张量加载固定占用98MB后无法继续执行指令",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "4",
+                "title": "任何张量加载到NPU都会只占用98Mb（很奇怪的一个数字）然后卡住",
+                "url": "https://www.hiascend.com/forum/thread-0237183630703446231-1-1.html",
+                "created_at": "2025-05-26 08:31:43+00",
+                "source_type": "forum",
+                "source_id": "237183630703446016",
+                "cosine": 0.7776075565234652
+            },
+            {
+                "id": "64",
+                "title": "数据加载到NPU卡住",
+                "url": "https://gitee.com/ascend/samples/issues/ICALGE",
+                "created_at": "2025-05-26 16:38:06+08",
+                "source_type": "issue",
+                "source_id": "20649758",
+                "cosine": 0.710579058394274
+            }
+        ],
+        "label": "系统稳定性"
+    },
+    "1": {
+        "summary": "昇腾CANN开发者需解决ATC转换后YOLOv7 OM模型检测高宽比>1.5图片失败",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "10",
+                "title": "yolov7转换得到的om模型对高宽比大于1.5左右的图片识别结果错误",
+                "url": "https://www.hiascend.com/forum/thread-0237183096692632168-1-1.html",
+                "created_at": "2025-05-20 04:11:33+00",
+                "source_type": "forum",
+                "source_id": "237183096692632000",
+                "cosine": 0.8010594200266737
+            },
+            {
+                "id": "63",
+                "title": "yolov7转换得到的om模型对高宽比大于1.5左右的图片识别结果错误",
+                "url": "https://gitee.com/ascend/samples/issues/IC9L4Q",
+                "created_at": "2025-05-22 10:03:46+08",
+                "source_type": "issue",
+                "source_id": "20602682",
+                "cosine": 0.7947113928500452
+            }
+        ],
+        "label": "软件易用性"
+    },
+    "2": {
+        "summary": "昇腾CANN开发者需解决ONNX转OM报错E61001及不同SOC版本设备兼容性验证问题",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "16",
+                "title": "【Atlas 200I DK A2】onnx转om失败",
+                "url": "https://www.hiascend.com/forum/thread-0255182415578200087-1-1.html",
+                "created_at": "2025-05-12 06:59:38+00",
+                "source_type": "forum",
+                "source_id": "255182415578200000",
+                "cosine": 0.6483033116913397
+            },
+            {
+                "id": "25",
+                "title": "om推理报错",
+                "url": "https://www.hiascend.com/forum/thread-02113175152884692058-1-1.html",
+                "created_at": "2025-02-17 05:34:45+00",
+                "source_type": "forum",
+                "source_id": "2113175152884689920",
+                "cosine": 0.5969347309763632
+            }
+        ],
+        "label": "运行环境问题"
+    },
+    "3": {
+        "summary": "昇腾CANN开发者非root权限下调用单算子API时ERROR 561103的环境配置排查",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "28",
+                "title": "根据CANN社区版8.0.0.alpha001的文档调用单算子API，编译成功，但是运行报错：aclnnAddGetWorkspaceSize failed. ERROR: 561103",
+                "url": "https://www.hiascend.com/forum/thread-02108183654631289220-1-1.html",
+                "created_at": "2025-05-26 15:10:31+00",
+                "source_type": "forum",
+                "source_id": "2108183654631290112",
+                "cosine": 0.6581408256915499
+            },
+            {
+                "id": "33",
+                "title": "使用aclnnMatmul的时候报错：aclnnMatmulGetWorkspaceSize failed. ERROR: 561103",
+                "url": "https://www.hiascend.com/forum/thread-02108183029427616162-1-1.html",
+                "created_at": "2025-05-19 09:30:28+00",
+                "source_type": "forum",
+                "source_id": "2108183029427620096",
+                "cosine": 0.6202037098642039
+            }
+        ],
+        "label": "API使用问题"
+    },
+    "4": {
+        "summary": "昇腾开发者使用msOpGen定义BevPool算子时输入参数类型不一致及属性类型未支持",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "36",
+                "title": "msOpGen编写复杂输入参数算子原型定义文件",
+                "url": "https://www.hiascend.com/forum/thread-02102182431331486085-1-1.html",
+                "created_at": "2025-05-12 11:22:12+00",
+                "source_type": "forum",
+                "source_id": "2102182431331490048",
+                "cosine": 0.7509111333029499
+            },
+            {
+                "id": "41",
+                "title": "msOpGen编写复杂算子原型定义文件",
+                "url": "https://www.hiascend.com/forum/thread-02102181354769801037-1-1.html",
+                "created_at": "2025-04-30 00:19:30+00",
+                "source_type": "forum",
+                "source_id": "2102181354769799936",
+                "cosine": 0.6438778460701023
+            }
+        ],
+        "label": "模型转换问题"
+    },
+    "5": {
+        "summary": "昇腾CANN开发者运行run.sh时需处理版本依赖冲突",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "54",
+                "title": "在运行run.sh时出现报错",
+                "url": "https://www.hiascend.com/forum/thread-0236177061362063063-1-1.html",
+                "created_at": "2025-03-11 07:42:42+00",
+                "source_type": "forum",
+                "source_id": "236177061362063008",
+                "cosine": 0.7252979895730143
+            },
+            {
+                "id": "46",
+                "title": "版本报错",
+                "url": "https://www.hiascend.com/forum/thread-0292180172684622045-1-1.html",
+                "created_at": "2025-04-16 07:58:05+00",
+                "source_type": "forum",
+                "source_id": "292180172684622016",
+                "cosine": 0.619761739498877
+            }
+        ],
+        "label": "模型转换与兼容性"
+    },
+    "6": {
+        "summary": "开发者安装昇腾CANN 8.1.RC1时因opp_uninstall.sh缺失导致失败",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "1",
+                "title": "Atlas800I A2安装CANN报错：opp_uninstall.sh不存在",
+                "url": "https://www.hiascend.com/forum/thread-0226183785107239008-1-1.html",
+                "created_at": "2025-05-28 03:25:07+00",
+                "source_type": "forum",
+                "source_id": "226183785107239008",
+                "cosine": 0.7465541697567873
+            },
+            {
+                "id": "9",
+                "title": "安装 Ascend-cann-toolkit_8.1.RC1_linux-aarch64.run 失败",
+                "url": "https://www.hiascend.com/forum/thread-0237183196156024184-1-1.html",
+                "created_at": "2025-05-21 07:49:16+00",
+                "source_type": "forum",
+                "source_id": "237183196156024000",
+                "cosine": 0.6232684189497226
+            }
+        ]
+    }
+}

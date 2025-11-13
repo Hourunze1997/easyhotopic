@@ -1,0 +1,7 @@
+{
+    "topic_id": 1900,
+    "question": "【iTestSmart】ipmi查看计算板的CSR版本，测试结果Fail。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\n二、问题描述：\n执行”OpenUBMC->多样化硬件->ipmi查看计算板的CSR版本\"测试用例，测试结果Fail。\nipmi查看计算板的CSR信息1920×849 232 KB\nipmi命令获取到的信息1294×450 100 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/5f87eb0b6dd2705586d24734800eb17fa563036a.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/6/6402b3bf98ff6e9e3cceead1b98b674e676a286a.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": []
+}

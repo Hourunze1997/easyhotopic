@@ -1,0 +1,15 @@
+{
+    "topic_id": 413,
+    "question": "部分组件在gitcode能查到但是在2503开放版本上没有 - content: 1.部分组件在gitcode能查到但是在2503开放版本上没有\n比如power_mgmt在repositories.zip没有，但是在gitcode是开源的，这是出于什么考虑？\n2. repositories.zip中的每个组件都没有git提交记录\n对版本维护可能有问题，后期开放版本能否加上\nlinks: #p-767-h-1gitcode2503-1, #p-767-h-2-repositorieszipgit-2",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/413/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/413/2",
+            "text": "1、之前构建发布流水线有bug，目前应该已经修复了\n2、当前使用的是gitcode 下载功能，因此不会携带git信息，当前如果需要可以通过gitcode git clone方式下载。\n后续发布是否需要带上，大家可以讨论一下"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 947,
+    "question": "【已评审】支持资源协作接口提供IIC总线访问bus的切换标识 - content: 关联Issuse\n支持资源协作接口提供IIC总线访问bus的切换标识\n评审背景\n支持OEM命令读写IIC总线，当前标准IPMI命令Master Write-Read Command 在请求中 BusId 仅3bit，也就是取值范围是 [0, 7]，但是对于一般的服务器硬件，管理芯片出来的IIC总线超出这个值，因此需要支持一个标记标识当前的 BusId 启用是否超过8使能，如果使能则进行一次左移（即取值范围是 [8, 15]）\n评审点\n方案一\nbmc.kepler.IpmiCore接口 新增属性（BusSwitchEnabled） 用于支持IIC总线访问bus切换时BusID是否超过8\n详细描述\n资源path：/bmc/kepler/IpmiCore\n资源interface：bmc.kepler.IpmiCore\n\n属性名称\n取值类型\n默认值\n操作权限\n说明\n持久化\n信号\n\nBusSwitchEnabled\n布尔\nfalse\n写：UserMgmt 读：ReadOnly\nBusId 启用是否超过8使能(false-disable,true-enable)\n不持久化\n否\n\n方案二 （推荐）\n新增MasterWriteRead对象，在/bmc/kepler/IpmiService路径下新增接口bmc.kepler.IpmiService.MasterWriteRead和属性BusSwitchEnabled\n详细描述\n资源path：/bmc/kepler/IpmiService\n资源interface：bmc.kepler.IpmiService.MasterWriteRead\n\n属性名称\n取值类型\n默认值\n操作权限\n说明\n持久化\n信号\n\nBusSwitchEnabled\n布尔\nfalse\n写：UserMgmt 读：ReadOnly\nBusId 启用是否超过8使能(false-disable,true-enable)\n不持久化\n否\n\n优点：新增资源协作接口，职责单一，易维护；扩展性好，后续如果有新增的i2c读写相关属性或操作，可复用该接口\n评审结论\n通过，采用方案二，同意新增接口 bmc.kepler.IpmiService.MasterWriteRead，以及增加属性 BusSwitchEnabled。\nlinks: #p-1932-issuse-1, https://gitcode.com/openUBMC/mdb_interface/issues/64, #p-1932-h-2, #p-1932-h-3, #p-1932-h-4, #p-1932-h-5, #p-1932-h-6, #p-1932-h-7, #p-1932-h-8",
+    "topic_user_name": "Cuimin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/947/3",
+            "text": "cuimin:\n\nBusSwitchEnabled number 0 Administrator BusId 启用是否超过8使能(0-disable,1-enable) 掉电持久化 是\n\n这里为啥要发送变更信号？\n操作权限怎么是角色？这个属性读也要管理员权限？\n两个方案要进行比较，并且提供出推荐方案"
+        },
+        {
+            "user_name": "Cuimin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/947/4",
+            "text": "1、发送信号变更初衷是想要通过监听变化记录可定位日志，现在看确实不需要\n2、操作权限这里本意是要求管理员权限的，已修改为用户管理权限，且读写均要求管理员权限是客户需求\n3、方案二，在IpmiService下新增对象，一方面是新增接口职责单一，后续新增i2c相关读写的功能，易维护，扩展性好，为主推方案；而方案一，IpmiCore路径下已有通道权限、路由等其他功能，继续新增属性，功能复杂，不易维护和扩展"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/947/5",
+            "text": ""
+        }
+    ]
+}

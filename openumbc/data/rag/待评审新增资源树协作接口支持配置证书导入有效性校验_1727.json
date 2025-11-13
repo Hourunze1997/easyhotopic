@@ -1,0 +1,36 @@
+{
+    "topic_id": 1727,
+    "question": "【待评审】新增资源树协作接口支持配置证书导入有效性校验 - content: 背景:\n需求：\n1.支持配置证书导入有效性校验（基本约束和密钥用法等）\n2.香港某局点述求：关闭bmc证书校验扩展字段或则开发一个功能开关来启用或则禁用\n现状\nimage1128×261 22 KB\n决策点1：\n新增redfish字段：ExtVerifyEnabled 用于查询证书扩展字段校验使能\nuri： /redfish/v1/CertificateService\n变化类型：新增OEM属性\n操作类型： GET\n应用场景：用于查询证书证书扩展字段校验使能\n详细描述：\n在\"Oem\": “{{OemIdentifier}}”: 下新增\n\n属性名称\n取值类型\n说明\n取值范围\n默认值\n操作权限\n是否频繁变化并需要屏蔽变化事件\n约束\n\nExtVerifyEnabled\nboolean\n证书扩展字段校验使能\ntrue/false\ntrue\nReadOnly\n否\n无\n\nuri： /redfish/v1/CertificateService\n变化类型：新增OEM属性\n操作类型： PATCH\n应用场景：用于设置证书扩展字段校验使能\n详细描述：\n在\"Oem\": “{{OemIdentifier}}”: 下新增\n\n属性名称\n取值类型\n说明\n取值范围\n默认值\n操作权限\n是否频繁变化并需要屏蔽变化事件\n约束\n\nExtVerifyEnabled\nboolean\n证书扩展字段校验使能\ntrue/false\ntrue\nSecurityMgmt\n否\n无\n\nschema说明（必填）：\n\"ExtVerifyEnabled\": {\n  \n  \"type\": \"boolean\",\n  \n  \"readonly\": false,\n  \n  \"description\": \"Indicates whether verification of certificate extensions is enabled.\",\n  \n  \"longDescription\": \"This property specifies whether the system performs verification of standard and/or custom extensions within X.509 certificates during certificate validation processes. When set to true, the system will check for the correct presence, absence, or values of extensions (e.g., Extended Key Usage (EKU), Basic Constraints) as per relevant RFCs and security policies. Setting this to false may reduce security by allowing certificates with invalid or inappropriate extensions to be accepted. This setting applies to all certificate validation operations performed by the system.\"\n\n}\n\n错误说明：无权限返回401,正常设置返回200\n性能说明：bool类型属性，无影响\n兼容性策略：如果证书校验对现网已有使用有影响，可使用patch接口关闭校验\n示例：新增属性\n\n{\n\n  \"Oem\": {\n  \n      \"{{OemIdentifier}}\": {\n      \n        \"ExtVerifyEnabled\": \"true\"\n    \n    }\n  \n  }\n\n}\n\n决策点2:\n新增属性：ExtVerifyEnabled 用于承载证书扩展字段校验使能\n资源path： /bmc/kepler/CertificateService （原有）\n资源interface： bmc.kepler.CertificateService.Capabilities（原有）\n属性：ExtVerifyEnabled（新增）\n详细描述 ：\n资源path：/bmc/kepler/CertificateService\n资源interface：bmc.kepler.CertificateService.Capabilities\n变化类型：新增属性\n应用场景：用于设置证书扩展字段校验使能\n持久化类型： 掉电持久化\n详细描述：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n说明\n约束\n\nExtVerifyEnabled\n新增属性\ns\n读：ReadOnly 写：SecurityMgmt\n掉电持久化\n否\n默认为true\n无\n\n取值\n说明\n\nfalse\n关闭基本约束和密钥用法校验，如果证书用途不合法，可能无法使用\n\ntrue\n如下表1\n\n表1\n\n证书校验类型\n\n基本约束\n密钥用法\n\nca证书\n\nCA\ncertificate signature\n\n双因素客户端证书\n\nEnd Entity\ndigitalSignature（如有key usage）\n\nssl证书\n服务器证书\n国密\nEnd Entity\n加密和签名拆分 digitalSignature 和(key Encipherment 或则(Encipher only 和 key Agreement))互斥\n\n国际\nEnd Entity\ndigitalSignature（如有key usage）\n\n自定义证书\n国密\nEnd Entity\n加密和签名拆分 digitalSignature 和(key Encipherment 或则(Encipher only 和 key Agreement))互斥\n\n国际\nEnd Entity\ndigitalSignature（如有key usage）\n\n评审结论\nlinks: #p-4196-h-1, https://discuss.openubmc.cn/uploads/default/original/2X/0/0141fdeb66209eb49ac3786369add10b44eb5f0f.png, #p-4196-h-1-2, #p-4196-h-2-3, #p-4196-h-1-4, #p-4196-h-5",
+    "topic_user_name": "廖梓羽",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1727/2",
+            "text": "把 证书有效性校验的使能状态 的校验内容全部列出来\n包括keyusage校验 ca校验等"
+        },
+        {
+            "user_name": "pengxianglin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1727/3",
+            "text": "lzy:\n\nCertificateValidationEnabled\n\n1、这个命名范围太广泛了，关闭之后是所有校验都无效么。\n从背景描述来看这个开关主要是需要管控对基本限制和KeyUsage的的校验\n2、开关的管控范围需要明确，关闭之后证书如何校验，开启之后证书如何校验。\n3、需要考虑扩展性，如果以后又新增限制要求，是否还需要再新增开关。"
+        },
+        {
+            "user_name": "pengxianglin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1727/4",
+            "text": "lzy:\n\n默认为true\n\n默认为true，相当于直接新增了限制条件，若有已经在用的不合规证书，是否会对业务产生影响"
+        },
+        {
+            "user_name": "Data Sculptor",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1727/5",
+            "text": "如下建议：\n1、属性名称 ExtensionVerificationLevel改成CertVerifyPolicy会不会好点？\n2、 disable字面含义为禁用， 违反 level1/level2 的等级递增语义逻辑。 枚举值命名应明确表达状态层级，避免使用否定性词汇\n3、level1/level2写的太隐晦了，建议改成类似BASIC（集成校验）、STRICT（严格校验）类的解释型词汇。\n4、枚举中的disable可以改成None，明确无校验"
+        }
+    ]
+}

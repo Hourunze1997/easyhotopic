@@ -1,0 +1,15 @@
+{
+    "topic_id": 673,
+    "question": "【已评审】修复ProcessorID属性与SMBIOS协议类型不一致的问题 - content: ISSUE链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景\n详见：CPU类的ProcessorID属性定义为U32类型，与SMBIOS协议范围（QWORD）不一致 - #2，来自 yelvsub\n决策点\n资源协作接口的ProcessorID属性类型变更，解决与SMBIOS协议类型不一致的问题\n详细描述\n接口bmc.kepler.Systems.Processor.CPU下的属性ProcessorID，其数据类型当前是U32，只有4字节，而SMBIOS规范中处理器的ID标识是8字节，需要将数据类型改为U64\n评审结论\n1、U64类型在Lua环境下无法表示且存在组件间版本配套问题，通过新增属性的方式来解决此问题。\n2、同意在接口bmc.kepler.Systems.Processor.CPU下新增属性ProcessorIDString，详情如下\ninterface：bmc.kepler.Systems.Processor.CPU\n变化类型：新增属性ProcessorIDString\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n说明\n持久化\n信号\n\nProcessorIDString\nString\n由8个0~255的16进制大写数字拼接而成，举例：“01-23-45-67-89-AB-CD-EF”\n“00-00-00-00-00-00-00-00”\nReadOnly\n原始处理器ID数据\n否\n否\n\n3、接口bmc.kepler.Systems.Processor.CPU下的属性ProcessorID标记为废弃，并提示开发者推荐使用ProcessorIDString。\nlinks: #p-1352-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/30, https://gitcode.com/openUBMC/mdb_interface/issues/30, #p-1352-h-2, https://discuss.openubmc.cn/t/topic/362/2, #p-1352-h-3, #p-1352-h-4, #p-1352-h-5",
+    "topic_user_name": "Yelvsub",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/673/2",
+            "text": ""
+        }
+    ]
+}

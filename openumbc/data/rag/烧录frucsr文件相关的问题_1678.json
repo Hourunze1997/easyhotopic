@@ -1,0 +1,50 @@
+{
+    "topic_id": 1678,
+    "question": "烧录fru、csr文件相关的问题 - 目前我们碰到往空eeprom里刷fru和csr的场景，有些问题想请教一下：\n1.eeprom里的数据结构，刷csr.bin会覆盖掉fru信息么\neeprom里应该包含天池头、fru信息、csr信息等，请问能否提供eeprom中每个部分的大小和偏移？\n如果使用烧录器烧写csr.bin文件，是不是会天池头和fru信息清空？\n2.生成csr.bin和hpm的方法\n能否提供生成csr.bin/csr.hpm的方法",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Lishuol",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1678/2",
+            "text": "1、csr和fru信息存储在eep的不同偏移地址区域里面，天池头的作用是bmc按照天池规范到对应域里面读FRU/CSR信息，不会覆盖\n2、bmcstudio目前有这个能力，可以自己在社区里找下使用教程"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1678/3",
+            "text": "1.实测通过烧录器烧录csr.bin是会清空fru数据的，通过bmc升级csr.hpm文件因为会根据天池头进行跳转则不会影响fru数据"
+        },
+        {
+            "user_name": "LiRuichen",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1678/4",
+            "text": "BMC Studio的CSR配置页面中提供了CSR出包的功能，该功能封装了bingo的csr打包功能，如果是希望简单打包，可以将CSR文件放在一个临时目录下，在该目录下执行bingo build，即可打出CSR包，可以使用bingo build -h查看其他参数。如果需要配置签名，需要在同一个文件下的.bmcgo/config文件中配置hpm包的签名和CSR内容的签名策略和参数"
+        },
+        {
+            "user_name": "Chen Minjun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1678/5",
+            "text": "content: 请问命令格式是这样吗？ 报错提示bmcgo.conf是如何配置呢？\n17527194067611321×367 19.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/66e5aad94fd6defda745493ca29edcfb10aaecf5.png"
+        },
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1678/6",
+            "text": "麻烦，执行 bingo -v 和 bmcgo -v 看一下当前安装的版本。"
+        },
+        {
+            "user_name": "Chen Minjun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1678/7",
+            "text": "bmcgo 版本为: 0.5.317"
+        }
+    ]
+}

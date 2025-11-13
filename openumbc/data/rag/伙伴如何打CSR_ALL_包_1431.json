@@ -1,0 +1,15 @@
+{
+    "topic_id": 1431,
+    "question": "伙伴如何打CSR ALL 包 - 背景\n伙伴基于S920X20 主板开发新机型，这里涉及新增多款天池组件CSR；若每个CSR 单独升级，效率极低，现场部署成本高\n华为版本发布时会发布 CSR all  包，升级时只需升级CSR all包即可\n诉求\n伙伴如何在场外基于OpenUBMC 打 伙伴自己的 CSR all 包",
+    "topic_user_name": "Yctco Huaconghui",
+    "best_answer_url": "/t/topic/1431/2",
+    "reply_posts": [
+        {
+            "user_name": "Data Sculptor",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1431/2",
+            "text": "content: 第一步：您需要先安装BMCStudio，参考社区安装指导\n第二步：打开CSR配置页面，选择CSR出包，见下图\nimage1651×1043 40.5 KB\n第三步：点击出包即可（可上传oem文件，可选择CSR包大小16k或32k）\nimage748×602 20.4 KB\n第四步：安装包下载到本地后，批量升级即可\nimage363×134 5.38 KB\n更多：若需要签名出包，则按照社区BMCStudio使用指导配置签名服务器即可\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/88252c3623db2ef70928f72a5209372073ebe7e5.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/17359bfae4221f283c4c82b319e06d3ca78535ce.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/143121905716f1cc0cedeee0b648038bb55e2ba6.png"
+        }
+    ]
+}

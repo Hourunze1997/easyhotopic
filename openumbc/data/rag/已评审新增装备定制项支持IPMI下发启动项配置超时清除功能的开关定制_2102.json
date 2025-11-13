@@ -1,0 +1,15 @@
+{
+    "topic_id": 2102,
+    "question": "【已评审】新增装备定制项，支持IPMI下发启动项配置超时清除功能的开关定制 - content: ISSUE链接\n【问题单】设置启动项功能默认超过60s未上下电不清除ipmi下发的启动项配置，与客户预期不符\n评审背景\n\n某客户要求bmc设置启动项功能默认超过60s未上下电清除ipmi下发的启动项配置\nipmi标准协议定义的功能，对应Boot Option Parameter为3时bit3的功能，即如果在60秒超时内未收到机箱控制命令，则不会自动清除启动标志有效位（收到机箱控制指令后重新开始倒计时）\n标准协议里同时定义了bit0~4的功能，本次只评bit3的功能\n\n当前现状以及差距\n现状\n目前bmc设置启动项功能默认超过60s未上下电不清除ipmi下发的启动项配置\n差距\n需要将默认不清除改为默认清除\n解决方案\n新增装备定制项\n决策点：新增定制化项\n新增装备定制项：BMCSet_BootFlagValidTimeoutAutoClearEnabled\n\n项\n说明\n\n定制化项名称\nBMCSet_BootFlagValidTimeoutAutoClearEnabled\n\n归属组件\nbios\n\n类型\nstring\n\n默认值\noff\n\n处理逻辑\nif (BMCSet_BootFlagValidTimeoutAutoClearEnabled = on ） 设置为超过60s未上下电自动清除 else 设置为超过60s未上下电不自动清除\n\n说明\non:表示设置为超过60s未上下电自动清除 off:表示设置为超过60s未上下电不自动清除\n\n实现方式\n配置文件导入\n\n评审结论\n同意新增定制项，用来实现定制：下发启动项后超过60s是否自动清除ipmi下发的启动项配置，类型为string，默认值为off，可取值为off、on\n遗留事项\n1.定制项的命名需要再讨论下\n结论：定制项的命名修改为BMCSet_BootFlagValidTimeoutAutoClearEnabled\nlinks: #p-5246-issue-1, https://gitcode.com/openUBMC/bios/issues/51, #p-5246-h-2, #p-5246-h-3, #p-5246-h-4, #p-5246-h-5, #p-5246-h-6, #p-5246-h-7, #p-5246-bmcset_bootflagvalidtimeoutautoclearenabled-8, #p-5246-h-9, #p-5246-h-10",
+    "topic_user_name": "曾启健",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2102/2",
+            "text": ""
+        }
+    ]
+}

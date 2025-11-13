@@ -1,0 +1,15 @@
+{
+    "topic_id": 1470,
+    "question": "【已评审】新增资源协作路径：/bmc/kepler/Chip/I3cChip/:Id - content: 评审背景\n当前支持的I3cOverLocalBus总线兼容I3c协议和I2c协议，通用chip配置在I3cOverLocalbus下时无法区分使用I3c协议还是使用I2c协议。因此新增I3cChip类型，该类型继承通用chip，该I3cChip类在I3cOverLocalbus下时通过I3c协议进行读写访问，原通用chip类在I3cOverLocalbus下通过I2c协议进行读写访问。\n触发原因：需求\n当前差距/问题分析：\n当前通用chip配置在I3cOverLocalbus下时，无法区分使用I2c协议还是I3c协议进行读写。需要新增一种方式来显性的指定通过I3c协议进行读写。\n决策点\n通用器件支持通过I3cOverlocalbus总线访问，兼容I2c和I3c实现方案评审\n详细描述\n方案1：新增资源协作接口路径/bmc/kepler/Chip/I3cChip/:Id\npath：/bmc/kepler/Chip/I3cChip/:Id（新增）\ninterface：bmc.kepler.Chip\n变化类型：新增资源path\n应用场景：I3cOverLocalbus上使用I3c协议进行读写\n持久化类型： 不持久化\n操作权限：BasicSetting\n详细描述：私有属性继承通用chip\nchip命名备选: DualBusChip、MultiBusChip、DualModeChip来代表支持多总线协议的chip\n方案2：在通用chip中增加私有属性来区分该chip使用I3c协议还是I2c协议\npath：/bmc/kepler/Chip/Complex/:Id\ninterface：bmc.kepler.Chip\n变化类型：新增私有属性\n应用场景：用于区分I3cOverLocalbus下的chip访问使用I3c协议或使用I2c协议\n持久化类型： 不持久化\n操作权限：BasicSetting\n详细描述：新增私有属性\nimage1975×211 14.2 KB\n评审结论\n结论：采用方案2，不新增资源协作接口路径，在原资源协作接口路径/bmc/kepler/Chip/Complex/:Id下新增私有属性BusType\n遗留问题及确认结论：\n1、BusType的默认值含义和取值含义描述需要变更\n结论：BusType含义变更如下，默认值0\n\n0：自动选择\n1：i2c协议\n2：i3c协议\nlinks: #p-3505-h-1, #p-3505-h-2, #p-3505-h-3, #p-3505-h-4, #p-3505-h-1bmckeplerchipi3cchipid-5, #p-3505-h-2chipchipi3ci2c-6, https://discuss.openubmc.cn/uploads/default/original/2X/3/323e9f666db115fe4c9aecb1577c74ee1f678b4d.png, #p-3505-h-7",
+    "topic_user_name": "Chenshengfan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1470/2",
+            "text": ""
+        }
+    ]
+}

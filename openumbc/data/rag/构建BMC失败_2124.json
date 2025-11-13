@@ -1,0 +1,106 @@
+{
+    "topic_id": 2124,
+    "question": "构建BMC失败 - content: 环境信息\n系统用的Ubuntu 24.04\nbingo 版本为: 0.5.272\nConan version 1.62.0\n环境配置信息\n搭建的Ubuntu开发环境搭建，环境搭建成功\n环境组网信息\n问题详细描述\n\nopenubmc.cn\n\nUbuntu开发环境搭建 | openUBMC\nopenUBMC\n\n根据文档进行环境配置，配置完成后构建BMC失败\n失败的日志如下：\nERROR: ================== libsoc_adapter/1.80.30@openUBMC.release/rc#0 构建失败日志起始位置 ==================\nConan 1 is on a deprecation path, please consider migrating to Conan 2\nUsing lockfile: ‘/home/workspace/manifest/temp/conan_source_debug_dev/openubmc/all/openubmc.lock’\nConfiguration (profile_host):\n[settings]\narch=armv8\nbuild_type=Debug\ncompiler=gcc\ncompiler.libcxx=libstdc++\ncompiler.luajit=1.7.x\ncompiler.version=7.3\nos=Linux\n[options]\n*:module_symvers=c61ed460fefe0c2aeec85ee4e224a2ea8d555b1e45ac085d855123812dfcd6e4\nbmc_time:manufacture=True\nchassis:manufacture=True\nfirmware_mgmt:community_enable=True\nfructrl:manufacture=True\nhelp:board_name=openUBMC\nskynet:enable_luajit=True\nvpd:board_name=openUBMC\nwebui:energy_enabled=False\nwebui:ldap_enabled=False\n[build_requires]\n[env]\nAR=aarch64-target-linux-gnu-ar\nAS=aarch64-target-linux-gnu-as\nCC=aarch64-target-linux-gnu-gcc\nCFLAGS=-Wall -fPIC -fstack-protector-all -O2 -Wl,-z,relro,-z,now -Wl,-z,relro -Wl,-z,noexecstack -Wl,-z,now -fPIE -pie -fno-common -std=gnu11\nCHOST=aarch64-target-linux-gnu\nCONAN_CMAKE_FIND_ROOT_PATH=/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk\nCONAN_CMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY\nCONAN_CMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY\nCONAN_CMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY\nCONAN_CMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER\nCONAN_CMAKE_FIND_SDK_ROOT=/opt/hi1711sdk\nCONAN_CMAKE_SYSROOT=/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk\nCONAN_CMAKE_SYSTEM_VERSION=3.14\nCONAN_DISABLE_STRICT_MODE=1\nCONAN_REVISIONS_ENABLED=1\nCONAN_SKIP_BROKEN_SYMLINKS_CHECK=True\nCXX=aarch64-target-linux-gnu-g++\nCXXFLAGS=-I\"/opt/hcc_arm64le/aarch64-target-linux-gnu/lib/include\" -Wall -fPIC -fstack-protector-all -O2 -Wl,-z,relro,-z,now -Wl,-z,relro -Wl,-z,noexecstack -Wl,-z,now -fPIE -pie -fno-common -std=c++17\nHOSTCC=gcc\nKERNEL_PATH=/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk/usr/src/kernel/\nLD=aarch64-target-linux-gnu-ld\nPATH=[/opt/hcc_arm64le/bin]\nPKG_CONFIG_PATH=/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk/lib64/pkgconfig:/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk/usr/lib64/pkgconfig\nRANLIB=aarch64-target-linux-gnu-ranlib\nSTRIP=aarch64-target-linux-gnu-strip\nConfiguration (profile_build):\n[settings]\narch=x86_64\nbuild_type=Dt\ncompiler=gcc\ncompiler.libcxx=libstdc++11\ncompiler.version=9\nos=Linux\n[options]\n[build_requires]\n[env]\nAR=ar\nAS=as\nCC=gcc\nCFLAGS=-Wall -fPIC -fstack-protector-all -Wl,-z,relro -Wl,-z,noexecstack -Wl,-z,now -pie -g -fno-common -std=gnu11\nCONAN_BUILD_TYPE=DT\nCONAN_CMAKE_SYSTEM_VERSION=3.16\nCONAN_DISABLE_STRICT_MODE=1\nCONAN_REVISIONS_ENABLED=1\nCONAN_SKIP_BROKEN_SYMLINKS_CHECK=True\nCXX=g++\nCXXFLAGS=-I\"standalonetoolchain/standalone_toolchain/standalonet​oolchain/target_host/lib/include\" -Wall -fPIC -fstack-protector-all -Wl,-z,relro -Wl,-z,noexecstack -Wl,-z,now -pie -fno-common -std=c++17\nHOSTCC=gcc\nLD=ld\nSTRIP=strip\nInstalling package: libsoc_adapter/1.80.30@openUBMC.release/rc\nRequirements\nboost/1.87.0.B002@openUBMC.release/rc from ‘openubmc_dev’ - Cache\nhuawei_secure_c/1.0.2@openUBMC.release/rc from ‘openubmc_dev’ - Cache\nlibsoc_adapter/1.80.30@openUBMC.release/rc from ‘openubmc_dev’ - Cache\nlibsomp/1.80.7@openUBMC.release/rc from ‘openubmc_dev’ - Cache\nluajit/2.1.0.B012@openUBMC.release/rc from ‘openubmc_dev’ - Cache\nskynet/1.8.0.B001_001@openUBMC.release/rc from ‘openubmc_dev’ - Cache\nPackages\nboost/1.87.0.B002@openUBMC.release/rc:295f5ceaff90a1afe2a22ca78ccdeb749ab95b30 - Cache\nhuawei_secure_c/1.0.2@openUBMC.release/rc:cd580fc2453993ab665c59c2c66e9e2975009bd1 - Cache\nlibsoc_adapter/1.80.30@openUBMC.release/rc:57d9bd1e964b18dfa75c04501e4e895f30e76003 - Build\nlibsomp/1.80.7@openUBMC.release/rc:63578bbbc81b9c81065933f511e34323ab3ad790 - Cache\nluajit/2.1.0.B012@openUBMC.release/rc:295f5ceaff90a1afe2a22ca78ccdeb749ab95b30 - Cache\nskynet/1.8.0.B001_001@openUBMC.release/rc:f0ac676322c6d4e1b5962369e1e983795c898eb1 - Cache\nCross-build from ‘Linux:x86_64’ to ‘Linux:armv8’\nInstalling (downloading, building) binaries…\nboost/1.87.0.B002@openUBMC.release/rc: Already installed!\nhuawei_secure_c/1.0.2@openUBMC.release/rc: Already installed!\nluajit/2.1.0.B012@openUBMC.release/rc: Already installed!\nlibsomp/1.80.7@openUBMC.release/rc: Already installed!\nskynet/1.8.0.B001_001@openUBMC.release/rc: Already installed!\nlibsoc_adapter/1.80.30@openUBMC.release/rc: WARN: Build folder is dirty, removing it: /root/.conan/data/libsoc_adapter/1.80.30/openUBMC.release/rc/build/57d9bd1e964b18dfa75c04501e4e895f30e76003\nlibsoc_adapter/1.80.30@openUBMC.release/rc: Copying sources to build folder\nlibsoc_adapter/1.80.30@openUBMC.release/rc: Building your package in /root/.conan/data/libsoc_adapter/1.80.30/openUBMC.release/rc/build/57d9bd1e964b18dfa75c04501e4e895f30e76003\nlibsoc_adapter/1.80.30@openUBMC.release/rc: WARN:\n\nThe ‘cmake’ generator is deprecated.\nPlease update your code and remove it.\n\nlibsoc_adapter/1.80.30@openUBMC.release/rc: Generator cmake created conanbuildinfo.cmake\nlibsoc_adapter/1.80.30@openUBMC.release/rc: Calling generate()\nlibsoc_adapter/1.80.30@openUBMC.release/rc: Aggregating env generators\nlibsoc_adapter/1.80.30@openUBMC.release/rc: Calling build()\nlibsoc_adapter/1.80.30@openUBMC.release/rc:\nlibsoc_adapter/1.80.30@openUBMC.release/rc: ERROR: Package ‘57d9bd1e964b18dfa75c04501e4e895f30e76003’ build failed\nlibsoc_adapter/1.80.30@openUBMC.release/rc: WARN: Build folder /root/.conan/data/libsoc_adapter/1.80.30/openUBMC.release/rc/build/57d9bd1e964b18dfa75c04501e4e895f30e76003\nERROR: libsoc_adapter/1.80.30@openUBMC.release/rc: Error in build() method, line 65\nself.build_hisport()\nwhile calling ‘build_hisport’, line 49\nos.chdir(“./infected/drivers/hisport”)\nFileNotFoundError: [Errno 2] No such file or directory: ‘./infected/drivers/hisport’\nERROR: ================== libsoc_adapter/1.80.30@openUBMC.release/rc#0 构建失败日志结束位置 ==================\nERROR: 任务 work.build.conan 执行失败, conan 组件构建进程接收到错误\nERROR: 任务 work.build.conan 执行失败\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\nERROR: 任务 personal 执行失败\nERROR: 请查看日志信息\n//构建报错这个问题怎么解决？谢谢\nlinks: #p-5319-h-1, #p-5319-h-2, #p-5319-h-3, #p-5319-h-4, https://www.openubmc.cn/docs/zh/development/quick_start/prepare_environment/ubuntu_env.html, https://www.openubmc.cn/docs/zh/development/quick_start/prepare_environment/ubuntu_env.html",
+    "topic_user_name": "Codebmcdev",
+    "best_answer_url": "/t/topic/2124/13",
+    "reply_posts": [
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/2",
+            "text": "content: https://www.openubmc.cn/blogs/start_openUBMC\n可以参考这个教程\nlinks: https://www.openubmc.cn/blogs/start_openUBMC"
+        },
+        {
+            "user_name": "Guoxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/3",
+            "text": "content: 2506编译报错 - 交流互助区 - openUBMC 论坛\n看下这个帖子\nlinks: https://discuss.openubmc.cn/t/topic/2073"
+        },
+        {
+            "user_name": "Codebmcdev",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/4",
+            "text": "谢谢，这个方法我试试。"
+        },
+        {
+            "user_name": "Codebmcdev",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/5",
+            "text": "content: 根据这个文档直接执行初始化会报错，\npython3 init.py -path ./bmc_sdk.zip\nusage: openUBMC Development environment initialization [-h] -path BMC_SDK_PATH -user OPENUBMC_USER -psw OPENUBMC_PASSWORD\nopenUBMC Development environment initialization: error: the following arguments are required: -user/–openubmc_user, -psw/–openubmc_password\n增加user和psw参数还是会报错，\nW: Failed to fetch http://cn.mirrors.huaweicloud.com/ubuntu/dists/noble/InRelease  Could not resolve ‘cn.mirrors.huaweicloud.com’\nW: Failed to fetch http://cn.mirrors.huaweicloud.com/ubuntu/dists/noble-updates/InRelease  Could not resolve ‘cn.mirrors.huaweicloud.com’\nW: Failed to fetch http://cn.mirrors.huaweicloud.com/ubuntu/dists/noble-backports/InRelease  Could not resolve ‘cn.mirrors.huaweicloud.com’\nW: Some index files failed to download. They have been ignored, or old ones used instead.\nReading package lists… Done\nBuilding dependency tree… Done\nReading state information… Done\nPackage pkgconf is not available, but is referred to by another package.\nThis may mean that the package is missing, has been obsoleted, or\nis only available from another source\nPackage python3-dev is not available, but is referred to by another package.\nThis may mean that the package is missing, has been obsoleted, or\nis only available from another source\nPackage npm is not available, but is referred to by another package.\nThis may mean that the package is missing, has been obsoleted, or\nis only available from another source\nPackage ipmitool is not available, but is referred to by another package.\nThis may mean that the package is missing, has been obsoleted, or\nis only available from another source\nPackage libdbus-1-dev is not available, but is referred to by another package.\nThis may mean that the package is missing, has been obsoleted, or\nis only available from another source\nPackage dbus-x11 is not available, but is referred to by another package.\nThis may mean that the package is missing, has been obsoleted, or\nis only available from another source\nE: Package ‘python3-dev’ has no installation candidate\nE: Package ‘ipmitool’ has no installation candidate\nE: Package ‘dbus-x11’ has no installation candidate\nE: Package ‘libdbus-1-dev’ has no installation candidate\nE: Package ‘pkgconf’ has no installation candidate\nE: Unable to locate package gcc-9\nE: Unable to locate package g+±9\nE: Couldn’t find any package by regex ‘g+±9’\nE: Package ‘npm’ has no installation candidate\nERROR:root:Command ‘[’/usr/bin/sudo’, ‘/usr/bin/apt-get’, ‘install’, ‘-y’, ‘python3’, ‘python3-pip’, ‘python3-dev’, ‘git’, ‘wget’, ‘curl’, ‘ca-certificates’, ‘ipmitool’, ‘dbus-x11’, ‘libdbus-1-dev’, ‘dbus’, ‘pkgconf’, ‘libglib2.0-dev’, ‘gcc-9’, ‘g+±9’, ‘unzip’, ‘npm’]’ returned non-zero exit status 100.\nlinks: http://cn.mirrors.huaweicloud.com/ubuntu/dists/noble/InRelease, http://cn.mirrors.huaweicloud.com, http://cn.mirrors.huaweicloud.com/ubuntu/dists/noble-updates/InRelease, http://cn.mirrors.huaweicloud.com, http://cn.mirrors.huaweicloud.com/ubuntu/dists/noble-backports/InRelease, http://cn.mirrors.huaweicloud.com"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/6",
+            "text": "content: gitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n参考这个吧，博客的可能没有输入conan的用户名和密码。\n以及搭建这个优先配置清华源。建议使用离线安装24.04，建立新的环境，优先进行快照来保证干净的环境\nlinks: https://gitcode.com/openUBMC/manifest, https://gitcode.com/openUBMC/manifest"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/7",
+            "text": "content: codebmcdev:\n\nERROR:root:Command ‘[’/usr/bin/sudo’, ‘/usr/bin/apt-get’, ‘install’, ‘-y’, ‘python3’, ‘python3-pip’, ‘python3-dev’, ‘git’, ‘wget’, ‘curl’, ‘ca-certificates’, ‘ipmitool’, ‘dbus-x11’, ‘libdbus-1-dev’, ‘dbus’, ‘pkgconf’, ‘libglib2.0-dev’, ‘gcc-9’, ‘g+±9’, ‘unzip’, ‘npm’]’ returned non-zero exit status 100.\n\n这个错误是要手动下,我这边照着教程是报这个错误，这个也是正常构建的第一个错误\n\nsudo dpkg --configure -a\n\nsudo apt-get install -y python3 python3-pip python3-dev git wget curl \nca-certificates ipmitool dbus-x11 libdbus-1-dev dbus pkgconf \nlibglib2.0-dev gcc-9 g+±9 unzip npm\n\n第二个错误是pip安装和系统安装包冲突需要卸载\n\nERROR: Cannot uninstall cryptography 41.0.7, RECORD file not found. Hint: The package was installed by debian.\nERROR:root:Command ‘[’/usr/bin/sudo’, ‘/usr/bin/pip3’, ‘install’, ‘/tmp/tmpvu7duxex/openubmc_bingo-0.5.230-py3-none-any.whl’, ‘–break-system-packages’]’ returned non-zero exit status 1.\nroot@tux-2:/home/arch/manifest#\n\nsudo apt remove python3-cryptography\n\n第三个错误是网络超时，需要配置n\n\nadded 1 package in 5s\ninstalling : node-v20.18.0\ncurl: (35) Recv failure: Connection reset by peer\nError: download preflight failed for ‘20.18.0’ (https://nodejs.org/dist/v20.18.0/node-v20.18.0-linux-x64.tar.xz)\nERROR:root:Command ‘[’/usr/local/bin/n’, ‘20.18.0’]’ returned non-zero exit status 1.\nroot@tux-2:/home/arch/manifest#\n\n执行\n\necho ‘export N_NODE_MIRROR=https://npmmirror.com/mirrors/node’ >> ~/.bashrc\nsource ~/.bashrc\nlinks: https://nodejs.org/dist/v20.18.0/node-v20.18.0-linux-x64.tar.xz, https://npmmirror.com/mirrors/node"
+        },
+        {
+            "user_name": "Codebmcdev",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/8",
+            "text": "好的 谢谢"
+        },
+        {
+            "user_name": "Codebmcdev",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/9",
+            "text": "根据您提供的方法python3 init.py -path ./bmc_sdk.zip这个成功了，但是构建bmc还报错了，跟标题中提示的一样，是不是要换成bmc_sdk25.03的版本？"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/11",
+            "text": "codebmcdev:\n\n，但是构建bmc还报错了，跟标题中提示的一样，是不是要换成bmc_sdk25.03的版本？\n\n你是说你环境装好了，构建BMC还是有问题？构建编译的命令是啥？"
+        },
+        {
+            "user_name": "Codebmcdev",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/12",
+            "text": "是的，构建bmc有问题，直接执行的bingo build"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2124/13",
+            "text": "content: codebmcdev:\n\n是不是要换成bmc_sdk25.03的版本？\n\nmanifest的tags要用25.06版本\n\ngit checkout 25.06\n\n，bmc_sdk也用25.06\n\nrepo.openubmc.cn\n\nIndex of /25.06/sdk/\n\n codebmcdev:\n\n直接执行的bingo build\n\n这一步放到环境搭建结束后，构建编译前，\nconan user <openUBMC社区用户名> -p <openUBMC社区用户密码> -r openubmc_dev\n先重新执行下试试看吧\n然后\n\nLOG=DEBUG bingo build\n\n再打开一个终端\n\n/manifest/temp# tail -f log/task.log\nlinks: https://repo.openubmc.cn/25.06/sdk/, https://repo.openubmc.cn/25.06/sdk/"
+        },
+        {
+            "user_name": "Codebmcdev",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/14",
+            "text": "好的 一会再试试  谢谢"
+        },
+        {
+            "user_name": "Codebmcdev",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/15",
+            "text": "这样可以"
+        },
+        {
+            "user_name": "Codebmcdev",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2124/16",
+            "text": "谢谢"
+        }
+    ]
+}

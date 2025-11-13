@@ -1,0 +1,64 @@
+{
+    "topic_id": 1781,
+    "question": "关于openUBMC部件兼容性问题 - 请问下openUBMC的部件适配和华为的白牌版本之间的关系，openUBMC的部件兼容性是否继承自白牌版本，还是说openUBMC的部件适配是独立进行的？openUBMC是否有一个完整的部件适配列表？",
+    "topic_user_name": "baixin_lipengbo",
+    "best_answer_url": "/t/topic/1781/4",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1781/2",
+            "text": "content: gitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\nlinks: https://gitcode.com/openUBMC/vpd/blob/main/%E7%A1%AC%E7%9B%98%E3%80%81%E6%9D%BF%E5%8D%A1%E5%85%BC%E5%AE%B9%E6%80%A7%E8%AF%B4%E6%98%8E.md, https://gitcode.com/openUBMC/vpd/blob/main/%E7%A1%AC%E7%9B%98%E3%80%81%E6%9D%BF%E5%8D%A1%E5%85%BC%E5%AE%B9%E6%80%A7%E8%AF%B4%E6%98%8E.md"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1781/3",
+            "text": "带外管理上，部件兼容性和机型没啥关系吧？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1781/4",
+            "text": "社区的部件兼容性是通用性适配，不与具体机型耦合，如果有机型特殊适配点，需要各位自行在商用时进行差异化修改。"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1781/5",
+            "text": "您好，我理解白牌包应该是基于iBMC v2出的版本，openUBMC是后续iBMC设计架构升级开源出来的，openUBMC有考虑到兼容白牌包已经适配的部件吗，我们在使用openUBMC进行后续开发可以参考白牌包已经适配的部件列表吗，这部分有些疑问"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1781/6",
+            "text": "content: @zybwh\nlinks: /u/zybwh"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1781/7",
+            "text": "如果是基于openUBMC来进行开发，我建议参考openUBMC的兼容性列表，确保兼容性可靠、稳定。\n当前openUBMC社区的策略更多是基于现有的主流部件进行适配，以满足大部分开发者的诉求。如果有特别需要的卡，可以考虑：1、自己适配；2、提诉求到Hardware SIG，社区版本整体进行评估是否纳入。\n社区是共建共享的，欢迎大家一起来丰富南向兼容生态"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1781/8",
+            "text": "谢谢回答，所以说openUBMC开源的时候没有将白牌包已经适配过的部件作为默认适配项，部件适配是相互独立的？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1781/9",
+            "text": "因为要保证社区版本质量，围绕社区发行版规划了一套可测可用的、有质量保证的、可长期维护的兼容性列表。\n随着社区逐渐扩大，大家一起共建后应该会越来越多"
+        }
+    ]
+}

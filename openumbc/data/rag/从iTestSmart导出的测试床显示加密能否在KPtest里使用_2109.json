@@ -1,0 +1,22 @@
+{
+    "topic_id": 2109,
+    "question": "从iTestSmart导出的测试床显示加密，能否在KPtest里使用 - 1.当前运行kprun.py时报错，错误日志如下\nQA\\Test_Code\\KPTestOpenFramework\\src\\bin\\kprun.py:16: DeprecationWarning: Using or importing the ABCs from ‘collections’ instead of from ‘collections.abc’ is deprecated since Python 3.3,and in 3.9 it will stop working\nimport kpautos\n[2025-07-31 15:09:56,236][16440][ERROR] > [NA] [NA] [] [_call_with_frames_removed] [219] [NA]:import pyzbar failed.\n[2025-07-31 15:09:56,358][16440][INFO] > Failed to import kputils.Tracking: No module named ‘kputils’\nTraceback (most recent call last):\nFile “QA\\Test_Code\\KPTestOpenFramework\\src\\bin\\kprun.py”, line 16, in \nimport kpautos\nFile “src\\lib\\kpautos\\init.py”, line 6, in init kpautos\nFile “src\\lib\\kpautos\\kpautos.py”, line 22, in init kpautos.kpautos\nFile “src\\lib\\kpautos\\enhance_modules\\verify_license.py”, line 11, in init kpautos.enhance_modules.verify_license\nFile “src\\lib\\kpautos\\utils\\license\\license_validator.py”, line 21, in kpautos.utils.license.license_validator.LicenseValidator.init\nFile “src\\lib\\kpautos\\utils\\license\\license_validator.py”, line 25, in kpautos.utils.license.license_validator.LicenseValidator.init\nFile “src\\lib\\kpautos\\utils\\license\\license_validator.py”, line 28, in kpautos.utils.license.license_validator.LicenseValidator.init\nIndexError: list index out of range\n2.当前从iTestSmart导出设备时，格式为XML，但是打开显示加密了，能否使用到KPTest？或者是否有相关的测试床标准",
+    "topic_user_name": "Yctco Caos",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Hdq",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2109/2",
+            "text": "第2问题：加密的测试床是可以用于开发kptest用例时的测试床，框架在加载测试床信息时，会进行解密。"
+        },
+        {
+            "user_name": "Wwy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2109/3",
+            "text": "问题1的报错原因是license.dat解析失败，请检查license内容是否填写正确"
+        }
+    ]
+}

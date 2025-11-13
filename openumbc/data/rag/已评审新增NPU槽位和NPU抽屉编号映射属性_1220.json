@@ -1,0 +1,22 @@
+{
+    "topic_id": 1220,
+    "question": "【已评审】新增NPU槽位和NPU抽屉编号映射属性 - content: 背景\n当前NPU和其对应抽屉编号关系通过低速扩展板上的槽位号实现，由于不同机型扩展板槽位号不同，导致无法映射到正确的抽屉编号。\n决策点\n新增私有类 NPUSlotDrawerMapping ，直接实现NPU槽位到NPU抽屉的映射，从而实现NPU的Location和低速板的槽位号实现解耦\n详细描述\n新增私有类NPUSlotDrawerMapping\npath：不涉及\ninterface：不涉及\n变化类型：新增类\n应用场景：NPU抽屉映射\n持久化类型： 不持久化\n私有类当中包含如下属性：\n\n属性名称\n变化类型\n签名\n持久化\n接口说明\n\nMaps\n新增属性\na(ys)\n不持久化\n元素类型为存放Slot和Location的结构体，Slot为NPU的槽位号，签名为y，Location为NPU抽屉编号，签名为s\n\n举例: CSR当中可配置为\n\"NPUSlotDrawerMapping_1\": {\n        \"Maps\": [\n            {\"Slot\": 1, \"Location\": \"A1\"},\n            {\"Slot\": 2, \"Location\": \"A1\"},\n            {\"Slot\": 3, \"Location\": \"A2\"},\n            {\"Slot\": 4, \"Location\": \"A2\"},\n            {\"Slot\": 5, \"Location\": \"A1\"},\n            {\"Slot\": 6, \"Location\": \"A1\"},\n            {\"Slot\": 7, \"Location\": \"A2\"},\n            {\"Slot\": 8, \"Location\": \"A2\"}\n        ]\n}\n\n其中Slot为NPU的槽位号，类型为U8，Location为资料上的抽屉编号，类型为String\n评审结论\n同意在power_mgmt组件新增类NPUSlotDrawerMapping以及如下私有属性：\n\nMaps，NPU槽位号和抽屉编号映射关系，类型为Array，Array当中存放结构体，其中Key分别为：\nSlot：签名为y，表示NPU槽位号\nLocation：签名为s，表示NPU抽屉编号\nlinks: #p-2644-h-1",
+    "topic_user_name": "liumengda",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1220/2",
+            "text": "lmd1999:\n\n元素为Array类型 其中Array当中存放Slot和Location的结构体 Slot为NPU的槽位号 Location为NPU抽屉编号\n\n元素类型不是Array，元素是指数据中的元素。"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1220/3",
+            "text": ""
+        }
+    ]
+}

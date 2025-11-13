@@ -1,0 +1,15 @@
+{
+    "topic_id": 765,
+    "question": "数据库问题 - 代码新增IPMI命令设置一个新增属性，类似于\nlocal ipv6_obj = db.Ipv6({Id = ‘1’ })\nIpv6应该是全局唯一的对象，但是环境上的数据库解析后，发现有很多额外的记录\n类似id:s10, id:s13等。我使用id='1’创建了一条新的记录。这是为什么？",
+    "topic_user_name": "kunlun_luzhanghui",
+    "best_answer_url": "/t/topic/765/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/765/2",
+            "text": "需要分析下业务的处理逻辑，表内的数据都是由表的所有者添加的"
+        }
+    ]
+}

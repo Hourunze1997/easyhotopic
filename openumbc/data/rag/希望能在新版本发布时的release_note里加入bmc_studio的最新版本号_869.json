@@ -1,0 +1,15 @@
+{
+    "topic_id": 869,
+    "question": "希望能在新版本发布时的release note里加入bmc studio的最新版本号 - 不这样的话不太好判断现在用的studio版本是不是最新的",
+    "topic_user_name": "",
+    "best_answer_url": "/t/topic/869/2",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/869/2",
+            "text": "\"bingo和bmc studio自动升级功能\"需求已在分析，投入需要排序。"
+        }
+    ]
+}

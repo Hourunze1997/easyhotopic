@@ -1,0 +1,22 @@
+{
+    "topic_id": 1272,
+    "question": "【BMC】通过脚本带内升级bios，选择保留配置，但实际配置没有保留 - 描述：os侧试下 得装python， 命令：python3 flasher_fix.py -c3 -w3 BMC_IP bios BIOS_HPM\n选择保留配置，但实际配置没有保留。",
+    "topic_user_name": "A22134bc",
+    "best_answer_url": "/t/topic/1272/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1272/2",
+            "text": "请确认是否使用的BMC包为装备版本，装备版本的BMC若进行BIOS升级则为不保留配置的全擦升级。"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1272/3",
+            "text": "BMC装备版本，默认全擦升级，不保留配置"
+        }
+    ]
+}

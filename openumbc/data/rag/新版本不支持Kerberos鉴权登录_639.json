@@ -1,0 +1,22 @@
+{
+    "topic_id": 639,
+    "question": "新版本不支持Kerberos鉴权登录 - 使用5.5.12.12版本，在用户管理界面，没有Kerberos鉴权登录配置界面，功能是否裁剪掉了，还是尚未同步？\n是否有支持规划？",
+    "topic_user_name": "Kun Lun Wangqindong",
+    "best_answer_url": "/t/topic/639/3",
+    "reply_posts": [
+        {
+            "user_name": "ZhangNing",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/639/2",
+            "text": "目前版本不支持Kerberos登录，暂未规划支持该功能"
+        },
+        {
+            "user_name": "李文杰",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/639/3",
+            "text": "Kerberos功能在国内场景下，诉求较弱，暂未实现。\n后续基于客户诉求触发式实现"
+        }
+    ]
+}

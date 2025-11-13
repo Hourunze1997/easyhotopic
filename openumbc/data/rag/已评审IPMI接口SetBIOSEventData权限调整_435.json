@@ -1,0 +1,15 @@
+{
+    "topic_id": 435,
+    "question": "【已评审】IPMI接口(SetBIOSEventData)权限调整 - content: 关联issue\nsensor issue#2 （SetBIOSEventData/SetBaseOSBootEvent修改权限为BasicSetting）\n评审背景\n\nSetBIOSEventData/SetBaseOSBootEvent 两个IPMI命令的权限为 Readonly，对于设置类来说权限过低，需要提升权限为 BasicSetting\n\n评审点\n接口权限从ReadOnly权限变更为BasicSetting\n评审结论\n同意变更\n剩余事项\n无\nlinks: #p-799-issue-1, https://gitcode.com/openUBMC/sensor/issues/2, #p-799-h-2, #p-799-h-3, #p-799-h-4, #p-799-h-5",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/435/2",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "topic_id": 339,
+    "question": "社区conan仓库不通 - content: 配置社区远程conan地址不通\nconan remote add openubmc_dev “https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/” false\nconan user cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_2eb25cae2cfc433298c5b7c5dc24ca34 -p=“Sj9^V^l02H” -r openubmc_dev\nimage1540×406 41.8 KB\nlinks: https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/, https://forum.openubmc.cn/uploads/default/original/1X/d21d787abc1460f58b4d71b169f9945ace403252.png",
+    "topic_user_name": "河南昆仑-郑豪伟",
+    "best_answer_url": "/t/topic/339/4",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/339/2",
+            "text": "经测试，社区conan仓网络不存在问题，可以连通。\n从你的日志看，网络连通性就有问题，建议排查自己的网络配置。"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/339/3",
+            "text": "我偶尔也会遇到这个问题，重新拉就行"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/339/4",
+            "text": "content: 解决：\n社区conan仓库地址变更，使用     conan remote add openubmc_dev “https://conan.openubmc.cn/conan_1” false || echo OK\nlinks: https://conan.openubmc.cn/conan_1"
+        },
+        {
+            "user_name": "discobot",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/339/5",
+            "text": "content: 你好！这个连接的信息可能对你解决本问题有所帮助，请参考，谢谢！\nlinks: https://discuss.openubmc.cn/t/topic/500/1"
+        }
+    ]
+}

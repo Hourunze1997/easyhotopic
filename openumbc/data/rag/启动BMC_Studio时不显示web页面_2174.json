@@ -1,0 +1,15 @@
+{
+    "topic_id": 2174,
+    "question": "启动BMC Studio时，不显示web页面 - content: Hi Bro\n我按照BMC Studio安装指南，在启动BMC Studio时，不显示web页面，shell内容如下：\nimage820×147 28.7 KB\n请帮忙看一下，谢谢\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4bb7d63316f3b9684bf64a49f513658fabe810d1.png",
+    "topic_user_name": "Demon Wu",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2174/2",
+            "text": "content: 您是在docker里运行的studio吗？如果是的话请您手动在浏览器中输入http://localhost:12889 ，目前bmc studio不支持在非wsl的系统内自动拉起前端\nlinks: http://localhost:12889"
+        }
+    ]
+}

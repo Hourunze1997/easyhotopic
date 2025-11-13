@@ -1,0 +1,15 @@
+{
+    "topic_id": 1786,
+    "question": "iTestSmart测试OpenUBMC用例失败求助指引 - content: 一、历史问题查看\n在openUBMC社区搜索失败用例名称（编号），查看历史定位经验。\n二、问题求助\nitestsmart日志收集\n\n从itestsmart的任务详情中，点击右上角的打开测试目录。\nimage1299×324 46.2 KB\n\n把打开的文件内全部文件打成压缩包\nimage849×324 50.2 KB\n\n发帖求助后，将日志发送给回帖的问题定位协助人。\n\nBMC一键收集日志（非必须）\n部分失败用例定位需要额外收集BMC日志\n\nitestsmart工具设置-运行配置 勾选自动收集日志\nimage519×184 13.3 KB\n在nfs 的/mnt/dev_sdb/sftp/logs下取日志。\nlinks: #p-4370-h-1, https://discuss.openubmc.cn/, #p-4370-h-2, #p-4370-itestsmart-3, https://discuss.openubmc.cn/uploads/default/original/2X/3/3265ea517f3b1d993374a9015b7121ca4d80dc02.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a7b9bcdca67d32015df0838a94f759c0d45ece52.png, #p-4370-bmc-4, https://discuss.openubmc.cn/uploads/default/original/2X/f/f3fc00f788d749fbf41a949b4606b4daacccedcb.png",
+    "topic_user_name": "Hdq",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1786/2",
+            "text": ""
+        }
+    ]
+}

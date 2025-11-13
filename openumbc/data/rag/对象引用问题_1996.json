@@ -1,0 +1,29 @@
+{
+    "topic_id": 1996,
+    "question": "对象引用问题 - content: 背景\n需要配置一个电源事件用于识别电源型号不一致的时候产生一条sel记录，查看代码的时候发现已有一个对象属性（PowerMgmt_0.IsModelMismatch）能够满足这个要求，这个对象是在lua里面创建的：\nimage919×295 26.1 KB\nimage270×139 3.33 KB\n问题\n配置PowerMgmt_0对象到14191046_PSU_0_soft.sr或者platform.sr里面\nimage394×212 4.38 KB\n日志会报错hwdiscovery WARNING: analyse.lua(176): get synchronized object path failed, object: PowerMgmt_0\n有什么好的办法可以解决这个问题吗？\n是否可以删掉这个lua创建对象的代码，直接配置在sr里面之后在lua里面去刷新IsModelMismatch能否解决这个问题？\nlinks: #p-4911-h-1, https://discuss.openubmc.cn/uploads/default/original/2X/2/29bb7a576cc887d5de094e590a07426b942371e2.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/11381c79b69f3a84cbb037d4bde8e79b3c0ba063.png, #p-4911-h-2, https://discuss.openubmc.cn/uploads/default/original/2X/b/b4c16884a4107c999dd962276a87e8779b6679ca.png",
+    "topic_user_name": "Songwen",
+    "best_answer_url": "/t/topic/1996/4",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1996/2",
+            "text": "可以通过{对象名}.{属性名}引用，自发现会通过schema解析到对象，可参考其他sr配置"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1996/4",
+            "text": "引用与同步不可以配置非自发现对象"
+        },
+        {
+            "user_name": "Songwen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1996/5",
+            "text": "修改为自发现的属性就可以在sr里面引用使用了"
+        }
+    ]
+}

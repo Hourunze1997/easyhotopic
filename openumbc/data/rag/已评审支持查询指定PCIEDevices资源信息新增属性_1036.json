@@ -1,0 +1,15 @@
+{
+    "topic_id": 1036,
+    "question": "【已评审】支持查询指定PCIEDevices资源信息新增属性 - content: ISSUE链接（必填，此议题关联的issue）\nhttps://gitcode.com/openUBMC/mdb_interface/issues/77\n背景（必填，文字描述议题背景，如需求来源、问题场景）\n升级redfish规范，支持PCIeFunction资源ClassCode属性\nURI：/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions/{PCIeFunctionId}下的\n当前PCIeDevice设备管理资源协作接口不支持，需要新增BaseClassCode、SubClassCode、ProgrammingInterface。\n决策点（必填，一句话描述待决策点）\n资源协作接口新增属性BaseClassCode、SubClassCode、ProgrammingInterface，分别表示PCIe设备功能的基类码、子类码和编程接口。\n详细描述\n资源path： /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\n资源interface： bmc.kepler.Systems.PCIeDevices.PCIeDevice\n变化类型：新增属性\n应用场景：北向redfish接口查询指定PCIEDevices资源信息返回\n持久化类型： 复位持久化\n操作权限：ReadOnly\n详细描述：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nBaseClassCode\n新增属性\ny\n只读，R：ReadOnly\n复位持久化\nfalse\nPCIe设备功能的基类码\nNA\n\nSubClassCode\n新增属性\ny\n只读，R：ReadOnly\n复位持久化\nfalse\nPCIe设备功能的子类码\nNA\n\nProgrammingInterface\n新增属性\ny\n只读，R：ReadOnly\n复位持久化\nfalse\nPCIe设备功能的编程接口\nNA\n\n评审结论\n1、同意新增资源协作接口属性BaseClassCode：\n\n资源path: /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\n资源interface: bmc.kepler.Systems.PCIeDevices.PCIeDevice\n属性：BaseClassCode，类型为U8，PCIe设备功能的基类码\n权限：ReadOnly\n\n2、同意新增资源协作接口属性SubClassCode：\n\n资源path: /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\n资源interface: bmc.kepler.Systems.PCIeDevices.PCIeDevice\n属性：SubClassCode，类型为U8，PCIe设备功能的子类码\n权限：ReadOnly\n\n3、同意新增资源协作接口属性ProgrammingInterface：\n\n资源path: /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\n资源interface: bmc.kepler.Systems.PCIeDevices.PCIeDevice\n属性：ProgrammingInterface，类型为U8，PCIe设备功能的编程接口\n权限：ReadOnly\nlinks: #p-2198-issueissue-1, https://gitcode.com/openUBMC/mdb_interface/issues/77, #p-2198-h-2, #p-2198-h-3, #p-2198-h-4, #p-2198-h-5",
+    "topic_user_name": "王祝炜",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1036/2",
+            "text": ""
+        }
+    ]
+}

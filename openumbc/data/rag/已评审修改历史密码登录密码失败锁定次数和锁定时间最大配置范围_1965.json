@@ -1,0 +1,36 @@
+{
+    "topic_id": 1965,
+    "question": "【已评审】修改历史密码、登录密码失败锁定次数和锁定时间最大配置范围 - content: ISSUE链接\n【需求】支持历史密码、登录失败锁定次数、登录失败锁定时间可配置-account-GitCode\n背景:\n客户认为当前的历史密码、登录失败锁定次数合登录失败锁定时间存在一定的局限性。希望能对这三种属性进行更大范围的配置。\n当前版本：\n历史密码仅支持在0 - 5次间配置\n登录失败锁定次数仅支持在0 - 6次间配置\n登录失败锁定时间仅支持在1 - 30分钟间配置\n客户希望支持如下配置：\n历史密码支持在0 - 99次间配置\n登录失败锁定次数配置区间为0 - 99次\n登录失败锁定时间配置区间为1 - 99分钟\n决策点：\n一、希望新增资源协作接口属性，用来控制历史密码、登录失败锁定此时、登录失败锁定时间的最大值可动态配置。\n具体数据配置如下：\n1、最大登录失败锁定(失败次数)：MaxAccountLockoutThreshold\n2、最长锁定时长(分钟)：MaxAccountLockoutDuration\n3、最大禁用历史密码禁用：MaxHistoryPasswordCount\n用于配置历史密码、登录失败锁定次数、登录失败锁定时间可执行范围。\n二、rest接口/UI/Rest/AccessMgnt/AdvancedSecurity新增如下属性供前端获取展示：\n1、MaxPreviousPasswordsDisallowedCount，对应资源数属性MaxHistoryPasswordCount\n2、MaxAccountLockoutThreshold，对应资源树属性MaxAccountLockoutDuration\n3、MaxAccountLockoutDuration，对应资源数属性MaxHistoryPasswordCount\n整体方案：\n\n登录失败锁定次数和时间\n增加登录锁定时间和登录失败锁定次数的属性，通过对这两个属性的配置。来限制登录锁定时间和登录失败锁定次数范围。\n\n影响：内部使用pam_faillock校验时，可以支持配置到255\n\n历史密码\n增加历史密码的最大属性，限制用户可以配置的最大历史密码次数。\n\n影响：如果用户将历史密码配置到99次，当用户在修改密码时会与存入在数据库中的历史密码进行比较的时候。密码修改成功接口的响应时间可能会较长，约为3.5s。\n\n详细描述：\n资源1：支持登录失败锁定功能的最大值动态配置\n资源path：bmc/kepler/AccountService/Authentication\n资源interface：bmc.kepler.AccountService.Authentication\n变化类型：新增资源协作接口属性\n应用场景：客户定制组件能够配置用户的登录失败锁定时间和登录失败锁定次数，来满足客户特定诉求。\n详细描述：\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n默认值\n约束\n\nMaxAccountLockoutDuration\n新增属性\ni\n读：ReadOnly 写：SecurityMgmt\n临时持久化\nfalse\n定制组件代码刷新\n最大账户锁定时长\n1800\n取值范围：[1800, 86400]\n\nMaxAccountLockoutThreshold\n新增属性\ni\n读：ReadOnly 写：SecurityMgmt\n临时持久化\nfalse\n定制组件代码刷新\n最大账户锁定次数\n6\n取值范围 [6, 255]\n\n资源2：支持历史密码校验的最大值动态配置\n资源path：bmc/kepler/AccountService/AccountService\n资源interface：bmc.kepler.AccountService\n变化类型：新增资源协作接口属性\n应用场景：客户定制组件能够配置用户的登录失败锁定时间和登录失败锁定次数，来满足客户特定诉求。\n详细描述：\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n默认值\n约束\n\nMaxHistoryPasswordCount\n新增属性\ny\n读：ReadOnly 写：SecurityMgmt\n临时持久化\nfalse\n组件代码更新\n最大历史密码记录个数\n5\n取值范围：[5, 100]\n\n资源3 支持前端获取最大用户登录失败锁定时间、最大登录失败锁定次数、最大历史密码校验次数\nuri：/UI/Rest/AccessMgnt/AdvancedSecurity\n变化类型：新增属性\n操作类型：GET\n应用场景：支持前端获取各项配置最大值\n新增属性：\nMaxPreviousPasswordsDisallowedCount、MaxAccountLockoutThreshold、MaxAccountLockoutDuration，\n\n属性名称\n取值类型\n说明\n默认值\n操作权限\n取值范围\n\nMaxAccountLockoutDuration\ninteger\n新增属性\n30\n只读，读权限：ReadOnly\n取值范围 [30, 1440]\n\nMaxAccountLockoutThreshold\ninteger\n新增属性\n6\n只读，读权限：ReadOnly\n取值范围 [6, 255]\n\nMaxPreviousPasswordsDisallowedCount\ninteger\n新增属性\n5\n只读，读权限：ReadOnly\n取值范围 [5, 100]\n\n前端页面展示\n修改前：\nimage1181×837 25.4 KB\n修改后：\nimage1127×929 46.7 KB\n评审结论\n1、同意资源协作接口bmc.kepler.AccountService.Authentication新增如下属性：\n\nMaxAccountLockoutDuration，表示最大账户锁定时长，单位：秒，签名为i，取值范围1800~86400，读权限：ReadOnly，写权限：SecurityMgmt，不发送变更通知事件\nMaxAccountLockoutThreshold，表示最大账户锁定次数，签名为i，取值范围5~255，读权限：ReadOnly，写权限：SecurityMgmt，不发送变更通知事件\n\n2、同意资源协作接口bmc.kepler.AccountService新增如下属性\n\nMaxHistoryPasswordCount，表示最大历史密码记录个数，签名为y，取值范围5~100，读权限：ReadOnly，写权限：SecurityMgmt，不发送变更通知事件\n\n3、同意webrest接口/UI/Rest/AccessMgnt/AdvancedSecurity GET操作新增如下属性：\n\nMaxAccountLockoutDuration，表示最大账户锁定时长，单位：分钟，类型：integer，只读，取值范围30~1440\nMaxAccountLockoutThreshold ，表示最大账户锁定次数，类型：integer，只读，取值范围6~255\nMaxPreviousPasswordsDisallowedCount，表示最大历史密码记录个数，类型：integer，只读，取值范围5~100\n\n遗留问题\n无\nlinks: #p-4809-issue-1, https://gitcode.com/openUBMC/account/issues/33, #p-4809-h-2, #p-4809-h-3, #p-4809-h-4, #p-4809-h-5, #p-4809-h-1-6, #p-4809-h-2-7, #p-4809-h-3-8, #p-4809-h-9, https://discuss.openubmc.cn/uploads/default/original/2X/2/283e6c8ec3d4a52582545ffb7d62883273a43e69.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/8776e6b19c38ea2a064b73b88275a4ae1cc4e127.png, #p-4809-h-10, #p-4809-h-11",
+    "topic_user_name": "Hpc",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1965/2",
+            "text": "参考最后一楼的回复，本楼层帖子清除"
+        },
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1965/3",
+            "text": "按照此模板重新刷新材料"
+        },
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1965/4",
+            "text": "content: ISSUE链接\n评审背景\n当前版本：\n历史密码仅支持在0 - 5次间配置\n登录失败锁定次数仅支持在0 - 5次间配置\n登录失败锁定时间仅支持在1 - 30分钟间配置\n客户希望支持如下配置：\n历史密码支持在0 - 99次间配置\n登录失败锁定次数配置区间为0 - 99次\n登录失败锁定时间配置区间为1 - 99分钟\n决策点\n希望新增资源协作接口属性，用来控制历史密码、登录失败锁定此时、登录失败锁定时间的最大值可动态配置。\n具体数据配置如下：\n\n最大登录失败锁定(失败次数)：MaxAccountLockoutThreshold\n最长锁定时长(分钟)：MaxAccountLockoutDuration\n最大禁用历史密码禁用：MaxHistoryPasswordCount\n用于配置历史密码、登录失败锁定次数、登录失败锁定时间可执行范围。\n\n整体方案\n\n登录失败锁定次数和时间\n增加登录锁定时间和登录失败锁定次数的属性，通过对这两个属性的配置。来限制登录锁定时间和登录失败锁定次数范围。\n\n影响：内部使用pam_faillock校验时，可以支持配置到255\n\n历史密码\n增加历史密码的最大属性，限制用户可以配置的最大历史密码次数。\n\n影响：当用户配置历史密码到99次的时候，与存入在数据库中的历史密码进行比较的时候。登录成功接口的响应时间可能会较长约为3.5s。\n\n详细描述\n资源1：支持登录失败锁定功能的最大值动态配置\n资源path：bmc/kepler/AccountService/Authentication\n资源interface：bmc.kepler.AccountService.Authentication\n变化类型：新增资源协作接口属性\n应用场景：\n\n客户定制组件能够配置用户的登录失败锁定时间和登录失败锁定次数，来满足客户特定诉求\n\n详细描述：\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nMaxAccountLockoutDuration\n新增属性\n读：ReadOnly 写：SecurityMgmt\n不持久化\nfalse\n定制组件代码刷新\n账户锁定时长的最大范围\n取值范围：[1800, 86400]，单位是秒\n\nMaxAccountLockoutThreshold\n新增属性\n读：ReadOnly 写：SecurityMgmt\n不持久化\nfalse\n定制组件代码刷新\n账户锁定次数的最大范围\n取值范围 [6, 255]\n\n资源2：支持历史密码校验的最大值动态配置\n资源path：bmc/kepler/AccountService/AccountService\n资源interface：bmc.kepler.AccountService\n变化类型：新增资源协作接口属性\n应用场景：\n\n客户定制组件能够配置用户的历史密码次数，来满足客户特定诉求\n\n详细描述：\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nMaxHistoryPasswordCount\n新增属性\ny\n读：ReadOnly 写：SecurityMgmt\n不持久化\nfalse\n定制组件代码刷新\n历史密码次数最大值\n取值范围 [5, 100]\n\n资源设置超过取值范围的错误：\nPropertyValueOutOfRange\n评审结论\n待补充\nlinks: #p-4988-issue-1, #p-4988-h-2, #p-4988-h-3, #p-4988-h-4, #p-4988-h-5, #p-4988-h-1-6, #p-4988-h-2-7, #p-4988-h-8"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1965/5",
+            "text": ""
+        }
+    ]
+}

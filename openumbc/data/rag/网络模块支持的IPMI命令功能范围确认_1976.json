@@ -1,0 +1,15 @@
+{
+    "topic_id": 1976,
+    "question": "网络模块支持的IPMI命令功能范围确认 - content: bmc_network是闭源组件，涉及到如下的IPMI标准命令。\nimage697×397 34.7 KB\n\n目前不知道哪些是支持的。从以前的贴子来看，很多IPMI命令都没有实现。\n【待评审】bmc_network-ipv6相关标准IPMI命令评审 - Interface SIG / Interface评审 - openUBMC 论坛\n这个能否提供一个具体的实现清单？比如哪些是打桩的，哪些已实现。\n问题背景：【2280 V2】【IPMI】【IPv6 Router Address Configuration Control】IPMI命令设置启用动态IPv6路由器地址配置控制，命令发送失败，必现\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/ca678bda3083eebc1b0b5653b12e68e95cfefd6f.png, https://discuss.openubmc.cn/t/topic/812",
+    "topic_user_name": "kunlun_luzhanghui",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1976/2",
+            "text": "嗯嗯  收到，这边近期整理一下更新到社区的帖子中"
+        }
+    ]
+}

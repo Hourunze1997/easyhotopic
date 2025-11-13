@@ -1,0 +1,7 @@
+{
+    "topic_id": 1190,
+    "question": "【已评审】redfish接口查询storage相关信息字段变更评审 - content: ISSUE链接（必填，此议题关联的issue）：\n【问题单】redfish接口查询逻辑盘信息Name字段显示有误-rackmount-GitCode\n评审背景\nredfish接口\nuri:redfish/v1/Systems/1/Storages/storage_id/Volumes/volume_id\nName字段代码实现为与Id一致为VolumeName，为用户创建逻辑盘指定的Name，若不指定将显示为“N/A”，IDP文档实现为“LogicalDriveX”，X为逻辑盘Id\n决策点（必填，一句话描述待决策点）：\n将uri:redfish/v1/Systems/1/Storages/storage_id/Volumes/volume_id下的Name字段取值修改为与Id一致为“LogicalDriveX”，X为逻辑盘Id\n详细描述（必填，描述待评审接口的详细内容）：\nuri:redfish/v1/Systems/1/Storages/storage_id/Volumes/volume_id\n变化类型：变更属性取值\n操作类型：GET\n应用场景：用于查询逻辑盘相关信息\n\n属性名称\n取值类型\n说明\n取值范围\n默认值\n操作权限\n是否频繁变化并需要屏蔽变化事件\n约束\n\nName\nstring\n逻辑盘名称\n“LogicalDriveX”\n与uri中的volume_id保持一致\nReadOnly\n否\n无其他约束\n\nschema说明：“$ref”: “http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name”\nuri下的Name显示为创建逻辑盘时指定的VolumeName，不指定该参数时，该参数为‘N/A’，不符合预期，预期为‘LogicalDriveX’\n性能说明：不涉及\n示例：\n修改前：“Name”: “111111111111”,\n修改后：“Name”: “LogicalDrive0”,\n评审结论：\n同意将redfish接口uri为redfish/v1/Systems/1/Storages/storage_id/Volumes/volume_id，Type为Get的响应体中的Name字段取值由创建逻辑盘时可指定的任意字符串\"XXXX\"改为与url中volume_id保持一致的字符串，格式为“LogicalDriveX”其中X为指定逻辑盘Id\nlinks: #p-2593-issueissue-1, https://gitcode.com/openUBMC/rackmount/issues/115, #p-2593-h-2, #p-2593-h-3, #p-2593-h-4, http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name, #p-2593-h-5",
+    "topic_user_name": "Yelmh Kno07",
+    "best_answer_url": "",
+    "reply_posts": []
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 1366,
+    "question": "调速策略配置指导 - content: 最新参考：调速配置指导说明文档\nlinks: https://discuss.openubmc.cn/t/topic/1384",
+    "topic_user_name": "Fumingquan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "discobot",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1366/2",
+            "text": "content: 你好！这个连接的信息可能对你解决本问题有所帮助，请参考，谢谢！\nlinks: https://discuss.openubmc.cn//t/topic/863/1"
+        },
+        {
+            "user_name": "discobot",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1366/3",
+            "text": "content: 你好！这个连接的信息可能对你解决本问题有所帮助，请参考，谢谢！\nlinks: https://discuss.openubmc.cn//t/topic/863/1"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1366/4",
+            "text": ""
+        }
+    ]
+}

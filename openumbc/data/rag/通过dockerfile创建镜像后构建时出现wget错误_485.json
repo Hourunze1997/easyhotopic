@@ -1,0 +1,71 @@
+{
+    "topic_id": 485,
+    "question": "通过dockerfile创建镜像后，构建时出现wget错误 - content: 背景\n操作历程：\n1、使用2503 dockerfile初始化后的环境\n2、发布环境为镜像\n3、使用发布后的环境实例化为容器\n4、更新bingo版本\n5、执行构建\n版本信息：\nimage666×153 8.33 KB\n问题现象\n构建命令：\nrm -rf /root/.conan/data/* && rm -rf temp/ && rm -rf output/ && LOG=DEBUG bingo build -b openUBMC -r openubmc_dev\n\n构建提示出错：\nimage1466×440 36.5 KB\n开始下载 flatbuffers ...\n>>  wget --no-check-certificate https://cmc-hgh-artifactory.cmc.tools.huawei.com/artifactory/opensource_general/flatbuffers/2.0.0/package/flatbuffers-2.0.0.tar.gz\nERROR: 执行命令  /usr/bin/wget --no-check-certificate https://cmc-hgh-artifactory.cmc.tools.huawei.com/artifactory/opensource_general/flatbuffers/2.0.0/package/flatbuffers-2.0.0.tar.gz 错误, 日志: /home/workspace/openubmc_0403/manifest/temp/log/task.log\nTraceback (most recent call last):\n  File \"/usr/local/lib/python3.12/dist-packages/bmcgo/frame.py\", line 274, in run\n    ret = self._run()\n          ^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/dist-packages/bmcgo/frame.py\", line 316, in _run\n    ret = work_x.run()\n          ^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/dist-packages/bmcgo/tasks/task_install_flatbuffers.py\", line 39, in run\n    self.run_command(f\"wget --no-check-certificate {flatbuffers_url}\")\n  File \"/usr/local/lib/python3.12/dist-packages/bmcgo/tasks/task.py\", line 257, in run_command\n    return self.tools.run_command(command, ignore_error, sudo, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/dist-packages/bmcgo/utils/tools.py\", line 665, in run_command\n    raise e\n  File \"/usr/local/lib/python3.12/dist-packages/bmcgo/utils/tools.py\", line 655, in run_command\n    ret = subprocess.run(command, stdout=log_fd, stderr=log_fd, check=check, timeout=timeout)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['/usr/bin/wget', '--no-check-certificate', 'https://cmc-hgh-artifactory.cmc.tools.huawei.com/artifactory/opensource_general/flatbuffers/2.0.0/package/flatbuffers-2.0.0.tar.gz']' returned non-zero exit status 4.\n\nERROR: Command '['/usr/bin/wget', '--no-check-certificate', 'https://cmc-hgh-artifactory.cmc.tools.huawei.com/artifactory/opensource_general/flatbuffers/2.0.0/package/flatbuffers-2.0.0.tar.gz']' returned non-zero exit status 4.\n\n初步分析\n具体出错的命令是：\nwget --no-check-certificate https://cmc-hgh-artifactory.cmc.tools.huawei.com/artifactory/opensource_general/flatbuffers/2.0.0/package/flatbuffers-2.0.0.tar.gz\n\n手动执行出错：\nwget --no-check-certificate https://cmc-hgh-artifactory.cmc.tools.huawei.com/artifactory/opensource_general/flatbuffers/2.0.0/package/flatbuffers-2.0.0.tar.gz\n--2025-04-16 06:29:09--  https://cmc-hgh-artifactory.cmc.tools.huawei.com/artifactory/opensource_general/flatbuffers/2.0.0/package/flatbuffers-2.0.0.tar.gz\nResolving cmc-hgh-artifactory.cmc.tools.huawei.com (cmc-hgh-artifactory.cmc.tools.huawei.com)... failed: Name or service not known.\nwget: unable to resolve host address 'cmc-hgh-artifactory.cmc.tools.huawei.com'\n\n在宿主机执行也出错：\nimage1100×195 14.6 KB\n诉求\n想确认下是华为源的问题还是我这边网络问题\nlinks: #p-920-h-1, https://forum.openubmc.cn/uploads/default/original/1X/5ecd317300da7af930635c4f1814bea58f17c0a1.png, #p-920-h-2, https://forum.openubmc.cn/uploads/default/original/1X/01c9e8bb25dfa73fd48645a293748a0aa245f16a.png, #p-920-h-3, https://forum.openubmc.cn/uploads/default/original/1X/618d3d5544ab285ac5ac6754236850108526c121.png, #p-920-h-4",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/485/7",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/485/2",
+            "text": "感觉问题出在了你把~/.conan/data/*清空了\ndocker镜像构建的有一步骤就是把对应的conan依赖安装好了\n可以试试重新使用镜像拉起一个新容器，然后只跑bingo build -b openUBMC -r openubmc_dev作为对比"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/485/4",
+            "text": "从错误来看，像是域名解析的问题，你能在你的环境发一下试试么"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/485/5",
+            "text": "这个地址是内部地址，外部应该无法访问的"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/485/6",
+            "text": "content: 我现在重新从dockerfile 创建镜像，就卡到：\nbingo build -t install_sdk -b openUBMC -ucc\n其中执行到 wget --no-check-certificate https://cmc-hgh-artifactory.cmc.tools.huawei.com/artifactory/opensource_general/flatbuffers/2.0.0/package/flatbuffers-2.0.0.tar.gz\n就报错了，报错如上表述\n如果访问了不应该的内部地址，会不会是0.5.317版本bingo的问题\n在文件tasks/task_install_flatbuffers.py中写死了flatbuffers的下载地址：\nlinks: https://cmc-hgh-artifactory.cmc.tools.huawei.com/artifactory/opensource_general/flatbuffers/2.0.0/package/flatbuffers-2.0.0.tar.gz"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/485/7",
+            "text": "content: 改掉 文件tasks/task_install_flatbuffers.py的下载地址后，能正常进行后续构建了：\nwget https://github.com/google/flatbuffers/archive/v2.0.0.tar.gz -O flatbuffers-2.0.0.tar.gz\n\nimage894×114 8.48 KB\n方法以供参考\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/1fe6876dc75dc779c485a264d6f476a7c55d1f1d.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/485/8",
+            "text": "临时方案二：可以执行以下脚本手动安装flatbuffer到环境中。\napt autoremove -y flatbuffers-compiler\nmkdir flatbuffers\ncd flatbuffers\n\nwget https://github.com/google/flatbuffers/archive/v2.0.0.tar.gz -O flatbuffers-2.0.0.tar.gz\ntar -zxf flatbuffers-2.0.0.tar.gz\nmkdir flatbuffers-2.0.0/build\ncd flatbuffers-2.0.0/build\nsudo cmake ..\nsudo make -j8 install\n\n后续方案： 安装放到dockerfile里"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/485/9",
+            "text": "content: gitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n后续通过issue跟踪\nlinks: https://gitcode.com/openUBMC/manifest/issues/10, https://gitcode.com/openUBMC/manifest/issues/10"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/485/11",
+            "text": "content: 使用 main 分支的 manifest，通过 bmcgo 进行定向开放包时出现了该问题，但在使用 bingo 执行时未复现。\nwget https://github.com/google/flatbuffers/archive/v2.0.0.tar.gz -O flatbuffers-2.0.0.tar.gz\n后，放到本地apache2上。\nvim /usr/local/lib/python3.12/dist-packages/bmcgo/tasks/task_install_flatbuffers.py\n\n代码中 flatbuffers_url 变量的内容是：\nflatbuffers_url = 'wget http://192.168.13.112/flatbuffers-2.0.0.tar.gz'\n\n实际执行命令变成了：\nwget --no-check-certificate wget http://192.168.13.112/flatbuffers-2.0.0.tar.gz\n\n多了一个 wget，导致命令执行失败。\n现在改成：\nflatbuffers_url = 'http://192.168.13.112/flatbuffers-2.0.0.tar.gz'\n\n即可正常运行。\nlinks: https://github.com/google/flatbuffers/archive/v2.0.0.tar.gz"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/485/12",
+            "text": "flatbuffers 工具为bmc_sdk中的部分组件依赖的编译工具，这部分组件已经编译为二进制，不需要再次编译，同时社区的开源组件当前也不依赖该工具（bingo无依赖）。可以使用以来规避措施解决：\nvim /usr/local/lib/python3.12/dist-packages/bmcgo/tasks/task_install_flatbuffers.py\n\n将flatc is not None 改成True"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 1921,
+    "question": "【已评审】新增资源协作接口方法支持安全协处理日志等级配置 - content: 背景\n适配安全协处理器日志收集，新增资源协作接口方法配置日志级别\n使用场景：问题定位场景，使用mdbctl配置日志级别\n决策点\n\n新增bmc.kepler.Release.Managers.SOC.Coprocessor接口及方法SetLogLevel\n新增setloglevel组件自定义命令，用于问题定位场景，mdbctl执行调整安全协处理器日志级别\n\n整体方案\n\n方案：使用mdbctl执行setloglevel组件自定义命令，将日志级别通过核间通信发送到安全协处理器, 对后续打印日志生效\n\n应用场景：用于问题定位场景，使用mdbctl调整安全协处理器日志等级，不涉及北向接口\n\n详细描述\n资源协作接口\n方法：SetLogLevel\n资源path： /bmc/kepler/Managers/:ManagerId/SOC/Coprocessor\n资源interface：bmc.kepler.Release.Managers.SOC.Coprocessor\n\n方法名称\n变化类型\n请求签名\n请求参数说明\n响应签名\n响应参数说明\n访问权限\n说明\n约束\n命令字\n\nSetLogLevel\n新增方法\ny\n日志等级(与开源操作系统保持一致) 0: 紧急(emergency) 1: 内核打印(common) 2: 错误(error) 3: 警告(warning) 4: 通知(info) 5: 调试(debug)\n无\n无\nDiagnoseMgmt\n配置安全协处理器日志等级\n无\nsetcoploglevel\n\n调测命令\n命令名称：setcoploglevel\n描述：配置安全协处理器日志级别\nUsage: setcoploglevel <LogLevel>\nLogLevel：必选参数，表示需要配置的日志等级，uint8_t类型，取值范围及含义如下：\n0-紧急(emergency)\n1-内核打印(common)\n2-错误(error)\n3-警告(warning)\n4-通知(info)\n5-调试(debug)\n\n示例：\n% attach soctrl\n\n% lscmd\nUsage: setcoploglevel <loglevel>\nSet the coprocessor log level.\nLogLevel：0-emergency, 1-common, 2-error, 3-warning, 4-info, 5-debug\n\n% setcoploglevel 5\n\n%\n\n评审结论\n1、同意新增资源协作接口bmc.kepler.Release.Managers.SOC.Coprocessor及SetLogLevel方法：\n\nSetLogLevel，用于配置安全协处理器日志级别，请求签名：y，响应内容：无，权限：DiagnoseMgmt，请求参数说明：0: 紧急(emergency)，1: 内核打印(common)，2: 错误(error)，3: 警告(warning)，4: 通知(info)，5: 调试(debug)\n\n2、同意新增mdbctl命令字setcoploglevel用于配置安全协处理器日志级别，具体如下：\n\nUsage: setcoploglevel <LogLevel>\nLogLevel：必选参数，表示需要配置的日志等级，取值范围及含义，0-紧急(emergency), 1-内核打印(common), 2-错误(error), 3-警告(warning), 4-通知(info), 5-调试(debug)\nlinks: #p-4739-h-1, #p-4739-h-2, #p-4739-h-3, #p-4739-h-4, #p-4739-h-5, #p-4739-h-6, #p-4739-h-7",
+    "topic_user_name": "Yanchuanjie",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Yanchuanjie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1921/2",
+            "text": "遗留事项：\n1、实测返回打印值；帖子按照实际返回值修复，如下：  – Done\n% setcoploglevel 5\n\n%\n\n2、芯片能力差异处理-（资料体现：接口行为取决于芯片能力） – Done"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1921/3",
+            "text": ""
+        }
+    ]
+}

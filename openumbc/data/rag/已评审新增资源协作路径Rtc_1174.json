@@ -1,0 +1,15 @@
+{
+    "topic_id": 1174,
+    "question": "【已评审】新增资源协作路径Rtc - content: ISSUE链接 【需求】设备管理支持通过IIC访问板载RTC-mdb_interface-GitCode\n背景 支持通过板载RTC获取RTC时间，并且正确设置到BMC\n现状分析 当前bmc无RTC器件类型，在访问RTC器件时，无法对寄存器的RTC时间进行转换\n决策点 新增资源协作路径/bmc/kepler/Chip/Rtc/:Id\n详细描述（必填，描述待评审接口的详细内容）\n资源path：新增/bmc/kepler/Chip/Rtc/:Id\n资源interface：“bmc.kepler.Chip.BlockIO\", “bmc.kepler.Chip”,“ bmc.kepler.Release.TraceChip“\nimage1851×420 21.1 KB\n评审结论\n同意新增资源path：/bmc/kepler/Chip/Rtc/:Id，该path实现如下已定义的资源协作接口：bmc.kepler.Chip.BlockIO\nbmc.kepler.Chip\nbmc.kepler.Release.TraceChip\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/91, https://discuss.openubmc.cn/uploads/default/original/1X/d3a3aeb9d1e5949e0ce19c397df3a93686877193.png",
+    "topic_user_name": "Leessential Tcv0d",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1174/2",
+            "text": ""
+        }
+    ]
+}

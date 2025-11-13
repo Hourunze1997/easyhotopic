@@ -1,0 +1,15 @@
+{
+    "topic_id": 1001,
+    "question": "请问openubmc的内核和固件是什么？ - openbmc是Linux内核，固件是uboot，\nopenubmc的内核和固件是什么，查看仓库没有看到相关内容",
+    "topic_user_name": "Qianer",
+    "best_answer_url": "/t/topic/1001/3",
+    "reply_posts": [
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1001/3",
+            "text": "因为提供的是解耦开发。openubmc代码和sdk是解耦。请到应用下载里面下载bmc_sdk组件代码"
+        }
+    ]
+}

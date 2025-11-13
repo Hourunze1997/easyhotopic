@@ -1,0 +1,22 @@
+{
+    "topic_id": 1237,
+    "question": "【已评审】BMC增加软复位原因资源协作接口【2.0】 - content: 关联issue\n背景\n上次评审了关于BMC的软复位原因增加了资源协作接口（见下述关联评审），但是对于应用管理框架对于BMC的运行异常导致的BMC复位，由于整体框架依赖关系的原因无法进行记录。\n针对上述问题，重新制定了方案，并且基于当前方案进行进行重新评审。\n关联评审\n\n【已评审】BMC增加软复位原因资源协作接口 Interface评审\n\n关联issue\n暂无 \n背景\n客户需求，需要在BMC启动之后记录上次BMC复位的事件以及具体的原因。 \n现状： \nBMC目前支持两种复位类型的事件记录：AC复位以及软复位，但是对于软件复位时没有确切的原因记录。 \n方案： \nBMC的资源协作接口增加一个可写的属性：复位原因，在不同情况下的BMC操作复位之前记录一下对应的复位原因，具体的原因可以枚举给出 \n评审点\npath： /bmc/kepler/…\n  \n\n评审点\n在 MacaService 资源协作接口下新增接口，用于处理带有复位原因的BMC复位。\npath： /bmc/kepler/MacaService\ninterface: bmc.kepler.SystemControl\n评审点1：增加属性 ResetCause\n\n项\n属性1\n属性2\n属性3\n\n属性名称\nResetCause\nResetTimestamp\nPerId\n\n属性类型\ny\nu\ns\n\n属性读写\nro\n私有属性，不涉及\n私有属性，不涉及\n\n属性权限\nReadOnly\n私有属性，不涉及\n私有属性，不涉及\n\n属性广播\nfalse\n私有属性，不涉及\n私有属性，不涉及\n\n属性持久化\n复位持久化（掉电以后是AC启动，因此复位持久化即可）\n复位持久化\n复位持久化\n\n属性说明\nBMC软复位原因标识，具体的原因枚举如下表1\nBMC复位操作的时间戳\n持久化主键，无实际意义\n\n评审点2：新增加方法 ForceResetWithCause\n\n项\n说明\n\n方法名称\nForceResetWithCause\n\n方法权限\nBasicSetting\n\n请求签名\nyy\n\n请求参数\nResetType：uint8 类型，表征当前重启类型，取值有： 0:表示下次从正常系统启动 1:表示下次从最小系统启动ResetCause：uint8 类型，表征当前重启原因标识，具体的原因标识枚举如下表1\n\n响应签名\n无\n\n响应参数\n无\n\n方法说明\n强制复位BMC（增强）接口，需要带有复位原因\n\n评审点3：新增加方法 GracefulResetWithCause\n\n项\n说明\n\n方法名称\nGracefulResetWithCause\n\n方法权限\nBasicSetting\n\n请求签名\nyy\n\n请求参数\nResetType：uint8 类型，表征当前重启类型，取值有： 0:表示下次从正常系统启动 1:表示下次从最小系统启动ResetCause：uint8 类型，表征当前重启原因标识，具体的原因标识枚举如下表1\n\n响应签名\ni\n\n响应参数\nOutData：int32 类型，表征当前平滑重启的处理结果\n\n方法说明\n平滑复位BMC（增强）接口，需要带有复位原因备注：如果平滑重启前处理失败，则对应的BMC复位不会进行\n\n表1：BMC复位原因标识\n\n复位原因标识组\n复位原因标识\n复位原因说明\n\n00h ~ 0Fh\n\n命令复位\n\n00h\nBMC重启操作复位\n\n01h\nBMC镜像倒换操作复位\n\n02h\nBMC固件升级复位\n\n03h\nBMC恢复出厂设置复位\n\n04h\nBMC资产报废复位\n\n05h\nBMC固件校验根证书更新复位\n\n10h ~ 1Fh\n\n主动复位\n\n10h\nBMC自愈复位\n\n11h\nBMC硬件自检修复复位\n\n12h\nBMC管理外设硬件初始化复位\n\n20h ~ 2Fh\n\n硬件操作复位\n\n20h\n按钮复位\n\nFFh\nFFh\n未知原因复位\n\n评审结论\n通过，具体评审结论如下：\n\n评审点1：通过，同意在资源协作接口 bmc.kepler.SystemControl 新增属性 ResetCause，签名为 y，复位持久化，不发送变更通知事件；同意新增私有属性 ResetTimestamp 和 PerId\n评审点2：通过，同意在资源协作接口 bmc.kepler.SystemControl 新增方法 ForceResetWithCause，请求签名： yy，权限为 BasicSetting，响应签名：无\n评审点3： 通过，同意在资源协作接口 bmc.kepler.SystemControl 新增方法 GracefulResetWithCause ，请求签名： yy ，权限为 BasicSetting ，响应签名： i\nlinks: #p-2691-issue-1, #p-2691-h-2, #p-2691-h-3, https://discuss.openubmc.cn/t/topic/1002, /c/interface/40-category/40, #p-2100-issue-1, #p-2100-h-2, #p-2100-h-3, #p-2691-h-4, #p-2691-h-1-resetcause-5, #p-2691-h-2-forceresetwithcause-6, #p-2691-h-3-gracefulresetwithcause-7, #p-2691-h-1bmc-8, #p-2691-h-9",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1237/2",
+            "text": "评审遗留问题：对于BMC的复位原因标识，后续随着硬件的演进如果需要扩展，则如何进行处理\n— 答复 by pengqiang-gs\n当前在复位原因标识中增加了复位类型的标识段，以及每段有对应的原因标识预留位，后续在硬件的演进过程中，可以针对上述的预留位进行取值扩展。"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1237/3",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 1621,
+    "question": "【已评审】后端任务机制新增预估完成时间、任务描述、任务阶段属性 - content: 关联issue\n后端任务机制新增属性\n背景\n客户对任务机制存在定制诉求，同时也针对redfish task资源标准能力存在诉求\n\n当前后台任务机制尚未支持标准redfish资源预估完成时间参考链接（6.137小节 Task 1.7.4），无法满足业务诉求。后端task资源需要支持预估完成时间，供相关业务在自身任务对象上更新EstimatedDuration属性，属性满足ISO 8601持续时间格式：P(n)Y(n)M(n)DT(n)H(n)M(n)S参考链接\n\n客户对升级阶段属性（Stage）有诉求，当前业务在固件升级场景中无法满足此诉求，需后端任务机制定制属性 Stage，表示任务阶段，供业务更新任务阶段属性。Stage属性为非redfish标准规范资源，需要自定义。\n\nredfish任务资源需提供标准规范Description字段参考链接，作为任务的详细描述信息。当前有一个Name字段表示某个任务的描述，但实际友商中的Name和Description描述的信息并不相同；另外任务描述信息和业务强相关，接口层无法判断任务类型，只能通过task资源树来增加。\n\n决策点\nbmc.kepler.TaskService.Task资源协作接口新增属性：EstimatedDuration、Description、Stage\n整体架构/方案\n针对客户诉求，后端任务机制修改方案如下：\n1.后端任务公共机制新增EstimatedDuration属性，供业务组件更新预估任务完成时间\n2.增加Stage属性表示任务的阶段，还需要提供Description属性，供业务配置任务描述信息\nredfish异步任务执行时，可以通过/redfish/v1/TaskService/Tasks/{task_id}查看任务信息是否包含上述属性\n详细描述\npath：/bmc/kepler/UpdateService/TaskService/Tasks/:TaskId\ninterface：bmc.kepler.TaskService.Task\n\n属性名称\n变更类型\n签名\n权限\n读写\n持久化\n变化通知\n描述\n备注\n\nEstimatedDuration\n新增\nu\nReadOnly\nro\n-\nfalse\n预估任务完成所需的总时间\n单位：秒。在任务进行期间，该值预计不会发生变化，但如果服务获取到显著改变预期持续时间的新信息，则可以更新该值。服务在报告预估时应保持保守态度，客户端应将此值视为估计值\n\nDescription\n新增\ns\nReadOnly\nro\n-\nfalse\n任务描述\n默认为空串\n\nStage\n新增\ns\nReadOnly\nro\n-\nfalse\n任务阶段\n表示任务的阶段，由组件服务设置该属性，默认为空串\n\n评审结论\n评审通过，同意在资源协作接口 bmc.kepler.TaskService.Task 新增以下3个属性：\nEstimatedDuration，表示预估任务完成所需的总时间，单位：秒，签名为 u，只读，读权限：ReadOnly， 不发送变更通知事件\nDescription，表示任务的描述信息，签名为 s，只读，读权限：ReadOnly，不发送变更通知事件\nStage，表示任务的阶段，签名为 s，只读，读权限：ReadOnly，不发送变更通知事件\nlinks: #p-3939-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/139, #p-3939-h-2, https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2025.2.pdf, https://en.wikipedia.org/wiki/ISO_8601#Durations, https://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description, #p-3939-h-3, #p-3939-h-4",
+    "topic_user_name": "Xp168",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Xp168",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1621/2",
+            "text": "遗留事项：\n\n预估完成时间属性描述不准确：预估完成任务总时间\n预估完成时间类型不合适"
+        },
+        {
+            "user_name": "Xp168",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1621/3",
+            "text": "1.EstimatedDuration属性描述：预估完成时间修改为预估完成任务所需总时间，在备注中补充该属性的描述\n2. EstimatedDuration属性：类型由s变更为u，单位：秒"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1621/4",
+            "text": ""
+        }
+    ]
+}

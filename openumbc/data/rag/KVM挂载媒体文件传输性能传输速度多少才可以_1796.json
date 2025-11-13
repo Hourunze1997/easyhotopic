@@ -1,0 +1,29 @@
+{
+    "topic_id": 1796,
+    "question": "KVM挂载媒体文件传输性能，传输速度，多少才可以？ - KVM挂载媒体文件传输性能，传输速度，多少才可以？",
+    "topic_user_name": "Chury",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1796/2",
+            "text": "收到问题，正在分析中"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1796/3",
+            "text": "KVM虚拟媒体文件传输性能，受网口类型、BMC CPU负载、文件大小、网络延迟等因素影响，请描述下问题的背景和诉求，我们才能分析是否存在性能问题，以及是否有提升空间"
+        },
+        {
+            "user_name": "Chury",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1796/4",
+            "text": "直连，文件3-4个G大小；"
+        }
+    ]
+}

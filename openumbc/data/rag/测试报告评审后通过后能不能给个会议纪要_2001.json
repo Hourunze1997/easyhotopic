@@ -1,0 +1,22 @@
+{
+    "topic_id": 2001,
+    "question": "测试报告评审后通过后能不能给个会议纪要 - content: QA评审后，能不能提供一下结论，因为这个涉及到会议结论需要传递给华为E2E负责人。\ncad28aaa1f0fe58f0df3a253a48b9f0902×867 53.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/10955a0e839d6d46c5dd6a6aa3ba486cb425e4fe.png",
+    "topic_user_name": "Zhuyuwei_baixin",
+    "best_answer_url": "/t/topic/2001/3",
+    "reply_posts": [
+        {
+            "user_name": "Zhuyuwei_baixin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2001/2",
+            "text": "content: @openubmc-liuyujie 杰哥，帮忙看看这个能不能更新一下\nlinks: /u/openubmc-liuyujie"
+        },
+        {
+            "user_name": "Openubmc Liuyujie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2001/3",
+            "text": "要的，这个我稍后刷新一下。"
+        }
+    ]
+}

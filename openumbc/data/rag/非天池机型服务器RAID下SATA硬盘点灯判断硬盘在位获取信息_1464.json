@@ -1,0 +1,64 @@
+{
+    "topic_id": 1464,
+    "question": "非天池机型服务器RAID下SATA硬盘点灯判断硬盘在位获取信息 - content: 非天池机型服务器，RAID卡下接了华为的SATA盘，按天池SEU适配后无硬盘归属及信息，根据日志定位到代码判断硬盘在位需要点灯，将代码修改成遍历硬盘之后就有硬盘归属及信息了\nimage1280×593 177 KB\nimage946×647 94 KB\nimage1491×576 51.6 KB\n请问该点灯接口操作的是点灯的SMC命令字吗？如果是的话针对该机型无点硬盘灯SMC命令字的情况该怎么处理这个问题，不知道这个临时规避方案是否合适？\nimage968×467 56.3 KB\nimage958×640 93.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/d29bfc23c78668def165995b166a5e18c4277d07.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/2/2fbe3dd5c2d806397ff6be91162b39c9054763ec.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/ceb8b4dd3dc69157199521aae1ef65eaa459aa79.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a148aabcd092a921b6f4cd11a0ac35f7964769d0.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/1a18b50361cca4a88a21a9ac43b7863a2d59c0c5.png",
+    "topic_user_name": "Yetaojie",
+    "best_answer_url": "/t/topic/1464/8",
+    "reply_posts": [
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1464/2",
+            "text": "content: 如下图所示：\nimage870×256 33.7 KB\n这里就是点灯的操作，这个不是使用SMC命令字，而是发给Raid卡命令\n让Raid卡进行点灯。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/23256b0d8e2302ef2becc72f864690f67910f6f9.png"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1464/3",
+            "text": "content: 了解，但是硬盘上没有灯，且OS下执行 storcli /c0/e252/s0 start locate 点灯没有返回执行失败\nimage759×354 51.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a070bf449a2519deae15e79dc385d1a85d69ffde.jpeg"
+        },
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1464/4",
+            "text": "content: image541×157 21.7 KB\n1.你的代码修改前：\n是不是只打印了：\nlog:notic(‘%s locate’, pd.key)\n和\nlog:info(‘locate %s failed’, pd.key)     —把log:info改成log:notice\n如果打印了log:info(‘locate %s failed’, pd.key) 那就表示点灯了，没有检测到硬盘有灯被点亮。\n被你注释掉的代码：\n只是用于检测环境是否有灯被点亮，如果没有那就提前退出下面的流程。\n2.你说带内点灯，没有返回错误码，建议近端看一下，是不是有灯在亮\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e669416578ba667994611e1d7b14a3a4e5222f55.png"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1464/5",
+            "text": "content: 上文截图日志是修改代码前的日志，log:notic(‘%s locate’, pd.key)有打印，log:info(‘locate %s failed’, pd.key) 无打印；\n查看过，硬盘上没看到有灯；\n恢复代码，并加入日志打印查看：\nimage1104×932 155 KB\n\n如我上文修改代码截图，关键在于if self:locate_pd(pd, drive) then这一部分导致定位失败，我当时定位到这里的问题后，就直接使用了locate_pd里使用的函数map_pd_to_drive，跳过if not self:map_allowed(pd, drive) then判断，快速验证是否这里影响\nimage491×159 16.8 KB\n没有再去跟踪map_allowed的问题\nimage836×433 42.8 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/1215a9ae41aefdef59e6111e916b6c9fe51044d2.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/9c4af141019adf71fefa3fa86d0aa7dd7a4b0030.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/2adf0f5f1cff9a625b94d546ff47ce0b2d96e8a5.png"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1464/6",
+            "text": "content: 继续跟踪map_allowed函数，添加日志\nimage1049×403 71.2 KB\n日志报错：\n[map_allowed] loop 1: drive:is_presence()=true, pd:is_valid()=true, drive:is_being_located()=false\nimage554×100 10.8 KB\n最终还是跟踪到硬盘点灯相关\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/bc855880172e5c8aad9e3112f7205334044c8a2d.png, https://discuss.openubmc.cn/uploads/default/original/2X/d/df24ab52b9efea21c1fcb63cf5a976b1fa8d1d4e.png"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1464/7",
+            "text": "content: yetaojie:\n\n最终还是跟踪到硬盘点灯相关\n\ndrive_object.lua(539): [is_being_located] LocateLed=0, FaultLed=0\nimage1064×102 20 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/8ee46ddc363e8b38bb60a2a51022c81bb71619f1.png"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1464/8",
+            "text": "天池机型该代码是没问题的，且据我观察天池机型上，不管是raid连硬盘，还是nvme直通，前者raid点灯，后者通过smc点灯，实际点的是硬盘背板上的灯，而不是硬盘上的灯。所以在非天池机型没有硬盘背板等各种板，没有硬盘Locate灯的情况下，是否应该修改这部分代码呢？"
+        },
+        {
+            "user_name": "Yelmh Kno07",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1464/9",
+            "text": "按照你不点灯，来了就映射的修改，应该也可以，第一次先遍历哪个pd和drive就映射上，通过函数update_identified_data持久化映射信息，后续bmc复位后，应该可以通过identify_pd_by_persistence_data函数建立映射。"
+        }
+    ]
+}

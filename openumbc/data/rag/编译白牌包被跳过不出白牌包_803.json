@@ -1,0 +1,36 @@
+{
+    "topic_id": 803,
+    "question": "编译白牌包被跳过，不出白牌包 - 根据官网生成镜像后，拉取manifest，增加白牌包代码，编译不出白牌包\nbingo 版本为: 0.5.230\n命令： bingo publish -z WBD  -b openUBMC   -r openubmc_dev\ntask.log：\n。。。\n。。。\n构建 openUBMC hpm 包结束 !\n切换工作目录到: /home/workspace/source/manifest/temp/build_openUBMC_debug_dev/output\n>> touch /home/workspace/source/manifest/temp/build_openUBMC_debug_dev/output/rootfs_openUBMC.filelist.cms\n>> cp /home/workspace/source/manifest/temp/board_openUBMC/cms.crl /home/workspace/source/manifest/temp/build_openUBMC_debug_dev/output/cms.crl\n切换工作目录到: /home/workspace/source/manifest/temp/build_openUBMC_debug_dev/output\n给 hpm 包 rootfs_openUBMC.hpm 签名\n>> cms_sign_hpm.sh 2 rootfs_openUBMC.hpm\nrootfs_openUBMC.hpm\npackage name: rootfs_openUBMC\nsearch for prefix: rootfs_openUBMC\n复制 rootfs_openUBMC.hpm.signed 到 /home/workspace/source/manifest/output/rootfs_openUBMC.hpm 并保留权限\n编码为 WBD 为 togdp 编码, 跳过构建 tosupporte 包",
+    "topic_user_name": "Tim",
+    "best_answer_url": "/t/topic/803/6",
+    "reply_posts": [
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/803/2",
+            "text": "附上你的gitcode 链接 或者manifest截图"
+        },
+        {
+            "user_name": "system",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/803/3",
+            "text": "由于大量社区举报，此话题被临时关闭至少 4 小时。"
+        },
+        {
+            "user_name": "system",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/803/4",
+            "text": "此话题已在 2 天后被自动打开。"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/803/6",
+            "text": "openUBMC的bingo 当前不支持白牌包， 只支持bmc升级hpm包制作。"
+        }
+    ]
+}

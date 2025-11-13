@@ -1,0 +1,29 @@
+{
+    "topic_id": 1898,
+    "question": "mdb_interface组件bingo gen -r openubmc_dev时报错 - content: 使用mdb_interface组件bingo gen -r openubmc_dev时报错\nmdb_interface组件版本：1.90.11\nbingo版本：0.5.317\n错误截图：\nimage1983×1251 345 KB\n另外,mdb_interface组件版本：1.70.99版本去bingo gen -r openubmc_dev时不会报错。请问这个报错怎么解决。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/7089e8e85e1b8704777f22ad9b3f24acb1fb2727.png",
+    "topic_user_name": "wuzhou-Lsx",
+    "best_answer_url": "/t/topic/1898/4",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1898/2",
+            "text": "mdb_interface不需要gen"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1898/3",
+            "text": "新加了个属性也不需要吗"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1898/4",
+            "text": "新加属性应该是在mdb_interface接口下定义及将接口挂到对应路径后，再到组件侧将接口挂到对应路径的对象下进行自动代码生成，mdb_interface只是定义与声明的组件"
+        }
+    ]
+}

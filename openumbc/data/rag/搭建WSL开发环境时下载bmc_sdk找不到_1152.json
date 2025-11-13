@@ -1,0 +1,43 @@
+{
+    "topic_id": 1152,
+    "question": "搭建WSL开发环境时下载bmc_sdk找不到 - content: image1485×694 50.4 KB\n点击后效果\nimage1770×510 21.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/c4d4f4b9f5cfc3fcbc4ccce20bfe85ad6a3dc74a.png, https://discuss.openubmc.cn/uploads/default/original/1X/256c35648fe81af5606a9af6caa727e452e142a8.png",
+    "topic_user_name": "Niegsh",
+    "best_answer_url": "/t/topic/1152/6",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1152/2",
+            "text": "content: 请同时将问题提交到\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\nlinks: https://gitcode.com/openUBMC/docs/issues, https://gitcode.com/openUBMC/docs/issues"
+        },
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1152/3",
+            "text": "web页面好像调整了，之前在应用市场可以下载bmcsdk的，现在应用市场变成空白了"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1152/4",
+            "text": "刚去提交issue，发现改好了"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1152/5",
+            "text": "嗯，网站已修复"
+        },
+        {
+            "user_name": "zhuchao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1152/6",
+            "text": "感谢你的反馈，目前已经修复"
+        }
+    ]
+}

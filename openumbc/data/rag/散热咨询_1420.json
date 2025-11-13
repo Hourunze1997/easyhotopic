@@ -1,0 +1,22 @@
+{
+    "topic_id": 1420,
+    "question": "散热咨询 - content: bmc版本\n5.05.12.97 是给伙伴poc的包\nimage1321×896 44.3 KB\nimage2153×1325 215 KB\n\n这里和社区代码差别很大；调速在闭源cooling组件，这里是否有设置目标调速目标值等参数的方法？SetTargetTemperature为设置自定义调速的目标值；其他没有很像的\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/62fd36beb3db474beecea56ae8cbe1081c46ec25.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0412284984c397359b47c94e3fb7d8cc99e43759.png",
+    "topic_user_name": "Iss Tanghaibin",
+    "best_answer_url": "/t/topic/1420/2",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1420/2",
+            "text": "5.5版本不存在该方法，仅社区组件存在该方法"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1420/3",
+            "text": "可以用配置导入导出设置，需要注意的是设置后就会持久化。设置过的值不能通过升级csr修改了"
+        }
+    ]
+}

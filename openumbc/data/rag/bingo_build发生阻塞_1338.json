@@ -1,0 +1,36 @@
+{
+    "topic_id": 1338,
+    "question": "bingo build发生阻塞 - content: bingo build过程中经常在这个地方发生阻塞，会一直等待下去，不是每次都会阻塞，有时能编译通过，有时会一直阻塞\nimage1913×441 43.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/2d9a03a10733d4f2d8e848f83aaae1dd456db633.png",
+    "topic_user_name": "baixin_lipengbo",
+    "best_answer_url": "/t/topic/1338/4",
+    "reply_posts": [
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1338/2",
+            "text": "这个问题的原因可能是从远端拉取 conan 网络不佳导致阻塞，需要具体日志进行分析。"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1338/3",
+            "text": "content: 通过export LOG=debug，然后编译 发生阻塞后查看temp/log/task.log，日志如下，请问这是因为网络问题吗？\nimage1482×761 25 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/02ed28c225a4e7a6c7417e5b92126ee5318105f5.png"
+        },
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1338/4",
+            "text": "从日志看应该是 find + grep + 管道 消耗了过多的资源导致的。这个确实是一个需要优化的问题，可以在社区提 issue 进行优化。"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1338/5",
+            "text": "更换为8G内存虚拟机（之前是4G内存），问题没有再次复现，问题终结"
+        }
+    ]
+}

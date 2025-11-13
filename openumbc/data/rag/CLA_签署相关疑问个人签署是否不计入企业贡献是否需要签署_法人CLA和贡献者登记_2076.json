@@ -1,0 +1,78 @@
+{
+    "topic_id": 2076,
+    "question": "CLA 签署相关疑问：个人签署是否不计入企业贡献？是否需要签署 法人CLA和贡献者登记？ - 请教一个关于 CLA 的问题：\n如果openubmc社区按照 openEuler 社区的贡献值来参照，如果开发者是以个人身份签署 CLA，那么这些贡献是否无法计入所在企业的贡献值统计中？\n感谢！",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/2076/3",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2076/2",
+            "text": "是的，要手动管理"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2076/3",
+            "text": "是的，开发者是以个人身份签署 CLA无法计入所在企业的贡献值。\n1、如果想让企业员工的贡献计入企业贡献，那就得先签署企业法人CLA；\n2、签署完成后，再让员工签署法人贡献者登记；\n3、员工完成登记后，后续的贡献就会计入企业贡献。"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2076/4",
+            "text": "content: 已签署了企业法人CLA，在个人账号的已签署CLA里看不到信息，正常吗？\nimage829×322 13.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/974df7f43450880580ef608982939cef6ac4748d.png"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2076/5",
+            "text": "个人和法人是分开的，企业的统一在企业管理员页面查看"
+        },
+        {
+            "user_name": "Zhaorui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2076/6",
+            "text": "企业管理员页面是手动设置进去的"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2076/7",
+            "text": "content: 你这个页面是咋进去的，没找到\nopenUBMC CLA页面\n理论上你在企业管理员页面 → 登录管理员（非企业管理员），然后员工界面就可以查看签署的员工和待签署的\nlinks: https://clasign.osinfra.cn/sign/gitee_openubmc-1732941016829438030"
+        },
+        {
+            "user_name": "Zhaorui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2076/8",
+            "text": "当前是这样操作的，在企业管理员页面—>登录超级用户—>添加管理员。\n否则员工签署的时候会报错找不到企业邮箱域名（实际企业邮箱域名已存在）"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2076/9",
+            "text": "content: 从gitcode个人账号的设置界面进入的，也就是签署法人CLA不需要关注这里？管理员页面已经看到邮箱激活了\nimage327×704 21.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/95b0ffbb96b03c3a87c5c51b0294345ef507944c.png"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2076/10",
+            "text": "哦哦，我们没用gitcode的这套管理系统，我们用的是自己的一套。\n在PR提交的时候，机器人会根据我们这套系统去检测你签署CLA没有"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2076/11",
+            "text": "好的，感谢回复"
+        }
+    ]
+}

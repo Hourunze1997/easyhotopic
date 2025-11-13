@@ -1,0 +1,22 @@
+{
+    "topic_id": 1533,
+    "question": "博通卡在bmc和os下的固件版本号不一致 - content: image1104×502 19.8 KB\nimage1589×652 28.4 KB\n请教下这个是什么原因\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/3c4adcbf444932d74f7f2f0802545b9dc2812c98.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/8209b6eed8be11165b39fb1f93615bb88455260f.png",
+    "topic_user_name": "He wei",
+    "best_answer_url": "/t/topic/1533/3",
+    "reply_posts": [
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1533/2",
+            "text": "已回复"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1533/3",
+            "text": "OCP卡版本号问题。根据hw代码中的计算公式，227.0.131.0 firmware_v1:8,  firmware_v2:8, firmware_v3:16/big， 就是227.00.33536\n33536 = （131<<8) | 0\n相同的计算公式包括CX5卡"
+        }
+    ]
+}

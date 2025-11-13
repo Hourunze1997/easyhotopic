@@ -1,0 +1,15 @@
+{
+    "topic_id": 1989,
+    "question": "【iTestSmart】支持显示固件CSR和MCU信息，且BMC复位不丢失测试，关键字有误。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\n二、问题描述\nOpenUBMC->平台功能->支持显示固件CSR和MCU信息，且BMC复位不丢失测试。CLI信息转换后字典有关键字“iBMC”，而WEB信息转换后，字典关键字为“OpenUBMC”，对比报错。\nweb信息与CLI信息对比1920×1235 201 KB\n关键字不一样对比报错1920×848 185 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0811bb19944511108d24e7c17ef6997ed850260e.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/c/cd50472a894c5c0e40978939c0c2d3c2a822d6f6.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Hdq",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1989/2",
+            "text": "部分用例未适配，下一个版本会统一整改，预计8月初会发布。"
+        }
+    ]
+}

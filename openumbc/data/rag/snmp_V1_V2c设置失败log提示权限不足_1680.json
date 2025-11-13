@@ -1,0 +1,36 @@
+{
+    "topic_id": 1680,
+    "question": "snmp V1 / V2c设置失败，log提示权限不足 - content: 通过snmp设置用户使能，OID .1.3.6.1.4.1.2011.2.235.1.1.14.50.1.2.3，用SNMP V3可以设置成功。 V1 V2c则设置失败，打印提示权限不足。\nimg_v3_02o2_c5703bce-9126-4820-8bcd-0f6f09ddfd9g1920×475 112 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/96ab1c43143af2f0b8249d054ff82399677a7e4f.jpeg",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "/t/topic/1680/4",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1680/2",
+            "text": "SNMPv1和SNMPv2c协议部分接口不支持，会直接返回权限不足"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1680/3",
+            "text": "可以提供文档列出接口支持的协议么，比如那个接口支持snmp v1 v2c v3，哪个接口只支持V3"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1680/4",
+            "text": "暂时没有相关文档，当前只有少数几个接口是这种场景，可以在rackmount仓搜索关键字 SNMPv1v2cSupported 确认是否支持"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1680/5",
+            "text": "好的  找到这个关键字了  感谢"
+        }
+    ]
+}

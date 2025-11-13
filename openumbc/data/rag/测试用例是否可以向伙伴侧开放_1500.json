@@ -1,0 +1,15 @@
+{
+    "topic_id": 1500,
+    "question": "测试用例是否可以向伙伴侧开放 - 目前能否向伙伴侧开放openUBMC L0、L1、L2、L3全量测试用例，以及openUBMC版本发布时做了哪些具体的系统测试、回归测试用例，以便伙伴侧做参考在此基础上做差异验证测试",
+    "topic_user_name": "zhangmmtrust",
+    "best_answer_url": "/t/topic/1500/2",
+    "reply_posts": [
+        {
+            "user_name": "Openubmc Liuyujie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1500/2",
+            "text": "社区的用例会向伙伴开放，按照L0、L1、L2、L3进行分级。当前可以看在itestsmart上查看。预计7月20日后，在darwin（社区在线测试平台）上也可能实时查看和导出。\n系统测试,DFX测试活动见社区版本的测试策略与测试报告。"
+        }
+    ]
+}

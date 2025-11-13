@@ -1,0 +1,22 @@
+{
+    "topic_id": 244,
+    "question": "hardware议题申报模板 - content: 议题申报地址\n议题申报录入位置\n议题评审时间\n\n评审时间：每周一下午16点-18点\n\n议题基本信息\n\n议题名称：[请填写议题的名称]\n申报人：[请填写申报人姓名或社区昵称，（必填邮箱地址）]\n申报日期：[请填写申报日期]\n涉及组件名：[请填写议题涉及组件]\n订阅：[请申报人订阅hardware-sig用于邮件接收会议通知]\nhardware-sig订阅1575×470 34.4 KB\n\n议题背景\n[请简要描述议题的背景，包括问题的来源、现状、以及为什么需要讨论此议题。]\n议题目标\n[请明确列出此议题的讨论目标，期望达成的共识或解决方案。]\n议题内容\n[请详细描述议题的具体内容，包括但不限于问题描述、相关技术细节、已有解决方案的优缺点等。]\n\n相关文档: [请列出与议题相关的文档链接]\n相关代码: [请列出与议题相关的代码仓库或PR链接]\n相关讨论: [请列出与议题相关的社区讨论链接]\n\n评审意见\n\nSIG负责人意见: [请SIG负责人填写评审意见]\n\n其他\n[请填写其他需要补充的信息或备注。]\n\n注意: 请在SIG例会前至少提前一周提交此模板，以便社区成员有足够的时间进行评审和准备。\nlinks: #p-353-h-1, https://etherpad.openubmc.cn/p/sig-hardware, #p-353-h-2, #p-353-h-3, https://forum.openubmc.cn/uploads/default/original/1X/dd62989c4bd97b7c0c8da9782bd742b4e2243711.png, #p-353-h-4, #p-353-h-5, #p-353-h-6, #p-353-h-7, #p-353-h-8",
+    "topic_user_name": "Changxing Open Ubmc",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/244/2",
+            "text": ""
+        },
+        {
+            "user_name": "Yelvsub",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/244/3",
+            "text": "涉及外部接口（资源协作接口和北向接口）的方案，在hardware-sig完成评审后，需要上interface-sig组继续评审，请小伙伴们订阅interface-sig例会的会议通知。如果不涉及外部接口，则可以在hardware-sig完成方案闭环。"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1025,
+    "question": "【已评审】支持根据机型配置环境变量资源协作接口评审 - content: 背景介绍:\n\n为支持根据机型配置管理面的环境变量，需要新增私有对象\n\n评审点：\n新增私有对象配置环境变量，对象名称：EnvironmentVariableConfig（备选ChipEnvs）\n\n属性名称\n签名\n是否持久化\n默认值\n取值约束\n描述\n\nVariableName（EnvName）\ns\n否\n无\n长度小于24\n环境变量的名称\n\nVariableValue（EnvValue）\ni\n否\n无\n无\n环境变量值\n\n说明：\n\nname=value格式长度不超过35，即比如xxxx=0x88776655整体长度不超过35，即xxx长度不能超过24；\n变量取值类型固定U32；\n\n评审结论\n不通过，当前已经有对应的环境变量模型配置，不需要新增\nlinks: #p-2169-h-1, #p-2169-environmentvariableconfigchipenvs-2, #p-2169-h-3",
+    "topic_user_name": "lixiaoning",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1025/2",
+            "text": ""
+        }
+    ]
+}

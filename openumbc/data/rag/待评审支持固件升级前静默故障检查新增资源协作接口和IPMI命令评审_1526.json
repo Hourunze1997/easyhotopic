@@ -1,0 +1,7 @@
+{
+    "topic_id": 1526,
+    "question": "【待评审】支持固件升级前静默故障检查新增资源协作接口和IPMI命令评审 - content: 背景：\n为提升升级成功率，避免客户浪费一系列升级前的准备动作，需要支持固件升级前静默故障检查机制，提前发现一些升级条件不满足的问题。需要支持IPMI接口及Redfish接口。\n\n评审点一：新增IPMI命令支持固件升级前静默故障检查\n评审点二：新增资源协作接口支持固件升级前静默故障检查\nlinks: #p-3699-ipmi-1, #p-3699-h-2",
+    "topic_user_name": "lixiaoning",
+    "best_answer_url": "",
+    "reply_posts": []
+}

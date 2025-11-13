@@ -1,0 +1,15 @@
+{
+    "topic_id": 1359,
+    "question": "高速TOPO相关对象配置问题 - 在配置pecie_device高速topo对象时，有部分属性不知道该如何配置，能否给出说明指导，readme中只有很少一部分的属性说明，能否提供完善的对象属性说明表？主要是BusinessConnector、UnitConfiguration和SerDes对象的",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "王祝炜",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1359/2",
+            "text": "最近会在社区提供完整的对象属性说明表。"
+        }
+    ]
+}

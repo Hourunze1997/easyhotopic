@@ -1,0 +1,29 @@
+{
+    "topic_id": 2035,
+    "question": "【已评审】支持CPU CE故障发生频率超限原子能力资源协作接口评审 - content: SSUE链接 ：\n支持CPU CE故障发生频率超限原子能力\n评审背景\n\n实现RAS事件可灵活配置、扩展和能力对外开放；满足IPMI、Redfish RAS相关规范；支持原始数据查询，支撑伙伴/客户实现自规划差异化特性。\n\n需求\n支持CPU CE故障发生频率超限原子能力，用于故障时记录SEL。\n决策点\n新增资源协作接口属性CorrectableErrorOverfrequencyCount。表示CPU CE故障发生频率超限事件计数。\n对应资源路径是/bmc/kepler/Systems/:SystemId/FDMDomain/CPURAS/:Id\n对应资源接口是bmc.kepler.Systems.FDMDomain.CPURAS\n评审点\npath： /bmc/kepler/Systems/:SystemId/FDMDomain/CPURAS/:Id\ninterface：bmc.kepler.Systems.FDMDomain.CPURAS\n变化类型：新增属性\n应用场景：支持CPU CE故障发生频率超限原子能力\n持久化类型：复位持久化\n操作权限： ReadOnly\n具体如下：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nCorrectableErrorOverfrequencyCount\n新增属性\nu\n只读R：ReadOnlyW：不涉及\n复位持久化\ntrue\n系统运行周期内，CPU CE故障发生频率超门限的次数。取值范围：0~0xFFFFFFFF，默认值0。系统上下电/复位时，统计次数清零。\n无\n\n评审结论\n同意新增资源协作接口属性\npath：/bmc/kepler/Systems/:SystemId/FDMDomain/CPURAS/:Id\ninterface：bmc.kepler.Systems.FDMDomain.CPURAS\n新增属性CorrectableErrorOverfrequencyCount，签名u，只读，读权限： ReadOnly，发送变更通知事件\n遗留问题\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/174, #p-5037-h-1, #p-5037-h-2, #p-5037-h-3, #p-5037-h-4, #p-5037-h-5, #p-5037-h-6",
+    "topic_user_name": "Huangrenjie Wtss6",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2035/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2035/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2035/4",
+            "text": ""
+        }
+    ]
+}

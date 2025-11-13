@@ -1,0 +1,15 @@
+{
+    "topic_id": 1107,
+    "question": "V3上使用ssh直接执行help/ipmcget/ipmcset等命令异常 - content: 同样的指令在V2上是正常的，在V3上异常，请问是V3上做了限制吗？\n如：\nsshpass -p Admin@9000 ssh -o “StrictHostKeyChecking no” Administrator@192.168.12.63 “ipmcget help”\nsshpass -p Admin@9000 ssh -o “StrictHostKeyChecking no” Administrator@192.168.12.63 “ipmcget -d version”\nimage1270×402 63.4 KB\nlinks: mailto:Administrator@192.168.12.63, mailto:Administrator@192.168.12.63, https://discuss.openubmc.cn/uploads/default/original/1X/922a5a80b51626ab6853c660664e238ea21526fd.jpeg",
+    "topic_user_name": "Dengnianqin",
+    "best_answer_url": "/t/topic/1107/2",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1107/2",
+            "text": "v2是将可执行程序ipmcget的目录放到环境变量中，然后通过ipmcget执行命令，可以通过 env 命令查看具体内容。v3是通过alias创建别名的方式调用ipmcget命令，本质是一个lua脚本，可以通过alias命令查看具体内容。\nsshpass的环境变量和别名信息可能和ssh不一致，可以使用sshpass结合env alias命令查看。\n从图中的日志看是打开clp失败，可以看看bmc的日志是否有cli组件相关的错误信息。"
+        }
+    ]
+}

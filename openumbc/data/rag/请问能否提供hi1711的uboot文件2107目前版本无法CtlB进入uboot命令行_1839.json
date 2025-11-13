@@ -1,0 +1,29 @@
+{
+    "topic_id": 1839,
+    "question": "请问能否提供hi1711的uboot文件（2.1.07），目前版本无法Ctl+B进入uboot命令行 - 我们需要通过uboot，做bios升级这些（目前的bmc升级bios,对鲲鹏916这边有bug），希望通过uboot的sfc指令进行。另外uboot和rtos如何进行升级也请指导一下！感谢感谢！",
+    "topic_user_name": "Zzxghost",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1839/2",
+            "text": "用原始的sdk指令去做bios升级？拼命令可能有点困难吧"
+        },
+        {
+            "user_name": "Zzxghost",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1839/3",
+            "text": "有sfc操作指令，加上文件传输，就可以开发ymodem升级的bios。主要需要有能进uboot指令的uboot文件。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1839/4",
+            "text": "这个应该通过BIOS组件去升级，不推荐使用 uboot进行升级。"
+        }
+    ]
+}

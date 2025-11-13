@@ -1,0 +1,50 @@
+{
+    "topic_id": 1086,
+    "question": "如何适配一款GPU？ - 我司希望适配不同厂家的GPU卡，需要什么资料/文档 才能满足在openubmc上的适配呢？",
+    "topic_user_name": "Chen Minjun",
+    "best_answer_url": "/t/topic/1086/7",
+    "reply_posts": [
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1086/2",
+            "text": "需要与GPU卡交互的协议文档，然后根据协议进行适配"
+        },
+        {
+            "user_name": "FXX",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1086/3",
+            "text": "可以参考general_hardware中对Nvidia GPU的适配。其中使用到了smbus等协议。"
+        },
+        {
+            "user_name": "Bd2025",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1086/4",
+            "text": "content: 我最近也在适配一款gpu显卡，遇到了一些问题，能方便看下吗？\nGPU显卡适配芯片温度和功耗获取失败\nlinks: https://discuss.openubmc.cn/t/topic/1111"
+        },
+        {
+            "user_name": "Chen Minjun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1086/5",
+            "text": "根据您的提示，该文档的 GPU管理章节，里面提到当前GPU管理仅支持smbus_postbox协议。有如下疑问：\n1、 smbus_postbox协议 和 SMBPBI协议是什么？\n2、在哪里可以了解到这两种协议？\n3、这两种协议是否兼容smbus协议？"
+        },
+        {
+            "user_name": "FXX",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1086/6",
+            "text": "这两种协议是Nvidia的协议。可以查看Tesla T4 GPU卡的驱动手册"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1086/7",
+            "text": "需要有厂商提供的协议文档，根据协议文档，在general_hardware配置协议；类似hardware_config下的Tesla_T4.lua文件"
+        }
+    ]
+}

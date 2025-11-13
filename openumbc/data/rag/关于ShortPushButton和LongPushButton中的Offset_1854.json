@@ -1,0 +1,57 @@
+{
+    "topic_id": 1854,
+    "question": "关于ShortPushButton和LongPushButton中的Offset - content: image1056×324 24.6 KB\n如果offset中的值是指opcode和parameter，那么为什么shortbutton和longbutton的offset是一样的？\n两个类的区别在于mask，这个mask在这里起到的是什么作用？\n\n“Accessor_ShortPushButton”: {\n“Chip”: “#/Smc_ExpBoardSMC”,\n“Offset”: 134224384,\n“Size”: 1,\n“Mask”: 1,\n“Type”: 0,\n“Value”: 0\n},\n“Accessor_LongPushButton”: {\n“Chip”: “#/Smc_ExpBoardSMC”,\n“Offset”: 134224384,\n“Size”: 1,\n“Mask”: 2,\n“Type”: 0,\n“Value”: 0\n},\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/f6a805c069ae1c917b56272aa5b6e930d8abec99.png",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1854/2",
+            "text": "mask不同，bit0 是short， bit1 是long\n看配置是这样，详细的还得看smc命令字说明文档"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1854/3",
+            "text": "两个offset为什么是一样的，根据SMC标准命令字，长按和短按中间有两个bit是不一样的，一个是2’b10一个是2’b01"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1854/4",
+            "text": "因为他们出了数据不一样，其他都一样的。\n数据中间第一个bit代表短按，第二个bit代表长按，对应mask就是 1 → 2b01 和 2 → 2b10"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1854/5",
+            "text": "好的，明白了，感谢指导！"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1854/6",
+            "text": "我还有个问题想请教，为什么我通过\nmdbctl call Smc_ExpBoardSMC_0101 bmc.kepler.Chip.BitIO Write 0 0x8001a00 1 2 1 0x01\n可以实现长按，\n但是通过\nmdbctl call Smc_ExpBoardSMC_0101 bmc.kepler.Chip.BitIO Write 0 0x8001a00 1 1 1 0x01\n无法实现短按"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1854/7",
+            "text": "总觉得你长按也有点问题，\nmask是2(2b10)，data是0x01(2b01)，与之后就是0\n你短按那个命令，mask是1(2b01)，data还是0x01(2b01)，与之后是1\n所以你在长按的时候，应该传入的data要么是0x00(2b00)，要么是0x02(2b10)，也就是bit第二位要么是0要么是1\n短按的话，看bit第一位，所以要么是0x00(2b00)，要么是0x01(2b01)"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1854/8",
+            "text": "好的，我再看看"
+        }
+    ]
+}

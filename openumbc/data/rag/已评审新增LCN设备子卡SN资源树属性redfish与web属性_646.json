@@ -1,0 +1,22 @@
+{
+    "topic_id": 646,
+    "question": "【已评审】新增LCN设备子卡SN资源树属性、redfish与web属性 - content: 关联issue\n新增lcn_mgmt设备子卡SerialNumber资源树属性-mdb_interface-GitCode\n背景\n支持通过北向接口（redfish、web）查询交换侧LCN设备的7张子卡的SN信息，通过BMC发送cli查询指令给LCN设备，获取子卡SN信息并北向显示。\n决策点\n1、LCNCard对象新增资源树属性SerialNumber和PartNumber\n2、/redfish/v1/Oem/Huawei/Public/LCNService/LCNDevices/device_id/SubCards/card_id GET响应体新增属性SerialNumber和PartNumber\n3、/Expand/LCN/bmc/kepler/LCNs/:id/Cards/:cardid新增SerialNumber和PartNumber属性\n整体方案\n无\n详细描述\n1、\n资源path：/bmc/kepler/LCNs/:Id/Cards/:CardId\n资源interface：bmc.kepler.LCN.Card\n变化类型：新增资源树属性SerialNumber和PartNumber\n\n属性名称\n取值类型\n变化类型\n默认\n读写&权限\n持久化\n变化通知\n接口说明\n\nPartNumber\nstring\n新增属性\n“”\nR：ReadOnly\n无\nfalse\n1260s下电或无法纳管时恢复默认值\n\nSerialNumber\nstring\n新增属性\n“”\nR：ReadOnly\n无\nfalse\n1260s下电或无法纳管时恢复默认值\n\n2、/redfish/v1/Oem/Huawei/Public/LCNService/LCNDevices/device_id/SubCards/card_id GET响应体新增属性SerialNumber和PartNumber\nuri：/redfish/v1/Oem/Huawei/Public/LCNService/LCNDevices/device_id/SubCards/card_id\n变化类型： 新增属性\n操作类型： GET\n应用场景： redfish查询交换子卡的SN和partnumber信息\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n约束\n\nPartNumber\n字符串、null\n\nnull\nReadOnly\n如果资源树对应属性为空字符串则显示为null\n\nSerialNumber\n字符串、null\n\nnull\nReadOnly\n如果资源树对应属性为空字符串则显示为null\n\n3、/Expand/LCN/bmc/kepler/LCNs/:id/Cards/:cardid新增属性SerialNumber和PartNumber\nuri：/Expand/LCN/bmc/kepler/LCNs/:id/Cards/:cardid\n变化类型： 新增属性\n操作类型： GET\n应用场景： 前端查询交换子卡的SN和partnumber信息\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n约束\n\nPartNumber\n字符串\n\n“”\nReadOnly\nNA\n\nSerialNumber\n字符串\n\n“”\nReadOnly\nNA\n\n评审结论\n1、同意资源树接口bmc.kepler.LCN.Card增加属性SerialNumber和PartNumber\n2、同意/redfish/v1/Oem/Huawei/Public/LCNService/LCNDevices/device_id /SubCards/card_id GET响应体新增属性SerialNumber属性和PartNumber\n3、/Expand/LCN/bmc/kepler/LCNs/:id/Cards/:cardid 中新增SerialNumber属性和PartNumber\nlinks: #p-1294-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/29, #p-1294-h-2, #p-1294-h-3, #p-1294-h-4, #p-1294-h-5, #p-1294-h-6",
+    "topic_user_name": "Liushun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/646/2",
+            "text": "资产类基本信息除了SN，还有没有其它的属性可以通过接口呈现，如有，请一并设计。"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/646/3",
+            "text": ""
+        }
+    ]
+}

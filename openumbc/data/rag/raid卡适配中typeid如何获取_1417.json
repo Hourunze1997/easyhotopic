@@ -1,0 +1,15 @@
+{
+    "topic_id": 1417,
+    "question": "raid卡适配中typeid如何获取 - content: 问题背景：\n需要适配博通的raid卡根据raid卡适配指导 提示需要\"TypeId\": “raid卡类型Id”,并参考新适配raid卡新增raid卡typeid与闭源组件有耦合 话题有以下几个疑问\n问题描述：\n1.如何获取libsml_custom_base.so中已有的raid卡的typeid\n2.如果要适配一个新的博通的卡，比如9361-8i或9361-16i那么这个typeid是如何获取或定义的呢？或有无相关对应表提供？\nlinks: https://discuss.openubmc.cn/t/topic/1386, https://discuss.openubmc.cn/t/topic/1092",
+    "topic_user_name": "Ocy",
+    "best_answer_url": "/t/topic/1417/2",
+    "reply_posts": [
+        {
+            "user_name": "yangqinghua",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1417/2",
+            "text": "1、已支持的raid卡的type_id参考storage组件的controller_object.lua文件中定义的表CONTROLLER_TYPE或者add_event.lua文件中函数get_pcie_card_name\n2、typdid要配置在vpd仓的controller_1对象中，配置注意满足storage仓method_misc.lua文件中的test_controller_vendor函数，确保能storage组件能正常判断厂商及带外管理通道类型即可"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 713,
+    "question": "当前鲲鹏的机器是只能支持ipmitool 1.8.18及以上版本吗？ - 当前鲲鹏的机器是只能支持 ipmitool 1.8.18 及以上版本吗？\n目前测试使用的版本为 ipmitool 1.8.18，想确定较低版本的 ipmitool（如：ipmitool: 1.8.11、\nipmitool: 1.8.15.）是否支持，测试尝试使用ipmitool: 1.8 15版本反馈无法使用。",
+    "topic_user_name": "baode_luoyin",
+    "best_answer_url": "/t/topic/713/5",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/713/2",
+            "text": "否。较低版本也是支持的，看看报什么错呢？"
+        },
+        {
+            "user_name": "baode_luoyin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/713/3",
+            "text": "content: image1010×468 18.3 KB\n使用带内的1.8.15版本，不加-vvvvv 直接报 “段错误（核心已转储）\"\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/64fdf37fafe7c59c589f159961696f35ae7ec03c.png"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/713/5",
+            "text": "看起来是ipmitool工具崩溃了，跟bmc没关系。"
+        }
+    ]
+}

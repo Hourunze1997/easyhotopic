@@ -1,0 +1,36 @@
+{
+    "topic_id": 955,
+    "question": "MCX623106AN-CDAT的配置文件中存在两个光模块调速 - vpd/vendor/Nvidia/Nic/cx6-dx/14140130_15b3101d_15b30016.sr中存在两个光模块温度调速，是否存在冗余呢？分别是CoolingRequirement_1_53和CoolingRequirement_1_66",
+    "topic_user_name": "Jiaoxinchao",
+    "best_answer_url": "/t/topic/955/3",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/955/3",
+            "text": "content: 当前存在重复配置问题，已提issue进行跟踪\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\nlinks: https://gitcode.com/openUBMC/vpd/issues/48, https://gitcode.com/openUBMC/vpd/issues/48"
+        },
+        {
+            "user_name": "Jiaoxinchao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/955/4",
+            "text": "请问哪个是冗余的呢,存在冗余有什么影响呢？"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/955/5",
+            "text": "当前冗余为1_53调速策略，且1_66调速策略配置存在问题需要同步修改；\n冗余的影响：调速策略同时生效，但目标温度值不同，导致转速会以PID计算出的高转速进行下发"
+        },
+        {
+            "user_name": "Jiaoxinchao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/955/7",
+            "text": "我们这边最近要交付这张网卡，能否在评论区提供一下临时修复方案，感谢"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 529,
+    "question": "【已评审】npu日志收集新增RPC方法 - content: ISSUE链接（必填，此议题关联的issue）：\nhttps://gitcode.com/openUBMC/mdb_interface/issues/17\n背景（必填，文字描述议题背景，如需求来源、问题场景）:\n支持带外收集NPU带内device关键运行日志，新增4种日志类型。\n目前npu日志收集RPC方法默认收集黑匣子类别的6种日志，需要扩展支持收集设备运行类别的4种新的日志。\n为了兼容之前的北向接口配置，不修改之前的RPC方法，新增RPC方法适配新的北向接口。\n决策点（必填，一句话描述待决策点）：\n新增RPC方法DumpLog，处理新增的日志收集的北向接口。\n对应资源path是/bmc/kepler/Systems/:SystemId/Processors/NPU/:ID，对应资源interface是bmc.kepler.Systems.Processor.NPU。\n详细描述（必填，描述待评审接口的详细内容）：\n资源path： /bmc/kepler/Systems/:SystemId/Processors/NPU/:ID\n资源interface： bmc.kepler.Systems.Processor.NPU\n变化类型：新增方法\n应用场景：web或redfish接口触发npu运行日志收集\n持久化类型： 不持久化\n操作权限：DiagnoseMgmt\n详细描述：\n\n方法名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nDumpLog\n新增方法\n请求：ass 响应：u\nDiagnoseMgmt\nNA\nNA\n请求：LogType：日志类型，字符串数组类型。OutputFilePath：导出文件路径，字符串类型。     响应：  TaskId：任务ID，数字类型U32。\n请求：LogType：日志类型，支持的日志类型包括Blackbox、Device。  OutputFilePath：操作路径1、本地导出：“/tmp/文件路径” 2、远程导出：“文件传输协议://用户名:密码@ip地址/目录/文件名”文件传输协议包括五种：sftp、https、nfs、cifs、scp。  响应：TaskId：任务ID。\n\nLogType参数说明：\n\n取值\n说明\n\nBlackbox\n表示黑匣子日志，含有6种日志\n\nDevice\n表示设备关键运行日志，含有4种日志\n\n评审结论\n1、同意新增RPC方法DumpLog：\n\n资源树路径: /bmc/kepler/Systems/:SystemId/Processors/NPU/:ID\n资源树接口: bmc.kepler.Systems.Processor.NPU\n操作权限：DiagnoseMgmt\n请求签名：ass\n请求参数：LogType, OutputFilePath\n响应签名：u\n响应参数：TaskId\nlinks: #p-1026-issueissue-1, https://gitcode.com/openUBMC/mdb_interface/issues/17, #p-1026-h-2, #p-1026-h-3, #p-1026-h-4, #p-1026-h-5",
+    "topic_user_name": "王祝炜",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/529/2",
+            "text": "变更的必要性要以及变更兼容性的处理策略阐述清楚"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/529/3",
+            "text": ""
+        }
+    ]
+}

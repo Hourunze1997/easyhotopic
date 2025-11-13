@@ -1,0 +1,36 @@
+{
+    "topic_id": 1623,
+    "question": "【已评审】北向接口升级适配“BMC协处理器升级失败”信息展示 - content: ISSUE链接\n暂无\n评审背景\n\nBMC协处理器是与BMC包一同升级，当前BMC协处理器升级失败不影响BMC固件升级\nDFX场景：对于有 BMC协处理器固件的BMC固件升级场景中，在升级流程上要先保证升级BMC协处理器固件，如果升级失败则直接退出当前升级流程\n\n当前现状以及差距\n现状\nBMC协处理器升级失败不影响BMC固件升级。如果BMC固件中的安全协处理器升级失败，则记录日志，BMC继续升级\n差距\n\nBMC固件中的安全协处理器升级失败，则相应的BMC固件升级流程需要报失败，无法满足DFX场景\n升级失败需要给出具体原因：即BMC协处理器升级失败\n\n解决方案\n\n修改处理流程：如果当前BMC固件中的安全协处理器升级失败，则相应的BMC固件升级流程失败\n北向接口需要适配 “BMC协处理器升级失败” 信息提示\n\n决策点1  web界面适配BMC协处理器升级失败\nweb界面新增失败原因提示“BMC协处理器升级失败”\n决策点2 新增snmp升级状态错误值\n新增snmp升级状态错误值 -16：coprocessor firmware upgrade failed\n当前snmp升级状态错误值如下，没有BMC协处理器失败的错误值，需要新增\nfirmwareUpgradeState OBJECT-TYPE\n            SYNTAX INTEGER\n            MAX-ACCESS read-only\n            STATUS current\n            DESCRIPTION\n                \"Information about firmware upgrading state.\n                the value defined as:\n                  -1: upgrade not start or completed,\n                  -2: file uploading,\n                  -3: checking preUpgrade,\n                  -4: invalid URI or file not exist,\n                  -5: file upload failed,\n                  -6: file too large or memory not enough,\n                  -7: invalid upgrade package,\n                  -8: not support upgrade in current state,\n                  -9: upgrade failed,\n                  -10: The upgrade file does not match the device to be upgraded,\n                  -11: The BIOS upgrade fails because the ME status is not correct,\n                  -12: Unknown error,\n                  -13: The version of the update pack does not match the current web interface version,\n                  -14: Powering on... Failed to upgrade the firmware,\n                  -15: The upgrade package version is too early,\n                  [0,100]:represents upgrade progress in percentage while firmware being upgrading.\"\n            ::= { firmwareUpgrade 2 } \n\n决策点3  IPMI查询升级任务时提示BMC协处理器升级失败\nCoprocessorFirmwareUpgradeFailed = 40\nipmi对外展示：0xa8\n表示BMC协处理器升级失败\n评审结论\n不通过，不同意在北向接口中增加关于协处理器升级失败的描述，需要进一步明确客户对于该报错之后的进一步处理措施，以及评估清楚影响之后再行评审。\nlinks: #p-3942-issue-1, #p-3942-h-2, #p-3942-h-3, #p-3942-h-4, #p-3942-h-5, #p-3942-h-6, #p-3942-h-1-webbmc-7, #p-3942-h-2-snmp-8, #p-3942-h-3-ipmibmc-9, #p-3942-h-10",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "/t/topic/1623/3",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1623/2",
+            "text": "升级失败的错误，在没有特别详细说明的情况下，为什么不能用通用的操作失败错误或通过HTTP响应码体现，非得新增一个OEM的消息?"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1623/3",
+            "text": "content: 现在BMC的升级就是在升级失败之后通过具体的错误引擎（OEM错误消息）来区分升级失败的具体原因，然后根据这个错误消息展示到北向接口上，给接口调用者进行提示。具体北向接口展示：\n\nWEB：页面提示升级失败以及失败的原因\nCLI：命令行回显提示升级失败以及失败的原因\nSNMP：SNMP查询升级状态时提示升级失败以及失败的原因（一个数字）\nRedfish：Redfish查询升级任务时提示升级失败以及失败的原因（Redfish Error Message）\nIPMI：IPMI查询升级任务时提示升级是啊比以及失败的原因（一个数字）\n\n@linyao 需要确认当前对于上述升级的接口，是否可以通过 一个通用的升级失败的错误引擎 + 具体的失败错误原因（动态参数） 的方式进行处理；然后北向接口中是通过增加错误码进行映射到具体的错误信息上\nlinks: /u/linyao"
+        },
+        {
+            "user_name": "Linyao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1623/4",
+            "text": "可以通过升级失败通用错误码FirmwareUpgradeError返回\nMessage：“An error occurred during the firmware upgrade process. Details: %1”，可以使用动态参数说明"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1623/5",
+            "text": ""
+        }
+    ]
+}

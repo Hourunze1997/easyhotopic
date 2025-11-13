@@ -1,0 +1,50 @@
+{
+    "topic_id": 1456,
+    "question": "PAC2000S12-B1电源通信命令无法写入 - content: 【背景】\n在社区版本上开发ipmi命令，通过发送pmbus命令实现模拟AC掉电\n【问题描述】\n在开发过程中，发现pmbus读命令生效：128即0x80，电源为开机状态\n\n而写命令不生效：写入复位命令0x00，再次查询范围值为128不变，实机也不下电\n\n当前已关闭写保护\nimage497×310 52.1 KB\n【电源通信命令】\nimage769×587 136 KB\n【求助点】\n希望协助看一下为什么pmbus读命令生效而写命令不生效以及此问题如何解决\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e8252dbd73b131037229eaeb74d28f2876e40944.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/f8ce1d0b69646f90c7860cfcbf1cac64fd340da4.png",
+    "topic_user_name": "baode_zsy",
+    "best_answer_url": "/t/topic/1456/6",
+    "reply_posts": [
+        {
+            "user_name": "Fumingquan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1456/2",
+            "text": "写命令应该是有PEC校验的，加上PEC校验试试"
+        },
+        {
+            "user_name": "baode_zsy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1456/3",
+            "text": "content: BlockIO的Write方法没有pec校验的字段啊，这个怎么发\nimage656×672 21.2 KB\nimage642×131 43.1 KB\n我们查了PMBUS_CMD_STATUS_CML的校验错误标志位，为0应该也没有报错哇\n企业微信截图_1750754200343761×375 37.9 KB\nimage975×117 4.68 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/769106ff8f1d83e1c144c8ef5bac3d2727da8995.png, https://discuss.openubmc.cn/uploads/default/original/2X/d/d4f7326bd51dc45dd1178e78c34ff4b8f85b2a8a.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/e1727320af32a873740ada81ba2ce67e97571e64.png, https://discuss.openubmc.cn/uploads/default/original/2X/d/df44b1d55388784533b20322add00da5106360d2.png"
+        },
+        {
+            "user_name": "Fumingquan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1456/4",
+            "text": "跟在写的数据后面就行，写入长度变成2"
+        },
+        {
+            "user_name": "baode_zsy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1456/5",
+            "text": "content: 似乎没区别，我按CRC码100000111计算0xba 0x01 0x01 0x40得到的pec校验\nimage972×124 7.05 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/879faa8ddccd66d0b69d40898327f1405e930b48.png"
+        },
+        {
+            "user_name": "Fumingquan",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1456/6",
+            "text": "0xba 0x01 0x01 0x40前面的0xba 0x01是什么，0xba是地址吗？还有这个01？这里的PEC算的不对，不能采用块写入来计算PEC，需要使用Write Byte的，改成使用0xba 0x01 0x40计算试试"
+        },
+        {
+            "user_name": "baode_zsy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1456/7",
+            "text": "content: 地址0xba，命令字0x01,写入长度0x01，数据0x40\nimage655×131 43 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/1b386788918db0492b07dba54755a05839a8d89c.png"
+        }
+    ]
+}

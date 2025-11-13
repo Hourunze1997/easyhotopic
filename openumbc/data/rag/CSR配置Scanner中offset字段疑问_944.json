@@ -1,0 +1,15 @@
+{
+    "topic_id": 944,
+    "question": "CSR配置Scanner中offset字段疑问 - content: 在CSR文件中，Scanner中有一个offset字段，这个字段是SMC协议转换的吗？是SMC协议中opcode转换的还是smc整个通讯协议转换的？有具体的转换工具或者方法吗？\nimage728×222 5.69 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/e1e6d4c683ce53e7e8e4ded3d4410f9e58a33086.png",
+    "topic_user_name": "dh_qiuming",
+    "best_answer_url": "/t/topic/944/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/944/2",
+            "text": "是使用SMC协议中opcode转换的，可以联系下社区支持获取工具"
+        }
+    ]
+}

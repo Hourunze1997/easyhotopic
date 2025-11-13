@@ -1,0 +1,101 @@
+{
+        "6": {
+        "summary": "昇腾CANN开发者如何解决cmake无法启用WITH_CANN选项的编译问题",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "157",
+                "title": "OpenCV编译 CANN没有打开",
+                "url": "https://www.hiascend.com/forum/thread-0226184468452524060-1-1.html",
+                "created_at": "2025-06-05 01:14:13",
+                "source_type": "forum",
+                "source_id": "226184468452524096",
+                "cosine": 0.726117873451253
+            },
+            {
+                "id": "44",
+                "title": "编译安装基于CANN的opencv的cannops模块报错",
+                "url": "https://www.hiascend.com/forum/thread-02113175593420797113-1-1.html",
+                "created_at": "2025-02-22 07:57:01+00",
+                "source_type": "forum",
+                "source_id": "2113175593420796928",
+                "cosine": 0.6967751000190318
+            }
+        ],
+        "label": "模型转换失败"
+    },
+       "12": {
+        "summary": "开发者在ATC工具转换warpPerspective算子时输入类型配置失败",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "155",
+                "title": "转换warpperspective算子失败",
+                "url": "https://www.hiascend.com/forum/thread-02115183968056430027-1-1.html",
+                "created_at": "2025-05-30 06:14:16",
+                "source_type": "forum",
+                "source_id": "2115183968056430080",
+                "cosine": 0.7334559533238829
+            },
+            {
+                "id": "148",
+                "title": "利用atc进行单算子warpperspective转换失败",
+                "url": "https://www.hiascend.com/forum/thread-0226184387156555053-1-1.html",
+                "created_at": "2025-06-04 02:39:17",
+                "source_type": "forum",
+                "source_id": "226184387156555008",
+                "cosine": 0.7277600558912837
+            }
+        ],
+        "label": "编译问题"
+    },
+      "14": {
+        "summary": "昇腾CANN开发者如何解决MaxPoolWithArgmaxV1算子未注册错误",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "177",
+                "title": "[Question|问题咨询]: CANN8.0RC1，kernel包也装了，为什么有这个报错",
+                "url": "https://gitee.com/ascend/cann-ops-adv/issues/ICC9AN",
+                "created_at": "2025-06-03 17:24:46",
+                "source_type": "issue",
+                "source_id": "20727311",
+                "cosine": 0.7093015117521537
+            },
+            {
+                "id": "176",
+                "title": "[Question|问题咨询]: EZ3002",
+                "url": "https://gitee.com/ascend/cann-ops-adv/issues/ICC9A0",
+                "created_at": "2025-06-03 17:23:03",
+                "source_type": "issue",
+                "source_id": "20727288",
+                "cosine": 0.6386403774916211
+            }
+        ],
+        "label": "软件易用性"
+    },
+    "17": {
+        "summary": "开发者安装配置是漏装必要软件包，导致运行失败",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "21",
+                "title": "call aclnnCast failed",
+                "url": "https://www.hiascend.com/forum/thread-02102182676529679115-1-1.html",
+                "created_at": "2025-05-15 07:28:50+00",
+                "source_type": "forum",
+                "source_id": "2102182676529679104",
+                "cosine": 0.6376089158290689
+            },
+                        {
+                "id": "190",
+                "title": "RuntimeError: call aclnnAdd failed, detail:EZ9999: Inner Error!",
+                "url": "https://gitee.com/ascend/triton-ascend/issues/ICCL9N",
+                "created_at": "2025-06-04 17:21:28",
+                "source_type": "issue",
+                "source_id": "20742827",
+                "cosine": 0.6091456656130546
+            }
+        ]
+    }
+}

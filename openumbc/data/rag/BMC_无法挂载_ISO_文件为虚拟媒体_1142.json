@@ -1,0 +1,22 @@
+{
+    "topic_id": 1142,
+    "question": "BMC 无法挂载 ISO 文件为虚拟媒体 - content: 报错情况\n使用Redfish挂载虚拟媒体时出现报错：iBMC.1.0.ConnectionFailed，同时使用通过iBMC的SSH运行 ipmcset -t vmm -d connect -v nfs://10.100.11.133/root/model-machine-resource/bootstrap/alpine-custom-latest-stable-aarch64.iso 命令时出错：Connect virtual media failed.\n环境信息：\n网络结构\n当前iBMC的地址为：10.100.11.239/24，NFS/HTTPS服务器的地址为：10.100.11.133/24，以上设备网关均为：10.100.11.1，在iBMC的命令行下运行 ping 10.100.11.133 可获得返回，在NFS服务器上 ping 10.100.11.239 也可获得返回。\n交叉测试\n在同内网下设备测试，该NFS服务器是可被挂载，且该文件是存在的。HTTPS模式也出现了完全一致的情况，同时可以确认HTTP的Server没有收到任何入站请求\nBMC 版本\niBMC固件版本：3.03.00.69，BIOS固件版本：6.57，测试机器为 Chaoqiang K620\n（我不确定该问题是否属于 openUBMC 能协助解决的，因为确实可能是比较早期的 iBMC 的问题，但之前和社区小伙伴交流发现似乎和负责 iBMC 的是一个组的）\nlinks: #p-2465-h-1, #p-2465-h-2, #p-2465-h-3, #p-2465-h-4, #p-2465-bmc-5",
+    "topic_user_name": "Pe Scn",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1142/2",
+            "text": "有没有BMC的日志呢？抛错的话，bmc的日志一般会有错误日志记录，提示是什么原因导致的异常。"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1142/3",
+            "text": "如果有日志的话，麻烦发送到这个邮件吧：ouwenjian@huawei.com"
+        }
+    ]
+}

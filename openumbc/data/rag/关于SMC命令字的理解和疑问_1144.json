@@ -1,0 +1,29 @@
+{
+    "topic_id": 1144,
+    "question": "关于SMC命令字的理解和疑问 - content: 1. SMC命令字定义\nimage1056×324 24.6 KB\nopcode也就是csr配置中的Offset，由Function，Command，MS，RW四个组成。\nM就是multiple，表示多个读取；S是single，表示单个读取；RW很好理解，读和写\nM=0，S=1\nR=1，W=0\n        \"Accessor_ShortPushButton\": {\n            \"Chip\": \"#/Smc_ExpBoardSMC\",\n            \"Offset\": 134224384,\n            \"Size\": 1,\n            \"Mask\": 1,\n            \"Type\": 0,\n            \"Value\": 0\n        },\n        \"Accessor_LongPushButton\": {\n            \"Chip\": \"#/Smc_ExpBoardSMC\",\n            \"Offset\": 134224384,\n            \"Size\": 1,\n            \"Mask\": 2,\n            \"Type\": 0,\n            \"Value\": 0\n        },\n\n2. SMC命令调试\n例如：\n短按 mdbctl call Smc_ExpBoardSMC_0101 bmc.kepler.Chip.BlockIO Write 0 0x8001a00 1 0x01\n长按 mdbctl call Smc_ExpBoardSMC_0101 bmc.kepler.Chip.BitIO Write 0 0x8001a00 1 2 1 0x01\n其实这里最好用BitIO的方法，和csr中的Type要对应起来，否则可能出现我在这篇帖子中遇到的问题 强制重启SMC命令定制 - 交流互助区 - openUBMC 论坛\nType = 0对应BitIO，1对应BlockIO。\n接口中使用的参数参考文档中BlockIO和BitIO的说明 openUBMC SDK | openUBMC\n3.SMC命令字转换工具\n这边写了个简单的小工具，Linux环境中使用，压缩包里有工具和源码，有问题的话大家自己改一下。\nsmc_tool.zip (3.9 KB)\nimage540×261 6.5 KB\n去算offset的时候后面的4个参数都是十六进制数，可以加上0x也可以不加。\n4.疑问\n\n关于MS，这里的多个和单个是指什么？好像和read，write后面跟的读取/写入个数没关系\n读上下电状态在csr中的offset是469765888（0x1c000f00），算出来就是7 3 1 1。以前好像有看到个文章说MS和RW应该是对应起来的，要么0 1，要么1 0，不会有1 1的情况，并且在印象里v2中xml在这个命令字的注释上面好像写的也是7 3 0 1即0x1c000d00，但实际配置的offset却是0x1c000f00，请问这个是为什么呢？\nBitIO write的参数问题，有一个写入长度Length，但是实际InData数组的第一个数据好像还得指定长度，后面的才是实际写入数据。这两个长度是重复了吗？还是我对第一个Length的理解不对？\nimage1114×424 9.77 KB\nlinks: #p-2468-h-1-smc-1, https://discuss.openubmc.cn/uploads/default/original/1X/f6a805c069ae1c917b56272aa5b6e930d8abec99.png, #p-2468-h-2-smc-2, https://discuss.openubmc.cn/t/topic/252, https://www.openubmc.cn/docs/zh/development/api/SDK.html#bmc-kepler-chip-bitio, #p-2468-h-3smc-3, /uploads/short-url/59aDiNBOXinffYw4AonidHofpXG.zip, https://discuss.openubmc.cn/uploads/default/original/1X/2541282c6a2de44630fb61e20f534b744bab10dc.png, #p-2468-h-4-4, https://discuss.openubmc.cn/uploads/default/original/1X/9b1ccfec62da03a0efaf05fe76af844b3b68eea5.png",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "/t/topic/1144/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1144/2",
+            "text": "SMC 协议中，Opcode 中的 MS 字段是一个控制位，用于区分读取模式。\n\nMS = 0：表示多个设备读取（Multiple Read），即一次读取操作会涉及多个设备或部件。\nMS = 1：表示单个设备读取（Single Read），即一次读取操作仅针对一个设备或部件。\n\nInData数组的第一个数据是在使用busctl时代表数组的的数据长度，前面的Length代表实际要根据后面的数据写入多少位"
+        },
+        {
+            "user_name": "xiaoxinglxs",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1144/3",
+            "text": "content: SMC协议关于M/S定义\n协议定义了位读，块读，位写、块写4种操作模式\n位读：M/S=1;RW=1；Param=要读取的设备/对象序号; 返回单个对象的数据\n块读：M/S=0;RW=1；Param=0；返回该命令所有数据\n位写：M/S=1;RW=0；Param=要读取的设备/对象序号\n块写：M/S=0;RW=0；Param=0\n由于逻辑资源限制，当前逻辑只实现块读和块写操作，BMC的驱动层会将BMC下发的位操作转换为快操作\nM/S的典型应用场景：\nM： 按块读取，一次读取多个字节\nS： 单个读写，一次读或写1个字节\n典型应用场景：SMC读取命令MS=0，即推荐块读；SMC写入命令MS=1，即推荐位写。\nlinks: #p-3194-smcms-1"
+        },
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1144/4",
+            "text": "content: 通过AI把你的工具转换成了Python脚本，就不限平台了 \nimport sys\n\ndef main():\n    if len(sys.argv) < 2 or len(sys.argv) > 5:\n        print(\"使用方法：smc_tool [Func] [Cmd] [M/S] [R/W]\")\n        print(\"例如：smc_tool 7 3 0 1\")\n        print(\"以上参数均为十六进制数，也可以反推smc命令的offset\")\n        print(\"例如：smc_tool 469765376 或 smc_tool 0x1c000d00\")\n        return -1\n\n    if len(sys.argv) == 2:\n        input_str = sys.argv[1]\n        hex_num = int(input_str, 0)  # 自动识别进制\n\n        print(f\"Func: {(hex_num >> 26) & 0b111111:x}\")\n        print(f\"Cmd : {(hex_num >> 10) & 0xff:x}\")\n        print(f\"M/S : {(hex_num >> 9) & 0b1:x}\")\n        print(f\"R/W : {(hex_num >> 8) & 0b1:x}\")\n\n    elif len(sys.argv) == 5:\n        try:\n            nums = [int(arg, 16) for arg in sys.argv[1:]]\n            for num in nums:\n                print(f\"{num:02x} \", end=\"\")\n\n            result = (\n                (nums[0] & 0b111111) << 26 |\n                (nums[1] & 0xff) << 10 |\n                (nums[2] & 0b1) << 9 |\n                (nums[3] & 0b1) << 8\n            )\n            print(f\"\\n转换结果为：{result} 或 0x{result:x}\")\n\n        except ValueError:\n            print(\"\\n参数解析错误\")\n            return -1\n\n    else:\n        print(\"参数错误\")\n        return -1\n\nif __name__ == \"__main__\":\n    main()\n\nimage574×140 5.39 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/d4d67eeddef451b2a199d548eab334269b5607e1.png"
+        }
+    ]
+}

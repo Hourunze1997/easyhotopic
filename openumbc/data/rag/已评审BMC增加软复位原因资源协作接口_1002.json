@@ -1,0 +1,15 @@
+{
+    "topic_id": 1002,
+    "question": "【已评审】BMC增加软复位原因资源协作接口 - content: 关联issue\n暂无\n背景\n客户需求，需要在BMC启动之后记录上次BMC复位的事件以及具体的原因。\n现状：\nBMC目前支持两种复位类型的事件记录：AC复位以及软复位，但是对于软件复位时没有确切的原因记录。\n方案：\nBMC的资源协作接口增加一个可写的属性：复位原因，在不同情况下的BMC操作复位之前记录一下对应的复位原因，具体的原因可以枚举给出\n评审点\npath： /bmc/kepler/Managers/:ManagerId/SOC\ninterface： bmc.kepler.Managers.SOC\n新增加属性信息如下：\n\n项\n说明\n\n属性名称\nResetCause\n\n属性类型\nString\n\n属性读写\nrw\n\n属性权限\nread: ReadOnlywrite: BasicSetting\n\n属性广播\nfalse\n\n属性持久化\n复位持久化（掉电以后是AC启动，因此复位持久化即可）\n\n属性说明\nBMC软复位原因，具体的原因枚举如下\n\nBMC软复位原因列表\n\n复位原因\n复位原因说明\n\n1\n接口操作软复位，包括各个北向接口的镜像升级，回滚，复位，定制化等操作\n\n2\nUID按钮复位，长按UID按钮进行复位\n\n3\n恢复出厂复位，包括升级清除配置，一键恢复出厂，报废等操作\n\n4\n运行异常复位，包括固件异常，软件运行异常等原因\n\n255\n其他原因复位，不明原因的异常复位\n\n评审结论\n通过，同意在接口 bmc.kepler.Managers.SOC 下新增属性 ResetCause，类型为 String，复位原因采用字符串枚举。具体枚举如下：\n\n复位原因\n复位原因说明\n\nCommand\n接口操作软复位，包括各个北向接口的镜像升级，回滚，复位，定制化等操作\n\nResetButton\nUID按钮复位，长按UID按钮进行复位\n\nResetToDefault\n恢复出厂复位，包括升级清除配置，一键恢复出厂，报废等操作\n\nRunException\n运行异常复位，包括固件异常，软件运行异常等原因\n\nUnknown\n其他原因复位，不明原因的异常复位\nlinks: #p-2100-issue-1, #p-2100-h-2, #p-2100-h-3, #p-2100-h-4",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1002/2",
+            "text": ""
+        }
+    ]
+}

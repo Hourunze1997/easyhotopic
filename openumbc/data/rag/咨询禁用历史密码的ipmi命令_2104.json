@@ -1,0 +1,15 @@
+{
+    "topic_id": 2104,
+    "question": "咨询禁用历史密码的ipmi命令 - content: (upload://eSJQv7UHu5MXzWFLHAU44V0uZ1F.png)\nimage1012×699 17.1 KB\n\n下了相关的ipmi命令，显示命令被禁用了，跟其他同事交流，发现有些ipmi命令也是disabled状态，想问下这是什么原因，有解决的办法吗？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/c58ca2321a3a45756d7bb5aa5dbb6009b48fc715.png",
+    "topic_user_name": "Byosoft Szz",
+    "best_answer_url": "/t/topic/2104/2",
+    "reply_posts": [
+        {
+            "user_name": "Byosoft Szz",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2104/2",
+            "text": "已解决，参考的其他的ipmi手册\n禁用历史密码\n查询\nipmitool -I lanplus -H 192.168.183.100 -U Administrator -P Admin@90000 -C 17 raw 0x30 0x93 0xDB 0x07 0x00 0x76 0x03 0x00\n设置\nipmitool -I lanplus -H 192.168.183.100 -U Administrator -P Admin@90000 -C 17 raw 0x30 0x93 0xDB 0x07 0x00 0x77 0x03 0x00 0x00 0x01 0x00\n下了的命令是生效的"
+        }
+    ]
+}

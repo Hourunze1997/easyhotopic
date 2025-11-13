@@ -1,0 +1,57 @@
+{
+    "topic_id": 2027,
+    "question": "Jfrog无法绑定当前社区远程conan仓 - content: 当前Jfrog在尝试绑定https://conan.openubmc.cn/conan_1 仓库时，虚拟仓库中无法获取远程社区仓库中的conan包，在点击页面test后出现\nimage1920×945 70.6 KB\n在Jfrog的服务器中，是可以正常访问远程仓库地址的，网络无问题\n在容器中使用https://conan.openubmc.cn/conan_1 地址登录后可以正常访问社区conan仓库\n之前的https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/ 仓库不知道是否被禁用了，目前也是无法登录，显示的时账户或密码错误\nlinks: https://conan.openubmc.cn/conan_1, https://discuss.openubmc.cn/uploads/default/original/2X/b/b4c9c35444f80b56448335d01fe1eba829c07306.png, https://conan.openubmc.cn/conan_1, https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/",
+    "topic_user_name": "百信-张滨",
+    "best_answer_url": "/t/topic/2027/6",
+    "reply_posts": [
+        {
+            "user_name": "liyanghang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2027/2",
+            "text": "content: 1.jfrog的test是jfrog自己的接口，不是conan通用的接口，暂无计划支持，除了test外，其他的功能是否有问题\n2. 【维护通知】关于延长社区Conan制品仓公共账号使用期限的公告 - CICD SIG - openUBMC 论坛\nlinks: https://discuss.openubmc.cn/t/topic/1334"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2027/3",
+            "text": "content: 1、除test外，用https://conan.openubmc.cn/conan_1 地址无法正常使用conan，无法搜索和拉取社区conan仓库中的包\n\n2、使用 【维护通知】关于延长社区Conan制品仓公共账号使用期限的公告 - CICD SIG - openUBMC 论坛 贴子中的地址可以正常使用了\nlinks: https://conan.openubmc.cn/conan_1, https://discuss.openubmc.cn/t/topic/1334"
+        },
+        {
+            "user_name": "liyanghang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2027/4",
+            "text": "搜索和拉取  能具体看看你们那边是怎么使用的吗"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2027/5",
+            "text": "搜索就是使用命令搜索社区conan仓库才有的包，例如mdb_interface包\nconan search \"mdb_interface\" -r artifactory\n\n拉取就是在执行出包构建的时候会报错误，需要下载的包在虚拟仓中不存在"
+        },
+        {
+            "user_name": "liyanghang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2027/6",
+            "text": "content: baixin_zhangbin:\n\n用https://conan.openubmc.cn/conan_1 地址无法正常使用conan，无法搜索和拉取社区conan仓库中的包\n\nGitCode - 全球开发者的开源社区,开源代码托管平台  跟踪issue，对这个bug进行修复\nlinks: https://conan.openubmc.cn/conan_1, https://gitcode.com/openUBMC/infrastructure/issues/24?ref=&did=bc181c62e44dbb3b41da60906f64fae91df3d90e#tid-106803499"
+        },
+        {
+            "user_name": "liyanghang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2027/7",
+            "text": "已修复，请验证一下"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2027/8",
+            "text": "已验证，可以正常使用"
+        }
+    ]
+}

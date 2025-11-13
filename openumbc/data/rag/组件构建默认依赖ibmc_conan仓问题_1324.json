@@ -1,0 +1,29 @@
+{
+    "topic_id": 1324,
+    "question": "组件构建默认依赖ibmc conan仓问题 - content: 构建环境\nbingo                     0.5.317\nhw-ibmc-bmcgo/now 0.5.317\n构建现象\n使用命令“bingo build”单独构建account组件时提示\nERROR: Version range ‘>=1.60.0’ from requirement ‘libmc4lua/[>=1.60.0]@hw.ibmc.release/rc’ required by ‘account/1.70.22@hw.ibmc.dev/dev’ could not be resolved in local cache\n诉求\n1 组件构建时默认依赖的openubmc仓\n2 如果伙伴搭建了自己的conan仓，组件的依赖可能同时来自于私有仓和openubmc仓，如何指定两个仓库的依赖并完成构建\n3 如果伙伴搭建了自己的conan仓，如何指定组件构建后的包提交到私有仓\n@wuyupeng\nlinks: #p-2999-h-1, #p-2999-h-2, #p-2999-h-3, /u/wuyupeng",
+    "topic_user_name": "恒扬-胡田野",
+    "best_answer_url": "/t/topic/1324/2",
+    "reply_posts": [
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1324/2",
+            "text": "content: 317 版本目前不支持多个 remote 的设置，只能通过 bingo build -r <remote_name> 来指定单个仓。目前的方式可以参考如下两个方案对现状进行解决：\n\n从 openubmc_dev 下载并 upload 到 your_conan_remote.\n最近在伙伴那里听到了虚拟仓库（Virtual Repository）的办法，可以通过 JFrog Artifacotry 进行聚合多个 conan 仓库的访问入口，不妨进行尝试。\nlinks: https://jfrog.com/artifactory/"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1324/3",
+            "text": "可以使用虚拟仓\n可以使用如下命令批量下载和同步全部组件到自己的仓库\n\n# 执行一次, 修复社区conan 接口问题\necho $(pip3 show conan |  grep -oP 'Location:\\s*\\K.*')/conans/client/remote_manager.py | xargs sed -i 's/recipe_hash/recipeHash/g'\n\nconan search '*' -r=openubmc_dev|tail -n +3 > pkg.list;\nwhile read pkg; do\n    # 下载包的元数据和所有二进制文件\n    conan download \"$pkg\" -r openubmc_dev\ndone < pkg.list\n\nconan search '*' |tail -n +3 > local.list;\ndiff local.list pkg.list > dif.diff\nwhile read pkg; do\n    # 上传包及其所有二进制文件\n    conan upload \"$pkg\" -r ibmc_dev --all --confirm\ndone < pkg.list"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1324/4",
+            "text": "目前建议伙伴是用0.5.317版本还是社区的0.5.230版本，0.5.230版本的bingo命令从验证看来是不支持签名的"
+        }
+    ]
+}

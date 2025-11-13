@@ -1,0 +1,22 @@
+{
+    "topic_id": 1226,
+    "question": "【已评审】NtpService资源Actions操作错误引擎描述修改 - content: 关联issue\n支持Redfish资源NtpService下可以导入NTP组密钥-rackmount-GitCode\n背景\n测试比较V2和V3的运行结果，针对不同的描述提出问题，问题如下：\n\nUploadNTPSecureGroupKeysuccessfully导入成功的\"Resolution\": \"None.“应该是\"Resolution”: “None”\n错误引擎NTPGroupKeyNotSupported的Message描述错误\n错误引擎UploadNTPSecureGroupKeyFailed的Resolution描述不合理\n\n评审点\n评审点1：UploadNTPSecureGroupKeysuccessfully\n“Resolution”: “None.”\n修改为\n“Resolution”: “None”\n示例：\n\"UploadNTPSecureGroupKeysuccessfully\": {\n            \"Description\": \"Indicates that an NTP group key is uploaded successfully.\",\n            \"Message\": \"The NTP group key is uploaded successfully.\",\n            \"Severity\": \"OK\",\n            \"NumberOfArgs\": 0,\n            \"Resolution\": \"None\",\n            \"HttpStatusCode\": 200,\n            \"IpmiCompletionCode\": \"0x00\",\n            \"SnmpStatusCode\": 0\n        }\n\n评审点2：NTPGroupKeyNotSupported\n“Message”: “Failed to upload the NTP group key because it is not support.”\n修改为\n“Message”: “Failed to upload the NTP group key because it is not supported.”\n示例：\n\"NTPGroupKeyNotSupported\": {\n            \"Description\": \"Indicates that an error occuerd during the NTP group key upload process.\",\n            \"Message\": \"Failed to upload the NTP group key because it is not supported.\",\n            \"Severity\": \"Warning\",\n            \"NumberOfArgs\": 0,\n            \"Resolution\": \"Make sure that the group key is supported by the NTP.\",\n            \"HttpStatusCode\": 400,\n            \"IpmiCompletionCode\": \"0xFF\",\n            \"SnmpStatusCode\": 3\n        }\n\n评审点3：UploadNTPSecureGroupKeyFailed\n“Resolution”: “Make sure that the content or URI of the NTP group key in the request body is valid.”\n修改为\n“Resolution”: “Make sure that the content or URI of the NTP group key specified in the request body is valid.”\n\"UploadNTPSecureGroupKeyFailed\": {\n            \"Description\": \"Indicates that an error occuerd during the NTP group key upload process.\",\n            \"Message\": \"Failed to upload the NTP group key.\",\n            \"Severity\": \"Warning\",\n            \"NumberOfArgs\": 0,\n            \"Resolution\": \"Make sure that the content or URI of the NTP group key specified in the request body is valid.\",\n            \"HttpStatusCode\": 400,\n            \"IpmiCompletionCode\": \"0xFF\",\n            \"SnmpStatusCode\": 3\n        }\n\n评审结论\n通过，具体结论如下：\n\n评审点1：不修改，参考最新的redfish官方message定义，Resolution 为 “None.” 时保持句末的标点符号(.)\n评审点2：同意修改，Message 中的 support 修改为 supported\n评审点3：同意修改，Resolution 中增加 specified\nlinks: #p-2659-issue-1, https://gitcode.com/openUBMC/rackmount/issues/36, #p-2659-h-2, #p-2659-h-3, #p-2659-h-1uploadntpsecuregroupkeysuccessfully-4, #p-2659-h-2ntpgroupkeynotsupported-5, #p-2659-h-3uploadntpsecuregroupkeyfailed-6, #p-2659-h-7",
+    "topic_user_name": "Iss Szyaoh",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1226/2",
+            "text": "问题 #1：当前评审的标题和评审点没有关系，优化一下评审帖的标题\n问题 #2：评审议题的背景不清晰，需要优化描述"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1226/3",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 1029,
+    "question": "Ubuntu开发环境搭建python3 init.py -path ./bmc_sdk.zip 报错 - content: image698×560 14.2 KB\n哪位同学有空，请帮忙看看，谢谢~\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/5b53b0cd87a3542732ae1416e2547367fde24778.png",
+    "topic_user_name": "Mr Chen",
+    "best_answer_url": "/t/topic/1029/2",
+    "reply_posts": [
+        {
+            "user_name": "特别的名字_wangningbo",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1029/2",
+            "text": "n的权限有问题，单独执行一下n 20.18.0一下"
+        },
+        {
+            "user_name": "Mr Chen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1029/4",
+            "text": "谢谢，是n的权限问题，用root权限后ok"
+        }
+    ]
+}

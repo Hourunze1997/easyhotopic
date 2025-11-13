@@ -1,0 +1,92 @@
+{
+    "topic_id": 1486,
+    "question": "storage 1.70.35 组件有大量 接口调用超时日志，导致raid 数据更新失败问题 - content: 现象\n9560 -16i Raid 正常加载数据刷新后，OS 重启；Raid 卡信息长时间无法更新出数据\n截图_202506271511251211×538 148 KB\n初步分析\n调用接口超时\n截图_202506271511461224×580 168 KB\n诉求\n1、请问这种情况，应该通过何种手段继续分析？\n2、这种情况可能原因？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/cb931122fa1eb7656b3e5381a659c743eaa2b97f.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/3/3349fe81c7446e593f7ceffcd907b7c49fffb06c.jpeg",
+    "topic_user_name": "Yctco Huaconghui",
+    "best_answer_url": "/t/topic/1486/9",
+    "reply_posts": [
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1486/2",
+            "text": "可以把对应的版本给一下吗？\n这个问题后续版本已经有进行优化了"
+        },
+        {
+            "user_name": "Yctco Huaconghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1486/3",
+            "text": "组件版本就是标题的 1.70.35"
+        },
+        {
+            "user_name": "Yctco Huaconghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1486/4",
+            "text": "优化的pr 叫啥 我去 参考一下\n这个是只改了  storage 组件吗？"
+        },
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1486/5",
+            "text": "还有涉及一些闭源的修改，单独改storage仓的可能还不行，马上应该会发布，能否等发布完了之后看一下。目前看到硬盘日志收集（function c_drive:dump_drive_log()）是比较耗时的，你这个环境硬盘又比较多，大概率是这一部分阻塞住了。\n建议：后面提问可以把：storage, libprotocol仓的版本号都提供一下"
+        },
+        {
+            "user_name": "Yctco Huaconghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1486/6",
+            "text": "这版本是基于社区330版本开发\nstorage 1.70.35\nlibprotocol 1.70.27"
+        },
+        {
+            "user_name": "Yctco Huaconghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1486/7",
+            "text": "那我们下面这样是否可行\n因为项目节点紧急，我们打算先基于330版本，同步 630 版本 storage  修改点\n其中 storage  630 conan 依赖点 只有 lib protocol 组件\nlib protocol 依赖 我们就不清楚了"
+        },
+        {
+            "user_name": "Yctco Huaconghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1486/8",
+            "text": "你好，这里描述的修改点是 storage 哪个修改点，PR已经合入了吗？我们准备同步一下"
+        },
+        {
+            "user_name": "Yelmh Kno07",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1486/9",
+            "text": "content: 你们是有自己的分支吗，storage合入了这个PR lib protocol的修改 6.30开出去的应该带上了\n修改双Raid卡升级riser时间超出基线问题-storage-GitCode\nlinks: https://gitcode.com/openUBMC/storage/pull/74/diffs"
+        },
+        {
+            "user_name": "Yctco Huaconghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1486/10",
+            "text": "确定是这个方法解决的 debus 超时吗？\n我们同步这个修改点后 仍有很多超时日志\n动作如下\n我们基于330版本 专门同步了 [修改双Raid卡升级riser时间超出基线问题] 这个问题 的\nstorage、lib_protocol （PAE 处理）、storelib（PAE 处理） 三个组件"
+        },
+        {
+            "user_name": "Yelmh Kno07",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1486/11",
+            "text": "content: 看下这个文件这里 优先级的改动 你们带上了吗\nimage1235×667 32.8 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/577a8e97cdc613af1049ae156d40280b74745e08.png"
+        },
+        {
+            "user_name": "Yctco Huaconghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1486/12",
+            "text": "content: 你截图红框的修改点是 UBMC 330基线版本就有的，\n支持动态获取硬盘smart信息 这个PR 我们没有同步，这个PR里面没有你截图的红框\n截图_20250717092447990×634 34.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/385533ef8dca0070a489ff5e3f7944f8315253ae.png"
+        },
+        {
+            "user_name": "Yelmh Kno07",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1486/13",
+            "text": "目前的解决办法有\n1.storage使用使用带优先级的接口\n2.storelib库 sleep时间错误整改，重试次数调整\n3.丢弃已经超时的读请求\n4.os下电时，停止注册RAID卡\n如果这些修改都带上了修改，需要打开storelib的日志继续定位了"
+        }
+    ]
+}

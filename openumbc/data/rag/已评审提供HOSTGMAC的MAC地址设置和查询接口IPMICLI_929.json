@@ -1,0 +1,36 @@
+{
+    "topic_id": 929,
+    "question": "【已评审】提供HOST.GMAC的MAC地址设置和查询接口（IPMI/CLI） - content: 【背景说明】:\n\n某机型HOST芯片没有集成GE控制器，在BMC芯片里集成了2个GE控制器，HOST芯片通过PCIe连接BMC芯片，由BMC芯片给HOST芯片出GE口；BMC芯片GE控制器的MAC地址通过环境变量控制；\n\n 【使用场景】:\n\n生产装备加工环节或者研发阶段，需要通过IPMI接口或者CLI命令配置HOST.GMAC的MAC地址\n\n评审点一，新增设置/查询HOST.GMAC的IPMI命令：\n方案一（推荐）：\n设置HOST配置的IPMI命令： Set Host Info\n权限：BasicSetting\n\n字节顺序\n域内容\n\nNetFn\n30h\n\nCMD\n90h\n\n1\nSub command，子命令= 0x78\n\n2\nParameter Selector\n\n3:N\nConfiguration parameter data 请参见表Host Info Parameters Table\n\n表Host Info Parameters Table\n\nParameter\n#\nParameter Data\n\nSet Host Gmac  (Write Only)\n01h\ndata3：HostGmacIndex; data[4-9]：MacAddr\n\n查询HOST配置的IPMI命令：Get Host Info\n权限：BasicSetting\n\n字节顺序\n域内容\n\nNetFn\n30h\n\nCMD\n90h\n\n1\nSub command，子命令= 0x79\n\n2\nParameter Selector\n\n3:9\nConfiguration parameter data 请参见表Host Info Parameters Table\n\n表Host Info Parameters Table\n\nParameter\n#\nParameter Data\n\nGet Host Gmac  (Read Only)\n01h\ndata3：HostGmacIndex; data[4-9]：MacAddr\n\n优点：扩展性更好，后续如果有HOST侧相关配置，需要BMC在装备阶段写入的，可以复用本接口\n方案二：\n设置HOST.GMAC的IPMI命令：\n\n字节顺序\n域内容\n\nNetFn\n30h\n\nCMD\n90h\n\n1\nSub command，子命令= 0x78\n\n2\nHost Gmac Index\n\n3:9\nMacAddr\n\n查询HOST.GMAC的IPMI命令：\n\n字节顺序\n域内容\n\nNetFn\n30h\n\nCMD\n90h\n\n1\nSub command，子命令= 0x79\n\n2\nHost Gmac Index\n\n3:9\nMacAddr\n\n评审点二，新增设置HOST.GMAC的CLI命令：\n方案一（推荐）：\n查询/设置HOST配置的CLI命令：\nipmcget -t hostconfig -d dataitem -v <gmacindex>\n    -d <dataitem>\n       hostgmac                      Get host mgmt gmac mac address\n\n// 回显：\n20:22:01:88:AB:48\n\nipmcset -t hostconfig -d dataitem -v <gmacindex> <macaddr>\n    -d <dataitem>\n       hostgmac                      Set host mgmt gmac mac address\n\n// 回显：\nSet host mgmt gmac mac address successfully.\n\n// 参考：\n~ ~ $ ipmcset -t config\nUsage: ipmcset [-t target] -d dataitem [-v value]\n    -d <dataitem>\n       import                        import configuration\n\n优点：扩展性更好，后续如果有HOST侧相关配置，需要BMC在装备阶段写入的，可以复用本接口\n方案二：\n查询/设置HOST.GMAC的CLI命令：\nipmcset -d hostgmac -v <gmacindex> <macaddr>\nipmcget -d hostgmac -v <gmacindex>\n\n评审结论\n不通过，不同意新增上述IPMI命令和CLI接口。\n\n需要确认BMC对于Host侧的配置是否可以使用标准的 Set System Info Command 进行处理；当前BMC已经有的OEM命令为什么不能使用？\n需要确认BMC对于Host侧新增部分的配置是否完整，是否还有其他的选项\nlinks: #p-1901-hostgmacipmi-1, #p-1901-font-colorredfont-2, #p-1901-hostipmi-set-host-info-3, #p-1901-basicsetting-4, #p-1901-host-info-parameters-table-5, #p-1901-hostipmiget-host-info-6, #p-1901-basicsetting-7, #p-1901-host-info-parameters-table-8, #p-1901-font-colorredfont-9, #p-1901-hostgmacipmi-10, #p-1901-hostgmacipmi-11, #p-1901-hostgmaccli-12, #p-1901-font-colorredfont-13, #p-1901-hostcli-14, #p-1901-font-colorredfont-15, #p-1901-hostgmaccli-16, #p-1901-h-17",
+    "topic_user_name": "lixiaoning",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/929/2",
+            "text": "L_Ling:\n\n设置HOST配置的IPMI命令\n\nIPMI命令的Title 中英文要明确出来\nIPMI命令的执行权限要明确出来"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/929/3",
+            "text": "L_Ling:\n\n优点：扩展性更好，后续如果有HOST侧相关配置，需要BMC在装备阶段写入的，可以复用本接口\n\n装备阶段很少使用CLI接口，当前接口要确认是所有都支持还是有支持的条件？"
+        },
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/929/4",
+            "text": "已与SE对齐，装备阶段是要使用CLI接口，IPMI与CLI均要支持"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/929/5",
+            "text": ""
+        }
+    ]
+}

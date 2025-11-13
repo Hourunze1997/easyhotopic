@@ -1,0 +1,50 @@
+{
+    "topic_id": 468,
+    "question": "PcieAddrInfo这个对象的Bus属性能否固定写死呢？ - 现在有个场景是需要把PcieAddrInfo的Bus属性写成BIOS分配的bdf的值，是否能直接写死呢？",
+    "topic_user_name": "yctco_zhanglei",
+    "best_answer_url": "/t/topic/468/3",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/468/2",
+            "text": "可以的，比如FlexIO的PCIEAddrInfo，BUS号是固定的，就直接配在CSR中了"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/468/3",
+            "text": "如果高速线缆插法是固定的就可以写死的，但如果同一个槽位要支持多种高速线缆插法，那就要动态计算来做了。"
+        },
+        {
+            "user_name": "yctco_zhanglei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/468/4",
+            "text": "那如果我PcieAddrInfo这个对象里面Bus ,Device,Function都写死的话，在这个对象里面是否还需要设置某个属性来标记我是静态配置的而不需要动态计算？\n另外,这个属性里面的PortID的值是否与Device的值是一样的呢？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/468/5",
+            "text": "动态计算的输入是UnitConfiguration、BusinessConnector，单PcieAddrInfo是不会触发的，详情可以参考pcie_device的源代码\n作为网卡、raid、pcie卡管理来说，不感知具体计算，只要有值即可使用"
+        },
+        {
+            "user_name": "yctco_zhanglei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/468/6",
+            "text": "作为网卡、raid、pcie卡管理来说，不感知具体计算，只要有值即可使用\n-----那针对PcieAddrInfo这个对象里面Bus ,Device,Function都写死的话，PortID属性这个值随便填一个就行了么而不是需要与Device属性的值保持一致？"
+        },
+        {
+            "user_name": "yctco_zhanglei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/468/7",
+            "text": "如果PcieAddrInfo的Bus/Device/Function都写死了的话，还需要配置BusinessConnector这个对象吗？"
+        }
+    ]
+}

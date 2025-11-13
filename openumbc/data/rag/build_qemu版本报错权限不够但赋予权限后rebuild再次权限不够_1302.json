@@ -1,0 +1,36 @@
+{
+    "topic_id": 1302,
+    "question": "build qemu版本报错：权限不够，但赋予权限后rebuild再次权限不够 - content: image1582×436 73.8 KB\n如图，该文件夹权限不足，于是sudo chmod 777 该文件夹，ls 可以看到文件夹内容，但是再次运行bingo build -sc qemu ，会出现相同的报错，该文件夹又变成权限不足了。\n在WSL2 UBUNTU24.04 和VMWARE UBUNTU24.04 上都build 普通固件成功，但都卡在编译qemu这一步。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/29f250aadb9634907d562579ccdbb11b5a8174f7.png",
+    "topic_user_name": "Leon.Li",
+    "best_answer_url": "/t/topic/1302/4",
+    "reply_posts": [
+        {
+            "user_name": "qin-xiupup",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1302/2",
+            "text": "我之前在普通用户下，一直都这样，但是换为root就好了"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1302/3",
+            "text": "能否提供具体的manifest/temp/log/task.log文件以供问题分析"
+        },
+        {
+            "user_name": "discobot",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1302/4",
+            "text": "content: 你好！这个连接的信息可能对你解决本问题有所帮助，请参考，谢谢！\nlinks: https://discuss.openubmc.cn//t/topic/1064/1"
+        },
+        {
+            "user_name": "discobot",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1302/5",
+            "text": "content: 你好！这个连接的信息可能对你解决本问题有所帮助，请参考，谢谢！\nlinks: https://discuss.openubmc.cn//t/topic/1064/1"
+        }
+    ]
+}

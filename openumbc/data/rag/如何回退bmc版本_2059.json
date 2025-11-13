@@ -1,0 +1,120 @@
+{
+    "topic_id": 2059,
+    "question": "如何回退bmc版本？ - 更新了bmc之后网页功能不好使了，想回退到上一次更新的版本请问有什么方法？bmc有多个分区保存镜像的话，有没有切换到别的镜像的方法？\nPS：目前版本的bmc无法通过ssh和网页更新新的hpm包",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/2059/8",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/2",
+            "text": "串口有吗，登录后ipmcset -d rollback"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/3",
+            "text": "会报错"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/4",
+            "text": "你这个是串口登录的？用的是管理员权限？"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/5",
+            "text": "是串口，用Administrator这个账户"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/6",
+            "text": "请问更新的BMC版本是自己改过什么吗？"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/7",
+            "text": "是的，account组件改了些东西，改了account里的mds/ipmi.json文件，然后自动生成了一些代码。现在恢复不了了，web登录不上，hpm包无法更新"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2059/8",
+            "text": "AC服务器后串口能进uboot命令行吗，进uboot可以倒换。"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/9",
+            "text": "我们用的不是服务器，是920的模块加上我们自己设计的底板，应该没有可以进uboot的后出串口"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/10",
+            "text": "content: L1下面可以切，社区上可能不允许放这几条命令，可能要走HW接口单独获取吧？\n或者带内通道？\n\n在另一个话题中\n\n带内升级BMC的常见做法是先安装veth驱动，使用veth的ipv6地址可以连接BMC，因此可以借助此通道传递固件和执行升级命令。\n\n海军哥之前说过这个，我没试过\nlinks: /t/945/2"
+        },
+        {
+            "user_name": "Zhaorui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/11",
+            "text": "带内把文件传到BMC升级？"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/12",
+            "text": "请问一下带内是怎么操作的？我能把hpm包通过scp传到bmc的目录下，但是无法用ipmcset进行更新"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/13",
+            "text": "请问veth驱动是怎么安装的？"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/14",
+            "text": "如果你能传进去，那可能跟我说的没啥关联了。我之前遇到分区全损毁，scp，和web都用不了。"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/15",
+            "text": "我现在串口和ssh能登录，web不行，可能由于修改了account组件的东西导致权限变了"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/16",
+            "text": "您好，我这边能进uboot了，请问倒换bmc的命令具体是什么呢"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2059/17",
+            "text": "问题已解决"
+        }
+    ]
+}

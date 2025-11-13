@@ -1,0 +1,57 @@
+{
+    "topic_id": 1328,
+    "question": "bingo build过程中Ctrl+C后，再次执行bingo build问题 - content: image1372×503 46.4 KB\n版本构建过程中终止，再次构建时提示错误（如上图）。\n需要wsl --shutdown/wsl后再构建才可以正常。是否可以提供bingo命令比如，bingo clean清除中间文件解决这个问题。多谢\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/99defcc9e735426ef45063d6826434c2b4582627.png",
+    "topic_user_name": "Niegsh",
+    "best_answer_url": "/t/topic/1328/8",
+    "reply_posts": [
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1328/2",
+            "text": "请问是在哪个步骤进行 ctrl + c 中断的？还有现场的 log 吗？"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1328/3",
+            "text": "建议执行时候:export LOG=debug;\n从而能够打印详细日志.\n查看temp/task.log查看详细报错;\n图上的报错,已经告诉你删除lock文件就好了,不用重启wsl"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1328/4",
+            "text": "content: image1469×959 109 KB\n是执行conan remove --locks么？执行了还是一样的。上面是打开日志的界面。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/d9791c1f83ec1ecb6a69d51d4c8c7630a883cd52.png"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1328/5",
+            "text": "content: image1146×381 37 KB\n日志目录下没有生成task.log\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e8315ade3c0f21e4ddac11c8ee3947f48d70e779.png"
+        },
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1328/6",
+            "text": "好的，我稍后复现一下看看"
+        },
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1328/7",
+            "text": "请看红色字休文字提醒。有残留进程占用了一个进程间通信的tcp端口，请使用killall python或killall python3终止python或python3进程。或者使用ps查询当前有哪个未退出的bingo程序，终止即可。"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1328/8",
+            "text": "存在多个未关闭的bingo进程，kill后可以继续编译。\nroot@DESKTOP-7EA9N91:/home/root/workspace/manifest1# bingo build\ncli.main()\nsettings_yml=/root/.conan/settings.yml\nnnggss: command=build\nnnggss: valid_command=build, method=<bound method Command.build of <bmcgo.cli.cli.Command object at 0x73e09dedade0>>\nnnggss: is_integrated=1\nnnggss: frame_build work_dir=/home/root/workspace/manifest1, bconfig=<bmcgo.bmcgo_config.BmcgoConfig object at 0x73e0a0abcfe0>\nnnggss: Frame.parse()\nnnggss: targets={'publish.yml': '/usr/local/lib/python3.12/dist-packages/bmcgo/publish.yml', 'app.yml': '/usr/local/lib/python3.12/dist-packages/bmcgo/app.yml', 'install_sdk.yml': '/usr/local/lib/python3.12/dist-packages/bmcgo/install_sdk.yml', 'personal.yml': '/usr/local/lib/python3.12/dist-packages/bmcgo/personal.yml'}\n已知参数: []\n调试框架: None, 构建参数: Namespace(board_name='openUBMC', build_type='debug', from_source=False, stage='dev', verbose=False, update_conan_cache=False, remote='openubmc_dev', zip_code=None, supporte_code='default', enable_qemu=False, qemu_in=False, coverage=False, asan=False, profile='', enable_luajit=True, debug_frame=None, debug_task=None, version='', target='personal', deploy=False)\n单板源配置路径: /home/root/workspace/manifest1/build/product/BMC/openUBMC\n复制单板的 manifest 目录从 /home/root/workspace/manifest1/build/product/BMC/openUBMC 到 /home/root/workspace/manifest1/temp/board_openUBMC\n>> rm -rf /home/root/workspace/manifest1/temp/board_openUBMC\n>> cp -rf /home/root/workspace/manifest1/build/product/BMC/openUBMC /home/root/workspace/manifest1/temp/board_openUBMC\n不能从 yaml 文件中获取到键值 platform, 没有相关配置\n不能从 yaml 文件中获取到键值 base/show_version, 没有相关配置\n不能从 yaml 文件中获取到键值 tosupporte/default/show_version, 没有相关配置\n不能从 yaml 文件中获取到键值 archive, 没有相关配置\n不能从 yaml 文件中获取到键值 archive, 没有相关配置\n不能从 yaml 文件中获取到键值 archive, 没有相关配置\n不能从 yaml 文件中获取到键值 base/profile, 没有相关配置\nnnggss: Frame.parse() end\n测试sudo是否正常执行\n>> ls .\nsudo命令正常执行\n>> conan remove --locks\nERROR: 任务状态错误: [Errno 98] Address already in use\nERROR: 请手动运行此命令(killall 未安装请执行 apt install psmisc): killall python\nERROR: 请查看日志信息\nerror=-1\nroot@DESKTOP-7EA9N91:/home/root/workspace/manifest1# ps\n    PID TTY          TIME CMD\n    844 pts/2    00:00:00 bash\n 100915 pts/2    00:00:00 bingo\n 100919 pts/2    00:00:00 bingo\n 102119 pts/2    00:00:00 ps\nroot@DESKTOP-7EA9N91:/home/root/workspace/manifest1# kill -9 100915\nroot@DESKTOP-7EA9N91:/home/root/workspace/manifest1# kill -9 100919\nroot@DESKTOP-7EA9N91:/home/root/workspace/manifest1#\nroot@DESKTOP-7EA9N91:/home/root/workspace/manifest1# bingo build"
+        }
+    ]
+}

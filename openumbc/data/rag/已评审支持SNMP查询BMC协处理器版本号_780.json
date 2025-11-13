@@ -1,0 +1,15 @@
+{
+    "topic_id": 780,
+    "question": "【已评审】支持SNMP查询BMC协处理器版本号 - content: 关联issue\nrackmount/issues/57（支持SNMP查询BMC协处理器版本号）\n评审背景\n新代次管理芯片增加BMC的协处理器，需要在SNMP接口中支持协处理器固件版本查询。当前SNMP接口 firmwareProperty 中节点 firmwareType 的固件类型列表如下：\nimage1618×686 17.3 KB\n评审点\nSNMP接口 firmwareProperty 中节点 firmwareType 增加固件类型 coprocessorFirmware(22)，表征当前BMC管理芯片的协处理器的固件类型。\n评审结论\n评审通过，同意SNMP接口 firmwareProperty 中节点 firmwareType 增加固件类型 coprocessorFirmware(22)。\nlinks: #p-1619-issue-1, https://gitcode.com/openUBMC/rackmount/issues/57, #p-1619-h-2, https://discuss.openubmc.cn/uploads/default/original/1X/d9d9a7d7351786f67d5e9e729dcc9c9384215266.png, #p-1619-h-3, #p-1619-h-4",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/780/2",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 1940,
+    "question": "【已评审】支持双网口场景资源协作接口评审 - content: 背景介绍：\nBMC多外出网口场景，支持NCSI口和专用口有独立IP。该场景要求NCSI口和专用口分别作为一个IPMI的LAN通道，且板载网卡的NCSI口需要支持CSR配置以及定制会对应LAN通道的channel nunmber。目前新增网口对象通过EthGroup对象管理，有以下两个信息需要在资源协作接口承载：\n\n网口类型为NCSI口还是专用口；\n网口channel number号支持定制，需要通过资源协作接口承载各自的channel number号；\n网口支持独立设置IP版本，需要承载IP协议的版本；\n\n基于以上背景，需要新增资源协作接口：\n评审点：新增资源协作接口用于承载网口的端口类型和channel number\n资源path：/bmc/kepler/Managers/${ManagerId}/EthernetInterfaces/EthGroup/${Id}\n资源interface：bmc.kepler.Managers.EthernetInterfaces.EthGroup\n变化类型：新增资源协作接口属性\n应用场景：\n\n业务处理标识当前网口连接的网卡类型，当前网口对应lan通道的channel number，当前网口IP版本\n\n详细描述：\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nAssociatedPortType\n新增属性\ny\n读：ReadOnly写：不支持\n不持久化\nfalse\nPSR\n网口组关联的网口类型\n取值：1：NCSI port2：DEDICATED port\n\nChannel\n新增属性\ny\n读：ReadOnly写：BasicSetting\n掉电\nfalse\nPSR\n网口对应lan通道的channel number\n取值范围 [1, 11]\n\nIpVersion\n新增属性\ns\n读：ReadOnly写：BasicSetting\n掉电\nfalse\n默认值\nIP版本，默认为IPv4AndIPv6\n取值范围 IPv4,IPv6,IPv4AndIPv6\n\n评审结论\n通过，同意资源协作接口 bmc.kepler.Managers.EthernetInterfaces.EthGroup 下新增属性 AssociatedPortType,Channel,IpVersion。属性具体信息如下：\n\nAssociatedPortType，签名为 y，只读属性，读权限为 ReadOnly，不需要持久化，不发送变更通知事件，表示网口组关联的网口类型，取值有1：NCSI port；2：DEDICATED port\nChannel，签名为  y，读写属性，读权限为 ReadOnly，写权限为 BasicSetting，需要掉电持久化，不发送变更通知事件，表示当前网口对应LAN通道的通道编号, 取值范围限定为 [1, 11]\nIpVersion，签名为 s，读写属性，读权限为 ReadOnly，写权限为 BasicSetting，需要掉电持久化，不发送变更通知事件，表示当前网口对应的IP版本号，默认值为 IPv4AndIPv6，有效取值范围为 [IPv4,IPv6,IPv4AndIPv6]\nlinks: #p-4773-channel-number-1, #p-4773-pathbmckeplermanagersmanageridethernetinterfacesethgroupid-2, #p-4773-interfacebmckeplermanagersethernetinterfacesethgroup-3, #p-4773-h-4, #p-4773-h-5, #p-4773-h-6, #p-4773-h-7",
+    "topic_user_name": "lixiaoning",
+    "best_answer_url": "/t/topic/1940/2",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1940/2",
+            "text": "【预审意见】\n\n背景介绍中“BMC双网口场景…”，这里没有限定说双网口场景，以及对应的ethX口是限定的；BMC在这个场景下是 多外出网口\n对于BMC来说，一个服务器既可以支持单网口模式，也可以支持多网口模式，当前 EthGroup 类的配置是如何处理差异化内容的\nChannel 是私有属性的原因是啥，迁移资源协作接口是什么意思？对于当前的 EthGroup 来说是不是就是新增属性（如果是的话就是新增属性）？"
+        },
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1940/3",
+            "text": "已修改背景介绍；\n多网口场景会配置多个EthGroup对象，如果切换为单网口模式，会设置EthGroup的Status属性为false，表征当前网口不启用；\nChannel是历史已有属性，之前是私有属性，现在需要又ipmi_core组件来设置channel number，所以需要上到资源协作接口；"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1940/4",
+            "text": ""
+        }
+    ]
+}

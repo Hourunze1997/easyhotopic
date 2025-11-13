@@ -1,0 +1,7 @@
+{
+    "topic_id": 1905,
+    "question": "【iTestSmart】Redfish接口检查网卡信息：无Mctp Support。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 22.03\n二、问题描述\nOpenUBMC->多样化硬件->Redfish接口NetworkAdapters资源检查网卡信息，测试结果Fail。\n报错信息：“KeyError: Mctp Support”。\nMctp_Support1920×766 180 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/312d6f3b7bce0573933cda21cd433b918d88f33b.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": []
+}

@@ -1,0 +1,57 @@
+{
+    "topic_id": 1859,
+    "question": "bmcsdk下载的链接页面空了，无法下载 - content: image1152×522 19.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/15f880c9e3ca739522ffd02c80937ddef246f5ec.png",
+    "topic_user_name": "Suguirong",
+    "best_answer_url": "/t/topic/1859/4",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1859/2",
+            "text": "我这边测试是可以的呢，再试一下看看。"
+        },
+        {
+            "user_name": "Suguirong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1859/3",
+            "text": "content: https://www.openubmc.cn/marketplace/bmcsdk\n点进去还是一样是空白的\nlinks: https://www.openubmc.cn/marketplace/bmcsdk"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1859/4",
+            "text": "content: 你好，请问链接是你收藏的吗？\n现在工具的链接url已经携带了版本后缀，比如：https://www.openubmc.cn/marketplace/bmcsdk/25.06\nlinks: https://www.openubmc.cn/marketplace/bmcsdk/25.06"
+        },
+        {
+            "user_name": "Suguirong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1859/5",
+            "text": "caiyesheng_b48v3:\n\n现在工具的链接url已经携带了版本后缀，比如\n\n我的连接是从开发文档指南跳转过来的"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1859/6",
+            "text": "content: 目前应用市场中，开发工具无bmcsdk选项，而BMC Studio安装指南 | openUBMC 安装指南中跳转的下载链接应该是以前的，从而导致显示为空\nimage1754×488 47.6 KB\nlinks: https://www.openubmc.cn/docs/zh/development/quick_start/prepare_environment/bmc_studio_installation.html, https://discuss.openubmc.cn/uploads/default/original/2X/9/97cb0d628cea561acac88e32df73c982dde0db99.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1859/7",
+            "text": "归属类别在: 社区组件"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1859/8",
+            "text": "content: repo.openubmc.cn\n\nIndex of /\n\n可以直接用这个社区的软件仓，这个方便linux直接wget下载\nlinks: https://repo.openubmc.cn/, https://repo.openubmc.cn/"
+        }
+    ]
+}

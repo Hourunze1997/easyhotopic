@@ -1,0 +1,15 @@
+{
+    "topic_id": 348,
+    "question": "即将发布的1.0.31版本iTestSmart是否支持openUBMC的测试，或有部分基线用例支持 - 当前1.0.30版本的iTestSmart，测试openUBMC的环境时，不管是否勾选去定制化，都会报环境检查失败。想确认下此工具后续是否会支持openUBMC。",
+    "topic_user_name": "Yctco Caosong",
+    "best_answer_url": "/t/topic/348/2",
+    "reply_posts": [
+        {
+            "user_name": "Openubmc Liuyujie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/348/2",
+            "text": "当前只是部分用例依赖debug包，所以会报环境检查失败。\n解决措施：\n1、出debug包，进行环境升级后使用；\niTestSmart预计在4月20日后的版本中，会支持release包和debug包环境相同的检查功能。"
+        }
+    ]
+}

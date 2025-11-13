@@ -1,0 +1,22 @@
+{
+    "topic_id": 594,
+    "question": "组件内执行bingo test显示测试失败 - 使用镜像：manifest下的dockerfile制作的镜像\nbingo版本：0.5.230\n代码版本：25.03\n执行指令：LOG=info bingo test -openubmc_dev -it -ut\n报错结果：在bios、vpd等组件中显示错误：\nconanfile.py (vpd-deploy/0.0.1@openUBMC.dev/dev): Generator txt created conanbuildinfo.txt\nconanfile.py (vpd-deploy/0.0.1@openUBMC.dev/dev): WARN:\n     ************************************************\n     The 'cmake' generator is deprecated.\n     Please update your code and remove it.\n     *************************************************\n\nconanfile.py (vpd-deploy/0.0.1@openUBMC.dev/dev): Generator cmake created conanbuildinfo.cmake\nconanfile.py (vpd-deploy/0.0.1@openUBMC.dev/dev): WARN:\n     ************************************************\n     The 'deploy' generator is deprecated.\n     Please update your code and remove it.\n     *************************************************\n\nconanfile.py (vpd-deploy/0.0.1@openUBMC.dev/dev): Generator deploy created deploy_manifest.txt\nconanfile.py (vpd-deploy/0.0.1@openUBMC.dev/dev): Aggregating env generators\nconanfile.py (vpd-deploy/0.0.1@openUBMC.dev/dev): Generated conaninfo.txt\nconanfile.py (vpd-deploy/0.0.1@openUBMC.dev/dev): Generated graphinfo\n[2025-04-22 09:00:49,418 INFO] deploy.py:99 复制所有依赖到目录 /home/workspace/vpd/temp\n[2025-04-22 09:00:49,418 INFO] helper.py:74 开始运行命令:  /usr/bin/cp -arf /home/workspace/vpd/temp/.deploy/.install/vpd/opt /home/workspace/vpd/temp\n[2025-04-22 09:00:49,422 INFO] helper.py:74 开始运行命令:  /usr/bin/cp -arf /home/workspace/vpd/temp/.deploy/.install/vpd/permissions.ini /home/workspace/vpd/temp\n[2025-04-22 09:00:49,423 INFO] helper.py:74 开始运行命令:  /usr/bin/cp -arf /home/workspace/vpd/temp/.deploy/.install/vpd/include /home/workspace/vpd/temp\n[2025-04-22 09:00:49,441 INFO] helper.py:74 开始运行命令:  /usr/bin/cp -arf /home/workspace/vpd/temp/.deploy/.install/vpd/etc /home/workspace/vpd/temp\n[2025-04-22 09:00:49,443 INFO] helper.py:74 开始运行命令:  /usr/bin/cp -arf /home/workspace/vpd/temp/.deploy/.install/luaunit/opt /home/workspace/vpd/temp\n[2025-04-22 09:00:49,450 INFO] test.py:566 保存包信息到 /home/workspace/vpd/temp/package_info\n[2025-04-22 09:00:49,451 INFO] test.py:734 ================ 开发者测试开始 ================\n[2025-04-22 09:00:49,451 INFO] test.py:627 ================ 测试 vpd 开始 ================\n[2025-04-22 09:00:49,452 WARNING] test.py:815 ===>>>> exception: cannot access local variable 'process' where it is not associated with a value\n[2025-04-22 09:00:49,453 WARNING] test.py:820 ===>>>> 测试: vpd/1.70.84@openUBMC.dev/dev 失败\n\n在thermal_mgmt组件中执行命令后显示\n保存包信息到 /home/workspace/thermal_mgmt/temp/package_info\n================ 开发者测试开始 ================\n================ 测试 thermal_mgmt 开始 ================\nWARN: ===>>>> exception: Command '['/home/workspace/thermal_mgmt/temp/opt/bmc/skynet/lua', '/home/workspace/thermal_mgmt/test/unit/test.lua', '-v', '-o', 'TAP', '-p', '.']' returned non-zero exit status 28.\nWARN: ===>>>> 测试: thermal_mgmt/1.70.28@openUBMC.dev/dev 失败\n\n求助：这种情况只有警告没有报错但是整个测试停止了，是工具问题还是镜像的配置问题，应该怎么尝试解决，目前暂未定位到问题点",
+    "topic_user_name": "百信-张滨",
+    "best_answer_url": "/t/topic/594/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/594/2",
+            "text": "content: 部分组件（如vpd, webui）没有测试用例， 不支持bingo test\ngitcode已有PR。\n临时解决方案：执行以下命令：\n\napt-get install -y  ipmitool dbus-x11 libdbus-1-dev dbus\nlinks: https://gitcode.com/openUBMC/manifest/pull/15"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/594/3",
+            "text": "执行临时解决方案后可解决，谢谢李老师"
+        }
+    ]
+}

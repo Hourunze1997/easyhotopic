@@ -1,0 +1,22 @@
+{
+    "topic_id": 1688,
+    "question": "【iTestSmart OpenUBMC问题反馈】redfish查看内存信息测试，测试结果Fail。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\niTestSmart Version: 1.0.34\n二、问题描述\nOpenUBMC->多样化硬件->redfish查看内存信息测试，测试结果Fail。\n三、错误原因\nssh登录BMC后，无maint_debug_cli命令。此被测openUBMC已无此命令，请确认是否应修改测试步骤。\nmem_0031920×695 116 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/760fe03d3d33e8d493af6da26b6a23ca4a97234b.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/1688/2",
+    "reply_posts": [
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1688/2",
+            "text": "content: openUBMC 不在支持maint_debug_cli, 命令改为 mdbctl\nimage639×525 7.05 KB\n需要修改测试用例\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/f430c895489c3e9392dd40ca79cacd337035f416.png"
+        },
+        {
+            "user_name": "Hdq",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1688/3",
+            "text": "下一个版本整改未适配用例，预计8月初发布"
+        }
+    ]
+}

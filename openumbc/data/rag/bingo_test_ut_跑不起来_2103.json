@@ -1,0 +1,29 @@
+{
+    "topic_id": 2103,
+    "question": "bingo test -ut 跑不起来 - content: image1552×920 84.1 KB\n当前安装了bingo main分支的最新版本, 使用如图的脚本验证bingo test -ut\n默认指定分支是 openubmc_dev, 但是编译不过, 提示\nERROR: Version range '>=1.80.30 <1.81.0, include_prerelease=True' from requirement 'libsoc_adapter/[>=1.80.30 <1.81.0, include_prerelease=True]@hw.ibmc.release/rc' required by 'libmc4lua/1.80.73@openUBMC.release/rc' could not be resolved in remote 'openUBMC'\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/802a4f136c597480615736e8e6cb408082c14513.png",
+    "topic_user_name": "河南昆仑-郑豪伟",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2103/2",
+            "text": "可以先确定一下bingo是不是最新版本，使用pip3 list | grep bingo看一下，如果有老版本的bingo存在，卸载一下"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2103/3",
+            "text": "安装了bingo main分支的最新版本\n\n之前确认过这个问题,  不管是重装社区sdk还是重装社区bingo都一样"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2103/4",
+            "text": "包来源不一致，导致依赖错误。\nlibsoc_adapter 的user/channel为 hw.ibmc.release/rc\nlibmc4lua 的 user/channel为  openUBMC.release/rc\n检查conan包的来源，是否正确。"
+        }
+    ]
+}

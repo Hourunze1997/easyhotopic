@@ -1,0 +1,22 @@
+{
+    "topic_id": 1565,
+    "question": "SSH最大会话数限制 - 请问，openUBMC是否支持修改SSH最大会话数限制？例如修改为5， 当前默认是10。",
+    "topic_user_name": "Kun Lun Lizhuang",
+    "best_answer_url": "/t/topic/1565/3",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1565/2",
+            "text": "收到问题，正在确认中。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1565/3",
+            "text": "当前在openssh开源软件里编译限制，社区暂不支持修改。"
+        }
+    ]
+}

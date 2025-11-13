@@ -1,0 +1,15 @@
+{
+    "topic_id": 504,
+    "question": "【已评审】并行升级web展示样式评审 - content: 评审背景\n为提升多固件升级效率，要支持不同固件并行升级的特性；要提供web人机接口触发并行升级，web界面需要提供人机交互界面；\n当前样式\n\n当前固件升级的页面展示情况如下：\nimage1665×455 23.8 KB\n\n评审点\n评审点1: 新增“固件并行更新”页签\na. 删除“带外通道”标识；\nb. “固件更新”命名修改为“固件串行更新”；\nc. 新增页签“固件并行更新”，与“固件串行更新同级”；\n\nimage1673×434 22.4 KB\n评审点2：“固件并行更新”页面展示效果：\na. “点击添加文件”和开始升级按钮不变，文件传输完成后创建任务成功提示“后台升级中”，否则提示升级错误信息，比如：文件名称错误、升级包与设备不匹配等；\nb. 固件并行更新页面没有“是否保留配置项”的选项；\nc. 增加并行升级的固件列表：\n\nimage2532×1118 96.4 KB\nd. webrest添加查询升级状态接口：\n接口名称：UI/Rest/BMCSettings/UpdateService/ParallelUpdateStatus\n请求消息体：{}\n请求方式：Get\n响应消息体：\n    [         {             \"ComponentID\": number, // 组件类型（或者改成组件id）             \"ComponentIDEx\": number, // 组件类型（或者改成组件id）             \"SystemId\": 1,             \"FirmwareName\": string  // 固件名称：BMC/CPLD/VRD等             \"TaskId\": number, // 升级任务id             \"UpdateState\": string // 固件升级状态，取值：wait_for_upgrade/upgrading/wait_for_active         }     ]    \n约束规则：ComponentID/ComponentIDEx/SystemId共同确定唯一一个升级任务\n评审结论\n评审不通过，原因如下：\n\n要保持升级页面的一致性，不允许出现 串行升级 等信息\n带外通道 标签不能去掉，保持后续的可扩展性\nlinks: #p-959-h-1, #p-959-h-2, https://forum.openubmc.cn/uploads/default/original/1X/045ab3ad5c02e5722c4663fa575da6dc75352e23.png, #p-959-h-3, #p-959-h-1-4, https://forum.openubmc.cn/uploads/default/original/1X/682eddede64fe0fe3f62d6b226c88afb23567a1f.png, #p-959-h-2-5, https://forum.openubmc.cn/uploads/default/original/1X/dbe8c2902c3394c4dfe6c7c991c17581ac7d19ab.png, #p-959-h-6",
+    "topic_user_name": "lixiaoning",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/504/2",
+            "text": ""
+        }
+    ]
+}

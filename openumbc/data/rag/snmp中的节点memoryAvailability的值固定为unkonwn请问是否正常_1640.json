@@ -1,0 +1,22 @@
+{
+    "topic_id": 1640,
+    "question": "snmp中的节点memoryAvailability的值固定为unkonwn请问是否正常？ - content: 通过代码，看到rackmount/interface_config/snmp/mapping_config/memoryProperty.json中的memoryAvailability的值固定为1，请问这是否是问题？同样的还有memoryRemainingSericeLife/memoryVolatileCapacityMB等\n10.snmp获取内存信息1920×764 235 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/6df7f9f6986246efe13b52c2994007b530362f3e.jpeg",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "/t/topic/1640/2",
+    "reply_posts": [
+        {
+            "user_name": "nathanael yu",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1640/2",
+            "text": "1、参照mib文件，默认值是1，即初始状态；\n2、该属性属于AEP内存属性，当前内存是DDR，所以该信息默认填写1"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1640/3",
+            "text": "收到，感谢回复"
+        }
+    ]
+}

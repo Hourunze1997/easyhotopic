@@ -1,0 +1,29 @@
+{
+    "topic_id": 463,
+    "question": "【已评审】新增存储bdf信息的RPC方法 - content: ISSUE链接：\n背景（必填，文字描述议题背景，如需求来源、问题场景）:\nBIOS上报PCIe设备的空间资源信息，通过新增rpc方法存储到本地数据库\n决策点（必填，一句话描述待决策点）：\n在bmc.kepler.Systems.PCIeDevices下新增方法，SetPhysicalSlotNumberInfo\n详细描述（必填，描述待评审接口的详细内容）：\n资源path：/bmc/kepler/Systems/1/PCIeDevices\n资源interface：bmc.kepler.Systems.PCIeDevices\n变化类型：新增方法 SetPhysicalSlotNumberInfo\n应用场景： 用于存储BIOS发到BMC的Physical Slot Number信息，存储位置为pcie_device本地数据库\n持久化类型：不涉及\n操作权限： ConfigureSelf\nimage1807×357 28 KB\nimage1055×261 60.4 KB\n解析规则：BIOS发到BMC的数据字段：\n丝印X和丝印Y存储在slot字段，BOX ID和Switch ID存储在resv1字段\nimage1819×733 78.9 KB\n数据库定义：存储位置为/usr/sbin/sqlite3 /opt/bmc/pram/persistence.local/pcie_device.db\nimage1867×573 26.2 KB\n结论\n不同意在bmc.kepler.Systems.PCIeDevices下新增方法SetPhysicalSlotNumberInfo\nlinks: #p-864-issue-1, #p-864-h-2, #p-864-h-3, #p-864-h-4, https://discuss.openubmc.cn/uploads/default/original/1X/112bfed754adec44a4de44c434260688cfeafd29.png, https://discuss.openubmc.cn/uploads/default/original/1X/de03de9d8ad8d7e6e892c98bda68fdd7b1816992.png, https://discuss.openubmc.cn/uploads/default/original/1X/8a67b5f766f1825c3972e0bb2ab7573b3766b189.png, https://discuss.openubmc.cn/uploads/default/original/1X/b1aac280603f6ed71c9d7abc7520ecea0f87ab07.png, #p-864-h-5",
+    "topic_user_name": "Liuwenbing",
+    "best_answer_url": "/t/topic/463/2",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/463/2",
+            "text": "BOX是一种特殊的硬件形态/架构，而bmc.kepler.Systems.PCIeDevices接口是对PCIe设备的抽象定义，不应该在这个接口下面承载特殊形态/架构的内容，请再联系hardware SIG组maintainer交流下，审视其合理性。"
+        },
+        {
+            "user_name": "Liuwenbing",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/463/3",
+            "text": "评审不通过"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/463/4",
+            "text": ""
+        }
+    ]
+}

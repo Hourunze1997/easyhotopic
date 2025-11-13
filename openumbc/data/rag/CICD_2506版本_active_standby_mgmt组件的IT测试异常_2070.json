@@ -1,0 +1,22 @@
+{
+    "topic_id": 2070,
+    "question": "CICD 2506版本 active_standby_mgmt组件的IT测试异常 - content: 问题现象\n在active_standby_mgmt组件下执行IT测试时，出现异常打印：\n1、疑似kill命令没正常执行\nimage1214×394 206 KB\n2、有日志文件打开错误打印 open failed\nimage1419×572 214 KB\n3、执行完成后，没有看到IT测试项的打印\nbingo版本：\n\n诉求\n1、 上述现象是否正常？\n2、 如何判定 it 测试是否成功？（bingo test -it 的 exit=0 则判定为成功？）\nlinks: #p-5137-h-1, https://discuss.openubmc.cn/uploads/default/original/2X/d/d4745660b4f1fb5790edb177f1d73ffacc115810.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/9f4cafc503f2b6786e9854dd256013b150446598.png, #p-5137-h-2",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/2070/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2070/2",
+            "text": "content: IT测试判断规则可以参考代码仓门禁的实现：\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\nlinks: https://gitcode.com/openUBMC/openubmc-ci/blob/main/ci-repos/.common_scripts/it.sh, https://gitcode.com/openUBMC/openubmc-ci/blob/main/ci-repos/.common_scripts/it.sh"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2070/3",
+            "text": "content: 通过条件总结​\nIT 用例需同时满足：\n\nbingo test -it 命令成功退出​（退出码 0）。\n日志中无​ (=== test failed === 或 lua call [.*] error 错误。\n日志中无​ FAIL:  标记的 C 语言测试失败项。\nlinks: #p-5184-h-1"
+        }
+    ]
+}

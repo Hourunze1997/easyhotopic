@@ -1,0 +1,15 @@
+{
+    "topic_id": 1054,
+    "question": "【已评审】 新增设置RTC时间资源协作接口和CLI接口 - content: ISSUE链接（必填，此议题关联的issue）：\n【需求】支持RTC实时时钟设置和查询\n背景（必填，文字描述议题背景，如需求来源、问题场景）:\n机柜管理板板载RTC芯片时间支持设置，需要提供cli接口设置RTC芯片时间\n评审点\n一、资源协作接口新增设置RTC时间的接口\n方案1：接口bmc.kepler.Managers.Time新增方法SetRtcTime\npath：/bmc/kepler/Managers/:Id\ninterface：bmc.kepler.Managers.Time\n变化类型：新增方法\n方法名称：SetRtcTime\n\n项\n取值以及说明\n\n方法名称\nSetRtcTime\n\n方法描述\n设置RTC时间，当前只支持CLI命令\n\n方法权限\nBasicSetting\n\n请求签名\nss\n\n请求参数\nDate：设置的目标日期 例\"1900-01-01\"Time：设置的目标时间 例\"12:00:01\"\n\n响应签名\n无\n\n响应参数\n无，设置成功之后不会返回任何数据，设置失败之后会返回error引擎\n\n方案2：接口bmc.kepler.Managers.Time的SetDateTime方法新增参数\npath：/bmc/kepler/Managers/:Id\ninterface：bmc.kepler.Managers.Time\n变化类型：方法参数变更\n方法名称：SetDateTime\n\n项\n取值以及说明\n\n方法名称\nSetDateTime\n\n方法描述\n设置BMC时间相关的属性说明：1、BMC管理的有些机型的时间只能从外部来（比如A+X），因此需要此接口进行设置时间2、此接口设置的时间复位持久化，因此需要调用者进行周期性同步3、如果被手动设置过的时间，则RTC时间不再同步；如果NTP同时开启，则NTP可以同步覆盖4、新增设置RTC时间功能\n\n方法权限\nBasicSetting\n\n请求签名\na{ss}\n\n请求参数\n设置BMC时间相关的一个或者多个属性：TimeZone：设置的时区，同时修改Offset和NameTimestamp：当前时间的时间戳DSTEnable：是否是夏令时RTCTime: 用于RTC芯片时间修改\n\n响应签名\n无\n\n响应参数\n无，设置成功之后不会返回任何数据，设置失败之后会返回error引擎\n\n二、新增设置RTC时间的CLI接口\nCLI命令：ipmcset -d time -v 1970-01-01 00:00:01\n变化类型：新增命令字\n操作类型：SET\n操作权限：BasicSetting\n命令描述：设置RTC时间命令\n\n参数名称\n取值类型\n取值格式\n是否可选\n\nDate\nstring\nyyyy-mm-dd\n否\n\nTime\nstring\nhh:mm:ss\n否\n\n评审结论\n评审点1：同意在bmc.kepler.Managers.Time接口新增方法SetRtcTime，具体如下：\n\n项\n取值以及说明\n\n方法名称\nSetRtcTime\n\n方法描述\n设置RTC时间，当前只支持CLI命令\n\n方法权限\nBasicSetting\n\n请求签名\nt\n\n请求参数\nTimeStamp:时间戳(U64)\n\n响应签名\n无\n\n响应参数\n无，设置成功之后不会返回任何数据，设置失败之后会返回错误消息\n\n评审点2：同意新增命令行接口设置RTC时间，具体如下：\nCLI命令：ipmcset -d time -v 1970-01-01 00:00:01\n变化类型：新增命令字\n操作类型：SET\n操作权限：BasicSetting\n命令描述：设置RTC时间命令\n\n参数名称\n取值类型\n取值格式\n是否可选\n\nDate\nstring\nyyyy-mm-dd\n否\n\nTime\nstring\nhh:mm:ss\n否\n\n## 回显格式\nUsage: ipmcset -d time -v <date> <time>\n\tdate:date in yyyy-mm-dd format, e.g. 1970-01-01\n\ttime:time in hh:mm:ss format,   e.g. 00:00:01\nExample:\n    ipmcset -d time -v 1970-01-01 00:00:01\n    ipmcset -d time -v 2025-05-08 23:59:59\nlinks: #p-2227-issueissue-1, https://gitcode.com/openUBMC/mdb_interface/issues/80, #p-2227-h-2, #p-2227-h-3, #p-2227-rtc-4, #p-2227-rtccli-5, #p-2227-h-6",
+    "topic_user_name": "Zhenglingjie",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1054/2",
+            "text": ""
+        }
+    ]
+}

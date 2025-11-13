@@ -1,0 +1,29 @@
+{
+    "topic_id": 266,
+    "question": "咨询下持久化数据以及数据库表操作相关问题 - content: image771×768 49.9 KB\n如上图所示，我在我自己的组件的model.json中定义了一个类不需要挂在到bus上。\n使用bmcgo gen后生成如下：\nimage368×348 12.5 KB\n然后在组件的业务代码中做了如下操作：\nimage768×357 31.9 KB\nimage1041×341 43.6 KB\n这边没有数据库对象 日志直接报错误出来了\n这一块在社区文档的持久化章节也没具体的描述 怎么用的\n能帮忙看下吗？\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/52929f5ed392d4a5b1bcc062a70d5c1991c4d0d2.png, https://forum.openubmc.cn/uploads/default/original/1X/72f62604a0570ac93249e554f53e4ac4decd39d4.png, https://forum.openubmc.cn/uploads/default/original/1X/fc6abdda832a7630d7466bec887c3babb56e49f2.png, https://forum.openubmc.cn/uploads/default/original/1X/24674dce239abc29ee45c556ec3b488017bfde2c.png",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/266/4",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/266/2",
+            "text": "1、把byo_general_app.lua 32行去掉\n2、self.db是在自动生成代码里面就创建了，不用自己写"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/266/3",
+            "text": "感谢回复\n现在按照回复已经去掉了32行\nself.db不为空了，但是 self.db.HistoryData好像为空呢"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/266/4",
+            "text": "本地持久化应该是self.local_db\nself.db.HistoryData改成self.local_db.HistoryData再试试"
+        }
+    ]
+}

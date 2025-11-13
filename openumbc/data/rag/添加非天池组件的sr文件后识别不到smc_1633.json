@@ -1,0 +1,64 @@
+{
+    "topic_id": 1633,
+    "question": "添加非天池组件的sr文件后识别不到smc - content: 自己写了一个14100513_EXU_01.sr，从资源树能看到connector但是看不到smc\n企业微信截图_17520261367180437×347 3.49 KB\n\n企业微信截图_175202606111551716×800 18.3 KB\nsr文件是照着标准sr文件改的\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/7e8c34169784f7d80228ebec049b06e81ff02ae3.png, https://discuss.openubmc.cn/uploads/default/original/2X/5/535b1cc983f3fcd5d41f9634d2e3f631e3ad54cb.png",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/1633/8",
+    "reply_posts": [
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1633/2",
+            "text": "这个是framework.log的内容"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1633/3",
+            "text": "定位信息太少，请提供你的SR配置文件和完整日志，发送到chenghaoyang3@h-partners.com"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1633/4",
+            "text": "content: 14100513_EXU_01.txt (98.6 KB)\nframework.txt (773.9 KB)\n这些是完整的sr文件和log，我改了一下文件格式\nlinks: /uploads/short-url/8SlVoJHCgodidh1sCqLqlPyqoUN.txt, /uploads/short-url/yISlAuGhuOrNZbfDCaMWbttijzH.txt"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1633/5",
+            "text": "没有一键收集的完整日志压缩包吗"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1633/6",
+            "text": "收集不上来，一收集网络连接就会断开"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1633/7",
+            "text": "我们的板子是用的bmc模块，除了920模组之外所有东西都在一块板上，这个时候生成的sr文件应该放在哪里？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1633/8",
+            "text": "非天池组件可以将CSR内置在BMC内，不使用天池加载。\n因为是内置的，所以CSR没有大小限制，整个拓扑都可以在一个CSR内描述\nCSR还是最好跟着FRU来定义，一个CSR描述一个硬件独立可插拔资源"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1633/9",
+            "text": "用内置sr文件可以识别到smc了"
+        }
+    ]
+}

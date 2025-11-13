@@ -1,0 +1,15 @@
+{
+    "topic_id": 1430,
+    "question": "伙伴在场外如何分析解决corddump问题 - content: 问题\n一键日志中会发现core文件\n初步分析\ncoredump 分析依赖\n1、GDB 工具，伙伴可解决\n2、代码，涉及较多非开源代码\n述求\n可否分享华为不同类型core（开源，非开源）分析思路及案例文章\n截图_20250620104839785×361 20.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/cb4692616aa9ea98a172d2ae70f8c3ead1537131.png",
+    "topic_user_name": "Yctco Huaconghui",
+    "best_answer_url": "/t/topic/1430/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1430/2",
+            "text": "开源代码可以用GDB配合addr2line解出具体函数，非开源代码建议还是找pae联系内部定位\n根据GDB的解出的栈地址A在map中找到对应的库，库的地址为B ~ C，再通过addr2line计算A-B的相对地址解出core的具体函数，工具和命令也可以找pae获取"
+        }
+    ]
+}

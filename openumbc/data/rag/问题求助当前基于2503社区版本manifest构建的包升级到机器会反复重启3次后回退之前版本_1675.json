@@ -1,0 +1,36 @@
+{
+    "topic_id": 1675,
+    "question": "【问题求助】当前基于2503社区版本manifest构建的包升级到机器会反复重启3次后回退之前版本 - content: 1、问题现象\n同样的manifest，当前构建的基于2503开发的版本升级后会反复重启3次后回退，上周构建过的存档版本无问题\n2、初步定位\n查看串口，发现ssdp服务反复启动失败，触发BMC重启\n3、对比验证\nmanifest里注释掉ssdp组件，出包升级后无重启现象，查看远端conan仓更新记录，发现ssdp/1.70.5@openUBMC.release/rc本周有更新记录\n4、继续定位\n使用busybox调试版本尝试打印ssdp错误消息，发现ssdp运行时用到了未定义符号，如下图\n520352fcfe7adb1b6d9599a86498ed61710×640 189 KB\n5、诉求\n希望社区赶紧修复下此问题，同时对历史conan组件尽量不要产生变动\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/ea2c668f3b581e42ec21713a0ace2093bd440e6c.jpeg",
+    "topic_user_name": "百信-李肖航",
+    "best_answer_url": "/t/topic/1675/4",
+    "reply_posts": [
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1675/2",
+            "text": "content: 组件清单如下: image595×983 19.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/1602905abf32bbde8c50abebcfb5dbd9d65ec37c.png"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1675/3",
+            "text": "正在分析此问题"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1675/4",
+            "text": "当前可修改版本带revision，修改subsys文件夹下yml文件版本，以rc版本为例，stable同理：\n修改为libmdbc/1.70.0@openUBMC.release/rc#a1fd5f1c9ab99bd503f09c4e4d7b9ce5"
+        },
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1675/5",
+            "text": "经验证，重新出包后，SSDP正常启动， 问题现象消失"
+        }
+    ]
+}

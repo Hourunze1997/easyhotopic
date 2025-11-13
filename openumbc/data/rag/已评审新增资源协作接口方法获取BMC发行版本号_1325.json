@@ -1,0 +1,22 @@
+{
+    "topic_id": 1325,
+    "question": "【已评审】新增资源协作接口方法获取BMC发行版本号 - content: 评审背景\n问题：\n定制化BMC的版本号之后，在生产加工场景下校验BMC的Available分区版本号失败\n原因：\n\n生产场景下使用 IPMI 命令 Read Version Data（ NetFn=30h，CMD=90h，Sub command=08h）获取BMC的版本号，目前支持获取三个分区（Active/Backup/Available）的BMC的release版本号\nIPMI 命令 Read Version Data 命令实现是从 BMC 的记录版本号的文件中直接获取，由于 Available 分区的 release 版本号无法直接获取，因此获取到的是该分区的定制化之后的版本号\n\n当前BMC支持的版本号说明\n\nBMC SDK 版本号：该版本号用于展示当前BMC使用的SDK版本号，版本号采用固定的四段式版本号格式，如：5.10.0.0\nBMC release版本号：该版本号用于展示当前release的BMC版本号，对于社区 openUBMC 来说就是固定的 openUBMC release 的版本号，如：25.06\nBMC 最终版本号：该版本号是BMC产品化之后对外查询的版本号，支持社区根据对应的商业策略以及客户诉求进行编排或者定制（如果没有任何编排和定制则同对应的 BMC release 版本号）。如：1.0.6\n\n对于上述问题，总共有以下三种方案：\n方案一\n\n方案描述： 将 IPMI 命令 Read Version Data 查询 BMC 固件release版本号的部分，由 BMC 版本管理组件进行实现，实现方式是采用同样的 IPMI 命令注册并且提升优先级\n方案优点：不需要新增资源协作接口，直接通过IPMI命令的实现迁移进行处理，影响范围小\n方案缺点：IPMI命令查询参数有需要查询所有的版本号情况（请求参数 version_type 为 0xFF），对于该方案无法实现\n是否推荐： 不推荐\n\n方案二\n\n方案描述： 新增 FirmwareInvectory 资源协作接口路径，用于承载 BMC 固件三个分区的 release 版本号\n方案优点：不需要新增资源协作接口，仅增加 FirmwareInventory 对象即可；下游使用可以直接根据 FirmwareInventory 资源协作接口进行获取和匹配\n方案缺点：北向接口 Redfish 的  FirmwareInventory  资源中会自动暴露，对于北向接口有影响\n是否推荐： 次级推荐\n\n方案三\n\n方案描述： BMC 版本管理资源协作接口下新增方法，用于提供三个分区 release 版本号\n\n方案优点：（1）提供给下游对应的 BMC 的 release 版本号查询路径；（2）北向接口中没有自动暴露，对于北向接口无影响\n\n方案缺点： 需要新增资源协作接口，在 mdb_interface 以及社区上需要说明\n\n是否推荐： 主要推荐\n\n新增资源协作接口信息如下：\n\n项\n方法\n备注说明\n\n资源path\n/bmc/kepler/UpdateService/ManagerVersion\n已有path\n\n资源interface\nbmc.kepler.UpdateService.ManagerVersion\n已有interface\n\n方法名称\nGetReleaseVersion\n新增\n\n方法权限\nReadOnly\n新增\n\n说明\n获取BMC固件的release版本号\n\n请求签名\n无\n\n请求参数\n无\n\n响应签名\nsss\n\n响应参数\nActiveVersion：string类型，Active分区的BMC release版本BackupVersion：string类型，Backup分区的BMC release版本AvailableVersion：string类型，Available分区的BMC release版本\n\n评审点\n根据上述方案陈述，决策采用方案\n评审结论\n同意在资源协作接口 bmc.kepler.UpdateService.ManagerVersion 下新增方法 GetReleaseVersion，权限为 ReadOnly，请求签名：无，响应签名：sss，响应参数表示BMC的3个分区（返回结果依次为： Active分区， Backup分区， Available分区）的 release 版本\nlinks: #p-3008-h-1, #p-3008-h-2, #p-3008-h-3, #p-3008-bmc-4, #p-3008-h-5, #p-3008-h-6, #p-3008-h-7, #p-3008-h-8, #p-3008-h-9",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "/t/topic/1325/2",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1325/2",
+            "text": "评审遗留问题：\n\n评审背景中需要明确当前BMC的几种版本号，以及说明每种版本号的使用场景\n接口的权限修改为 ReadOnly"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1325/3",
+            "text": ""
+        }
+    ]
+}

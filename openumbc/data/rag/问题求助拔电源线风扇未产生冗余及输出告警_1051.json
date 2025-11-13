@@ -1,0 +1,50 @@
+{
+    "topic_id": 1051,
+    "question": "【问题求助】拔电源线/风扇未产生冗余及输出告警 - content: 问题背景：\n1、服务器两电源均正常工作，拔掉其中一个电源的电源线后，在web界面未产生任何电源相关告警。\n2、服务器风扇工作正常，拔掉其中一个风扇，在web界面未产生任何风扇相关告警。\n3、通过cli命令对电源模拟注入故障，电源状态传感器检测失败，但未产生任何电源相关告警。\nimage897×764 128 KB\n\nimage1452×164 29.2 KB\n4、收集日志查看已拔电源线的信息，在位，输入输出电压均为0。\n\n求助点：\n咨询PAE，拔电源线或风扇正常情况下应产生冗余告警和输出告警，但操作后未产生任何告警。暂不了解openUBMC上电源及风扇告警的触发机制，无法从代码层面了解未上报告警的原因，希望论坛伙伴或华为工程师能帮忙定位下原因或提供下定位思路。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/10547cf16b9a4dfb43cd140920351a3ef65f65f0.jpeg, https://discuss.openubmc.cn/uploads/default/original/1X/802392d7f80b651d6b5b19732ec0a789f80e3126.png",
+    "topic_user_name": "baixin_ouyangyonggang",
+    "best_answer_url": "/t/topic/1051/5",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1051/2",
+            "text": "拔线后，查看资源树上的属性是否发生变化，如电源下的是OnePower.Status下，并且等待事件约1分钟后查看；\n风扇告警：仅转速偏差告警和不同风扇类型混插告警，若需不在位告警，需自行新增；\n同一，需等待1分钟；"
+        },
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1051/3",
+            "text": "content: 初步分析思路：\n1、查看编译临时目录，在event_def.json和ibmcevents.json都存在且有风扇移除事件的定义\nimage1332×578 38.9 KB\nimage1061×403 26.3 KB\n2、查看一键日志alarm.log，发现所有事件对象注册时都未定义\nimage1121×458 12.2 KB\n3、目前表现出的现象不只是拔电源及风扇未触发告警，所有的系统事件都不会触发\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/cd59b87b6450ec74b97eef3afaf2a95eecac37a7.png, https://discuss.openubmc.cn/uploads/default/original/1X/4baf0d3dccafaf624485005abeedc7bf4a2b3373.png, https://discuss.openubmc.cn/uploads/default/original/1X/c4b5917bd884f3b491ba77c30ee52d889d6e35fa.png"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1051/4",
+            "text": "风扇告警：仅转速偏差告警和不同风扇类型混插告警，若需不在位告警，需自行新增；\n请先确认是否有自行新增告警。"
+        },
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1051/5",
+            "text": "可查看/data/opt/bmc/conf/event_def.json和/opt/bmc/conf/event_def.json文件中事件定义内容是否为空\n如果是这种就是有问题\n\n在vpd打包时将event_def.json中版本号改大"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1051/6",
+            "text": "content: 看你的alarm.log，好像所有事件都没有定义，应该是事件都没有添加进来，参考社区的文档事件定制 | openUBMC\nimage764×129 4.5 KB\n确认一下你的项目路径下有没有 /event/eventDefList.txt，没有的话copy过来。这个文件中的事件就是你期望启用的，组件到时候会根据这个文件中的事件从基础的event_def.json中筛选出来，生成需要的event_def.json。\n之前我试过只留两个事件，最后/opt/bmc/conf/event_def.json里就只剩对应的这两个。\nimage557×254 8.62 KB\nlinks: https://www.openubmc.cn/docs/zh/development/develop_guide/feature_development/event.html, https://discuss.openubmc.cn/uploads/default/original/1X/b8ef3749d7a6ec57e02afdbd54daab56c65a2e1d.png, https://discuss.openubmc.cn/uploads/default/original/1X/b31dd97677e6951e8ad1a1244d3d25ac7a0d5a4f.png"
+        },
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1051/7",
+            "text": "查看环境，/opt/bmc/conf/event_def.json有完整的告警内容，/data/opt/bmc/conf/event_def.json中为空，已将event_def.json版本号从1.0.0改为1.0.1\n,\n将/opt/bmc/conf/event_def.json拷贝到/data/opt/bmc/conf/下，重启BMC有系统事件生成，mock模拟告警事件可以正常产生。尝试将编译临时目录中生成的event_def.json放到/build/product/BMC/openUBMC/rootfs/data/opt/bmc/conf重新出包可临时解决该问题。\n目前不太明白的是为什么/opt/bmc/conf/event_def.json有内容而/data/opt/bmc/conf/event_def.json事件定义为空？"
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "topic_id": 928,
+    "question": "pcie switch对象缺失 - 背景：ubc/ubcdd经过PEX89104（PCIE switch）转为了5路pcie，在openubmc中的vpd组件没有定义pcieswitch对象。\n目标：ubc/ubcdd下行后可以通过pcie switch关联更多的pcie对象。\n说明：PCIeSwitch是一个交换板，有五个pcie switch芯片。诉求是在BusinessConnector对象下关联新的PCIeSwitch对象用于pcie建链，最终目标是识别pcie switch芯片下的pcie卡。\n疑惑：PCIeswitch类如何开发？因为目前的建立链路需要pcie switch类的支持，所以在配置BusinessConnector无法设置下行对象，这会导致什么异常？",
+    "topic_user_name": "wuzhou-xiaokaili",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Yelvsub",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/928/2",
+            "text": "能否提供一些pcie switch芯片的详细资料？目前来看gap就在这点，由于我们掌握的信息不够，无法对pcie switch芯片建模"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/928/4",
+            "text": "因为v2是实现过pcie switch的，参考v2的实现pcie switch芯片的建模可以吗？芯片的型号是：PEX89104"
+        },
+        {
+            "user_name": "Yelvsub",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/928/5",
+            "text": "据了解，V2是跟BIOS约定好整机配置上报的，并不是动态建链"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/928/6",
+            "text": "目前我们的bios是天池默认做法。还有pcie switch芯片建模需要掌握的信息可以给我一个列表，我们统一整理答复给您。"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/928/7",
+            "text": "在有switch的情况下，Connector_PCIE_1对象和PcieAddrInfo_1对象如何关联起来？"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/928/8",
+            "text": "content: 我们最近也碰到了pcie switch芯片适配需求\n客户用的pcie switch芯片型号是PLX8749，扩展出来接 昇腾卡300V， 300V PRO 视频解析卡\n\nbroadcom.com\n\nPEX 8749\nThe ExpressLane  PEX 8749 is a 48-lane, 18-port, PCIe Gen 3 switch device developed on 40nm technology. PEX 8749 offers Multi-Host PCI Express switching capability that enables users to connect multiple hosts to their respective endpoints via...\n\n这块有点陌生，应该和IEU Riser卡不是一回事吧，如何着手开展这类适配开发工作，麻烦给点思路呀\nlinks: https://www.broadcom.com/products/pcie-switches-retimers/pcie-switches/pex8749, https://www.broadcom.com/products/pcie-switches-retimers/pcie-switches/pex8749"
+        },
+        {
+            "user_name": "王祝炜",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/928/9",
+            "text": "目前没有适配过pcie switch，可以先申报hardware sig议题，在sig例会上和专家一起讨论"
+        }
+    ]
+}

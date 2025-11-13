@@ -1,0 +1,22 @@
+{
+    "topic_id": 1583,
+    "question": "通过ssh无法查看framework的log - 显示权限不够",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/1583/3",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1583/2",
+            "text": "ssh不支持查看该文件。"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1583/3",
+            "text": "用busybox工具可以看"
+        }
+    ]
+}

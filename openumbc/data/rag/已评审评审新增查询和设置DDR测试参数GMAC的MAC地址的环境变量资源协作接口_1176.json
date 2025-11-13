@@ -1,0 +1,15 @@
+{
+    "topic_id": 1176,
+    "question": "【已评审】评审新增查询和设置DDR测试参数、GMAC的MAC地址的环境变量资源协作接口 - content: 关联issue\n(GitCode - 全球开发者的开源社区,开源代码托管平台)\n评审背景\n框架提供环境变量设置和查询的接口给子系统，需要支持新增和更新环境变量\n触发原因：新的需求\n需求背景：环境变量设计将原来的环境变量从usr分区的存储方案进行优化，优化后在gpp分区中新增两个分区用于实现主备分区保存机制来保存环境变量，框架需要提供新存储方案下的环境变量新增、更新和查询的接口。新增以下2个查询和配置环境变量场景：\n1、装备DDR测试时通过配置环境变量来设置DDR测试算法\n2、装备HOST.GMAC通过设置环境变量来设置HOST.GMAC的MAC地址\n当前现状与差距：\n1、装备DDR测试\nbmc中DDR测试算法新增参数配置，需要通过环境变量传递算法参数，通过定义设置DDR测试参数方式实现环境变量配置，当前无对业务提供查询和设置接口；\n2、设置Host.GMAC值\n新需求需要支持生产装备加工环境通过IPMI或CLI接口来进行HOST.GMAC的MAC地址查询，当前MAC地址的环境变量无对业务提供的查询和设置接口。\n评审点\n在path: /bmc/kepler/Managers/:ManagerId/SOC/Env\n1）新增interface: bmc.kepler.Managers.SOC.DDR；在interface下新增方法SetTestParameters，GetTestParameters；\n2）新增interface: bmc.kepler.Managers.SOC.GMac；在interface下新增方法SetMacAddr，GetMacAddr\n详细描述\n资源path：/bmc/kepler/Managers/:ManagerId/SOC/Env\n资源interface：bmc.kepler.Managers.SOC.GMac\n变化类型：新增方法\n方法名称：SetMacAddr、GetMacAddr\n应用场景：装备HOST.GMAC通过设置环境变量来设置HOST.GMAC的MAC地址\n持久化类型：不涉及\n操作权限：BasicSetting/ReadOnly\nimage1848×616 23.2 KB\n资源path：/bmc/kepler/Managers/:ManagerId/SOC/Env\n资源interface：bmc.kepler.Managers.SOC.DDR\n变化类型：新增方法\n方法名称：SetTestParameters、GetTestParameters\n应用场景：装备DDR测试时通过配置环境变量来设置DDR测试算法\n持久化类型：不涉及\n操作权限：BasicSetting/ReadOnly\nimage1848×1431 64.2 KB\n评审结论：\n决策点1：DDR测试接口评审\n结论：同意在path: /bmc/kepler/Managers/:ManagerId/SOC/Env下新增如下接口和方法\n\ninterface: bmc.kepler.Managers.SOC.DDR\nmethod:\n\nSetTestParameters ： 用于设置DDR测试的环境变量配置参数，请求签名a{su}，响应签名无，BasicSetting权限\nGetTestParameters ：用于查询DDR测试的环境变量配置参数，请求签名无,响应签名a{su}，ReadOnly权限\n\n遗留问题及确认结论:\n1、确认一下DDR测试对正式包的影响，是否需要区分装备包和正式包\n结论：对外的ipmi接口会做装备包隔离\n决策点2：GMAC配置接口评审\n结论：同意在path:/bmc/kepler/Managers/:ManagerId/SOC/Env下新增如下接口和方法\n\ninterface: bmc.kepler.Managers.SOC.GMac\nmethod:\n\nSetMacAddr： 用于设置环境变量中GMAC的MAC地址，请求签名yay，响应签名无，BasicSetting权限\nGetMacAddr： 用于查询环境变量中GMAC的MAC地址，请求签名y，响应签名ay，ReadOnly权限\n\n遗留问题及确认结论:\n1、确认MAC地址现网使用场景\n结论：OS侧自带ethtool提供了修改永久MAC的命令，当前接口提供是为了保证HOST.GMAC模块不集成到CPU中后，有其他途径修改MAC地址\nlinks: #p-2546-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/73, #p-2546-h-2, #p-2546-h-3, #p-2546-h-4, https://discuss.openubmc.cn/uploads/default/original/2X/2/21ccc28c826eabee86b466eb9008c99b7b716b95.png, https://discuss.openubmc.cn/uploads/default/original/2X/5/59125246eb6bc89e16e19dd5e0cff69388799eff.png, #p-2546-h-5",
+    "topic_user_name": "Chenshengfan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1176/2",
+            "text": ""
+        }
+    ]
+}

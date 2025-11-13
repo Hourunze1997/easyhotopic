@@ -1,0 +1,2216 @@
+{
+    "0": {
+        "summary": "昇腾CANN开发者如何解决cmake无法启用WITH_CANN选项的编译问题",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 154,
+                    "title": "OpenCV编译 CANN没有打开",
+                    "url": "https://www.hiascend.com/forum/thread-0226184468452524060-1-1.html",
+                    "created_at": "2025-06-05T01:14:13+08:00",
+                    "topic_summary": "昇腾CANN开发者如何解决cmake无法启用WITH_CANN选项的编译问题",
+                    "source_type": "forum",
+                    "source_id": "0226184468452524060",
+                    "source_closed": false,
+                    "cosine": 0.735,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 142,
+                    "title": "编译安装基于CANN的opencv的cannops模块报错",
+                    "url": "https://www.hiascend.com/forum/thread-02113175593420797113-1-1.html",
+                    "created_at": "2025-02-22T07:57:01+08:00",
+                    "topic_summary": "昇腾CANN开发者如何解决cmake无法启用WITH_CANN选项的编译问题",
+                    "source_type": "forum",
+                    "source_id": "02113175593420797113",
+                    "source_closed": false,
+                    "cosine": 0.672,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "1": {
+        "summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+        "discussion_count": 12,
+        "discussion": [
+            [
+                {
+                    "id": 765,
+                    "title": "YOLOV5MultiInput里面使用的模型怎么才能通过yolov5训练得到",
+                    "url": "https://gitee.com/ascend/EdgeAndRobotics/issues/IC229I",
+                    "created_at": "2025-04-18T08:58:38+08:00",
+                    "topic_summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+                    "source_type": "issue",
+                    "source_id": "20251638",
+                    "source_closed": true,
+                    "cosine": 0.456,
+                    "closed_cosine": 0.0
+                }
+            ],
+            [
+                {
+                    "id": 179,
+                    "title": "add算子下载的过程中发现存在samples文件夹导致出错",
+                    "url": "https://www.hiascend.com/forum/thread-0236177061428378064-1-1.html",
+                    "created_at": "2025-03-11T07:43:48+08:00",
+                    "topic_summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+                    "source_type": "forum",
+                    "source_id": "0236177061428378064",
+                    "source_closed": false,
+                    "cosine": 0.533,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 871,
+                    "title": "使用atc工具生成离线模型，如果把原始的f32模型转换为int8，一定要用到aipp是吗？如果是的话，aipp_op那个insert_op.cfg文件怎么写?",
+                    "url": "https://www.hiascend.com/forum/thread-02108183259037650191-1-1.html",
+                    "created_at": "2025-05-22T01:17:18+08:00",
+                    "topic_summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+                    "source_type": "forum",
+                    "source_id": "02108183259037650191",
+                    "source_closed": false,
+                    "cosine": 0.512,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 894,
+                    "title": "msOpGen编写复杂算子原型定义文件",
+                    "url": "https://www.hiascend.com/forum/thread-02102181354769801037-1-1.html",
+                    "created_at": "2025-04-30T00:19:30+08:00",
+                    "topic_summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+                    "source_type": "forum",
+                    "source_id": "02102181354769801037",
+                    "source_closed": false,
+                    "cosine": 0.478,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 873,
+                    "title": "yolov7转换得到的om模型对高宽比大于1.5左右的图片识别结果错误",
+                    "url": "https://www.hiascend.com/forum/thread-0237183096692632168-1-1.html",
+                    "created_at": "2025-05-20T04:11:33+08:00",
+                    "topic_summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+                    "source_type": "forum",
+                    "source_id": "0237183096692632168",
+                    "source_closed": false,
+                    "cosine": 0.475,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 33,
+                    "title": "[Question|问题咨询]: 根目录下的cmakelists不是很懂怎么加-g，用msprof工具时无法显示源码，求助",
+                    "url": "https://gitee.com/ascend/cann-ops-adv/issues/IBWG1K",
+                    "created_at": "2025-03-26T15:08:28+08:00",
+                    "topic_summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+                    "source_type": "issue",
+                    "source_id": "19989560",
+                    "source_closed": false,
+                    "cosine": 0.473,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 883,
+                    "title": "基于昇腾CANN的机器狗基础知识 点击认证提示找不到页面",
+                    "url": "https://www.hiascend.com/forum/thread-02102182244292644079-1-1.html",
+                    "created_at": "2025-05-10T07:24:53+08:00",
+                    "topic_summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+                    "source_type": "forum",
+                    "source_id": "02102182244292644079",
+                    "source_closed": false,
+                    "cosine": 0.447,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 66,
+                    "title": "Clarify tensor variable names in MLA epilogue",
+                    "url": "https://gitee.com/ascend/catlass/issues/IC8DD4",
+                    "created_at": "2025-05-16T17:20:11+08:00",
+                    "topic_summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+                    "source_type": "issue",
+                    "source_id": "20545960",
+                    "source_closed": false,
+                    "cosine": 0.436,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 893,
+                    "title": "进行文档中的kernel直调算子工程实现，出现找不到头文件的问题",
+                    "url": "https://www.hiascend.com/forum/thread-0237182788764362141-1-1.html",
+                    "created_at": "2025-05-16T14:39:24+08:00",
+                    "topic_summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+                    "source_type": "forum",
+                    "source_id": "0237182788764362141",
+                    "source_closed": false,
+                    "cosine": 0.436,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 876,
+                    "title": "Ascend-cann-device-sdk_x.x.x_linux-aarch64.的作用",
+                    "url": "https://www.hiascend.com/forum/thread-0237182962578442157-1-1.html",
+                    "created_at": "2025-05-18T14:56:18+08:00",
+                    "topic_summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+                    "source_type": "forum",
+                    "source_id": "0237182962578442157",
+                    "source_closed": false,
+                    "cosine": 0.433,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 890,
+                    "title": "昇腾310B1 Matmul支持float类型矩阵运算吗",
+                    "url": "https://www.hiascend.com/forum/thread-0237183279958496198-1-1.html",
+                    "created_at": "2025-05-22T07:05:59+08:00",
+                    "topic_summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+                    "source_type": "forum",
+                    "source_id": "0237183279958496198",
+                    "source_closed": false,
+                    "cosine": 0.363,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 888,
+                    "title": "如何实现类似CUDA中atomicCAS和atomicAdd的原子操作？",
+                    "url": "https://www.hiascend.com/forum/thread-02108183627883965216-1-1.html",
+                    "created_at": "2025-05-26T07:44:44+08:00",
+                    "topic_summary": "开发者在开发中对API使用，数据类型支持，参数格式等方面要求以及复现样例时对样例的适用范围和环境要求不清晰",
+                    "source_type": "forum",
+                    "source_id": "02108183627883965216",
+                    "source_closed": false,
+                    "cosine": 0.347,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "2": {
+        "summary": "开发者在ATC工具转换warpPerspective算子时输入类型配置失败",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 863,
+                    "title": "利用atc进行单算子warpperspective转换失败",
+                    "url": "https://www.hiascend.com/forum/thread-0226184387156555053-1-1.html",
+                    "created_at": "2025-06-04T02:39:17+08:00",
+                    "topic_summary": "开发者在ATC工具转换warpPerspective算子时输入类型配置失败",
+                    "source_type": "forum",
+                    "source_id": "0226184387156555053",
+                    "source_closed": false,
+                    "cosine": 0.734,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 864,
+                    "title": "转换warpperspective算子失败",
+                    "url": "https://www.hiascend.com/forum/thread-02115183968056430027-1-1.html",
+                    "created_at": "2025-05-30T06:14:16+08:00",
+                    "topic_summary": "开发者在ATC工具转换warpPerspective算子时输入类型配置失败",
+                    "source_type": "forum",
+                    "source_id": "02115183968056430027",
+                    "source_closed": false,
+                    "cosine": 0.723,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 638,
+                    "title": "warpperspective功能问题",
+                    "url": "https://www.hiascend.com/forum/thread-0248184554080978079-1-1.html",
+                    "created_at": "2025-06-06T01:01:21+08:00",
+                    "topic_summary": "开发者在ATC工具转换warpPerspective算子时输入类型配置失败",
+                    "source_type": "forum",
+                    "source_id": "0248184554080978079",
+                    "source_closed": false,
+                    "cosine": 0.663,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "3": {
+        "summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+        "discussion_count": 52,
+        "discussion": [
+            [
+                {
+                    "id": 862,
+                    "title": "docs/quickstart.md文档报错",
+                    "url": "https://gitee.com/ascend/catlass/issues/ICAHGF",
+                    "created_at": "2025-05-26T11:52:01+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20644575",
+                    "source_closed": true,
+                    "cosine": 0.504,
+                    "closed_cosine": 0.0
+                }
+            ],
+            [
+                {
+                    "id": 53,
+                    "title": "AttributeError: 'LinearAllreduce' object has no attribute 'hcomm_info'",
+                    "url": "https://gitee.com/ascend/torchair/issues/IC56X2",
+                    "created_at": "2025-04-30T15:47:50+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20397638",
+                    "source_closed": false,
+                    "cosine": 0.516,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 19,
+                    "title": "运行上手代码时报错，显示undefined symbol",
+                    "url": "https://gitee.com/ascend/torchair/issues/IBH9F0",
+                    "created_at": "2025-01-12T18:31:07+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "19281132",
+                    "source_closed": false,
+                    "cosine": 0.463,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 40,
+                    "title": "使用Ais_bench推理多次报错[-1][ACL: general failure]",
+                    "url": "https://gitee.com/ascend/tools/issues/IC346C",
+                    "created_at": "2025-04-22T17:08:10+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20300772",
+                    "source_closed": false,
+                    "cosine": 0.457,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 141,
+                    "title": "求助！训练模型报错 RuntimeError: call aclnnForeachAddList failed, detail:EZ1001: Get path and read config failed.",
+                    "url": "https://www.hiascend.com/forum/thread-02112175913669687146-1-1.html",
+                    "created_at": "2025-02-26T00:54:30+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "02112175913669687146",
+                    "source_closed": false,
+                    "cosine": 0.457,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 72,
+                    "title": "[Bug-Report|缺陷反馈]: isamax算子在香橙派 Ascend310b 大部分样例结果错误 ",
+                    "url": "https://gitee.com/ascend/cann-ops/issues/IC8IUT",
+                    "created_at": "2025-05-17T18:54:29+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20553077",
+                    "source_closed": false,
+                    "cosine": 0.454,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 148,
+                    "title": "sensevoice推理报错，返回错误码500002",
+                    "url": "https://www.hiascend.com/forum/thread-02108173814998442274-1-1.html",
+                    "created_at": "2025-02-01T17:56:38+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "02108173814998442274",
+                    "source_closed": false,
+                    "cosine": 0.454,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 856,
+                    "title": "[Bug-Report|缺陷反馈]: ffn examples代码存在bug 导致输出y的shape错误",
+                    "url": "https://gitee.com/ascend/cann-ops-adv/issues/IBSZQR",
+                    "created_at": "2025-03-13T10:19:21+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "19828467",
+                    "source_closed": false,
+                    "cosine": 0.45,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 147,
+                    "title": "sensevoice推理报错",
+                    "url": "https://www.hiascend.com/forum/thread-02108173815438515275-1-1.html",
+                    "created_at": "2025-02-01T18:03:59+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "02108173815438515275",
+                    "source_closed": false,
+                    "cosine": 0.447,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 879,
+                    "title": "atb算子测试报错：[ERROR] TBE Subprocess[task_distribute] raise error[], main process disappeared!",
+                    "url": "https://www.hiascend.com/forum/thread-02102182483467735087-1-1.html",
+                    "created_at": "2025-05-13T01:51:08+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "02102182483467735087",
+                    "source_closed": false,
+                    "cosine": 0.446,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 71,
+                    "title": "[Bug-Report|缺陷反馈]: isamin 在Atlas 200I DK A2测试大部分均result error",
+                    "url": "https://gitee.com/ascend/cann-ops/issues/IC8ITQ",
+                    "created_at": "2025-05-17T18:40:43+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20553038",
+                    "source_closed": false,
+                    "cosine": 0.441,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 36,
+                    "title": "torchair入图进行训练时，expand扩维后模型出现精度问题， 推理时无精度问题",
+                    "url": "https://gitee.com/ascend/torchair/issues/IBZ59K",
+                    "created_at": "2025-04-07T18:07:21+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20115560",
+                    "source_closed": false,
+                    "cosine": 0.437,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 874,
+                    "title": "通过docker执行samples样例时失败",
+                    "url": "https://www.hiascend.com/forum/thread-0279183092874474014-1-1.html",
+                    "created_at": "2025-05-20T03:07:55+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0279183092874474014",
+                    "source_closed": false,
+                    "cosine": 0.435,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 32,
+                    "title": "[Bug-Report|缺陷反馈]: 调ffnV3得到的output会出现inf、-inf",
+                    "url": "https://gitee.com/ascend/cann-ops-adv/issues/IBVC86",
+                    "created_at": "2025-03-21T17:49:53+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "19937958",
+                    "source_closed": false,
+                    "cosine": 0.434,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 67,
+                    "title": "[Bug-Report|缺陷反馈]: scasum在Atlas 200I DK A2测试泛化性不足，部分shape运行结果精度异常",
+                    "url": "https://gitee.com/ascend/cann-ops/issues/IC8IJC",
+                    "created_at": "2025-05-17T17:41:20+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20552664",
+                    "source_closed": false,
+                    "cosine": 0.43,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 69,
+                    "title": "[Bug-Report|缺陷反馈]: sscal在Atlas 200I DK A2测试泛化性不足，部分shape运行结果精度异常",
+                    "url": "https://gitee.com/ascend/cann-ops/issues/IC8IQX",
+                    "created_at": "2025-05-17T18:19:36+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20552937",
+                    "source_closed": false,
+                    "cosine": 0.429,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 68,
+                    "title": "[Bug-Report|缺陷反馈]: sscal在Atlas 200I DK A2测试泛化性不足，部分shape运行结果精度异常",
+                    "url": "https://gitee.com/ascend/cann-ops/issues/IC8IQV",
+                    "created_at": "2025-05-17T18:19:34+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20552935",
+                    "source_closed": false,
+                    "cosine": 0.428,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 135,
+                    "title": "容器内安装torch_npu获取NPU资源不正确问题",
+                    "url": "https://www.hiascend.com/forum/thread-0201178956294531140-1-1.html",
+                    "created_at": "2025-04-02T06:04:55+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0201178956294531140",
+                    "source_closed": false,
+                    "cosine": 0.427,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 149,
+                    "title": "CANN8.0.RC1问题导致训练任务启动失败，错误码EI0009",
+                    "url": "https://www.hiascend.com/forum/thread-0246172984876137283-1-1.html",
+                    "created_at": "2025-01-23T03:21:16+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0246172984876137283",
+                    "source_closed": false,
+                    "cosine": 0.424,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 889,
+                    "title": "OM模型推理出错",
+                    "url": "https://www.hiascend.com/forum/thread-02108183286974580193-1-1.html",
+                    "created_at": "2025-05-22T09:02:55+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "02108183286974580193",
+                    "source_closed": false,
+                    "cosine": 0.419,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 41,
+                    "title": "check i:0 name:input in size:38400 needsize:102400 not match  ",
+                    "url": "https://gitee.com/ascend/tools/issues/IC3CNC",
+                    "created_at": "2025-04-23T15:00:24+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20311752",
+                    "source_closed": false,
+                    "cosine": 0.414,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 57,
+                    "title": "编译失败，有未开源代码仓：ascend-op-common-lib 和 secodefuzz",
+                    "url": "https://gitee.com/ascend/ascend-transformer-boost/issues/IC5XO8",
+                    "created_at": "2025-05-07T11:39:46+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20432312",
+                    "source_closed": false,
+                    "cosine": 0.413,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 878,
+                    "title": "在适配GroundingDINO模型时，安装mmcv==2.1.0出现问题，有大佬知道怎么解决吗？急急急！",
+                    "url": "https://www.hiascend.com/forum/thread-02102182490376750089-1-1.html",
+                    "created_at": "2025-05-13T03:46:17+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "02102182490376750089",
+                    "source_closed": false,
+                    "cosine": 0.411,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 865,
+                    "title": "使用多进程进行算法推理，同时硬件编码，无法使用硬件编码。",
+                    "url": "https://www.hiascend.com/forum/thread-0205183810029336013-1-1.html",
+                    "created_at": "2025-05-28T10:20:29+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0205183810029336013",
+                    "source_closed": false,
+                    "cosine": 0.408,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 131,
+                    "title": "Orange PiA I Pro烧录系统盘时可能遇到的问题",
+                    "url": "https://www.hiascend.com/forum/thread-0255181304377969037-1-1.html",
+                    "created_at": "2025-04-29T10:19:38+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0255181304377969037",
+                    "source_closed": false,
+                    "cosine": 0.403,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 61,
+                    "title": "模型推理中使用torch_atb linear报错",
+                    "url": "https://gitee.com/ascend/ascend-transformer-boost/issues/IC7C2N",
+                    "created_at": "2025-05-13T10:45:44+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20497631",
+                    "source_closed": false,
+                    "cosine": 0.402,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 140,
+                    "title": "Hisi3519使用 atc时会有mapper_error.log",
+                    "url": "https://www.hiascend.com/forum/thread-0292176091068234172-1-1.html",
+                    "created_at": "2025-02-28T02:11:08+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0292176091068234172",
+                    "source_closed": false,
+                    "cosine": 0.402,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 25,
+                    "title": "torch.compile还不支持torch.all_to_all算子以及torch.all_gather算子",
+                    "url": "https://gitee.com/ascend/torchair/issues/IBOB0Z",
+                    "created_at": "2025-02-24T10:30:27+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "19609811",
+                    "source_closed": false,
+                    "cosine": 0.401,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 857,
+                    "title": "acl lite-python是否支持动态batch推理，",
+                    "url": "https://gitee.com/ascend/ACLLite/issues/IBTR5X",
+                    "created_at": "2025-03-17T05:19:35+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "19864005",
+                    "source_closed": false,
+                    "cosine": 0.4,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 139,
+                    "title": "单线程多输入多输出 ，多stream串联模型报错",
+                    "url": "https://www.hiascend.com/forum/thread-0236176463454994013-1-1.html",
+                    "created_at": "2025-03-04T09:37:35+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0236176463454994013",
+                    "source_closed": false,
+                    "cosine": 0.393,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 136,
+                    "title": "ACL,pyACL推理结果后续数据处理",
+                    "url": "https://www.hiascend.com/forum/thread-02101178804967429131-1-1.html",
+                    "created_at": "2025-03-31T12:02:47+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "02101178804967429131",
+                    "source_closed": false,
+                    "cosine": 0.392,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 645,
+                    "title": "把onnx转换成om后，执行推理，图片分割结果不正确",
+                    "url": "https://www.hiascend.com/forum/thread-02108183690515604221-1-1.html",
+                    "created_at": "2025-05-27T01:08:36+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "02108183690515604221",
+                    "source_closed": false,
+                    "cosine": 0.38,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 173,
+                    "title": "对算子的编译、调用流程不是很清楚",
+                    "url": "https://www.hiascend.com/forum/thread-0297177756742392029-1-1.html",
+                    "created_at": "2025-03-19T08:52:22+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0297177756742392029",
+                    "source_closed": false,
+                    "cosine": 0.38,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 150,
+                    "title": "静态和动态模型输入，都是如何给模型创建需要的输入？",
+                    "url": "https://www.hiascend.com/forum/thread-0215172745978133265-1-1.html",
+                    "created_at": "2025-01-20T08:59:38+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0215172745978133265",
+                    "source_closed": false,
+                    "cosine": 0.379,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 51,
+                    "title": "[版本匹配] 现在Llama2是不是可以使用新的transformers==4.44.2",
+                    "url": "https://gitee.com/ascend/torchair/issues/IC52F6",
+                    "created_at": "2025-04-30T09:45:03+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20391810",
+                    "source_closed": false,
+                    "cosine": 0.378,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 49,
+                    "title": "[Question|问题咨询]: cann-ops是否能够像cutlass或者flashinfer一样当库在生产环境集成使用吗？",
+                    "url": "https://gitee.com/ascend/cann-ops/issues/IC4LXE",
+                    "created_at": "2025-04-28T14:24:35+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20370434",
+                    "source_closed": false,
+                    "cosine": 0.365,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 858,
+                    "title": "Ascend C样例中建议将pipe放在对象外进行声明",
+                    "url": "https://gitee.com/ascend/samples/issues/IC29ZE",
+                    "created_at": "2025-04-18T17:06:15+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20261642",
+                    "source_closed": false,
+                    "cosine": 0.365,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 143,
+                    "title": "cann8.0.0使用300I Duo卡，安装Qwen2-VL-7B-Instruct模型，运行时报错",
+                    "url": "https://www.hiascend.com/forum/thread-0292175252902563080-1-1.html",
+                    "created_at": "2025-02-18T09:21:43+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0292175252902563080",
+                    "source_closed": false,
+                    "cosine": 0.364,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 70,
+                    "title": "[Bug-Report|缺陷反馈]: sasum在香橙派 Ascend310b 大部分样例结果错误",
+                    "url": "https://gitee.com/ascend/cann-ops/issues/IC8IR8",
+                    "created_at": "2025-05-17T18:23:50+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20552948",
+                    "source_closed": false,
+                    "cosine": 0.359,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 882,
+                    "title": "如何用yolov5的c++版本直接读取Mat图像队列",
+                    "url": "https://www.hiascend.com/forum/thread-0237182315435088089-1-1.html",
+                    "created_at": "2025-05-11T03:10:35+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0237182315435088089",
+                    "source_closed": false,
+                    "cosine": 0.35,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 138,
+                    "title": "[DSL]  from tbe import tvm 和 import tvm的区别",
+                    "url": "https://www.hiascend.com/forum/thread-0236176540727797023-1-1.html",
+                    "created_at": "2025-03-05T07:05:28+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0236176540727797023",
+                    "source_closed": false,
+                    "cosine": 0.347,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 129,
+                    "title": "对 onnxruntime-cann 的一些想法",
+                    "url": "https://www.hiascend.com/forum/thread-02102183375078257181-1-1.html",
+                    "created_at": "2025-05-23T09:31:18+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "02102183375078257181",
+                    "source_closed": false,
+                    "cosine": 0.345,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 59,
+                    "title": "优化 PagedMultiLatentAttentionCombineCacheMaskNdKernel 算子 性能",
+                    "url": "https://gitee.com/ascend/ascend-transformer-boost/issues/IC5ZXP",
+                    "created_at": "2025-05-07T15:06:35+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20435245",
+                    "source_closed": false,
+                    "cosine": 0.342,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 21,
+                    "title": "deepseek MLA",
+                    "url": "https://gitee.com/ascend/torchair/issues/IBKZ9U",
+                    "created_at": "2025-02-08T17:52:48+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "19454610",
+                    "source_closed": false,
+                    "cosine": 0.34,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 62,
+                    "title": "cann7.1又支持的torchair版本吗",
+                    "url": "https://gitee.com/ascend/torchair/issues/IC7IKY",
+                    "created_at": "2025-05-13T17:39:11+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20506066",
+                    "source_closed": false,
+                    "cosine": 0.326,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 58,
+                    "title": "[Requirement|需求建议]:  QuantBatchMatmulV3性能优化",
+                    "url": "https://gitee.com/ascend/cann-ops/issues/IC5ZWC",
+                    "created_at": "2025-05-07T15:04:06+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20435196",
+                    "source_closed": false,
+                    "cosine": 0.325,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 145,
+                    "title": "中国区自然资源行业林草局森林防火和生物多样性识别算法如何适配Atlas 500",
+                    "url": "https://www.hiascend.com/forum/thread-02113174822711087044-1-1.html",
+                    "created_at": "2025-02-13T09:51:51+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "02113174822711087044",
+                    "source_closed": false,
+                    "cosine": 0.325,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 877,
+                    "title": "在Ascend310B1上执行模型推理时，开启自动混合精度，反而造成内存占用上升明显，正常吗",
+                    "url": "https://www.hiascend.com/forum/thread-0255182665850182119-1-1.html",
+                    "created_at": "2025-05-15T04:30:50+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0255182665850182119",
+                    "source_closed": false,
+                    "cosine": 0.323,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 60,
+                    "title": "优化 PpMatmulEinSumKernel 算子性能",
+                    "url": "https://gitee.com/ascend/ascend-transformer-boost/issues/IC5ZY1",
+                    "created_at": "2025-05-07T15:07:14+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20435257",
+                    "source_closed": false,
+                    "cosine": 0.31,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 176,
+                    "title": "aclnn_online_model是怎么调用的用户算子开发中的shape推导，kernel和函数等接口的",
+                    "url": "https://www.hiascend.com/forum/thread-0201177644078168003-1-1.html",
+                    "created_at": "2025-03-18T01:34:38+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0201177644078168003",
+                    "source_closed": false,
+                    "cosine": 0.305,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 182,
+                    "title": "昇腾对于模型的兼容性",
+                    "url": "https://www.hiascend.com/forum/thread-0240175252856772078-1-1.html",
+                    "created_at": "2025-02-18T09:20:57+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "forum",
+                    "source_id": "0240175252856772078",
+                    "source_closed": false,
+                    "cosine": 0.302,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 35,
+                    "title": "[Question|问题咨询]: 如果想要优化核间、vector的策略，可以调整哪些部分的参数呢",
+                    "url": "https://gitee.com/ascend/cann-ops-adv/issues/IBYCEK",
+                    "created_at": "2025-04-02T17:19:06+08:00",
+                    "topic_summary": "坛帖和issue无回复，回复无有效信息或者无进一步跟踪",
+                    "source_type": "issue",
+                    "source_id": "20078156",
+                    "source_closed": false,
+                    "cosine": 0.296,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "4": {
+        "summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+        "discussion_count": 12,
+        "discussion": [
+            [
+                {
+                    "id": 875,
+                    "title": "量化后的onnx模型转成om模型失败",
+                    "url": "https://www.hiascend.com/forum/thread-02108183024048495158-1-1.html",
+                    "created_at": "2025-05-19T08:00:49+08:00",
+                    "topic_summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+                    "source_type": "forum",
+                    "source_id": "02108183024048495158",
+                    "source_closed": false,
+                    "cosine": 0.595,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 144,
+                    "title": "om推理报错",
+                    "url": "https://www.hiascend.com/forum/thread-02113175152884692058-1-1.html",
+                    "created_at": "2025-02-17T05:34:45+08:00",
+                    "topic_summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+                    "source_type": "forum",
+                    "source_id": "02113175152884692058",
+                    "source_closed": false,
+                    "cosine": 0.591,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 884,
+                    "title": "使用CANN-8.0.0 生成OM后，在使用OM时报错：received signal SIGSEGV, Segmentation fault.",
+                    "url": "https://www.hiascend.com/forum/thread-02108182090148789073-1-1.html",
+                    "created_at": "2025-05-08T12:35:49+08:00",
+                    "topic_summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+                    "source_type": "forum",
+                    "source_id": "02108182090148789073",
+                    "source_closed": false,
+                    "cosine": 0.582,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 649,
+                    "title": "yolov8  模型推理过程中报错",
+                    "url": "https://www.hiascend.com/forum/thread-0205185018208447096-1-1.html",
+                    "created_at": "2025-06-11T09:56:48+08:00",
+                    "topic_summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+                    "source_type": "forum",
+                    "source_id": "0205185018208447096",
+                    "source_closed": false,
+                    "cosine": 0.569,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 132,
+                    "title": "GroundingDino在Altas300上模型转换失败",
+                    "url": "https://www.hiascend.com/forum/thread-0237181022913671008-1-1.html",
+                    "created_at": "2025-04-26T04:08:34+08:00",
+                    "topic_summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+                    "source_type": "forum",
+                    "source_id": "0237181022913671008",
+                    "source_closed": false,
+                    "cosine": 0.555,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 868,
+                    "title": "模型转换失败",
+                    "url": "https://www.hiascend.com/forum/thread-02102183693864736207-1-1.html",
+                    "created_at": "2025-05-27T02:04:25+08:00",
+                    "topic_summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+                    "source_type": "forum",
+                    "source_id": "02102183693864736207",
+                    "source_closed": false,
+                    "cosine": 0.552,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 867,
+                    "title": "Onnx转om模型失败",
+                    "url": "https://www.hiascend.com/forum/thread-0237183711764026242-1-1.html",
+                    "created_at": "2025-05-27T07:02:44+08:00",
+                    "topic_summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+                    "source_type": "forum",
+                    "source_id": "0237183711764026242",
+                    "source_closed": false,
+                    "cosine": 0.537,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 881,
+                    "title": "ATC转换RT-DERT时报错",
+                    "url": "https://www.hiascend.com/forum/thread-0237182402660926094-1-1.html",
+                    "created_at": "2025-05-12T03:24:21+08:00",
+                    "topic_summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+                    "source_type": "forum",
+                    "source_id": "0237182402660926094",
+                    "source_closed": false,
+                    "cosine": 0.526,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 870,
+                    "title": "onnx使用atc 模型转换",
+                    "url": "https://www.hiascend.com/forum/thread-02102183352936556174-1-1.html",
+                    "created_at": "2025-05-23T03:22:17+08:00",
+                    "topic_summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+                    "source_type": "forum",
+                    "source_id": "02102183352936556174",
+                    "source_closed": false,
+                    "cosine": 0.508,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 880,
+                    "title": "【Atlas 200I DK A2】onnx转om失败",
+                    "url": "https://www.hiascend.com/forum/thread-0255182415578200087-1-1.html",
+                    "created_at": "2025-05-12T06:59:38+08:00",
+                    "topic_summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+                    "source_type": "forum",
+                    "source_id": "0255182415578200087",
+                    "source_closed": false,
+                    "cosine": 0.504,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 885,
+                    "title": "resnet50.mindir（是由ckpt文件导出的）怎么转换为om格式的模型以在atlas500盒子上运行运行推理呢？之前用过pytorch的能转到onnx再转到om可以运行推理。但是mindir或者ckpt的不知道怎么做",
+                    "url": "https://www.hiascend.com/forum/thread-0255182080502021072-1-1.html",
+                    "created_at": "2025-05-08T09:55:02+08:00",
+                    "topic_summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+                    "source_type": "forum",
+                    "source_id": "0255182080502021072",
+                    "source_closed": false,
+                    "cosine": 0.478,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 633,
+                    "title": "如何使用npu对rtsp视频流进行直接解码，不使用cpu做解码工作",
+                    "url": "https://www.hiascend.com/forum/thread-0226184821552536077-1-1.html",
+                    "created_at": "2025-06-09T03:19:13+08:00",
+                    "topic_summary": "开发者在模型转换OM格式时在转换过程和推理时经常遇到报错，需要寻求支持",
+                    "source_type": "forum",
+                    "source_id": "0226184821552536077",
+                    "source_closed": false,
+                    "cosine": 0.361,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "5": {
+        "summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+        "discussion_count": 22,
+        "discussion": [
+            [
+                {
+                    "id": 860,
+                    "title": "编译aclLite报错/交叉编译开发环境如何搭建",
+                    "url": "https://gitee.com/ascend/samples/issues/IC8KRJ",
+                    "created_at": "2025-05-18T15:38:14+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "issue",
+                    "source_id": "20555551",
+                    "source_closed": true,
+                    "cosine": 0.576,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 861,
+                    "title": "编译cplusplus/level2_simple_inference/0_data_process/vdec失败",
+                    "url": "https://gitee.com/ascend/samples/issues/ICA9P3",
+                    "created_at": "2025-05-24T16:32:27+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "issue",
+                    "source_id": "20634519",
+                    "source_closed": true,
+                    "cosine": 0.55,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 859,
+                    "title": "Ascend310B4 运行 4_addn_frameworklaunch 时报错 No such file or directory：CustomOp/build_out/op_kernel/binary/ascend310b/binary_info_config.json",
+                    "url": "https://gitee.com/ascend/samples/issues/IC2FR1",
+                    "created_at": "2025-04-19T18:28:18+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "issue",
+                    "source_id": "20269117",
+                    "source_closed": true,
+                    "cosine": 0.52,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 767,
+                    "title": "w-为什么显示resizexxV2D算子不支持",
+                    "url": "https://gitee.com/ascend/samples/issues/IC9OY5",
+                    "created_at": "2025-05-22T14:40:22+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "issue",
+                    "source_id": "20607629",
+                    "source_closed": true,
+                    "cosine": 0.415,
+                    "closed_cosine": 0.0
+                }
+            ],
+            [
+                {
+                    "id": 171,
+                    "title": "【解决方案】【FAQ】解决OpenEuler24.03系统编译时fatal error: 'cstdint' file not found报错问题",
+                    "url": "https://www.hiascend.com/forum/thread-0275179975724822015-1-1.html",
+                    "created_at": "2025-04-14T01:15:25+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "0275179975724822015",
+                    "source_closed": false,
+                    "cosine": 0.574,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 164,
+                    "title": "Ascend C使用vscode开发时遇到的#include\"kernel_oprator.h\"报错以及解决方法",
+                    "url": "https://www.hiascend.com/forum/thread-0237180980015919006-1-1.html",
+                    "created_at": "2025-04-25T16:13:36+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "0237180980015919006",
+                    "source_closed": false,
+                    "cosine": 0.565,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 178,
+                    "title": "在编译时CMakeLists.txt中的路径出错，导致无法运行",
+                    "url": "https://www.hiascend.com/forum/thread-0266177061552103065-1-1.html",
+                    "created_at": "2025-03-11T07:45:52+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "0266177061552103065",
+                    "source_closed": false,
+                    "cosine": 0.562,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 180,
+                    "title": "在运行run.sh时出现报错",
+                    "url": "https://www.hiascend.com/forum/thread-0236177061362063063-1-1.html",
+                    "created_at": "2025-03-11T07:42:42+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "0236177061362063063",
+                    "source_closed": false,
+                    "cosine": 0.554,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 872,
+                    "title": "安装 Ascend-cann-toolkit_8.1.RC1_linux-aarch64.run 失败",
+                    "url": "https://www.hiascend.com/forum/thread-0237183196156024184-1-1.html",
+                    "created_at": "2025-05-21T07:49:16+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "0237183196156024184",
+                    "source_closed": false,
+                    "cosine": 0.542,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 177,
+                    "title": "在运行bash.sh时出现失败问题",
+                    "url": "https://www.hiascend.com/forum/thread-0243177061603902064-1-1.html",
+                    "created_at": "2025-03-11T07:46:44+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "0243177061603902064",
+                    "source_closed": false,
+                    "cosine": 0.542,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 892,
+                    "title": "使用aclnnMatmul的时候报错：aclnnMatmulGetWorkspaceSize failed. ERROR: 561103",
+                    "url": "https://www.hiascend.com/forum/thread-02108183029427616162-1-1.html",
+                    "created_at": "2025-05-19T09:30:28+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "02108183029427616162",
+                    "source_closed": false,
+                    "cosine": 0.54,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 76,
+                    "title": "w-盒子200DK报错peripheral_api.h",
+                    "url": "https://gitee.com/ascend/samples/issues/IC8OTN",
+                    "created_at": "2025-05-19T10:53:50+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "issue",
+                    "source_id": "20560811",
+                    "source_closed": false,
+                    "cosine": 0.522,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 153,
+                    "title": "【Ascend C标准算子编译报错问题解决方案(持续更新)】",
+                    "url": "https://www.hiascend.com/forum/thread-0284179983532114019-1-1.html",
+                    "created_at": "2025-04-14T03:25:32+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "0284179983532114019",
+                    "source_closed": false,
+                    "cosine": 0.513,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 869,
+                    "title": "triton-ascend示例找不到CANN的组件npuc",
+                    "url": "https://www.hiascend.com/forum/thread-0237183564175545220-1-1.html",
+                    "created_at": "2025-05-25T14:02:56+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "0237183564175545220",
+                    "source_closed": false,
+                    "cosine": 0.502,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 887,
+                    "title": "根据CANN社区版8.0.0.alpha001的文档调用单算子API，编译成功，但是运行报错：aclnnAddGetWorkspaceSize failed. ERROR: 561103",
+                    "url": "https://www.hiascend.com/forum/thread-02108183654631289220-1-1.html",
+                    "created_at": "2025-05-26T15:10:31+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "02108183654631289220",
+                    "source_closed": false,
+                    "cosine": 0.496,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 866,
+                    "title": "Atlas800I A2安装CANN报错：opp_uninstall.sh不存在",
+                    "url": "https://www.hiascend.com/forum/thread-0226183785107239008-1-1.html",
+                    "created_at": "2025-05-28T03:25:07+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "0226183785107239008",
+                    "source_closed": false,
+                    "cosine": 0.489,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 166,
+                    "title": "找不到libmedia_mini.so文件的解决方法",
+                    "url": "https://www.hiascend.com/forum/thread-0263180173899246050-1-1.html",
+                    "created_at": "2025-04-16T08:19:39+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "0263180173899246050",
+                    "source_closed": false,
+                    "cosine": 0.469,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 1,
+                    "title": "测试deepseekv3，手动切分与调整权重时出错。 ",
+                    "url": "https://gitee.com/ascend/torchair/issues/IBF9U4",
+                    "created_at": "2025-01-02T17:22:23+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "issue",
+                    "source_id": "19188364",
+                    "source_closed": false,
+                    "cosine": 0.458,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 891,
+                    "title": "怎么部署环境上要有昇腾NPU，且CANN版本为8.0.0.beta1",
+                    "url": "https://www.hiascend.com/forum/thread-02108183279341336192-1-1.html",
+                    "created_at": "2025-05-22T06:55:41+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "02108183279341336192",
+                    "source_closed": false,
+                    "cosine": 0.451,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 75,
+                    "title": "w-最新cann版本在哪里",
+                    "url": "https://gitee.com/ascend/samples/issues/IC8OJZ",
+                    "created_at": "2025-05-19T10:40:05+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "issue",
+                    "source_id": "20560463",
+                    "source_closed": false,
+                    "cosine": 0.411,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 184,
+                    "title": "昇腾生态下，类似 nvitop 这样的 TUI",
+                    "url": "https://www.hiascend.com/forum/thread-0215172418221605255-1-1.html",
+                    "created_at": "2025-01-16T13:57:02+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "0215172418221605255",
+                    "source_closed": false,
+                    "cosine": 0.384,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 886,
+                    "title": "atlas300i-3000的对应CANN二进制算子包应该选哪个版本 ",
+                    "url": "https://www.hiascend.com/forum/thread-02108182014042089064-1-1.html",
+                    "created_at": "2025-05-07T15:27:22+08:00",
+                    "topic_summary": "开发者在编译、安装、调试和开发环境搭建过程中，因为版本、路径、权限等原因导致安装失败",
+                    "source_type": "forum",
+                    "source_id": "02108182014042089064",
+                    "source_closed": false,
+                    "cosine": 0.372,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "6": {
+        "summary": "开发者安装配置是漏装必要软件包，导致运行失败",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 116,
+                    "title": "RuntimeError: call aclnnAdd failed, detail:EZ9999: Inner Error!",
+                    "url": "https://gitee.com/ascend/triton-ascend/issues/ICCL9N",
+                    "created_at": "2025-06-04T17:21:28+08:00",
+                    "topic_summary": "开发者安装配置是漏装必要软件包，导致运行失败",
+                    "source_type": "issue",
+                    "source_id": "20742827",
+                    "source_closed": false,
+                    "cosine": 0.549,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 94,
+                    "title": "[Documentation|文档反馈]: 建议添加对CANN版本的需求说明",
+                    "url": "https://gitee.com/ascend/cann-ops/issues/ICB5ES",
+                    "created_at": "2025-05-28T15:17:56+08:00",
+                    "topic_summary": "开发者安装配置是漏装必要软件包，导致运行失败",
+                    "source_type": "issue",
+                    "source_id": "20675620",
+                    "source_closed": false,
+                    "cosine": 0.513,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 130,
+                    "title": "call aclnnCast failed",
+                    "url": "https://www.hiascend.com/forum/thread-02102182676529679115-1-1.html",
+                    "created_at": "2025-05-15T07:28:50+08:00",
+                    "topic_summary": "开发者安装配置是漏装必要软件包，导致运行失败",
+                    "source_type": "forum",
+                    "source_id": "02102182676529679115",
+                    "source_closed": false,
+                    "cosine": 0.499,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "7": {
+        "summary": "昇腾CANN开发者如何解决MaxPoolWithArgmaxV1算子未注册错误",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 774,
+                    "title": "[Question|问题咨询]: CANN8.0RC1，kernel包也装了，为什么有这个报错",
+                    "url": "https://gitee.com/ascend/cann-ops-adv/issues/ICC9AN",
+                    "created_at": "2025-06-03T17:24:46+08:00",
+                    "topic_summary": "昇腾CANN开发者如何解决MaxPoolWithArgmaxV1算子未注册错误",
+                    "source_type": "issue",
+                    "source_id": "20727311",
+                    "source_closed": true,
+                    "cosine": 0.69,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 103,
+                    "title": "[Question|问题咨询]: EZ3002",
+                    "url": "https://gitee.com/ascend/cann-ops-adv/issues/ICC9A0",
+                    "created_at": "2025-06-03T17:23:03+08:00",
+                    "topic_summary": "昇腾CANN开发者如何解决MaxPoolWithArgmaxV1算子未注册错误",
+                    "source_type": "issue",
+                    "source_id": "20727288",
+                    "source_closed": true,
+                    "cosine": 0.626,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "8": {
+        "summary": "昇腾CANN开发者调试Atlas卡与CANN版本兼容性导致的精度不稳定问题",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 133,
+                    "title": "适配华为Atlas300I卡，模型推理精度达不到；",
+                    "url": "https://www.hiascend.com/forum/thread-0278179647575496043-1-1.html",
+                    "created_at": "2025-04-10T06:06:16+08:00",
+                    "topic_summary": "cluster-13",
+                    "source_type": "forum",
+                    "source_id": "0278179647575496043",
+                    "source_closed": false,
+                    "cosine": 0.694,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 146,
+                    "title": "atlas800 安装了Ascend-cann使用后有提示算法问题，想问问是什么原因导致的",
+                    "url": "https://www.hiascend.com/forum/thread-0240174274074453006-1-1.html",
+                    "created_at": "2025-02-07T01:27:54+08:00",
+                    "topic_summary": "cluster-13",
+                    "source_type": "forum",
+                    "source_id": "0240174274074453006",
+                    "source_closed": false,
+                    "cosine": 0.635,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "开发环境兼容性问题"
+    },
+    "9": {
+        "summary": "昇腾CANN开发者亟需解决MakeTensorPtrCanonicalizer的Atomic操作不兼容问题",
+        "discussion_count": 4,
+        "discussion": [
+            [
+                {
+                    "id": 86,
+                    "title": "MakeTensorPtrCanonicalizer 补齐功能：支持 User 为 Atomic 类 Op",
+                    "url": "https://gitee.com/ascend/triton-ascend/issues/ICAKR9",
+                    "created_at": "2025-05-26T15:56:18+08:00",
+                    "topic_summary": "cluster-4",
+                    "source_type": "issue",
+                    "source_id": "20648853",
+                    "source_closed": false,
+                    "cosine": 0.705,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 87,
+                    "title": "MakeTensorPtrCanonicalizer 补齐功能：补全 User 为 tl.advance 的功能和测试用例",
+                    "url": "https://gitee.com/ascend/triton-ascend/issues/ICAKTS",
+                    "created_at": "2025-05-26T16:02:23+08:00",
+                    "topic_summary": "cluster-4",
+                    "source_type": "issue",
+                    "source_id": "20648944",
+                    "source_closed": false,
+                    "cosine": 0.578,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 89,
+                    "title": "MakeTensorPtrCanonicalizer 补齐功能：支持 社区 FA 用例",
+                    "url": "https://gitee.com/ascend/triton-ascend/issues/ICAKU4",
+                    "created_at": "2025-05-26T16:03:04+08:00",
+                    "topic_summary": "cluster-4",
+                    "source_type": "issue",
+                    "source_id": "20648956",
+                    "source_closed": false,
+                    "cosine": 0.562,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 88,
+                    "title": "MakeTensorPtrCanonicalizer 补齐功能：补全需要修改 tl.load/store 的 boundary_check 的功能和用例",
+                    "url": "https://gitee.com/ascend/triton-ascend/issues/ICAKTY",
+                    "created_at": "2025-05-26T16:02:45+08:00",
+                    "topic_summary": "cluster-4",
+                    "source_type": "issue",
+                    "source_id": "20648950",
+                    "source_closed": false,
+                    "cosine": 0.523,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "开发融合算子问题"
+    },
+    "10": {
+        "summary": "昇腾CANN开发者如何优化算子性能以降低执行时间",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 648,
+                    "title": "【Ascend C】算子开发小白一周目（以ThreeNN为例）",
+                    "url": "https://www.hiascend.com/forum/thread-0226185011273581096-1-1.html",
+                    "created_at": "2025-06-11T10:28:55+08:00",
+                    "topic_summary": "cluster-10",
+                    "source_type": "forum",
+                    "source_id": "0226185011273581096",
+                    "source_closed": false,
+                    "cosine": 0.605,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 172,
+                    "title": "基于Ascend C的MC²通算融合算子性能优化最佳实践",
+                    "url": "https://www.hiascend.com/forum/thread-0201179457415507162-1-1.html",
+                    "created_at": "2025-04-08T01:33:36+08:00",
+                    "topic_summary": "cluster-10",
+                    "source_type": "forum",
+                    "source_id": "0201179457415507162",
+                    "source_closed": false,
+                    "cosine": 0.519,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "算子性能优化"
+    },
+    "11": {
+        "summary": "开发者亟需确认CANN是否支持BatchNormV3等新型算子的模型转换使能",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 38,
+                    "title": "BatchNormV3,LayerNormV4,SoftmaxV2算子",
+                    "url": "https://gitee.com/ascend/canndev/issues/IC094A",
+                    "created_at": "2025-04-11T10:15:57+08:00",
+                    "topic_summary": "cluster-11",
+                    "source_type": "issue",
+                    "source_id": "20167210",
+                    "source_closed": false,
+                    "cosine": 0.706,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 37,
+                    "title": "BatchNormV3,ClipByValue,LayerNormV4,SoftmaxV2算子",
+                    "url": "https://gitee.com/ascend/canndev/issues/IC03SX",
+                    "created_at": "2025-04-10T16:50:45+08:00",
+                    "topic_summary": "cluster-11",
+                    "source_type": "issue",
+                    "source_id": "20160321",
+                    "source_closed": false,
+                    "cosine": 0.546,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "软件易用性问题"
+    },
+    "12": {
+        "summary": "昇腾CANN开发者如何防范第三方依赖的ReDoS安全风险",
+        "discussion_count": 6,
+        "discussion": [
+            [
+                {
+                    "id": 599,
+                    "title": "CVE-2022-25858",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDJ5V",
+                    "created_at": "2025-06-09T09:41:04+08:00",
+                    "topic_summary": "cluster-1",
+                    "source_type": "issue",
+                    "source_id": "20786755",
+                    "source_closed": false,
+                    "cosine": 0.454,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 563,
+                    "title": "CVE-2021-23368",
+                    "url": "https://gitee.com/ascend/Asight/issues/ICDEHT",
+                    "created_at": "2025-06-07T23:50:51+08:00",
+                    "topic_summary": "cluster-1",
+                    "source_type": "issue",
+                    "source_id": "20780705",
+                    "source_closed": false,
+                    "cosine": 0.379,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 597,
+                    "title": "CVE-2024-41818",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDIJ0",
+                    "created_at": "2025-06-09T09:11:40+08:00",
+                    "topic_summary": "cluster-1",
+                    "source_type": "issue",
+                    "source_id": "20785932",
+                    "source_closed": false,
+                    "cosine": 0.359,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 595,
+                    "title": "CVE-2021-23364",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDIIU",
+                    "created_at": "2025-06-09T09:11:34+08:00",
+                    "topic_summary": "cluster-1",
+                    "source_type": "issue",
+                    "source_id": "20785926",
+                    "source_closed": false,
+                    "cosine": 0.345,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 564,
+                    "title": "CVE-2021-23368",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDEHW",
+                    "created_at": "2025-06-07T23:50:54+08:00",
+                    "topic_summary": "cluster-1",
+                    "source_type": "issue",
+                    "source_id": "20780708",
+                    "source_closed": false,
+                    "cosine": 0.342,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 596,
+                    "title": "CVE-2021-23343",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDIIX",
+                    "created_at": "2025-06-09T09:11:38+08:00",
+                    "topic_summary": "cluster-1",
+                    "source_type": "issue",
+                    "source_id": "20785929",
+                    "source_closed": false,
+                    "cosine": 0.333,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "安全风险防范"
+    },
+    "13": {
+        "summary": "昇腾CANN开发者亟需修复webpack开发工具漏洞以避免源代码泄露",
+        "discussion_count": 4,
+        "discussion": [
+            [
+                {
+                    "id": 558,
+                    "title": "CVE-2025-30359",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDE71",
+                    "created_at": "2025-06-07T22:10:40+08:00",
+                    "topic_summary": "cluster-2",
+                    "source_type": "issue",
+                    "source_id": "20780317",
+                    "source_closed": false,
+                    "cosine": 0.554,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 557,
+                    "title": "CVE-2025-30360",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDE70",
+                    "created_at": "2025-06-07T22:10:38+08:00",
+                    "topic_summary": "cluster-2",
+                    "source_type": "issue",
+                    "source_id": "20780316",
+                    "source_closed": false,
+                    "cosine": 0.541,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 586,
+                    "title": "CVE-2024-29180",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDHY3",
+                    "created_at": "2025-06-09T05:10:03+08:00",
+                    "topic_summary": "cluster-2",
+                    "source_type": "issue",
+                    "source_id": "20785179",
+                    "source_closed": false,
+                    "cosine": 0.54,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 602,
+                    "title": "CVE-2023-26159",
+                    "url": "https://gitee.com/ascend/Asight/issues/ICDJ6B",
+                    "created_at": "2025-06-09T09:41:15+08:00",
+                    "topic_summary": "cluster-2",
+                    "source_type": "issue",
+                    "source_id": "20786771",
+                    "source_closed": false,
+                    "cosine": 0.457,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "开发工具安全"
+    },
+    "14": {
+        "summary": "昇腾CANN开发者需在AI服务中修复Axios安全漏洞",
+        "discussion_count": 4,
+        "discussion": [
+            [
+                {
+                    "id": 560,
+                    "title": "CVE-2024-57965",
+                    "url": "https://gitee.com/ascend/Asight/issues/ICDEAQ",
+                    "created_at": "2025-06-07T22:40:42+08:00",
+                    "topic_summary": "cluster-3",
+                    "source_type": "issue",
+                    "source_id": "20780450",
+                    "source_closed": false,
+                    "cosine": 0.499,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 559,
+                    "title": "CVE-2025-27152",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDEAM",
+                    "created_at": "2025-06-07T22:40:36+08:00",
+                    "topic_summary": "cluster-3",
+                    "source_type": "issue",
+                    "source_id": "20780446",
+                    "source_closed": false,
+                    "cosine": 0.487,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 561,
+                    "title": "CVE-2024-57965",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDEAS",
+                    "created_at": "2025-06-07T22:40:45+08:00",
+                    "topic_summary": "cluster-3",
+                    "source_type": "issue",
+                    "source_id": "20780452",
+                    "source_closed": false,
+                    "cosine": 0.473,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 587,
+                    "title": "CVE-2023-45857",
+                    "url": "https://gitee.com/ascend/Asight/issues/ICDIHD",
+                    "created_at": "2025-06-09T09:10:48+08:00",
+                    "topic_summary": "cluster-3",
+                    "source_type": "issue",
+                    "source_id": "20785873",
+                    "source_closed": false,
+                    "cosine": 0.465,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "AI服务安全"
+    },
+    "15": {
+        "summary": "昇腾CANN开发者需修复aiohttp漏洞确保模型部署防护安全",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 577,
+                    "title": "CVE-2023-47641",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDEPX",
+                    "created_at": "2025-06-08T01:10:54+08:00",
+                    "topic_summary": "cluster-5",
+                    "source_type": "issue",
+                    "source_id": "20780997",
+                    "source_closed": false,
+                    "cosine": 0.547,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 592,
+                    "title": "CVE-2023-47627",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDIHV",
+                    "created_at": "2025-06-09T09:11:14+08:00",
+                    "topic_summary": "cluster-5",
+                    "source_type": "issue",
+                    "source_id": "20785891",
+                    "source_closed": false,
+                    "cosine": 0.523,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 554,
+                    "title": "CVE-2024-52304",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDE6V",
+                    "created_at": "2025-06-07T22:10:30+08:00",
+                    "topic_summary": "cluster-5",
+                    "source_type": "issue",
+                    "source_id": "20780311",
+                    "source_closed": false,
+                    "cosine": 0.522,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "模型部署安全"
+    },
+    "16": {
+        "summary": "昇腾CANN开发者需修复Node.js依赖安全漏洞",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 64,
+                    "title": "CVE-2025-47279",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/IC862U",
+                    "created_at": "2025-05-16T04:40:05+08:00",
+                    "topic_summary": "cluster-6",
+                    "source_type": "issue",
+                    "source_id": "20536518",
+                    "source_closed": false,
+                    "cosine": 0.575,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 593,
+                    "title": "CVE-2022-33987",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDIHY",
+                    "created_at": "2025-06-09T09:11:17+08:00",
+                    "topic_summary": "cluster-6",
+                    "source_type": "issue",
+                    "source_id": "20785894",
+                    "source_closed": false,
+                    "cosine": 0.557,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 588,
+                    "title": "CVE-2021-37712",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDIHG",
+                    "created_at": "2025-06-09T09:10:51+08:00",
+                    "topic_summary": "cluster-6",
+                    "source_type": "issue",
+                    "source_id": "20785876",
+                    "source_closed": false,
+                    "cosine": 0.52,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "依赖安全"
+    },
+    "17": {
+        "summary": "昇腾CANN开发者在启用StreamX Web服务器时如何修复身份验证与路径遍历漏洞",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 621,
+                    "title": "CVE-2022-4778",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDSUR",
+                    "created_at": "2025-06-09T20:40:08+08:00",
+                    "topic_summary": "cluster-7",
+                    "source_type": "issue",
+                    "source_id": "20799315",
+                    "source_closed": false,
+                    "cosine": 0.636,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 622,
+                    "title": "CVE-2022-4779",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDT5D",
+                    "created_at": "2025-06-09T21:40:46+08:00",
+                    "topic_summary": "cluster-7",
+                    "source_type": "issue",
+                    "source_id": "20799697",
+                    "source_closed": false,
+                    "cosine": 0.581,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Web服务器安全"
+    },
+    "18": {
+        "summary": "昇腾CANN开发者如何修复多用户环境中Jupyter权限漏洞",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 113,
+                    "title": "CVE-2025-30167",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICCDIC",
+                    "created_at": "2025-06-04T09:55:10+08:00",
+                    "topic_summary": "cluster-9",
+                    "source_type": "issue",
+                    "source_id": "20732772",
+                    "source_closed": false,
+                    "cosine": 0.651,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 112,
+                    "title": "CVE-2025-30167",
+                    "url": "https://gitee.com/ascend/modelzoo-TensorFlow-bak/issues/ICCDI7",
+                    "created_at": "2025-06-04T09:55:06+08:00",
+                    "topic_summary": "cluster-9",
+                    "source_type": "issue",
+                    "source_id": "20732767",
+                    "source_closed": false,
+                    "cosine": 0.618,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "环境安全"
+    },
+    "19": {
+        "summary": "昇腾CANN开发者需升级Jupyter环境修复VNC暴露漏洞",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 55,
+                    "title": "CVE-2025-32428",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/IC57E2",
+                    "created_at": "2025-04-30T16:13:34+08:00",
+                    "topic_summary": "cluster-14",
+                    "source_type": "issue",
+                    "source_id": "20398250",
+                    "source_closed": false,
+                    "cosine": 0.591,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 54,
+                    "title": "CVE-2025-32428",
+                    "url": "https://gitee.com/ascend/modelzoo-TensorFlow-bak/issues/IC57DY",
+                    "created_at": "2025-04-30T16:13:32+08:00",
+                    "topic_summary": "cluster-14",
+                    "source_type": "issue",
+                    "source_id": "20398246",
+                    "source_closed": false,
+                    "cosine": 0.579,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "安全漏洞"
+    },
+    "20": {
+        "summary": "昇腾CANN开发者如何升级Gunicorn修复HTTP请求走私漏洞",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 620,
+                    "title": "CVE-2024-6827",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDSJ2",
+                    "created_at": "2025-06-09T19:40:20+08:00",
+                    "topic_summary": "cluster-15",
+                    "source_type": "issue",
+                    "source_id": "20798894",
+                    "source_closed": false,
+                    "cosine": 0.666,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 594,
+                    "title": "CVE-2024-1135",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDII9",
+                    "created_at": "2025-06-09T09:11:24+08:00",
+                    "topic_summary": "cluster-15",
+                    "source_type": "issue",
+                    "source_id": "20785905",
+                    "source_closed": false,
+                    "cosine": 0.551,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Web服务器安全"
+    },
+    "21": {
+        "summary": "昇腾CANN开发者需升级cryptography库修复数据安全漏洞",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 601,
+                    "title": "CVE-2023-23931",
+                    "url": "https://gitee.com/ascend/modelzoo-TensorFlow-bak/issues/ICDJ64",
+                    "created_at": "2025-06-09T09:41:12+08:00",
+                    "topic_summary": "cluster-16",
+                    "source_type": "issue",
+                    "source_id": "20786764",
+                    "source_closed": false,
+                    "cosine": 0.564,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 610,
+                    "title": "CVE-2020-36242",
+                    "url": "https://gitee.com/ascend/modelzoo-TensorFlow-bak/issues/ICDM1K",
+                    "created_at": "2025-06-09T11:50:31+08:00",
+                    "topic_summary": "cluster-16",
+                    "source_type": "issue",
+                    "source_id": "20790488",
+                    "source_closed": false,
+                    "cosine": 0.563,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "数据安全"
+    },
+    "22": {
+        "summary": "昇腾CANN开发者如何优化代码减少冗余以提升性能",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 107,
+                    "title": "冗余代码",
+                    "url": "https://gitee.com/ascend/cann-graph-engine-dev/issues/ICCC8B",
+                    "created_at": "2025-06-04T08:17:14+08:00",
+                    "topic_summary": "cluster-8",
+                    "source_type": "issue",
+                    "source_id": "20731115",
+                    "source_closed": false,
+                    "cosine": 0.434,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 106,
+                    "title": "冗余代码",
+                    "url": "https://gitee.com/ascend/cann-graph-engine-dev/issues/ICCC87",
+                    "created_at": "2025-06-04T08:16:18+08:00",
+                    "topic_summary": "cluster-8",
+                    "source_type": "issue",
+                    "source_id": "20731111",
+                    "source_closed": false,
+                    "cosine": 0.434,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "代码优化"
+    },
+    "23": {
+        "summary": "昇腾CANN开发者如何安全删除未使用代码",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 108,
+                    "title": "注释掉的代码可以删除。",
+                    "url": "https://gitee.com/ascend/cann-graph-engine-dev/issues/ICCC8G",
+                    "created_at": "2025-06-04T08:19:30+08:00",
+                    "topic_summary": "cluster-12",
+                    "source_type": "issue",
+                    "source_id": "20731120",
+                    "source_closed": false,
+                    "cosine": 0.527,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 100,
+                    "title": "未使用代码应当删除。",
+                    "url": "https://gitee.com/ascend/cann-graph-engine-dev/issues/ICC4V0",
+                    "created_at": "2025-06-03T13:56:33+08:00",
+                    "topic_summary": "cluster-12",
+                    "source_type": "issue",
+                    "source_id": "20721564",
+                    "source_closed": false,
+                    "cosine": 0.524,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "代码质量"
+    },
+    "24": {
+        "summary": "昇腾CANN开发者如何修复Django框架的安全漏洞",
+        "discussion_count": 14,
+        "discussion": [
+            [
+                {
+                    "id": 569,
+                    "title": "CVE-2022-22818",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDELX",
+                    "created_at": "2025-06-08T00:20:36+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20780853",
+                    "source_closed": false,
+                    "cosine": 0.603,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 581,
+                    "title": "CVE-2023-46695",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDEQD",
+                    "created_at": "2025-06-08T01:11:26+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20781013",
+                    "source_closed": false,
+                    "cosine": 0.579,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 585,
+                    "title": "CVE-2024-27351",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDHY2",
+                    "created_at": "2025-06-09T04:40:09+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20785178",
+                    "source_closed": false,
+                    "cosine": 0.577,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 566,
+                    "title": "CVE-2021-45115",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDELR",
+                    "created_at": "2025-06-08T00:20:18+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20780847",
+                    "source_closed": false,
+                    "cosine": 0.562,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 578,
+                    "title": "CVE-2023-43665",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDEQ3",
+                    "created_at": "2025-06-08T01:11:07+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20781003",
+                    "source_closed": false,
+                    "cosine": 0.553,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 603,
+                    "title": "CVE-2022-28346",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDJ6C",
+                    "created_at": "2025-06-09T09:41:16+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20786772",
+                    "source_closed": false,
+                    "cosine": 0.552,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 84,
+                    "title": "CVE-2021-45116",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/IC9W33",
+                    "created_at": "2025-05-23T06:40:04+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20616879",
+                    "source_closed": false,
+                    "cosine": 0.549,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 612,
+                    "title": "CVE-2023-36053",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDMDR",
+                    "created_at": "2025-06-09T12:40:53+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20790927",
+                    "source_closed": false,
+                    "cosine": 0.547,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 565,
+                    "title": "CVE-2021-44420",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDELQ",
+                    "created_at": "2025-06-08T00:20:16+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20780846",
+                    "source_closed": false,
+                    "cosine": 0.543,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 604,
+                    "title": "CVE-2022-28347",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDJ6E",
+                    "created_at": "2025-06-09T09:41:18+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20786774",
+                    "source_closed": false,
+                    "cosine": 0.538,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 613,
+                    "title": "CVE-2023-23969",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDMDS",
+                    "created_at": "2025-06-09T12:40:55+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20790928",
+                    "source_closed": false,
+                    "cosine": 0.528,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 573,
+                    "title": "CVE-2023-31047",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDENZ",
+                    "created_at": "2025-06-08T00:41:45+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20780927",
+                    "source_closed": false,
+                    "cosine": 0.522,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 580,
+                    "title": "CVE-2023-41164",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDEQC",
+                    "created_at": "2025-06-08T01:11:24+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20781012",
+                    "source_closed": false,
+                    "cosine": 0.507,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 556,
+                    "title": "CVE-2025-48432",
+                    "url": "https://gitee.com/ascend/ai_assistant/issues/ICDE6Z",
+                    "created_at": "2025-06-07T22:10:36+08:00",
+                    "topic_summary": "cluster-0",
+                    "source_type": "issue",
+                    "source_id": "20780315",
+                    "source_closed": false,
+                    "cosine": 0.464,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    }
+}

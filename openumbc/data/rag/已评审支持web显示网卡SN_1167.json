@@ -1,0 +1,15 @@
+{
+    "topic_id": 1167,
+    "question": "【已评审】支持web显示网卡SN - content: 评审背景：\n支持板卡硬件管理，包括基本信息，健康状态，配置管理等信息。\n通过BMC的web接口查询板卡硬件的基本信息，如SN\n决策点：\nwebrest接口UI/Rest/System/NetworkAdapter/:adapterId新增属性SerialNumber\n详细描述：\nuri：UI/Rest/System/NetworkAdapter/:adapterId\n操作类型： GET\n变化类型：新增属性\n应用场景：web页面显示网卡的序列号\n\n属性名称\n取值类型\n默认值\n读写&权限\n约束\n\nSerialNumber\nstring/null\n“”\n只读，读权限：ReadOnly\n返回null时web页面不显示序列号\n\n示例：\nimage1329×244 13.5 KB\n评审结论\n同意webrest接口/UI/Rest/System/NetworkAdapter/:adapterId新增属性SerialNumber，类型为string/null，只读，读权限ReadOnly\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/0159ea684e01a62da93ea3542abe565979c4cdc7.png",
+    "topic_user_name": "Dli Bmc Vigaq",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1167/2",
+            "text": ""
+        }
+    ]
+}

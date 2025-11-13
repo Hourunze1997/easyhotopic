@@ -1,0 +1,7 @@
+{
+    "topic_id": 2140,
+    "question": "【问题求助】openUBMC是否支持对raiser卡上的标卡的IPMB访问能力 - 当前有DPU的主控为一颗英特尔X86处理器，需要BMC访问ME来获取DPU主控的温度，当前openUBMC是否支持在Raiser上的IPMB访问呢？",
+    "topic_user_name": "百信-李肖航",
+    "best_answer_url": "",
+    "reply_posts": []
+}

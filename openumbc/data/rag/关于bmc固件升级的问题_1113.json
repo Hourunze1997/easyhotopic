@@ -1,0 +1,15 @@
+{
+    "topic_id": 1113,
+    "question": "关于bmc固件升级的问题 - content: 为什么用社区发行版的bmc更新的时候会报无效的升级包？\n企业微信截图_17485036613493767×440 13.2 KB\n企业微信截图_17485036884440775×380 11 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/5ecbff806e427e54bfe75f81a6547687cf8cba79.png, https://discuss.openubmc.cn/uploads/default/original/1X/a0e10021f20722cf25dbb40a527f025bf220f557.png",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/1113/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1113/2",
+            "text": "社区发行版当前是无签名无加密的hpm包。"
+        }
+    ]
+}

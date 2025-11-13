@@ -1,0 +1,15 @@
+{
+    "topic_id": 1170,
+    "question": "【已评审】串口管理私有属性变更为资源协作接口属性 - content: 关联issue\n背景\n现状：串口配置中\nSerialManagement_4和SerialManagement_5都是用于连接SDI的串口，都是UART5连接PORT5。\n当前SDI判断串口是否冲突是通过Destination去判断，但是SerialManagement_4和SerialManagement_5的Destination不同，导致判断有误\n\"SerialManagement_4\": {\n            \"Id\": 4,\n            \"Description\": \"UART5连接PORT5\",\n            \"Availability\": 1,\n            \"RetainedPolicy\": 255,\n            \"ConnectStatus\": 0,\n            \"ConnectStatusResetPer\": 0,\n            \"SrcSerial\": 5,\n            \"Source\": \"SOL COM\",\n            \"SourceId\": 2,\n            \"DestSerial\": 21,\n            \"Destination\": \"CARD COM1\",\n            \"DestinationId\": 12\n        },\n\"SerialManagement_5\": {\n            \"Id\": 5,\n            \"Description\": \"UART5连接PORT5\",\n            \"Availability\": 1,\n            \"RetainedPolicy\": 255,\n            \"ConnectStatus\": 0,\n            \"ConnectStatusResetPer\": 0,\n            \"SrcSerial\": 5,\n            \"Source\": \"SOL COM\",\n            \"SourceId\": 2,\n            \"DestSerial\": 21,\n            \"Destination\": \"CARD COM2\",\n            \"DestinationId\": 13\n        \n\n评审点\n私有属性SrcSerial和DestSerial变更为资源协作接口属性，资源协作接口挂接资源如下：\npath：/bmc/kepler/Managers/:ManagerId/SerialManagement/:Id\ninterface： bmc.kepler.Managers.SerialManagement\n新增加属性信息如下：\n\n项\n说明\n\n属性名称\nDestSerial\n\n属性类型\nU8\n\n属性读写\n只读\n\n属性权限\nreadonly\n\n属性广播\nfalse\n\n持久化\n否\n\n属性说明\n目的 Uart/Port 口，其中取值大于 16 是 Port，否则是 Uart\n\n项\n说明\n\n属性名称\nSrcSerial\n\n属性类型\nU8\n\n属性读写\n只读\n\n属性权限\nreadonly\n\n属性广播\nfalse\n\n持久化\n否\n\n属性说明\n源 Uart/Port 口，其中取值大于 16 是 Port，否则是 Uart\n\n评审结论\n通过，同意在资源协作接口 bmc.kepler.Managers.SerialManagement 下新增属性 DestSerial，SrcSerial，类型均为 U8，只读，不发送变更通知事件，原有的同名私有属性删除（私有属性变更为资源协作接口属性）。\nlinks: #p-2540-issue-1, #p-2540-h-2, #p-2540-h-3, #p-2540-h-4",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1170/2",
+            "text": ""
+        }
+    ]
+}

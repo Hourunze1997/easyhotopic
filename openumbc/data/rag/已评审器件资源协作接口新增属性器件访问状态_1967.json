@@ -1,0 +1,29 @@
+{
+    "topic_id": 1967,
+    "question": "【已评审】器件资源协作接口新增属性器件访问状态 - content: 背景\n目前硬件告警是针对末端器件进行告警的，比如风扇硬件访问不通就是风扇硬件告警；但目前存在一种场景，比如风扇硬件是经过pca9545分路后挂在不同通道上的，有的时候可能是pca9545硬件问题导致风扇硬件访问不通，但实际的告警还是风扇硬件告警，不够精确，需要结合日志、甚至是需要逻辑分析仪抓取波形分析才能定位到是pca9545硬件问题，因此需要一个能够精准标识出故障器件的属性，告警关联对应硬件状态属性，可以精确告警是链路上哪个硬件产生问题，快速定位问题，减少问题排查分析的成本。\n属性变更流程：\n状态变更跟随实际硬件访问，每次硬件访问根据硬件链路向硬件发送数据，链路上任意一级硬件访问失败就中断访问，并报错，现在需要做的就是在报错前根据访问结果和刷新策略刷新硬件的状态。假设topo如下：\n\nHisport\n├──Pca9545_PCA9545\n|     └──Channel_1\n|         ├──Pca9555_IO\n|         └──Lm75_LM75\n└──Eeprom_3_3\n\n状态切换图：\n硬件访问状态转换744×427 10.4 KB\n器件未访问时，状态处于255；比如Lm75刚上树，Lm75访问状态就是初始的255.\n器件访问成功时，本级器件及前级器件访问状态刷新为0；比如访问Eeprom后，硬件返回成功，则将Eeprom状态更新为0。\n器件访问失败时，本级器件状态刷新为1；比如Pca9555访问时，需要先打开通道再访问，打开通道就需要先访问Pca9545发送数据，若此时Pca9545访问失败，整个硬件访问中断，并将Pca9545的状态更新为1。\n决策点\n在bmc.kepler.Chip接口下新增属性AccessStatus表示当前器件访问状态\n详细描述\n1、新增属性\n资源path：\n/bmc/kepler/Chip/Ads78/:Id\n/bmc/kepler/Chip/CanbusChip/:Id\n/bmc/kepler/Chip/Complex/:Id\n/bmc/kepler/Chip/Cpld/:Id\n/bmc/kepler/Chip/CpldChip/:Id\n/bmc/kepler/Chip/CpldRegister/:Id\n/bmc/kepler/Chip/Eeprom/:Id\n/bmc/kepler/Chip/Lm75/:Id\n/bmc/kepler/Chip/Pca9544/:Id\n/bmc/kepler/Chip/Pca9545/:Id\n/bmc/kepler/Chip/Pca9555/:Id\n/bmc/kepler/Chip/Rtc/:Id\n/bmc/kepler/Chip/Smc/:Id\n/bmc/kepler/Chip/Vrd/:Id\n资源interface：bmc.kepler.Chip\n变化类型：新增\n应用场景：\nHealthStatus：记录器件访问状态\n持久化类型： 不持久化\n操作权限：ReadOnly\n详细描述：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nAccessStatus\n修改属性\ny\nReadOnly\nNA\ntrue\n记录器件访问状态\n1）取值定义：[0：器件访问正常；1、器件访问异常；255：初始值]\n\n评审结论\n不同意bmc.kepler.Chip接口新增属性AccessStatus，使用已有属性HealthStatus表示器件健康/访问状态，修改HealthStatus默认值为0，取值定义：0 - 器件访问正常，1 - 器件访问异常\n遗留问题及确认结论\n1、确认HealthStatus目前在CSR的配置和使用情况，以及硬件代理是否使用，修改默认值的影响是什么。\n结论：已排查目前CSR配置的仓，包括产品仓和vpd仓，目前对HealthStatus只有在部分chip里配置了0，目前只有少数Fru对象有同步该属性，且Fru同步后未在代码内使用，使用无影响，仅需将默认值修改为0，保证初始状态默认为成功。\nlinks: #p-4816-h-1, https://discuss.openubmc.cn/uploads/default/original/2X/9/9142fa1713d94b5095d3c91e963ad6c0ef44241b.png, #p-4816-h-2, #p-4816-h-3, #p-4816-h-4, #p-4816-h-5",
+    "topic_user_name": "Huangzhiyu",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1967/2",
+            "text": "huangzhiyu:\n\n3）假设硬件异常，短时间内状态变化频繁，会有多次属性变更信号发送，订阅该属性的业务需要做好这种场景的处理\n\n1、状态更新需要有防抖机制，不能出现信号频繁发送的问题\n2、要考虑机制的限制和影响：访问状态更新是通过硬件访问流程触发的，当出现懒器件（访问周期长或者仅有限次数访问的器件），会出现访问状态不更新的问题"
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1967/3",
+            "text": "huangzhiyu:\n\n0：器件访问成功；1、本器件访问失败；2、前级器件访问失败；255：初始值\n\n1、状态机的状态转换过程和条件，需描述清楚，特别是前级器件访问失败后恢复的场景"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1967/4",
+            "text": ""
+        }
+    ]
+}

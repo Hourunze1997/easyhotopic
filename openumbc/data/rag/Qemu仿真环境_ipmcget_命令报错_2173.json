@@ -1,0 +1,57 @@
+{
+    "topic_id": 2173,
+    "question": "Qemu仿真环境 ipmcget 命令报错 - ~ ~ $ ipmcget -d version\n/opt/bmc/skynet/lua: service not exists, path:/bmc/kepler/AccountService/AccountPolicies/Local, interface:bmc.kepler.AccountService.AccountPolicy\nstack traceback:\n[C]: in function ‘error’\n./opt/bmc/lualib/route_mapper/mdb_access/init.lua:344: in function ‘get_object’\n[string “-- Copyright (c) 2024 Huawei Technologies Co…”]:129: in main chunk\n./opt/bmc/lualib/route_mapper/orchestrator/orchestrator.lua:72: in function ‘walk_plugins’\n./opt/bmc/lualib/route_mapper/orchestrator/orchestrator.lua:76: in function ‘walk_plugins’\n./opt/bmc/lualib/route_mapper/orchestrator/orchestrator.lua:83: in function ‘init_plugins’\n./opt/bmc/lualib/route_mapper/orchestrator/orchestrator.lua:32: in function ‘init’\n./opt/bmc/libmc/lualib/mc/class.lua:138: in function ‘new’\n./opt/bmc/lualib/route_mapper/route_mapper.lua:80: in function ‘equip_orchestrator’\n./opt/bmc/lualib/route_mapper/route_mapper.lua:75: in function ‘init’\n./opt/bmc/libmc/lualib/mc/class.lua:138: in function ‘new’\n./opt/bmc/apps/cli/lualib/ipmc.lua:51: in function ‘ctor’\n./opt/bmc/libmc/lualib/mc/class.lua:18: in function ‘create’\n./opt/bmc/libmc/lualib/mc/class.lua:133: in function ‘new’\n./opt/bmc/apps/cli/service/ipmcget.lua:40: in main chunk\n[C]: at 0xaaaabe8349f8\n~ ~ $\n使用python3 build/works/packet/qemu_shells/vemake_1711.py启用仿真后，ssh登录敲命令出现上述错误。麻烦帮看一下，谢谢！\n另外：有基本命令指导文档吗？",
+    "topic_user_name": "Qyt123",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2173/2",
+            "text": "qyt123:\n\nnot\n\n是通过bingo build -sc qemu使用自己出的仿真镜像包启动的还是使用归档的远程镜像包启动的？"
+        },
+        {
+            "user_name": "Qyt123",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2173/3",
+            "text": "是bingo build -sc 使用自己出的仿真镜像包启动的。"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2173/4",
+            "text": "是否有修改过rackmount仓等可能影响接口呈现的代码"
+        },
+        {
+            "user_name": "Qyt123",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2173/6",
+            "text": "没有修改过。"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2173/7",
+            "text": "能否将仿真镜像包cpio.gz文件上传到发布个人公开仓库的release中，并把链接回复给我"
+        },
+        {
+            "user_name": "Qyt123",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2173/8",
+            "text": "content: gitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\nlinks: https://gitcode.com/weixin_38497172/qbalance123, https://gitcode.com/weixin_38497172/qbalance123"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2173/9",
+            "text": "基于此镜像包未能复现问题，麻烦重启qemu尝试功能是否正常"
+        }
+    ]
+}

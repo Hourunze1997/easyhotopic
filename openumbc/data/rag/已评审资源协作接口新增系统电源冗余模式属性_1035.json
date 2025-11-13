@@ -1,0 +1,15 @@
+{
+    "topic_id": 1035,
+    "question": "【已评审】资源协作接口新增系统电源冗余模式属性 - content: 评审背景\n某超节点机型需要对电源冗余失效告警能力进行增强，在现在的告警机制条件下，结合系统电源冗余模式和可用电源数判断当前是否存在有效的冗余电源。\n例如，某机型电源冗余模式为2+1冗余，若可用电源小于3个，则需要上报“电源冗余失效”告警\n评审点\n一、 资源协作接口新增系统电源冗余模式属性\npath：/bmc/kepler/Systems/:SystemId/PowerStrategy\ninterface：bmc.kepler.Systems.PowerStrategy\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nRedundancyMode\n新增属性\nq\n只读 R：ReadOnly\n不持久化\nfalse\n属性值来源于CSR配置 系统电源冗余模式，高字节代表主用电源数量，低字节代表冗余电源数量：0x0101: 1+1冗余, 0x0202: 2+2冗余, 0x0301: 3+1冗余, 0x0300:表示无冗余电源, 0x0000：表示冗余模式未知\n\n评审结论\n决策点1：资源协作接口新增系统电源冗余模式属性\n结论：\n1、同意资源协作接口bmc.kepler.Systems.PowerStrategy新增RedundancyMode属性用于获取系统电源冗余模式，签名为q，只读，读权限：ReadOnly，不发送变更通知事件\n遗留问题及确认结论：\n1、确认bmc studio工具是否能够适配RedundancyMode这种场景\n结论：可通过定制方式实现适配\nlinks: #p-2197-h-1, #p-2197-h-2, #p-2197-h-3, #p-2197-h-4, #p-2197-h-1-5",
+    "topic_user_name": "Fumingquan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1035/2",
+            "text": ""
+        }
+    ]
+}

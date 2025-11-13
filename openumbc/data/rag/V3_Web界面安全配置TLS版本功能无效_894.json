@@ -1,0 +1,22 @@
+{
+    "topic_id": 894,
+    "question": "V3 Web界面安全配置TLS版本功能无效 - content: 1、问题背景\nInternet属性只勾选使用TLS1.1，安全配置TLS版本\"仅限TLS1.3\"，Edege浏览器还是可以登录BMC web。\nimage1920×1012 81.1 KB\n2、求助点。\n安全配置TLS版本功能无效\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/566dbfe9284c9b79d845339a541b6a5ea7b1f886.png",
+    "topic_user_name": "Zxl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "ZhangNing",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/894/2",
+            "text": "设置之后需要重启bmc生效，可以再试一下"
+        },
+        {
+            "user_name": "Zxl",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/894/3",
+            "text": "设置之后重启BMC之后还是不行"
+        }
+    ]
+}

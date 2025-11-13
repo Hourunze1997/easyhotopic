@@ -1,0 +1,29 @@
+{
+    "topic_id": 472,
+    "question": "【已评审】支持BIOS启动过程禁止KVM/VNC键盘输入 - content: 关联issue：支持BIOS启动过程禁止KVM/VNC键盘输入\n支持BIOS启动过程禁止KVM/VNC键盘输入\n背景：当前现状下，客户在交付裸金属服务时，存在BIOS启动过程中可能被修改bmc密码的隐患。\n1、裸金属场景，服务器上电，此时用户可以使用客户提供包装了的VNC客户端访问物理主机资源\n2、客户端可以和OS进行交互，如果在BIOS启动过程中按F11可以进入启动的BIOS菜单，可以设置BMC的密码。\n因此需要提供功能标志，支持客户在BIOS启动过程禁止KVM/VNC键盘输入。用以停止KVM的热键功能。（近端的场景不考虑）\n评审点1：是否同意新增资源树属性\nKVM资源树path:/bmc/kepler/Managers/:Id/GraphicalConsole\nKVM资源树interface：bmc.kepler.Managers.GraphicalConsole\n拟新增属性：DisableKeyboardDuringBiosStartup\nVNC资源树path:/bmc/kepler/Managers/:Id/VncService\nVNC资源树interface：bmc.kepler.Managers.VncService\n拟新增属性：DisableKeyboardDuringBiosStartup\n评审点2：是否同意新增web-rest接口属性\nKVM web-rest接口：https://device_ip/UI/Rest/Services/KVM\n拟新增属性：DisableKeyboardDuringBiosStartup\n操作类型：GET/PATCH\nVNC web-rest接口：https://device_ip/UI/Rest/Services/VNC\n拟新增属性：DisableKeyboardDuringBiosStartup\n操作类型：GET/PATCH\n评审结论\n同意在资源树path:/bmc/kepler/Managers/:Id/GraphicalConsole的interface：bmc.kepler.Managers.GraphicalConsole下新增属性：DisableKeyboardDuringBiosStartup\n同意在资源树path:/bmc/kepler/Managers/:Id/VncService的interface：bmc.kepler.Managers.VncService下新增属性：DisableKeyboardDuringBiosStartup\n同意在web-rest接口：https://device_ip/UI/Rest/Services/KVM 新增属性：DisableKeyboardDuringBiosStartup 支持的操作类型为：GET/PATCH\n同意在web-rest接口：https://device_ip/UI/Rest/Services/VNC 新增属性：DisableKeyboardDuringBiosStartup 支持的操作类型为：GET/PATCH\n属性统一为：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n说明\n\nDisableKeyboardDuringBiosStartup\n新增属性\nb\nR：ReadOnly W：KVMMgmt\n掉电\nfalse\nTrue:BIOS启动过程中不允许键盘输入False:BIOS启动过程中允许键盘输入【默认】\nlinks: https://gitcode.com/openUBMC/rackmount/issues/19, #p-887-h-1",
+    "topic_user_name": "Mebaron 68uet",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/472/2",
+            "text": "裸金属场景下，租户是有硬件的控制权限的，包括BIOS配置和OS安装，但是不具有BMC的访问权限（除KVM/VNC外），因此要限制的是不能通过KVM/VNC进入BIOS Setup菜单修改BMC的用户和密码，而不是完全禁止键盘输入"
+        },
+        {
+            "user_name": "lisiguang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/472/3",
+            "text": "当前并未完全禁止键盘输入，而是在BIOS启动阶段禁止通过热键进入setup菜单"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/472/4",
+            "text": ""
+        }
+    ]
+}

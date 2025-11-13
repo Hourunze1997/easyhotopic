@@ -1,0 +1,36 @@
+{
+    "topic_id": 938,
+    "question": "社区版本BMC导入SSL证书失败 - content: 使用官网华为版本5.05.12.15导入SSL证书可成功，无论是有密码还是无密码证书，均可正常导入并生效\n使用社区版本构建的BMC，无论是有密码还是无密码证书，均导入失败\nimage953×170 9.67 KB\nimage459×125 3.33 KB\n相关日志\nimage1340×381 53.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/5309429598e6db18123e4039a9617b443ba75e7e.png, https://discuss.openubmc.cn/uploads/default/original/1X/5ab251dad77dc2c3b541641103ddd3e2e9d001ba.png, https://discuss.openubmc.cn/uploads/default/original/1X/b7eeb84bf4e7d3b70e34a485023b036a19b1e8aa.png",
+    "topic_user_name": "长江-涂华能",
+    "best_answer_url": "/t/topic/938/2",
+    "reply_posts": [
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/938/2",
+            "text": "问题已解决，制作证书使用的openssl版本需要是3.x版本"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/938/3",
+            "text": "我们也刚解决了类似问题，问题场景如下：\n1230版本升级为2503版本后，ssh可以访问，web无法访问。\n咨询PAE后告知是ssl证书问题，尝试制作证书并导入，提示错误\n//导入证书\nipmcset -t certificate -d import -v /tmp/cert.p12 1 123456\n\n//一键收集日志\nipmcget -d diag\n\n一键日志也是报该错误：p12 parse fail, error is error:0308010C:digital envelope routines::unsupported，根据这个提示找到了方法，原本证书使用openssl1.x生成，升级openssl3.x之后生成证书并导入成功，web恢复访问。\n//查看openssl版本\nopenssl version -a"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/938/4",
+            "text": "请问ssl是用CA证书制作的吗？社区没看到相关说明"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/938/5",
+            "text": "和固件签名的CA没关系，具体可以搜索 一下"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1227,
+    "question": "【已评审】支持一键收集权限的定制 - content: ISSUE链接\n支持一键收集权限的定制-mdb_interface-GitCode\n背景\n支持定制一键收集日志权限\n决策点\n新增path，复用原一键收集interface，支持权限定制\n整体架构/方案\n北向调用定制权限的rpc方法，定制rpc方法调用子系统rpc\n详细描述\n资源path： 新增path， /bmc/<Customer>/Manager/:Id/LogServices\n<Customer>动态变化，与定制组件相关\n资源Interface：复用bmc.kepler.Managers.LogServices\n变化类型：新增path 复用原Interface\n应用场景：支持一键收集日志权限定制\n持久化类型： 不涉及\n详细描述：\n\n方法名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nDump\n新增方法\n请求：ys   响应：u\nBasicSetting\n不涉及\n否\n请求：   DomainUser:用户   FilePath：文件路径   响应：   TaskId：创建任务标识\nNA\n\n评审结论\n同意新增资源协作接口path：/bmc/<Customer>/Manager/:Id/LogServices，<Customer>根据定制组件变化，该path下实现已定义的接口bmc.kepler.Managers.LogServices\nlinks: #p-2660-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/105, #p-2660-h-2, #p-2660-h-3, #p-2660-h-4, #p-2660-h-5, #p-2660-h-6",
+    "topic_user_name": "Shijunguo N3joj",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1227/2",
+            "text": ""
+        }
+    ]
+}

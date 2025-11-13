@@ -1,0 +1,22 @@
+{
+    "topic_id": 307,
+    "question": "BMC复位过程中出现fail、error日志，如何进行调试定位 - 【BMC版本】5.5.x\n【问题现象及影响】 BMC复位过程中出现fail日志\n【复现路径】该版本BMC复位必现\nBMC串口日志\n[  OK  ] Stopped Flush Journal to Persistent Storage.\n         Unmounting /data...\n         Unmounting /var/log...\n[FAILED] Failed unmounting /data.\nOpen /.reboot-umount-msg.log failed!\n-------------fuser -mv /data----------------\nOpen /.reboot-umount-msg.log failed!\n\t\tUSER\t\tPID\tCOMMAND\n/data:\n\t\troot\t\tkernel\t/data\n----------------------------------------------------------------------\n[  OK  ] Unmounted /var/log.\n         Unmounting /var...\n[  OK  ] Unmounted /var.\n[  OK  ] Stopped target Preparation for Local File Systems.\n...\n[systemd-shutdown] -----------------------------------------------------------------\n[systemd-shutdown] USER\tPID\tPPID\tCMD\n[systemd-shutdown] root\t1\t0\t/lib/systemd/systemd-shutdown reboot --timeout 90000000us --log-level 6 --dfx-reboot 1 --log-target kmsg --log-color\n[systemd-shutdown] root\t6195\t1\t(process_status)\n[systemd-shutdown] -----------------------------------------------------------------\n[  703.632639] xhci-hcd xhci-hcd.1.auto: Host halt failed, -110\n[  703.670348] xhci-hcd xhci-hcd.0.auto: Host halt failed, -110\n[  704.209099] 69,2025-02-10 09:11:59,1,hi_mci_wait_card_idle,173,Busy; trying anyway\n\n1.[FAILED] Failed unmounting /data.日志格式上看起来是systemd配置的unmount流程，fuser查询时/data路径仍被kernel占用；是否复位时序上没有处理好，或是内核打开了某个句柄一直未关闭\n2.[  703.632639] xhci-hcd xhci-hcd.1.auto: Host halt failed, -110驱动报错，RTOS同事表示未交付过XHCI这个ko，BMC是如何使用到这个驱动的呢",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "/t/topic/307/2",
+    "reply_posts": [
+        {
+            "user_name": "许强",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/307/2",
+            "text": "已知问题，之前已分析解决了其他分区的卸载的失败问题。复位过程先停止了所有的用户服务和进程，再卸载的分区，复位时序上是正常的，初步怀疑跟内核有关，待进一步分析确认，当前评估影响低。"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/307/3",
+            "text": "感谢回复，请问下针对该问题是否有明确的解决计划"
+        }
+    ]
+}

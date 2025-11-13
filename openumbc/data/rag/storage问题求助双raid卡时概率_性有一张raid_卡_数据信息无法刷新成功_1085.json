@@ -1,0 +1,29 @@
+{
+    "topic_id": 1085,
+    "question": "【storage】【问题求助】双raid卡时概率 性有一张raid 卡 数据信息无法刷新成功 - content: 现象\n现象1：概率性硬盘映射错误\n截图_202505231044471014×507 85 KB\n现象2：双raid 时一张raid 无法读出数据\n双raid卡时概率 性有一张raid 卡 数据信息无法刷新成功\n截图_20250523104531937×775 140 KB\n版本信息\n截图_202505231046091118×575 184 KB\n分析\nkey 冲突，涉及未开源代码，后面不知如何继续分析\n截图_202505231047061633×235 163 KB\n述求\n分析思路指导求助\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/7bd73b31968252ea2e7f01b9beb6fa178b019fee.jpeg, https://discuss.openubmc.cn/uploads/default/original/1X/c8d865b98083eaf727420278031101a94c82fd12.jpeg, https://discuss.openubmc.cn/uploads/default/original/1X/4e215ff7b83a8fdcabcb5bf4ca9e447c4f985cd7.png, https://discuss.openubmc.cn/uploads/default/original/1X/66d60cb1cd24d95698ab5d04f297917fe5b2cb47.jpeg",
+    "topic_user_name": "Yctco Huaconghui",
+    "best_answer_url": "/t/topic/1085/2",
+    "reply_posts": [
+        {
+            "user_name": "Yelmh Kno07",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1085/2",
+            "text": "content: image1596×179 12.3 KB\n现象1 由于上图的主键冲突导致，此时ID错误导致后续通过raid id更新的逻辑有误，无法获取另一张raid卡相关的信息，是已知问题，待后续合入，先由issue跟踪\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/7f4d294e993a5c9b535cfb7963f62f2e1fa6e98d.png"
+        },
+        {
+            "user_name": "Yctco Huaconghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1085/3",
+            "text": "content: 基于社区代码添加这个修改点后  仍概率性会出\n截图_20250523164540738×199 12.6 KB\n截图_20250523164639918×422 94.3 KB\n现象1 的问题应该是解决了\n1个 raid 卡 无法刷新  这个问题大佬有无思路\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/e915a92c6f6db8573e79bbdf2d263d656924a53f.png, https://discuss.openubmc.cn/uploads/default/original/1X/00d7f5b3bc84d2c63e6796ed4cb8e8804defacc5.png"
+        },
+        {
+            "user_name": "Yelmh Kno07",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1085/4",
+            "text": "需要看下日志了 看下raid卡的注册流程，两个raid卡是不是都有如下打印\ncontroller_collection:add_object success, controller_id = %d\n如果注册失败了\n依次查看\nctrl%s add_controller_to_link_topo successfully\nctrl%s add_controller_to_sml successfully\nctrl%s register_controller_to_sml successfully\n看看是哪一步注册失败了 后续往下看日志"
+        }
+    ]
+}

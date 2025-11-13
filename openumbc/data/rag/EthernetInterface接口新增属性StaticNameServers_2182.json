@@ -1,0 +1,7 @@
+{
+    "topic_id": 2182,
+    "question": "EthernetInterface接口新增属性StaticNameServers - content: 背景介绍\n\nRedfish接口EthernetInterface待实现的标准资源属性StaticNameServers与已实现标准资源属性NameServers、已实现自定义资源属性DNSAddressOrigin在实现上产生冲突，需要新增兼容性方案\nlinks: #p-5542-h-1",
+    "topic_user_name": "",
+    "best_answer_url": "",
+    "reply_posts": []
+}

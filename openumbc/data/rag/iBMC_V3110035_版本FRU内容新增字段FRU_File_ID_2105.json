@@ -1,0 +1,7 @@
+{
+    "topic_id": 2105,
+    "question": "iBMC V3.11.00.35 版本FRU内容新增字段FRU File ID - content: 机型 Taishan 200 2480  可看到这个字段是BMC版本号3.11.0.35\nimg_v3_02on_43ad18a8-1bfb-449e-8b30-8749604f4a9g762×715 134 KB\nBMC降版本后这个字段也是BMC版本号3.11.0.27\nimg_v3_02on_4fee011e-6f13-491d-8790-87ba9a776e8g799×720 139 KB\n机型 Taishan 200 2280（VD）这个机型FRU 0 是BMC版本号，其他FRU不知道是什么值。\nimg_v3_02on_7377f1b8-eb1d-4401-bdba-ef2d9d35121g760×920 171 KB\n如下是对应的背板信息，和CPLD版本号也对应不起来。\nimg_v3_02on_5b5469b3-6378-48a4-9e55-6029b57960fg2206×549 96.8 KB\n请问\n\nFRU File ID字段是必须的吗？\n这个字段的取值标准是什么？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4f5dbd2a6458e42cc3cf315112308cad7322b111.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/1/142065b534016c01ccba5483b0b9bf56093f162b.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/7/7f25925035bee1a3cf782531aaff44f01a33bb73.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/3/3912bab32e624715588a104c8b0c0a267f33f46a.jpeg",
+    "topic_user_name": "KunTai_WangJiaKai",
+    "best_answer_url": "",
+    "reply_posts": []
+}

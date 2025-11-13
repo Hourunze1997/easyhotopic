@@ -1,0 +1,7 @@
+{
+    "topic_id": 1059,
+    "question": "【暂不评审】IPMI2.0标准接口能力新增私有属性保存system info信息 - content: ISSUE链接\n支持Set System Info标准命令\n支持Get System Info标准命令\n背景\nIPMI2.0标准接口能力需求，按照IPMI标准规范实现对应的IPMI接口\nSet System Info标准命令和Get System Info标准命令\n要实现这些功能需要定义对应属性用于保存这些系统信息，在发送set命令的时候保存，get命令时返回给用户\n决策点\n新增私有属性用来保存System Info信息来实现IPMI2.0标准接口能力\n\nservice\nOBJECT(path)\ninterface\nmethod/property/signal\ntype\n属性\n是否广播（是/否）\n是否持久化（否/临时/复位/掉电/永久）\n属性值来源（CSR/代码）\n取值类型\n备注\n\nbmc.kepler.bios\nSystemInfoTable\n私有属性\n\nproperty\nId\n否\n掉电持久化\n带内上报\nString\n\nbmc.kepler.bios\nSystemInfoTable\n私有属性\n\nproperty\nSetInProcess\n否\n掉电持久化\n带内上报\nU8\n\nbmc.kepler.bios\nSystemInfoTable\n私有属性\n\nproperty\nSystemFirmwareversion\n否\n掉电持久化\n带内上报\nString\n\nbmc.kepler.bios\nSystemInfoTable\n私有属性\n\nproperty\nSystemName\n否\n掉电持久化\n带内上报\nString\n\nbmc.kepler.bios\nSystemInfoTable\n私有属性\n\nproperty\nPrimaryOperatingSystemName\n否\n掉电持久化\n带内上报\nString\n\nbmc.kepler.bios\nSystemInfoTable\n私有属性\n\nproperty\nOperatingSystemName\n否\n掉电持久化\n带内上报\nString\n\nbmc.kepler.bios\nSystemInfoTable\n私有属性\n\nproperty\nPresentOSVersionNumber\n否\n掉电持久化\n带内上报\nString\n\nbmc.kepler.bios\nSystemInfoTable\n私有属性\n\nproperty\nBmcUrl\n否\n掉电持久化\n带内上报\nString\n\nbmc.kepler.bios\nSystemInfoTable\n私有属性\n\nproperty\nBaseOsUrlForManageability\n否\n掉电持久化\n带内上报\nString\nlinks: https://gitcode.com/openUBMC/bios/issues/13, https://gitcode.com/openUBMC/bios/issues/12",
+    "topic_user_name": "曾启健",
+    "best_answer_url": "",
+    "reply_posts": []
+}

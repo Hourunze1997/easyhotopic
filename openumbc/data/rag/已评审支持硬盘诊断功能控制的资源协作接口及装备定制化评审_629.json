@@ -1,0 +1,15 @@
+{
+    "topic_id": 629,
+    "question": "【已评审】支持硬盘诊断功能控制的资源协作接口及装备定制化评审 - content: 关联issue\n支持硬盘诊断功能控制\n评审背景\n\nBMC带外硬盘日志自动收集可能会影响客户带内的性能（跟具体的硬盘有关，有的盘会出现IO跌零现象），客户希望改成手动控制，因此需要支持通过BMC接口查询和设置硬盘诊断功能的状态，包括日志收集等。\n\n评审点\n\n资源协作接口新增属性LogAutoCollectEnable、LogAutoCollectInterval，新增方法StartCollectLog\n新增装备定制化接口设置硬盘日志自动收集开启状态和周期\n\n1、资源协作接口新增属性及方法\n评审点： 是否新增属性LogAutoCollectEnable、LogAutoCollectInterval，是否新增方法StartCollectLog\n资源协作接口路径： /bmc/kepler/Systems/:SystemId/Storage/Drives\n资源协作接口： bmc.kepler.Systems.Storage.Drives\n新增属性：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n属性说明\n接口约束\n\nLogAutoCollectEnable\n新增属性\nb\nR ReadOnly W：BasicSetting\n掉电持久化\nfalse\n硬盘日志自动收集开启状态\n—\n\nLogAutoCollectInterval\n新增属性\ny\nR ReadOnly W：BasicSetting\n掉电持久化\nfalse\n硬盘日志自动收集周期，单位：小时\n—\n\n新增方法：\n\n方法名称\n变化类型\n入参签名\n入参说明\n权限\n方法说明\n接口约束\n\nStartCollectLog\n新增方法\ns\n请求参数： “DriveName” : “Disk0” or  “*” 硬盘名称：1、指定硬盘名称：收集指定硬盘日志2、不指定硬盘名称：“*” 表示收集所有硬盘日志\nBasicSetting\n手动触发硬盘日志收集功能（区分单盘或所有盘）\n\n评审结论：\n同意资源协作接口bmc.kepler.Systems.Storage.Drives新增如下属性和方法\n\n新增属性LogAutoCollectEnable：硬盘日志自动收集开启状态，签名为b，读权限：ReadOnly，写权限：BasicSetting，不发送变更通知事件\n新增属性LogAutoCollectInterval：硬盘日志自动收集周期，签名为y，读权限：ReadOnly，写权限：BasicSetting，不发送变更通知事件\n新增方法StartCollectLog：手动触发硬盘日志收集，请求签名：s，响应签名：无，权限：BasicSetting\n\n2、新增装备定制化项\n新增定制化项，用于定制是否开启硬盘日志自动收集和硬盘日志收集周期，具体的定制化项信息如下：\n\n项目\n值\n\n定制化项\n硬盘日志自动收集开启状态\n\n定制化接口名称\nBMCSet_DrivesLogAutoCollectEnable\n\n默认值\n1\n\n处理逻辑\n1、不配置导入此值时，默认开启硬盘日志收集； 2、配置导入此值时，处理逻辑如下： if(BMCSet_DrivesLogAutoCollectEnable == 0)   关闭硬盘日志自动收集  else    开启硬盘日志自动收集\n\n说明\n取值范围：0：关闭硬盘日志自动收集1：开启硬盘日志自动收集\n\n项目\n值\n\n定制化项\n硬盘日志自动收集周期\n\n定制化接口名称\nBMCSet_DrivesLogCollectInterval\n\n默认值\n24（小时）\n\n处理逻辑\n1、不配置导入此值时，日志收集周期为24小时； 2、日志收集周期以配置导入的BMCSet_DrivesLogAutoCollectInterval的值为准；\n\n约束\n1、取值范围：1 - 255（小时）2、超过上述范围装备定制化将报失败；\n\n评审结论：\n同意新增装备定制化项BMCSet_DrivesLogCollectInterval，表示硬盘日志自动收集周期，取值范围1~255，单位：小时\nlinks: #p-1261-issue-1, https://gitcode.com/openUBMC/storage/issues/7, #p-1261-h-2, #p-1261-h-3, #p-1261-h-1-4, #p-1261-h-2-5",
+    "topic_user_name": "Changxing Open Ubmc",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/629/2",
+            "text": ""
+        }
+    ]
+}

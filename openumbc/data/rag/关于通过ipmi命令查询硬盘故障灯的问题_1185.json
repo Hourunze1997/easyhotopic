@@ -1,0 +1,15 @@
+{
+    "topic_id": 1185,
+    "question": "关于通过ipmi命令查询硬盘故障灯的问题 - 当前在调用ipmi命令点亮nvme盘故障灯时，出现了物理场景实际点亮，但是通过GetPhysicalDriveLedStatus的ipmi命令查询时，发现查询到的故障灯状态为0（熄灭）。\n反复尝试后发现通过ipmi命令和web方式点亮定位灯后，都可以正常查询定位灯，且状态为1，但是点亮故障灯后，查询结果始终为0。目前推测是sr中故障灯寄存器地址配置可能存在问题，导致无法获取正确的故障灯状态，想要求助确认寄存器地址以及下一步的定位手段。\n当前环境硬盘背板vendor/openUBMC/14100665_00000001030302023938.sr\n\"Drive_4\": {\n      \"Id\": 3,\n      \"Name\": \"Disk3\",\n      \"PhysicalLocation\": \"HDD Plane\",\n      \"NodeId\": \"HDDPlaneDisk3\",\n      \"Presence\": \"<=/Scanner_Drive3PresentAccessor.Status;<=/Scanner_Drive3PresentAccessor.Value |> expr($1 != 0 ? 255 : $2)\",\n      \"LocateLed\": \"<=/Scanner_Drive3LocateAccessor.Value\",\n      \"FaultLed\": \"<=/Scanner_Drive3FalutAccessor.Value\",\n      \"ActivationLed\": \"<=/Scanner_Drive3ActivationAccessor.Value\",\n      \"SetLocateLed\": \"#/Accessor_Drive3LocateAccessor.Value\",\n      \"SetFaultLed\": \"#/Accessor_Drive3FaultAccessor.Value\",\n      \"TemperatureCelsius\": 255,\n      \"Missing\": 0,\n      \"Health\": \"<=/Component_Drive3.Health\",\n      \"RebuildState\": 0,\n      \"FirmwareStatus\": 255,\n      \"PredictiveFailure\": 0,\n      \"InAFailedArray\": 0,\n      \"FirmwareStatusError\": false,\n      \"SerialNumber\": \"\",\n      \"RelativeSlot\": 3,\n      \"@Default\": {\n        \"PredictedMediaLifeLeftPercent\": 255\n      },\n      \"PassThrough\": \"<=/Scanner_Drive4PCIePresence.Value;<=/Scanner_Drive4PCIeType.Value|> expr(($1 == 1) && ($2 == 1))\",\n      \"HddBackplaneStartSlot\": \"<=/HddBackplane_1.StartSlot\",\n      \"Type\": \"SATA/SAS\",\n      \"IODeteriorationHealthCode\": 0\n    },\n    \"DiscreteSensor_Disk3\": {\n      \"AssertMask\": 199,\n      \"DeassertMask\": 199,\n      \"DiscreteMask\": 199\n    }，\n...\n    \"Scanner_Drive4LocateAccessor\": {\n      \"Chip\": \"#/Smc_EnclSMC\",\n      \"Offset\": 335545605,\n      \"Size\": 2,\n      \"Mask\": 3072,\n      \"Type\": 0,\n      \"Period\": 2000,\n      \"Debounce\": \"None\",\n      \"Value\": 0\n    },\n    \"Scanner_Drive4FalutAccessor\": {\n      \"Chip\": \"#/Smc_EnclSMC\",\n      \"Offset\": 335545605,\n      \"Size\": 2,\n      \"Mask\": 768,\n      \"Type\": 0,\n      \"Period\": 2000,\n      \"Debounce\": \"None\",\n      \"Value\": 0\n    },",
+    "topic_user_name": "kunlun_lizhennan",
+    "best_answer_url": "/t/topic/1185/2",
+    "reply_posts": [
+        {
+            "user_name": "kunlun_lizhennan",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1185/2",
+            "text": "问题排除，当前定位原因为硬盘背板的CPLD存在问题，解决方式为升级新的硬盘背板的固件版本。\n升级版本并且生效后可以通过ipmi正常查询故障灯状态。"
+        }
+    ]
+}

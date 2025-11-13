@@ -1,0 +1,29 @@
+{
+    "topic_id": 1391,
+    "question": "【已评审】资源协作接口新增电源装备模式属性 - content: ISSUE链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n评审背景\n电源输出不均流告警需要添加前置检查条件，在电源的装备模式（在电源生产装备阶段对电源进行调试和验证）下，不进行告警检查，避免出现误告警问题\n评审点\n一、 资源协作接口新增电源装备模式属性\npath：/bmc/kepler/Systems/:SystemId/PowerMgmt/OnePower/:Id\ninterface：bmc.kepler.Systems.PowerMgmt.OnePower.Status\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nEquipmentMode\n新增属性\ny\n只读 R：ReadOnly\n不持久化\ntrue\n电源装备模式： 0：装备模式 1：非装备模式  255：未知（默认）\n\n评审结论\n决策点1：资源协作接口新增电源装备模式属性\n结论：\n1、同意资源协作接口bmc.kepler.Systems.PowerMgmt.OnePower.Status新增EquipmentMode属性用于获取电源装备模式，签名为y，只读，读权限：ReadOnly，发送变更通知事件\nlinks: #p-3234-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/126, https://gitcode.com/openUBMC/mdb_interface/issues/126, #p-3234-h-2, #p-3234-h-3, #p-3234-h-4, #p-3234-h-5, #p-3234-h-1-6",
+    "topic_user_name": "Fumingquan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1391/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1391/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1391/4",
+            "text": ""
+        }
+    ]
+}

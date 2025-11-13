@@ -1,0 +1,15 @@
+{
+    "topic_id": 1454,
+    "question": "【已评审】新增资源协作接口属性EpdSupported，JbodSupported - content: issue链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景\n支持web可以正确显示和设置硬盘固件状态。需要北向给web配置EpdSupported来实现。\n资源协作接口上没有属性可以跟EpdSupported关联。\nweb需要关联JbodSupported来显示Raid卡的JBOD设置按钮。\n决策点\n资源协作接口需要新增属性EpdSupported，JbodSupported\n详细说明\n资源协作接口路径： /bmc/kepler/Systems/:SystemId/Storage/Controllers/:Id\n资源协作接口： bmc.kepler.Systems.Storage.Controller\n新增属性： EpdSupported，JbodSupported\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n属性说明\n接口约束\n\nEpdSupported\n新增属性\nb\nR ReadOnly W:无\n无\nfalse\n是否支持硬盘模式增强\n取值范围：true或者false\n\nJbodSupported\n新增属性\nb\nR ReadOnly W:无\n无\nfalse\n是否支持Raid卡Jbod模式\n取值范围：true或者false\n\n评审结论\n1.同意在资源协作接口bmc.kepler.Systems.Storage.Controller下新增属性 EpdSupported和JbodSupoprted，签名为b，只读，读权限：ReadOnly，不发送变化通知事件\n遗留问题及确认结论\n遗留问题：举一反三排查是否有同类型问题\n确认结论：排查需要补充增加一个属性JbodSupoprted，具体如下：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n属性说明\n接口约束\n\nJbodSupported\n新增属性\nb\nR ReadOnly W:无\n无\nfalse\n是否支持Raid卡Jbod模式\n取值范围：true或者false\nlinks: #p-3461-issue-1, https://gitcode.com/openUBMC/storage/issues/72, https://gitcode.com/openUBMC/storage/issues/72, #p-3461-h-2, #p-3461-h-3, #p-3461-h-4, #p-3461-h-5, #p-3461-h-6",
+    "topic_user_name": "Dli Bmc Vigaq",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1454/3",
+            "text": ""
+        }
+    ]
+}

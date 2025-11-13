@@ -1,0 +1,15 @@
+{
+    "topic_id": 2164,
+    "question": "构建报ImportError: cannot import //ERROR:root:Command - ImportError: cannot import name ‘DSSKey’ from ‘paramiko’ (/usr/local/lib/python3.12/dist-packages/paramiko/init.py). Did you mean: ‘RSAKey’?\nERROR:root:Command ‘[’/usr/local/bin/bingo’, ‘build’, ‘-t’, ‘install_sdk’, ‘-b’, ‘openUBMC’, ‘-ucc’]’ returned non-zero exit status 1.\nVMware ubuntu24.02创建环境时遇到上述问题，root权限执行python3 init.py -path ./bmc_sdk.zip -user xxx -psw xxx,请问怎么解决？谢谢",
+    "topic_user_name": "Qyt123",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2164/2",
+            "text": "content: bmc_sdk.zip进行环境安装时报错 交流互助区\n\n    您好，按以上的指示：virtualbox里新建了ubuntu，也保证了root下执行，但报了一个新的错误： \n [image] \n我的密钥是 ED25519 SSH 密钥，路径：~/.ssh/id_ed25519.pub，不知道是否有影响\n  \n\n参考这个\nlinks: https://discuss.openubmc.cn/t/topic/2122/22, /c/42-category/42, https://discuss.openubmc.cn/uploads/default/original/2X/3/3857c8ddbef3c5f0e74009614ba4a3021017999c.png"
+        }
+    ]
+}

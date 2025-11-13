@@ -1,0 +1,36 @@
+{
+    "topic_id": 412,
+    "question": "【已评审】定制项新增时间轮询间隔 - content: 关联issue\n定制项新增NTP轮询时间\n评审背景\n\n客户有需求，需要在出厂时定制NTP最小和最大轮询时间\n\n评审点\n新增定制化项，用于定制当前的NTP最大最小轮询时间。具体的定制化项信息如下：\n定制项1： NTP最小轮询间隔\n\n项目\n值\n\n定制化项\nNTP最小轮询间隔\n\n定制化接口名称\nCustom_MinPollInterval\n\n默认值\n6\n\n处理逻辑\nif(Custom_MinPollInterval == 空)   设置NTP最小轮训间隔为默认值  else    设置NTP最小轮训间隔为Custom_MinPollInterval的值\n\n说明\n代表两个NTP报文的最小间隔时间，范围3~17，配置3代表2秒的3次方\n\n定制项2： NTP最大轮询间隔\n\n项目\n值\n\n定制化项\nNTP最大轮询间隔\n\n定制化接口名称\nCustom_MaxPollInterval\n\n默认值\n10\n\n处理逻辑\nif(Custom_MaxPollInterval == 空)   设置NTP最大轮训间隔为默认值  else   设置NTP最大轮训间隔为Custom_MaxPollInterval的值\n\n说明\n代表两个NTP报文的最大间隔时间，范围3~17，配置3代表2秒的3次方\n\n评审结论\n同意新增NTP轮询时间的最小和最大间隔定制化项，具体的定制化项如下：\n\nCustom_MinPollInterval\nCustom_MaxPollInterval\nlinks: #p-766-issue-1, https://gitcode.com/openUBMC/profile_schema/issues/3, #p-766-h-2, #p-766-h-3, #p-766-h-4",
+    "topic_user_name": "sunpeijun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/412/2",
+            "text": "定制项的默认值和说明要补充"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/412/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/412/4",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/412/5",
+            "text": ""
+        }
+    ]
+}

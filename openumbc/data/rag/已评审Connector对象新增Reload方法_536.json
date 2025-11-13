@@ -1,0 +1,29 @@
+{
+    "topic_id": 536,
+    "question": "【已评审】Connector对象新增Reload方法 - content: 关联Issue\nConnector对象新增Reload方法\n背景\n\n新增CSR故障恢复需求，在eeprom内部数据损坏情况下需要对CSR进行重新导入，或者在CSR加载失败的场景下对CSR尝试重新加载，因此需要在连接器对象中新增Reload方法，对单个连接器进行重新加载\n\n决策点\n\nbmc.kepler.Connector接口新增方法\n\n详细描述\npath：/bmc/kepler/Connector/:Id\ninterface：bmc.kepler.Connector\n变化类型：新增方法\n具体如下\n\n方法名称\nreq签名\n请求参数\nrsp签名\n响应参数\n权限\n约束\n\nReload\nsssy\nBom：连接器Bom Id：通过连接器识别的设备Id AuxId：通过连接器识别的设备AuxId IdentifyMode：识别设备的模式\n-\n-\nBasicSetting\n\n评审结论\n\n同意bmc.kepler.Connector接口新增方法Reload，请求签名：sssy，响应签名：无\nlinks: #p-1035-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/9, #p-1035-h-2, #p-1035-h-3, #p-1035-h-4, #p-1035-h-5",
+    "topic_user_name": "lijiabao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/536/2",
+            "text": "content: 标题请按照议题申报要求填写。Connector是基础框架管理的内容，请与maintainer  @WeliveWelove_8cth9 提前讨论清楚接口合理性\nlinks: /u/welivewelove_8cth9"
+        },
+        {
+            "user_name": "lijiabao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/536/3",
+            "text": "收到"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/536/4",
+            "text": ""
+        }
+    ]
+}

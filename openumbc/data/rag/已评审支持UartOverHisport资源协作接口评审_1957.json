@@ -1,0 +1,36 @@
+{
+    "topic_id": 1957,
+    "question": "【已评审】支持UartOverHisport资源协作接口评审 - content: 评审背景\n1、sdk扩展了uart互联的能力，支持uart的tx/rx独立互联。\n背景介绍：sdk原有的uart互联功能会同时将uart/port和uart/port的tx和rx同时建立通信，该能力框架已提供资源树方法“UartConnectUart\",“UartConnectPort”,“PortConnectPort”。\n在保留该能力的基础上，sdk扩展出了允许对tx/rx单独建立通信的能力\n原有能力: 设置互联会同时设置uart和port的tx和rx\n增强功能: 支持tx和rx分开配置互联，并支持tx与多个uart或port互联\n图示1072×855 50.6 KB\n补充说明：对uart而言，tx是输出，rx是输入。对port而言，port的tx和rx是对用户而言的，所以输入是tx，输出是rx\n2、支持uart over hisport\n背景介绍：sdk提供了将uart配置成hisport uart的接口，配置成hisport uart后原uart的标准操作仍支持（支持SOL、支持port、uart互联）。当前2路hisport都支持uart，分别作为2路系统串口，通过sdk新增的hisport uart使能接口可将uart0和uart1配置成hisport uart。\nhisport uart未使能时，uart0和uart1继续作为host域uart，无变更。\n触发原因：需求\n\nsdk新提供了uart的tx和rx独立互联的能力\n支持将uart0和uart1切换成hisport uart\n考虑兼容性，平台版本不支持以上方法时，返回已有自定义错误“OperationNotSupport”\n\n当前差距/问题分析：\n1、框架需要在sdk提供独立互联后，封装提供uart/port 的tx和rx独立互连的接口\n2、框架需要提供hisport uart的配置使能开启和关闭的接口\n决策点\n决策点1：在原资源协作路径/bmc/kepler/Managers/:Id/Uart的接口bmc.kepler.Managers.Uart下新增以下方法\nUartRxConnectUartTx、 UartRxConnectPortRx、 PortTxConnectPortRx、 PortTxConnectUartTx\n决策点2：在原资源协作路径/bmc/kepler/Managers/:Id/Uart下新增接口bmc.kepler.Managers.HisportUart，在该资源协作接口下新增方法SetHisportUartStatus\n详细描述\n决策点1：\n资源path： /bmc/kepler/Managers/:Id/Uart（已有）\n资源interface： bmc.kepler.Managers.Uart （已有）\n变化类型：新增方法\n应用场景：独立互联功能保证面板串口切换到sol后串口录音的功能\n持久化类型：不持久化\n操作权限：BasicSetting\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nUartRxConnectUartTx\n新增方法\n请求：uu响应：NA\nBasicSetting\nNA\nNA\n“UartRxConnectUartTx”: {    “req”: {        “SrcUart”: {            “baseType”: “U32”,            “description”: “源uart控制器”        },        “DestUart”: {            “baseType”: “U32”,            “description”: “目的uart控制器”        }    },    “rsp”: {},    “description”: “设置SrcUart的Rx和DestUart的Tx的互联状态”},\nNA\n\nUartRxConnectPortRx\n新增方法\n请求：uu响应：NA\nBasicSetting\nNA\nNA\n“UartRxConnectPortRx”: {    “req”: {        “SrcUart”: {            “baseType”: “U32”,            “description”: “源uart控制器”        },        “DestPort”: {            “baseType”: “U32”,            “description”: “目的port”        }    },    “rsp”: {},    “description”: “设置SrcUart的Rx和DestPort的Rx的互联状态”},\nNA\n\nPortTxConnectPortRx\n新增方法\n请求：uu响应：NA\nBasicSetting\nNA\nNA\n“PortTxConnectPortRx”: {    “req”: {        “SrcPort”: {            “baseType”: “U32”,            “description”: “源port”        },        “DestPort”: {            “baseType”: “U32”,            “description”: “目的port”        }    },    “rsp”: {},    “description”: “设置SrcPort的Tx和DestPort的Tx的互联状态”},\nNA\n\nPortTxConnectUartTx\n新增方法\n请求：uu响应：NA\nBasicSetting\nNA\nNA\n“PortTxConnectUartTx”: {    “req”: {        “SrcPort”: {            “baseType”: “U32”,            “description”: “源port”        },        “DestUart”: {            “baseType”: “U32”,            “description”: “目的uart控制器”        }    },    “rsp”: {},    “description”: “设置SrcPort的Tx和DestUart的Tx的互联状态”},\nNA\n\n决策点2：\n资源path： /bmc/kepler/Managers/:Id/Uart（已有）\n资源interface： bmc.kepler.Managers.HisportUart（新增）\n变化类型：新增接口和方法\n应用场景：使能hisport uart能力，hisport uart可支持标准的uart操作，包括uart互联，sol功能\n持久化类型：不持久化\n操作权限：BasicSetting\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nSetHisportUartStatus\n新增方法\n请求: ub响应: NA\nBasicSetting\nNA\nNA\n“SetHisportUartStatus”: {    “req”: {        “UartId”: {            “baseType”: “U32”,            “enum”: [0, 1],            “description”: “uart的id， 0: uart0  1: uart1”        },        “Enabled”: {            “baseType”: “Boolean”,            “description”: “true: 使能, false: 不使能”        }    },    “rsp”: {},    “description”: “配置hisport uart使能状态”},\n当前最多只支持2路hisport uart，分别对应uart0和uart1\n\n评审结论\n决策点1\n结论：同意资源协作接口bmc.kepler.Managers.Uart新增以下方法\npath：/bmc/kepler/Managers/:Id/Uart\ninterface：bmc.kepler.Managers.Uart\n变化类型：新增方法\n方法：\n\nUartRxConnectUartTx，请求签名uu，无响应签名，权限BasicSetting\nUartRxConnectPortRx，请求签名uu，无响应签名，权限BasicSetting\nPortTxConnectPortRx，请求签名uu，无响应签名，权限BasicSetting\nPortTxConnectUartTx，请求签名uu，无响应签名，权限BasicSetting\n\n决策点2\n结论：同意新增资源协作接口bmc.kepler.Managers.HisportUart及方法\npath：/bmc/kepler/Managers/:Id/Uart\ninterface：bmc.kepler.Managers.HisportUart\n变化类型：新增接口和方法\n方法：\n\nSetHisportUartStatus，请求签名ub，无响应签名，权限BasicSetting\n\n遗留问题及确认结论：\n1、去除SetHisportUartStatus方法中入参uart id的限制\n结论：已删除，改为在方法内部做参数校验\n2、不新增path，在原有/bmc/kepler/Managers/:Id/Uart新增bmc.kepler.Managers.HisportUart接口\n结论：已修改成在原/bmc/kepler/Managers/:Id/Uart下新增bmc.kepler.Managers.HisportUart接口接口\nlinks: #p-4797-h-1, https://discuss.openubmc.cn/uploads/default/original/2X/3/308ea3fda4ff8e3abf198eaa790354845144ca6f.jpeg, #p-4797-h-2, #p-4797-h-3, #p-4797-h-4, #p-4797-h-1-5, #p-4797-h-2-6, #p-4797-h-7",
+    "topic_user_name": "Chenshengfan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1957/2",
+            "text": "chenshengfan:\n\nsdk扩展了uart互联的能力，支持uart的tx/rx独立互联。支持uart over hisport，共有2路hisport都支持uart，分别作为2路系统串口。\n\n背景需要逐个描述新增的能力有哪些，对比之前的差异、分析上要考虑兼容性"
+        },
+        {
+            "user_name": "Chenshengfan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1957/3",
+            "text": "已重新修改背景描述，并针对差异点兼容性提出补充点"
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1957/4",
+            "text": "chenshengfan:\n\n资源path： /bmc/kepler/Managers/:Id/Uart（已有）\n资源interface： bmc.kepler.Managers.Uart （已有）\n变化类型：新增方法\n应用场景：独立互联功能保证面板串口切换到sol后串口录音的功能\n持久化类型：不持久化\n操作权限：ReadOnly\n\n1、权限有误，不应该为ReadOnly，这里是设置操作，不是查询操作\n2、接口描述描述清楚，包括请求参数、响应参数的参数名称、参数描述，参数约束等，不能只有取值\n3、hisport和uart大小写统一，不要一会大写一会小写\n4、错误描述，要准备描述错误描述、错误消息、解决方案以及错误码。"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1957/5",
+            "text": ""
+        }
+    ]
+}

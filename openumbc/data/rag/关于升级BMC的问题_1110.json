@@ -1,0 +1,22 @@
+{
+    "topic_id": 1110,
+    "question": "关于升级BMC的问题 - 如何指定hpm文件烧到哪个分区？\n如果更新失败了，如何回退版本？",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/1110/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1110/2",
+            "text": "hpm格式的文件是升级使用的，不是烧录使用的\n如果是升级hpm失败，分2种场景\n\na. 升级包失败，界面直接显示升级失败\nb. 升级包成功，包有问题导致bmc重启失败，会自动回退到版本。"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1110/3",
+            "text": "升级失败回退到老版本这个应该有硬件依赖(flash要能存下两个固件)是对所有硬件的要求吗？另外是否可以从BMC的uboot升级BMC？这两个看起来都对硬件有强依赖，想问一下openUBMC对于硬件有哪些强依赖？这个有没有一个说明或者记录。多谢"
+        }
+    ]
+}

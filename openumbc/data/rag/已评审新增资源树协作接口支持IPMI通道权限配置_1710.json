@@ -1,0 +1,29 @@
+{
+    "topic_id": 1710,
+    "question": "【已评审】新增资源树协作接口支持IPMI通道权限配置 - content: 背景:\n需求：支持对特定用户在特定通道进行IPMI Messaging权限管理，以便结合用户权限控制IPMI命令访问能力\n决策点1：\n新增Path：/bmc/kepler/AccountService/Accounts/:accountId/Channels/:channelNumber\n决策点2:\n新增interface：bmc.kepler.AccountService.ManagerAccount.IpmiChannelConfig\n包含属性：PrivilegeLimit、IpmiMessagingEnabled、LinkAuthenticationEnabled、CallbackRestriction、SessionLimit\n详细描述：\n资源path：/bmc/kepler/AccountService/Accounts/:accountId/Channels/:channelNumber\n资源interface：bmc.kepler.AccountService.ManagerAccount.IpmiChannelConfig\n变化类型：\n1.新增path\n2.新增接口\n应用场景：\n持久化类型： 掉电持久化\n操作权限：只读，R: ReadOnly\n详细描述：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nPrivilegeLimit\n新增属性\ny\nReadOnly\n掉电持久化\n否\n通道权限\n0h = reserved1h = Callback2h = User3h = Operator4h = Administrator5h = OEM ProprietaryFh = NO ACCESS\n\nIpmiMessagingEnabled\n新增属性\nb\nReadOnly\n掉电持久化\n否\n通道消息使能状态\ntrue、false\n\nLinkAuthenticationEnabled\n新增属性\nb\nReadOnly\n掉电持久化\n否\n链路认证使能状态\ntrue、false\n\nCallbackRestriction\n新增属性\ny\nReadOnly\n掉电持久化\n否\n回拨权限\n0 - 回拨会话和常规会话均按照用户权限限制确定;1 - 回拨会话按照用户权限限制确定。对于常规会话，用户权限被限制为回拨级别，用户只能通过BMC创建回拨会话。\n\nSessionLimit\n新增属性\ny\nReadOnly\n掉电持久化\n否\n当前用户可创建的并发会话数（仅ipmi）\n按照标准，限制范围为0 - 15；默认值为0，为0时代表只受统一的并发会话数限制\n\n评审结论\n决策点1：\n同意新增Path：/bmc/kepler/AccountService/Accounts/:accountId/Channels/:channelNumber\n决策点2：\n同意新增interface：bmc.kepler.AccountService.ManagerAccount.IpmiChannelConfig\n包含以下属性：\nPrivilegeLimit，签名y，只读，读权限：ReadOnly，不发送变更通知事件\nIpmiMessagingEnabled，签名b，只读，读权限：ReadOnly，不发送变更通知事件\nLinkAuthenticationEnabled，签名b，只读，读权限：ReadOnly，不发送变更通知事件\nCallbackRestriction，签名y，只读，读权限：ReadOnly，不发送变更通知事件\nSessionLimit，签名y，只读，读权限：ReadOnly，不发送变更通知事件\nlinks: #p-4142-h-1, #p-4142-h-1-2, #p-4142-h-2-3, #p-4142-h-4, #p-4142-h-5, #p-4142-h-1-6, #p-4142-h-2-7",
+    "topic_user_name": "Je Li",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengxianglin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1710/2",
+            "text": "1、这个资源是跟着用户走的，资源接口是不是命名\n为\"bmc.kepler.AccountService.ManagerAccount.IpmiChannelConfig\"这样比较合适\n2、新增path、新增接口建议把评审点区分开，不要揉在一个评审点里\n3、IPMIMessaging 和 LinkAuthentication 两个在标准里都是使能标志，是不是可以直接用 boolean 值表示，不需要使用字符串"
+        },
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1710/3",
+            "text": "PrivilegeLimit可以按标准实现为y\n0h = reserved\n1h = Callback\n2h = User\n3h = Operator\n4h = Administrator\n5h = OEM Proprietary\nFh = NO ACCESS"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1710/4",
+            "text": ""
+        }
+    ]
+}

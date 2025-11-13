@@ -1,0 +1,50 @@
+{
+    "topic_id": 527,
+    "question": "CI/CD 流程中 UT、IT、DT 阶段的职责归属咨询 - 在 CI/CD 中，软件版本构建流程中涉及的 UT、IT、DT 是归属于 社区QA 的一部分，还是属于 社区CICD类别 的职责范围？\n目前我的理解是：\n\n构建阶段转测前，包括 UT、IT、DT 等测试，多由研发侧或 CI 流程负责；\n转测后进入验收测试、SIT 测试、特性测试等阶段，则属于 QA 领域。\n\n我们计划向社区标准靠拢，开发面向转测前阶段的UT,IT,DT自动化测试平台以及转测阶段的平台，因此也想进一步确认：\n该UT,IT,DT测试的能力建设在社区职责划分上应归属于社区 QA，还是社区 CICD 类别？\n还请各位指正，感谢！",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/527/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/527/2",
+            "text": "DT的核心是开发者针对自己的代码进行快速测试，确保代码的准确性。在开发者设计代码时，DT也是设计需要考虑的一环。因此每个组件的DT由各组件负责。\n而QA SIG更关注的是特性级别，所开发的特性是否符合最初的设计，整体系统是否符合用户的期望。\n两者是相辅相成的，因为有时候DT能测到一些特性测试无法覆盖的场景，而特性场景也能帮助DT测试一些有其他依赖导致无法打桩的场景。\nCICD是提供流程和基础化平台的地方，为了更加效率地帮助开发者、测试完成自身的工作。CICD本身不对测试内容和测试方案负责。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/527/3",
+            "text": "感谢这波详细解答，逻辑清晰、层次分明，完全解开了我对职责边界的疑惑！\n尤其是对 DT 与 QA SIG 的定位描述，非常精准，也让我对各自职责和协同关系有了更清晰的认识，受教了！"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/527/4",
+            "text": "content: 本身开发，测试都是研发活动的一环，只是随着一些组织架构的扩张而对具体的事务进行了细分。\n应该从TDD概念本身进行学习。而且T也不应该只是狭义的指某个具体的测试步骤一环，而是要从广义的概念来看。\n分工合作还是端到端看护，无非是执行效率上的优化而已，只要不偏离初衷，实操时可以灵活一些。\nlinks: https://zh.wikipedia.org/wiki/%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/527/5",
+            "text": "社区也欢迎大家针对软件工程文化、实操等进行讨论交流。如果需要的话可以在TC等申报议题"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/527/6",
+            "text": "感谢博哥指导。见多识广。钦佩。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/527/7",
+            "text": "收到！"
+        }
+    ]
+}

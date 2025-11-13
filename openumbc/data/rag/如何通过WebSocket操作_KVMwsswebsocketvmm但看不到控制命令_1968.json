@@ -1,0 +1,43 @@
+{
+    "topic_id": 1968,
+    "question": "如何通过WebSocket操作 KVM？wss:///websocket/vmm，但看不到控制命令 - content: 内容：\n我目前在调试 BMC 的 KVM 管理界面，已经在浏览器 DevTools 中抓到了 KVM 页面通过 WebSocket 发起的连接：\n请求地址：wss://192.168.16.102:8208/websocket/vmm\n状态码：101 Switching Protocols（连接成功）\n\n抓包中看到 payload 是类似这样的十六进制数据（举例如下）：\n0700000000000000\n\n但整个连接过程中，并没有明显的 JSON 或明文格式\nimage1838×978 65.1 KB\nimage1895×256 6.55 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/8b18cadb1b61602e948b2f971eafc0c27f95d113.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/e06655788f53560764a85cd92c998d74ce647125.png",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/1968/5",
+    "reply_posts": [
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1968/2",
+            "text": "大佬们，目前我们在对接某固件联盟送测需求，要求对 Web KVM Media 模块的 Web-API 接口进行验证。\n这个接口是通过 **wss（WebSocket Secure）套接字** 实现的，和传统的 请求不太一样，主要是不知道如何请求。"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1968/3",
+            "text": "参考webui实现"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1968/4",
+            "text": "content: 介绍\nWebsocket 是一种网络通信协议，主要特点包括:\n\n**双向通信:**客户端和服务器可以同时发送和接收数据，实现真正的实时交互。\n\n**持久连接:**一旦建立连接，连接会一直保持，直到一方关闭连接，无需像HTTP 那样频繁地建立和断开连接。\n\n**低延迟:**由于连接是持久的，数据传输的延迟较低，适合需要实时性较高的应用场景。\n\n**高效:**相比于轮询等方式，WebSocket 可以减少不必要的网络流量和延迟，提高数据传输效率。\n\n**基于TCP:**WebSocket 协议建立在TCP 协议之上，具有可靠的传输特性。\n\n**支持文本和二进制数据:**可以传输文本和二进制数据，适应不同的应用需求。\n\nWebSocket 和HTTP 的区别:\n\n特性\nWebSocket\nHTTP\n\n通信方式\n双向、持久连接\n单向、请求-响应\n\n延迟\n低\n相对较高\n\n流量\n相对较低\n相对较高\n\n实时性\n高\n相对较低\n\n连接建立\n一次握手，保持连接\n每次请求都需要建立连接\n\n参考教程\n\nruanyifeng.com\n\nWebSocket 教程 - 阮一峰的网络日志\n\nMDN Web Docs\n\nWebSocket API - Web API | MDN\nWebSocket API 是一种先进的技术，可在用户浏览器和服务器之间开启双向交互式通信会话。利用该 API，可以向服务器发送信息，并接收事件驱动的响应，而无需轮询服务器以获得回复。\nlinks: #p-4982-h-1, #p-4982-websocket-http-2, #p-4982-h-3, https://www.ruanyifeng.com/blog/2017/05/websocket.html, https://www.ruanyifeng.com/blog/2017/05/websocket.html, https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API, https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1968/5",
+            "text": "content: 连接实现在src/pages/VirtualControl/KvmH5/classes/virtualmedia.ts 的_CreateConnection方法。\nlinks: https://gitcode.com/openUBMC/webui/blob/main/src/pages/VirtualControl/KvmH5/classes/virtualmedia.ts"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1968/6",
+            "text": "Larry_Li:\n\nsrc/pages/VirtualControl/KvmH5/classes/virtualmedia.ts\n\n谢谢大佬"
+        }
+    ]
+}

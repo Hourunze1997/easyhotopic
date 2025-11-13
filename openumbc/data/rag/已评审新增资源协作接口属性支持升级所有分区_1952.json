@@ -1,0 +1,22 @@
+{
+    "topic_id": 1952,
+    "question": "【已评审】新增资源协作接口属性支持升级所有分区 - content: 关联issue\nBMC固件升级支持一次升级3个分区\n评审背景\n背景\n当前客户以及产业产线有需求，需要支持BMC一次性可以升级所有分区，即升级之后BMC中所有分区的镜像版本需要一致\n现状\n当前BMC升级采用 分区轮转 的方式进行，即BMC升级时仅升级一个分区，然后在升级之后复位生效的过程中将当前的 Active 分区轮转到已经升级的分区上，前一个 Active 分区会轮转为 Available 分区，用于镜像切换或者异常恢复时使用。\n方案\n\n需要在 BMC 的镜像升级配置上增加一个可写的属性，在升级前先设置这个属性，用于标识当前BMC镜像的升级是单分区升级，还是全部升级\nBMC升级时根据这个上述的标记进行升级处理，当已经存在标记（标记为true）时会进行全分区升级，即升级一个分区的同时，将镜像同步到另一个分区\n【可靠性】当前标记是属于一次性操作标记，因此不需要持久化动作，当BMC固件完成升级时需要由固件管理设置为false，防止BMC延时重启时再次触发升级导致反复升级\n\n评审点\n评审点1：新增BMC升级全部分区使能标记\npath（已有）：/bmc/kepler/UpdateService/UpdateMgmt\ninterface（已有）：bmc.kepler.UpdateService.UpdateMgmt\n新增属性信息如下：\n\n项\n取值说明\n\n属性名称\nOnetimeUpdateEnabled\n\n属性类型\nBoolean\n\n属性权限\nR: ReadOnlyW:SecurityMgmt\n\n默认值\nfalse\n\n持久化\n无\n\n变更发送通知\nfalse\n\n属性来源\n由下游业务进行设置\n\n属性说明\n是否使能全部分区升级，默认为false\n\n评审结论\n通过，同意在资源协作接口 bmc.kepler.UpdateService.UpdateMgmt 新增属性 OnetimeUpdateEnabled，签名为 b，默认值为 false，不需要持久化，不发送变更通知事件，表示是否对待升级部件全部分区升级。\nlinks: #p-4790-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/164, #p-4790-h-2, #p-4790-h-3, #p-4790-h-4, #p-4790-h-5, #p-4790-h-6, #p-4790-h-1bmc-7, #p-4790-h-8",
+    "topic_user_name": "Lilie",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1952/2",
+            "text": "lilie:\n\nBMC存在3个分区，目前只支持每次升级可用分区一个分区，部分装备场景下需要支持一次性升级3个分区。此功能支持产业CSR可配置。\n\n【预审】\n\n评审背景中说明清楚当前的差距以及处理的方案简述"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1952/3",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "topic_id": 1964,
+    "question": "【iTestSmart】虚拟ISO镜像断开和连接测试，拷贝ISO文件失败。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\n二、问题描述\nOpenUBMC->融合运维->虚拟ISO镜像断开和连接测试，从NFS拷贝ISO文件到安装iTestSmart的机器失败。NFS上没查到SSHConnection.py脚本。\n无SSHConnection文件1920×798 136 KB\n根据测试步骤，NFS上的两个ISO文件应该是要拷贝到安装iTestSmart的机器上。\nKVM_ISO文件816×369 65.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/6fefe25be2a826360df8cd50b2e59a2d565b590f.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/0/02c0c13cf8a48c4d81d9f862a7d34c9d7af9d307.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": []
+}

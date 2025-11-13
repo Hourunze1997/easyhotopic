@@ -1,0 +1,22 @@
+{
+    "topic_id": 2150,
+    "question": "bingo build -sc qemu 报错为啥，用的是普通用户。必须要用root用户嘛？？ - ERROR: 任务 work.task_build_qemu_rootfs 执行失败, [Errno 13] Permission denied: ‘/home/wang/workspace/workspace/manifest/temp/qemu/qemu_rootfs/opt/bmc/apps/web_backend/interface_config’\nERROR: 任务 work.task_build_qemu_rootfs 执行失败\nERROR: 任务 personal 执行失败\nERROR: 请查看日志信息\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\nERROR: 运行子任务 work.task_build_rootfs_img 类 bmcgo.tasks.task_build_rootfs_img失败",
+    "topic_user_name": "Wang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2150/2",
+            "text": "是的，当前需要以root用户进行仿真镜像包的构建"
+        },
+        {
+            "user_name": "Wang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2150/3",
+            "text": "好的"
+        }
+    ]
+}

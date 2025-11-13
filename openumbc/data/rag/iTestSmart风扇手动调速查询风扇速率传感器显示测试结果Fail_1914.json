@@ -1,0 +1,7 @@
+{
+    "topic_id": 1914,
+    "question": "【iTestSmart】风扇手动调速，查询风扇速率传感器显示，测试结果Fail。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 22.03\n二、问题描述\nOpenUBMC->能效管理->风扇手动调速，查询风扇速率传感器显示。测试报告中有两处报错信息，请查看。\n未查看风扇模组信息1920×805 244 KB\nget_product_name_board_fail2137×956 161 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/3159e6c4c13321cfbf7f7e23b6759e08a7e14209.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/4/4a0d0d5edebb9c84a8448e4ffcdacab2c9155570.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": []
+}

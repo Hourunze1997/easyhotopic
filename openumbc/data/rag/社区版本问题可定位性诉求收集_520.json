@@ -1,0 +1,64 @@
+{
+    "topic_id": 520,
+    "question": "社区版本问题可定位性诉求收集 - 针对社区使用过程中遇到的可定位性不足问题进行分析改进，现需要各位开发者将平时遇到的可定位性问题反馈给我们。\n样例如下\n【问题描述】告警时确定不了具体哪个属性有问题：一个告警、传感器事件发生了，涉及几个属性组成的表达式，无法确定是哪个属性出的问题，希望能有相应的日志\n【组织】华为\n【提出人】蔡业胜\n【改进诉求】建议在告警时日志打印告警关联属性的值",
+    "topic_user_name": "社区技术支持",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/520/2",
+            "text": ""
+        },
+        {
+            "user_name": "Lanqiao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/520/3",
+            "text": "能否就BMC安全启动做一次培训，利于后期社区版本升级问题定位。因当前过渡包升级->伙伴包升级这个方案，hpm包签名，导根，BMC启动校验，在没有导根环境中升级固件启动流程等，目前还梳理不太清楚。"
+        },
+        {
+            "user_name": "Tf Wenchenglong",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/520/4",
+            "text": "【问题描述】固件升级有时升级成功但启动时会因为安全启动不通过直接使用升级前环境启动，但在定位问题时，由于不熟悉安全启动的流程，导致定位时不知道应该查看日志中的哪些内容以及哪些内容与安全启动有关。\n【组织】同方\n【提出人】文成龙\n【改进诉求】建议出一份有关安全启动的文档以及常见问题定位指南，或在日志中有相应的体现"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/520/6",
+            "text": "【问题描述】\n1.默认是notice的打印，要改成debug的话，需要等待BMC启动完成后才可以，那么组件启动过程中的debug打印就没办法看到了；\n2.现在所有组件的打印都打印在app.log里，筛选log比较麻烦。\n【组织】神州鲲泰\n【提出人】刘杰\n【改进诉求】\n1.能不能提供一种方式，可以让我们配置默认打印级别。\n2.能不能把各个组件的打印分开，可以为某个组件指定打印的文件。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/520/7",
+            "text": "liujie_11:\n\n2.能不能把各个组件的打印分开，可以为某个组件指定打印的文件。\n\n日志级别持久化的能力已经规划到Q2了，敬请期待。"
+        },
+        {
+            "user_name": "Huangmincai-wuzhou",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/520/8",
+            "text": "【问题描述】组件每次修改后都需要重新刷包验证。\n【组织】五舟\n【提出人】黄敏才\n【改进诉求】在bmc中增加类似bpftrace+hook的功能，现场修改SMC指令参数和查看返回值，方便调试SMC指令，或者其他组件功能的验证，而不用每次修改都得重新刷包。"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/520/9",
+            "text": "【问题描述】\n1.hisport I2c 易出现链偶现不稳定，BMC 暂无高效的定位数据依据及日志\n【组织】长江计算\n【提出人】李小灿\n【改进诉求】\n1.提供监听Hisport I2c 的方法或日志，方便调试或问题定位；"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/520/10",
+            "text": "现在所有组件的打印都打印在app.log里，筛选log比较麻烦。 — 一键收集可以通过notepad++过滤，环境上可以通过 grep命令筛选"
+        }
+    ]
+}

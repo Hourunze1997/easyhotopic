@@ -1,0 +1,29 @@
+{
+    "topic_id": 620,
+    "question": "如何扫描i2c设备 - 目前只能通过busctl中的block.io资源去给i2c设备进行读写操作，但是我从硬件层加了一个i2c设备，能否通过busctl去扫描到此设备，具体命令是什么样的",
+    "topic_user_name": "Baode_zhujunjie",
+    "best_answer_url": "/t/topic/620/4",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/620/2",
+            "text": "openUBMC当前只支持指定i2c器件，不支持动态扫描"
+        },
+        {
+            "user_name": "Baode_zhujunjie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/620/3",
+            "text": "就是说暂时在cli下无法进行i2c设备的扫描？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/620/4",
+            "text": "暂时不支持"
+        }
+    ]
+}

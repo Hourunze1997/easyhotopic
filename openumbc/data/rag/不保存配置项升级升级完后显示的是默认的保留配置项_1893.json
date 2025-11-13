@@ -1,0 +1,22 @@
+{
+    "topic_id": 1893,
+    "question": "不保存配置项升级，升级完后显示的是默认的保留配置项 - content: 【1】测试步骤和现象：\n\n通过浏览器登入BMC；\n\n进入openUBMC管理-固件升级界面，勾选“不保留配置项”升级bmc固件，如下图；\n17.不保留配置升级11072×577 44.6 KB\n\n升级完后，当进度到100%时，页面会自动刷新，“是否保留配置升级”选项会刷新成默认的“保留配置升级”，会造成误解；\n17.不保留配置升级21058×575 37.3 KB\n\n【2】诉求\n1、是否能够优化？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/03be5abb2d7ea2db900a95869c0910687296766a.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/c/cbe35858b63c94161bcd0045ca46483ab3262202.jpeg",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "/t/topic/1893/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1893/2",
+            "text": "这个是这样设计的。\n这2个选项是针对是否保留配置升级这个操作来说的。\n每次升级前，这个选项默认是保留配置项。\n当升级完刷新页面，恢复到升级前的状态。"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1893/3",
+            "text": "了解，感谢回复"
+        }
+    ]
+}

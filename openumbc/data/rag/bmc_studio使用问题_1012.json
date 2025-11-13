@@ -1,0 +1,92 @@
+{
+    "topic_id": 1012,
+    "question": "bmc studio使用问题 - content: 我之前没有使用过BMC Studio，完全按照社区文档进行学习：\nimage1352×535 77.3 KB\n根据社区文档，搭建BMC Studio环境，环境准备、安装BMC Studio、启动BMC Studio这三步完成后，成功打开BMC Studio：\nimage708×443 12.6 KB\n之后有以下几个问题：\n1.我通过以上方式新建工作空间之后，主页的板卡定制、原生开发等都无法使用：\nimage1797×563 36 KB\n2.进行一键仓库部署，部署成功但是报了一系列获取失败。这里一键仓库部署的作用是什么？如果需要拉取代码和二进制组件的话，新建工作空间时并没有让配置conan仓，那是如何拉取二进制组件的？\nimage1848×668 48.8 KB\n后台报错：\nimage995×536 36.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/5f9d51114221728ae1248eb134aa33359c4aa31f.png, https://discuss.openubmc.cn/uploads/default/original/1X/40e4e7550cc626c472dbdcc83dfae3f3897cc9cf.png, https://discuss.openubmc.cn/uploads/default/original/1X/6071c4d17fd262343283f4ee9fdd86f558c86849.png, https://discuss.openubmc.cn/uploads/default/original/1X/e1ebc42d09949b0e5b1a47eea808739d2e97c8b8.png, https://discuss.openubmc.cn/uploads/default/original/1X/d6b7c37f23b3dc7f6595ce623bea9c9601b2608a.png",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "/t/topic/1012/13",
+    "reply_posts": [
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1012/2",
+            "text": "content: image1058×162 9.24 KB\n这里有说明，在环境搭建中\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/3a94c929d2b0da65c0330227de9ba6613a290cf8.png"
+        },
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1012/3",
+            "text": "content: 我也遇到了同样的问题，在配置过程中报错，我这里报错是下载失败，多个包下载失败：\nimage1079×806 135 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/81bb3e39b60eb2bff78bd67ee141871efa2270db.png"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1012/4",
+            "text": "这里虽然让配置了openubmc_dev的远程conan仓，但是在bmc_studio中并没有让指定conan仓"
+        },
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1012/5",
+            "text": "bmc_studio下载时不应该也是调用全局conan吗？按照以上步骤配置完成后，studio在调用conan时自动生效吧"
+        },
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1012/6",
+            "text": "content: 我的报错问题已经解决了，见\n\nbmcgo.errors Download failed，下载失败 交流互助区\n\n    root用户出现服务启动失败问题有对应的社区issue BMC Studio页面跳转端口号不对-docs-GitCode，当前可以通过手动访问localhost:12888访问studio，报错信息还是和上面一样吗？还是有其它的报错信息？\n  \n\n这个链接\n建议尝试root权限打开bmc_studio,localhost port手动改成：12888登录尝试\nlinks: https://discuss.openubmc.cn/t/topic/1019/8, /c/42-category/42, https://gitcode.com/openUBMC/docs/issues/11"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1012/7",
+            "text": "我看了下我的端口就是12888，我们的具体报错好像不一样，你的是download组件失败，我的是No such file or directory: '/root/bmc_studio/workspaces/work_test/manifest/build/conan_index/ibmc"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1012/8",
+            "text": "content: 环境里是可以配置多个远程conan仓的，如果构建时不指定，bmc studio是怎么知道用哪个conan的呢？\n比如我又创建了一个工作空间，用的是本地的manifest，这次报的错就是找不到conan仓：\nimage1221×234 27 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/d7d1693b6758ad39f7fc176105f9ab113b370a26.png"
+        },
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1012/9",
+            "text": "我的这个目录下显示的不是ibm这个，而是openubmc\n要不重新搭建下环境，重新 clone 下这manifest试试？\n感觉你这个是版本问题"
+        },
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1012/10",
+            "text": "content: image815×278 29.8 KB\nconanfile.py.txt (1.9 KB)\n下面的文件是在这个目录下的py文件，去掉txt按照他的格式你复制进去试下？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/d7f9003e244054daedb6ac3b156f001838c44af6.png, /uploads/short-url/3GvTAkpEz5qWQpAeKmWsPs1uFlB.txt"
+        },
+        {
+            "user_name": "LiRuichen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1012/11",
+            "text": "当前Studio是会基于用户配置的最后一次配置的conan远端，也就是conan remote list列表的最后一个"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1012/12",
+            "text": "content: 我本地只有一个conan仓，但是报错是没找到ibmc_dev，看起来是默认去找ibmc_dev\nimage1221×234 27 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/d7d1693b6758ad39f7fc176105f9ab113b370a26.png"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1012/13",
+            "text": "content: 感谢帮忙跟踪这个问题，我的manifest配置的是GitCode - 全球开发者的开源社区,开源代码托管平台\n但是一键部署就会报错：No such file or directory: /root/bmc_studio/workspaces/work_test/manifest/build/conan_index/ibmc\n我下载manifest，将路径改成build/conan_index/ibmc/all，然后将conan仓重命名为ibmc_dev，就能部署部分组件了\nimage1845×1156 126 KB\nlinks: https://gitcode.com/openUBMC/manifest.git%EF%BC%8C%E5%B0%B1%E6%98%AF%E7%A4%BE%E5%8C%BA%E7%9A%84manifest%EF%BC%8Cconanfile.py%E7%9A%84%E8%B7%AF%E5%BE%84%E9%BB%98%E8%AE%A4%E5%B0%B1%E6%98%AFbuild/conan_index/openubmc/all%EF%BC%8C%E5%92%8C%E4%BD%A0%E7%9A%84%E4%B8%80%E6%A0%B7, https://discuss.openubmc.cn/uploads/default/original/1X/589ad9550eb0010c1de2b8cbfb374b764229180c.png"
+        }
+    ]
+}

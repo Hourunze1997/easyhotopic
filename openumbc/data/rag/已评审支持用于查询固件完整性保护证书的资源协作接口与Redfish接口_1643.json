@@ -1,0 +1,29 @@
+{
+    "topic_id": 1643,
+    "question": "【已评审】支持用于查询固件完整性保护证书的资源协作接口与Redfish接口 - content: 背景\n在伙伴签名场景，SP需要使用整机厂商的签名证书，完成对签名固件的校验。需要将整机厂商的签名证书，同步到SP侧，让SP使用此证书对固件进行签名校验。\n触发原因\n新需求\n关联issue\n【需求】支持用于查询固件完整性保护证书的资源协作接口与Redfish接口\n决策点\n1、新增资源协作路径\npath：/bmc/kepler/Managers/:ManagerId/FirmwareIntegrity/Certificates/:CertificateId\ninterface：bmc.kepler.CertificateService.Certificate\n变化类型：新增path\n应用场景：用于初始化时收集厂商的签名证书，并将资源呈现出来\n详细说明：默认存在一本证书，可能会存在两本证书。第一本证书为当前固件中存在的证书，第二本为客户自定义导入的证书。若需要获取该证书的信息，需要对两个ID进行遍历获取。\n2、新增资源协作接口\npath：\n(原有)/bmc/kepler/Managers/:ManagerId/Certificates/:CertificateId\n(原有)/bmc/kepler/Managers/:ManagerId/NetworkProtocol/HTTPS/Certificates/:CertificateId\n(原有)/bmc/kepler/AccountService/MultiFactorAuth/ClientCertificate/Certificates/:CertificateId\n(新增)/bmc/kepler/Managers/:ManagerId/FirmwareIntegrity/Certificates/:CertificateId\ninterface：bmc.kepler.CertificateService.Certificate\n变化类型：新增方法\n应用场景：用于查询证书时获取对应证书的公钥文本\n\n属性名称\n变化类型\n请求签名\n响应签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nGetCertificateString\n新增方法\n无\ns\nReadOnly\n新增Get方法，不涉及持久化\n不涉及\n获取当前证书的公钥文本信息响应签名：s证书公钥文本信息\n\n3、变更Redfish接口\nuri：/redfish/v1/UpdateService\n变化类型：新增Oem属性\n操作类型：GET\n应用场景：用于SP在固件升级前获取整机厂商的签名证书和吊销列表，对固件包进行验签\n详细描述：\nOem/{{OemIdentifier}}/FirmwareIntegrity/Certificates，类型为对象数组，每个对象代表一个用于固件完整性校验的签名证书。若当前不存在该类证书，则该资源呈现为空数组。\nOem/{{OemIdentifier}}/FirmwareIntegrity/CertificateRevocationLists，类型为对象数组，每个对象代表一个用于固件完整性校验的吊销列表。若当前不存在该类吊销列表，则该资源呈现为空数组。\n\n属性名称\n取值类型(string/integer/number/object/array/null)\n取值范围\n默认值\n操作权限(仅针对当前说明的操作类型，可选值为UserMgmt/BasicSetting/KVMMgmt/VMMMgmt/SecurityMgmt/PowerMgmt/DiagnoseMgmt/ReadOnly/ConfigureSelf)\n是否频繁变化并需要屏蔽变化事件\n约束\n说明\n\nOem {\nobject\n\nReadOnly\n否\n\n{{OemIdentifier}} {\nobject\n\nReadOnly\n否\n\nFirmwareIntegrity {\nobject\n\nReadOnly\n否\n\nCertificates [{\narray(object)\n\nReadOnly\n否\n\nCertificateString\nstring\n\nReadOnly\n否\n\n}]\n\nCertificateRevocationLists [{\narray(object)\n\nReadOnly\n否\n\nCRLString\nstring\n\nReadOnly\n否\n\n}]}}}\n\n接口样例：\n{\n    ....\n    \"Oem\": {\n        \"{{OemIdentifier}}\": {\n            ....\n            \"FirmwareIntegrity\": {\n                \"Certificates\": [\n                    {\n                        \"CertificateString\": \"-----BEGIN CERTIFICATE-----....-----END CERTIFICATE-----\"\n                    },\n                    {\n                        \"CertificateString\": \"-----BEGIN CERTIFICATE-----....-----END CERTIFICATE-----\"\n                    }\n                ],\n                \"CertificateRevocationLists\": [\n                    {\n                        \"CRLString\": \"-----BEGIN X509 CRL-----....-----END X509 CRL-----\"\n                    },\n                    {\n                        \"CRLString\": \"-----BEGIN X509 CRL-----....-----END X509 CRL-----\"\n                    }\n                ]\n            }\n        }\n    }\n}\n\n评审结论\n决策点1：同意新增资源协作接口路径 /bmc/kepler/Managers/:ManagerId/FirmwareIntegrity/Certificates/:CertificateId，用于呈现固件签名证书，具体如下：\npath：/bmc/kepler/Managers/:ManagerId/FirmwareIntegrity/Certificates/:CertificateId\ninterface：bmc.kepler.CertificateService.Certificate\n决策点2：同意在 bmc.kepler.CertificateService.Certificate 接口下新增方法 GetCertificateString 用于获取证书的公钥文本，具体如下：\npath：\n/bmc/kepler/Managers/:ManagerId/Certificates/:CertificateId\n/bmc/kepler/Managers/:ManagerId/NetworkProtocol/HTTPS/Certificates/:CertificateId\n/bmc/kepler/AccountService/MultiFactorAuth/ClientCertificate/Certificates/:CertificateId\n/bmc/kepler/Managers/:ManagerId/FirmwareIntegrity/Certificates/:CertificateId\ninterface：bmc.kepler.CertificateService.Certificate\n方法名称：GetCertificateString\n方法权限：ReadOnly\n请求签名：无\n响应签名：s，表示证书公钥文本信息，响应文本格式如下：\n“-----BEGIN CERTIFICATE-----…-----END CERTIFICATE-----”\n决策点3：同意扩展 GET /redfish/v1/UpdateService 接口，新增 Oem 属性用于呈现固件完整性校验签名证书和吊销列表，不支持 PATCH 或 POST，具体如下：\n1、Oem/{{OemIdentifier}}/FirmwareIntegrity/Certificates，类型为对象数组\n每个对象中有一个属性CertificateString，类型为字符串，代表一个用于固件完整性校验的签名证书的公钥文本。\n若当前固件中不存在证书，则该资源呈现为空数组。\n2、Oem/{{OemIdentifier}}/FirmwareIntegrity/CertificateRevocationLists，类型为对象数组。\n每个对象中含有一个属性CRLString，类型为字符串，代表一个用于固件完整性校验的吊销列表的X509文本。\n若当前固件中不存在吊销列表，则该资源呈现为空数组。\n遗留问题\nlinks: #p-3987-h-1, #p-3987-h-2, #p-3987-issue-3, https://gitcode.com/openUBMC/rackmount/issues/186, #p-3987-h-4, #p-3987-h-5, #p-3987-h-6",
+    "topic_user_name": "pengxianglin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "李文杰",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1643/2",
+            "text": "建议：\n\n资源协作接口的GetContent方法名称调整为GetCertificateString\nRedfish接口获取证书数据的接口标识一下证书对象为标准Redfish资源对象"
+        },
+        {
+            "user_name": "pengxianglin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1643/4",
+            "text": "已调整对资源的说明\n已调整资源协作方法名"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1643/5",
+            "text": ""
+        }
+    ]
+}

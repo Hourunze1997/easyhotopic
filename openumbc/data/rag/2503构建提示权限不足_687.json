@@ -1,0 +1,36 @@
+{
+    "topic_id": 687,
+    "question": "25.03构建提示权限不足 - content: 操作步骤：\n1.下载25.03镜像，25.03 SDK，25.03 bingo。\n2.设置openubmc_dev远端地址：https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/\n3.构建命令：bingo -b openUBMC -r openubmc_dev\n结果：\n构建失败，提示权限不足：\nimage1843×708 85.6 KB\n分析：\n执行失败的命令：cat /home/workspace/source/manifest/temp/build_openUBMC_debug_dev/buildimg/no_striped.filelist | sudo xargs -P 0 -I {} /opt/hcc_arm64le/bin/aarch64-target-linux-gnu-strip -R .comment {}\n该命令需要操作no_striped.filelist中的文件，该list中提到的文件权限均为555.\n进一步追溯，发现从远端Conan仓下载的package包中permissions.ini，对文件权限进行了修改。\nimage778×611 29.4 KB\n请问该编译问题该如何解决？\nlinks: https://devrepo.devcloud.cn-north-4.huaweicloud.com/artgalaxy/api/conan/cn-north-4_ad268a13b93c480087c8a1e4b0fe8b15_conan_1/, https://discuss.openubmc.cn/uploads/default/original/1X/04be2c16aea8f816affdce022ea625db5400a98d.png, https://discuss.openubmc.cn/uploads/default/original/1X/dac58cb74dd31f4890f3c364de77fc7cdf60a4f1.png",
+    "topic_user_name": "Chengxiaoju",
+    "best_answer_url": "/t/topic/687/4",
+    "reply_posts": [
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/687/2",
+            "text": "docker环境下使用了共享文件夹吗？这个文件路径是不是和win的共享路径？"
+        },
+        {
+            "user_name": "Chengxiaoju",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/687/3",
+            "text": "是的，和windows共享路径了，这样不可以吗？"
+        },
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/687/4",
+            "text": "那就会出现这个问题，不要在共享路径下编译。如果强行编译的话，失败后找到temp路径对于的文件，使用chmod设置权限然后重新编译，但是这样操作很不方便，还是建议换一个路径下操作"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/687/5",
+            "text": "不支持在windows的文件系统上构建，请使用linux文件系统。\n原因是windows文件系统不支持Linux的文件权限，而bmc本身是一个linux系统，需要完成大量跟linux相关的操作，权限就是其中最重要的一部分。"
+        }
+    ]
+}

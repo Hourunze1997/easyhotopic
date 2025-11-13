@@ -1,0 +1,22 @@
+{
+    "topic_id": 1453,
+    "question": "OpenUBmc的安全测试策略如何制定？ - 安全测试策略，什么情况下OpenUBmc开发项目需要安全测试呢，应该在OpenUBmc项目开发的哪些阶段介入呢？",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/1453/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1453/2",
+            "text": "content: 可以参考\n\n【诉求】：伙伴安全测试指导 Security SIG\n\n    安全测试目的 \n通俗的讲就是确保系统的安全性，包括保护数据不被未经授权的访问、篡改或泄露；保护系统资源（如计算资源、网络资源等）不被未经授权的访问或使用。 \n测试方法 \n1 基于黑盒的安全测试：重点关注外部入参的校验，通过对输入输出关系进行分析，以检测潜在的安全漏洞。 \n2 基于白盒的安全测试：测试对象是透明的，通过对源代码进行分析，进行五点分析，以检测潜在的安全漏洞。 \n3 漏洞扫描：这是一种自…\nlinks: https://discuss.openubmc.cn/t/topic/974/2, /c/sig-security/10"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1453/3",
+            "text": "content: 【诉求】：伙伴安全测试指导\n\n提供相关安全测试指导和用例\n\n多谢，期待后续提供的安全测试指导和测试用例。\nlinks: https://discuss.openubmc.cn/t/topic/974/2"
+        }
+    ]
+}

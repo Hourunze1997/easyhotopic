@@ -1,0 +1,7 @@
+{
+    "topic_id": 602,
+    "question": "【已评审】新增能效管理固件升级流程总线互斥私有属性 - content: ISSUE链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景\n支持并行固件升级流程中，可能存在不同固件同时升级的场景，即可能存在同时访问硬件总线或器件的情况，导致总线冲突而升级失败。因此，在并行升级过程中，需对涉及占用总线的固件升级进行加锁，解锁，确保在并行升级过程中不会产生总线冲突。\n决策点\npower_mgmt组件升级相关资源对象PsuSlot下新增私有属性LockChip\n详细描述\n\nservice\nOBJECT(path)\ninterface\nmethod/property/signal\ntype\n属性\n是否广播（是/否）\n是否持久化（否/临时/复位/掉电/永久）\n属性值来源（CSR/代码）\n取值类型\n备注\n\npower_mgmt\nPsuSlot\n-\nLockChip\nro\nproperty\n否\n否\nCSR\nU8\n用于对总线加锁和解锁\n\n评审结论\nlinks: https://gitcode.com/openUBMC/vpd/issues/11, https://gitcode.com/openUBMC/vpd/issues/11",
+    "topic_user_name": "Wwhh",
+    "best_answer_url": "",
+    "reply_posts": []
+}

@@ -1,0 +1,50 @@
+{
+    "topic_id": 1618,
+    "question": "25.06版本构建镜像与代码仓分支 - 25.06版本现在只提供了开源组件下载，请问：\n1 构建镜像是否会提供，什么时间可以提供\n2 gitcode代码仓的25.06分支大概什么时候会创建",
+    "topic_user_name": "恒扬-胡田野",
+    "best_answer_url": "/t/topic/1618/6",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1618/2",
+            "text": "content: 在如下文档中有提供Docker开发环境搭建 | openUBMC\nmanifest仓库25.06的tag已创建， 组件仓的tag为manifest中定义的组件相应的版本号。\nlinks: https://www.openubmc.cn/docs/zh/development/quick_start/prepare_environment/docker_env.html"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1618/3",
+            "text": "不会像25.03一样提供一个打包好的镜像了吗"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1618/4",
+            "text": "这个镜像就是跟25.03 类似的。"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1618/5",
+            "text": "那就是我们在25.03镜像基础上更新、重新安装依赖和工具？"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1618/6",
+            "text": "文档里有写25.06镜像， 执行以下拉取镜像。\ndocker pull swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_25.06\n\n再按文档进行conan配置。\n最后进行git配置， 代码拉取。"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1618/7",
+            "text": "好的，多谢"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1034,
+    "question": "【已评审】支持获取电源模块信息原子能力 - content: ISSUE链接\n[GitCode - 全球开发者的开源社区,开源代码托管平台]( [支持获取电源模块信息原子能力-mdb_interface-GitCode]）\n(GitCode - 全球开发者的开源社区,开源代码托管平台)\n背景\n支持查询电源模块信息原子能力\n（1）XX客户需要实现查询电源模块信息的北向接口，需要我们提供原子能力；\t\n（2）需要新增资源协作接口属性，支持查询电源模块支持的供电类型和电源模块等级；\n决策点\n资源协作接口新增属性LineInputVoltageType和PowerLevel，分别表示电源模块支持的供电类型和电源模块等级\n详细描述\n1. 新增属性LineInputVoltageType\n资源path：/bmc/kepler/Systems/:SystemId/PowerMgmt/OnePower/:ID\n资源interface：bmc.kepler.Systems.PowerMgmt.OnePower\n变化类型：新增属性\n\nLineInputVoltageType\n描述：电源模块支持的供电类型\n签名：s\n读写&权限：R：ReadOnly\n持久化类型：不持久化\n变化通知：false\n默认值为“Unknown”\n取值范围为：“AC120V”、“AC240V”、“AC277V”、“ACWideRange”、“DC240V”、“DC380V”、“ACandDCWideRange”、“DCNeg48V”、“HVDC”、“Unknown”\n\n2. 新增属性PowerLevel\n资源path：/bmc/kepler/Systems/:SystemId/PowerMgmt/:ID\n资源interface：bmc.kepler.Systems.PowerMgmt.OnePower.EfficiencyCurve\n变化类型：新增属性\n\nPowerLevel\n描述：电源模块等级\n签名：s\n读写&权限：R：ReadOnly\n持久化类型：不持久化\n变化通知：false\n默认值为“N/A”\n取值范围为：\n“80PLUS”：白牌；\n“80PLUS Bronze”：铜牌；\n“80PLUS Silver”：银牌；\n“80PLUS Gold”：金牌；\n“80PLUS Platinum”：白金牌；\n“80PLUS Titanium”：钛金牌\n“N/A”：未知\n\n结论\n1.同意在bmc.kepler.Systems.PowerMgmt.OnePower接口新增属性LineInputVoltageType，表示电源模块支持的供电类型，签名为s，只读，读权限：ReadOnly，不发送变更通知事件\n2.同意在bmc.kepler.Systems.PowerMgmt.OnePower.EfficiencyCurve接口新增属性PowerLevel，表示电源模块等级，签名为s，只读，读权限：ReadOnly，不发送变更通知事件\n遗留问题及确认结论\n1.电源固件能否按redfish规范把电源模块支持的供电类型细化\n结论：经确认，电源上报的电压类型可以与redfish标准对应，redfish LineInputVoltageType字段下需要新增HVDC，表示高压直流输入\n2.确认电源砖是否涉及该属性，此处涉及的属性是否与他们的一致\n结论：经确认，电源砖不涉及LineInputVoltageType 属性；\n3.取值范围枚举，也要把0xffff加上\n结论：LineInputVoltageType类型变为string，默认值为Unknown\nlinks: #p-2196-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/81, #p-2196-h-2, #p-2196-h-3, #p-2196-h-4, #p-2196-h-5",
+    "topic_user_name": "Luchen",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1034/2",
+            "text": ""
+        }
+    ]
+}

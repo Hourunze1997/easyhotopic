@@ -1,0 +1,15 @@
+{
+    "topic_id": 2024,
+    "question": "【KPTEST】kptest框架搭建时，在itestsmart设备导出测试床，没有找到xml格式 - content: KPTEST框架使用的设备测试床配置格式xml,itestsmart导出的话只能导出xlsx格式\n企业微信截图_175367408497771914×293 8.07 KB\nimage1139×829 143 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/bcee47b15245ed5b9e84e20127ddd1ed54fbad09.png, https://discuss.openubmc.cn/uploads/default/original/2X/5/56921491aa47c685f6371324c8469cfccf0fc0da.png",
+    "topic_user_name": "Chenyt-恒扬数据",
+    "best_answer_url": "/t/topic/2024/2",
+    "reply_posts": [
+        {
+            "user_name": "Hdq",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2024/2",
+            "text": "content: itestsmart 导出测试床步骤\n1. 开启开发者模式\n设置-运行配置-用例开发者模式，具体页面参考操作指南 9.1.6节\n2. 导出测试床\n\n点击“添加设备”按钮，选择要导出信息的设备。\n点击“导出测试床”按钮，即可打包成测试床文件（单台主设备为xml格式，多台主设\n备为zip格式）。\n详细页面参考操作指南 6.6 节\n\nimage285×126 2.74 KB\nlinks: #p-5014-itestsmart-1, #p-5014-h-1-2, #p-5014-h-2-3, https://discuss.openubmc.cn/uploads/default/original/2X/3/3480902254a2d4636a85aad7115deefc9f5dc3e5.png"
+        }
+    ]
+}

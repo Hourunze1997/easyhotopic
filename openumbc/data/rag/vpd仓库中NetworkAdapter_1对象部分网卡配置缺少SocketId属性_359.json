@@ -1,0 +1,15 @@
+{
+    "topic_id": 359,
+    "question": "vpd仓库中NetworkAdapter_1对象部分网卡配置缺少SocketId属性 - NetworkAdapter_1对象部分网卡配置缺少SocketId属性，这样可能会引起资源归属错误问题，是否需要修改\n14220247_14e416d7_14e44146.sr\n14220247_14e41750_14e45208.sr\n14220246_VF_2.sr\n14220247_15b31017_19e5d13c.sr\n14220247_15b31015_19e5d13b.sr",
+    "topic_user_name": "Kunlun Liuchenxi",
+    "best_answer_url": "/t/topic/359/2",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/359/2",
+            "text": "需要修改。配置仓部分网卡为预埋配置，未在社区正式交付，后续正式交付会修正配置"
+        }
+    ]
+}

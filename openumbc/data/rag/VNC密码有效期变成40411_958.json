@@ -1,0 +1,15 @@
+{
+    "topic_id": 958,
+    "question": "VNC密码有效期变成40411 - content: 【问题描述】\nVNC密码有效期变成40411.\n【操作方法】\n1、关闭NTP服务重启iBMC\n2、修改安全配置中密码有效期为2\n3、设置NTP服务器地址重启iBMC\n4、查看VNC密码有效期变为40411\nimage1837×788 51.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/a654010fcca7c6a46847fd9abe9d5688ed0c9c03.png",
+    "topic_user_name": "Zxl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "ZhangNing",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/958/2",
+            "text": "请提供操作日志供定位，谢谢"
+        }
+    ]
+}

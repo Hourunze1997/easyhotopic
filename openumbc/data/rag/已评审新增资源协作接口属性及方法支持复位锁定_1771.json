@@ -1,0 +1,43 @@
+{
+    "topic_id": 1771,
+    "question": "【已评审】新增资源协作接口属性及方法，支持复位锁定 - content: ISSUE链接\n需求1：\n【需求】支持BMC的热复位-mdb_interface-GitCode\n需求2：\n【需求】支持复位锁定rpc接口-mdb_interface-GitCode\n需求一 支持BMC的 warm reset 接口\n背景\n需要支持 ipmi 的热复位（Warm Reset）。热复位是一种轻量级复位机制，其核心目的是清理设备及其通信接口的内部状态。其关键特性有以下几点：保留配置参数，即不重置中断使能、阈值、地址等预设配置；重置通信状态，即清除通信接口的临时状态数据，如序列号、会话状态等；不会触发自检。\n方案\nflowchart LR\n    A[开始] --> B(ipmi_core发送热复位命令)\n    B --> C(maca调用WarmReset方法)\n    C --> D(各组件执行Action方法，并返回结果（成功/失败）给maca)\n    D --> E(maca输出完成热复位的日志，列出热复位异常的组件)\n    E --> F[结束]\n\n决策点\n新增接口 bmc.kepler.MicroComponent.Reset，接口内新增方法 Prepare、Action 、Cancel\nbmc.kepler.SystemControl接口下新增方法 WarmReset\n详细描述\n1. 已有接口增加新方法：\npath: /bmc/kepler/MacaService（已有）\ninterface: bmc.kepler.SystemControl（已有）\nmethods: WarmReset（新增）\n\n项目\n说明\n\n方法名称\nWarmReset\n\n方法描述\n热复位BMC的接口\n\n方法权限\nBasicSetting\n\n请求签名\n无\n\n请求参数\n无\n\n响应签名\n无\n\n响应参数\n无\n\n2. 新增接口及方法 ：\ninterface: bmc.kepler.MicroComponent.Reset（新增）\nmethods: Prepare（新增）、Action（新增）、Cancel（新增）\n\n项目\n说明\n\n方法名称\nPrepare\n\n方法描述\n用于组件重置准备\n\n方法权限\nBasicSetting\n\n请求签名\ns\n\n请求参数\nResetType 重置类型。参数类型为String。取值范围：“WarmReset”，代表热复位类型\n\n响应签名\ni\n\n响应参数\nResultCode:int32 返回业务组件热复位准备阶段结果 SUCCESS(0),FAIL(-1)\n\n项目\n说明\n\n方法名称\nAction\n\n方法描述\n执行组件重置\n\n方法权限\nBasicSetting\n\n请求签名\ns\n\n请求参数\nResetType 重置类型。参数类型为String。取值范围：“WarmReset”，代表热复位类型\n\n响应签名\ni\n\n响应参数\nResultCode:int32 返回业务组件热复位执行结果 SUCCESS(0),FAIL(-1)\n\n项目\n说明\n\n方法名称\nCancel\n\n方法描述\n取消重置\n\n方法权限\nBasicSetting\n\n请求签名\ns\n\n请求参数\nResetType 重置类型。参数类型为String。取值范围：“WarmReset”，代表热复位类型\n\n响应签名\n无\n\n响应参数\n无\n\n需求二 支持复位锁定rpc接口\n背景（必填，文字描述议题背景，如需求来源、问题场景）\n在VRD 生效过程中（general_hardware组件）或者是BIOS 处于post阶段（bios组件）下，BMC禁止复位，此时如果进行rollback操作，会重复调用GracefulReset接口，导致刷复位失败日志。主要原因就是A组件禁止复位时，B组件无法感知，因此，需要框架提供能力统一管理复位锁定场景及组件、原因等信息，并支持组件查询当前是否复位锁定；\n决策点\n接口 bmc.kepler.SystemControl 下新增属性 ResetLockStatus 及方法 SetResetLockStatus\n方案\nflowchart LR\n    A[开始] --> B(组件对复位发起锁定)\n    B --> C{是否处于锁定状态}\n    C -->|是| F\n    C -->|否| E[修改锁定状态属性值]\n    E --> F[将该组件记录到发起锁定的表中]\n    F --> G[结束]\n\nflowchart LR\n    A[开始] --> B(组件对复位锁定发起解除)\n    B --> C{是否处于锁定状态}\n    C -->|是| D{查看记录表中该组件是否曾发起锁定}\n    C -->|否| H\n    D -->|是| E(将该组件从记录表中移除)\n    D -->|否| H\n    E --> F{判断记录表中是否仍有组件}\n    F -->|否| G(修改锁定状态属性值)\n    F -->|是| H\n    G --> H[结束]\n\n详细描述\n1. 新增属性及方法：\npath: /bmc/kepler/MacaService (原有）\ninterface: bmc.kepler.SystemControl (原有）\nproperties: ResetLockStatus (新增)\nmethods: SetResetLockStatus(新增）\n2. 新增属性：ResetLockStatus\n新增属性：ResetLockStatus\n\n项目\n说明\n\n属性名称\nResetLockStatus\n\n属性类型\ns\n\n取值范围\n“Unlocked”,“WarmResetLocked”,“GracefulResetLocked”,“ForceResetLocked”\n\n属性读写\n只读\n\n属性权限\nReadOnly\n\n变化通知\nfalse\n\n持久化\n否\n\n属性说明\n复位锁定状态。包括未锁定、热复位请求锁定、平滑复位请求锁定、强制复位请求锁定四种状态。热复位、平滑复位、强制复位的优先级由低到高，高级别的复位被锁定的状态下，禁止执行低级别的复位操作。\n\n3. 新增方法：SetResetLockStatus\n\n项目\n说明\n\n方法名称\nSetResetLockStatus\n\n方法权限\nBasicSetting\n\n请求签名\nssu\n\n请求参数\n1. ResetMode，表示复位类型。String 类型。“WarmReset” 代表热复位， “GracefulReset” 代表平滑复位级别（锁定操作时，对平滑复位和热复位均进行锁定），“ForceReset” 代表强制复位级别（锁定操作时，对强制复位、平滑复位和热复位均进行锁定）。2. OperationType，表示操作类型。String 类型。取值范围为\"Lock\" / “Unlock”，分别代表加锁、解锁。3. TimeoutSeconds，表示超时时间，单位为秒，仅在执行锁定操作时参数有效。U32类型。当应用组件设置复位锁定后超过指定超时时间未解锁，则自动解除对应应用组件的复位锁定状态。取值范围为10~300。\n\n响应签名\n无\n\n响应参数\n无\n\n请求参数 |1. ResetMode，表示复位类型。String 类型。“WarmReset” 代表热复位， “GracefulReset” 代表平滑复位级别（锁定操作时，对平滑复位和热复位均进行锁定），“ForceReset” 代表强制复位级别（锁定操作时，对强制复位、平滑复位和热复位均进行锁定）。2. OperationType，表示操作类型。String 类型。取值范围为\"Lock\" / “Unlock”，分别代表加锁、解锁。3. TimeoutSeconds，表示超时时间，单位为秒，仅在执行锁定操作时参数有效。uint32类型。当应用组件设置复位锁定后超过指定超时时间未解锁，则自动解除对应应用组件的复位锁定状态。取值范围为10~300。|\n|响应签名 | 无 |\n|响应参数 | 无 |\n4. 异常场景\n当进行复位锁定后，若调用复位接口，将抛出如下错误信息 (非新增，复用已有的错误消息）：\n“OperationNotAllowed”: {\n“Description”: “Operation not allowed under present configuration for given payload type.”,\n“Message”: “Operation not allowed under present configuration for given payload type.”,\n“Severity”: “Warning”,\n“NumberOfArgs”: 0,\n“Resolution”: “Check the operation.”,\n“TraceDepth”: 0,\n“HttpStatusCode”: 400,\n“IpmiCompletionCode”: “0x81”\n}\n评审结论\n1、同意接口 bmc.kepler.SystemControl 新增如下属性及方法\n\n新增属性 ResetLockStatus，表示复位锁定状态，签名为s，只读，读权限ReadOnly，不发送变化通知事件\n新增方法 SetResetLockStatus，设置复位锁定状态，请求签名为ssu，无响应签名，权限为BasicSetting\n新增方法WarmReset，执行warm reset，无请求签名和响应签名，权限为BasicSetting\n\n2、同意新增接口 bmc.kepler.MicroComponent.Reset 以及如下方法\n\n新增方法 Prepare，用于组件重置准备，请求签名为s，相应签名为i，权限为BasicSetting\n新增方法 Action ，执行组件重置，请求签名为s，相应签名为i，权限为BasicSetting\n新增方法 Cancel，取消重置，请求签名为s，无响应签名，权限为BasicSetting\n\n遗留问题：\n\n热复位新增接口 bmc.kepler.MicroComponent.Reset 下需补充 Prepare 方法和 Cancel 方法\n—— 已补充\n支持复位锁定rpc接口 新增方法 SetResetLockStatus 的请求参数名称 ResetType 需修改为 ResetMode\n—— 已修改\n支持复位锁定rpc接口 异常场景需要确认错误消息参数是否可以和北向保持一致。\n—— 已确认，ResetOperationNotAllowed 的参数无法和北向保持一致，需将错误提示修改为已有的OperationNotAllowed\nlinks: #p-4314-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/161, https://gitcode.com/openUBMC/mdb_interface/issues/151, #p-4314-bmc-warm-reset-2, #p-4314-h-3, #p-4314-h-4, #p-4314-h-5, #p-4314-h-6, #p-4314-rpc-7, #p-4314-h-8, #p-4314-h-9, #p-4314-h-10, #p-4314-h-11, #p-4314-h-12",
+    "topic_user_name": "Liiiigitcode Bxoos",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Yeluo12",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1771/2",
+            "text": "setLockStatus改成大驼峰SetLockStatus，加锁时需要传入超时时间，避免长时间加锁引发平滑重启功能异常"
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1771/3",
+            "text": "liiiigitcode_bxoos:\n\nbmc.kepler.SystemControl\n\n1、详细描述要增加业务流程图，描述清楚先做什么，再做什么；并以此为背景，描述清楚如何解决竞争问题：例如组件A禁止复位，组件B禁止复位，此时组件A再解除禁止的处理逻辑\n2、属性和方法设计不合理，目前存在强制复位、平滑复位、热复位三种场景，一个锁定状态如何决定锁定的是哪个复位呢？例如组件A禁止平滑复位，组件B禁止强制复位"
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1771/4",
+            "text": "liiiigitcode_bxoos:\n\n新增属性：LockStatus\n\n liiiigitcode_bxoos:\n\npath: /bmc/kepler/MacaService (原有）\ninterface: bmc.kepler.SystemControl (原有）\nproperties: LockStatus (新增)\nsetLockStatus: SetLockStatus (新增）\n\n1、流程图未补充\n2、LockStatus属性和SetLockStatus不够准确，锁定什么的状态？ResetLockStatus和SetResetLockStatus更合适\n3、LockStatus的属性类型和SetLockStatus的请求参数，建议才是String类型，原因是后续扩展的时候，无法在0,1,2中间再增加其他类型了，使用字符串，内部映射不同的复位级别，有利于后续扩展。例如 GracefulReset: 1， ForceReset: 2，新增的时候可以使用WarmReset: 1, GracefulReset: 2， ForceReset: 3。\n4、LockStatus属性的取值不够明确，WarmResetLocked更合理。"
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1771/5",
+            "text": "liiiigitcode_bxoos:\n\nResetType，表示复位类型。String 类型。“WarmReset” 代表热复位锁定， “GracefulReset” 代表平滑复位级别锁定（对平滑复位和热复位均进行锁定），“ForceReset” 代表强制复位级别锁定（对强制复位、平滑复位和热复位均进行锁定）。\n\n1、这里表示的是复位类型，不是锁定类型，描述为复位锁定不准确。操作类型，才能决定是不是锁定。\n2、锁定场景下，GracefulReset、ForceReset这些复位操作要提供错误引擎定义的错误信息上报"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1771/6",
+            "text": ""
+        }
+    ]
+}

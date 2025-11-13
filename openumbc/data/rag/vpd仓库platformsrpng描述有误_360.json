@@ -1,0 +1,15 @@
+{
+    "topic_id": 360,
+    "question": "vpd仓库platform.sr.png描述有误 - 如下\n\n不应该是：\n“00”表示platform.sr，“01”表示root.sr，“02”表示PSR吗？",
+    "topic_user_name": "Kun Lun Lizhuang",
+    "best_answer_url": "/t/topic/360/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/360/2",
+            "text": "content: 感谢反馈，已转换成issue跟踪 GitCode - 全球开发者的开源社区,开源代码托管平台\nlinks: https://gitcode.com/openUBMC/vpd/issues/2"
+        }
+    ]
+}

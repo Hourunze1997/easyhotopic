@@ -1,0 +1,15 @@
+{
+    "topic_id": 1077,
+    "question": "【已评审】SP923H适配新增资源协作接口属性和方法 - content: issue链接\nDPU卡DFX能力补齐\n评审背景\nSP923H基于计算板与网络板分离的架构设计，需要BMC实现以下功能：\n（1）在web界面呈现计算板和网络板的单板名称\n（2）通过redfish接口查询和设置计算板两个网口的LLDP使能状态\n评审点\n\nbmc.kepler.Systems.DPUCard新增CPLDCount字段\nbmc.kepler.Systems.DPUCard新增GetLLDPStatus方法\nbmc.kepler.Systems.DPUCard新增SetLLDPStatus方法\n新增私有属性NICBoardName\n新增私有属性CPUBoardName\n\n详细说明\n评审点1\n资源path：/bmc/kepler/Systems/${SystemId}/PCIeDevices/PCIeCards/DPUCards/${Id}\n资源interface：bmc.kepler.Systems.DPUCard\n变化类型：新增属性/方法\n应用场景：SP923H基于计算板与网络板分离的架构设计\n持久化类型： 不持久化\n操作权限：方法：BasicSetting、属性读：ReadOnly\n\n属性/方法名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nCPLDCount\n新增属性\ny\nR:ReadOnly,W:-\n不持久化\nfalse\n表示DPU上的CPLD器件的数量\n双CPLD的DPU卡需要配置为2，其他默认为1\n\nGetLLDPStatus\n新增方法\n请求:y  响应:y\nReadonly\nNA\nNA\n获取计算板LLDP使能状态 请求： PortId：待操作的网口ID 响应： Status：LLDP使能状态\n1、Status表示LLDP使能状态，0-关闭，1-开启，如果获取不到数据则返回255\n\nSetLLDPStatus\n新增方法\n请求:yy 响应:-\nBasicSetting\nNA\nNA\n设置计算板LLDP使能状态 请求： PortId：待操作的网口ID Status：LLDP使能状态 响应: -\n1、Status表示LLDP使能状态，0-关闭，1-开启\n\n评审点2\n资源对象：DPUCard\n资源interface：私有属性不涉及\n变化类型：新增私有属性\n应用场景：SP923H基于计算板与网络板分离的架构设计\n持久化类型： 不持久化\n操作权限：NA\n详细描述：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nNICBoardName\n新增属性\ns\nNA\nNA\nNA\n表示DPU卡的网络板的名称\n1、CSR配置，单CPLD的DPU卡可以不配置，默认为空。\n\nCPUBoardName\n新增属性\ns\nNA\nNA\nNA\n表示DPU卡的计算板的名称\n1、CSR配置，单CPLD的DPU卡可以不配置，默认为空。\n\n评审结论\n\n评审点1：通过\n\n同意在资源协作接口bmc.kepler.Systems.DPUCard 新增属性 CPLDCount，签名为y，不持久化，不发送变更通知事件\n同意在资源协作接口bmc.kepler.Systems.DPUCard 新增方法 GetLLDPStatus，请求签名: y，响应签名: y，权限为BasicSetting\n同意在资源协作接口bmc.kepler.Systems.DPUCard 新增方法 SetLLDPStatus，请求签名: yy，响应签名: 无，权限为BasicSetting\n\n评审点2: 通过\n\n同意新增私有属性NICBoardName\n同意新增私有属性CPUBoardName\nlinks: #p-2282-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/83, #p-2282-h-2, #p-2282-h-3, #p-2282-h-4, #p-2282-h-1-5, #p-2282-h-2-6, #p-2282-h-7",
+    "topic_user_name": "I Bmc 001 843rs",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1077/2",
+            "text": ""
+        }
+    ]
+}

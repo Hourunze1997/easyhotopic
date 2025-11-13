@@ -1,0 +1,15 @@
+{
+    "topic_id": 824,
+    "question": "新增设备驱动如何加载与关联到应用层模块 - 问题： 当前已开放的代码中未包括bmc内核代码，对于当前使用的内核和所在版本只有在manifest.yml中提到。如何查看目前openUBMC默认支持的设备驱动有哪些？当遇到客户使用一些国产芯片（传感器、Flash等），在没有内核源码的情况下，如何新增设备驱动？如果使用insmod .ko方式，社区文档请给出范例供后续项目参考，谢谢。",
+    "topic_user_name": "Guoxin",
+    "best_answer_url": "/t/topic/824/3",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/824/3",
+            "text": "当前OS系统采用的是rtos版本，linux内核是5.10，如果需要加载驱动，可以考虑通过用户态驱动进行加载，如果有具体的细节可以与社区技术支持获得联系"
+        }
+    ]
+}

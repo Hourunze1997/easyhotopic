@@ -1,0 +1,43 @@
+{
+    "topic_id": 1241,
+    "question": "【已评审】支持指定与查询资源树对象跟踪采样率 - content: ISSUE链接\n支持指定与查询资源树对象跟踪采样率-mdb_interface-GitCode\n背景\ntrace & span\ntrace即为一条跟踪链路,简单讲就是跟踪一条完整的rpc调用流程,span就是组成一条trace链路的最小单元,我们通常在一个函数内预埋一个span记录一个函数入口到函数退出,存在调用关系的函数中的span会创建父子关系,span在上报时会带上在函数执行过程中向span记录的信息,并在可视化界面将这条调用链路上的所有span整合为一条调用链清晰的链路,开发与维护人员就可以通过可视化界面查看这次调用的信息,便于定位问题。\n采样背景\n当前trace链路的构造通过在函数内部进行span的预埋打点,如果全部默认创建会导致上报数量过多影响性能及可观测性可定位性,当前策略为默认不创建span,只有存在父级span或指定了采样率的span才会创建span进行跟踪。采样率用于限制span的上报比例,当某些rpc为高频调用对象时,完整采样某个对象的时创建的span数量也很多,此时需要根据采样率按照一定比例创建span,但依然遵循父span创建则子span一定创建，即整条调用链路只有在起始处创建root span时采样率会生效，后续链路上的所有span都遵循root span的采样率。\n使能与查询功能\nUser -> mdbctl: trace sampling obj rate[0-1]\nmdbctl -> 组件A(rpc服务端): 调用对应对象的set方法修改TraceSamplingRate属性为[0-1]\n组件A(rpc服务端) -> SHM: 属性值变化时会刷新到共享内存\n\n# 根据采样率策略创建span，采样率(0-1]\nif parent span\n组件A: 创建child span\nelse\n组件A: 创建root span\nend\n\n# 采样率为0使用系统全局采样率\nif parent span\n组件A: 创建child span\nelse\n组件A: 根据系统采样率\nend\n\n组件A -> 组件B: 上下文传递spancontext\n组件B: 创建child span\n\nUser -> mdbctl: trace sampling\nmdbctl -> maca: 调用GetPropertyMatchedObjects查询满足`TraceSamplingRate不为0`的对象及对应采样率\nmaca -> SHM: 到共享内存查询\nSHM --> maca: 返回数据\nmaca --> mdbctl:返回记录的对象列表\n\n决策点\n\ninterface: bmc.kepler.Object.Observability\n新增property: TraceSamplingRate用于表示对象跟踪采样率, double类型, 默认值为0.0，跟随系统全局采样率, 取值为(0.0 - 1.0]时使用对象自身的采样策略, 1.0为全采样\n\npath: /bmc/kepler/MdbService\ninterface: bmc.kepler.Mdb\n新增method: GetPropertyMatchedObjects用于查询满足接口、属性、属性值条件的对象\n\nmdbctl 新增Release公共命令 trace用于对指定对象应用trace模式\nUsage: 4. trace <operation> [object [rate]]\noperation: 必选参数，表示trace的具体操作类型，当前取值范围为[“sampling”]\nobject: 可选参数, 表示trace操作的目标，如果是资源协作接口对象名称，则表示该操作只作用于特定的对象, 如果是资源协作接口类名，表示该操作作用于此类所有对象，不指定时为查询当前操作已经生效的目标\nrate: 可选参数, 表示操作类型为sampling时对目标的采样率，double类型，取值范围[0.0-1.0]，默认值为1.0\n\n示例：\n% trace sampling Object_0\nSuccess\n\n% trace sampling Object_1 0.8\nSuccess\n\n% trace sampling\nObject_0  1\nObject_1  0.8\n\n描述\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nTraceSamplingRate\n新增属性\nd\n只读，读权限：readOnly\n不涉及\nfalse\n\n表示该对象当前的跟踪采样率\n[0.0 - 1.0]\n\n方法名称\n变化类型\n请求签名\n请求参数说明\n响应签名\n响应参数说明\n访问权限\n说明\n约束\n\nGetPropertyMatchedObjects\n新增方法\nssvb\ns(Interface): 接口名，s(Property): 属性名，v(Value): 属性值，b(PositiveMatch): 是否正匹配\na(sssv)\na(sssv):字符串数组结构,匹配的 [ObjectName，Service，Path，PropertyValue]\nReadOnly\n获取满足属性筛选条件的对象的列表\n不支持匹配复杂数据类型\n\n评审结论\n\n同意新增接口bmc.kepler.Object.Observability，并新增属性TraceSamplingRate，签名为d，只读，读权限：ReadOnly，不发送变更通知事件\n同意/bmc/kepler/MdbService下的接口bmc.kepler.Mdb新增方法\nGetPropertyMatchedObjects，请求签名：ssvb，响应签名：a(sssv)，权限为ReadOnly，用于获取满足属性筛选条件的对象的列表\n同意新增mdbctl公共命令trace，命令格式为：\ntrace  [object [rate]]\nlinks: #p-2696-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/122, #p-2696-h-2, #p-2696-trace-span-3, #p-2696-h-4, #p-2696-h-5, #p-2696-h-6, #p-2696-h-7, #p-2696-h-8",
+    "topic_user_name": "chenghaoyang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1241/2",
+            "text": "1、背景描述需要明确清晰：\n1.1、当前主要实现调用跟踪的主动跟踪功能（默认关闭），其他跟踪策略（默认打开），包括末端采样、周期采样、全采样等后续陆续支持。\n1.2、主动采样主要包括两种场景，一类是由上级系统、组件或模块触发，传递spanContext，一类是由开发、测试或运维人员主动启用指定观察对象的调用跟踪\n2、需要对在线调试命令的交互过程给出明确描述\n2.1、从使用者角度来说，这里更适合作为通用命令，从系统角度使能和去使能指定对象的调用跟踪，如果需要连接到指定组件，无法观察到系统上全部的跟踪对象\n2.2、以时序图的方式简要描述使能和查询的流程\n2.3、需要考虑跟踪使能的上限以及性能的影响，建议约束最大使能数量\n2.4、需要提供批量去使能的能力"
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1241/3",
+            "text": "chenghaoyang:\n\noperation: 必选参数，代表应用到对象的trace模式\n\n这里需要说明必选参数operation的取值范围"
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1241/4",
+            "text": "chenghaoyang:\n\nUsage: trace [operation] [object_name] [rate]\n\noperation为必选参数，不能使用方括号表示"
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1241/5",
+            "text": "chenghaoyang:\n\n新增property: TraceSamplingRate用于表示对象跟踪采样率, double类型, 默认值为0，跟随系统全局采样率, 取值为(0-1]时使用对象自身的采样策略, 1为全采样\n\ndouble类型，不要使用整数来表示数值，容易产生误解，建议修改成0.0,1.0。"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1241/6",
+            "text": ""
+        }
+    ]
+}

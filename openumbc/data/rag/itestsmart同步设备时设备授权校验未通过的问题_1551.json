@@ -1,0 +1,22 @@
+{
+    "topic_id": 1551,
+    "question": "itestsmart同步设备时“设备授权校验未通过”的问题 - content: itestsmart在本地部署环境，增加服务设备时同步失败。只输入必须填的几个基本信息，但BMC IP能ping通和访问。\nimage2148×354 34.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/72c57848c266765d8c54172255e0df71dbadfb63.png",
+    "topic_user_name": "Byosoft Lifeng",
+    "best_answer_url": "/t/topic/1551/3",
+    "reply_posts": [
+        {
+            "user_name": "Byosoft Lifeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1551/2",
+            "text": "不知道哪里有问题，有没有碰到过的，给点建议怎么解决"
+        },
+        {
+            "user_name": "Hdq",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1551/3",
+            "text": "content: 排查思路：\n使用itestsmart设备管理中填入的用户名和密码登录BMC web界面。点击顶部系统管理，点击下方页面的处理器页签。检查下方CPU的厂商值是否为“Hisilicon”或者“Huawei”。如果测试设备为非华为设备，需要申请license授权。\nlinks: #p-3747-h-1"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 653,
+    "question": "KVM失效问题咨询 - content: 客户基于1711模组和920模组自行设计的载板，在使用KVM功能时出现了两个异常场景：\n1、下电状态，重启openUBMC，KVM黑屏无状态显示，上电后重新进入KVM仍然黑屏也不显示任何信息，需要上电状态重启openUBMC后才能恢复正常。\nimage493×389 5.51 KB\n2、在黑屏异常状态时，KVM会话没有释放，一个用户使用KVM时，多次进入和退出KVM后，首页KVM无法点击进入。排查发现同一IP KVM会话数量到达最大上限的4个，需要注销其中的几个才能正常访问KVM\nimage415×212 30.3 KB\nimage755×607 51.5 KB\nimage1142×520 90.5 KB\n3、有时候也会出现这个提示，但是还没有找到规律。\nimage934×652 34.4 KB\n以上几个问题，我们也拿了两个不同客户设计的载板（1711模组+920模组），用相同的bmc、bios固件，对比着测试，其他板卡都是正常的，怀疑是硬件问题引起，但是客户硬件那边反馈说已经拉了华为的专家评审了硬件原理，没有异常，还得软件排查。\n目前问题卡住了，所以想咨询一下软件上该如何排查定位该问题？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/762275b3da5ff692e2c0377967e938f0a47e9fdb.png, https://discuss.openubmc.cn/uploads/default/original/1X/8092563dcbece2a5ab6d4b13fe5e7c93b7fa67d4.png, https://discuss.openubmc.cn/uploads/default/original/1X/7cd1239edc5a6ce2b5c6b6ee7b8746d4ea8c37f3.png, https://discuss.openubmc.cn/uploads/default/original/1X/731983a5762572085802f4828d0c3a55bcbd0d16.png, https://discuss.openubmc.cn/uploads/default/original/1X/417d1748bec54c030b6467b315b6837273581051.png",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/653/2",
+            "text": "比较可能是硬件问题，建议近端接显示器进一步定位"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/653/3",
+            "text": "近端接显示器 测试下来一直是正常的"
+        }
+    ]
+}

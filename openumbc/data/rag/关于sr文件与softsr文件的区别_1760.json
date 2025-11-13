@@ -1,0 +1,36 @@
+{
+    "topic_id": 1760,
+    "question": "关于sr文件与soft.sr文件的区别 - 1.请问两者之间的区别是什么？\n2.最后的合并是什么方式合并的？\n3.如果sr和soft.sr中有重复的内容的话是只取其一还是变成两个？\n4.把soft.sr文件中的内容直接放到sr文件中是否能使用？",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/1760/3",
+    "reply_posts": [
+        {
+            "user_name": "FXX",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1760/2",
+            "text": "1、.sr → 硬件的硬件描述，类似于芯片寄存器Chip的定于，Connector连接器的定义\nsoft.sr → 硬件的软件类描述，配置的告警信息、温度阈值等等\n2、合并是在manifest出整包时，会将123.sr 和 123_soft.sr合并为 123.sr 并防止在/opt/bmc/sr目录下。合并的时候会以object为单位合并，例如123.sr中存在ObjectA，有 a,b,c三个属性，在123_soft.sr中有ObjectA，有e,f,g三个属性。最终合并之后的sr只会有一个ObjectA，并且有a,b,c,e,f,g 6个属性。\n3、这个不太清楚。\n4、可以直接使用，最终会合并。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1760/3",
+            "text": "soft其实是一个临时过渡方案，为了解决烧录的CSR因为软件特性频繁变更的问题。\n你的场景应该不需要用，直接一个.sr就行了。"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1760/4",
+            "text": "好的，感谢二位的指导"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1760/5",
+            "text": "content: 可以参考bingo工具构建整包的源码实现，方法名为merge_sr_and_converge_version, 源码文件为：\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\nlinks: https://gitcode.com/openUBMC/bingo/blob/main/bmcgo/tasks/task_build_rootfs_img.py?init=initTree#L301, https://gitcode.com/openUBMC/bingo/blob/main/bmcgo/tasks/task_build_rootfs_img.py?init=initTree#L301"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1173,
+    "question": "【已评审】新增资源协作路径/bmc/kepler/Bus/I3cOverLocalBus/:Id - content: 背景介绍：BMC版本支持基于localbus的I3C访问，需要新开发用户态驱动。\n触发原因：新的需求\n需求背景：BMC版本支持基于localbus的I3C访问，需求框架提供对应的总线对象管理和总线访问能力。\n当前现状与差距/问题分析：当前框架未支持I3cOverLocalBus接口\n决策点(必填)：\n新增资源协作接口路径：/bmc/kepler/Bus/I3cOverLocalBus/:Id\n详细描述\npath：bmc/kepler/Bus/I3cOverLocalBus/:Id（新增）\ninterface：bmc.kepler.Bus\n变化类型：新增path\n应用场景：框架提供通用能力\n持久化类型： 不持久化\n操作权限：ReadOnly\n新增私有属性\nimage1832×362 27.6 KB\n评审结论\n同意新增新增资源协作接口路径:/bmc/kepler/Bus/I3cOverLocalBus/:Id，该路径实现已定义的资源协作接口：bmc.kepler.Bus\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/efc3983be45bd6b5f495b0954bd6c7020e011af0.png",
+    "topic_user_name": "Chenshengfan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1173/2",
+            "text": ""
+        }
+    ]
+}

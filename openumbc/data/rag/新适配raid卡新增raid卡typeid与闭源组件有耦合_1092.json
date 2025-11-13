@@ -1,0 +1,92 @@
+{
+    "topic_id": 1092,
+    "question": "新适配raid卡新增raid卡typeid与闭源组件有耦合 - 5月底需求新适配raid卡9540-16i，需要新增typeid为17。\nraid卡需要加载哪个storelib库又是需要在libsml_base.so中新增对应关系。sml_base 适配层库并没有开源。导致新增raid卡适配都需要求助修改闭源组件libmgmt_protocol。\n若复用其他卡的typeid可获取raid卡信息，会导致卡类型显示错误及告警raid卡名称显示错误。\n当前是否只有修改libmgmt_protocol这一种方式。\n是否可以考虑解耦利用typeid来识别加载不同的库。",
+    "topic_user_name": "Kunlun Liuchenxi",
+    "best_answer_url": "/t/topic/1092/4",
+    "reply_posts": [
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1092/2",
+            "text": "目前已经搭建了通过type_id加载so的框架，需要根据type_id提供对应加载的so，\nso命名和位置： /usr/lib64/libsml_custom_base.so\n后续适配过程如需进一步帮助请联系我"
+        },
+        {
+            "user_name": "Kunlun Liuchenxi",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1092/3",
+            "text": "dli_bmc_vigaq:\n\nlibsml_custom_base.so\n\nlibsml_custom_base.so目前也是集成在libmgmt_protocol中目前还未开源？"
+        },
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1092/4",
+            "text": "libsml_custom_base.so  这个可以依赖接口自己实现。\n如果想用BMC的，那这一部分还是闭源的。"
+        },
+        {
+            "user_name": "Kunlun Liuchenxi",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1092/5",
+            "text": "dli_bmc_vigaq:\n\nlibsml_custom_base.so\n\nlibsml_custom_base.so 由伙伴自己实现？\n9540-16iraid卡也为博通卡，可直接复用libsml_custom_base.so 在libsml_custom_base.so 中增加typeid 区分去加载libraidblib.so还是libraidblibit.so等。\n若都由伙伴自己实现工作量太大。是否考虑这部分也会开源。要不然新增博通raid卡都涉及闭源。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1092/6",
+            "text": "博通卡管理相关代码由于协议问题无法开源，只能各自维护了"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1092/7",
+            "text": "9500 8i  和 9500 16i 也需要新增 type id 是19 和 20"
+        },
+        {
+            "user_name": "Chengxiaoju",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1092/8",
+            "text": "附议。我们现在有E2E 9500-8i和9500-16i的交付任务，急需适配。"
+        },
+        {
+            "user_name": "Baijing",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1092/9",
+            "text": "9540-8i 虽然社区已有配置文件但是实际无法获取信息, 也需要新增type id —>16"
+        },
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1092/10",
+            "text": "社区的配置文件， typeId配置的为10，配置错误，不需要改闭源仓，只需要吧配置文件改成16即可"
+        },
+        {
+            "user_name": "Baijing",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1092/11",
+            "text": "content: 这个我已经把typeid改成16了，但是还是获取不到信息；\nimage512×620 14.2 KB\nimage1582×484 24.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/5861a19e6315725eebc814e220ce0ad6693dac8b.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/ac4b2eb7169dbe42561cd0e6b6fb328635705f66.png"
+        },
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1092/12",
+            "text": "这个闭源也涉及修改，目前已修改上库了，后续可以联系技术支持确认版本。"
+        },
+        {
+            "user_name": "Lanqiao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1092/13",
+            "text": "content: 9500-16i适配了，识别不了，增加了typeid=19,请问这块可以从哪些方面来进行定位？\nimage1413×1050 65.2 KB\nimage1303×1308 90.3 KB\nstroage log报错\nimage1466×531 416 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/2e73e2f58bbd4e7e9d68b6de16f5d59d2d5f9fd3.png, https://discuss.openubmc.cn/uploads/default/original/2X/5/549902d90c22e0df6589e562436e7e40f73e864a.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/1505ec65f34ff916892306b0d30146e572aae8c4.png"
+        }
+    ]
+}

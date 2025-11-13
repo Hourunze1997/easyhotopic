@@ -1,0 +1,22 @@
+{
+    "topic_id": 732,
+    "question": "【变更声明】Redfish升级接口权限变更 - content: 变更原因\n为了保证服务器产品固件升级的权限控制精细化管理以及操作安全，对于需要清除配置的升级场景做进一步的权限控制，限制为管理员权限。更多详细内容请见：\n\n【已评审】Redfish升级接口权限问题 Interface评审\n\n关联issue\nrackmount issue#24 （Redfish升级接口权限问题） \n评审背景\nURI：/redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate \n操作类型：POST \n上述Redfish升级接口有可选项 RestoreFactorySettings，表示当前升级操作是否恢复出厂设置 \n问题： \n升级接口的权限是…\n  \n\n受影响的版本\n\nopenUBMC 25.03 版本\n\n变更描述\n规格变化\n不涉及\n外观变化\n不涉及\n外部接口变化\nopenUBMC 的 Redfish 升级接口 SimpleUpdate ，使用 RestoreFactorySettings 参数为 true 的使用权限变更。具体的变更点如下：\n变更前\n\n操作员权限的用户可以使用 Redfish 升级接口 SimpleUpdate 进行通用升级（请求中 RestoreFactorySettings 参数不填写或者为 false）\n操作员权限的用户可以使用 Redfish 升级接口 SimpleUpdate 进行清除配置升级（请求中 RestoreFactorySettings 参数不填写或者为 true）\n\n变更后\n\n操作员权限的用户可以使用 Redfish 升级接口 SimpleUpdate 进行通用升级升级（请求中 RestoreFactorySettings 参数不填写或者为 false）\n操作员权限的用户不能使用 Redfish 升级接口 SimpleUpdate 进行清除配置升级（请求中 RestoreFactorySettings 参数不填写或者为 true）（清除配置升级时会无权限报错，错误：InsufficientPrivilege，HTTPCode：403）\n\n安装方式变化\n不涉及\n兼容性说明\n当前变更仅涉及BMC的固件软件版本，不涉及兼容性\n文档影响\n不涉及\n建议动作\n建议升级 openUBMC 25.06 版本，预计在 2025/06/30 发布。\nlinks: #p-1522-h-1, https://discuss.openubmc.cn/t/topic/589, /c/interface/40-category/40, #p-1157-issue-1, https://gitcode.com/openUBMC/rackmount/issues/24, #p-1157-h-2, #p-1522-h-2, #p-1522-h-3, #p-1522-h-4, #p-1522-h-5, #p-1522-h-6, #p-1522-h-7, #p-1522-h-8, #p-1522-h-9, #p-1522-h-10, #p-1522-h-11, #p-1522-h-12",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/732/2",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/732/3",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "topic_id": 708,
+    "question": "【问题求助】风扇适配过程遇到的问题 - 目前适配风扇过程，遇到风扇受两个SMC控制，前置12个风扇和后置4个风扇受不同的SMC命令控制，它们设置风扇速率的命令不一样。现在我的配置方法是前置风扇和后置风扇各建立了一个sr文件配置。结果就是配置了两个\n“Fans_0”: {\n“PWMChip”: “#/Chip_Fan_PWM”,\n“SetPWMCmd”: 402657792\n},\n其中SetPWMCmd的值是不同的。结果就是设置速率时（用命令busctl --user call bmc.kepler.thermal_mgmt /bmc/kepler/Systems/1/Thermal/Fans bmc.kepler.Systems.Fans SetPWM a{ss}ad 0 4 50 50 50 50）只有后置风扇会被控制。前置风扇不起作用。\n测试时，如果把后置风扇sr文件中的\n“Fans_0”: {\n“PWMChip”: “#/Chip_Fan_PWM”,\n“SetPWMCmd”: 402657792\n},\n删除，结果就是只有前置风扇会被控制。后置风扇不起作用。\n通过目前测试结果猜测是，两个sr文件的SetPWMCmd配置，后者会把前者给覆盖掉。所以想求助有什么办法可以解决这个问题。",
+    "topic_user_name": "wuzhou-Lsx",
+    "best_answer_url": "/t/topic/708/5",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/708/2",
+            "text": "在调用SetPWM接口时，需要下发所有的风扇转速，不能单独仅设置4个风扇转速。"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/708/3",
+            "text": "现在问题是调用SetPWM接口时设置风扇有两个不同的SetPWMCmd，无法做到下发所有的风扇转速。"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/708/4",
+            "text": "调用该命令设置风扇转速时，需要对对应fanid进行设置，例如，当前风扇id为1-15,21-28，则命令应该为：busctl --user call bmc.kepler.thermal_mgmt /bmc/kepler/Systems/1/Thermal/Fans bmc.kepler.Systems.Fans SetPWM a{ss}ad 0 28 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 0 0 0 0 0 40 40 40 40 40 40 40 40，即中间需用0补齐。\n请确认是否为上述命令下发。\n该命令中ad表示double数组，即为风扇转速占空比数据，其中每一个元素对应的是每个风扇id对应的占空比，第一个元素则是风扇1的占空比，第二个元素则是风扇2的占空比，依次类推，而上述例子中风扇id为1-15和21-28，因此数组中16-20位置元素无对应风扇id，则以0进行填充转速占空比，其余位置则填充所需下发转速。"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/708/5",
+            "text": "感谢回复，后面发现原因是我配置的两个sr文件中的风扇fanid有重复，设置成不重复后，可以用setpwm命令全部设置速率。"
+        }
+    ]
+}

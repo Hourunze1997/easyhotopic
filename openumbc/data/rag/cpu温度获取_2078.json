@@ -1,0 +1,15 @@
+{
+    "topic_id": 2078,
+    "question": "cpu温度获取 - 一台服务器使用多个cpu板，bmc如何获取从cpu的温度信息",
+    "topic_user_name": "Kunlun Zht",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2078/2",
+            "text": "通过ipmb通道从带内获取cpu温度信息，通过通道类型、cpuid可以获取到"
+        }
+    ]
+}

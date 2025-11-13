@@ -1,0 +1,29 @@
+{
+    "topic_id": 1336,
+    "question": "关于升级BMC正式包的问题 - 为什么无法设置BMC的时间？",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/1336/2",
+    "reply_posts": [
+        {
+            "user_name": "sunpeijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1336/2",
+            "text": "ipmitool支持的格式为\"%m/%d/%Y %H:%M:%S\"\n如ipmitool sel time set “06/13/2025 08:35:00”\nCommand not supported in present state报错\n指当前NTP功能已开启，开启状态下无法通过IPMI设置时间"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1336/3",
+            "text": "格式的话两种都试过了，NTP功能怎么能关闭呢，在代码里吗还是能通过命令关闭？"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1336/4",
+            "text": "web网页，时区&NTP页签下有ntp开启和关闭的功能"
+        }
+    ]
+}

@@ -1,0 +1,71 @@
+{
+    "topic_id": 1066,
+    "question": "事件日志停在某一条记录后不再增加了，循环记录，只有74条 - content: 事件日志停在某一条记录后不再增加了，循环记录，只有74条，日志见附件\nimage1580×838 90.8 KB\n事件日志不再增加.zip (2.3 MB)\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/499b621c3bcbfd46df8b8ca002ec415cc5d44e16.png, /uploads/short-url/wM2NRZKoghiZ993N2hQNcRlTxV2.zip",
+    "topic_user_name": "长江-涂华能",
+    "best_answer_url": "/t/topic/1066/9",
+    "reply_posts": [
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1066/2",
+            "text": "ipmi查询的是传感器事件,非系统事件"
+        },
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1066/3",
+            "text": "当时是做了电源线插拔动作发现传感器事件有，但是系统事件上没有，后面系统事件一直不变了，期间做了很多动作包括重启BMC，系统事件一直没变化"
+        },
+        {
+            "user_name": "baixin_ouyangyonggang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1066/4",
+            "text": "content: 我这也有类似问题，在Web清除系统事件后，分别进行机器AC,DC,重启BMC操作后，Web上查看系统事件为空，ipmcget -d sel -v list 查看无任何日志显示。\nimage1862×697 21.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/008c5fa0729a281db9db72a64d31066edee447b7.png"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1066/5",
+            "text": "日志请附在评论区"
+        },
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1066/6",
+            "text": "content: 事件日志不再增加.zip (2.3 MB)\nlinks: /uploads/short-url/wM2NRZKoghiZ993N2hQNcRlTxV2.zip"
+        },
+        {
+            "user_name": "baixin_ouyangyonggang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1066/7",
+            "text": "content: 因上传的文件大小有限制，提取一键收集日志中的LogDump日志见附件。\nS920X20重启后未记录系统日志_LogDump.zip (1.8 MB)\nlinks: /uploads/short-url/upA1mbkXsudKAg1LsCiaTt9lo3e.zip"
+        },
+        {
+            "user_name": "baixin_ouyangyonggang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1066/8",
+            "text": "content: @hxmygcs  进行机器AC,DC,重启BMC操作无系统事件，这个现象目前看是必现的，麻烦帮忙定位下或提供定位思路，相关日志已在评论区附件\nlinks: /u/hxmygcs"
+        },
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1066/9",
+            "text": "已确认问题原因，可查看/data/opt/bmc/conf/event_def.json和/opt/bmc/conf/event_def.json文件中事件定义内容是否为空\n如果是这种就是有问题\n\n在vpd打包时将event_def.json中版本号改大"
+        },
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1066/10",
+            "text": "同时确认有没有 板名/event/eventDefList.txt文件，没有的话复制一份。最终会根据这个文件中的事件从基础的event_def.json中筛选出来，生成需要的event_def.json"
+        }
+    ]
+}

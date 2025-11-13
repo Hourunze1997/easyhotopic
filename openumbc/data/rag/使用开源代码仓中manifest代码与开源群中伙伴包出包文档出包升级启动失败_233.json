@@ -1,0 +1,29 @@
+{
+    "topic_id": 233,
+    "question": "使用开源代码仓中manifest代码与开源群中伙伴包出包文档出包升级启动失败 - 使用3月5日的开源代码仓中的manifest代码，并按照开源代码场外出包群中的伙伴openbmc出包流程文档出包后在环境中升级启动失败",
+    "topic_user_name": "Tf Wenchenglong",
+    "best_answer_url": "/t/topic/233/6",
+    "reply_posts": [
+        {
+            "user_name": "Tf Wenchenglong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/233/4",
+            "text": "求助xuhaijun，首先查看操作日志，找到对应操作时间，查看对应时间的app.log日志和framework.log可发现，在framework.log中可以看到许多错误提示：discovery.lua:position:01,get root sr failed, error: Local file not found, open file failed: /opt/bmc/sr/root.sr, status: 4"
+        },
+        {
+            "user_name": "Tf Wenchenglong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/233/5",
+            "text": "由此可知hpm包中缺少sr文件，而这与manifest.yml文件中的vpd的配置有关，查看配置发现其中vpd的options:中的board_name已经按照伙伴openubmc出包流程文档修改为对应信息,而此配置会导致一些sr文件的丢失，应使用openUBMC"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/233/6",
+            "text": "社区vpd当前只支持：\n\nS920X20\nS920H20\nopenUBMC(社区单独测试版本)\n\n三款机型\n使用其他机型会导致root.sr不被集成，无法执行后续自发现等动作。"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1127,
+    "question": "如何在openUBMC中启用BMC芯片的网口 - 如何在openUBMC中启用Hi1711的网口？即将网口增加的设备树进行初始化。具体开发中要增加/修改哪个项目的哪个代码（会议中咨询说是要修改CSR）？多谢。",
+    "topic_user_name": "Niegsh",
+    "best_answer_url": "/t/topic/1127/2",
+    "reply_posts": [
+        {
+            "user_name": "sunpeijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1127/2",
+            "text": "content: 此问题解答见BMC使用双管理网口需求\nlinks: https://discuss.openubmc.cn/t/topic/1134"
+        }
+    ]
+}

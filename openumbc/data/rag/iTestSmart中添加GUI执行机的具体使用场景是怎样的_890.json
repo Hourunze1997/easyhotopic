@@ -1,0 +1,22 @@
+{
+    "topic_id": 890,
+    "question": "iTestSmart中添加GUI执行机的具体使用场景是怎样的 - 在ITestSmart用户指南中8.1.5中，可以添加GUI执行机，是否是用来测试windows系统的自动化，能提供一些具体的使用场景吗，多谢。",
+    "topic_user_name": "Yctco Caos",
+    "best_answer_url": "/t/topic/890/3",
+    "reply_posts": [
+        {
+            "user_name": "Sakuraofking",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/890/2",
+            "text": "这个东西你得问iTestSmart的接口，他们有完全指导的"
+        },
+        {
+            "user_name": "openubmc-jianghu",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/890/3",
+            "text": "涉及web界面的自动化测试时，需要用到GUI执行机（即一台windows 设备，物理或虚拟机均可）。用例脚本中控制GUI执行机打开浏览器，访问opebubmc web服务地址，控制浏览器执行界面测试动作（如：点击某个按钮、文本框输入内容等）。若存在多个GUI执行机，可以并发测试web界面。\n\n未配置GUI执行机时，会打开本机（即运行用例脚本所在设备，此处就是运行itestsmart的设备）Firefox（用户指南中提供了Firefox&驱动的安装方式），控制它访问web服务地址、执行测试动作。该场景下，无法支持并发测试web界面。"
+        }
+    ]
+}

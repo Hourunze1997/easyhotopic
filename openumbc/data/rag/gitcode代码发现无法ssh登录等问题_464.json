@@ -1,0 +1,15 @@
+{
+    "topic_id": 464,
+    "question": "gitcode代码发现无法ssh登录等问题 - content: issue链接\n1.ssh无法登录\nSSH登不进去-manifest-GitCode\nimage683×367 33.7 KB\n\nbios仓bmcgo gen后，BIOS组件起不来\n当前1.70.32版本bios仓 bmcgo gen后，BIOS组件起不来 导致iBMC回退-bios-GitCode\nimage792×709 104 KB\nlinks: https://gitcode.com/openUBMC/manifest/issues/4, https://discuss.openubmc.cn/uploads/default/original/1X/2ef7bd5a3afa9182d138182fdf473c11f1161771.png, https://gitcode.com/openUBMC/bios/issues/4, https://discuss.openubmc.cn/uploads/default/original/1X/c642a770ca2c718f80ab8bb70cdb52e75ba9359b.png",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "/t/topic/464/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/464/2",
+            "text": "收到问题，正在处理中。"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1692,
+    "question": "【iTestSmart OpenUBMC问题反馈】BMC命令行添加新用户测试，测试结果Fail。 - content: 一、测试环境\n主板：S920X20\nBMC Version：25.03\niTestSmart Verson: 1.0.34\n二、问题描述\n\nopenUBMC->安全管理->BMC命令行添加新用户测试，测试结果Fail。\n1.0.31、1.0.32、1.0.34版本ibmc工具目录下，没有报错信息中提到的Upgrade\nmanagement_function_00021920×919 201 KB\n文件夹。\niTestSmart工具软件1099×276 45.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/2aa6159a527fc12ad91045187df0633657667e57.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/4/4f9cd7ce8b98fe342cb1aa6f30483b5d422df919.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/1692/2",
+    "reply_posts": [
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1692/2",
+            "text": "此问题与研发同事沟通，已经解决。原因是需要在NFS服务器的/mnt/dev_sdb/share/ibmc/Upgrade/Telnet_V3目录下，放置BMC版本相应的telnet升级包。"
+        }
+    ]
+}

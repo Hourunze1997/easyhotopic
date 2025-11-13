@@ -1,0 +1,15 @@
+{
+    "topic_id": 477,
+    "question": "【已评审】配置导入导出项与定制化项新增时间跳变门限 - content: 关联issue\n配置导入导出项与定制化项新增时间跳变门限\n评审背景\n\nBMC中时间跳变门限是固定的2min（120s），超过该门限之后产生时间跳变事件\n客户对于该门限有定制诉求，期望可以出厂定制并且支持配置导入方式修改\n\n评审点\n\n评审点1：BMC新增时间跳变门限的定制化项\n评审点2：BMC新增时间跳变门限的导入导出项\n\n评审点1\nBMC新增时间跳变门限的定制化项，具体的定制化项信息如下：\n\n项目\n值\n\n定制化项\n时间跳变间隔门限，超出该门限则触发时间跳变事件\n\n定制化接口名称\nCustom_TimeHoppingThreshold\n\n默认值\n120\n\n说明\n正整数，单位秒说明：最小值为60，小于最小值则按照默认值处理\n\n评审点2\nBMC新增时间跳变门限的导入导出项，具体的配置导入导出项信息如下：\n\n项目\n值\n\n导出项\nBMC\n\n导出子项\nTimeHoppingThreshold\n\n含义说明\n时间跳变间隔门限，超出该门限则触发时间跳变事件\n\n取值类型\nnumber\n\n属性类型\nImportAndExport\n\n取值说明\n正整数，单位秒\n\n备注\n新增导入导出项说明：最小值为60，小于最小值则按照默认值处理\n\n导出后是否可以直接导入\n是\n\n评审结论\n总体结论\n同意新增时间跳变间隔门限的定制项和配置导入导出项。具体如下：\n\n定制化项：Custom_TimeHoppingThreshold\n配置导入导出项：TimeHoppingThreshold\n\n剩余事项\n闭环上述评审结论事项。具体如下：\n事项1: 明确时间跳变的门限背景说明以及配置说明\n\n提出人：彭强\n事项处理：已经修改对应的材料，明确背景以及评审事项中的约束说明\n事项状态：CLOSE\n\n事项2：时间跳变在BMC上应该是 TimeHopping\n\n提出人：黄晗\n事项处理：已经修改对应的材料，统一采用TimeHopping\n事项状态：CLOSE\nlinks: #p-899-issue-1, https://gitcode.com/openUBMC/profile_schema/issues/5, #p-899-h-2, #p-899-h-3, #p-899-h-1-4, #p-899-h-2-5, #p-899-h-6, #p-899-h-7, #p-899-h-8",
+    "topic_user_name": "sunpeijun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/477/2",
+            "text": ""
+        }
+    ]
+}

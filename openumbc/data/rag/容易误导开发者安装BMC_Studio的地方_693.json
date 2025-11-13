@@ -1,0 +1,15 @@
+{
+    "topic_id": 693,
+    "question": "容易误导开发者安装BMC Studio的地方 - content: openubmc.cn\n\nBMC Studio安装指南 | openUBMC\nopenUBMC\n\n在BMC Studio的安装指南下，发现两处错误，容易误导开发者。\nimage2880×1607 446 KB\nimage2720×1363 373 KB\nlinks: https://openubmc.cn/docs/zh/development/quick_start/prepare_environment/bmc_studio_installation.html, https://openubmc.cn/docs/zh/development/quick_start/prepare_environment/bmc_studio_installation.html, https://discuss.openubmc.cn/uploads/default/original/1X/cbcb2eb1ee395aa6987a01e594a595ed209128eb.png, https://discuss.openubmc.cn/uploads/default/original/1X/a662e340d25ef9bae1b49c5a708deace87c2b589.png",
+    "topic_user_name": "iss_renping",
+    "best_answer_url": "/t/topic/693/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/693/2",
+            "text": "content: 已在此issue中跟踪关闭，GitCode - 全球开发者的开源社区,开源代码托管平台\n修复已上线\nlinks: https://gitcode.com/openUBMC/docs/issues/12"
+        }
+    ]
+}

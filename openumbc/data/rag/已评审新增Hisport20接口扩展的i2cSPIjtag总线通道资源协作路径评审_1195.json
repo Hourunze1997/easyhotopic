@@ -1,0 +1,29 @@
+{
+    "topic_id": 1195,
+    "question": "【已评审】新增Hisport2.0接口扩展的i2c，SPI，jtag总线通道资源协作路径评审 - content: Issue链接\n【需求】支持基于Hisport2.0扩展I2c,SPI,Jtag总线通道\n背景\n需求支持基于Hisport2.0接口扩展的i2c，SPI，jtag总线通道访问，需要框架提供对应的总线对象管理和总线访问能力。\n决策点\n\n新增资源协作接口路径: “/bmc/kepler/Bus/I2cOverHisport/:Id”\n新增资源协作接口路径:  “/bmc/kepler/Bus/SPIOverHisport/:Id”\n新增资源协作接口路径: “/bmc/kepler/Bus/JtagOverHisport/:Id”\n\n详细描述\n资源path：bmc/kepler/Bus/I2cOverHisport/:Id（新增）\n资源interface：bmc.kepler.Bus\n变化类型：新增资源path\n应用场景：框架提供通用能力\n持久化类型： 不持久化\n操作权限：BasicSetting\n详细描述：\n新增私有属性\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nId\n新增属性\nU8\nNA\nNA\nNA\nCSR\nHisport总线控制器Id\n取值范围[0,1]\n\nChannelId\n新增属性\nU8\nNA\nNA\nNA\nCSR\nI2c通道Id\n取值范围[0,255]\n\n资源path：bmc/kepler/Bus/SPIOverHisport/:Id（新增）\n资源interface：bmc.kepler.Bus\n变化类型：新增资源path\n应用场景：框架提供通用能力\n持久化类型： 不持久化\n操作权限：BasicSetting\n详细描述：\n新增私有属性\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nId\n新增属性\nU8\nNA\nNA\nNA\nCSR\nHisport总线控制器Id\n取值范围[0,1]\n\nChannelId\n新增属性\nU8\nNA\nNA\nNA\nCSR\nSPI通道Id\n取值范围[0,255]\n\n资源path：bmc/kepler/Bus/JtagOverHisport/:Id（新增）\n资源interface：bmc.kepler.Bus\n变化类型：新增资源path\n应用场景：框架提供通用能力\n持久化类型： 不持久化\n操作权限：BasicSetting\n详细描述：\n新增私有属性\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nId\n新增属性\nU8\nNA\nNA\nNA\nCSR\nHisport总线控制器Id\n取值范围[0,1]\n\nChannelId\n新增属性\nU8\nNA\nNA\nNA\nCSR\nJtag链路Id\n取值范围[0,1]\n\n评审结论\n同意新增如下资源协作接口路径及私有属性：\n/bmc/kepler/Bus/I2cOverHisport/:Id\n/bmc/kepler/Bus/SPIOverHisport/:Id\n/bmc/kepler/Bus/JtagOverHisport/:Id\n上树路径实现如下已定义的资源协作接口：bmc.kepler.Bus\nlinks: #p-2599-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/93, #p-2599-h-2, #p-2599-h-3, #p-2599-h-4, #p-2599-h-5",
+    "topic_user_name": "chenhongchang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1195/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1195/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1195/4",
+            "text": ""
+        }
+    ]
+}

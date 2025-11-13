@@ -1,0 +1,36 @@
+{
+    "topic_id": 1403,
+    "question": "【已评审】persistence组件新增控制可观测功能使能状态开关 - content: ISSUE链接\n新增可观测使能开关-mdb_interface-GitCode\n背景\n可观测功能由客户端和服务端组成。客户端使用开源软件opentelemetry采集组件的日志，追踪，度量数据，上报给服务端，服务端由Observaibility组件提供，支持将客户端数据发送到可视化工具。当前可观测功能开关由上层组件Observability组件提供，客户端无法感知开关，导致可观测服务关闭状态下，客户端仍然会一直上报观测数据，达不到真正关闭的作用。需要将开关下沉到persistence组件，由persistence组件提供属性开关，客户端监听属性开关，判断是否发送数据\n整体方案\n当前可观测功能开关由上层组件Observability组件提供，客户端无法直接监听，需要由持久化提供属性开关。有以下两种实现方式\n方案一：保留原有Observability组件提供的可观测功能开关，persistence服务提供开观测使能开关，Observablility属性变化则同步到persistence服务使能开关，以达到通知客户端的目的\nimage580×426 17.8 KB\n方案二：由persistence组件提供可观测使能属性，Observability服务端以及客户端均通过监听该开关感知是否开启观测功能\nimage615×326 16 KB\n新增资源协作接口信息如下\npath: /bmc/kepler/Dashboard\ninterface: bmc.kepler.Dashboard.Observability\nproperty: Enabled\n变化类型：新增资源树接口\n应用场景：可观测功能使能开关\n持久化类型：掉电持久化\n操作权限：r:ReadOnly;w:DiagnoseMgmt\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nEnabled\n新增属性\nbool\nr:ReadOnly;w:DiagnoseMgmt\nPoweroffPer\n是\n可观测功能使能开关\n无\n\n决策点\n\n可观测功能开关实现方案\npersistence组件新增bmc.kepler.Dashboard.Observability资源协作路径，接口，属性\n\n评审结论\n\n采用方案一，可观测功能的使能由Observability组件控制，即北向接口的设置请求由Observability组件处理，Observability组件再调用persistence组件的资源协作接口控制内部各个客户端的使能状态，opentelemetry客户端监听persistence组件的资源协作接口属性控制可观测功能使能状态\n同意新增如下可观测功能的资源协作路径，接口，属性\npath: /bmc/kepler/Dashboard\ninterface: bmc.kepler.Dashboard.Observability\n属性: Enabled\n表示可观测功能使能状态，签名为b，读写， 读权限：ReadOnly，写权限：DiagnoseMgmt，发送变更通知事件\nlinks: #p-3259-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/121, #p-3259-h-2, #p-3259-h-3, https://discuss.openubmc.cn/uploads/default/original/2X/7/769ff72c8417363015fc28bdebaccfc73d1d2726.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/f97faa8460013a18e4c2ec1cb4dc463d8a68652a.png, #p-3259-h-4, #p-3259-h-5",
+    "topic_user_name": "chenhongchang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1403/2",
+            "text": "1、标题加上待评审，新增全局可观测使能状态评审\n2、按模板要求，补充Issue链接"
+        },
+        {
+            "user_name": "chenhongchang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1403/3",
+            "text": "已修改"
+        },
+        {
+            "user_name": "chenhongchang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1403/4",
+            "text": "使用方案1，框架尽量不直接对接北向\n接口需要增加一个全局字段\n/bmc/kepler/Dashboard\nbmc.kepler.Dashboard.Observability\n权限使用r ReadOnly, w DiagnoseMgmt"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1403/5",
+            "text": ""
+        }
+    ]
+}

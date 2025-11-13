@@ -1,0 +1,71 @@
+{
+    "topic_id": 1850,
+    "question": "使用ipmitool/web查看传感器事件出现报错的问题 - content: 操作步骤\n1、通过web登录，查看“维护诊断”-“告警&事件”-“传感器事件”，见附件中的图片“传感器事件无法查看1.png”;\n传感器事件无法查看1.png1663×935 92.5 KB\n2、跳转到160页，可以查看104及之后的日志，见附件中的图片“传感器事件无法查看2.png”;\n传感器事件无法查看2.png1661×978 99.2 KB\n3、跳转到159页，则无任何信息返回，见附件中的图片“传感器事件无法查看3.png”，尝试发现153~159页都有类似问题（对应的序号105~174）;\n传感器事件无法查看3.png1662×975 78.7 KB\n4、web界面的QuerySel接口返回码是500（The request failed due to an internal service error。The service is still operational）;\n5、尝试用ipmitool sel list命令，也出现报错，见附件中的图片“ipmitool 命令查看sel报错.png”;\nipmitool命令查看sel报错.png1656×922 54.5 KB\n6、尝试用ipmitool sel clear命令，也出现报错，见附件中的图片“ipmitool 命令清除sel报错.png”;\nipmitool命令清除sel报错.png1113×239 6.13 KB\n结果描述\n见“操作步骤”中的操作和对应的异常结果；\n预期结果\n没有报错信息且能查看传感器日志\n问题定位情况\n考虑是不是线性记录方式导致某一条日志被覆盖丢失\nlinks: #p-4506-h-1, https://discuss.openubmc.cn/uploads/default/original/2X/d/dc661693a16b65df90f3c2d8cb7f9aac0eddb596.png, https://discuss.openubmc.cn/uploads/default/original/2X/4/4a073f2717aecc3624562ca35d1710f125fdec27.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/787255da02784da0c94ebb70e2d9d6bb68e4b4b0.png, https://discuss.openubmc.cn/uploads/default/original/2X/4/4c81a9652730b29505bce36cf888f97cf575e30a.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/6346255526cc5f41eb3f5131662b37deace7709c.png, #p-4506-h-2, #p-4506-h-3, #p-4506-h-4",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "/t/topic/1850/9",
+    "reply_posts": [
+        {
+            "user_name": "Duzhou13 51cdj",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1850/2",
+            "text": "请收集一份日志邮件发给我看看"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1850/3",
+            "text": "有的，麻烦提供下邮箱"
+        },
+        {
+            "user_name": "Duzhou13 51cdj",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1850/4",
+            "text": "content: wanghaozhou2@huawei.com\nlinks: mailto:wanghaozhou2@huawei.com"
+        },
+        {
+            "user_name": "Duzhou13 51cdj",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1850/5",
+            "text": "content: 查看了下日志文件的/AppDump/sensor中的sensor.db文件，发现有异常的数据，请问是否环境上的数据遭受破坏，是否有手动写入信息，或是其他什么操作？导致数据库中有该脏数据？正常添加传感器事件流程中，写入数据库是有数据类型校验的，不会有这种数据产生。\nimage1423×184 6.49 KB\n此外可以通过ipmitool sel clear的方式将传感器事件清除，可以清除所有脏数据\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/290a3d525f3a0a4684af52e49d994b1692a656f3.png"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1850/6",
+            "text": "并没有执行过手动写入等特殊操作，尝试了下sel clear也没法恢复"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1850/7",
+            "text": "请问这个数据类型校验机制大概是在哪个版本或者时间添加的呢，这台机器之前确实有各种版本互相更新过"
+        },
+        {
+            "user_name": "Duzhou13 51cdj",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1850/8",
+            "text": "1、请问执行ipmitool sel clear命令是执行失败的吗？\n2、若命令执行成功，web或者是ipmi命令还能查询出无问题的事件吗？"
+        },
+        {
+            "user_name": "Duzhou13 51cdj",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1850/9",
+            "text": "数据类型校验是一直就有的，因为openubmc实现数据库存储数据也是通过模型定义的方式，因此若通过基础框架提供的接口向数据库中添加数据，若数据有问题（例如数据类型存在问题），是会执行失败并无法真正写入数据库的"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1850/10",
+            "text": "执行失败了，通过还原数据库解决了，感谢"
+        }
+    ]
+}

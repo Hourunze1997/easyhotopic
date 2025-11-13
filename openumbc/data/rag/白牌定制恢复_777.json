@@ -1,0 +1,15 @@
+{
+    "topic_id": 777,
+    "question": "白牌定制恢复 - BMC白牌定制包升级后，需要如何恢复到升级前的状态了？当前通过恢复出厂设置、使用hpm包进行不保留配置升级都无法恢复到定制前的状态。",
+    "topic_user_name": "dh_qiuming",
+    "best_answer_url": "/t/topic/777/2",
+    "reply_posts": [
+        {
+            "user_name": "黎乐轩",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/777/2",
+            "text": "content: 白牌定制恢复的方法已经补充到这个帖子下方 openUBMC品牌包定制指南\nlinks: https://discuss.openubmc.cn/t/topic/355"
+        }
+    ]
+}

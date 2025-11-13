@@ -1,0 +1,64 @@
+{
+    "topic_id": 171,
+    "question": "想咨询下如何自定义出包的包名 - content: image355×190 4.52 KB\n目前包名rootfs_产品名.hpm，期望包名可以自动带上版本号或者时间戳，例如rootfs_产品名_1.00.00.00.B001_20250226.hpm\n尝试在产品对应的manifest.yml中修改，确没有生效，所以想咨询下如何自定义出包的包名。\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/fedf01ee2224779c5232131023c509cc045e1441.png",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/171/9",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/171/2",
+            "text": "output目录下的hpm包名不支持定制。\n正确的作法：\n\n产品出包应该使用manifest.yml的tosupporte管理，可以定制package_name，可以在vscode安装yaml插件后将鼠标放置在tosupporte/default/package_name配置项上，会有详细格式说明，支持模板描述。package_name配置示例：<prefix_path>/iBMC_${major_ver}.${minor_ver}-%Y%m%d.zip。\n产品构建请使用bingo publish -sc  -bt <build_type>构建，其中是manifest.yml中的tosupporte配置名称，不指定时默认为default；<build_type>为构建类型，可选debug和release，由manifest.yml强制指定。\n构建成功后会将软件包放置在output/packet目录，文件名为output/packet/<prefix_path>/iBMC_${major_ver}.${minor_ver}-%Y%m%d.zip，"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/171/3",
+            "text": "content: image1048×476 49.7 KB\nimage520×181 4.58 KB\n实践下来bmcgo publish -b 528BMC 默认build_type:debug是可以自定义包名，正常出zip包的，感谢支持。\n但是上图红框改成build_type:release，使用bmcgo publish -b 528BMC -bt release出包会报错，看了下还没头绪\nimage1074×356 30.6 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/3c1d19add1c3fc9286008f2eed813e07eb96e39c.png, https://forum.openubmc.cn/uploads/default/original/1X/6f93ae91d3beb9bdb89d06aa17a1312f0db7de34.png, https://forum.openubmc.cn/uploads/default/original/1X/121cc280cbe527784f70772c245c6902404b09f7.png"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/171/4",
+            "text": "content: 问题原因可能是未同步openubmc社区组件，请参考 GitCode - 全球开发者的开源社区,开源代码托管平台 提供的方法更新你的conan仓配置，以级联方式保持与社区代码conan仓同步。\nlinks: https://gitcode.com/openUBMC/frudata/issues/1?ref=&did=89e9e5dc673277e45c5b20a759fa54c7c1efac77#tid-78497417"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/171/5",
+            "text": "好的 我来试一下"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/171/6",
+            "text": "content: 我目前尝试定制发布包名  发现两个问题：\n①报doc/Open Source Software Notice.docx不存在，手动创建后解决\nimage1293×359 24 KB\n②${revise_ver}和${B_ver}未解析，${patch_ver}的解析似乎有问题\n3b19f0ee-f7a9-4b5c-bd3a-4aedcb9c63001542×500 85.8 KB\n还有想问一下这些ver的来源是base: version字段么\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/6a9b07fc5468a818536d0f5bf379635f01c4b731.png, https://forum.openubmc.cn/uploads/default/original/1X/5405b4b3aa8a0bd22c05c2ef11c387b1d4c47c66.jpeg"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/171/7",
+            "text": "第一个问题：看起来像是产品发布策略中配置了不存在的文件，请确认此文件是否必须，如果非必须的，可以从manifest.yml中删除。\n第二个问题：模板支持的变量是有限的，涉及版本号的就major_ver、minor_ver、release_ver、patch_ver和build_ver，分别对应1.00.00.00.B001的5段。"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/171/8",
+            "text": "问题二  也就是现在模板对于版本号只支持${major_ver}.${minor_ver}这两个变量，${revise_ver}.${patch_ver}.${B_ver}这三个不支持"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/171/9",
+            "text": "content: 参考 manifest.yml支持的模板变量说明\nlinks: https://forum.openubmc.cn/t/topic/224"
+        }
+    ]
+}

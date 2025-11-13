@@ -1,0 +1,22 @@
+{
+    "topic_id": 1561,
+    "question": "读写包与只读包实现机制讨论 - 问题一：BMC 启动后，根目录能否被挂载为读写，是由什么决定的？是由 rootfs 镜像本身决定的，还是由 hpm 打包时的参数决定？又或者有其它的决定机制？\n实测：编译 release 包，其 rootfs 镜像仍可在 linux 下被挂载为读写，说明只读机制不在 rootfs 中实现；\n问题二：通过 bingo build -t hpm_package --rootfs_img <image path> -b <board name> 将 rootfs 镜像封装为 hpm 包，是否支持打包为只读包？实测 -bt=release 参数并不会影响根目录的可读写性；\n背景：我们在使用 bingo build -t hpm_package --rootfs_img <image path> -b <board name> 将 rootfs 镜像封装为 hpm 包，发现无论是否加上 -bt=release 的参数，启动后根目录均可被挂载为读写，于是对只读包的机制原理存在疑问，希望能指明排查方向；",
+    "topic_user_name": "Kunlun Xiongzirui",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "yaoshun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1561/2",
+            "text": "答复问题一：\n是由rootfs镜像本身决定的\n答复问题二：\nhpm_package作用仅仅是将rootfs打包为hpm，此时-bt参数实际无意义\n可更新最新的bingo，当前已支持直接出hpm包，无需再次将镜像二次封装为hpm"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1561/3",
+            "text": "不要尝试去修改或破坏运行时rootfs的内容，会导致安全启动时分区校验失败。"
+        }
+    ]
+}

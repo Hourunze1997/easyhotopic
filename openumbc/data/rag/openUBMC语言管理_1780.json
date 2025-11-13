@@ -1,0 +1,50 @@
+{
+    "topic_id": 1780,
+    "question": "openUBMC语言管理 - 最新的版本里在“语言管理”里只有“简体中文”、“english”了，以后的版本里都只有这两种了吗？",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "/t/topic/1780/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1780/2",
+            "text": "openUBMC社区发行版只提供中英两种，小语种当前社区没有这个翻译能力，依赖社区贡献"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1780/3",
+            "text": "之前iBMC包含的法语、日语以及俄语，社区版本没有跟iBMC保持一致啊"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1780/4",
+            "text": "嗯，策略不会保持一致，iBMC是商业发行版，openUBMC是社区发行版，两个定位不太一样的。"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1780/5",
+            "text": "那之后伙伴基于openUBMC社区发布的版本，如何直接商用呢？关于版本这块咋们怎么规划的呢，通过社区版本给终端客户供货"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1780/6",
+            "text": "取决于使用者的商用计划了，如果终端客户需要其他语言的翻译，可以在社区的中英基础上，加上需要的小语种翻译。这样子既能满足不同企业的差异竞争力，又能满足部分不需要小语种的企业直接使用的诉求。\n如果有企业愿意在社区贡献这些小语种的翻译，供所有企业共同使用，我们也是开放欢迎的，都可以进行讨论。但如果只是要提诉求的话，当前社区并没有相关规划。"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1780/7",
+            "text": "好的，感谢"
+        }
+    ]
+}

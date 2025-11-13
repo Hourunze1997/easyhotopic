@@ -1,0 +1,36 @@
+{
+    "topic_id": 1654,
+    "question": "bmc内存占用率过高 - content: 最近通过top发现bmc自己的内存在没有执行什么操作的情况下占用率比较高，能不能帮忙看看是不是有啥异常？\n内存占用率1315×836 93.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/6edd3a15996b67893b1e3ae4991a9668c0e802a3.png",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1654/2",
+            "text": "content: 是否有对应时间的一键收集日志呢？有的话麻烦发送至邮箱 ouwenjian@huawei.com\nlinks: mailto:ouwenjian@huawei.com"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1654/3",
+            "text": "已发送，请查收邮件"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1654/4",
+            "text": "根据日志看，所有进程都是在可接受的范围内的。你这边是判断较高的基线是多少呢？"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1654/5",
+            "text": "了解到之前V2在20%左右，超过80%就需要考虑是否有内存泄漏。那请问openUBMC中正常情况下内存占用率大概范围是咋样的？"
+        }
+    ]
+}

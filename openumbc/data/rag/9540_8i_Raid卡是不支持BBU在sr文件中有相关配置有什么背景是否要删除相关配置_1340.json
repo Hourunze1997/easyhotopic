@@ -1,0 +1,15 @@
+{
+    "topic_id": 1340,
+    "question": "9540-8i Raid卡是不支持BBU，在sr文件中有相关配置，有什么背景，是否要删除相关配置？ - content: 9540-8i Raid卡是不支持BBU，但是在sr文件中进行了相关配置，是否有什么背景，是否应该删除相关配置？\n/home/workspace/vpd/vendor/Broadcom/Raid/14140130_100010e6_100040d5.sr\n/home/workspace/vpd/vendor/Broadcom/Raid/14140130_100010e6_100040d5_soft.sr\nimage1292×681 33.5 KB\n![|1332x967]\nimage1282×536 29.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/330331ae7c0740f5f920e5210630a0ac6509f7a3.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/ae8f3b9fb462b6c11a205a5ca3fc7c1f8568d510.png",
+    "topic_user_name": "Baijing",
+    "best_answer_url": "/t/topic/1340/2",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1340/2",
+            "text": "该配置为通用配置流程，如果实际没有BBU也不会影响接口的展示。后续我们会提供详细的Raid卡配置指导。单点针对不支持的BBU的这个Raid卡配置，是可以将BBU相关配置给删除的"
+        }
+    ]
+}

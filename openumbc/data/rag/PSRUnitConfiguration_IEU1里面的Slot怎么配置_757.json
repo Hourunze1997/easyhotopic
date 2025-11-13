@@ -1,0 +1,36 @@
+{
+    "topic_id": 757,
+    "question": "【PSR】UnitConfiguration_IEU1里面的Slot怎么配置 - content: 这边遇到从CPU出来时4个SrcPortName，对应4个TargetPortID也是4个，但Riser卡上是3个槽位，分别是x8，x16，x8。这种的Slot需要怎么配置，是配置成1,2,3，还是说配置成1,2,255,3这样？\nimage667×438 15.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/84986f1bd82a91e6b573c83f4460ccfc7e0a98fd.png",
+    "topic_user_name": "HKZY_YangBo",
+    "best_answer_url": "/t/topic/757/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/757/2",
+            "text": "按照riser卡的逻辑槽位来， 配置成`1,2,3\n补充说明：如果一个riser卡有3个槽位，只能2/3槽位，就主要配置为255,2,3"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/757/3",
+            "text": "哦哦哦，原来如此，学到了，按逻辑槽位来，有不使用的，使用255替换。"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/757/4",
+            "text": "SrcPortName 、 TargetPortID 和slot 有明确的对应关系吗？比如C6a、0x11和slot1是对应的"
+        },
+        {
+            "user_name": "王祝炜",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/757/5",
+            "text": "这个对应关系是硬件板主规划的，各个配置不一样，没有明确的对应关系。"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 712,
+    "question": "qemu重启之后，web无法访问仿真环境的openubmc - content: 4月28日下班将电脑关机，4月29日打开电脑之后连接wsl，启动qemu，web无法访问仿真环境的openubmc，查看wsl环境，10443端口是在监听的，抓包查看也有交互包，但是每次建立tcp连接之后wsl的10443端口就会发送rst重置连接，根本没有进入https交互，看着像是关机时某些地方没处理好，导致第二天上班启动时出现该问题\nlog报错信息如下\n2d8b68c4289895069485890ab36bad7f2418×1068 247 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/9b8592b081638543a4f3f08cdc3f9dbb9a3133d6.png",
+    "topic_user_name": "Iss Yanyuchun",
+    "best_answer_url": "/t/topic/712/2",
+    "reply_posts": [
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/712/2",
+            "text": "根据日志记录内容，部分组件刚刚拉起，是否是当前qemu中有关web接口的组件尚未拉起。需要时间等待web_backend组件拉起"
+        }
+    ]
+}

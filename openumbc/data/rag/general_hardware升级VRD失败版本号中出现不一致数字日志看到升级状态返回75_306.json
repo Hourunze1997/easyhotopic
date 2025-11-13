@@ -1,0 +1,43 @@
+{
+    "topic_id": 306,
+    "question": "【general_hardware】升级VRD失败，版本号中出现不一致数字，日志看到升级状态返回75 - content: image1195×301 48.9 KB\nimage1027×594 82.8 KB\nVRD升级过程中，有一个出现查询VRD升级状态返回75，导致升级之后版本成为32.29.29.32.32.32.32.32.\n看开源代码是通过std_smbus发送请求返回的：\nimage542×232 44.6 KB\n求助：\n1、这个芯片的各种可能得返回码代表什么含义，比如这个75；\n2、从这个错误码，或者其他方向，如何排查到这个升级问题的根因\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/4b85a74843a0b712391ed1b25e11b3077203fa66.png, https://forum.openubmc.cn/uploads/default/original/1X/14a2f32636093fca3c1576a9e184cc9854155944.png, https://forum.openubmc.cn/uploads/default/original/1X/51a03c79852f415fbd3343f1c4935aa8b02f7de6.png",
+    "topic_user_name": "HKZY_YangBo",
+    "best_answer_url": "/t/topic/306/6",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/306/2",
+            "text": "content: 升级Vrd查询的升级状态为如下接口，是通过iic获取到mcu子固件返回的升级状态\nimage1123×526 44.4 KB\nbmc将常用的返回码有做定义，如返回其他非预期错误码则可定界为mcu出现问题\nimage475×164 6.47 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/2696d73a48c18a4407fad36bf8773138e2d8795a.png, https://forum.openubmc.cn/uploads/default/original/1X/e8262d98c5084e9fe3dc18eb30d37663c44a1a44.png"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/306/3",
+            "text": "mcu出现这种问题的话，可以怎么和mcu讨论这个问题，或者mcu相关文档参考之类的呢？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/306/4",
+            "text": "建议咨询对应的PAE帮忙搭线"
+        },
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/306/5",
+            "text": "与mcu讨论建议通过带内收集mcu日志分析报错原因，具体mcu接口文档需要咨询mcu硬件"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/306/6",
+            "text": "联系到mcu，是前一久已知的一个概率性问题，GD mcu读版本概率返回有问题。\nBMC通过二值一致防抖策略来处理这次异常状态。\n读取VRD版本号：busctl --user call bmc.kepler.hwproxy /bmc/kepler/Chip/Smc/Smc_CpuBrdSMC_010101 bmc.kepler.Chip.BlockIO Read a{ss}uu 0 0x0018501 7\n从 18501-18508，对应8个VRD\n异常码包括： 25 75 88.\n其中 33 表示版本过低。"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1975,
+    "question": "开发环境搭建ython3 init.py -path ./bmc_sdk.zip报错 - content: 按照社区的指导文档搭建搭建开发环境报错\n通过wsl创建了ubuntu2404系统\nbmc_sdk组件版本号：25.06\nmanifest版本：3b2870d3e5d5887cb3a160c414518426da69634a\n执行python3 init.py -path ./bmc_sdk.zip -user ** -psw ***\nimage945×288 22 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a136586a042fd0574d6d80ec4df94df749a63ec6.png",
+    "topic_user_name": "Limingfeng",
+    "best_answer_url": "/t/topic/1975/2",
+    "reply_posts": [
+        {
+            "user_name": "Limingfeng",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1975/2",
+            "text": "手动安装bingo组件后完成解决，完成开发环境搭建"
+        }
+    ]
+}

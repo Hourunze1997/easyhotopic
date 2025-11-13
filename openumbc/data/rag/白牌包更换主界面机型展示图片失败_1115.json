@@ -1,0 +1,64 @@
+{
+    "topic_id": 1115,
+    "question": "白牌包更换主界面机型展示图片失败 - content: 参考openUBMC品牌包定制指南 配置能够成功替换二维码\tcode1.png，但是替换主界面机型展示图片img_01.png/img_02.png/img_03.png，执行升级白牌包后显示的还是为原来默认图片。\n使用版本为社区openUBMC\nbingo 版本为: 0.5.317\n命令： bingo publish -z WBD -b openUBMC -r openubmc_dev\n替换主界面机型图片像素大小为：588*332像素，大小未超过1M\nmanifest.yml： image878×458 71.9 KB\nfilelist.conf：\nimage384×387 20 KB\n有以下几个疑问\n1.主界面机型展示图片是能够展示3张吗?\n2.目前白牌包是只支持部分替换吗？还是我的操作存在问题，导致主界面机型图片替换失败？\nlinks: https://discuss.openubmc.cn/t/topic/355, https://discuss.openubmc.cn/uploads/default/original/1X/47d087133db13a497e73d921286dbe4583f6dba6.png, https://discuss.openubmc.cn/uploads/default/original/1X/664be9fc78452026e98eed2ec4864ec776e9ad02.png",
+    "topic_user_name": "Ocy",
+    "best_answer_url": "/t/topic/1115/7",
+    "reply_posts": [
+        {
+            "user_name": "HuoJianCong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1115/2",
+            "text": "一、主界面机型展示图片只会显示一张，如果定制了01、02、03三张机型图，一般只会选择01那张图片\n二、主界面机型图片定制是支持的，可以确认定制的图片是否存放在flielist.conf中配置的Path路径下（pme更改为bmc）。\n其次可以查看product_mgmt的资源树，/bmc/kepler/Systems/1/Product路径下的bmc.kepler.Systems.Product接口中ProductPicture属性显示使用的哪张图片；\n还可以用F12看下浏览器，确认访问图片权限是否正确"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1115/4",
+            "text": "content: 查看/data/opt/bmc/web/custom下是存在有白牌包替换的三张照片，img_01.png  img_02.png  img_03.png。\nproduct_mgmt的资源树下，查询ProductPicture属性为img_01。\nF12的结果为，未找到该资源。\n请问那么接下来要怎么排查呢？\n截图 2025-05-27 17-15-09962×428 58.8 KB\n截图 2025-05-27 17-29-021182×690 77.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/9ba8bd7de1789596037cbd524c732c45fe916c4c.png, https://discuss.openubmc.cn/uploads/default/original/1X/f78f3451349dec92d4b61f975d2d28cf88dd2183.png"
+        },
+        {
+            "user_name": "HuoJianCong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1115/5",
+            "text": "可以在环境上查看一下/opt/bmc/web/htdocs/extern/custom这个路径下是否存在img_01.png这个文件\n因为接口访问/extern/custom/img_01.png其实是访问的/opt/bmc/web/htdocs/extern/custom/img_01.png，而这个又是软链接到/data/opt/bmc/web/custom/img_01.png，所以如果/data/opt/bmc/web/custom/目录下有img_01.png文件的话，需要确认软链接是否正常"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1115/6",
+            "text": "content: 感谢回复，有一点比较奇怪，在环境下/opt/bmc/web/htdocs/是没有extern/custom路径的。我是直接拉取gitcode中相关组件。\n为此做出以下尝试\n1.在webui/public/permissions.ini增加/opt/bmc/web/htdocs/extern/custom  d 550 98 98 提示构建失败，使用的webui组件tag是1.70.88\n2.webui/src/static/下创建extern/custom文件夹，成功构建刷包后，环境下依旧没有生成该文件夹，但是我在webui/src/static/extern/custom下放置了img_01.png，重新构建刷包，却能够显示该图片，同时在环境下存在opt/bmc/web/htdocs/extern/custom目录。\n3.在上面2操作后，环境下查看/opt/bmc/web/htdocs/extern/custom/img_01.png 实际并没有软链接到/data/opt/bmc/web/custom/img_01.png，而是/opt/bmc/web/htdocs/extern/custom/custom软连接到/data/opt/bmc/web/custom/，同时/data/opt/bmc/web/custom/下是存在img_01.png img_02.png img_03.png\nimage845×122 15.9 KB\n为此我有以下几个疑问？\n1.是什么操作能够在环境下创建出/opt/bmc/web/htdocs/extern/custom这个路径？\n2.第3点中的软链接为什么跟您的回答没有对应上，是我理解的有问题吗？是/opt/bmc/web/htdocs/extern/customimg_01.png软链接的还是custom软链接？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/f0e119671459e64a60aba2aaa6dd8ee6aecd3668.png"
+        },
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1115/7",
+            "text": "该问题遇到了，在manifest组件中解决方法如下\n1、在build/product/BMC/openUBMC/permissions.ini下增加以下权限\ndata/opt/bmc/web/htdocs rd 550 98 98\ndata/opt/bmc/web/htdocs/bmc/resources/images d 750 98 98\ndata/opt/bmc/web/htdocs/bmc/resources/images/cmn d 750 98 98\n2、新增两个文件夹build/product/BMC/openUBMC/rootfs/data/opt/bmc/web/htdocs/bmc/resources/images/cmn和build/product/BMC/openUBMC/rootfs/opt/bmc/web/htdocs/extern文件夹"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1115/8",
+            "text": "感谢，按照回复修改manifest可以，正常使用白牌包"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1115/9",
+            "text": "修改后环境上仍然无/opt/bmc/web/htdocs/extern/custom这个路径呢"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1115/10",
+            "text": "content: @ocy @AweiHe @TuHuaNeng @JianCong_Huo  已在社区提issue， 并在main分支和25.03分支修复。\nlinks: /u/ocy, /u/aweihe, /u/tuhuaneng, /u/jiancong_huo, https://gitcode.com/openUBMC/manifest/issues/32"
+        }
+    ]
+}

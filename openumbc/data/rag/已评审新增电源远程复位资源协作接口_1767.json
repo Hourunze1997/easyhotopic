@@ -1,0 +1,15 @@
+{
+    "topic_id": 1767,
+    "question": "【已评审】新增电源远程复位资源协作接口 - content: 一、ISSUE链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n二、背景\n当电源遇到电气故障触发死锁保护后，传统方式需要现场拔插操作进行恢复，导致故障恢复周期长。支持电源远程复位操作后，可以通过复位电源的方式实现电源远程解锁，显著降低故障恢复时间。\n三、决策点\n新增资源协作接口用于实现电源远程复位\n四、详细描述\n1、 资源协作接口新增电源复位方法\npath：/bmc/kepler/Systems/:SystemId/PowerMgmt/OnePower/:Id\ninterface：bmc.kepler.Systems.PowerMgmt.OnePower\n\n方法名称\n变化类型\n请求签名\n响应签名\n读写&权限\n接口说明\n接口约束\n\nReset\n新增方法\ns\n无\nPowerMgmt\n复位电源请求：ResetType：复位类型响应:NA\nResetType取值范围：ForceRestart\n\n五、评审结论\n决策点1：资源协作接口新增电源复位方法\n结论：\n1、同意资源协作接口bmc.kepler.Systems.PowerMgmt.OnePower新增Reset方法用于复位电源，请求签名为s，无响应签名，权限：PowerMgmt\n遗留问题及确认结论：\n1、确认是否涉及新增错误引擎\n结论：已确认，不需要新增\nlinks: #p-4306-issue-1, https://gitcode.com/openUBMC/power_mgmt/issues/73, https://gitcode.com/openUBMC/power_mgmt/issues/73, #p-4306-h-2, #p-4306-h-3, #p-4306-h-4, #p-4306-h-1-5, #p-4306-h-6, #p-4306-h-1-7",
+    "topic_user_name": "Fumingquan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1767/2",
+            "text": ""
+        }
+    ]
+}

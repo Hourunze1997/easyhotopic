@@ -1,0 +1,141 @@
+{
+    "topic_id": 2122,
+    "question": "bmc_sdk.zip进行环境安装时报错 - content: 在执行python3 init.py -path ./bmc_sdk.zip，进行bmcsdk的环境初始化时报错，报错内容如下：\nimage892×306 57.1 KB\n请帮忙确认如何对应\n谢谢！\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/52790ba064bad5e389f4900200676fc2d24ff3eb.png",
+    "topic_user_name": "Demon Wu",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/2",
+            "text": "content: 使用ubuntu24.04虚拟机\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n参考首页manifet教程,使用25.06 tags的代码。中间可能会有一些报错，需要手动处理。\ncd manifest\npython3 init.py -path <bmc_sdk.zip文件路径> -user <openUBMC社区用户名> -psw <openUBMC社区用户密码>\n整体时间大概是半个小时搭建\nbmc_sdk使用Index of /25.06/sdk/\nlinks: https://gitcode.com/openUBMC/manifest, https://gitcode.com/openUBMC/manifest, https://repo.openubmc.cn/25.06/sdk/"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/3",
+            "text": "比如可能会有软件包出错，或者pip下载时候，apt已经安装了，还有n 的配置源需要配置。"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/4",
+            "text": "content: image897×235 46.7 KB\n报了一样的错误\n我的Ubuntu是24.04，用的sdk是您给的ftp的版本，构建的时候中间没有出现软件包出错等\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0836a4c8f2eed3d3dac2493c5156bf6e3c7e1729.png"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/5",
+            "text": "搭建步骤麻烦发出来，24.04安装可能需要离线安装。第一步是配置清华源。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/6",
+            "text": "content: image686×249 3.52 KB\n优先搭建前进行快照。\n若当前环境已出现安装错误，推荐重新搭建环境后再执行部署流程，以确保一致性与稳定性。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a0d90c839b274ab07584ca9a97c516e2cf842773.png"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/7",
+            "text": "content: 生成 ED25519 SSH 密钥\nssh-keygen -t ed25519 -C “your_email@example.com”\n添加 SSH 公钥到 GitCode\n测试 SSH 连接\nssh -T git@gitcode.com\n配置GitCode账户\ngit config --global user.name \ngit config --global user.email \n5.配置ssh替换https下载\ngit config --global url.\"git@gitcode.com:\".insteadof “https://gitcode.com/”\n6.拉取manifest仓代码到本地工作空间\ngit clone git@gitcode.com:openUBMC/manifest.git\n执行脚本文件进行\"bmc_sdk\"环境初始化\npython3 init.py -path ./bmc_sdk.zip\n初始化时报错\n报错1：\"Err:2 http://cn.mirrors.huaweicloud.com/ubuntu noble InRelease Could not resolve 'cn.mirrors.huaweicloud.com”\n对策：修改/etc/apt/soures.list.d/ubuntu.sources文件，去掉\"cn.\"内容\n报错2：“N: Unable to locate package openubmc-bingo”\n对策：pip install openubmc-bingo or pip3 install openubmc-bingo，该命令又报错“error:externally-managed-environment”，然后进行强制安装bingo：“pip3 install openubmc-bingo–break-system-packages”，安装成功\n继续执行bmc_sdk环境初始化，报错： ERROR:root : [none, ‘config’ , ‘init’]\n\n我用的是virtualbox+Ubuntu，所以没有图片中的选项内容\nlinks: mailto:your_email@example.com, mailto:git@gitcode.com, mailto:url.%22git@gitcode.com, https://gitcode.com/, mailto:git@gitcode.com, http://cn.mirrors.huaweicloud.com/ubuntu, http://cn.mirrors.huaweicloud.com"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/8",
+            "text": "建议是配置清华源。其他部分不建议动。如果没有pve环境建议使用vmware ，目前vmware 应该是免费 了。具备快照环境可以快速回退干净的基础环境"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/9",
+            "text": "arch:\n\n如果没有pve环境建议使用vmware ，目前vmware 应该是免费 了。具备快照环境可以快速回退干净的基础环境\n\n我试试，周一回复"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/10",
+            "text": "content: 构建BMC失败 交流互助区\n\n环境信息\n系统用的Ubuntu 24.04 \nbingo 版本为: 0.5.272 \nConan version 1.62.0 \n环境配置信息\n搭建的Ubuntu开发环境搭建，环境搭建成功 \n环境组网信息\n问题详细描述\n\n根据文档进行环境配置，配置完成后构建BMC失败 \n失败的日志如下： \nERROR: ================== libsoc_adapter/1.80.30@open…\n  \n\n建议参照这个文档\nlinks: https://discuss.openubmc.cn/t/topic/2124, /c/42-category/42, #p-5319-h-1, #p-5319-h-2, #p-5319-h-3, #p-5319-h-4"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/11",
+            "text": "content: Hi arch\nsource.list换了清华源的，重新\"python3 init.py -path ./bmc_sdk.zip -usr xxx -psw xxx\"，结果还是报和之前一样的错误\nimage895×168 34.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/2a68765e77e5b43070afa5d94d771f8c4f1bebdf.png"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/13",
+            "text": "demon_wu:\n\n结果还是报和之前一样的错误\n\n麻烦了把完整操作步骤和log发到论坛上"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/14",
+            "text": "content: log如下：\npython3 init.py -path ./bmc_sdk.zip -user xxx -psw xxx\nHit:1 http://mirrors.huaweicloud.com/ubuntu noble InRelease\nHit:2 http://mirrors.huaweicloud.com/ubuntu noble-updates InRelease\nHit:3 http://mirrors.huaweicloud.com/ubuntu noble-backports InRelease\nHit:4 Index of /ubuntu/ | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror noble InRelease\nHit:5 http://mirrors.huaweicloud.com/ubuntu noble-security InRelease\nHit:6 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble InRelease\nHit:7 Index of /ubuntu/ | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror noble-updates InRelease\nHit:8 Index of /ubuntu/ | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror noble-backports InRelease\nHit:9 Index of /ubuntu noble-security InRelease\nReading package lists… Done\nReading package lists… Done\nBuilding dependency tree… Done\nReading state information… Done\npython3 is already the newest version (3.12.3-0ubuntu2).\npython3-pip is already the newest version (24.0+dfsg-1ubuntu1.2).\npython3-dev is already the newest version (3.12.3-0ubuntu2).\ngit is already the newest version (1:2.43.0-1ubuntu7.3).\nwget is already the newest version (1.21.4-1ubuntu4.1).\ncurl is already the newest version (8.5.0-2ubuntu10.6).\nca-certificates is already the newest version (20240203).\nipmitool is already the newest version (1.8.19-7ubuntu0.24.04.3).\ndbus-x11 is already the newest version (1.14.10-4ubuntu4.1).\nlibdbus-1-dev is already the newest version (1.14.10-4ubuntu4.1).\ndbus is already the newest version (1.14.10-4ubuntu4.1).\npkgconf is already the newest version (1.8.1-2build1).\nlibglib2.0-dev is already the newest version (2.80.0-6ubuntu3.4).\ngcc-9 is already the newest version (9.5.0-6ubuntu2).\ng+±9 is already the newest version (9.5.0-6ubuntu2).\nunzip is already the newest version (6.0-28ubuntu4.1).\nnpm is already the newest version (9.2.0~ds1-2).\n0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.\nReading package lists… Done\nBuilding dependency tree… Done\nReading state information… Done\nPackage ‘python3-urllib3’ is not installed, so not removed\nPackage ‘python3-distro’ is not installed, so not removed\n0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.\nReading package lists… Done\nBuilding dependency tree… Done\nReading state information… Done\n0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.\n–2025-08-04 13:38:10--  https://mirrors.huaweicloud.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb\nResolving mirrors.huaweicloud.com (mirrors.huaweicloud.com)… 120.46.63.139, 120.46.2.67, 124.70.61.162, …\nConnecting to mirrors.huaweicloud.com (mirrors.huaweicloud.com)|120.46.63.139|:443… connected.\nHTTP request sent, awaiting response… 200 OK\nLength: 1318204 (1.3M) [application/octet-stream]\nSaving to: ‘libssl1.1_1.1.1f-1ubuntu2_amd64.deb’\nlibssl1.1_1.1.1f-1u 100%[===================>]   1.26M  5.44MB/s    in 0.2s\n2025-08-04 13:38:14 (5.44 MB/s) - ‘libssl1.1_1.1.1f-1ubuntu2_amd64.deb’ saved [1318204/1318204]\n(Reading database … 200599 files and directories currently installed.)\nPreparing to unpack libssl1.1_1.1.1f-1ubuntu2_amd64.deb …\nUnpacking libssl1.1:amd64 (1.1.1f-1ubuntu2) over (1.1.1f-1ubuntu2) …\nSetting up libssl1.1:amd64 (1.1.1f-1ubuntu2) …\nProcessing triggers for libc-bin (2.39-0ubuntu8.5) …\nWriting to /root/.config/pip/pip.conf\nWriting to /root/.config/pip/pip.conf\nWriting to /root/.config/pip/pip.conf\nWriting to /root/.config/pip/pip.conf\nopenubmc-bingo:\nInstalled: 0.5.272\nCandidate: 0.5.272\nVersion table:\n*** 0.5.272 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n100 /var/lib/dpkg/status\n0.5.270 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n0.5.269 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n0.5.265 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n0.5.262 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n0.5.261 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n0.5.257 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n0.5.254 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\nReading package lists… Done\nBuilding dependency tree… Done\nReading state information… Done\nopenubmc-bingo is already the newest version (0.5.272).\n0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.\nERROR:root:[None, ‘config’, ‘init’]不存在，请检查命令或环境配置\nlinks: http://mirrors.huaweicloud.com/ubuntu, http://mirrors.huaweicloud.com/ubuntu, http://mirrors.huaweicloud.com/ubuntu, https://mirrors.tuna.tsinghua.edu.cn/ubuntu, http://mirrors.huaweicloud.com/ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://mirrors.tuna.tsinghua.edu.cn/ubuntu, https://mirrors.tuna.tsinghua.edu.cn/ubuntu, http://security.ubuntu.com/ubuntu, https://mirrors.huaweicloud.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb, http://mirrors.huaweicloud.com, http://mirrors.huaweicloud.com, http://mirrors.huaweicloud.com, http://mirrors.huaweicloud.com, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/15",
+            "text": "请问，是不是\"/etc/apt/sources.list.d/ubuntu.sources\"这个文件的URIs也需要更新成清华源"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/16",
+            "text": "其实不用的，请问你拉的分支是正确的吗，使用tags 25.06分支，sdk 25.06。你可以试着构建一下。"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/17",
+            "text": "sdk是25.06的，tags怎么确认是什么版本"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/18",
+            "text": "content: 需要git checkout 25.06\n\n构建BMC失败 交流互助区\n\n环境信息\n系统用的Ubuntu 24.04 \nbingo 版本为: 0.5.272 \nConan version 1.62.0 \n环境配置信息\n搭建的Ubuntu开发环境搭建，环境搭建成功 \n环境组网信息\n问题详细描述\n\n根据文档进行环境配置，配置完成后构建BMC失败 \n失败的日志如下： \nERROR: ================== libsoc_adapter/1.80.30@open…\n  \n\n这份话题基本上也跑完了。参看这个看一看\n还有一定要新的虚拟机环境\nlinks: https://discuss.openubmc.cn/t/topic/2124, /c/42-category/42, #p-5319-h-1, #p-5319-h-2, #p-5319-h-3, #p-5319-h-4"
+        },
+        {
+            "user_name": "Demon Wu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/19",
+            "text": "content: 用了新的虚拟机环境，tag和sdk版本都是25.06，报了如下错误\nimage819×402 63.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0a58589a0568a07e0a6bee5bd6b2947d20f98d68.png"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/20",
+            "text": "按理说 /home/demon/.n/bin 不应该出现在执行路径里，因为相关命令是在 root 下执行的。但实际情况是，root 执行时继承了用户 demon 的环境变量\n当前系统环境如下（ root shell 下执行）：\n$ npm --version\n10.8.2\n$ n --version\n10.2.0\n$ node --version\nv20.18.0\n\n虽然命令是在 root 权限下执行，但路径仍指向 /home/demon/.n/bin/npm，而不是 /usr/bin/npm，从而触发 npm 的全局安装冲突（EEXIST）。\n先尝试手动解决下，把版本匹配上"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2122/21",
+            "text": "demon_wu:\n\npython3 init.py -path ./bmc_sdk.zip -user xxx -psw xxx\n\n执行这条命令前，要su - 切换到root，而不是sudo环境"
+        }
+    ]
+}

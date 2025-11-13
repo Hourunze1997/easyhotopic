@@ -1,0 +1,15 @@
+{
+    "topic_id": 1353,
+    "question": "新增加一个组件 qemu仿真找不到dbus接口 - content: 参考社区文档，新增一个组件my_app\nrm -rf ./temp && rm -rf ./output && bingo build -sc qemu构建qemu仿真包时，log显示已经获取到依赖\nimage848×493 13.8 KB\n实际qemu运行仿真时\nbusctl --user tree bmc.kepler.my_app找不到新添加的接口\nimage745×347 1.07 KB\n新增加的组件修改内容如下：\nimage962×801 19.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/152be4ba864332783b339e6f0c86949ab19ab06e.png, https://discuss.openubmc.cn/uploads/default/original/2X/d/d039973645ef0626e7139875fe70187e41a611e8.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/8f1822a1fb96c047103e7affb3ee20b7fe37a603.png",
+    "topic_user_name": "baixin_lipengbo",
+    "best_answer_url": "/t/topic/1353/2",
+    "reply_posts": [
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1353/2",
+            "text": "问题已经解决，添加组件后构建了一个新版本的仿真包openUBMC_25.06.00.01_qemu.cpio.gz（不确定版本改变机制，为什么自动变更了版本号，求解答），之前仿真运行的还是旧包，qemu仿真新的固件包需要在config.json中更新下包的路径。"
+        }
+    ]
+}

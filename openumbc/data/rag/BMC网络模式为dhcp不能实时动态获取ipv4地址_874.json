@@ -1,0 +1,43 @@
+{
+    "topic_id": 874,
+    "question": "BMC网络模式为dhcp，不能实时动态获取ipv4地址 - 测试步骤：\n\nBMC正常运行在192.168.60.XX网段\nBMC网络切换到10.10.3.XX网段\n\n发现BMC没有重新dhcp获取ip，查看BMC IP仍然是192.168.60.XX，需要重启BMC之后才能重新获取到10.10.3.XX网段的ip地址。",
+    "topic_user_name": "lihang111",
+    "best_answer_url": "/t/topic/874/5",
+    "reply_posts": [
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/874/2",
+            "text": "对应日志请发送到lilinyang5@h-partners.com"
+        },
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/874/3",
+            "text": "“BMC网络切换到10.10.3.XX网段”具体是怎么切换的呢，如果有相关日志也可以发给lixiaoning8@huawei.com一份"
+        },
+        {
+            "user_name": "lihang111",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/874/4",
+            "text": "切换BMC专用网口连的交换机，两台交换机配置的是不同的网段。邮件已发，期待回复，谢谢。"
+        },
+        {
+            "user_name": "lixiaoning",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/874/5",
+            "text": "您的邮件已收到，经分析，您当前版本BMC配套bmc_network组件的版本号为1.26.50，暂不支持网口由link down到link up切换后重新通过DHCP请求获取IP；该功能在2024年12月的版本中刚刚支持，配套的bmc_network组件版本为1.70.1。\n您可以通过以下两种方式解决该问题：\n\n修改BMC直连的交换机后，手动切换一下IP模式为手动再切换到自动；\n使用最新版本的openubmc版本；"
+        },
+        {
+            "user_name": "lihang111",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/874/6",
+            "text": "收到，感谢回复。"
+        }
+    ]
+}

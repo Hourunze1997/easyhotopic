@@ -1,0 +1,7 @@
+{
+    "topic_id": 726,
+    "question": "Qemu常见问题归纳 - content: 1. config.json已经把remote_cpio​设置为true，但是qemu还是存在已解决问题\n把output目录直接删掉再重试\n2. web一直不响应，可以看看nginx服务是否存在\n​ssh Administrator@ -p 10022​\n进入telnet\n/data/home/busybox_x telnet localhost\n查看nginx服务是否启动\nnetstat -ntlpa\n3. 基于修改代码出自己的qemu cpio包, 会提示某个组件download失败；log里有说需要输入account密码\n通过该命令输入密码；凭证可以被缓存\nconan user -p -r openubmc_dev xxxxx\nlinks: #p-1512-h-1-configjsonremote_cpiotrueqemu-1, #p-1512-h-2-webnginx-2, #p-1512-h-3-qemu-cpio-downloadlogaccount-3",
+    "topic_user_name": "Iss Tanghaibin",
+    "best_answer_url": "",
+    "reply_posts": []
+}

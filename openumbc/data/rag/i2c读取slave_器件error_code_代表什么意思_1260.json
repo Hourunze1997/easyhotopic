@@ -1,0 +1,22 @@
+{
+    "topic_id": 1260,
+    "question": "i2c读取slave 器件error code 代表什么意思 - content: 通过i2c读取cpld寄存器时报错，log提示ret 是5 请问返回5代表什么意思？\nimg_v3_02mv_43674fad-acaa-4fce-b31c-af4f7d38231g1050×450 76.7 KB\n另外请问 ret的取值范围是多少？分别代表什么意思？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/b7cdaa8781071ad00255704af2bca14ee7354070.jpeg",
+    "topic_user_name": "KunTai_WangJiaKai",
+    "best_answer_url": "/t/topic/1260/2",
+    "reply_posts": [
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1260/2",
+            "text": "content: 5的含义\n\n一般0x800会与0x1一起出现，即0x801；或者与0x200、0x1一起出现，即0xa01，这时引起这样的错误原因一般是从器件无响应导致的。请联系硬件同事排查slave不响应的原因。\na）确认slave地址是否存在。\nb）确认slave是否在活跃状态。\nimage1024×364 144 KB\n\n只有0x800的情况，或是与0x200一起出现，即0xa00，一般是存在总线干扰，请联系硬件同事排查总线。\na）确认硬件链路是否通畅，信号质量是否良好。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/6ffe49923eace191ef244e157bd72dd739d258f2.jpeg"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1260/3",
+            "text": "wangjkl_dcone:\n\nret的取值范围是多少？分别代表什么意思？\n\nret的取值范围是多少？分别代表什么意思？"
+        }
+    ]
+}

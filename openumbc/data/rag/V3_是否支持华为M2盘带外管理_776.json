@@ -1,0 +1,29 @@
+{
+    "topic_id": 776,
+    "question": "V3 是否支持华为M.2盘带外管理 - 咨询求助：目前V3 上是否支持M.2盘带外管理？（从现有storage组件bma下可以看到相关直通盘资产信息更新获取流程，不知道是否包含M.2硬盘）如果支持，后续会不会往社区上传M.2硬盘相关加载流程梳理文档？",
+    "topic_user_name": "长江_赵凯",
+    "best_answer_url": "/t/topic/776/2",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/776/2",
+            "text": "1、支持通过bma获取M.2硬盘信息。\n2、带外管理是指直通盘带外管理还是raid卡管理？"
+        },
+        {
+            "user_name": "长江_赵凯",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/776/3",
+            "text": "是M.2直通2*SAS背板带外管理，不是raid卡的；\n那就是和8盘直通背板SATA/SAS 下直通盘 管理逻辑一样？"
+        },
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/776/4",
+            "text": "是的，M.2直通暂未支持带外管理"
+        }
+    ]
+}

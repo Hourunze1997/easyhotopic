@@ -1,0 +1,29 @@
+{
+    "topic_id": 1055,
+    "question": "ubuntu中安装bmc studio，启动时包错：Can't open history - 请各位小伙伴帮忙看看，这个是不是什么地方没有配置好，谢谢~\n启动脚本后跳转到Viewing <BMC Studio>的界面，这个是正常的吗？",
+    "topic_user_name": "Mr Chen",
+    "best_answer_url": "/t/topic/1055/4",
+    "reply_posts": [
+        {
+            "user_name": "LiRuichen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1055/2",
+            "text": "这种情况应该是有依赖没有完成安装，请参考《BMC Studio安装指南-环境准备》执行apt install wslu xdg-utils安装依赖"
+        },
+        {
+            "user_name": "Mr Chen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1055/3",
+            "text": "这个是ubuntu 虚拟机，安装bmc studio 安装指南，只有在wsl中才需要安装wslu xdg-utils啊"
+        },
+        {
+            "user_name": "LiRuichen",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1055/4",
+            "text": "这个是启动脚本中会执行open-xdg导致的，下个版本中会检测wsl再进行拉起，当前不在wsl中使用时可以在/usr/share/bmc_studio/bmc_studio.sh中将xdg-open \"${url}\"这一行删掉"
+        }
+    ]
+}

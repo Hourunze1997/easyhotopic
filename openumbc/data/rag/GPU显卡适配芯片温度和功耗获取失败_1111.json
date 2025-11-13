@@ -1,0 +1,36 @@
+{
+    "topic_id": 1111,
+    "question": "GPU显卡适配芯片温度和功耗获取失败 - content: 背景\n适配一张gpu显卡，显卡插在rise卡上，华为的rise，需要获取温度和功耗，根据芯片厂商给的规格书，编写了sr文件\n厂商的规格书如下 芯片地址是 0x4f(转换为十进制为79)\nimage724×547 69.6 KB\n获取数据的流程\nimage589×852 65.4 KB\n温度及功耗偏移如下 芯片温度偏移是0x98(十进制是156) 功耗偏移是0x90(十进制是144)\nimage716×697 64.1 KB\nsr文件配置如下：\n拓扑图如下\nimage503×236 7.71 KB\nchip地址配置如下\nimage626×180 8.47 KB\n温度Scanner配置如下\nimage620×180 10.4 KB\n功耗的Scanner如下\nimage574×164 7.14 KB\nConnector如下\nimage685×811 16 KB\n参数配置\n\n已经装操作系统，还未装对应的显卡驱动\n处理器型号 \tKunpeng 920 7282C\nrise卡位华为rise卡 型号为 \tDescription=Manufactured Board,S920X20,BC83PRUO,PCIe Riser IO1/IO2 1CEM x16(Slot1)+1x8(Slot2)+1x8(Slot3),15;IssueNumber=00;CLEICode=;BOM=;Model=BC83PRUO\n\n问题现象\n\nweb端温度和功耗不显示\nimage1587×219 3.96 KB\n\n问题初步排查\n\n查看Scanner的value和status报错\nimage1744×817 25 KB\n\n9545读数据失败\nimage1876×270 26.9 KB\nlinks: #p-2387-h-1, https://discuss.openubmc.cn/uploads/default/original/1X/d3c1982b384fa62bdb44174160b141daad828600.png, https://discuss.openubmc.cn/uploads/default/original/1X/b06be3074971f1a01e63a73ed8f6348d4d99c64b.png, https://discuss.openubmc.cn/uploads/default/original/1X/13920e5fca1dcb17d18b6b05736702fc0532ea29.png, https://discuss.openubmc.cn/uploads/default/original/1X/b0b1277af1806d3f37f3ede4f4d694728f5e44ba.png, https://discuss.openubmc.cn/uploads/default/original/1X/d089e16585cdae2d0dace54eb8ed8a6b946bd2a2.png, https://discuss.openubmc.cn/uploads/default/original/1X/8f7ddad84d07537ef11121a0fbb1b3ff91b2edca.png, https://discuss.openubmc.cn/uploads/default/original/1X/931b6cea57967781a0905fc6696e1f1598f233b0.png, https://discuss.openubmc.cn/uploads/default/original/1X/496576f16c3a02a40957408800c48925cff7ea8e.png, #p-2387-h-2, #p-2387-h-3, https://discuss.openubmc.cn/uploads/default/original/1X/6c2e0be139f402247d6a29e688c97189474f3679.png, #p-2387-h-4, https://discuss.openubmc.cn/uploads/default/original/1X/e0f934ae57c0732608cc61309aef468d530a4a1a.png, https://discuss.openubmc.cn/uploads/default/original/1X/66f3cde1cf83e870236eaa6d122bd6cc95491c05.png",
+    "topic_user_name": "Bd2025",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "吴振",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1111/2",
+            "text": "检查下i2c地址和选路信息"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1111/4",
+            "text": "地址看着是7位的，应该左移一位，配成8位地址，然后要保证i2c bus是不是对的。\n这些都没问题的话，确认一下GPU的固件版本，我看到你上面截图v3.3.8后地址是0x4f。\n以前我在其他平台上适配GPU的时候，读不到数据大概率都是固件的问题，问厂商要一下相关的工具和固件，在OS下刷一下就行了。"
+        },
+        {
+            "user_name": "Bd2025",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1111/5",
+            "text": "固件版本跟厂商确认过，固件版本是4.x了，地址是0x4f 地址左移1位也报错 目前不确定这个chip是配置多少是正确的"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1111/6",
+            "text": "请问有后续吗，我这边适配gpu时候也遇到的相同的问题。"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 1659,
+    "question": "网口模式切换自动选择模式时报错OCP port 1 does not exist，实际切换成功 - content: 查看rackmount仓后发现问题是出现在is_port_null这个函数中，如下图，这里加了打印，发现一共进了6次这个函数，只有最后一次Dedicated成功返回了，其余的都是不存在ocp port 1，这里应该是ocp两个数组，Dedicated一个数组，进入is_port_null三次，但是现在进了6次有点不理解，还有这里为啥会报这个错，我怎么可以完成的把前端出来的members打印出来，或者有好的定位思路\nimage986×595 15.2 KB\nimage927×399 5.3 KB\nimage1189×494 31.2 KB\nimage1472×879 43.7 KB\nimage1400×714 17.4 KB\nimage1189×590 31.5 KB\nimage1599×1217 46.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a904b4da7e98a99d0b842f044b5fb194060fc561.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/2aeeed1da43af00a79bc9f66675ff3dccea65c91.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/2e8f19af3a8c7b40840fdd37670b2b7d82aaebac.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/3c988a0445a11c04c9fdc74a7ae439a36af6045b.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/cb1c5ba452d60377154394cc3903f97b79e50979.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/3d0a745f8186854107a33d53ee753575e85c91fe.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/3b0ca5fa812b549d7dbab950356f379d48180386.png",
+    "topic_user_name": "Kui Tai Fan Chun Yang",
+    "best_answer_url": "/t/topic/1659/2",
+    "reply_posts": [
+        {
+            "user_name": "Kui Tai Fan Chun Yang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1659/2",
+            "text": "content: 已经定位到原因，是因为从资源树读到的type类型是Ocp，函数的入参type是OCP，这里涉及到bmc.kepler.bmc_network，去看了该网卡的对象分发，没有bmc_network，所以问题也不知道是不是bmc_network对type的赋值有什么问题。\nimage2315×1222 119 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/7464daf4c63031cd1a428670dcf5cb069c921851.png"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1659/3",
+            "text": "如果确定是开源软件的问题要提issue跟踪问题。"
+        }
+    ]
+}

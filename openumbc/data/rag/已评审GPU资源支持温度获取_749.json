@@ -1,0 +1,29 @@
+{
+    "topic_id": 749,
+    "question": "【已评审】GPU资源支持温度获取 - content: ISSUE链接（必填，此议题关联的issue）：\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景（必填，文字描述议题背景，如需求来源、问题场景）:\n当前sensor资源树的GPU温度传感器的读数可提供环境GPU的温度属性，但该方案依赖GPU温度传感器CSR配置，可能导致环境有GPU但无法查询到温度值，不够合理\n决策点（必填，一句话描述待决策点）：\nbmc.kepler.Systems.Processor.GPU接口新增PrimaryGPUTemperatureCelsius和MemoryTemperatureCelsius，供北向接口查询GPU温度时获取\n详细描述（必填，描述待评审接口的详细内容）：\n资源path： /bmc/kepler/Systems/:SystemId/Processors/GPU/:Id\n资源interface： bmc.kepler.Systems.Processor.GPU\n变化类型：新增接口和属性\n应用场景：用户通过北向接口查询GPU信息时，北向从该属性获取GPU的温度\n持久化类型： 不持久化\n操作权限：ReadOnly\n详细描述：\n\n属性名称\n取值类型\n默认值\n操作权限\n说明\n持久化\n信号\n\nPrimaryGPUTemperatureCelsius\nDouble\n0x8000\nReadOnly\n主处理器温度\n否\n否\n\nMemoryTemperatureCelsius\nDouble\n0x8000\nReadOnly\n内存温度\n否\n否\n\n评审结论\n1、同意在接口bmc.kepler.Systems.Processor.GPU下新增属性PrimaryGPUTemperatureCelsius和MemoryTemperatureCelsius，详情如下\ninterface：bmc.kepler.Systems.Processor.GPU\n变化类型：新增属性PrimaryGPUTemperatureCelsius和MemoryTemperatureCelsius，类型Double\nlinks: #p-1565-issueissue-1, https://gitcode.com/ServerIndustry/CTCC/issues/2, https://gitcode.com/ServerIndustry/CTCC/issues/2, #p-1565-h-2, #p-1565-h-3, #p-1565-h-4, #p-1565-h-5",
+    "topic_user_name": "Zck19950826 Pzet5",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/749/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/749/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/749/4",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "topic_id": 319,
+    "question": "北向接口定制化重构及调试经验分享 - 1.北向接口调试\n北向接口的Statements块中常会做一些数据处理，而这里数据处理的输入和输出都非常不直观，比如下面的情况：Statements/Members()\n\"Members\": {\n    \"Input\": \"${ProcessingFlow[1]/Destination/Members}\",\n    \"Steps\": [\n        {\n            \"Type\": \"Prefix-Trim\",\n            \"Formula\": \"/bmc/kepler/\"\n        },\n        {\n            \"Type\": \"Prefix-Add\",\n            \"Formula\": \"/redfish/v1/\"\n        },\n        {\n            \"Type\": \"L-Pair\",\n            \"Formula\": \"@odata.id\"\n        }\n    ]\n}\n\n这里每一个step的输入和输出都很难看出来是什么，这个时候可以使用\"Type\": “Plugin”,，plugin的lua脚本中可以require ‘mc.logging’，我们可以plugin脚本中加打印来查看具体的入参，以便我们进行定制化处理。像下面那样添加：\n{\n    \"Type\": \"Plugin\",\n    \"Formula\": \"utils.printInput(Input))\"\n}\n\n在steps中，每一步的入参都是Input，返回值也是Input，在plugin目录下的utils.lua中实现如下函数：\nfunction m.printInput(objs)\n    if objs == nil then\n        return 0\n    end\n    for _, obj in pairs(objs) do\n        for key, val in pairs(obj) do\n            log:debug('key:%s =======', tostring(key))\n            log:debug('val:%s =======', tostring(val))\n            obj[key], _ = string.gsub(val,\"EventLog\",\"SEL\")\n        end\n    end\n    return objs\nend\n\n如此即可完成对北向接口的打印调试。在完成调试后，对于比较简单的代码，我们可以使用\"Type\": \"Script\"来做：\n{\n    \"Type\": \"Script\",\n    \"Formula\": \"if Input ~= nil then for _, obj in pairs(Input) do for key, val in pairs(obj) do obj[key], _ = string.gsub(val,'EventLog','SEL') end end end return Input\"\n}\n\nPS：在printInput函数的for循环中，想要修改obj中的属性值，不能直接修改val，需要用obj[key]的方式来修改。\n2.属性定制Modify\n在属性定制化中，modify修改基础类型的属性，为替换值，比如字符串、数值类型的属性，通过modify配置同名属性，则会覆盖原本的值。而对于对象、数组类型的属性，则会进行附加。steps便属于会附加的类型，若对Statements/Members()进行modify：\n\"Modify\": {\n    \"Statements\": {\n        \"Members\": {\n            \"Steps\": [\n                {\n                    \"Type\": \"Script\",\n                    \"Formula\": \"if Input ~= nil then for _, obj in pairs(Input) do for key, val in pairs(obj) do obj[key], _ = string.gsub(val,'EventLog','SEL') end end end return Input\"\n                }\n            ]\n        }\n    }\n}\n\n最后生成的Statements/Members()则是：\n\"Members\": {\n    \"Input\": \"${ProcessingFlow[1]/Destination/Members}\",\n    \"Steps\": [\n        {\n            \"Type\": \"Prefix-Trim\",\n            \"Formula\": \"/bmc/kepler/\"\n        },\n        {\n            \"Type\": \"Prefix-Add\",\n            \"Formula\": \"/redfish/v1/\"\n        },\n        {\n            \"Type\": \"L-Pair\",\n            \"Formula\": \"@odata.id\"\n        },\n        {\n            \"Type\": \"Script\",\n            \"Formula\": \"if Input ~= nil then for _, obj in pairs(Input) do for key, val in pairs(obj) do obj[key], _ = string.gsub(val,'EventLog','SEL') end end end return Input\"\n        }\n    ]\n}",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/319/2",
+            "text": "很实用的经验，大家在做多级北向定制时都可以参考"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/319/3",
+            "text": "感谢你参与interface相关的技术讨论与经验分享，如果有任何对interface开发相关的改进建议，可以通过创建话题进行讨论并申报SIG例会评审，包括但不限于架构、开发调试效率、可定位性等。"
+        },
+        {
+            "user_name": "Yangyinzuo3172",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/319/4",
+            "text": "对于Statements的使用，建议少使用Script、Plugin或者不使用。北向接口倡导的是配置化、结构化，而Script、Plugin两者的本质是代码、脚本，与倡导的是相违背的。\n在使用Statements处理，可以多识别共性处理规则，对于常用的规则可以提出实现的诉求"
+        },
+        {
+            "user_name": "Jack20250125 Gcbm8",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/319/5",
+            "text": "非常实用的经验"
+        }
+    ]
+}

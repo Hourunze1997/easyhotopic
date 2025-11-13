@@ -1,0 +1,29 @@
+{
+    "topic_id": 189,
+    "question": "【申报模板】【待评审】redfish新增XXX接口 - content: ISSUE链接（必填，此议题关联的issue）\n背景（必填，文字描述议题背景，如需求来源、问题场景）\n决策点（必填，一句话描述待决策点）\n整体架构/方案（可选，文字/图描述接口设计背后的整体管理架构/方案）\n详细描述（必填，描述待评审接口的详细内容）\n评审结论（评审结束后录入，描述全面且清晰，不能是通过或不通过、同意或不同意）\n注：评审材料至少需要包含以上信息，脱敏以后以附件方式添加到议题中，不体现详细的客户名称，未公开的芯片名称/代号，未经披露的产品名称、硬件架构和设计规格等\n提醒： 在interface板块创建话题时，标题和内容参考上面的模板，话题类别请选择\"Interface评审\"\nimage921×326 15.3 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/93ea52af8a9cd33aa1d6b26a30c5bd42d4e9d594.png",
+    "topic_user_name": "huanghan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/189/2",
+            "text": "请问议题在哪进行申报？链接是？"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/189/3",
+            "text": "content: 在interface板块创建话题，话题标题和内容参考上面的模板，话题类别选择\"Interface评审\"\nimage921×326 15.3 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/93ea52af8a9cd33aa1d6b26a30c5bd42d4e9d594.png"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/189/4",
+            "text": ""
+        }
+    ]
+}

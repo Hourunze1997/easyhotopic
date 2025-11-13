@@ -1,0 +1,15 @@
+{
+    "topic_id": 736,
+    "question": "mdbctl缺乏对应busctl introspect的命令，lsprop不能显示method - content: Chip对象有bmc.kepler.Chip.BlockIO这个interface并且可以调用下属的method，但没有提供列出该对象全部interface的命令，lsprop只能列出包含property的interface\nimage1156×916 26.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/0ea2ca9205d4f058a20b8e7d89e38fd67f013f64.png",
+    "topic_user_name": "百信-罗昊",
+    "best_answer_url": "/t/topic/736/2",
+    "reply_posts": [
+        {
+            "user_name": "许强",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/736/2",
+            "text": "lsprop如命令名所示，仅列举对象下相关的属性信息，不包含方法信息（调试版本和发布版本均支持）。\ncall命令是仅面向开发和调试场景使用的命令（仅调试版本支持）。\nlscmd命令是面向组件调试、测试、定位等场景使用的组件自定义命令，支持区分调试版本和发布版本，如果组件需要实现不同版本下的不同自定义命令功能，可以使用lscmd的机制实现。"
+        }
+    ]
+}

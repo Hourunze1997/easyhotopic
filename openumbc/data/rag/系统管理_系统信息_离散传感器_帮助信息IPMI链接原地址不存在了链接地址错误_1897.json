@@ -1,0 +1,22 @@
+{
+    "topic_id": 1897,
+    "question": "系统管理-系统信息-离散传感器-帮助信息：IPMI链接原地址不存在了，链接地址错误； - content: IPMI链接地址https://www.intel.com/content/www/us/en/products/docs/servers/ipmi/ipmi-home.html不存在了。目前链接地址错误，链接地址为https://www.intel.cn/content/www/cn/zh/support/products/1201/server-products.html\nimage1677×1139 320 KB\nlinks: https://www.intel.com/content/www/us/en/products/docs/servers/ipmi/ipmi-home.html%E4%B8%8D%E5%AD%98%E5%9C%A8%E4%BA%86%E3%80%82%E7%9B%AE%E5%89%8D%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80%E9%94%99%E8%AF%AF%EF%BC%8C%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80%E4%B8%BAhttps://www.intel.cn/content/www/cn/zh/support/products/1201/server-products.html, https://discuss.openubmc.cn/uploads/default/original/2X/d/d341d35a2355be8cf7cae0671be07c635e201a4b.png",
+    "topic_user_name": "Chury",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1897/2",
+            "text": "content: @caiyesheng_b48v3 蔡老板 这个问题帮忙看看\nlinks: /u/caiyesheng_b48v3"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1897/3",
+            "text": "content: issue详情 - web_online_help:Support documents for openUBMC Web-based user interface - GitCode\n已提issue,用issue跟踪\nlinks: https://gitcode.com/openUBMC/web_online_help/issues/14"
+        }
+    ]
+}

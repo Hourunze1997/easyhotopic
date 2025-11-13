@@ -1,0 +1,29 @@
+{
+    "topic_id": 1930,
+    "question": "2506 release版本 web概率性白屏 - content: 问题现象\n在某次BMC重启后，打开web会白屏，ssh通信正常，重启interface会恢复。\n如果需要日志请留邮箱\n诉求\n1、是否已经是已知问题\n2、如何定位此类问题\nlinks: #p-4753-h-1, #p-4753-h-2",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1930/2",
+            "text": "请提供一下启动后的app.log日志中搜索web_backend的结果，是否有 start web_backend service successfully的打印"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1930/3",
+            "text": "麻烦日志发送到邮箱：ouwenjian@huawei.com\n可以看看nginx的error日志，看看请求失败的原因。"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1930/4",
+            "text": "没有start web_backend service successfully的打印\n2025-07-23 08:43:20.649432 fructrl NOTICE: powerapi.lua(153): [System:1]PowerCtrl is called by bmc.kepler.web_backend\n2025-07-23 09:49:14.415594 web_backend NOTICE: init.lua(98): upload content length:number 93747, remaining capacity space:number 123195392\n2025-07-23 09:55:41.076294 web_backend NOTICE: init.lua(98): upload content length:number 93747, remaining capacity space:number 123195392\n2025-07-23 09:58:51.193774 oms WARNING: init.lua(681): service[bmc.kepler.web_backend] request timeout: remote service[bmc.kepler.thermal_mgmt], path[/bmc/kepler/thermal_mgmt/MicroComponent], interface[bmc.kepler.MicroComponent.Debug], method[Dump], used time[53s]\n2025-07-23 10:03:22.224073 web_backend NOTICE: init.lua(98): upload content length:number 11689, remaining capacity space:number 123195392\n2025-07-23 10:05:38.777626 web_backend NOTICE: micro_component.lua(135): Startup status has changed,  ==> Starting, uptime:93s, cost 0ms\n2025-07-23 10:05:39.203092 web_backend NOTICE: persist_client_lib.lua(60): persist client init completed, time taken: 140 ms\n2025-07-23 10:05:39.390635 web_backend NOTICE: service_app_base.lua(332): start web_backend service\n2025-07-23 10:05:39.390635 web_backend NOTICE: service_app_base.lua(332): start web_backend service\n2025-07-23 10:05:39.416642 web_backend NOTICE: micro_component.lua(135): Startup status has changed, Starting ==> InitCompleted, uptime:94s, cost 640ms\n2025-07-23 10:05:39.417585 web_backend NOTICE: mc_admin.lua(86): no service json info\n2025-07-23 10:05:43.205830 web_backend NOTICE: account.lua(546): get Product Custom object successfully"
+        }
+    ]
+}

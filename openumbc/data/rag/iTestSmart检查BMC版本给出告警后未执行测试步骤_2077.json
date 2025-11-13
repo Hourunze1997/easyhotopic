@@ -1,0 +1,7 @@
+{
+    "topic_id": 2077,
+    "question": "【iTestSmart】检查BMC版本，给出告警后，未执行测试步骤。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\n二、问题描述\nOpenUBMC->平台功能->IPMI设置、查询事件信息。测试步骤中的ipmi raw命令没有执行。ipmi raw命令：\nimage1076×499 16.4 KB\n有版本信息检查的告警，是不是判断版本信息不符合要求，所以没有执行测试用例中的ipmi raw命令？\nimage1927×877 67.4 KB\nOpenUBMC->平台功能->Redfish设置带内EDMA通道权限为管理员功能测试，这个测试用例有同样的问题。\nOpenUBMC->平台功能->IPMI查询SEL事件的连续和离散传感器，问题同上。\nOpenUBMC->平台功能->busctl查询不同告警级别下健康灯属性值，问题同上。\nOpenUBMC->安全管理->设置登录规则请求体\"ID\"属性值为null和空测试，问题同上。\nOpenUBMC->融合运维->BMC重启后redfish请求命令的响应时间测试，问题同上。\nOpenUBMC->融合运维->cli查询操作日志，问题同上。\nOpenUBMC->融合运维->管理员用户查询本地用户信息，问题同上。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/37117cdc78ba7412e31674d5a0bf6ae96eb320b7.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/273e2a0854affbb73a9444d29bc6fdd4c65d2ee4.png",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": []
+}

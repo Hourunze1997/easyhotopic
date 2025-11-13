@@ -1,0 +1,29 @@
+{
+    "topic_id": 705,
+    "question": "社区conan仓无法在虚拟仓配置中使用 - content: 设置远程conan仓\nimage2149×1024 107 KB\n并在虚拟仓中添加远程conan仓和我们自己的本地仓\nimage1326×811 27.8 KB\n使用此虚拟仓在本地进行构建时会报无法找到Recipe的报错\nimage1564×612 137 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/fdc99066fa7fb1eebb97d25e458af05f1e7ea00f.png, https://discuss.openubmc.cn/uploads/default/original/1X/d2b48597d709a3d583b32d384f0303f653cb22ae.png, https://discuss.openubmc.cn/uploads/default/original/1X/c18b21a1b8854ebf44ffa2a20a95f9ad71b714ac.png",
+    "topic_user_name": "Tf Wenchenglong",
+    "best_answer_url": "/t/topic/705/4",
+    "reply_posts": [
+        {
+            "user_name": "Tf Wenchenglong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/705/2",
+            "text": "content: 查看conan连接\nimage1294×119 13.1 KB\n查询社区conan仓中对应文件\nimage1424×312 27.8 KB\n查询虚拟仓文件\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/0e1a5a8d1561a16679711e38247ad7cac74cfd0f.png, https://discuss.openubmc.cn/uploads/default/original/1X/46e2ef8aa0ae0e2e674536b6732b926885c3f54a.png"
+        },
+        {
+            "user_name": "Tf Wenchenglong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/705/3",
+            "text": "content: 将虚拟仓配置为旧的社区地址时本地可正确构建\nimage1275×844 27.8 KB\nimage1268×273 31.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/4e96684d941d7c6a19e4f54b8b09bf7e8198ecd4.png, https://discuss.openubmc.cn/uploads/default/original/1X/ec661eed1c342439ad82075dcb41fa86f3c0ae57.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/705/4",
+            "text": "content: 已有issue跟踪\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\nlinks: https://gitcode.com/openUBMC/infrastructure/issues/24, https://gitcode.com/openUBMC/infrastructure/issues/24"
+        }
+    ]
+}

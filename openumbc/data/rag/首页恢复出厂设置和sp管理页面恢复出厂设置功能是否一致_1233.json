@@ -1,0 +1,22 @@
+{
+    "topic_id": 1233,
+    "question": "首页恢复出厂设置和sp管理页面恢复出厂设置功能是否一致 - 目前在v3 上 使用首页恢复出厂设置和sp管理页面使用ibmc恢复出厂设置时发现两个功能描述一致，但是达成效果存在差异，首页恢复出厂设置（url：https://{ip}/UI/Rest/RestoreFactory）设置完成后，bmc 重启，sp 管理页面（url： https://{ip}/UI/Rest/BMCSettings/SPService/StstemErase）, 记录时间日志，但bmc并未重启",
+    "topic_user_name": "Yjshen",
+    "best_answer_url": "/t/topic/1233/2",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1233/2",
+            "text": "首页恢复出厂设置是执行恢复出厂还原点。而SP管理页面是创建 SP 系统擦除配置文件，这个配置文件只有在SP启动的时候才会生效。"
+        },
+        {
+            "user_name": "Yjshen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1233/3",
+            "text": "content: 如下图所示，设置sp 节点任务后，触发sp 服务启动，并未恢复bmc出厂设置并重启bmc                              ![image|666x500](upload://8Up6BYv7XoLK79KojDyjlT3ti6t.jpeg\nimage1920×1440 102 KB\nimage1920×1440 243 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/c301a59f2d020d1008d24421362d93bf09594ea0.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/d/d6608221c3c2af1d4ca33a5ccc0fceb27a1b8f1a.jpeg"
+        }
+    ]
+}

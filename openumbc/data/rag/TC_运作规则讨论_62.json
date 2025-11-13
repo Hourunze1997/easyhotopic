@@ -1,0 +1,15 @@
+{
+    "topic_id": 62,
+    "question": "TC 运作规则讨论 - 讨论 TC 运作规则",
+    "topic_user_name": "zjp99",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "zjp99",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/62/2",
+            "text": "content: TC\nopenUBMC技术委员会（Technical Committee，简称TC）是openUBMC社区的技术决策机构，负责社区技术决策。\n当期TC委员（含主席）为8人。\n组织会议\n\n公开的会议时间：当前TC在北京时间，每双周周三的上午10:00召开公开的例行线上讨论会议。\n具体会议参会方式，会提前一天发出，会议议题在[@etherpad.TC]登记。\nTC会议的议题包括但不限于：\n\n讨论和决策社区技术发展方向\n决策社区重大技术事项\n决策SIG组的成立和撤销，审视和辅导SIG组日常工作，协作SIG组间技术合作\n在SIG组内部无法决策，需要上升的技术方案\n决策社区组件的生命周期\n\n欢迎任何感兴趣的开发者参加旁听\n\n目前的TC成员\n以下姓氏拼音排序\n\n黄 晗tc@public.openubmc.cn [@huanghan]\n李 琴tc@public.openubmc.cn [@liqin]\n刘兴森tc@public.openubmc.cn [@xiaoxinglxs]\n于 飞tc@public.openubmc.cn [@pelagics]\n张 超tc@public.openubmc.cn [@TacoJay]\n张雨博tc@public.openubmc.cn [@zybwh]\n章建平171828563@qq.com [@zjp99]\n\nMaintainer列表\nCommitter列表\n联系方式\n\nTC使用邮件列表 tc@public.openubmc.cn 做日常讨论\n历史讨论的记录以及历次TC会议的纪要，可以访问邮件列表归档\nlinks: #p-77-tc-1, #p-77-h-2, https://etherpad.openubmc.cn/p/TC, #p-77-tc-3, mailto:tc@public.openubmc.cn, https://gitcode.com/huanghan, mailto:tc@public.openubmc.cn, https://gitcode.com/llllliiiiilllll, mailto:tc@public.openubmc.cn, https://gitcode.com/nathanael, mailto:tc@public.openubmc.cn, https://gitcode.com/pelagics, mailto:tc@public.openubmc.cn, https://gitcode.com/TacoJay, mailto:tc@public.openubmc.cn, https://gitcode.com/zybwh, mailto:171828563@qq.com, https://gitcode.com/zjp99, #p-77-maintainer-4, #p-77-committer-5, #p-77-h-6, mailto:tc@public.openubmc.cn, https://mailweb.openubmc.cn/hyperkitty/list/tc@public.openubmc.cn/"
+        }
+    ]
+}

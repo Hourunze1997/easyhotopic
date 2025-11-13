@@ -1,0 +1,43 @@
+{
+    "topic_id": 896,
+    "question": "风扇&散热页签重复点击无信息问题 - content: image1914×832 22.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/a80174977f6d96a8fe9af8e1c7fdac82bb268088.png",
+    "topic_user_name": "Zxl",
+    "best_answer_url": "/t/topic/896/6",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/896/2",
+            "text": "content: @wwhh\nlinks: /u/wwhh"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/896/3",
+            "text": "为减少繁琐的沟通，提高效率，建议：\n1、提供问题的背景，详细的操作说明，越详细越好。\n2、提供一键收集的日志。\n3、提供你自己的分析和求助点。"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/896/4",
+            "text": "请先排查对应组件是否正常启动，thermal_mgmt，可通过日志确认；\n后续相关问题，可以进行具体描述，即如上述专家所提：问题背景说明，操作步骤，一键收集日志等相关内容；"
+        },
+        {
+            "user_name": "Zxl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/896/5",
+            "text": "content: 1、问题背景：前端点击\"系统管理\"->“风扇&散热”选项，第一次点击“风扇&散热”能够正常获取风扇信息，如果不去点击其他选项的情况，重复点击“风扇&散热”选项会获取不到风扇信息。\n前端如果点击“风扇&散热”后点击其他选项如“BIOS配置”，再点击“风扇&散热”页面获取正常。\n2、一键收集。\n一键收集日志有7M多，直接上传最大只能上传4M，所以只AppDump.zip部分。\nAppDump.zip (801.4 KB)\n3、求助点\n第一次点击“风扇&散热”正常，重复点击“风扇&散热”获取信息不正常如下图。\nimage1920×347 42 KB\n求助点：连续重复点击“风扇&散热”选项，第二次页面无信息显示。\nlinks: /uploads/short-url/hblSxx7A6MzVaHJ7L5x36ERdBiN.zip, https://discuss.openubmc.cn/uploads/default/original/1X/d5bd18846c7b7c38bdf6c1df47d0307345122e69.jpeg"
+        },
+        {
+            "user_name": "gitCodeZJ",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/896/6",
+            "text": "content: 可参考此issue GitCode - 全球开发者的开源社区,开源代码托管平台\nlinks: https://gitcode.com/openUBMC/webui/issues/32"
+        }
+    ]
+}

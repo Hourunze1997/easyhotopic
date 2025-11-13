@@ -1,0 +1,134 @@
+{
+    "topic_id": 860,
+    "question": "OS侧安装iBMA后openUBMC下不显示iBMA版本等信息 - content: OS下安装iBMA 2.13.0：\nimage1003×600 136 KB\n启动iBMA服务运行后 ：\nimage969×728 74.8 KB\nopenUBMC下BMA管理界面未显示BMA相关信息\nimage1429×647 17.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/77d2f652314b56c7c762b9c26fe27b981afa1071.jpeg, https://discuss.openubmc.cn/uploads/default/original/1X/100d5e28cd2cee6d69c66a74ede1fde937e4246d.jpeg, https://discuss.openubmc.cn/uploads/default/original/1X/7c81a76d14f2e81673addcb27548e43ee14d7f23.png",
+    "topic_user_name": "KunTai_WangJiaKai",
+    "best_answer_url": "/t/topic/860/10",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/2",
+            "text": "当前BMA信息栏没有相关内容，应该是通信失败了。os侧看看bma的日志吧（/opt/huawei/ibma/log/common.log）"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/3",
+            "text": "问题日志请发到lilie4@huawei.com"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/4",
+            "text": "邮件已发，请查收"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/5",
+            "text": "遇到相同问题，请问目前问题有解决吗"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/6",
+            "text": "content: 同问，目前根据提示帮助已经将manifest.yml里面的rackmount组件配置选项为huawei分支\n如图：\n\n然后现在现象：\n如图\nimage2857×1549 317 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/ea54daeff4a16ec8cfc740f1661e5c9031d00432.png"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/7",
+            "text": "还在定位"
+        },
+        {
+            "user_name": "Huangmincai-wuzhou",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/8",
+            "text": "content: 同问，执行busctl --user introspect bmc.kepler.host_agent /bmc/kepler/Systems/1/Sms看到返回属性Registered为false，OS侧执行ibmacli conf show --name iBMA.ini ，iBMA support https = false。这是不是BMA建链失败？\n889515bf9ecc31e1ae442479c6237f1717×811 197 KB\nfa3fe32d1d9b9bd48a3bfb9359feba3600×459 58.8 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/31055965fe25b7da2c19cbc73aa9d725bb06355e.jpeg, https://discuss.openubmc.cn/uploads/default/original/1X/574b2c07d830e367fa721bf8cfed972b1a449d06.jpeg"
+        },
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/9",
+            "text": "现在咋样，有解决办法了吗"
+        },
+        {
+            "user_name": "百信-罗昊",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/860/10",
+            "text": "content: 该问题已解决，需要改动三个地方：\n1、webui组件，主要是几个url中的BMA需要改为iBMA\nmock/ibma/ibma.ts\nimage1041×194 11.5 KB\nsrc/api/reqPath.ts\nimage1219×271 25.8 KB\nsrc/pages/Manager/Ibma/ibma.server.ts\nmock/maintance/alarm/data/index.ts\nimage1083×599 36.2 KB\n2、manifest组件的manifest.yml文件\n\n3、iBMA升级到最新版本(当前为2.16.0)\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/8e013b3c2858973e41f0274d9707aba7286ca5b5.png, https://discuss.openubmc.cn/uploads/default/original/1X/07ff5c96307a9fc6bb6ccadba4c6f1326e3ae488.png, https://discuss.openubmc.cn/uploads/default/original/1X/2e3ef842e7dc1bb5eed5f683c004341a200dcfa0.png"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/11",
+            "text": "您好，请教一个问题，当前我只修改manifest组件的manifest.yml文件就可以正常显示ibma信息，webui组件中内容还需要修改吗，如果不改会出现问题吗"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/12",
+            "text": "解决方案中修改webui是因为报了BMA相关的url的404，你那边如果没有报404就不需要修改了。"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/13",
+            "text": "您好，我们这边按照上面解决方案修改后，浏览器F12查看IBMA相关url还是报错404，/UI/Rest/BMCSettings/iBMA/Base，有分析思路或者解决方案吗？"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/14",
+            "text": "可以看下bmc下能否查到iBMA.json ,如果有这个文件查看下里面是不是定制了base接口"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/15",
+            "text": "bmc下能够查看到iBMA.json,里面的内容跟gitcode中rackmount组件iBMA.json,内容一致.这里的定制base接口是什么意思"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/16",
+            "text": "就是 json文件中是否包含 base的url，完全一样的话我也不清楚怎么定位了，找华为的pae问问吧"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/17",
+            "text": "好的，谢谢"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/18",
+            "text": "方便回复，成功解决iBMA问题所使用的manifest,rackmount,webui组件版本号吗？想确认一下，是不是这里产生的差异"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/860/19",
+            "text": "webui           1.70.53\nrackmount    1.70.172\nmanifest        版本参考意义不大，在25.03的基础上联调改了很多东西"
+        }
+    ]
+}

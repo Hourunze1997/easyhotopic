@@ -1,0 +1,3003 @@
+{
+    "0": {
+        "summary": "开发者需要解决Conan仓库配置异常、代码生成依赖混淆、构建签名中断及调试组件集成等共性问题。",
+        "discussion_count": 18,
+        "discussion": [
+            {
+                "id": "151",
+                "title": "open-repo仓dev_tools_with_bmcgo.zip提供的bingo工具问题",
+                "url": "https://discuss.openubmc.cn//t/topic/701/1",
+                "created_at": "2025-04-28 10:04:42",
+                "source_type": "forum",
+                "source_id": "701",
+                "cosine": 0.619
+            },
+            {
+                "id": "70",
+                "title": "manufacture 代码仓 bingo gen",
+                "url": "https://discuss.openubmc.cn//t/topic/978/1",
+                "created_at": "2025-05-16 10:15:27",
+                "source_type": "forum",
+                "source_id": "978",
+                "cosine": 0.606
+            },
+            {
+                "id": "193",
+                "title": "conan 远端仓访问出错",
+                "url": "https://discuss.openubmc.cn//t/topic/467/1",
+                "created_at": "2025-04-16 01:18:31",
+                "source_type": "forum",
+                "source_id": "467",
+                "cosine": 0.604
+            },
+            {
+                "id": "218",
+                "title": "社区conan仓库不通",
+                "url": "https://discuss.openubmc.cn//t/topic/339/1",
+                "created_at": "2025-04-02 02:59:48",
+                "source_type": "forum",
+                "source_id": "339",
+                "cosine": 0.603
+            },
+            {
+                "id": "181",
+                "title": "25.03 fructrl源码构建时出文件找不到的错",
+                "url": "https://discuss.openubmc.cn//t/topic/510/1",
+                "created_at": "2025-04-17 01:19:28",
+                "source_type": "forum",
+                "source_id": "510",
+                "cosine": 0.59
+            },
+            {
+                "id": "625",
+                "title": "历史提交全清导致历史版本无法源码构建",
+                "url": "https://gitcode.com/openUBMC/fructrl/issues/1",
+                "created_at": "2025-04-02 03:20:35+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3020616",
+                "cosine": 0.583
+            },
+            {
+                "id": "77",
+                "title": "不指定远端conan仓编译失败",
+                "url": "https://discuss.openubmc.cn//t/topic/970/1",
+                "created_at": "2025-05-16 03:21:32",
+                "source_type": "forum",
+                "source_id": "970",
+                "cosine": 0.579
+            },
+            {
+                "id": "150",
+                "title": "社区conan仓无法在虚拟仓配置中使用",
+                "url": "https://discuss.openubmc.cn//t/topic/705/1",
+                "created_at": "2025-04-29 02:31:51",
+                "source_type": "forum",
+                "source_id": "705",
+                "cosine": 0.577
+            },
+            {
+                "id": "28",
+                "title": "bingo gen 代码生成问题咨询",
+                "url": "https://discuss.openubmc.cn//t/topic/1074/1",
+                "created_at": "2025-05-22 06:47:10",
+                "source_type": "forum",
+                "source_id": "1074",
+                "cosine": 0.564
+            },
+            {
+                "id": "538",
+                "title": "conan仓remote地址不能被Jfrog聚合",
+                "url": "https://gitcode.com/openUBMC/infrastructure/issues/24",
+                "created_at": "2025-04-16 11:31:55+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3055758",
+                "cosine": 0.562
+            },
+            {
+                "id": "7",
+                "title": "openubmc社区conan仓使用指导",
+                "url": "https://discuss.openubmc.cn//t/topic/186/1",
+                "created_at": "2025-02-27 09:03:16",
+                "source_type": "forum",
+                "source_id": "186",
+                "cosine": 0.559
+            },
+            {
+                "id": "91",
+                "title": "Q1 main分支f8acc985 bmcgo 构建失败：not found in ibmc_dev",
+                "url": "https://discuss.openubmc.cn//t/topic/848/1",
+                "created_at": "2025-05-11 04:04:52",
+                "source_type": "forum",
+                "source_id": "848",
+                "cosine": 0.552
+            },
+            {
+                "id": "209",
+                "title": "busybox作为conan组件编入openUBMC实践分享",
+                "url": "https://discuss.openubmc.cn//t/topic/406/1",
+                "created_at": "2025-04-10 08:20:52",
+                "source_type": "forum",
+                "source_id": "406",
+                "cosine": 0.545
+            },
+            {
+                "id": "126",
+                "title": "openUBMC调试工具安装指导",
+                "url": "https://discuss.openubmc.cn//t/topic/415/1",
+                "created_at": "2025-04-12 03:58:06",
+                "source_type": "forum",
+                "source_id": "415",
+                "cosine": 0.529
+            },
+            {
+                "id": "33",
+                "title": "bingo build -b openUBMC -r openubmc_dev报错签名失败",
+                "url": "https://discuss.openubmc.cn//t/topic/1056/1",
+                "created_at": "2025-05-21 12:34:52",
+                "source_type": "forum",
+                "source_id": "1056",
+                "cosine": 0.522
+            },
+            {
+                "id": "188",
+                "title": "Jfrog绑定新的社区conan仓地址无效",
+                "url": "https://discuss.openubmc.cn//t/topic/500/1",
+                "created_at": "2025-04-16 10:04:43",
+                "source_type": "forum",
+                "source_id": "500",
+                "cosine": 0.512
+            },
+            {
+                "id": "230",
+                "title": "fructrl的历史提交全清了，导致manifest构建失败",
+                "url": "https://discuss.openubmc.cn//t/topic/340/1",
+                "created_at": "2025-04-02 03:25:59",
+                "source_type": "forum",
+                "source_id": "340",
+                "cosine": 0.463
+            },
+            {
+                "id": "467",
+                "title": "支持telnetd以及i2c_tools等工具",
+                "url": "https://gitcode.com/openUBMC/conan_index/issues/2",
+                "created_at": "2025-04-10 03:41:18+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3027775",
+                "cosine": 0.462
+            }
+        ],
+        "label": "开发者贡献与支持"
+    },
+    "1": {
+        "summary": "BMC开发者如何新增3000W电源资源树属性并配置PMbus告警",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "605",
+                "title": "【需求】支持3000W电源管理，新增资源树私有属性CurrentModeLogic",
+                "url": "https://gitcode.com/openUBMC/account/issues/13",
+                "created_at": "2025-05-06 12:28:04+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3083333",
+                "cosine": 0.773
+            },
+            {
+                "id": "525",
+                "title": "【需求】支持3000W电源管理，新增资源树bmc.kepler.Systems.PowerMgmt.OnePower.Status属性CMLStatus",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/44",
+                "created_at": "2025-05-07 06:19:38+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3084069",
+                "cosine": 0.723
+            },
+            {
+                "id": "428",
+                "title": "【需求】支持电源继电器状态管理",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/45",
+                "created_at": "2025-05-07 06:44:16+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3084086",
+                "cosine": 0.655
+            }
+        ],
+        "label": "生态可扩展性与社区推广"
+    },
+    "2": {
+        "summary": "BMC开发者如何设计兼容通用及异构硬件的固件架构",
+        "discussion_count": 6,
+        "discussion": [
+            {
+                "id": "463",
+                "title": "【需求】社区更新通用硬件相关文档",
+                "url": "https://gitcode.com/openUBMC/storage/issues/19",
+                "created_at": "2025-05-08 13:07:46+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085707",
+                "cosine": 0.542
+            },
+            {
+                "id": "518",
+                "title": "【需求】社区补齐异构硬件相关文档",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/17",
+                "created_at": "2025-04-28 14:48:10+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070470",
+                "cosine": 0.519
+            },
+            {
+                "id": "701",
+                "title": "【需求】社区更新通用硬件相关文档",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/13",
+                "created_at": "2025-05-08 13:07:48+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085708",
+                "cosine": 0.471
+            },
+            {
+                "id": "663",
+                "title": "【需求】社区更新能效管理相关文档",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/16",
+                "created_at": "2025-05-08 13:06:11+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085655",
+                "cosine": 0.458
+            },
+            {
+                "id": "604",
+                "title": "【需求】社区更新设备管理规范相关文档",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/14",
+                "created_at": "2025-05-08 13:07:52+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085710",
+                "cosine": 0.437
+            },
+            {
+                "id": "517",
+                "title": "【需求】社区更新设备管理规范相关文档",
+                "url": "https://gitcode.com/openUBMC/storage/issues/20",
+                "created_at": "2025-05-08 13:07:50+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085709",
+                "cosine": 0.315
+            }
+        ],
+        "label": "开发者贡献与支持"
+    },
+    "3": {
+        "summary": "实现BMC对多型号网卡的CSR适配、带内外信息采集及Redfish/Web/SNMP接口集成，确保告警配置验证与调速功能兼容性",
+        "discussion_count": 13,
+        "discussion": [
+            {
+                "id": "317",
+                "title": "【需求】支持管理网卡SWIFT-2200N",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/31",
+                "created_at": "2025-05-08 13:07:58+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085713",
+                "cosine": 0.718
+            },
+            {
+                "id": "716",
+                "title": "【需求】支持管理网卡SP625D",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/36",
+                "created_at": "2025-05-08 13:08:08+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085718",
+                "cosine": 0.694
+            },
+            {
+                "id": "542",
+                "title": "【需求】支持管理网卡SP680",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/34",
+                "created_at": "2025-05-08 13:08:04+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085716",
+                "cosine": 0.692
+            },
+            {
+                "id": "715",
+                "title": "【需求】支持管理网卡SF221Q",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/35",
+                "created_at": "2025-05-08 13:08:06+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085717",
+                "cosine": 0.689
+            },
+            {
+                "id": "290",
+                "title": "【需求】支持管理网卡MCX631432AN-ADAB的能力",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/22",
+                "created_at": "2025-05-08 13:09:02+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085750",
+                "cosine": 0.678
+            },
+            {
+                "id": "714",
+                "title": "【需求】支持管理网卡SF400HT",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/38",
+                "created_at": "2025-05-08 13:08:12+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085720",
+                "cosine": 0.661
+            },
+            {
+                "id": "676",
+                "title": "【需求】支持管理网卡SF223D-H",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/37",
+                "created_at": "2025-05-08 13:08:10+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085719",
+                "cosine": 0.659
+            },
+            {
+                "id": "447",
+                "title": "【需求】支持管理网卡MCX755106AS-HEAT",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/33",
+                "created_at": "2025-05-08 13:08:02+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085715",
+                "cosine": 0.651
+            },
+            {
+                "id": "697",
+                "title": "【需求】支持管理网卡MCX631102AN-ADAT的能力",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/23",
+                "created_at": "2025-05-08 13:09:04+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085751",
+                "cosine": 0.646
+            },
+            {
+                "id": "440",
+                "title": "【需求】支持管理网卡MCX512A-ACAT",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/41",
+                "created_at": "2025-05-08 13:09:10+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085754",
+                "cosine": 0.645
+            },
+            {
+                "id": "677",
+                "title": "【需求】支持管理网卡QLE2742",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/40",
+                "created_at": "2025-05-08 13:08:16+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085722",
+                "cosine": 0.629
+            },
+            {
+                "id": "294",
+                "title": "【需求】支持管理网卡SF200HT",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/39",
+                "created_at": "2025-05-08 13:08:14+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085721",
+                "cosine": 0.619
+            },
+            {
+                "id": "696",
+                "title": "【需求】支持管理网卡MCX512A-ACUT",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/24",
+                "created_at": "2025-05-08 13:09:06+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085752",
+                "cosine": 0.565
+            }
+        ],
+        "label": "新硬件的支持"
+    },
+    "4": {
+        "summary": "BMC开发者如何验证QEMU网络参数及IPMI配置与固件网卡的适配性",
+        "discussion_count": 6,
+        "discussion": [
+            {
+                "id": "157",
+                "title": "Qemu运行跑起固件后SSH、web、ipmi不通的问题求助",
+                "url": "https://discuss.openubmc.cn//t/topic/661/1",
+                "created_at": "2025-04-27 07:56:27",
+                "source_type": "forum",
+                "source_id": "661",
+                "cosine": 0.661
+            },
+            {
+                "id": "263",
+                "title": "openUBMC怎么使用qemu运行",
+                "url": "https://discuss.openubmc.cn//t/topic/227/1",
+                "created_at": "2025-03-11 02:05:36",
+                "source_type": "forum",
+                "source_id": "227",
+                "cosine": 0.63
+            },
+            {
+                "id": "134",
+                "title": "qemu启动之后，ssh可以访问，但是web和ipmi都无法访问",
+                "url": "https://discuss.openubmc.cn//t/topic/718/1",
+                "created_at": "2025-04-29 09:54:04",
+                "source_type": "forum",
+                "source_id": "718",
+                "cosine": 0.605
+            },
+            {
+                "id": "98",
+                "title": "Qemu常见问题归纳",
+                "url": "https://discuss.openubmc.cn//t/topic/726/1",
+                "created_at": "2025-04-30 09:03:24",
+                "source_type": "forum",
+                "source_id": "726",
+                "cosine": 0.557
+            },
+            {
+                "id": "10",
+                "title": "Qemu使用指南",
+                "url": "https://discuss.openubmc.cn//t/topic/636/1",
+                "created_at": "2025-04-24 13:53:54",
+                "source_type": "forum",
+                "source_id": "636",
+                "cosine": 0.532
+            },
+            {
+                "id": "145",
+                "title": "如何快速启动Qemu",
+                "url": "https://discuss.openubmc.cn//t/topic/544/1",
+                "created_at": "2025-04-17 15:13:25",
+                "source_type": "forum",
+                "source_id": "544",
+                "cosine": 0.53
+            }
+        ],
+        "label": "开发者贡献与支持"
+    },
+    "5": {
+        "summary": "BMC Studio工作空间一键部署缺失Conan依赖配置导致组件获取失败且无完成状态反馈",
+        "discussion_count": 4,
+        "discussion": [
+            {
+                "id": "24",
+                "title": "bmc studio使用问题",
+                "url": "https://discuss.openubmc.cn//t/topic/1012/1",
+                "created_at": "2025-05-20 07:51:28",
+                "source_type": "forum",
+                "source_id": "1012",
+                "cosine": 0.847
+            },
+            {
+                "id": "73",
+                "title": "BMC_STUDIO仓库一键部署，丢失响应，无成功，无失败反馈",
+                "url": "https://discuss.openubmc.cn//t/topic/962/1",
+                "created_at": "2025-05-15 10:11:39",
+                "source_type": "forum",
+                "source_id": "962",
+                "cosine": 0.773
+            },
+            {
+                "id": "56",
+                "title": "使用bmc_studio遇到的问题",
+                "url": "https://discuss.openubmc.cn//t/topic/925/1",
+                "created_at": "2025-05-14 07:34:45",
+                "source_type": "forum",
+                "source_id": "925",
+                "cosine": 0.734
+            },
+            {
+                "id": "139",
+                "title": "BMC Studio问题反馈",
+                "url": "https://discuss.openubmc.cn//t/topic/707/1",
+                "created_at": "2025-04-29 02:46:38",
+                "source_type": "forum",
+                "source_id": "707",
+                "cosine": 0.661
+            }
+        ],
+        "label": "工具链与易用性"
+    },
+    "6": {
+        "summary": "规范thermal资源树接口关键字以消除组件属性约束冲突并防止内部暴露",
+        "discussion_count": 17,
+        "discussion": [
+            {
+                "id": "329",
+                "title": "资源树协作接口关键字满足使用原则和规范",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/6",
+                "created_at": "2025-04-10 02:35:24+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3027724",
+                "cosine": 0.676
+            },
+            {
+                "id": "494",
+                "title": "支持基础服务满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/32",
+                "created_at": "2025-04-27 04:06:00+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3066635",
+                "cosine": 0.661
+            },
+            {
+                "id": "334",
+                "title": "【需求】thermal_mgmt组件满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/24",
+                "created_at": "2025-05-09 08:00:33+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3087114",
+                "cosine": 0.634
+            },
+            {
+                "id": "459",
+                "title": "支持安全管理满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/account/issues/6",
+                "created_at": "2025-04-12 09:45:32+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3030106",
+                "cosine": 0.634
+            },
+            {
+                "id": "414",
+                "title": "【需求】支持通用硬件满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/chassis/issues/3",
+                "created_at": "2025-05-08 13:07:42+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085705",
+                "cosine": 0.627
+            },
+            {
+                "id": "629",
+                "title": "【需求】支持通用硬件满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/12",
+                "created_at": "2025-05-08 13:07:38+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085703",
+                "cosine": 0.618
+            },
+            {
+                "id": "383",
+                "title": "【需求】支持通用硬件满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/storage/issues/17",
+                "created_at": "2025-05-08 13:07:36+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085702",
+                "cosine": 0.611
+            },
+            {
+                "id": "709",
+                "title": "【需求】支持通用硬件满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/22",
+                "created_at": "2025-05-08 13:07:40+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085704",
+                "cosine": 0.603
+            },
+            {
+                "id": "570",
+                "title": "【需求】支持异构算力满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/pcie_device/issues/7",
+                "created_at": "2025-05-09 06:30:20+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3087013",
+                "cosine": 0.598
+            },
+            {
+                "id": "393",
+                "title": "【需求】支持异构算力满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/bios/issues/22",
+                "created_at": "2025-05-09 06:30:18+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3087012",
+                "cosine": 0.592
+            },
+            {
+                "id": "561",
+                "title": "支持框架资源树协作接口满足关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/38",
+                "created_at": "2025-04-28 12:34:48+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070402",
+                "cosine": 0.571
+            },
+            {
+                "id": "640",
+                "title": "【需求】支持异构算力满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/manufacture/issues/2",
+                "created_at": "2025-05-09 06:30:22+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3087014",
+                "cosine": 0.57
+            },
+            {
+                "id": "603",
+                "title": "【需求】支持异构算力满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/lsw/issues/2",
+                "created_at": "2025-05-09 06:30:25+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3087015",
+                "cosine": 0.568
+            },
+            {
+                "id": "669",
+                "title": "【需求】支持能效管理满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/13",
+                "created_at": "2025-05-08 13:06:05+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085652",
+                "cosine": 0.501
+            },
+            {
+                "id": "665",
+                "title": "【需求】支持能效管理满足资源树协作接口关键字规范要求",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/12",
+                "created_at": "2025-05-08 13:06:03+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085651",
+                "cosine": 0.489
+            },
+            {
+                "id": "682",
+                "title": "【需求】thermal_mgmt组件接口支持配置PrivilegeMap信息",
+                "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/27",
+                "created_at": "2025-05-09 08:08:28+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3087128",
+                "cosine": 0.482
+            },
+            {
+                "id": "638",
+                "title": "【需求】power_mgmt组件接口支持配置PrivilegeMap信息",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/44",
+                "created_at": "2025-05-09 07:43:49+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3087104",
+                "cosine": 0.381
+            }
+        ],
+        "label": "架构规范与兼容性"
+    },
+    "7": {
+        "summary": "BMC开发者需文档化一键导出板卡MCU信息功能的存储路径及命名规范",
+        "discussion_count": 11,
+        "discussion": [
+            {
+                "id": "159",
+                "title": "【已评审】支持一键收集导出板卡信息，mcu信息",
+                "url": "https://discuss.openubmc.cn//t/topic/628/1",
+                "created_at": "2025-04-24 11:15:56",
+                "source_type": "forum",
+                "source_id": "628",
+                "cosine": 0.719
+            },
+            {
+                "id": "462",
+                "title": "【问题单】支持一键收集导出板卡信息，mcu信息",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/10",
+                "created_at": "2025-04-24 06:28:54+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3064570",
+                "cosine": 0.717
+            },
+            {
+                "id": "649",
+                "title": "【需求】支持一键收集通用硬件信息",
+                "url": "https://gitcode.com/openUBMC/storage/issues/34",
+                "created_at": "2025-05-08 13:09:32+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085766",
+                "cosine": 0.627
+            },
+            {
+                "id": "247",
+                "title": "openUBMC一键收集介绍",
+                "url": "https://discuss.openubmc.cn//t/topic/290/1",
+                "created_at": "2025-03-25 03:47:01",
+                "source_type": "forum",
+                "source_id": "290",
+                "cosine": 0.609
+            },
+            {
+                "id": "699",
+                "title": "【需求】支持板卡硬件管理",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/15",
+                "created_at": "2025-05-08 13:07:56+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085712",
+                "cosine": 0.608
+            },
+            {
+                "id": "240",
+                "title": "基础通用问题FAQ",
+                "url": "https://discuss.openubmc.cn//t/topic/292/1",
+                "created_at": "2025-03-25 06:31:09",
+                "source_type": "forum",
+                "source_id": "292",
+                "cosine": 0.579
+            },
+            {
+                "id": "276",
+                "title": "bmc-core SIG 入门指南",
+                "url": "https://discuss.openubmc.cn//t/topic/167/1",
+                "created_at": "2025-02-22 01:36:02",
+                "source_type": "forum",
+                "source_id": "167",
+                "cosine": 0.576
+            },
+            {
+                "id": "156",
+                "title": "openUBMC各sig组本周(2025-0421-2025-0427)关闭issue统计",
+                "url": "https://discuss.openubmc.cn//t/topic/672/1",
+                "created_at": "2025-04-27 13:48:55",
+                "source_type": "forum",
+                "source_id": "672",
+                "cosine": 0.555
+            },
+            {
+                "id": "136",
+                "title": "openUBMC各sig组本周(2025-0428~2025-0505)关闭issue统计",
+                "url": "https://discuss.openubmc.cn//t/topic/733/1",
+                "created_at": "2025-05-05 10:43:52",
+                "source_type": "forum",
+                "source_id": "733",
+                "cosine": 0.538
+            },
+            {
+                "id": "121",
+                "title": "openUBMC品牌包定制指南",
+                "url": "https://discuss.openubmc.cn//t/topic/355/1",
+                "created_at": "2025-04-03 06:16:28",
+                "source_type": "forum",
+                "source_id": "355",
+                "cosine": 0.537
+            },
+            {
+                "id": "92",
+                "title": "openUBMC各sig组本周(2025-0506~2025-0511)关闭issue统计",
+                "url": "https://discuss.openubmc.cn//t/topic/876/1",
+                "created_at": "2025-05-13 02:14:58",
+                "source_type": "forum",
+                "source_id": "876",
+                "cosine": 0.536
+            }
+        ],
+        "label": "文档与易用性"
+    },
+    "8": {
+        "summary": "BMC开发者如何解决25.03构建中的Manifest签名链校验异常及dockerfile安装超时问题？",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "204",
+                "title": "25.03构建出包以及伙伴签名问题",
+                "url": "https://discuss.openubmc.cn//t/topic/390/1",
+                "created_at": "2025-04-08 07:56:11",
+                "source_type": "forum",
+                "source_id": "390",
+                "cosine": 0.722
+            },
+            {
+                "id": "208",
+                "title": "25.03版本的构建环境搭建：dockerfile创建镜像失败",
+                "url": "https://discuss.openubmc.cn//t/topic/409/1",
+                "created_at": "2025-04-11 02:13:17",
+                "source_type": "forum",
+                "source_id": "409",
+                "cosine": 0.713
+            },
+            {
+                "id": "129",
+                "title": "制作反向过渡包时碰到的疑问",
+                "url": "https://discuss.openubmc.cn//t/topic/723/1",
+                "created_at": "2025-04-30 07:04:39",
+                "source_type": "forum",
+                "source_id": "723",
+                "cosine": 0.642
+            }
+        ],
+        "label": "开发者贡献与支持"
+    },
+    "9": {
+        "summary": "BMC固件开发中如何实现风扇模式切换与持久化兼容性",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "429",
+                "title": "【需求】支持查询风扇手自动控制模式原子能力",
+                "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/18",
+                "created_at": "2025-05-08 13:07:13+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085690",
+                "cosine": 0.61
+            },
+            {
+                "id": "541",
+                "title": "【需求】新增设置/查询风扇控制模式持久化属性/方法",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/26",
+                "created_at": "2025-04-22 12:50:57+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3062745",
+                "cosine": 0.564
+            },
+            {
+                "id": "360",
+                "title": "【需求】支持设置风扇手自动控制模式原子能力",
+                "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/19",
+                "created_at": "2025-05-08 13:07:15+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085691",
+                "cosine": 0.562
+            }
+        ],
+        "label": "硬件管理能力"
+    },
+    "10": {
+        "summary": "BMC中如何实现日志存储隔离的配置迁移与统一管理",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "390",
+                "title": "支持日志存放位置隔离",
+                "url": "https://gitcode.com/openUBMC/manifest/issues/23",
+                "created_at": "2025-05-09 13:01:05+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3087357",
+                "cosine": 0.662
+            },
+            {
+                "id": "511",
+                "title": "支持日志存放位置隔离",
+                "url": "https://gitcode.com/openUBMC/rootfs_user/issues/2",
+                "created_at": "2025-05-08 08:19:05+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085380",
+                "cosine": 0.65
+            }
+        ],
+        "label": "运维与可靠性"
+    },
+    "11": {
+        "summary": "BMC开发者如何验证双CPLD硬盘背板的I2C配置与独立控制能力",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "140",
+                "title": "双CPLD硬盘背板疑问",
+                "url": "https://discuss.openubmc.cn//t/topic/688/1",
+                "created_at": "2025-04-28 05:51:33",
+                "source_type": "forum",
+                "source_id": "688",
+                "cosine": 0.748
+            },
+            {
+                "id": "124",
+                "title": "硬盘背板CSR配置疑问",
+                "url": "https://discuss.openubmc.cn//t/topic/756/1",
+                "created_at": "2025-05-07 02:32:36",
+                "source_type": "forum",
+                "source_id": "756",
+                "cosine": 0.64
+            }
+        ],
+        "label": "硬件兼容性"
+    },
+    "12": {
+        "summary": "OpenUBMC社区如何实现QEMU工具链与仿真镜像的高效集成构建及发布流程适配性问题亟待解决",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "451",
+                "title": "OpenUBMC社区支持Qemu工具的构建与发布",
+                "url": "https://gitcode.com/openUBMC/qemu/issues/3",
+                "created_at": "2025-04-27 09:49:40+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3067031",
+                "cosine": 0.775
+            },
+            {
+                "id": "471",
+                "title": "OpenUBMC社区支持仿真镜像的构建与发布",
+                "url": "https://gitcode.com/openUBMC/qemu/issues/5",
+                "created_at": "2025-04-27 09:50:29+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3067033",
+                "cosine": 0.748
+            },
+            {
+                "id": "417",
+                "title": "OpenUBMC社区支持仿真数据的发布",
+                "url": "https://gitcode.com/openUBMC/qemu/issues/4",
+                "created_at": "2025-04-27 09:50:05+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3067032",
+                "cosine": 0.686
+            }
+        ],
+        "label": "开发者贡献与支持"
+    },
+    "13": {
+        "summary": "BMC开发者如何确保测试贡献符合openUBMC社区质量标准？",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "174",
+                "title": "openUBMC社区测试贡献规划",
+                "url": "https://discuss.openubmc.cn//t/topic/592/1",
+                "created_at": "2025-04-22 08:43:03",
+                "source_type": "forum",
+                "source_id": "592",
+                "cosine": 0.703
+            },
+            {
+                "id": "172",
+                "title": "openUBMC社区QA SIG运作",
+                "url": "https://discuss.openubmc.cn//t/topic/593/1",
+                "created_at": "2025-04-22 08:48:51",
+                "source_type": "forum",
+                "source_id": "593",
+                "cosine": 0.598
+            },
+            {
+                "id": "269",
+                "title": "QA 运作规则讨论",
+                "url": "https://discuss.openubmc.cn//t/topic/209/1",
+                "created_at": "2025-03-04 13:30:29",
+                "source_type": "forum",
+                "source_id": "209",
+                "cosine": 0.589
+            }
+        ],
+        "label": "社区规范与生态"
+    },
+    "14": {
+        "summary": "BMC集成OpenTelemetry及开源依赖API时面临兼容性与依赖管理难题",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "557",
+                "title": "提供openTelemetry及依赖开源软件API能力",
+                "url": "https://gitcode.com/openUBMC/conan_index/issues/3",
+                "created_at": "2025-05-06 16:02:25+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3083512",
+                "cosine": 0.626
+            },
+            {
+                "id": "484",
+                "title": "提供openTelemetry及依赖开源软件API能力",
+                "url": "https://gitcode.com/openUBMC/observability/issues/3",
+                "created_at": "2025-04-28 12:25:32+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070394",
+                "cosine": 0.624
+            }
+        ],
+        "label": "生态可扩展性与社区推广"
+    },
+    "15": {
+        "summary": "BMC开发者如何通过VPD直通实现华为/Memblaze多容量NVMe盘兼容纳管并展示信息",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "624",
+                "title": "【需求】支持新增Memblaze厂商NVMe盘的管理",
+                "url": "https://gitcode.com/openUBMC/storage/issues/44",
+                "created_at": "2025-05-08 13:10:02+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085781",
+                "cosine": 0.719
+            },
+            {
+                "id": "612",
+                "title": "【需求】支持新增华为厂商NVMe盘的管理",
+                "url": "https://gitcode.com/openUBMC/storage/issues/41",
+                "created_at": "2025-05-08 13:09:56+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085778",
+                "cosine": 0.702
+            }
+        ],
+        "label": "生态可扩展性与社区推广"
+    },
+    "16": {
+        "summary": "BMC出厂配置导出需增加产品类别和版本字段兼容性适配",
+        "discussion_count": 4,
+        "discussion": [
+            {
+                "id": "531",
+                "title": "配置导出项新增BMC软件版本信息和产品类别信息",
+                "url": "https://gitcode.com/openUBMC/docs/issues/13",
+                "created_at": "2025-04-28 09:10:34+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070284",
+                "cosine": 0.792
+            },
+            {
+                "id": "435",
+                "title": "配置导入导出新增产品类别信息和BMC软件版本信息",
+                "url": "https://gitcode.com/openUBMC/profile_schema/issues/2",
+                "created_at": "2025-04-11 07:39:52+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3029149",
+                "cosine": 0.743
+            },
+            {
+                "id": "422",
+                "title": "提供BMC出厂配置定制指导",
+                "url": "https://gitcode.com/openUBMC/docs/issues/16",
+                "created_at": "2025-04-29 03:22:20+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3071335",
+                "cosine": 0.718
+            },
+            {
+                "id": "398",
+                "title": "软件中心需要添加BMCStudio描述和下载页",
+                "url": "https://gitcode.com/openUBMC/software-center-config/issues/3",
+                "created_at": "2025-04-02 08:24:52+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3020815",
+                "cosine": 0.614
+            }
+        ],
+        "label": "产品化支持"
+    },
+    "17": {
+        "summary": "BMC恢复出厂后固件升级验证失败与权限异常排查",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "29",
+                "title": "恢复出厂设置后，BMC升级失败",
+                "url": "https://discuss.openubmc.cn//t/topic/1065/1",
+                "created_at": "2025-05-22 01:36:41",
+                "source_type": "forum",
+                "source_id": "1065",
+                "cosine": 0.724
+            },
+            {
+                "id": "63",
+                "title": "BMC恢复出厂设置之后无法更新固件",
+                "url": "https://discuss.openubmc.cn//t/topic/831/1",
+                "created_at": "2025-05-09 07:36:33",
+                "source_type": "forum",
+                "source_id": "831",
+                "cosine": 0.703
+            },
+            {
+                "id": "533",
+                "title": "恢复出厂设置时无法升级",
+                "url": "https://gitcode.com/openUBMC/manifest/issues/11",
+                "created_at": "2025-04-25 02:01:54+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3065207",
+                "cosine": 0.662
+            }
+        ],
+        "label": "可靠性问题"
+    },
+    "18": {
+        "summary": "BIOS生效流程图步骤顺序及逻辑错误需修正",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "524",
+                "title": "bios组件生效流程流程图错误",
+                "url": "https://gitcode.com/openUBMC/docs/issues/19",
+                "created_at": "2025-04-29 08:16:45+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3074520",
+                "cosine": 0.873
+            },
+            {
+                "id": "513",
+                "title": "bios组件生效流程流程图错误",
+                "url": "https://gitcode.com/openUBMC/bios/issues/17",
+                "created_at": "2025-05-06 07:06:12+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3082973",
+                "cosine": 0.802
+            }
+        ],
+        "label": "文档与易用性"
+    },
+    "19": {
+        "summary": "如何通过原子能力实现电源冗余模式配置与功率封顶参数管理",
+        "discussion_count": 21,
+        "discussion": [
+            {
+                "id": "394",
+                "title": "【需求】支持设置功率封顶参数原子能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/24",
+                "created_at": "2025-05-08 13:06:36+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085666",
+                "cosine": 0.719
+            },
+            {
+                "id": "691",
+                "title": "【需求】支持查询电源模块信息原子能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/28",
+                "created_at": "2025-05-08 13:06:49+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085678",
+                "cosine": 0.653
+            },
+            {
+                "id": "654",
+                "title": "【需求】支持查询功率封顶参数原子能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/21",
+                "created_at": "2025-05-08 13:06:29+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085663",
+                "cosine": 0.648
+            },
+            {
+                "id": "694",
+                "title": "【需求】支持查询指定机箱电源信息原子能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/23",
+                "created_at": "2025-05-08 13:06:34+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085665",
+                "cosine": 0.623
+            },
+            {
+                "id": "412",
+                "title": "【需求】支持监控电源不匹配检测原子能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/36",
+                "created_at": "2025-05-08 13:07:11+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085689",
+                "cosine": 0.607
+            },
+            {
+                "id": "693",
+                "title": "【需求】支持设置冗余供电模式能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/26",
+                "created_at": "2025-05-08 13:06:42+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085675",
+                "cosine": 0.594
+            },
+            {
+                "id": "505",
+                "title": "【需求】支持Power资源新增修改电源冗余模式",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/31",
+                "created_at": "2025-05-08 13:07:01+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085684",
+                "cosine": 0.584
+            },
+            {
+                "id": "651",
+                "title": "【需求】支持查询系统供电信息原子能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/29",
+                "created_at": "2025-05-08 13:06:51+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085679",
+                "cosine": 0.576
+            },
+            {
+                "id": "520",
+                "title": "【需求】支持功率采集及查询原子能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/37",
+                "created_at": "2025-05-08 13:07:19+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085693",
+                "cosine": 0.573
+            },
+            {
+                "id": "659",
+                "title": "【需求】支持查询功耗过高告警阈值原子能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/20",
+                "created_at": "2025-05-08 13:06:27+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085662",
+                "cosine": 0.569
+            },
+            {
+                "id": "641",
+                "title": "【需求】支持查询历史系统功率信息原子能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/30",
+                "created_at": "2025-05-08 13:06:59+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085683",
+                "cosine": 0.567
+            },
+            {
+                "id": "620",
+                "title": "【需求】支持设置功耗过高告警阈值原子能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/25",
+                "created_at": "2025-05-08 13:06:38+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085667",
+                "cosine": 0.561
+            },
+            {
+                "id": "455",
+                "title": "【需求】支持查询风扇信息原子能力",
+                "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/16",
+                "created_at": "2025-05-08 13:06:55+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085681",
+                "cosine": 0.557
+            },
+            {
+                "id": "611",
+                "title": "【需求】支持采集电源FRU信息原子能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/34",
+                "created_at": "2025-05-08 13:07:07+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085687",
+                "cosine": 0.556
+            },
+            {
+                "id": "309",
+                "title": "【需求】支持查询最大风扇&电源个数信息原子能力",
+                "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/14",
+                "created_at": "2025-05-08 13:06:44+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085676",
+                "cosine": 0.55
+            },
+            {
+                "id": "692",
+                "title": "【需求】支持查询电源FRU信息原子能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/22",
+                "created_at": "2025-05-08 13:06:31+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085664",
+                "cosine": 0.549
+            },
+            {
+                "id": "558",
+                "title": "【需求】支持查询冗余供电信息能力",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/27",
+                "created_at": "2025-05-08 13:06:47+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085677",
+                "cosine": 0.535
+            },
+            {
+                "id": "423",
+                "title": "【需求】支持温度采集及查询原子能力",
+                "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/20",
+                "created_at": "2025-05-08 13:07:17+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085692",
+                "cosine": 0.501
+            },
+            {
+                "id": "614",
+                "title": "【需求】支持查询温度信息原子能力",
+                "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/15",
+                "created_at": "2025-05-08 13:06:53+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085680",
+                "cosine": 0.462
+            },
+            {
+                "id": "695",
+                "title": "【需求】支持优化供电模式切换特性",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/9",
+                "created_at": "2025-05-08 13:05:50+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085646",
+                "cosine": 0.462
+            },
+            {
+                "id": "445",
+                "title": "【需求】支持查询进风口历史温度信息原子能力",
+                "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/17",
+                "created_at": "2025-05-08 13:06:57+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085682",
+                "cosine": 0.457
+            }
+        ]
+    },
+    "20": {
+        "summary": "BMC开发中如何通过REDfish协议实现PrivilegeMap配置同步与用户校验提示优化",
+        "discussion_count": 10,
+        "discussion": [
+            {
+                "id": "564",
+                "title": "【需求】RAS接口支持配置PrivilegeMap信息",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/53",
+                "created_at": "2025-04-29 08:43:58+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3074539",
+                "cosine": 0.636
+            },
+            {
+                "id": "302",
+                "title": "支持配置PrivilegeMap信息",
+                "url": "https://gitcode.com/openUBMC/account/issues/12",
+                "created_at": "2025-04-29 06:20:06+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3073095",
+                "cosine": 0.54
+            },
+            {
+                "id": "469",
+                "title": "支持用户名校验定制后的用户提示优化",
+                "url": "https://gitcode.com/openUBMC/account/issues/5",
+                "created_at": "2025-04-12 09:40:22+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3030104",
+                "cosine": 0.52
+            },
+            {
+                "id": "567",
+                "title": "支持用户名校验定制后的用户提示优化",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/31",
+                "created_at": "2025-04-23 02:54:54+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3063179",
+                "cosine": 0.517
+            },
+            {
+                "id": "444",
+                "title": "支持节点模式设置",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/5",
+                "created_at": "2025-04-09 08:46:33+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3026509",
+                "cosine": 0.454
+            },
+            {
+                "id": "289",
+                "title": "文档描述优化",
+                "url": "https://gitcode.com/openUBMC/docs/issues/6",
+                "created_at": "2025-04-11 00:28:44+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3028723",
+                "cosine": 0.414
+            },
+            {
+                "id": "584",
+                "title": "电源信息获取优化",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/4",
+                "created_at": "2025-04-16 09:41:58+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3055716",
+                "cosine": 0.401
+            },
+            {
+                "id": "495",
+                "title": "支持新增自定义用户组设置",
+                "url": "https://gitcode.com/openUBMC/account/issues/11",
+                "created_at": "2025-04-29 06:17:28+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3073090",
+                "cosine": 0.397
+            },
+            {
+                "id": "291",
+                "title": "文档持续更新",
+                "url": "https://gitcode.com/openUBMC/docs/issues/1",
+                "created_at": "2025-04-07 01:44:09+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3024574",
+                "cosine": 0.374
+            },
+            {
+                "id": "588",
+                "title": "电源转化器型号显示修改",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/3",
+                "created_at": "2025-04-16 06:39:11+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3055621",
+                "cosine": 0.3
+            }
+        ]
+    },
+    "21": {
+        "summary": "BMC开发者需解决多厂商CPLD模块MIXED模式分组升级兼容性及多重校验逻辑适配难题",
+        "discussion_count": 6,
+        "discussion": [
+            {
+                "id": "707",
+                "title": "【需求】支持多模组CPLD固件升级健壮性提升",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/25",
+                "created_at": "2025-05-08 13:08:38+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085733",
+                "cosine": 0.719
+            },
+            {
+                "id": "84",
+                "title": "CPLD 升级 MultipleSuppliersMode MIXED Mode 功能背景了解",
+                "url": "https://discuss.openubmc.cn//t/topic/886/1",
+                "created_at": "2025-05-13 06:06:35",
+                "source_type": "forum",
+                "source_id": "886",
+                "cosine": 0.696
+            },
+            {
+                "id": "704",
+                "title": "【需求】支持多模组MCU固件升级健壮性提升",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/27",
+                "created_at": "2025-05-08 13:08:42+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085735",
+                "cosine": 0.659
+            },
+            {
+                "id": "646",
+                "title": "【需求】支持MCU子固件升级时版本号校验",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/23",
+                "created_at": "2025-05-08 13:08:34+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085731",
+                "cosine": 0.576
+            },
+            {
+                "id": "674",
+                "title": "【需求】支持多模组CSR固件升级健壮性提升",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/24",
+                "created_at": "2025-05-08 13:08:36+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085732",
+                "cosine": 0.568
+            },
+            {
+                "id": "706",
+                "title": "【需求】支持多模组VRD固件升级健壮性提升",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/26",
+                "created_at": "2025-05-08 13:08:40+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085734",
+                "cosine": 0.55
+            }
+        ]
+    },
+    "22": {
+        "summary": "支持华为自定义SMART的NVMe SSD盘在直通架构下的带内冗余块监控和寿命计算参数扩展",
+        "discussion_count": 6,
+        "discussion": [
+            {
+                "id": "400",
+                "title": "【需求】支持自定义的SMART NVMe SSD盘亚健康检测",
+                "url": "https://gitcode.com/openUBMC/storage/issues/23",
+                "created_at": "2025-05-08 13:08:20+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085724",
+                "cosine": 0.767
+            },
+            {
+                "id": "377",
+                "title": "【需求】支持自定义SMART信息的NVMe SSD盘写放大监控",
+                "url": "https://gitcode.com/openUBMC/storage/issues/28",
+                "created_at": "2025-05-08 13:08:30+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085729",
+                "cosine": 0.755
+            },
+            {
+                "id": "684",
+                "title": "【需求】支持获取NVMe SSD盘自定义SMART信息",
+                "url": "https://gitcode.com/openUBMC/storage/issues/27",
+                "created_at": "2025-05-08 13:08:28+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085728",
+                "cosine": 0.741
+            },
+            {
+                "id": "686",
+                "title": "【需求】支持自定义SMART信息的NVMe SSD盘预估寿命新增计算参数",
+                "url": "https://gitcode.com/openUBMC/storage/issues/25",
+                "created_at": "2025-05-08 13:08:24+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085726",
+                "cosine": 0.734
+            },
+            {
+                "id": "582",
+                "title": "【需求】支持从带内获取厂商SMART NVMe SSD盘冗余块信息并监控",
+                "url": "https://gitcode.com/openUBMC/storage/issues/10",
+                "created_at": "2025-04-29 06:32:57+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3073228",
+                "cosine": 0.73
+            },
+            {
+                "id": "687",
+                "title": "【需求】支持从带内获取SMART NVMe SSD盘冗余块信息并监控",
+                "url": "https://gitcode.com/openUBMC/storage/issues/24",
+                "created_at": "2025-05-08 13:08:22+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085725",
+                "cosine": 0.699
+            }
+        ]
+    },
+    "23": {
+        "summary": "BMC开发者如何实现Redfish Drive资源OEM接口适配NVMe MI协议的SMART日志获取、识别数据解析及命令封装传输",
+        "discussion_count": 6,
+        "discussion": [
+            {
+                "id": "613",
+                "title": "【需求】支持Redfish标准的Drive资源下Oem定制GetTelemetryData请求",
+                "url": "https://gitcode.com/openUBMC/storage/issues/36",
+                "created_at": "2025-05-08 13:09:40+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085770",
+                "cosine": 0.713
+            },
+            {
+                "id": "615",
+                "title": "【需求】支持Redfish标准的Drive资源下Oem定制GetSmartInfo请求",
+                "url": "https://gitcode.com/openUBMC/storage/issues/38",
+                "created_at": "2025-05-08 13:09:44+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085772",
+                "cosine": 0.711
+            },
+            {
+                "id": "408",
+                "title": "【需求】支持Redfish标准的Drive资源下Oem定制GetAddSmartInfo请求",
+                "url": "https://gitcode.com/openUBMC/storage/issues/37",
+                "created_at": "2025-05-08 13:09:42+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085771",
+                "cosine": 0.704
+            },
+            {
+                "id": "441",
+                "title": "【需求】支持Redfish标准的Drive资源下Oem定制SendNvmeMICommand请求",
+                "url": "https://gitcode.com/openUBMC/storage/issues/40",
+                "created_at": "2025-05-08 13:09:48+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085774",
+                "cosine": 0.686
+            },
+            {
+                "id": "540",
+                "title": "【需求】支持Redfish标准的Drive资源下Oem定制GetTelemetryData请求",
+                "url": "https://gitcode.com/openUBMC/storage/issues/13",
+                "created_at": "2025-05-05 03:18:26+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3082307",
+                "cosine": 0.678
+            },
+            {
+                "id": "639",
+                "title": "【需求】支持Redfish标准的Drive资源下Oem定制GetIdentifyData请求",
+                "url": "https://gitcode.com/openUBMC/storage/issues/39",
+                "created_at": "2025-05-08 13:09:46+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085773",
+                "cosine": 0.672
+            }
+        ]
+    },
+    "24": {
+        "summary": "社区镜像中BMC工具QEMU与Bingo的一键部署配置",
+        "discussion_count": 5,
+        "discussion": [
+            {
+                "id": "409",
+                "title": "社区镜像支持集成BMCStudio和Bingo及工具依赖",
+                "url": "https://gitcode.com/openUBMC/infrastructure/issues/1",
+                "created_at": "2025-04-03 10:24:49+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3022075",
+                "cosine": 0.699
+            },
+            {
+                "id": "442",
+                "title": "支持Qemu工具和仿真镜像的本地一键部署",
+                "url": "https://gitcode.com/openUBMC/manifest/issues/9",
+                "created_at": "2025-04-16 08:00:03+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3055665",
+                "cosine": 0.691
+            },
+            {
+                "id": "358",
+                "title": "社区镜像支持集成BMCStudio和Bingo工具",
+                "url": "https://gitcode.com/openUBMC/manifest/issues/13",
+                "created_at": "2025-04-28 11:31:33+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070350",
+                "cosine": 0.684
+            },
+            {
+                "id": "453",
+                "title": "支持Qemu工具和仿真镜像的本地一键部署",
+                "url": "https://gitcode.com/openUBMC/qemu/issues/2",
+                "created_at": "2025-04-27 09:49:10+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3067030",
+                "cosine": 0.679
+            },
+            {
+                "id": "353",
+                "title": "社区镜像支持集成Qemu工具和仿真镜像",
+                "url": "https://gitcode.com/openUBMC/infrastructure/issues/9",
+                "created_at": "2025-04-07 13:40:14+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3025028",
+                "cosine": 0.632
+            }
+        ]
+    },
+    "25": {
+        "summary": "BMC开发者如何修复Vite组件中未授权文件访问漏洞防止敏感文件泄露",
+        "discussion_count": 5,
+        "discussion": [
+            {
+                "id": "555",
+                "title": "CVE-2025-46565",
+                "url": "https://gitcode.com/openUBMC/manifest/issues/21",
+                "created_at": "2025-05-02 15:00:14+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3081255",
+                "cosine": 0.674
+            },
+            {
+                "id": "368",
+                "title": "CVE-2025-30208",
+                "url": "https://gitcode.com/openUBMC/manifest/issues/16",
+                "created_at": "2025-04-30 15:00:09+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3079529",
+                "cosine": 0.601
+            },
+            {
+                "id": "553",
+                "title": "CVE-2025-31486",
+                "url": "https://gitcode.com/openUBMC/manifest/issues/18",
+                "created_at": "2025-04-30 15:00:12+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3079531",
+                "cosine": 0.577
+            },
+            {
+                "id": "592",
+                "title": "CVE-2025-31125",
+                "url": "https://gitcode.com/openUBMC/manifest/issues/17",
+                "created_at": "2025-04-30 15:00:11+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3079530",
+                "cosine": 0.555
+            },
+            {
+                "id": "591",
+                "title": "CVE-2025-32395",
+                "url": "https://gitcode.com/openUBMC/manifest/issues/19",
+                "created_at": "2025-04-30 15:00:14+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3079532",
+                "cosine": 0.548
+            }
+        ]
+    },
+    "26": {
+        "summary": "openUBMC固件升级时多签名机制验证冲突解决方案",
+        "discussion_count": 4,
+        "discussion": [
+            {
+                "id": "229",
+                "title": "能否实现伙伴签名的openUBMC版本直接升级华为签名的各种固件？",
+                "url": "https://discuss.openubmc.cn//t/topic/335/1",
+                "created_at": "2025-04-02 01:32:35",
+                "source_type": "forum",
+                "source_id": "335",
+                "cosine": 0.74
+            },
+            {
+                "id": "5",
+                "title": "伙伴openubmc版本如何支持升级华为签名固件版本和伙伴自己签名的固件版本均能成功？",
+                "url": "https://discuss.openubmc.cn//t/topic/1083/1",
+                "created_at": "2025-05-22 11:15:01",
+                "source_type": "forum",
+                "source_id": "1083",
+                "cosine": 0.693
+            },
+            {
+                "id": "274",
+                "title": "使用openubmc进行bios固件升级，提示无效的升级包",
+                "url": "https://discuss.openubmc.cn//t/topic/182/1",
+                "created_at": "2025-02-26 10:32:47",
+                "source_type": "forum",
+                "source_id": "182",
+                "cosine": 0.674
+            },
+            {
+                "id": "81",
+                "title": "刷了华为根的机器是否可以直接刷伙伴根",
+                "url": "https://discuss.openubmc.cn//t/topic/933/1",
+                "created_at": "2025-05-14 09:28:49",
+                "source_type": "forum",
+                "source_id": "933",
+                "cosine": 0.545
+            }
+        ]
+    },
+    "27": {
+        "summary": "BMC CPU的ProcessorID属性类型为U32，与SMBIOS协议QWORD范围不匹配引发存储解析失败。",
+        "discussion_count": 4,
+        "discussion": [
+            {
+                "id": "545",
+                "title": "【问题单】CPU的ProcessorID属性定义与SMBIOS协议规定不符",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/75",
+                "created_at": "2025-05-09 03:40:44+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3086932",
+                "cosine": 0.847
+            },
+            {
+                "id": "648",
+                "title": "【问题单】CPU的ProcessorID属性定义与SMBIOS协议规定不符",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/47",
+                "created_at": "2025-05-08 09:53:37+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085474",
+                "cosine": 0.806
+            },
+            {
+                "id": "482",
+                "title": "bmc.kepler.Systems.Processor.CPU的ProcessorID为U32类型，与SMBIOS协议不一致",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/30",
+                "created_at": "2025-04-27 01:55:35+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3066559",
+                "cosine": 0.776
+            },
+            {
+                "id": "102",
+                "title": "CPU类的ProcessorID属性定义为U32类型，与SMBIOS协议范围（QWORD）不一致",
+                "url": "https://discuss.openubmc.cn//t/topic/362/1",
+                "created_at": "2025-04-03 09:28:02",
+                "source_type": "forum",
+                "source_id": "362",
+                "cosine": 0.771
+            }
+        ]
+    },
+    "28": {
+        "summary": "BMC开发者如何实现Redfish与REST接口遥测配置的参数管理和测试验证",
+        "discussion_count": 4,
+        "discussion": [
+            {
+                "id": "304",
+                "title": "支持遥测上报配置管理",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/16",
+                "created_at": "2025-04-15 03:40:39+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3054731",
+                "cosine": 0.663
+            },
+            {
+                "id": "500",
+                "title": "【需求】 支持遥测上报配置管理",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/37",
+                "created_at": "2025-04-28 03:51:05+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3068856",
+                "cosine": 0.605
+            },
+            {
+                "id": "431",
+                "title": "支持遥测上报配置管理",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/12",
+                "created_at": "2025-04-15 03:42:00+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3054732",
+                "cosine": 0.595
+            },
+            {
+                "id": "568",
+                "title": "【需求】可观测新增redfish、web接口及属性",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/29",
+                "created_at": "2025-04-23 02:30:26+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3063057",
+                "cosine": 0.528
+            }
+        ]
+    },
+    "29": {
+        "summary": "BMC开发者如何实现并行升级总线互斥锁及日志追踪超时释放",
+        "discussion_count": 4,
+        "discussion": [
+            {
+                "id": "710",
+                "title": "【需求】支持固件升级流程总线互斥",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/21",
+                "created_at": "2025-05-08 13:07:34+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085701",
+                "cosine": 0.745
+            },
+            {
+                "id": "311",
+                "title": "固件升级流程总线互斥",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/10",
+                "created_at": "2025-04-21 02:53:36+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3058289",
+                "cosine": 0.722
+            },
+            {
+                "id": "528",
+                "title": "【需求】能效管理固件升级流程总线互斥",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/11",
+                "created_at": "2025-04-23 02:14:51+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3063045",
+                "cosine": 0.67
+            },
+            {
+                "id": "685",
+                "title": "【需求】能效管理固件升级流程总线互斥",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/11",
+                "created_at": "2025-05-08 13:06:00+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085650",
+                "cosine": 0.624
+            }
+        ]
+    },
+    "30": {
+        "summary": "BMC升级接口参数扩展如何支持多组件并行适配",
+        "discussion_count": 4,
+        "discussion": [
+            {
+                "id": "403",
+                "title": "【需求】power_mgmt组件适配升级接口参数扩展",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/10",
+                "created_at": "2025-05-08 13:05:58+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085649",
+                "cosine": 0.721
+            },
+            {
+                "id": "460",
+                "title": "general_hardware组件适配升级接口参数",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/11",
+                "created_at": "2025-04-28 11:41:19+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070357",
+                "cosine": 0.711
+            },
+            {
+                "id": "587",
+                "title": "能效管理适配升级接口参数扩展",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/5",
+                "created_at": "2025-04-25 03:13:50+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3065256",
+                "cosine": 0.689
+            },
+            {
+                "id": "580",
+                "title": "【需求】bios组件适配升级接口参数扩展",
+                "url": "https://gitcode.com/openUBMC/bios/issues/10",
+                "created_at": "2025-04-28 11:25:41+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070345",
+                "cosine": 0.687
+            }
+        ]
+    },
+    "31": {
+        "summary": "需解决BMC在Redfish/Web/IPMI接口下存储介质实时监控与网络设备数据兼容的设计问题",
+        "discussion_count": 4,
+        "discussion": [
+            {
+                "id": "643",
+                "title": "【需求】支持存储管理",
+                "url": "https://gitcode.com/openUBMC/storage/issues/35",
+                "created_at": "2025-05-08 13:09:34+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085767",
+                "cosine": 0.673
+            },
+            {
+                "id": "585",
+                "title": "【需求】支持硬盘诊断功能控制",
+                "url": "https://gitcode.com/openUBMC/storage/issues/7",
+                "created_at": "2025-04-22 07:23:32+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3062451",
+                "cosine": 0.64
+            },
+            {
+                "id": "679",
+                "title": "【需求】支持服务器网络管理",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/25",
+                "created_at": "2025-05-08 13:09:36+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085768",
+                "cosine": 0.599
+            },
+            {
+                "id": "657",
+                "title": "【需求】支持存储管理能力基线",
+                "url": "https://gitcode.com/openUBMC/storage/issues/30",
+                "created_at": "2025-05-08 13:09:08+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085753",
+                "cosine": 0.583
+            }
+        ]
+    },
+    "32": {
+        "summary": "BMC开发者如何实现IPMI2.0的SystemInfoTable私有属性掉电持久化及广播参数配置",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "12",
+                "title": "IPMI2.0标准接口能力新增私有属性保存system info信息",
+                "url": "https://discuss.openubmc.cn//t/topic/1100/1",
+                "created_at": "2025-05-23 14:02:02",
+                "source_type": "forum",
+                "source_id": "1100",
+                "cosine": 0.788
+            },
+            {
+                "id": "551",
+                "title": "【需求】支持Get System Info标准命令",
+                "url": "https://gitcode.com/openUBMC/bios/issues/12",
+                "created_at": "2025-04-28 11:42:47+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070360",
+                "cosine": 0.571
+            },
+            {
+                "id": "552",
+                "title": "【需求】支持Set System Info标准命令",
+                "url": "https://gitcode.com/openUBMC/bios/issues/13",
+                "created_at": "2025-04-28 11:44:00+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070361",
+                "cosine": 0.507
+            }
+        ]
+    },
+    "33": {
+        "summary": "OpenUBMC25 06版本需通过QEMU实现板卡器件多路转换器及EEPROM仿真读写功能，依托i2c总线与hi1711 soc能力完成硬件解耦验证",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "457",
+                "title": "【需求】支持eeprom器件功能仿真和验证",
+                "url": "https://gitcode.com/openUBMC/qemu/issues/13",
+                "created_at": "2025-04-27 09:54:54+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3067043",
+                "cosine": 0.851
+            },
+            {
+                "id": "369",
+                "title": "【需求】支持板卡寄存器的设备仿真",
+                "url": "https://gitcode.com/openUBMC/qemu/issues/11",
+                "created_at": "2025-04-27 09:53:53+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3067040",
+                "cosine": 0.797
+            },
+            {
+                "id": "443",
+                "title": "【需求】支持板卡多路转换器的设备仿真",
+                "url": "https://gitcode.com/openUBMC/qemu/issues/10",
+                "created_at": "2025-04-27 09:53:20+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3067039",
+                "cosine": 0.784
+            }
+        ]
+    },
+    "34": {
+        "summary": "如何高效优化BMC日志、跟踪及度量数据的采集存储机制以满足开发需求？",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "479",
+                "title": "提供跟踪数据采集和存储能力",
+                "url": "https://gitcode.com/openUBMC/observability/issues/4",
+                "created_at": "2025-04-28 12:26:14+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070395",
+                "cosine": 0.67
+            },
+            {
+                "id": "480",
+                "title": "提供度量数据采集和存储能力",
+                "url": "https://gitcode.com/openUBMC/observability/issues/2",
+                "created_at": "2025-04-28 12:22:06+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070390",
+                "cosine": 0.646
+            },
+            {
+                "id": "404",
+                "title": "提供日志数据采集和存储能力",
+                "url": "https://gitcode.com/openUBMC/observability/issues/5",
+                "created_at": "2025-04-28 12:26:41+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070396",
+                "cosine": 0.614
+            }
+        ]
+    },
+    "35": {
+        "summary": "BMC网卡适配组件如何兼容历史功能及设备树驱动接口",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "474",
+                "title": "【需求】网卡适配组件兼容历史网卡功能",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/6",
+                "created_at": "2025-04-23 09:33:31+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3063932",
+                "cosine": 0.739
+            },
+            {
+                "id": "623",
+                "title": "【需求】网卡支持南向部件驱动接口",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/17",
+                "created_at": "2025-05-08 13:08:50+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085739",
+                "cosine": 0.705
+            },
+            {
+                "id": "420",
+                "title": "【需求】网卡支持南向部件驱动接口",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/18",
+                "created_at": "2025-05-08 13:08:52+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085740",
+                "cosine": 0.59
+            }
+        ]
+    },
+    "36": {
+        "summary": "BMC开发者如何实现Redfish API查询指定处理器的分类属性及状态验证",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "702",
+                "title": "【需求】支持查询指定处理器资源信息",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/33",
+                "created_at": "2025-05-13 07:12:55+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3090494",
+                "cosine": 0.687
+            },
+            {
+                "id": "450",
+                "title": "【需求】支持查询指定处理器资源信息",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/53",
+                "created_at": "2025-05-12 07:03:24+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3089708",
+                "cosine": 0.667
+            },
+            {
+                "id": "430",
+                "title": "【需求】支持查询指定处理器资源信息",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/47",
+                "created_at": "2025-05-13 08:01:58+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3091138",
+                "cosine": 0.593
+            }
+        ]
+    },
+    "37": {
+        "summary": "BMC开发者如何建立SATA硬盘兼容纳管策略以实现不同厂商及型号前盘信息在RAID/直通场景下的统一展示",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "594",
+                "title": "【需求】支持新增希捷SATA盘的管理",
+                "url": "https://gitcode.com/openUBMC/storage/issues/42",
+                "created_at": "2025-05-08 13:09:58+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085779",
+                "cosine": 0.687
+            },
+            {
+                "id": "572",
+                "title": "【需求】支持新增东芝SATA盘的管理",
+                "url": "https://gitcode.com/openUBMC/storage/issues/45",
+                "created_at": "2025-05-08 13:10:04+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085782",
+                "cosine": 0.636
+            },
+            {
+                "id": "433",
+                "title": "【需求】支持新增西数SATA盘的管理",
+                "url": "https://gitcode.com/openUBMC/storage/issues/43",
+                "created_at": "2025-05-08 13:10:00+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085780",
+                "cosine": 0.622
+            }
+        ]
+    },
+    "38": {
+        "summary": "BMC开发中如何定义FPGA周期自检失败告警并关联CSR配置",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "675",
+                "title": "【需求】支持FPGA固件周期自检失败的告警",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/30",
+                "created_at": "2025-05-08 13:09:24+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085762",
+                "cosine": 0.767
+            },
+            {
+                "id": "712",
+                "title": "支持FPGA固件周期自检失败的告警",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/45",
+                "created_at": "2025-05-10 03:27:26+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3087816",
+                "cosine": 0.73
+            },
+            {
+                "id": "596",
+                "title": "【需求】支持FPGA固件周期自检失败的告警",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/84",
+                "created_at": "2025-05-10 08:51:02+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3088010",
+                "cosine": 0.717
+            }
+        ]
+    },
+    "39": {
+        "summary": "BMC开发者如何实现能效子系统自定义调试命令注册与单组件绑定执行",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "628",
+                "title": "【需求】支持能效管理子系统组件自定义命令",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/7",
+                "created_at": "2025-05-08 13:03:57+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085638",
+                "cosine": 0.683
+            },
+            {
+                "id": "661",
+                "title": "【需求】支持能效管理子系统组件自定义命令",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/17",
+                "created_at": "2025-05-08 13:06:14+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085656",
+                "cosine": 0.672
+            },
+            {
+                "id": "601",
+                "title": "【需求】支持组件自定义命令",
+                "url": "https://gitcode.com/openUBMC/storage/issues/21",
+                "created_at": "2025-05-08 13:07:54+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085711",
+                "cosine": 0.605
+            }
+        ]
+    },
+    "40": {
+        "summary": "电源适配中如何显式声明设备树引用字段以避免nil调用",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "261",
+                "title": "pmbus CRPS电源适配",
+                "url": "https://discuss.openubmc.cn//t/topic/240/1",
+                "created_at": "2025-03-13 11:59:03",
+                "source_type": "forum",
+                "source_id": "240",
+                "cosine": 0.556
+            },
+            {
+                "id": "11",
+                "title": "电源适配指导",
+                "url": "https://discuss.openubmc.cn//t/topic/1101/1",
+                "created_at": "2025-05-24 02:25:16",
+                "source_type": "forum",
+                "source_id": "1101",
+                "cosine": 0.535
+            }
+        ]
+    },
+    "41": {
+        "summary": "BMC开发者如何修正openUBMC交叉编译中的头文件缺失与依赖冲突",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "15",
+                "title": "社区lsw编译不过",
+                "url": "https://discuss.openubmc.cn//t/topic/979/1",
+                "created_at": "2025-05-16 10:18:46",
+                "source_type": "forum",
+                "source_id": "979",
+                "cosine": 0.577
+            },
+            {
+                "id": "321",
+                "title": "开源首版本编译不过",
+                "url": "https://gitcode.com/openUBMC/lsw/issues/1",
+                "created_at": "2025-04-03 09:23:48+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3022048",
+                "cosine": 0.518
+            }
+        ]
+    },
+    "42": {
+        "summary": "BMC固件升级后证书校验失败致启动异常及回滚机制失效",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "268",
+                "title": "最新 source 包烧录异常问题",
+                "url": "https://discuss.openubmc.cn//t/topic/173/1",
+                "created_at": "2025-02-26 03:20:41",
+                "source_type": "forum",
+                "source_id": "173",
+                "cosine": 0.707
+            },
+            {
+                "id": "85",
+                "title": "使用社区最新出包，升级hpm失败，查看m3log get cert fail!",
+                "url": "https://discuss.openubmc.cn//t/topic/498/1",
+                "created_at": "2025-04-16 09:54:47",
+                "source_type": "forum",
+                "source_id": "498",
+                "cosine": 0.664
+            }
+        ]
+    },
+    "43": {
+        "summary": "kptest框架屏蔽硬件差异时如何保持BMC测试用例兼容性",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "108",
+                "title": "kptest框架与KPTestOpenFramework工程、iTestSmart工具介绍",
+                "url": "https://discuss.openubmc.cn//t/topic/832/1",
+                "created_at": "2025-05-09 07:48:38",
+                "source_type": "forum",
+                "source_id": "832",
+                "cosine": 0.541
+            },
+            {
+                "id": "147",
+                "title": "怎么申请使用kptest框架和itestsmart工具呢",
+                "url": "https://discuss.openubmc.cn//t/topic/665/1",
+                "created_at": "2025-04-27 08:32:56",
+                "source_type": "forum",
+                "source_id": "665",
+                "cosine": 0.521
+            }
+        ]
+    },
+    "44": {
+        "summary": "BMC开发者如何确定PCIe Switch加载PCIe卡及Flash升级是否适用general hardware组件及实现接口扩展",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "115",
+                "title": "【讨论】PCIe Switch场景下如何加载PCIe卡",
+                "url": "https://discuss.openubmc.cn//t/topic/722/1",
+                "created_at": "2025-04-30 06:55:48",
+                "source_type": "forum",
+                "source_id": "722",
+                "cosine": 0.698
+            },
+            {
+                "id": "137",
+                "title": "PCIe Switch 芯片的Flash升级",
+                "url": "https://discuss.openubmc.cn//t/topic/721/1",
+                "created_at": "2025-04-30 06:10:01",
+                "source_type": "forum",
+                "source_id": "721",
+                "cosine": 0.698
+            }
+        ]
+    },
+    "45": {
+        "summary": "解决BIOS高可用环境配置与test流程兼容性问题",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "117",
+                "title": "高可用环境BIOS执行test失败",
+                "url": "https://discuss.openubmc.cn//t/topic/800/1",
+                "created_at": "2025-05-08 08:14:22",
+                "source_type": "forum",
+                "source_id": "800",
+                "cosine": 0.786
+            },
+            {
+                "id": "171",
+                "title": "组件内执行bingo test显示测试失败",
+                "url": "https://discuss.openubmc.cn//t/topic/594/1",
+                "created_at": "2025-04-22 09:24:58",
+                "source_type": "forum",
+                "source_id": "594",
+                "cosine": 0.549
+            }
+        ]
+    },
+    "46": {
+        "summary": "BMC开发中如何适配Redfish接口权限变更引发的调用限制",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "132",
+                "title": "【变更声明】Redfish升级接口权限变更",
+                "url": "https://discuss.openubmc.cn//t/topic/732/1",
+                "created_at": "2025-05-04 02:11:17",
+                "source_type": "forum",
+                "source_id": "732",
+                "cosine": 0.693
+            },
+            {
+                "id": "406",
+                "title": "Redfish 升级接口 SimpleUpdate 关于在支持升级之后清除配置功能接口变更",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/32",
+                "created_at": "2025-04-24 12:51:00+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3064972",
+                "cosine": 0.54
+            }
+        ]
+    },
+    "47": {
+        "summary": "BMC Studio需补全文档示例并优化接口校验规则",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "138",
+                "title": "BMC Studio工具使用反馈",
+                "url": "https://discuss.openubmc.cn//t/topic/714/1",
+                "created_at": "2025-04-29 07:41:00",
+                "source_type": "forum",
+                "source_id": "714",
+                "cosine": 0.606
+            },
+            {
+                "id": "267",
+                "title": "[WIP]BMC Studio用户指南",
+                "url": "https://discuss.openubmc.cn//t/topic/221/1",
+                "created_at": "2025-03-05 11:10:18",
+                "source_type": "forum",
+                "source_id": "221",
+                "cosine": 0.554
+            }
+        ]
+    },
+    "48": {
+        "summary": "BMC开发者如何确保PCIe组件初始化期间的IPMI命令正确注册",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "165",
+                "title": "非天池组件加载方式",
+                "url": "https://discuss.openubmc.cn//t/topic/610/1",
+                "created_at": "2025-04-23 10:08:30",
+                "source_type": "forum",
+                "source_id": "610",
+                "cosine": 0.689
+            },
+            {
+                "id": "166",
+                "title": "pcie_device新增IPMI命令导致组件异常问题",
+                "url": "https://discuss.openubmc.cn//t/topic/595/1",
+                "created_at": "2025-04-22 11:12:13",
+                "source_type": "forum",
+                "source_id": "595",
+                "cosine": 0.637
+            }
+        ]
+    },
+    "49": {
+        "summary": "BMC构建工具如何设计版本联动策略确保SDK与包的兼容性",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "203",
+                "title": "应支持bingo、构建工具、sdk之间的版本配套",
+                "url": "https://discuss.openubmc.cn//t/topic/414/1",
+                "created_at": "2025-04-12 03:50:51",
+                "source_type": "forum",
+                "source_id": "414",
+                "cosine": 0.657
+            },
+            {
+                "id": "599",
+                "title": "【需求】bingo支持组件的全量二进制构建",
+                "url": "https://gitcode.com/openUBMC/bingo/issues/12",
+                "created_at": "2025-04-17 03:25:12+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3056205",
+                "cosine": 0.441
+            }
+        ]
+    },
+    "50": {
+        "summary": "BMC开发者如何修正VPD仓库platform sr png文件position指标映射错误",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "416",
+                "title": "vpd仓库platform.sr.png描述有误",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/2",
+                "created_at": "2025-04-07 02:04:32+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3024586",
+                "cosine": 0.725
+            },
+            {
+                "id": "222",
+                "title": "vpd仓库platform.sr.png描述有误",
+                "url": "https://discuss.openubmc.cn//t/topic/360/1",
+                "created_at": "2025-04-03 08:06:14",
+                "source_type": "forum",
+                "source_id": "360",
+                "cosine": 0.723
+            }
+        ]
+    },
+    "51": {
+        "summary": "BMC固件解析SMBIOS 04Type时越界保护失效，需验证结构体长度处理修正",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "223",
+                "title": "解析SMBIOS协议04Type时出现异常",
+                "url": "https://discuss.openubmc.cn//t/topic/363/1",
+                "created_at": "2025-04-03 09:43:12",
+                "source_type": "forum",
+                "source_id": "363",
+                "cosine": 0.721
+            },
+            {
+                "id": "312",
+                "title": "解析SMBIOS协议04Type时出现异常",
+                "url": "https://gitcode.com/openUBMC/bios/issues/1",
+                "created_at": "2025-04-07 02:00:47+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3024583",
+                "cosine": 0.69
+            }
+        ]
+    },
+    "52": {
+        "summary": "新增OCP卡调速策略时如何确保CoolingPolicy的ID唯一性与正确关联",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "237",
+                "title": "调速配置求助",
+                "url": "https://discuss.openubmc.cn//t/topic/317/1",
+                "created_at": "2025-03-28 07:08:08",
+                "source_type": "forum",
+                "source_id": "317",
+                "cosine": 0.826
+            },
+            {
+                "id": "227",
+                "title": "板卡的环温调速配置",
+                "url": "https://discuss.openubmc.cn//t/topic/326/1",
+                "created_at": "2025-03-31 06:22:24",
+                "source_type": "forum",
+                "source_id": "326",
+                "cosine": 0.746
+            }
+        ]
+    },
+    "53": {
+        "summary": "openUBMC应用框架开发中如何确保BMC兼容性",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "333",
+                "title": "提供应用框架开发指导",
+                "url": "https://gitcode.com/openUBMC/docs/issues/15",
+                "created_at": "2025-04-28 12:32:17+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070400",
+                "cosine": 0.671
+            },
+            {
+                "id": "287",
+                "title": "【需求】社区提供开源项目开发者指南",
+                "url": "https://gitcode.com/openUBMC/webui/issues/19",
+                "created_at": "2025-04-29 01:55:22+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070732",
+                "cosine": 0.546
+            }
+        ]
+    },
+    "54": {
+        "summary": "如何通过动态插桩生成覆盖全场景的BMC组件命令白名单",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "578",
+                "title": "【需求】基于动态插桩拦截风险接口调用日志，形成通用化命令的白名单配置",
+                "url": "https://gitcode.com/openUBMC/bios/issues/15",
+                "created_at": "2025-04-28 14:29:32+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070459",
+                "cosine": 0.732
+            },
+            {
+                "id": "307",
+                "title": "【需求】基于动态插桩拦截风险接口调用日志，形成通用化命令的白名单配置",
+                "url": "https://gitcode.com/openUBMC/pcie_device/issues/4",
+                "created_at": "2025-04-28 14:32:12+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070461",
+                "cosine": 0.681
+            }
+        ]
+    },
+    "55": {
+        "summary": "BMC开发者需明确thermal和power管理组件业务场景白名单配置并建立基线",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "690",
+                "title": "【需求】power_mgmt组件明确业务场景下的白名单化配置并形成基线",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/45",
+                "created_at": "2025-05-09 08:04:01+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3087121",
+                "cosine": 0.679
+            },
+            {
+                "id": "341",
+                "title": "【需求】thermal_mgmt组件明确业务场景下的白名单化配置并形成基线",
+                "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/25",
+                "created_at": "2025-05-09 08:03:17+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3087118",
+                "cosine": 0.636
+            }
+        ]
+    },
+    "56": {
+        "summary": "BMC如何通过Redfish接口实现指定PCIe设备信息查询",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "346",
+                "title": "【需求】支持查询指定PCIEDevices资源信息",
+                "url": "https://gitcode.com/openUBMC/pcie_device/issues/5",
+                "created_at": "2025-04-29 06:22:00+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3073096",
+                "cosine": 0.73
+            },
+            {
+                "id": "357",
+                "title": "【需求】支持查询指定PCIEDevices资源信息",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/16",
+                "created_at": "2025-04-17 06:30:03+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3056271",
+                "cosine": 0.707
+            }
+        ]
+    },
+    "57": {
+        "summary": "BMC固件中如何新增电链路数据采集接口实现NPU参数面扩展",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "359",
+                "title": "【需求】支持NPU参数面光模块数据采集接口增加电链路数据",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/7",
+                "created_at": "2025-04-27 09:54:53+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3067042",
+                "cosine": 0.749
+            },
+            {
+                "id": "590",
+                "title": "【需求】支持NPU参数面端口电链路数据采集",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/8",
+                "created_at": "2025-04-28 11:34:31+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070353",
+                "cosine": 0.698
+            }
+        ]
+    },
+    "58": {
+        "summary": "BMC固件如何实现国密证书管理接口与HTTPS兼容优化",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "366",
+                "title": "【需求】支持国密证书管理的接口优化",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/43",
+                "created_at": "2025-05-05 07:59:28+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3082384",
+                "cosine": 0.704
+            },
+            {
+                "id": "405",
+                "title": "【需求】支持国密证书管理的北向接口配置",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/23",
+                "created_at": "2025-04-21 13:49:34+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3058738",
+                "cosine": 0.684
+            }
+        ]
+    },
+    "59": {
+        "summary": "BMC开发者如何实现光模块老化预测功能开关的Redfish接口支持",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "372",
+                "title": "【需求】支持光模块老化故障预测功能开关",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/52",
+                "created_at": "2025-04-29 08:38:42+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3074535",
+                "cosine": 0.765
+            },
+            {
+                "id": "493",
+                "title": "【修改描述】支持光模块老化预测功能开关使能",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/31",
+                "created_at": "2025-04-27 03:29:33+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3066615",
+                "cosine": 0.695
+            }
+        ]
+    },
+    "60": {
+        "summary": "BMC开发者如何通过Web触发RAID卡固件日志导出并满足脱敏、时延及兼容性要求",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "387",
+                "title": "【需求】支持一键搜集日志导出raid卡固件日志",
+                "url": "https://gitcode.com/openUBMC/storage/issues/31",
+                "created_at": "2025-05-08 13:09:26+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085763",
+                "cosine": 0.672
+            },
+            {
+                "id": "650",
+                "title": "【需求】支持收集raid卡文本格式日志",
+                "url": "https://gitcode.com/openUBMC/storage/issues/32",
+                "created_at": "2025-05-08 13:09:28+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085764",
+                "cosine": 0.663
+            }
+        ]
+    },
+    "61": {
+        "summary": "BMC开发者如何通过MCTP Over PCIe实时获取并记录DPU网卡启动标识",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "510",
+                "title": "【需求】支持DPU网卡启动完成标识记录",
+                "url": "https://gitcode.com/openUBMC/general_hardware/issues/15",
+                "created_at": "2025-04-28 12:14:45+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070384",
+                "cosine": 0.856
+            },
+            {
+                "id": "391",
+                "title": "【需求】支持DPU网卡启动完成标识记录",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/28",
+                "created_at": "2025-04-30 10:45:15+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3079310",
+                "cosine": 0.831
+            }
+        ]
+    },
+    "62": {
+        "summary": "BMC开发者如何实现NVMe-MI over MCTP协议解析及兼容可靠处理",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "407",
+                "title": "【需求】支持NVMe-mi over mctp的协议解析",
+                "url": "https://gitcode.com/openUBMC/storage/issues/33",
+                "created_at": "2025-05-08 13:09:30+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085765",
+                "cosine": 0.784
+            },
+            {
+                "id": "586",
+                "title": "【需求】支持解析nvme mi协议响应码信息",
+                "url": "https://gitcode.com/openUBMC/storage/issues/8",
+                "created_at": "2025-04-23 07:53:22+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3063863",
+                "cosine": 0.677
+            }
+        ]
+    },
+    "63": {
+        "summary": "BMC如何实现CSR文件损坏检测与自修复机制",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "411",
+                "title": "CSR文件损坏之后的恢复能力",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/4",
+                "created_at": "2025-04-08 06:38:29+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3025548",
+                "cosine": 0.641
+            },
+            {
+                "id": "432",
+                "title": "CSR文件损坏恢复能力",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/9",
+                "created_at": "2025-04-12 07:10:52+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3030013",
+                "cosine": 0.635
+            }
+        ]
+    },
+    "64": {
+        "summary": "BMC固件开发需支持BIOS启动禁用KVM/VNC键盘输入",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "439",
+                "title": "支持BIOS启动过程禁止KVM/VNC键盘输入",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/19",
+                "created_at": "2025-04-16 02:27:29+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3055506",
+                "cosine": 0.8
+            },
+            {
+                "id": "563",
+                "title": "支持BIOS在启动阶段禁用键盘",
+                "url": "https://gitcode.com/openUBMC/mdb_interface/issues/20",
+                "created_at": "2025-04-22 02:58:47+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3062344",
+                "cosine": 0.709
+            }
+        ]
+    },
+    "65": {
+        "summary": "NCSI边带管理功能如何通过Lua开发实现协议封装解析，并取消SO依赖适配openUBMC 25.1.0版本",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "700",
+                "title": "【需求】支持NCSI边带管理功能",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/16",
+                "created_at": "2025-05-08 13:08:48+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085738",
+                "cosine": 0.819
+            },
+            {
+                "id": "452",
+                "title": "【需求】开源社区支持NCSI边带管理功能",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/5",
+                "created_at": "2025-04-19 08:03:55+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3057550",
+                "cosine": 0.788
+            }
+        ]
+    },
+    "66": {
+        "summary": "BMC固件如何适配BlueField硬件不同版本及其四元组的调速策略需求",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "464",
+                "title": "【需求】支持BlueField-3（B3220）的调速策略配置",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/17",
+                "created_at": "2025-04-28 11:14:50+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070336",
+                "cosine": 0.731
+            },
+            {
+                "id": "465",
+                "title": "【需求】支持BlueField-2（332A）的调速策略",
+                "url": "https://gitcode.com/openUBMC/vpd/issues/18",
+                "created_at": "2025-04-28 11:18:43+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070338",
+                "cosine": 0.72
+            }
+        ]
+    },
+    "67": {
+        "summary": "BMC开发者如何确保Redfish EthernetInterfaces兼容标准属性",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "483",
+                "title": "支持Redfish接口EthernetInterfaces资源下Links等标准属性",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/37",
+                "created_at": "2025-04-27 03:40:19+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3066621",
+                "cosine": 0.692
+            },
+            {
+                "id": "487",
+                "title": "支持查询 BMC 网口资源详细信息",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/38",
+                "created_at": "2025-04-27 06:55:18+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3066709",
+                "cosine": 0.568
+            }
+        ]
+    },
+    "68": {
+        "summary": "BMC开发者在支持Localbus与Hisport总线仿真中需解决协议交互及性能兼容性等问题",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "509",
+                "title": "【需求】支持板卡Localbus总线的仿真",
+                "url": "https://gitcode.com/openUBMC/qemu/issues/7",
+                "created_at": "2025-04-27 09:51:36+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3067035",
+                "cosine": 0.744
+            },
+            {
+                "id": "683",
+                "title": "【需求】支持板卡Hisport总线的仿真",
+                "url": "https://gitcode.com/openUBMC/qemu/issues/9",
+                "created_at": "2025-04-27 09:52:35+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3067038",
+                "cosine": 0.717
+            }
+        ]
+    },
+    "69": {
+        "summary": "如何验证Thermal/Power资源对Redfish新标准接口的完整兼容性及运维场景可行性",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "660",
+                "title": "【需求】Power相关资源支持redfish新标准",
+                "url": "https://gitcode.com/openUBMC/power_mgmt/issues/19",
+                "created_at": "2025-05-08 13:06:25+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085661",
+                "cosine": 0.758
+            },
+            {
+                "id": "549",
+                "title": "【需求】Thermal相关资源支持redfish新标准",
+                "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/13",
+                "created_at": "2025-05-08 13:06:20+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085659",
+                "cosine": 0.716
+            }
+        ]
+    },
+    "70": {
+        "summary": "如何在BMC中实现运维CLI触发NPU/CPU DFX日志收集任务的并发控制与存储路径管理",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "565",
+                "title": "【需求】 支持CLI导出NPU DFX日志",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/48",
+                "created_at": "2025-04-29 02:51:55+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070790",
+                "cosine": 0.672
+            },
+            {
+                "id": "566",
+                "title": "【需求】支持CLI导出CPU DFX日志",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/46",
+                "created_at": "2025-04-29 02:45:45+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3070787",
+                "cosine": 0.636
+            }
+        ]
+    },
+    "71": {
+        "summary": "如何实现PLDM协议支持网卡芯片温度及固件版本采集并兼容北向接口",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "698",
+                "title": "【需求】支持使用pldm协议获取网卡相关信息",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/20",
+                "created_at": "2025-05-08 13:08:56+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085742",
+                "cosine": 0.76
+            },
+            {
+                "id": "627",
+                "title": "【需求】支持使用pldm协议获取网卡相关信息",
+                "url": "https://gitcode.com/openUBMC/network_adapter/issues/19",
+                "created_at": "2025-05-08 13:08:54+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085741",
+                "cosine": 0.723
+            }
+        ]
+    },
+    "72": {
+        "summary": "定制后BIOS在PXE阶段POST未完成触发BMC重启限制的处理方法",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "630",
+                "title": "【问题单】定制后bios处于PXE阶段时重启BMC失败",
+                "url": "https://gitcode.com/openUBMC/bios/issues/19",
+                "created_at": "2025-05-06 12:03:10+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3083306",
+                "cosine": 0.875
+            },
+            {
+                "id": "668",
+                "title": "【问题单】定制后bios处于PXE阶段时重启BMC失败",
+                "url": "https://gitcode.com/openUBMC/sensor/issues/10",
+                "created_at": "2025-04-29 08:46:02+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3074542",
+                "cosine": 0.874
+            }
+        ]
+    },
+    "73": {
+        "summary": "BMC开发者如何实现Redfish接口OEM扩展并处理存储控制器属性异常",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "678",
+                "title": "【需求】支持厂商定制化显示存储控制器端口数",
+                "url": "https://gitcode.com/openUBMC/rackmount/issues/67",
+                "created_at": "2025-05-08 13:09:12+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085756",
+                "cosine": 0.632
+            },
+            {
+                "id": "671",
+                "title": "【需求】支持Redfish接口oem定制查询指定存储资源信息",
+                "url": "https://gitcode.com/openUBMC/rack_mgmt/issues/2",
+                "created_at": "2025-05-08 13:09:38+00",
+                "source_type": "issue",
+                "source_id": "gitcode-3085769",
+                "cosine": 0.59
+            }
+        ]
+    }
+}

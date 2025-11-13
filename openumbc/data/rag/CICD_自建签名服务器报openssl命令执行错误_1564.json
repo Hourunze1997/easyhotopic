@@ -1,0 +1,15 @@
+{
+    "topic_id": 1564,
+    "question": "CICD 自建签名服务器报openssl命令执行错误 - content: 背景\n自建签名服务器时，模拟bingo构建时的签名命令进行签名：\nopenssl x509、openssl crl、hpm_signer、hpm_verify\nbingo使用本地证书构建时，触发的签名没有报错，但是通过自己写的签名程序报错。\n问题现象\n签名程序会依次执行： openssl x509、openssl crl、hpm_signer、hpm_verify四条命令\n执行hpm_signer命令时报错：\n>>  tool/hpm_signer -s ca/signer.pem -t ca/ts_signer.pem -T ca/tsa.cnf -i ./tmp/rootfs_TaiShan200_2280v217516092019787414070e0Z/rootfs_TaiShan200_2280v2.filelist -o ./tmp/rootfs_TaiShan200_2280v217516092019787414070e0Z/rootfs_TaiShan200_2280v2.filelist.cms\n2025/07/04 06:06:42 tool/hpm_signer 命令执行失败: exit status 255, 错误输出: Using configuration from /usr/lib/ssl/openssl.cnf\nCall command openssl ts -query -data .temp.cms.hash.der -cert -sha256 -no_nonce -out .temp.cms.hash.tsa failed\nSign ./tmp/rootfs_TaiShan200_2280v217516092019787414070e0Z/rootfs_TaiShan200_2280v2.filelist start\nSign ./tmp/rootfs_TaiShan200_2280v217516092019787414070e0Z/rootfs_TaiShan200_2280v2.filelist successfully(need timestamp sign more)\nParse cms data start\nFound rsaEncryption data\nGenerate tsa request file\n\n错误点是：\nCall command openssl ts -query -data .temp.cms.hash.der -cert -sha256 -no_nonce -out .temp.cms.hash.tsa failed\n\n诉求\nhpm_signer命令出现这个错误代表什么意思，怎么解决\nlinks: #p-3781-h-1, #p-3781-h-2, #p-3781-h-3",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/1564/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1564/2",
+            "text": "content: 1.参考指导：\n\n使用bingo进行自签名BMC固件包指导 交流互助区\n\n    bingo在openUBMC 25.06版本实现了自签名BMC固件包功能，支持2种签名模式，本地签名和远程服务器签名。考虑到安全性，推荐使用远程服务器模式，避免证书泄露。 \n前提条件\n\n向PAE获取crypto_tool工具用于加密，以及datatocheck_upgrade.dat和 pme_profile_en.dat文件用于替换build/manufacture/misc/中占位的空文件。\n适…\n  \n\n参考bingo的签名服务器demo\nGitCode - 全球开发者的开源社区,开源代码托管平台\n\n参考其他开发者的指导。\nbingo 本地sign server云签名\nlinks: https://discuss.openubmc.cn/t/topic/1665, /c/42-category/42, #p-4042-h-1, https://gitcode.com/openUBMC/bingo/blob/main/demo/cms_sign/sign_server.py, https://discuss.openubmc.cn/t/topic/1264"
+        }
+    ]
+}

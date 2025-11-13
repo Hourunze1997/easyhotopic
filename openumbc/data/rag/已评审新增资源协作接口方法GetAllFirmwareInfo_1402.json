@@ -1,0 +1,50 @@
+{
+    "topic_id": 1402,
+    "question": "【已评审】新增资源协作接口方法GetAllFirmwareInfo - content: 评审背景\n问题\nCLI接口ipmcget -d version 实测查询时间1.8-2.5s，BMC的性能基线是命令响应时间2s内\n原因分析\nipmcget -d version 查询固件信息时，会遍历资源协作接口 bmc.kepler.UpdateService.FirmwareInfo 的所有对象获取固件信息，对应的资源协作接口路径/bmc/kepler/UpdateService/FirmwareInventory/:Id下固件信息较多，遍历访问导致当前性能降低。\n解决方案\nCLI接口获取所有的固件版本信息时，由原来的遍历资源接口访问方式为一次性获取所有的固件信息，降低和资源协作接口的访问次数，提升性能。\n评审点\n新增资源协作接口方法GetAllFirmwareInfo ，一次性获取所有固件信息\n\n资源路径 ：/bmc/kepler/UpdateService/FirmwareInventory\n资源接口：bmc.kepler.UpdateService.FirmwareInventory\n方法 : GetAllFirmwareInfo\n权限：ReadOnly\n请求签名 : 无\n请求参数 :无\n响应签名 : a(sa{ss})\n响应参数 ：array<object> 类型，所有的固件信息列表。其中具体的参数说明如下：\n\nFirmwareId：string 类型，当前固件的标识。如：ActiveBMC\nFirmwareInfo array<string, string> 类型，当前固件的信息。具体的信息见下表1\n\n表1 - GetAllFirmwareInfo 接口获取的固件信息详细说明\n\n属性名称\n属性类型\n属性说明\n示例\n\nId\nstring\n固件标识\nActiveBMC\n\nVersion\nstring\n固件版本\n5.10.0.2\n\nName\nstring\n固件对外展示的名称\nActiveBMC\n\nLocation\nstring\n存储固件的器件的位号\nU75\n\nReleaseDate\nstring\n固件发布时间\n11:41:03 Jun 21 2025\n\nBuildNum\nstring\n固件构建版本号\n001\n\n评审结论\n同意在资源协作接口 bmc.kepler.UpdateService.FirmwareInventory 下新增方法 GetAllFirmwareInfo，用于获取当前所有的固件信息，权限为 ReadOnly，无请求参数，响应参数见上述评审材料。\nlinks: #p-3256-h-1, #p-3256-h-2, #p-3256-h-3, #p-3256-h-4, #p-3256-h-5, #p-3256-h-1-getallfirmwareinfo-6, #p-3256-h-7",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "/t/topic/1402/4",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1402/2",
+            "text": "问题背景中是否只有北向接口 CLI 有这个问题，还是其他北向接口（如WEB，Redfish）也有这个问题？需要把问题写清楚\n考虑能否在北向接口的机制支持下，支持一次性或者对应 interface 的所有对象，而不是每次出现这种批量获取，都需要新增批量接口？"
+        },
+        {
+            "user_name": "Linyao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1402/3",
+            "text": "1.(1)WEB当前也存在该问题\n(2)Redfish接口直接拿/bmc/kepler/UpdateService/FirmwareInventory/下所有固件信息直接展示，不存在该情况\n2.当前已有部分实现为获取所有/bmc/kepler/UpdateService/FirmwareInventory/下的Members后进行筛选的方式"
+        },
+        {
+            "user_name": "Linyao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1402/4",
+            "text": "遗留问题：响应参数信息详细写出来"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1402/5",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1402/6",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1402/7",
+            "text": ""
+        }
+    ]
+}

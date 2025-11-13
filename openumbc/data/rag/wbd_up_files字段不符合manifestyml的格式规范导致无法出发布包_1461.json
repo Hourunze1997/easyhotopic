@@ -1,0 +1,15 @@
+{
+    "topic_id": 1461,
+    "question": "wbd_up_files字段不符合manifest.yml的格式规范导致无法出发布包 - content: 执行命令：LOG=debug bingo publish -b openUBMC -bt release --stage stable\nimage1297×521 55.2 KB\nimage2114×397 34.9 KB\nimage1151×122 4.77 KB\n需要更新schema文件吗？文件在哪里？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0855b4781d5ef674ed5d9910c5dc0de46743e115.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/9944e6a085e67f2f886e59e97d74b68312baa964.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c1bfe37226821a7bf26fca9d158cb3a6365d3bca.png",
+    "topic_user_name": "Tf Wenchenglong",
+    "best_answer_url": "/t/topic/1461/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1461/2",
+            "text": "content: 有以下处理方法：\n\n方法1. 使用最新版本的bingo\n参考bingo README 安装。\n方法2. 删除93行到100行的wbd_up_files 配置\nlinks: https://gitcode.com/openUBMC/bingo/blob/main/README.md"
+        }
+    ]
+}

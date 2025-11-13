@@ -1,0 +1,29 @@
+{
+    "topic_id": 1521,
+    "question": "板卡适配问题咨询--PeuBoard与BoardPCIeCard的作用，以及IOBoard在哪 - content: source/general_hardware/mds/model.json\n诉求：参考V2 IOBoard进行交换板的适配。\n现状：在板卡管理的组件general_hardware下看见了这样类，PeuBoard和BoardPCIeCard，但是不清楚是什么作用的，烦请知道的大佬解答一下。\n另外，之前在Hardware SIG看见了相关的讨论 sig-hardware | Etherpad\nimage821×405 28.7 KB\n这个有相关结论了吗？还是需要新提议题参考V2新增一下IOBoard的类？目前没有在general_hardware内找到相关类定义，只找到了一些判断device type的地方，还有IOBoard的痕迹。\n汇总一下诉求\n\nPeuBoard和BoardPCIeCard的功能是什么？如果要适配IOBoard，能否复用这两个类或者进行扩展？\n之前Hardware SIG讨论的结果是怎样的？PCIe Switch(IOBoard)对象本身的管理，目前是否具备这样的能力？\nlinks: https://etherpad.openubmc.cn/p/sig-hardware, https://discuss.openubmc.cn/uploads/default/original/2X/3/3fc772e8dadbeaeb6292ed9398ad550d142f7816.png",
+    "topic_user_name": "kunlun_luzhanghui",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1521/2",
+            "text": "content: BoardPCIeCard是用于适配新的pcie卡（如网卡，raid卡）才需要配置的类。PeuBoard为电源扩展板使用的类。IOBoard应该无法直接复用。\n可以具体描述一下IOBoard的作用，如果预期与其他已有类定义不一样则需要新增类来承载。\n具体也可以在hardware-sig申报议题，会上固定有专家与会可以一起讨论。\nlinks: https://mailweb.openubmc.cn/hyperkitty/list/hardware@public.openubmc.cn/"
+        },
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1521/3",
+            "text": "IOBoard之前应该上过Hardware-sig，但是是其它伙伴上的，能否帮忙了解一下具体的结论？目前最新代码还没有看见IOBoard。\n简单来说就是PCIe Switch的管理类，在V2上有，按理说V3也应该要带上。主要就是交换板的基础信息显示。"
+        },
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1521/4",
+            "text": "content: 之前这个话题的遗留问题是需要确定这个PCIe Switch的硬件拓扑和硬件设计后再继续讨论。\n我们目前IO扩展板是指的RiserCard这个类来承载的，后面可以接pcie卡\nimage1864×192 16.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/7cfb8af24c399831d94db26b9a785590e727c8f2.png"
+        }
+    ]
+}

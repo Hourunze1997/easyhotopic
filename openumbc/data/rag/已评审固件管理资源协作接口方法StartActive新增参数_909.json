@@ -1,0 +1,22 @@
+{
+    "topic_id": 909,
+    "question": "【已评审】固件管理资源协作接口方法StartActive新增参数 - content: 关联issue\n固件生效接口变更\n评审背景\n对于固件生效的管理，由于部分固件（如CPLD）的生效存在AC而打断业务的高危操作，所以期望生效接口能够灵活选择性生效某些当前影响可接受的固件，比如：能够选择性生效“只复位BMC”的固件 或 “只需要DC的固件” 或 “生效所有固件”等\n评审点\nFirmwareActive资源的生效管理接口新增一个参数\npath：/bmc/kepler/UpdateService/FirmwareActive\ninterface：bmc.kepler.UpdateService.FirmwareActive\n评审点1\n\n方法名称\n原签名\n扩展后签名\n新增参数名称\n新增签名\n新增参数说明\n参数选项含义说明\n优点\n缺点\n\n方案一\nStartActive\ni\nia{ss}\nActivationControl\na{ss}\n固件生效扩展参数字典，用于固件生效管理的各场景处理。如{ActiveMode = “ResetBMC”}，表示生效“生效动作是复位BMC”对应的固件；{ActiveCondition = PowerOff}表示生效“生效条件是下电”对应的固件\n\"ResetBMC\"表示触发一次复位BMC，只生效BMC、CSR这一类固件。 \"PowerOff\"表示触发一次下电，如果存在CPLD固件，则生效后会发生AC，AC后会导致复位BMC的固件同时生效\n1、与web界面展示的待生效固件一致，可以生效对应“生效条件”的固件，也可以生效对应生效动作的固件  2、与当前生效管理设计一致，把固件的生效抽象出“生效条件”和“生效模式”两个属性，便于与之前的自动生效实现保持一致  3、a{ss}扩展性更强，后续用户特殊的生效要求（如：选定待生效列表的几个固件生效），可以方便扩展，不用修改再接口\n1、参数含义带有误导性，PowerOff参数，如果生效了CPLD，会触发AC，带着BMC固件也生效了 2、a{ss}一个参数可以包含多种含义，单个参数不符合单一性原则\n\n方案二\nStartActive\ni\nias\nActivationControl\nas\n固件生效扩展参数字符串列表，用于固件生效管理的各场景处理。如：[“ResetBMC”]表示复位BMC生效对应的固件；[“PowerOff”]表示下电生效对应的固件\n\"ResetBMC\"只生效BMC、CSR这一类固件 \"PowerOff\"只生效VRD这一类下电生效但不AC的固件。 [“ResetBMC”, “PowerOff”]生效所有固件，包括需要下电、复位BMC、AC的固件\n1、参数签名\"as\"与redfish生效接口的定义一致\n1、每一个参数选项都要详细说明会生效哪些固件，否则可能造成用户误解  2、生效方式与“自动下电生效”的历史生效行为不一致，实现上也不易兼容  3、后续不易扩展新的生效方式\n\n评审结论\n不通过，需要整体并行方案评审之后再行评审\nlinks: #p-1870-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/59, #p-1870-h-2, #p-1870-h-3, #p-1870-h-1-4, #p-1870-h-5",
+    "topic_user_name": "Lilie",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/909/2",
+            "text": "方案的表格改成总表，平铺内容更多，布局也更方便\n方案缺点上有没有对应文档规避措施，比如人机接口增加提示之类的"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/909/4",
+            "text": ""
+        }
+    ]
+}

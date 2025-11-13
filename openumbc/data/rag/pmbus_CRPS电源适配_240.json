@@ -1,0 +1,22 @@
+{
+    "topic_id": 240,
+    "question": "pmbus CRPS电源适配 - ① include/device_tree/adapters里面的文件夹名称的命名规则是什么？\n② 为什么大部分目录里面都只有PsuSlot.lua,有个别目录14191046_00000001080302065432里面是放的OnePower.lua，\n另外有些目录（14100513_00000001010302056919、14100513_00000001010302057963）放有多个文件\n③ 适配一款pmbus CRPS电源的工作流是怎么样的？",
+    "topic_user_name": "KunTai_WangJiaKai",
+    "best_answer_url": "/t/topic/240/3",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/240/2",
+            "text": "已收到请求，近期会安排一篇电源适配的介绍。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/240/3",
+            "text": "content: 可以先参考Readme\n这个是基于不同板卡配置的。PsuSlot主要是为了实现上级板卡对电源槽位信息的填写。OnePower是用于管理电源本板的文件。\n如果是集成电源，那可以既有PsuSlot，也有OnePower，取决于具体硬件实现。\nCRPS适配：GitCode - 全球开发者的开源社区,开源代码托管平台\n如果对readme有什么诉求，可以随时提出\nlinks: https://gitcode.com/openUBMC/power_mgmt#%E8%AE%BE%E5%A4%87%E6%A0%91%E7%AE%A1%E7%90%86, https://gitcode.com/openUBMC/power_mgmt#%E9%85%8D%E7%BD%AE%E6%A1%88%E4%BE%8B"
+        }
+    ]
+}

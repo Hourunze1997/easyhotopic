@@ -1,0 +1,15 @@
+{
+    "topic_id": 1343,
+    "question": "【storage】【问题求助】9440-8i raid卡信息不显示，raid功能操作失败 - content: 1、版本信息\n\n基于25.03社区版本\n2、问题现象\nraid卡信息不显示，raid功能无法使用\nimage1422×522 24.3 KB\n3、定位分析\n查看日志，发现向sml库注册控制器时失败，无法继续定位\nimage1894×362 43.4 KB\nframework日志里显示/usr/lib64/libsml_lsi.so未发现\nimage1306×320 19.1 KB\n4、诉求\n希望协助看一下深层次原因为什么会注册控制器失败以及此问题如何解决\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/18c3f757fdcbb5500e3a00c2ca12edaf4c8b2b5a.png, https://discuss.openubmc.cn/uploads/default/original/2X/4/4ad7d9226214fcb3000616a01740253a690de79e.png, https://discuss.openubmc.cn/uploads/default/original/2X/d/d11c6d28c3e2d0da6a27b7430609523eb6bd6610.png",
+    "topic_user_name": "百信-李肖航",
+    "best_answer_url": "/t/topic/1343/2",
+    "reply_posts": [
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1343/2",
+            "text": "感谢各位大佬，问题已解决。解决方法：在manifest.yml中打开libmgmt_protocol的storelib_enable选项，libsml_lsi.so就可以被打包到固件中。"
+        }
+    ]
+}

@@ -1,0 +1,85 @@
+{
+    "topic_id": 1423,
+    "question": "板载M.2 NVME 存储管理界面无硬盘信息 - content: 板载一个M.2接口，上接了一块三星消费级NVME盘，Samsung 970 EVO Plus，按照M.2转接板那样适配以及从VPD中读取信息两种方式适配，都没有硬盘信息，手上该硬盘的数据手册中并未提到VPD相关的信息，请问这种情况该如何适配，硬盘信息来源是？还是说要像适配一张PCIe卡一样适配这个硬盘？\ni2c6-pca9545(0xe2)-channel:2-connector\nOS下查询硬盘信息：\nimage977×368 61.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/d779107af817abefb3ab8c0e217b91a64f4faa92.jpeg",
+    "topic_user_name": "Yetaojie",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1423/2",
+            "text": "1.要保证M.2正常\n2.其次看NVME数据获取是否正常\n建议发一份一键式收集的日志进一步看看"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1423/3",
+            "text": "content: OS下能认到该硬盘，且能正常使用（作为系统盘），M.2接口没问题，看NVME数据使用lshw -class storage | grep nvme 是有序列号等数据的，用busctl 查看ibma也获取到了一些硬盘信息\nbusctl --user introspect  bmc.kepler.host_agent /bmc/kepler/Systems/1/Sms/1/ComputerSystem/Systems/1/Storage/1/PCIE_5FSSD/0000_3A00_3A05_2E0_5F0000_3A06_3A00_2E0\nimage887×933 160 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a6b770423c6d58497c3406e8e4d79e9e81d21f73.png"
+        },
+        {
+            "user_name": "Yelmh Kno07",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1423/4",
+            "text": "需要CSR里正确配置vpdconnector 加载NVME盘的CSR，才能通过vpd或者bma匹配SN获取硬盘信息"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1423/5",
+            "text": "该NVME盘为消费级，数据手册没有VPD相关描述，根据sr配的vpd芯片地址0xa6使用i2cread，busctl等读写读不到信息，怀疑没有vpd芯片。于是强制加载Connector_VPD和Connector_ComVPD，强制加载后drive_collection.lua识别到nvme盘，handler_nvme.lua find_object 日志打印没有获取到SN号。在代码处暂时赋值序列号跳过该匹配，并在handler_pass_through_drive.lua暂时赋值丝印，硬盘依旧没信息，相关日志如下：\n\nhandler_base.lua(116): c_handler_base: regist object, bma path=/bmc/kepler/Systems/1/Sms/1/ComputerSystem/Systems/1/Storage/1/PCIE_SSD/0000:00:05.0_0000:06:00.0, object=false\nhandler_nvme.lua(116): Update nvme(S4EUNMFN840626J) info by bma\n\nhandler_base.lua(116): c_handler_base: regist object, bma path=/bmc/kepler/Systems/1/Sms/1/ComputerSystem/Systems/1/Storage/1/Drives/PCH_0000:74:03.0_ata2, object=/bmc/kepler/Systems/1/Storage/Drives/Drive_50_01010A\nhandler_pass_through_drive.lua(409): Update Disk50 info by bma\n\n对象配对错了，没有显示NVMe信息，反而配对上了另外一块HDD硬盘，但我其实把HDD相关的PcieAddrInfo_SAS_1下的rootbdf改掉了。\n目前没信息的关键应该在object=false，继续添加日志跟踪，刚开始觉得可能是因为pciessd is disabled导致：\n\nnvme_object.lua(239): nvme51 pciessd is disabled\nnvme_object.lua(193): [pciessd_is_enable] Slot=51, port0_pcie_link_active=0, drive_functional=0, drive_not_ready=1, reset_not_required=0\nnvme_object.lua(196): [pciessd_is_enable] port0_pcie_link_active == 0, return false\n\n暂时屏蔽该验证if not self:pciessd_is_enable() then，还是没信息\n请问序列号是从哪里同步到NVMe对象的，当前我怀疑handler_base.lua object=false这个方向正确吗？能否提供一些继续往下排查定位的思路？"
+        },
+        {
+            "user_name": "Yelmh Kno07",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1423/6",
+            "text": "正常的NVME盘加载流程为\n硬盘背板指定槽位的在位寄存器和PCIEType寄存器读的值满足条件，Connector_ComVPD带着Slot 加载下一级sr，直到包含NVMe对象的PROTOCOL_X.sr，并且这个Slot后续用于关联对应的Drive对象。\n后续NVMe对象通过CSR里配的VPDChip读取到SN等信息，并把这些信息通过上述的Slot更新到对应的Drive对象上。\n如果环境上ibma，通过SN匹配资源，匹配上了后，会把ibma传来的NVME盘的信息更新到NVMe对象上，再更新到Slot对应的Disk对象上。"
+        },
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1423/7",
+            "text": "1、据我了解，消费级M.2 NVME一般是不支持nvme-mi带外管理协议的。另据我们公司在模组上适配的经验，如果要通过IBMA来获取m.2的信息，需要配置一个PcieAddrInfo跟M.2 磁盘对象绑定，这样IBMA推送信息过来时可以根据BDF号去寻找到与之关联的磁盘对象，然后将信息刷新到磁盘对象上"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1423/8",
+            "text": "有的，有配置PcieAddrInfo下的RootBDF，但从日志看的话并没有走直通盘匹配BDF获取丝印配对，从而从bma拿到数据"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1423/9",
+            "text": "这两个lua文件分别是直通和nvme：handler_pass_through_drive.lua、handler_nvme.lua，假定该nvme没有vpd的情况，是否可以走直通盘的逻辑呢？但是初始时我按直通盘配的，好像没有因此配对成功"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1423/10",
+            "text": "yetaojie:\n\nhandler_base.lua object=false\n\n调用链\nhandler_base.lua function c_handler_base:match_object(path, data)——handler_nvme.lua function c_handler_nvme:find_object(, data)——function c_handler_base:regist_object(path, object, data)——init.lua function c_bma:process(method, path, all_path_data)——function c_bma:add(path, resource)——handler_nvme.lua function c_handler_nvme:add(, data, object)——function c_handler_nvme:update_nvme(obj, data) data即path，没有path数据，更新数据失败"
+        },
+        {
+            "user_name": "百信-李肖航",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1423/11",
+            "text": "content: 或许你可以在这个匹配函数中新增一段通过BDF来匹配NVME对象的逻辑，现有的社区代码中应该是通过SN来进行匹配的，而消费级M.2 NVMe是无法通过带外方式获取SN的，因此在你的环境上这个匹配函数不会返回有效对象\nimage523×470 21.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/b3b7bb659257ebab26629171bdc0e036f8835e70.png"
+        },
+        {
+            "user_name": "wuzhou-Liaozhongquan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1423/12",
+            "text": "请问V2上NVME盘的上电时间、容量、温度等信息是从iBMA还是从VPD获取的？能够匹配上Hdd对象，web上也有显示，但是从iBMA传过来没有容量等数据"
+        }
+    ]
+}

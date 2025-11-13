@@ -1,0 +1,57 @@
+{
+    "topic_id": 450,
+    "question": "【问题求助】关于系统事件和传感器事件的疑问 - 图上传不了，没法通过自动审核，只能文字描述了。\n通过手动修改ThresholdSensor的阈值可以触发和解除对应的传感器事件，但是不会在当前告警中显示出来，当前告警的内容好像都是系统事件的。\n请问如果要传感器触发阈值告警时在当前告警中显示，只能另外配置“Event_xxx”吗？如果是，那在我有多个传感器的时候，有通用的配置吗，还是只能每个传感器都去配置一个Event？",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "/t/topic/450/5",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/450/2",
+            "text": "是的，原则上每个传感器都要告警，就要单独配置一个Event。"
+        },
+        {
+            "user_name": "yctco_zhanglei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/450/3",
+            "text": "当前是在哪个文件里面配EventDefinition的？之前都是platform.sr里面配置的"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/450/4",
+            "text": "好像没有这个EventDefinition的配置呢。\n我记得v2上面好像有对门限类电压传感器这种的默认事件描述，v3有这种默认的实现方法吗？\n毕竟传感器都配置掩码和阈值了，还要自己去配置专门的告警事件，有点麻烦甚至多此一举呢"
+        },
+        {
+            "user_name": "Duzhou13 51cdj",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/450/5",
+            "text": "content: 精细化告警事件与传感器事件\n首先需要明确：当前openUBMC实现了两套事件机制，一套为精细化告警机制，一套为传感器事件机制，其中传感器事件遵循的是IPMI标准协议规范。从根本上讲，这实际是两套完全独立不互通的事件功能。\n当前告警、系统事件与传感器事件的区别与关系\n1、当前告警（alarm）：归属于精细化告警事件机制，是处于Assert状态且事件等级高于normal的事件列表，这类事件我们通常称之为告警；\n2、系统事件（event）：归属于精细化告警事件机制，为所有精细化告警事件的历史列表，包含生成过的Assert、Deassert状态的所有等级的精细化告警事件。在当前告警中查到的一定能在系统事件中查到。\n3、传感器事件（sel）：归属于传感器事件机制，为所有传感器事件的历史记录，包含生成过的Assert、Deassert状态的所有等级的传感器事件。\n精细化告警事件与传感器事件分别是怎么触发产生的\n不管是精细化告警事件还是传感器事件，实际都是由csr配置的。\n1、精细化告警事件：配置Event、PowerEvent对象，当达到事件触发条件就会生成告警或事件。\n2、传感器事件：当前iBMC实现了两类传感器事件，分别对应两类传感器。\n（1）门限传感器（ThresholdSensor）：传感器对象本身支持了6个门限属性，配置该类传感器对象时若配置了门限值，当传感器值超出门限值时，会产生传感器事件；\n（2）离散传感器（DiscreteSensor）：对应该传感器的事件称为离散事件，离散事件还需要额外配置离散事件对象（DiscreteEvent），同样达到触发条件时会生成传感器事件。\n传感器的掩码和阈值\n掩码和阈值是传感器的机制，与精细化告警无关，需要有对应的精细化告警产生，就应该单独配置Event对象并且在该对象中配置相同的阈值。\n总结： 精细化告警事件与传感器事件为两套机制，不可混淆，都需要各自配置对象实现。\nlinks: #p-3062-h-1, #p-3062-h-2, #p-3062-h-3, #p-3062-h-4"
+        },
+        {
+            "user_name": "system",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/450/6",
+            "text": "由于大量社区举报，此话题被临时关闭至少 4 小时。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/450/7",
+            "text": ""
+        },
+        {
+            "user_name": "system",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/450/8",
+            "text": "由于大量社区举报，此话题被临时关闭至少 4 小时。"
+        }
+    ]
+}

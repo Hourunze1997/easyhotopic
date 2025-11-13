@@ -1,0 +1,22 @@
+{
+    "topic_id": 1766,
+    "question": "【已评审】新增资源协作接口支持定制传感器事件等级的严重级别 - content: ISSUE链接\n暂无\n评审背景\n当服务器出现故障时，网管/运维通过bmc上报的传感器事件和等级获取故障信息，并且根据不同的等级上报不同颜色的故障灯，因此需求支持定制传感器对应事件等级的严重级别。\n现状\n客户需求定制传感器事件等级，但是目前传感器事件等级是固定的，无法更改\n解决方案\n新增资源协作接口方法，支持定制传感器对应事件等级\n评审点\n新增资源协作属性SetAlarmLevel，支持定制传感器对应事件等级的严重级别\n\n资源路径 ：/bmc/kepler/Chassis/1/Sensors (原有)\n资源接口：bmc.kepler.Chassis.Sensors (原有)\n方法 : SetAlarmLevel\n权限：BasicSetting\n请求签名 : yyyyyy\n请求参数 :\n\n名称\n描述\n\nSensorType\nIPMI SEL事件关联的传感器类型\n\nReadingType\nIPMI SEL事件关联的传感器读值类型\n\nSelData1\nIPMI SEL事件描述第一个参数\n\nSelData2\nIPMI SEL事件描述第二个参数\n\nSelData3\nIPMI SEL事件描述第三个参数\n\nAlarmLevel\n需要修改的SEL事件的等级\n\n响应签名 : 无\n响应参数 ：无\n\n评审结论\n不通过，对于传感器事件的定制场景，需要在方案上考虑采用批量化的方式进行，当前评审议题无法支撑批量定制场景。\nlinks: #p-4305-issue-1, #p-4305-h-2, #p-4305-h-3, #p-4305-h-4, #p-4305-h-5, #p-4305-h-6",
+    "topic_user_name": "Iss Szyaoh",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1766/3",
+            "text": "content: iss_szyaoh:\n\n解决方案\n新增资源协作接口方法，支持定制传感器对应事件等级\n需要修改的属性：传感器事件等级AlarmLevel，AlarmLevel保存在表格中t_ipmi_sel_descs（掉电持久化）\n评审点\n新增资源协作属性SetAlarmLevel，支持定制传感器对应事件等级的严重级别\n\n资源路径 ：/bmc/kepler/Chassis/1/Sensors (原有)\n资源接口：bmc.kepler.UpdateService.Certificate (原有)\n方法 : SetAlarmLevel\n权限：BasicSetting\n\n@iss_szyaoh 上述评审问题，需要首先答复以下问题：\n问题1：解决方案中需要修改属性并且保存到表格 t_ipmi_sel_descs，这里的表格是什么含义？\n问题2：资源协作接口 bmc.kepler.UpdateService.Certificate 是笔误还是什么设计？当前不明确\n问题3：当前实现传感器事件等级定制为什么需要 SelDesc 这个参数？从上述解决方案中看不到接口如此设计的凭据。\nlinks: /u/iss_szyaoh"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1766/4",
+            "text": ""
+        }
+    ]
+}

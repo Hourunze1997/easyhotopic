@@ -1,0 +1,64 @@
+{
+    "topic_id": 1341,
+    "question": "新建一个组件，重新编译之后 - 打开manifest.yml，在dependencies:下面添加my_app\ndependencies:\n\nconan: “my_app/0.0.1@openUBMC.release/rc”\n\n之后再执行bingo build就会报错：\n复制文件 /usr/local/bin/hpm_header.config 到 hpm_header.config\n复制 /usr/local/bin/hpm_header.config 到 hpm_header.config\nERROR: /usr/local/bin/emmc_uboot_header.config 不是一个文件或者不存在\nERROR: 运行子任务 work.task_build_rootfs_img 类 bmcgo.tasks.task_build_rootfs_img失败\nERROR: 任务 personal 执行失败\nERROR: 请查看日志信息\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\nERROR: 运行子任务 work.task_hpm_envir_prepare 类 bmcgo.tasks.task_hpm_envir_prepare失败\ntimed out\n怎么解决？不知道啥问题",
+    "topic_user_name": "qin-xiupup",
+    "best_answer_url": "/t/topic/1341/7",
+    "reply_posts": [
+        {
+            "user_name": "qin-xiupup",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1341/2",
+            "text": "不能从 yaml 文件中获取到键值 gpp/pkg_headers, 没有相关配置\n复制文件 /usr/local/bin/hpm_header.config 到 hpm_header.config\n复制 /usr/local/bin/hpm_header.config 到 hpm_header.config\nERROR: /usr/local/bin/emmc_uboot_header.config 不是一个文件或者不存在\nERROR: 运行子任务 work.task_build_rootfs_img 类 bmcgo.tasks.task_build_rootfs_img失败\nERROR: 任务 personal 执行失败\nERROR: 请查看日志信息\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\ntimed out\nERROR: 运行子任务 work.task_hpm_envir_prepare 类 bmcgo.tasks.task_hpm_envir_prepare失败"
+        },
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1341/3",
+            "text": "qin-xiupup:\n\n/usr/local/bin/emmc_uboot_header.config\n\n这个文件存在吗？"
+        },
+        {
+            "user_name": "qin-xiupup",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1341/4",
+            "text": "content: image935×152 9.29 KB\n不存在 没有 不知道怎么生成这个文件\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/9f70fb949e5888edbde1a822d8b03bd0341aa091.png"
+        },
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1341/5",
+            "text": "bingo -v 看一下版本，dpkg -l | grep bingo看看是不是没执行bingo upgrade"
+        },
+        {
+            "user_name": "qin-xiupup",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1341/6",
+            "text": "content: image794×167 7.81 KB\n目前是这样的\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/486e89141f4007c92b94fc9c6c0146c9d6a54924.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1341/7",
+            "text": "已有版本太老了\n拉取bingo源码git clone https://gitcode.com/openUBMC/bingo.git，进入bingo目录并执行sh install_local.sh ，进行覆盖安装\n\n注：后续可以执行bingo upgrade进行升级。"
+        },
+        {
+            "user_name": "qin-xiupup",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1341/8",
+            "text": "好的 感谢"
+        },
+        {
+            "user_name": "特别的名字_wangningbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1341/9",
+            "text": "bingo 0.5.241及以上版本，可直接使用upgrade命令升级bingo。\n如果本地是0.5.241以下版本，需要拉取bingo代码仓构建新版本的bingo工具。"
+        }
+    ]
+}

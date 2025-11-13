@@ -1,0 +1,106 @@
+{
+    "topic_id": 1421,
+    "question": "M.2转接板下硬盘信息无显示 - content: 背景：天池服务器，硬件使用华为 BC83MSMA M.2转接板，接了两个紫光企业级SATA硬盘，BMC使用share/source/vpd/vendor/openUBMC/14100665_00000001030302023954.sr ，前置链路配置：I2c6-Pca9545_i2c6_chip-I2cMux_Pca9545_i2c6_chip_1-Connector_M2_1\n现象：WEB有显示M.2转接板组件在位及信息，有显示M.2上的FRU信息、温度传感器值，存储管理界面显示两个硬盘在位，但是没有硬盘信息。使用V2固件交叉验证，当iBMA启动完的时候，即刻有两个硬盘信息。V3尝试更新storage组件到1.80.36也还是没有硬盘信息\n问题：存在部分M.2转接板信息，唯独没有硬盘信息，是没配置好还是代码有问题呢？感觉使用华为的M.2转接板配合天池已有的M.2转接板sr不应该适配有问题\nV3情况：\nimage1572×408 13 KB\nV2情况：\n企业微信截图_175031798810371483×848 32.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/58042c2d501a8bfe95b32dd5ca0a020c80a45c4f.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a2d0283e30b77439bb358262be307ca99e8e9714.png",
+    "topic_user_name": "Yetaojie",
+    "best_answer_url": "/t/topic/1421/15",
+    "reply_posts": [
+        {
+            "user_name": "yangqinghua",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/2",
+            "text": "在V3环境上确认bma完全启动了吗，bma启动以后可以查询一下host_agent组件资源树看一下/bmc/kepler/Systems/1/Sms/1/ComputerSystem/Systems/1/Storage/1/Drives下面有没有M.2硬盘的信息，如果有排查一下一键日志中是否有drive silk is的打印，查看一下打印的丝印信息，没有获取到直通盘也可能是环境没有生成丝印文件，这种情况需要重启os"
+        },
+        {
+            "user_name": "yangqinghua",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/3",
+            "text": "查看是否有硬盘丝印信息也可以在一键日志收集的app.log中寻找关键字get_pcie_silk_config"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/4",
+            "text": "content: 1.bma启动了，性能监控页面有数据的，ibma管理也显示bma状态正常\n2.有M.2硬盘信息，看序列号、厂商、固件版本等和V2上显示的信息一致\nimage1427×964 171 KB\n3.日志\n2025-06-20 02:19:40.307062 storage NOTICE: handler_pass_through_drive.lua(83): drive silk is userdata: NULL\n2025-06-20 02:20:51.264906 bios NOTICE: bios_service.lua(941): Disk PCIeAddrInfo: socket_id=0, control_id=1, phy_id=1, slot=50, root_bdf=0000:38:05.0\n2025-06-20 02:20:51.265303 bios NOTICE: bios_service.lua(941): Disk PCIeAddrInfo: socket_id=0, control_id=1, phy_id=0, slot=51, root_bdf=0000:38:05.0\n2025-06-20 02:20:51.354189 bios NOTICE: bios_service.lua(881): get_pcie_silk_config: PCIeAddrInfo count=25, system id(1)\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/2d36f30145d9bad80316652c1e6038ddbabead42.png"
+        },
+        {
+            "user_name": "yangqinghua",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/5",
+            "text": "确认host_agent组件的silkscreen属性是否一直为null，如果一直为null表示没有获取到硬盘丝印信息，重启一下os看看"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/7",
+            "text": "content: 确实是一直为null，重启了也是这样，在适配过程中也不止重启过一次了。这个和对象Connector_M2_1的属性SilkText有关联吗？\n使用命令查看：busctl --user get-property  bmc.kepler.host_agent /bmc/kepler/Systems/1/Sms/1/ComputerSystem/Systems/1/Storage/1/Drives/PCH_5F0000_3A74_3A03_2E0_5Fata1 bmc.kepler.sms.redfish.Oem.Huawei  SilkScreen\nimage1862×180 43.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/c194c5fd888fd4ca23380b15484f46e34cabb4a6.png"
+        },
+        {
+            "user_name": "yangqinghua",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/8",
+            "text": "请一键收集一份日志发送给我"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/9",
+            "text": "感谢帮忙，麻烦提供一下邮箱"
+        },
+        {
+            "user_name": "yangqinghua",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/10",
+            "text": "content: yangqinghua9@h-partners.com\nlinks: mailto:yangqinghua9@h-partners.com"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/11",
+            "text": "已发送日志，请查收"
+        },
+        {
+            "user_name": "yangqinghua",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/12",
+            "text": "收到，已联系pcie组件同事协助定位，请提供一下在os执行命令ll /sys/block的截图"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/13",
+            "text": "content: image991×438 152 KB\nimage934×404 65.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/f0e514ff764d360690bd6ec37e6b41e3eca2eb8f.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/b/b3bddff7bcc7317287f26776e2f0a4ebdfb992ca.jpeg"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/14",
+            "text": "content: 请问有进展了吗？这边对丝印验证代码做了临时验证，确实是这个引起，M.2转接板上两个硬盘为Disk50、Disk51，把silkscreen设置为50之后，Disk50获取到了信息\nimage1601×501 39 KB\nimage1132×640 91.9 KB\nimage1920×329 118 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/b924e9e0df79c2c0a2e9b0fa80dedbf2dd6ffd01.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/27c73405b949d0295b546c997262415b566fba1e.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/9adb7b59ae60e597d62f46be8ca03dc73d9fc4f0.png"
+        },
+        {
+            "user_name": "王祝炜",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1421/15",
+            "text": "content: wangzhuwei3@h-partners.com 日志转发我一份。\n定位过程：\n根据上面的信息，iBMA返回的信息里SilkScreen是空的，bmc没有接收到硬盘信息。定位到是带内的直通盘的BDF是74:03.0，bmc丝印生成的BDF是38:05.0 与带内丝印不一致，导致没有匹配上硬盘槽位。\nimage493×636 21.3 KB\n环境当前有很多高速线缆告警：\nimage1289×208 11.5 KB\n定位结论：\n1、可能是高速线缆接的不对，导致Bus分配的不对。需要排查UBC高速线缆接线。\n2、可能是新的接法没有适配。需要配置转接板的CSR里PcieAddrInfo_SAS对象的Bus、Device、Function与带内一致。Bus改成116（0x74） Device改成3\nlinks: mailto:wangzhuwei3@h-partners.com, https://discuss.openubmc.cn/uploads/default/original/2X/d/d9a163a01345759c90a43f2c0ae27f303e0e1c2b.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/7cb25c85328ae3e6ccefa7acfa686d9c0058a74d.png"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1421/16",
+            "text": "DDDDang_p8ere:\n\n根据上面的信息，iBMA返回的信息里SilkScreen是空的，bmc没有接收到硬盘信息。定位到是带内的直通盘的BDF是74:03.0，bmc丝印生成的BDF是38:05.0 与带内丝印不一致，导致没有匹配上硬盘槽位。\n\n感谢，如上述，修改PcieAddrInfo_SAS_1对象下的RootBDF三个相关属性Bus、Device、Function，改成OS下lspci查到的硬盘的RootBDF，匹配上就能获取到丝印，从而获取到硬盘信息"
+        }
+    ]
+}

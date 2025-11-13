@@ -1,0 +1,15 @@
+{
+    "topic_id": 1017,
+    "question": "V3是否支持不同级别告警之间的互斥处理？ - content: image1668×442 20.7 KB\nV2中会有互斥码的配置，不同级别的相同告警同时出现的时候，在WEB上会只显示级别最高的告警。V3中是不是没有相关处理？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/094df2ea5dcd0260e8ae85709d221e8d02ba5b90.png",
+    "topic_user_name": "Baijing",
+    "best_answer_url": "/t/topic/1017/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1017/2",
+            "text": "当前不支持互斥告警。"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 908,
+    "question": "【已评审】新增开关控制内存PS UCE告警策略 - content: ISSUE链接\n[GitCode - 全球开发者的开源社区,开源代码托管平台]\n背景\nBMC接收BIOS上报的内存PS UEO错误时触发SEL告警，需要额外增加一个开关，默认关闭，支持有高可靠性要求客户通过北向接口打开\n详细描述（必填，描述待评审接口的详细内容）\n资源树新增属性：\n\n属性名称\n类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n\nMemPatrolScrubAlarmEnabled\n新增属性\nb\nR：ReadOnly W：BasicSetting\nPoweroffPer\ntrue\n内存巡检不可纠正错误(PS UEO)告警功能开关, true:打开；false:关闭 默认为false：关闭\n\n对应操作日志：Enabled/Disabled alarm on memory patrol scrubbing uncorrectable error successfully\n决策点 （必填，一句话描述待决策点）\n新增资源树接口MemPatrolScrubAlarmEnabled控制内存PS UCE告警开关\n评审结论\n同意在资源path： /bmc/kepler/Systems/${SystemId}/FDMDomain\n资源interface： bmc.kepler.Systems.FDMService\n新增资源树接口，MemPatrolScrubAlarmEnabled控制内存PS UCE告警开关，实现细节如下：\n\n属性名称\n类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n\nMemPatrolScrubAlarmEnabled\n新增属性\nb\nR：ReadOnly W：BasicSetting\nPoweroffPer（掉电持久化）\ntrue\n内存巡检不可纠正错误(PS UEO)告警功能开关, true:打开；false:关闭 默认为false：关闭\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/58",
+    "topic_user_name": "Bean Lin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/908/2",
+            "text": ""
+        }
+    ]
+}

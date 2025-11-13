@@ -1,0 +1,22 @@
+{
+    "topic_id": 1309,
+    "question": "老conan地址无法登录 - content: image1859×288 28.9 KB\n之前配置的虚拟仓组件也搜索不到了\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/d94efd0fc294abeabb3d1c0f3069cac5e6845f1e.png",
+    "topic_user_name": "Tf Wenchenglong",
+    "best_answer_url": "/t/topic/1309/3",
+    "reply_posts": [
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1309/2",
+            "text": "这个问题正在跟进解决，稍后会发布解决方案。"
+        },
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1309/3",
+            "text": "content: 【关于延长社区Conan制品仓公共账号使用期限的公告】 CICD\n\n    致全体开发者： \n    为保障研发工作平稳过渡，现就社区Conan制品仓访问事宜公告如下： \n一、问题背景\n       自本周一（原公共账号注销日）起，我们陆续收到关于\"通过个人社区账号访问Conan制品仓时存在制品拉取异常\"的反馈。经技术团队紧急评估，决定采取过渡期解决方案。 \n二、解决方案\n\n原社区Conan公共账号服务期限将延长至2025年9月30日18:00\n过渡期内保留双轨访问机制，…\nlinks: https://discuss.openubmc.cn/t/topic/1334, /c/44-category/44, #p-3023-h-1, #p-3023-h-2"
+        }
+    ]
+}

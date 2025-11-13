@@ -1,0 +1,43 @@
+{
+    "topic_id": 316,
+    "question": "openUBMC社区 Q2 Meetup策划中！ - openUBMC社区将举办第一次线下meetup，为期1天，现面对社区进行会议时间地点意见收集。\n会议主要面向社区开发者，提供一个技术分享交流的场地，形式将会以话题、圆桌讨论、workshop、展台等。如果有想法、建议、或议题，请在此帖下面进行回复。\n举办地点：\n\n深圳\n东莞\n杭州\n成都\n\n0\n投票人\n\n举办时间：\n\n5/26\n5/27\n5/28\n5/29\n5/30\n\n0\n投票人",
+    "topic_user_name": "张雨博",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/316/2",
+            "text": ""
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/316/3",
+            "text": "content: openUBMC Q2 Meetup活动议程草案\n\n时间\n议题\n内容\n\n9:00-9:10\n领导致辞\n\n9:10-9:30\n社区技术介绍\n社区技术规划和愿景介绍\n\n9:30-10:00\n社区新功能介绍\nBMC Studio、南向部件驱动规范等创新内容介绍\n\n10:00-12:00\n开发者分享议题\n技术分享，经验分享，最佳实践等（议题收集中，请用踊跃报名）\n\n12:00-13:30\n午休\n\n13:30-16:30\nWorkshop\n针对Q1社区常见诉求开展动手workshop，（名额有限，请提前报名）\n\n16:30-17:00\n总结\n颁奖，合影留念等\n\nWorkshop草案:\n\nDT Workshop （6-8人）:\n\n针对开发者测试进行沉浸式教学，掌握如何使用openUBMC DT框架进行快速开发调试。\n现场进行组件APP DT编写，并贡献至社区。\n\n集成验证 Workshop （6-8人）：\n\n针对集成测试用例进行沉浸式教学，掌握如何使用openUBMC社区测试框架进行需求、特性自动化验证。\n现场进行自动化用例编写，并贡献至社区。\n\n部件驱动 Workshop（6-8人）：\n\n学习南向部件驱动规范，并掌握如何使用openUBMC进行部件驱动开发。\n现场基于社区已有部件进行部件驱动编写，并贡献至社区。\n\n头脑风暴 Workshop（现场报名）：\n\n结对进行设计idea碰撞，产出openUBMC的优秀idea\n输出PPT、Demo等，在总结会中汇报\n现场接纳idea，并归档至社区，后续作为社区持续开展的技术项目\nlinks: #p-1231-openubmc-q2-meetup-1, #p-1231-workshop-2"
+        },
+        {
+            "user_name": "吴振",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/316/6",
+            "text": "content: @zybwh 发徽章啦\nlinks: /u/zybwh"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/316/7",
+            "text": "已发"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/316/8",
+            "text": ""
+        }
+    ]
+}

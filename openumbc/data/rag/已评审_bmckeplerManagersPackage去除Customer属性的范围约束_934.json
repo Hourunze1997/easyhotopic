@@ -1,0 +1,15 @@
+{
+    "topic_id": 934,
+    "question": "【已评审】 bmc.kepler.Managers.Package去除Customer属性的范围约束 - content: ISSUE链接 （必填，此议题关联的issue）\n bmc.kepler.Managers.Package去除Customer属性的范围约束\n背景\nproduct_mgmt调用maca提供的方法用于设置Customer属性，以此实现定制化，Customer属性有枚举限制，未在枚举范围内的名称将会定制失败\nimage514×473 6.72 KB\n决策点\n是否同意去除bmc.kepler.Managers.Package接口下Customer属性的枚举限制，通过定制项的schema进行校验\n详细描述\n先前maca使用Customer属性支持定制化组件，通过枚举限制了名称，目前为了支持伙伴灵活切换定制名称，需要去除枚举限制。\n评审结论\n同意去除bmc.kepler.Managers.Package接口下Customer属性的枚举限制\n遗留事项\n需要跟踪后续定制项大小写冲突问题\n进展：目前暂未讨论出方案，已提issue跟踪 客户定制项存在kingsoft与Kingsoft大小写冲突问题待解决-profile_schema-GitCode\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/60, https://discuss.openubmc.cn/uploads/default/original/1X/23327183f7a6ee4f64999af3b7863c450e81e44c.png, https://gitcode.com/openUBMC/profile_schema/issues/11",
+    "topic_user_name": "chenghaoyang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/934/2",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 600,
+    "question": "【已评审】支持用户名校验定制后的用户提示优化 - content: ISSUE链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景\n支持用户名校验定制后的用户提示优化\n决策点\nwebrest接口/UI/Rest/AccessMgnt/AdvancedSecurity下新增属性LocalAccountNamePattern，表示用户名匹配样式（正则表达式）\n详细描述\nURI：/UI/Rest/AccessMgnt/AdvancedSecurity\n变化类型：新增属性\n支持操作：GET\n属性：LocalAccountNamePattern\n说明：用户名匹配样式，即正则表达式\n类型：string\n取值范围：长度0~255\n权限：读权限：ReadOnly\n评审结论\n同意webrest接口/UI/Rest/AccessMgnt/AdvancedSecurity新增属性LocalAccountNamePattern，类型string，长度0~255，只读，读权限：ReadOnly\nlinks: https://gitcode.com/openUBMC/rackmount/issues/31, https://gitcode.com/openUBMC/rackmount/issues/31",
+    "topic_user_name": "ZhangNing",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/600/2",
+            "text": ""
+        }
+    ]
+}

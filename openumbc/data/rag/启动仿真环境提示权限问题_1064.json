@@ -1,0 +1,22 @@
+{
+    "topic_id": 1064,
+    "question": "启动仿真环境提示权限问题 - content: qemu启动报错提示权限问题1276×684 114 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/af14023cd7ac63fcfc273ec018b6e693bacbb409.jpeg",
+    "topic_user_name": "Dillon",
+    "best_answer_url": "/t/topic/1064/3",
+    "reply_posts": [
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1064/2",
+            "text": "当前权限不足情况对仿真环境无功能性影响，已定位到具体问题，后续新版本发布镜像包中将修复此问题"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1064/3",
+            "text": "该问题已修复，拉取最新qemu镜像包"
+        }
+    ]
+}

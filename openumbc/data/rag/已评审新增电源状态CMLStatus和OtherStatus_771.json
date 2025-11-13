@@ -1,0 +1,15 @@
+{
+    "topic_id": 771,
+    "question": "【已评审】新增电源状态CMLStatus和OtherStatus - content: 关联Issuse\nhttps://gitcode.com/openUBMC/mdb_interface/issues/45\nhttps://gitcode.com/openUBMC/mdb_interface/issues/44\n需求背景\n电源新增继电器故障告警和原副边通信告警\n需要获取pmbus寄存器0x7F OtherStatus和 0x7E CMLStatus状态\n决策点\n接口bmc.kepler.Systems.PowerMgmt.OnePower.Status 下新增属性OtherStatus以及CMLStatus\n详细描述\n议题1 增加OtherStatus资源树属性\n资源path：/bmc/kepler/Systems/:SystemId/PowerMgmt/:ID\n资源interface：bmc.kepler.Systems.PowerMgmt.OnePower.Status\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nCMLStatus\n新增属性\ny\nro：ReadOnly\n不持久化\ntrue\n取值来源于PMBus协议0x7E寄存器值\n只支持PMBus协议\n\nOtherStatus\n新增属性\ny\nro：ReadOnly\n不持久化\ntrue\n取值来源于PMBus协议0x7F寄存器值\n只支持PMBus协议\n\n遗留问题：\n仅支持pmbus协议的资源树属性需要备注\n评审结论：\n同意bmc.kepler.Systems.PowerMgmt.OnePower.Status接口新增属性OtherStatus以及CMLStatus，签名y，只读，不持久化，发送变更事件\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/45, https://gitcode.com/openUBMC/mdb_interface/issues/44",
+    "topic_user_name": "liumengda",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/771/2",
+            "text": ""
+        }
+    ]
+}

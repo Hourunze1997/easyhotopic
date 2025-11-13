@@ -1,0 +1,29 @@
+{
+    "topic_id": 1254,
+    "question": "编译报错 - content: 按照快速入门手册，git clone git@gitcode.com:openUBMC/manifest.git后，bingo build出现如下问题，请问为什么呢？\nimage1669×363 18.8 KB\nimage1552×268 11.1 KB\nlinks: mailto:git@gitcode.com, https://discuss.openubmc.cn/uploads/default/original/1X/59109bc116dc65d034508827f1889203e28799da.png, https://discuss.openubmc.cn/uploads/default/original/1X/31e43bff12f7b637e17d23c4d06d0cc4366053c8.png",
+    "topic_user_name": "Ljx Open Ubmc",
+    "best_answer_url": "/t/topic/1254/2",
+    "reply_posts": [
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1254/2",
+            "text": "看后面一张图提示是权限问题。你用windows与docker的共享目录下编译的吗？编译工程不能在共享目录下操作，换成其他路径看看"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1254/3",
+            "text": "如有新的进展，请及时同步。"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1254/4",
+            "text": "是的， 后面一张图中显示的日志路径为 /mnt/d/wsl/workspace/xxxx， 该路径是windows的目录。\n正确的做法是：\n在wsl里， 执行mkdir workspace, git clone  xx.manifest.git拉取，再进去manifest目录执行构建。"
+        }
+    ]
+}

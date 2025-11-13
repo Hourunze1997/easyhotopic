@@ -1,0 +1,22 @@
+{
+    "topic_id": 986,
+    "question": "构建qemu固件包提示确定是否有该仓库，访问qemu地址提示页面找不到或无权限 - content: qemu仓库读取不到959×595 60.1 KB\nqemu报错1191×659 31.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/31d1b2eac1d4b1c94ae92e3d12213ddf14dae317.jpeg, https://discuss.openubmc.cn/uploads/default/original/1X/baf1386c77503ff544f6d7f733120c5160b7f4b4.png",
+    "topic_user_name": "Dillon",
+    "best_answer_url": "/t/topic/986/3",
+    "reply_posts": [
+        {
+            "user_name": "Dillon",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/986/2",
+            "text": "目前判断应该是该仓库为私有仓库，是否可以提供账号加入到白名单内"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/986/3",
+            "text": "稍后开放访问，无需权限。"
+        }
+    ]
+}

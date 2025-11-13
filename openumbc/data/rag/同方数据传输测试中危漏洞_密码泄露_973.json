@@ -1,0 +1,22 @@
+{
+    "topic_id": 973,
+    "question": "[同方]：数据传输测试中危漏洞-密码泄露 - content: 测试工具：Burp Suite\n漏洞地址：/UI/Rest/AccessMgnt/Accounts/\n测试目的：抓取数据传输过程中的数据，检查输入系统所有验证密码功能是否存在明文传输或简单的加密方式（如base64、md5、url编码）。\n测试步骤：bmc web界面添加新的用户，后台使用burp suite抓取数据，新建用户密码明文显示，当前登录密码采用简单的base64加密。\n下图是抓包数据：\nimage596×565 47 KB\n登录密码可用Base64解码：\nimage900×260 19.5 KB\n测试结论：中危漏洞\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/4d6ab97a89f11aa801d0908c14983c4f72ea9970.png, https://discuss.openubmc.cn/uploads/default/original/1X/b7d5266a2a0cf7196121890ad0f28d5ae40dace9.png",
+    "topic_user_name": "Chengxiaoju",
+    "best_answer_url": "/t/topic/973/3",
+    "reply_posts": [
+        {
+            "user_name": "张超",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/973/2",
+            "text": "首先，从安全角度讲，本现象不属于安全漏洞，因为在抓包过程中，需要让浏览器信任抓包工具所使用证书，或者将加密证书私钥输入到抓包工具。这就表明，你已经将密钥信任交给了工具。举个例子，你把家门钥匙交给一个人，他进屋看到你家茶几上放着另一把家门钥匙。\n但是，我们也注意到，一些安全测试标准中有类似的要求，我们认为原因是一些设备支持http协议的传统遗留因素导致的。但是，在openUBMC不存在这种场景。\n为了配合这种安全审查要求，我们也做了相关加密的能力。开发者也可以基于这个机制自行扩展。"
+        },
+        {
+            "user_name": "李文杰",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/973/3",
+            "text": "content: BMC当前仅支持使用HTTPS传输数据，在网络通信中，数据包已经被TLS协议进行加密了。\nBurp Suite之所以可以解密，主要是因为BurpSuite代理了客户的操作，可以解密TLS通信中的密文信息。\n在外部攻击场景下，是没有这个风险的。\n针对部分定制HTTP场景的数据，需要在rackmount的属性增加Sensitive字段，同时完成前端代码适配，可以将敏感信息进行加密\n前端适配可以参考：GitCode - 全球开发者的开源社区,开源代码托管平台\n的localLoginSensitive方法\nlinks: https://gitcode.com/openUBMC/webui/blob/main/src/apps/app-bmc/Login/login-service.ts?init=initTree"
+        }
+    ]
+}

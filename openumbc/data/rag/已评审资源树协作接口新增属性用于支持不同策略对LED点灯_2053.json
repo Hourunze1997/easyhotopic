@@ -1,0 +1,15 @@
+{
+    "topic_id": 2053,
+    "question": "【已评审】资源树协作接口新增属性用于支持不同策略对LED点灯 - content: 【已评审】资源树协作接口新增属性用于支持不同策略对LED点灯\n关联issue\n支持综合传感器事件和精细化事件的严重等级进行LED点灯\n评审背景\n\n需支持根据精细化告警或传感器事件或结合两个的事件严重等级进行led点灯\n\n资源树新增方法\n评审点： 是否新增属性SeverityReferenceSource\n资源树路径： /bmc/kepler/Systems/:SystemId/Leds\n资源树接口： bmc.kepler.Systems.Led.Policy.SystemHealth\n新增属性：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n属性说明\n接口约束\n\nSeverityReferenceSource\n新增属性\ns\n可读写 R: ReadOnly  W:BasicSetting\n临时持久化\nfalse\nLed健康灯的严重等级来源，枚举项：Event, Sensor, EventAndSensor。默认为Event\n–\n\n评审结论：\n1、同意在 /bmc/kepler/Systems/:SystemId/Leds路径下新增接口bmc.kepler.Systems.Led.Policy.SystemHealth，并在接口下新增SeverityReferenceSource属性，详细信息如下：\n\n属性名称：SeverityReferenceSource\n签名：s\n权限：可读写，读权限为ReadOnly，写权限为BasicSetting\n是否持久化：临时持久化\n是否发送变化通知事件：不发送\n说明：Led健康灯的严重等级来源，枚举项：Event, Sensor, EventAndSensor。默认为Event\nlinks: #p-5098-issue-1, https://gitcode.com/openUBMC/chassis/issues/15, #p-5098-h-2, #p-5098-h-3, #p-5098-h-4",
+    "topic_user_name": "maoyuhao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2053/2",
+            "text": ""
+        }
+    ]
+}

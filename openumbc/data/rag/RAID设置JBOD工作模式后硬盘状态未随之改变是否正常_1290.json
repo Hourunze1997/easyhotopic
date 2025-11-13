@@ -1,0 +1,36 @@
+{
+    "topic_id": 1290,
+    "question": "RAID设置JBOD工作模式后硬盘状态未随之改变是否正常 - content: 在BMC WEB-系统管理-存储管理界面点击控制器信息下方设置按钮，设置博通9560-16i 的RAID卡工作模式为JBOD，RAID卡下的硬盘状态未随之变为online(JBOD)，单独设置RAID卡工作模式和其下硬盘固件状态，BIOS菜单和OS下能看到都有生效变化。\n按照测试同事说法以及其他鲲鹏服务器主板raid控制卡用户指南（其他厂商RAID卡），设置硬盘状态为JBOD，JBOD 硬盘直通（OS直接管理），开启之后，将所有Unconfigured Good(离线)状态的硬盘同时设置为JBOD状态，已加入RAID组的硬盘状态不受影响。也就是要随之变化才是正常\n而我没有在鲲鹏服务器主板raid控制卡用户指南（该型号博通RAID卡）、WEB帮助页面、BMC白皮书等看到相关描述说明什么情况才是正常的\n企业微信截图_174902426842611508×585 32.4 KB\n企业微信截图_17490301883870892×907 21.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a86b503de9e02502ab6a2c9db8cdff4b04ea4166.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/9ca31bc9ad58bd24c79270a10be0cdade42491be.png",
+    "topic_user_name": "Yetaojie",
+    "best_answer_url": "/t/topic/1290/4",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1290/2",
+            "text": "请发送一键收集日志到maoyuhao@huawei.com邮箱，我们将会分析该问题"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1290/3",
+            "text": "感谢，日志已发至该邮箱"
+        },
+        {
+            "user_name": "Kunlun Liuchenxi",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1290/4",
+            "text": "设置raid卡的JBOD工作模式，触发下挂硬盘的状态应该为raid卡的行为不需要BMC触发所有硬盘的状态从UG切换到JBOD。raid卡有一个AutoConfig配置状态可通过storcli /c0 show autoconfig在OS下查询。auto config为jbod的时候会切换JBOD工作模式会自动切硬盘状态。以上信息供参考"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1290/5",
+            "text": "感谢，按照你说的，使用storcli /c0 set autoconfig=JBOD ，现象就变成他们在华为服务器上测出来的，无论设置RAID工作模式为什么，硬盘状态都是在线JBOD"
+        }
+    ]
+}

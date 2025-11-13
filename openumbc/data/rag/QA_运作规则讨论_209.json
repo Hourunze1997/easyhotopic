@@ -1,0 +1,7 @@
+{
+    "topic_id": 209,
+    "question": "QA 运作规则讨论 - content: QA SIG\nQA(质量保障)对openUBMC社区发布的软件进行测试，目标是定义openUBMC社区发布质量规范，提升社区测试能力，提高社区软件发布质量。\n\n构建社区测试能力，让更多的社区开发者参与、使用和贡献\n开发者测试工具提升UT/IT的测试覆盖率\n按照版本规划制定测试策略、测试计划和测试活动\n制定、发布和维护版本发布标准\n\n组织会议\n\n公开会议时间：北京时间每双周五 下午，4点~5点，请订阅qa@public.openubmc.cn获取会议相关信息\n具体会议参会方式，会提前一天发出，会议议题在[@etherpad.QA]登记。\n\n成员\nMaintainer列表\n\n于 飞qa@public.openubmc.cn [@nathanael]\n\nCommitter列表\n联系方式\n\nQA使用邮件列表 qa@public.openubmc.cn 做日常讨论\n*历史讨论的记录以及历次TC会议的纪要，可以访问邮件列表归档\nlinks: https://etherpad.openubmc.cn/p/qa, mailto:qa@public.openubmc.cn, https://gitcode.com/nathanael, mailto:qa@public.openubmc.cn, https://mailweb.openubmc.cn/hyperkitty/list/qa@public.openubmc.cn/",
+    "topic_user_name": "nathanael yu",
+    "best_answer_url": "",
+    "reply_posts": []
+}

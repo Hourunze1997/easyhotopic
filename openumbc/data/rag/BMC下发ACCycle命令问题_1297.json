@@ -1,0 +1,22 @@
+{
+    "topic_id": 1297,
+    "question": "BMC下发ACCycle命令问题 - content: 我们当前项目需要修改ACCycle的实现逻辑，想问一下BMC当前是怎么下发ACCycle命令的，查看fructrl组件代码，发现相关代码只是设置了AC这个属性的值，无法与CPLD和PSU关联起来\nimage1012×807 51.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0495bbc76f436dbf2efadc8903df991b0f893e03.png",
+    "topic_user_name": "百信-罗昊",
+    "best_answer_url": "/t/topic/1297/3",
+    "reply_posts": [
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1297/2",
+            "text": "设置属性, 关联到属性关联的accessor, accessor关联到SMC(也即CPLD)"
+        },
+        {
+            "user_name": "百信-罗昊",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1297/3",
+            "text": "content: 关联到Accessor_AC.Value\nimage290×249 5.06 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/f7bf9e4474202e3e4f09c70d4c21b1464a1bd16f.png"
+        }
+    ]
+}

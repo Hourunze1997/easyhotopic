@@ -1,0 +1,15 @@
+{
+    "topic_id": 1858,
+    "question": "【iTestSmart】\"Redfish接口Boards资源检查基础板信息\"测试用例相关问题。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\n二、问题描述\nOpenUBMC->多样化硬件->Redfish接口Boards资源检查基础板信息，测试结果FAIL。\n查看测试报告，有以下问题需要解惑：\n（1）测试步骤：”Redfish接口Boards路径查询所有基础板BCU信息，静态信息与XML比较，动态信息与WEB接口比较“。\n”静态信息”、“XML”、“动态信息”指什么信息，“web接口”是指BMC的web页面获取的信息吗？\n（2）”fruget“这个信息是如何获取的？（请看附件截图）\nipmitool获取到的信息1516×427 143 KB\nPartNumber信息对比错误1920×553 130 KB\nxml静态信息2031×945 246 KB\nxml静态信息12135×641 152 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/785d037a8eea97ea0396bd120b4a1b6f529f99d4.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/a/a13ae94f81557abe341ddd37e25c668a910d6231.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/2/26c9840162208e7d5f2a2124d155c2ab6432c53a.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/f/f44beedbaf201cc2488824c1fde4bbc96fd8e54f.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/1858/2",
+    "reply_posts": [
+        {
+            "user_name": "Openubmc Liuyujie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1858/2",
+            "text": "这个用例自动化代码存在问题，getfru的结果没有处理。是个bug，下个版本修复，感谢反馈。"
+        }
+    ]
+}

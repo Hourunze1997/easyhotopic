@@ -1,0 +1,15 @@
+{
+    "topic_id": 414,
+    "question": "应支持bingo、构建工具、sdk之间的版本配套 - 当前伙伴会遇到remote中的二进制包缺失，本质原因是开发本地的sdk版本和remote中二进制版本的sdk不一致，需要有一种机制使bingo、package、sdk、构建工具等保持一致",
+    "topic_user_name": "yaoshun",
+    "best_answer_url": "/t/topic/414/2",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/414/2",
+            "text": "content: 此特性非常重要：工具（bingo）、构建策略（manifest）和sdk（bmc_sdk）之间明显存在配套关系，这种关系一定要有一种机制完成约束，确保配套关系满足，并在不满足时给出错误、提示，帮助开发者快速解决，减少试错成本。\n@yaoshun1 @zybwh\nlinks: /u/yaoshun1, /u/zybwh"
+        }
+    ]
+}

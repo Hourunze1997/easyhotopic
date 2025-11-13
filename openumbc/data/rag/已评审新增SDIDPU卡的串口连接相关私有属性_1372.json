@@ -1,0 +1,36 @@
+{
+    "topic_id": 1372,
+    "question": "【已评审】新增SDI/DPU卡的串口连接相关私有属性 - content: issue链接\nAC刚重启时SDI卡串口连接会异常卡死\n评审背景\n背景介绍：当前使用串口名称判断使用的串口是否相同，但是串口名称不具有唯一性，所以使用具有唯一性的SrcSerial和DestSerial作为判断条件。\n前置评审\nhttps://discuss.openubmc.cn/t/topic/1170/2\n评审点\n1、当前SerialRecordConnect的配置\n          \"SerialRecordConnect\": {\n              \"usage\": [\n                  \"CSR\"\n              ],\n              \"baseType\": \"Array\",\n              \"items\": {\n                  \"baseType\": \"Struct\",\n                  \"$ref\": \"types.json#/defs/Connection\"\n              }\n          }\n// Connetction内容\n        \"Connection\": {\n            \"Source\": {\n                \"baseType\": \"String\"\n            },\n            \"Destination\": {\n                \"baseType\": \"String\"\n            }\n        }\n\n修改后的配置\n\n// Connection增加SrcSerial和 DestSerial\n        \"Connection\": {\n            \"Source\": {\n                \"baseType\": \"String\"\n            },\n            \"Destination\": {\n                \"baseType\": \"String\"\n            },\n            \"SrcSerial\": {\n                \"baseType\": \"U8\"\n            },\n            \"DestSerial\": {\n                \"baseType\": \"U8\"\n            }\n        },\n\n兼容性适配\n\n新BMC搭配新CSR：问题解决\n新BMC搭配老CSR：新BMC会内置新CSR，问题解决\n老BMC搭配老CSR：问题未解决，符合预期\n老BMC搭配新CSR：新CSR中Source和Destination字段还在，虽然问题未解决，但不会引入问题，符合预期\n\n详细说明\n资源对象：DPUCard\n资源interface：私有属性不涉及\n变化类型：新增私有属性\n应用场景：优化极端场景下SDI/DPU卡串口稳定性\n持久化类型： 不持久化\n操作权限：NA\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nSrcSerial\n新增属性\ny\nNA\nNA\nNA\n源Uart或Port口，其中取值大于16是Port，否则是Uart\n无\n\nDestSerial\n新增属性\ny\nNA\nNA\nNA\n目的Uart或Port口，其中取值大于16是Port，否则是Uart\n无\n\n评审结论\n通过\n\n同意在私有属性SerialRecordConnect结构体中新增子属性SrcSerial，签名为y\n同意在私有属性SerialRecordConnect结构体中新增子属性DestSerial，签名为y\nlinks: #p-3185-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/116, #p-3185-h-2, #p-3185-h-3, https://discuss.openubmc.cn/t/topic/1170/2, #p-3185-h-4, #p-3185-h-5, #p-3185-h-6, #p-3185-h-7",
+    "topic_user_name": "I Bmc 001 843rs",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Yelvsub",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1372/2",
+            "text": "需要先在hardware-sig评审方案合理性，再上interface-sig评审"
+        },
+        {
+            "user_name": "Yelvsub",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1372/3",
+            "text": "已预审，请根据意见修改帖子"
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1372/4",
+            "text": "1、补充CSR前后兼容性分析"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1372/5",
+            "text": ""
+        }
+    ]
+}

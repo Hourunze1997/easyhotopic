@@ -1,0 +1,15 @@
+{
+    "topic_id": 508,
+    "question": "【审批通过】QA双周会议议题申请 - content: 已在 Etherpad 中提交本次 QA 双周会议议题，烦请查阅并协助安排，谢谢！\n由于目前对 QA SIG 组议题申请的具体规则还不够了解，未能提前一周提交，实在抱歉。上周我们刚与 QA SIG 组在QA公共邮件完成初步对接，因此希望能尽快推进在本地自动化构建平台能力和达到社区自动化测试标准能力上的协同，并希冀后续工作中我们有能力持续向 QA SIG 做出实质性贡献。\n链接如下Etherpad\nlinks: https://etherpad.openubmc.cn/p/qa",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/508/2",
+    "reply_posts": [
+        {
+            "user_name": "Openubmc Liuyujie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/508/2",
+            "text": "收到，已经添加到本周QA SIG议题中。"
+        }
+    ]
+}

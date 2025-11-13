@@ -1,0 +1,43 @@
+{
+    "topic_id": 1599,
+    "question": "社区发行版：2506版本的源码文件zip解压之后，部分组件的工作区不干净 - content: 背景\n将社区发行版部署到公司内部源码仓时，发现部分组件的工作区不干净\n问题现象：\n加*号的就是有文件修改的组件\nimage453×869 46.5 KB\n以下以manifest为例：\nimage1304×530 48.9 KB\nimage813×322 27.5 KB\n初步尝试\n手动下载每个仓库源码，并且使用tar的形式打包，解压后，不会改变文件内容。\n诉求\n这个现象是否正常？\nlinks: #p-3875-h-1, #p-3875-h-2, https://discuss.openubmc.cn/uploads/default/original/2X/b/ba23f874d357571ae019fff3dea01cb6dc2871bf.png, https://discuss.openubmc.cn/uploads/default/original/2X/5/50b9b1a3208ebb955c3a8b255def9407f7069025.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/9334fc18b4958d3f7f9ae0e5c493edcb8621ed4c.png, #p-3875-h-3, #p-3875-h-4",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/1599/5",
+    "reply_posts": [
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1599/2",
+            "text": "当前文件是软连接形式存放，故不能在windows下解压，如果在windows下解压会把软链接替换为真实文件，故manifest是正常的，其他组件需要列出具体git变更"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1599/3",
+            "text": "我这个不是在windows下做的解压，我分别在wsl的docker容器以及linux宿主机中解压，都出现这个问题。\n其他组件也是.service文件出现问题"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1599/4",
+            "text": "给出一个复现问题的操作示例。"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1599/5",
+            "text": "已安排重新制作源码包，当前是否还有问题，如无问题可关闭已解决。"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1599/6",
+            "text": "经测试，已解决"
+        }
+    ]
+}

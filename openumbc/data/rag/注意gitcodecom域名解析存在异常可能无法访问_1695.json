@@ -1,0 +1,36 @@
+{
+    "topic_id": 1695,
+    "question": "注意！gitcode.com域名解析存在异常，可能无法访问 - content: 若无法访问，可采取以下规避措施：\nWindows机器:\n复制C:\\Windows\\System32\\drivers\\etc \\hosts文件到桌面, 修改文件添加以下内容\n116.205.2.91 gitcode.com\n116.205.2.45 web-api.gitcode.com\n58.20.209.162 cdn-static.gitcode.com\n将修改后的文件 覆盖后回 C:\\Windows\\System32\\drivers\\etc\\\nLinux机器:\n复制下放ip到/etc /hosts\n116.205.2.91 gitcode.com\n116.205.2.45 web-api.gitcode.com\n58.20.209.162 cdn-static.gitcode.com\nlinks: http://gitcode.com, http://web-api.gitcode.com, http://cdn-static.gitcode.com",
+    "topic_user_name": "张雨博",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1695/2",
+            "text": ""
+        },
+        {
+            "user_name": "zhuchao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1695/3",
+            "text": "各位亲：\n直接影响范围是：\n1、访问gitcode.com官网和代码仓会会出现访问失败。\n2、CI门禁会失败，因为git clone GitCode仓库会失败，导致CI门禁一直出现running."
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1695/4",
+            "text": "问题已修复，关闭帖子"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1695/5",
+            "text": ""
+        }
+    ]
+}

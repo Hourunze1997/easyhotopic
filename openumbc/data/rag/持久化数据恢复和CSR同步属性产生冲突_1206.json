@@ -1,0 +1,29 @@
+{
+    "topic_id": 1206,
+    "question": "持久化数据恢复和CSR同步属性产生冲突 - content: 背景：适配网卡时配置网口MACAddress和PermanentMACAddress，配置Scanner获取mac地址后采用同步属性 “<=/” 赋值给对应属性值；\n{78A7A6DF-681C-4889-940A-4346CE3A5234}894×204 11 KB\n对应属性model.json默认配置如下图：\nimage632×610 19.2 KB\n问题：MACAddress和PermanentMACAddress做了持久化，同时CSR中属性值被配置成了同步属性。第一次启动时，NetworkPort对象能正常被创建，mac地址的值是从csr中获取到的。\n第二次启动时报错同步属性不能被设置，NetworkPort对象也没有被正常创建\n日志截图：\nimage1826×112 17.3 KB\n附带日志：\nframework.log.txt (1.6 MB)\napp.log.txt (2.0 MB)\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/62211f47b209053135700f63d6106594442909bd.png, https://discuss.openubmc.cn/uploads/default/original/1X/707fdbedbab2c0b2e121249b1f380da79f8cb8d1.png, https://discuss.openubmc.cn/uploads/default/original/1X/836db19733687a2b9ecd0a9e2b90e419849bfb58.png, /uploads/short-url/2ExGnWkCTg8xAZHwizAfxY0SIIf.txt, /uploads/short-url/kIdRpmJJxW6RgbHh58P75J8rKF7.txt",
+    "topic_user_name": "Hkzy Pengcheng",
+    "best_answer_url": "/t/topic/1206/4",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1206/2",
+            "text": "不支持这样使用，既然已经配置了同步语法为什么还要持久化呢？每次值都是新同步的， 没有持久化的意义呀，不建议也不支持这样使用。"
+        },
+        {
+            "user_name": "Hkzy Pengcheng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1206/3",
+            "text": "mac地址的持久化配置是network_adapter开源代码已经配置好的，删除之后怕影响到其他实现，我在配同步语法的时候没注意到这里。\n请教一下，这个mac属性在model.json中配置的来源是不是可能有点冲突；还是说有其他设计实现考量。"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1206/4",
+            "text": "单从model.json这种配置来看是允许的，但是属性同步和持久化恢复是冲突的"
+        }
+    ]
+}

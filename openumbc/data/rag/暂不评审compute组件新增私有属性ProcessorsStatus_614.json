@@ -1,0 +1,15 @@
+{
+    "topic_id": 614,
+    "question": "【暂不评审】compute组件新增私有属性ProcessorsStatus - 背景（必填，文字描述议题背景，如需求来源、问题场景）:\nBMC支持收集HBM初始化和运行日志并持久化记录需求，新增私有属性承载CPU状态。\n当前现状与差距/问题分析：\nFDM组件有私有属性承载CPU状态，根据CPU状态判断是否要收集日志。Compute组件目前没有这样的属性。\n决策点（必填，一句话描述待决策点）：\n1、Compute组件CPU对象新增私有属性ProcessorsStatus\n整体方案\n在compute组件新增私有属性ProcessorsStatus，承载CPU状态信息，数据来源是基础板SMC命令字。\n详细描述（必填，描述待评审接口的详细内容）：\n1、新增私有属性ProcessorsStatus\n资源path：/bmc/kepler/Systems/:SystemId/Processors/CPU/:Id\n资源interface：私有资源\n变化类型：新增属性\n应用场景：BMC周期性地收集IMU、M7、HBM日志，根据CPU状态判断是否可以收集日志。\n持久化类型： 不持久化\n操作权限：ReadOnly\n兼容性策略：新增属性不涉及",
+    "topic_user_name": "王祝炜",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/614/2",
+            "text": "请先到hardware SIG评审修改方案"
+        }
+    ]
+}

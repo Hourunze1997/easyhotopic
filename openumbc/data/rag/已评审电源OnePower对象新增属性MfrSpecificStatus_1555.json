@@ -1,0 +1,15 @@
+{
+    "topic_id": 1555,
+    "question": "【已评审】电源OnePower对象新增属性MfrSpecificStatus - content: ISSUE链接\n【需求】电源OnePower对象新增属性MfrSpecificStatus-power_mgmt-GitCode\n背景\n\n电源PSON为MV12模式时，BMC实时读取某寄存器的Bit7值；若带为内上电模式且电源模块某寄存器bit7的值为0，则上报PSON信号异常\n系统下电不再检测\n\n决策点\n\nOnePower对象bmc.kepler.Systems.PowerMgmt.OnePower.Status接口下新增MfrSpecificStatus属性\n\n详细描述\n\n资源path：/bmc/kepler/Systems/:SystemId/PowerMgmt/OnePower/:ID\n资源interface：bmc.kepler.Systems.PowerMgmt.OnePower.Status\n变化类型：新增属性\n应用场景：监控PSON12V状态用于告警\n持久化类型： 不持久化\n操作权限：ReadOnly\n\n属性名称\n变化类型\n签名\n访问权限\n持久化\n变化通知\n属性值来源\n说明\n约束\n\nMfrSpecificStatus\n新增属性\ny\n读：ReadOnly\n不持久化\ntrue\nCSR\n电源厂商自定义状态\n取值定义与PMBUS规范中0x80寄存器的值保持一致\n\nPMBUS规范中0x80寄存器的定义如下：\n\nBit7\nBit6\nBit5\nBit4\nBit3\nBit2\nBit1\nBit0\n\nPSON12V#\nINSTALLED#\nIPOK\nOPOK\nOPERATION OFF\nSET Interrupt\nPFC ENABLED\nPFC BUS UV\n\n0: signal High level 1:signal Low level\n0: signal High Level1: signal Low level\n0: signal High Level1: signal Low level\nHigh Level1: signal Low level\n0: 系统未下发operation off导致电源关机1: 系统下发operation off导致电源关机\n0: 系统未下发set interrupt导致电源关机1: 系统下发set interrupt导致电源关机\n0: PFC是开着的状态1:PFC是关闭的状态\n0: 母线无欠压1:母线欠压\n\n评审结论\n同意资源协作接口bmc.kepler.Systems.PowerMgmt.OnePower.Status新增MfrSpecificStatus属性，签名为y，只读，读权限：ReadOnly，需要发送变化通知事件\n遗留问题\n需要hardware-sig评审\nhardware-sig已评审\n\netherpad.openubmc.cn\n\nEtherpad\nlinks: #p-3752-issue-1, https://gitcode.com/openUBMC/power_mgmt/issues/124, #p-3752-h-2, #p-3752-h-3, #p-3752-h-4, #p-3752-h-5, #p-3752-h-6, https://etherpad.openubmc.cn/p/sig-hardware, https://etherpad.openubmc.cn/p/sig-hardware",
+    "topic_user_name": "luzongpeng",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1555/2",
+            "text": ""
+        }
+    ]
+}

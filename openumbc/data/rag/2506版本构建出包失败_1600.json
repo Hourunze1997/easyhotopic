@@ -1,0 +1,71 @@
+{
+    "topic_id": 1600,
+    "question": "2506版本构建出包失败 - content: 【当前背景】\nbingo版本：0.5.317\nbmc_sdk：2506最新版本\nmanifest版本：2506\n镜像版本：2503版本镜像\n【执行操作】\n更新SDK\n1、删除/opt/目录下所有文件\n2、解压新版的bmc_sdk，按照init.py中的命令进行操作，在执行bingo build -t install_sdk -b openUBMC -ucc\nimage890×282 22.3 KB\n执行后在manifest中执行LOG=info bingo build -b openUBMC -r artifactory后报错\nfructrl/1.70.35@openUBMC.release/rc: Configuring sources in /root/.conan/data/fructrl/1.70.35/openUBMC.release/rc/source\nfructrl/1.70.35@openUBMC.release/rc: SCM: Getting sources from url: 'https://gitcode.com/openUBMC/fructrl.git'\nfructrl/1.70.35@openUBMC.release/rc: Copying sources to build folder\nfructrl/1.70.35@openUBMC.release/rc: Building your package in /root/.conan/data/fructrl/1.70.35/openUBMC.release/rc/build/ded551da8fa3f9b86d2a2e032320257dc3fdefa4\nfructrl/1.70.35@openUBMC.release/rc: WARN: \n     ************************************************\n     The 'cmake' generator is deprecated.\n     Please update your code and remove it.\n     *************************************************\n\nfructrl/1.70.35@openUBMC.release/rc: Generator cmake created conanbuildinfo.cmake\nfructrl/1.70.35@openUBMC.release/rc: Calling generate()\nfructrl/1.70.35@openUBMC.release/rc: Aggregating env generators\nfructrl/1.70.35@openUBMC.release/rc: Calling build()\nfructrl/1.70.35@openUBMC.release/rc: Package 'ded551da8fa3f9b86d2a2e032320257dc3fdefa4' built\nfructrl/1.70.35@openUBMC.release/rc: Build folder /root/.conan/data/fructrl/1.70.35/openUBMC.release/rc/build/ded551da8fa3f9b86d2a2e032320257dc3fdefa4\nfructrl/1.70.35@openUBMC.release/rc: Generated conaninfo.txt\nfructrl/1.70.35@openUBMC.release/rc: Generated conanbuildinfo.txt\nfructrl/1.70.35@openUBMC.release/rc: Generating the package\nfructrl/1.70.35@openUBMC.release/rc: Package folder /root/.conan/data/fructrl/1.70.35/openUBMC.release/rc/package/ded551da8fa3f9b86d2a2e032320257dc3fdefa4\nfructrl/1.70.35@openUBMC.release/rc: Calling package()\nfructrl/1.70.35@openUBMC.release/rc: WARN: **** The 'from conans import CMake' helper is deprecated. Please update your code and remove it. ****\nNot searching for unused variables given on the command line.\n-- The C compiler identification is GNU 7.3.0\n-- The CXX compiler identification is GNU 7.3.0\n-- Detecting C compiler ABI info\ne[43m-- Detecting C compiler ABI info - failede[0m\n-- Check for working C compiler: /opt/hcc_arm64le/bin/aarch64-target-linux-gnu-gcc\n-- Check for working C compiler: /opt/hcc_arm64le/bin/aarch64-target-linux-gnu-gcc - broken\ne[43mCMake Error at /usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:67 (message):e[0m\n  The C compiler\n\n    \"/opt/hcc_arm64le/bin/aarch64-target-linux-gnu-gcc\"\n\n  is not able to compile a simple test program.\n\n  It fails with the following output:\n\n    Change Dir: '/root/.conan/data/fructrl/1.70.35/openUBMC.release/rc/build/ded551da8fa3f9b86d2a2e032320257dc3fdefa4/CMakeFiles/CMakeScratch/TryCompile-y7OYvK'\n    \n    Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e9681/fast\n    /usr/bin/gmake  -f CMakeFiles/cmTC_e9681.dir/build.make CMakeFiles/cmTC_e9681.dir/build\n    gmake[1]: 进入目录“/root/.conan/data/fructrl/1.70.35/openUBMC.release/rc/build/ded551da8fa3f9b86d2a2e032320257dc3fdefa4/CMakeFiles/CMakeScratch/TryCompile-y7OYvK”\n    Building C object CMakeFiles/cmTC_e9681.dir/testCCompiler.c.o\n    /opt/hcc_arm64le/bin/aarch64-target-linux-gnu-gcc --sysroot=/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk -D_FORTIFY_SOURCE=2  -Wall -fPIC -fstack-protector-all -O2 -Wl,-z,relro,-z,now -Wl,-z,relro -Wl,-z,noexecstack -Wl,-z,now -fPIE -pie -fno-common -std=gnu11  -o CMakeFiles/cmTC_e9681.dir/testCCompiler.c.o -c /root/.conan/data/fructrl/1.70.35/openUBMC.release/rc/build/ded551da8fa3f9b86d2a2e032320257dc3fdefa4/CMakeFiles/CMakeScratch/TryCompile-y7OYvK/testCCompiler.c\n    Linking C executable cmTC_e9681\n    /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9681.dir/link.txt --verbose=1\n    /opt/hcc_arm64le/bin/aarch64-target-linux-gnu-gcc --sysroot=/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk -Wall -fPIC -fstack-protector-all -O2 -Wl,-z,relro,-z,now -Wl,-z,relro -Wl,-z,noexecstack -Wl,-z,now -fPIE -pie -fno-common -std=gnu11  CMakeFiles/cmTC_e9681.dir/testCCompiler.c.o -o cmTC_e9681 \n    /opt/hcc_arm64le/bin/../lib64/gcc/aarch64-target-linux-gnu/7.3.0/../../../../aarch64-target-linux-gnu/bin/ld: 找不到 Scrt1.o: 没有那个文件或目录\n    /opt/hcc_arm64le/bin/../lib64/gcc/aarch64-target-linux-gnu/7.3.0/../../../../aarch64-target-linux-gnu/bin/ld: 找不到 crti.o: 没有那个文件或目录\n    /opt/hcc_arm64le/bin/../lib64/gcc/aarch64-target-linux-gnu/7.3.0/../../../../aarch64-target-linux-gnu/bin/ld: 找不到 -lc: 没有那个文件或目录\n    /opt/hcc_arm64le/bin/../lib64/gcc/aarch64-target-linux-gnu/7.3.0/../../../../aarch64-target-linux-gnu/bin/ld: 找不到 crtn.o: 没有那个文件或目录\ne[43m    collect2: error: ld returned 1 exit statuse[0m\n    gmake[1]: *** [CMakeFiles/cmTC_e9681.dir/build.make:99：cmTC_e9681] 错误 1\n    gmake[1]: 离开目录“/root/.conan/data/fructrl/1.70.35/openUBMC.release/rc/build/ded551da8fa3f9b86d2a2e032320257dc3fdefa4/CMakeFiles/CMakeScratch/TryCompile-y7OYvK”\n    gmake: *** [Makefile:127：cmTC_e9681/fast] 错误 2\n    \n    \n\n  \n\n  CMake will not be able to correctly generate this project.\nCall Stack (most recent call first):\n  CMakeLists.txt:3 (project)\n\n-- Configuring incomplete, errors occurred!\ne[43mERROR: fructrl/1.70.35@openUBMC.release/rc: Error in package() method, line 30e[0m\n\tsuper().package()\ne[43m\tConanException: Error 1 while executing cd '/root/.conan/data/fructrl/1.70.35/openUBMC.release/rc/build/ded551da8fa3f9b86d2a2e032320257dc3fdefa4' && cmake -G \"Unix Makefiles\" -DCMAKE_BUILD_TYPE=\"Debug\" -DCMAKE_SYSTEM_NAME=\"Linux\" -DCMAKE_SYSTEM_VERSION=\"3.14\" -DCONAN_CMAKE_FIND_ROOT_PATH=\"/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk\" -DCONAN_CMAKE_FIND_ROOT_PATH_MODE_PROGRAM=\"NEVER\" -DCONAN_CMAKE_FIND_ROOT_PATH_MODE_LIBRARY=\"ONLY\" -DCONAN_CMAKE_FIND_ROOT_PATH_MODE_INCLUDE=\"ONLY\" -DCMAKE_SYSROOT=\"/opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk\" -DCONAN_IN_LOCAL_CACHE=\"ON\" -DCONAN_COMPILER=\"gcc\" -DCONAN_COMPILER_VERSION=\"7.3\" -DCONAN_LIBCXX=\"libstdc++\" -DCMAKE_INSTALL_PREFIX=\"/root/.conan/data/fructrl/1.70.35/openUBMC.release/rc/package/ded551da8fa3f9b86d2a2e032320257dc3fdefa4\" -DCMAKE_INSTALL_BINDIR=\"bin\" -DCMAKE_INSTALL_SBINDIR=\"bin\" -DCMAKE_INSTALL_LIBEXECDIR=\"bin\" -DCMAKE_INSTALL_LIBDIR=\"usr/lib64\" -DCMAKE_INSTALL_INCLUDEDIR=\"include\" -DCMAKE_INSTALL_OLDINCLUDEDIR=\"include\" -DCMAKE_INSTALL_DATAROOTDIR=\"share\" -DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=\"ON\" -DCONAN_EXPORTED=\"1\" -DBUILD_MANUFACTURE=\"True\" -DCONAN_DEFS_QEMU=\"False\" -DPACKAGE_VERSION_MAJOR=\"1\" -DPACKAGE_VERSION_MINOR=\"70\" -DPACKAGE_VERSION_REVISION=\"35\" -DCMAKE_TOOLCHAIN_FILE=\"conan_toolchain.cmake\" -DCMAKE_SKIP_BUILD_RPATH=\"True\" -DCMAKE_SKIP_RPATH=\"True\" -DCMAKE_SKIP_INSTALL_RPATH=\"True\" -DCMAKE_BUILD_WITH_INSTALL_RPATH=\"False\" -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=\"False\" -Wno-dev '--no-warn-unused-cli' '/root/.conan/data/fructrl/1.70.35/openUBMC.release/rc/build/ded551da8fa3f9b86d2a2e032320257dc3fdefa4'e[0m\n构建完成时间: 2025/07/08 10:34:00.064028\ne[31m[2025-07-08 02:34:00,098 ERROR] task_build_conan.py:181 ================== fructrl/1.70.35@openUBMC.release/rc#3334c93220fcb5c47754c9363a655be3 构建失败日志结束位置 ==================e[0m\n\n构建日志见附件\ntask.txt (186.0 KB)\n【当前疑问】\n1、bmc_sdk更新是否有偏差，是否有什么配套关系需要注意\n2、当前构建出包失败的问题应该如何解决\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/426d20a956a0cc2fd761ebb316306b38e1811cc2.png, /uploads/short-url/icD9IH1WZjkbJiekzr208vHA9Y1.txt",
+    "topic_user_name": "百信-张滨",
+    "best_answer_url": "/t/topic/1600/6",
+    "reply_posts": [
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1600/2",
+            "text": "查看ls -al /opt目录，列出文件"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1600/3",
+            "text": "content: image856×137 6.13 KB\n以上是查询到的文件\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e79ee73ba2f1f18c518d79a7398818726b280a16.png"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1600/4",
+            "text": "content: 【初步分析】\n根据日志，构建 fructrl 包时发生问题，主要表现如下：\n\nC编译器检测失败\nCMake检测交叉编译器时失败，提示：\n\n-- Detecting C compiler ABI info - failed  \n-- Check for working C compiler: /opt/hcc_arm64le/bin/aarch64-target-linux-gnu-gcc - broken  \n\n说明交叉编译器无法正常工作。\n\n链接器找不到关键启动文件和库\n链接测试程序时，链接器报错缺少以下文件：\n\nScrt1.o、crti.o、crtn.o，以及 -lc 库文件  \n\n这些文件属于C运行时和启动文件，缺失导致链接失败。\n\n根本原因推测\n工具链的 sysroot 配置不完整或错误，导致找不到C运行时库和启动文件。\n在当前SDK路径 /opt/RTOS/208.9.0/arm64le_5.10_ek_preempt_pro/sdk 中，缺少 libc.so、crt1.o、crti.o、crtn.o 等关键文件。\n\n【SDK更新相关情况】\n\n日志显示安装了 rtos_lkp-208.8.1 和 rtos_base-208.8.1 两个rpm包，且删除并重新解压了 /opt/hcc_arm64le 目录。\n更新过程中提示无法从 yaml 文件获取 base/rtos_offering 配置项，可能存在配置缺失。\n/root/RTOS 目录下有多个SDK版本，之前尝试删除旧版本并重新复制SDK及工具链后依然构建失败。\n\nimage1479×890 134 KB\n\n【当前疑问】\n\n构建失败是否与SDK更新直接相关？\nSDK更新步骤是否完整正确，是否遗漏了关键环节？\n是否有推荐的SDK更新流程和工具链配置方法，能确保编译环境完整有效？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/25429b5bc0ff69149f31f5747e012da3b921817e.png"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1600/5",
+            "text": "content: 使用2506版本manifest仓库中的dockerfile制作的镜像去编译社区的manifest也出现了同样的问题\nimage1920×1040 137 KB\n当前社区manifest仓库中init.py中的bingo安装还是2503版本，卸载bingo后重新安装0.5.262版本bingo构建仍然出现相同问题\n使用ls -al /opt列出的文件如下：\nimage1091×210 7.89 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/78983713e9d82b0060f9b8629838a781759a5776.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/9368decee94d1e92c79f7f23a48edf615174b1e0.png"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1600/6",
+            "text": "根本原因是RTOS版本不对，应该是208.9版本"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1600/8",
+            "text": "当前问题是否已解决？"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1600/9",
+            "text": "content: SDK更新已经完成，目前是\n\n但是构建出包仍有问题，与配套的工具以及组件有关\nimage1569×826 63.2 KB\n目前等待同步配套关系后再进行验证\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/ef5fd52085788f6bbcceda221334f47cadd65a3e.png"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1600/10",
+            "text": "此问题已解决"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1600/11",
+            "text": "content: @baixin_zhangbin   bingo版本0.5.317 存在一个缺陷，导致自签名的release包升级会回退，请向PAE获取最新版本。 或使用社区的bingo 版本， 签名指导参考\n\n使用bingo进行自签名BMC固件包指导 交流互助区\n\n    bingo在openUBMC 25.06版本实现了自签名BMC固件包功能，支持2种签名模式，本地签名和远程服务器签名。考虑到安全性，推荐使用远程服务器模式，避免证书泄露。 \n前提条件\n\n向PAE获取crypto_tool工具用于加密，以及datatocheck_upgrade.dat和 pme_profile_en.dat文件用于替换build/manufacture/misc/中占位的空文件。\n适…\nlinks: /u/baixin_zhangbin, https://discuss.openubmc.cn/t/topic/1665, /c/42-category/42, #p-4042-h-1"
+        }
+    ]
+}

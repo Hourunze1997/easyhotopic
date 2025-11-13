@@ -1,0 +1,15 @@
+{
+    "topic_id": 2022,
+    "question": "iTestSmart-Beta-1.0.0.2175设备同步失败问题。 - content: image1915×254 25.3 KB\niTestSmart-Beta-1.0.0.2175版本显示设备“同步失败”，请帮忙看下是什么原因。\n另外，只有个别测试项可以通过，其它都是失败，不知道是否跟没有导入license有关？\nimage1877×580 55.7 KB\nimage1903×922 111 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/87cbb42ffb2032871666e21aec49d9f6d981d946.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/1e0953f9701131df4290bee39258ce910958b62d.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/39c1e93ae5ed53032a170ac9d4b0e717a2c01844.png",
+    "topic_user_name": "Lcs209",
+    "best_answer_url": "/t/topic/2022/2",
+    "reply_posts": [
+        {
+            "user_name": "Hdq",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2022/2",
+            "text": "content: 需要提供同步设备任务的工具日志进一步分析。打包日志方式：iTestSmart测试OpenUBMC用例失败求助指引 。 日志发送huangdingquan1@huawei.com。\n\n部分用例未适配，8月工具版本会统一整改。与未导入license无关。\nlinks: https://discuss.openubmc.cn/t/topic/1786"
+        }
+    ]
+}

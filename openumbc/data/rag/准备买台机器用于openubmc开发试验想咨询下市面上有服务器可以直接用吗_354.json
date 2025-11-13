@@ -1,0 +1,22 @@
+{
+    "topic_id": 354,
+    "question": "准备买台机器用于openubmc开发试验，想咨询下市面上有服务器可以直接用吗？ - content: 各位大佬，目前公司一直用客户的设备进行远程开发，感觉不太方便。\n准备买台机器用于openubmc开发试验，想咨询下市面上有服务器可以直接用吗？\n京东上看到有华为泰山(TaiShan 200)2280/5280的机器，可以用来做openubmc的开发吗？\nhttps://item.jd.com/100201382204.html\n\n还有哪些服务器机型可以刷openubmc？\nlinks: https://item.jd.com/100201382204.html",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/354/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/354/2",
+            "text": "建议单独联系社区支持"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/354/3",
+            "text": "收到"
+        }
+    ]
+}

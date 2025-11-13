@@ -1,0 +1,43 @@
+{
+    "topic_id": 331,
+    "question": "【snmp】get the sequence of interface failed 怎么排查问题？ - 【snmp】报错日志：\nget_table_property_value: get the sequence of interface(/snmp/1.3.6.1.4.2011.2.235.1.1.15.50/memoryDescriptionTable/Readonly) failed.\nget_interface_dequence: execute get_interface_sequence method failed , error is ./opt/bmc/apps/snmp/lualib/interface.lua:370: bad argument\n排查了rackmount模块的对应接口，排查json格式正确，看不出来接口有什么问题，求助社区",
+    "topic_user_name": "HKZY_YangBo",
+    "best_answer_url": "/t/topic/331/3",
+    "reply_posts": [
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/331/2",
+            "text": "【补充】\n通过MIB Browser可以查看 system/systemTime，但切换到memoryProperty/memoryType查看不到，日志报上面的错误\n补充日志：\nwrapper.c(311): get_interface_sequence: execute get_interface_sequence method failed , error is /opt/bmc/apps/snmp/lualib/interface.lua:371: bad argument #1 to ‘json_object_ordered_encode’ (JsonObject expected, got table).\nhandler.c(251): get_table_property_value: get the sequence of interface(/snmp/1.3.6.1.4.1.2011.2.235.1.1.16.50/memoryDescriptionTable/Readonly) failed.\n然后是重复打类似上面的日志\n版本是 5.5"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/331/3",
+            "text": "snmp通过route_mapper进行路由，route_mapper使用的数据类型为json object, snmp收到table接口的Sequence时会将json object转换为string.\n此处的报错是因为snmp拿到了table，但是仍然尝试做json object->string的转换。\n请先确认\n\n其它table类型接口是否有类似问题？\n您使用的snmp组件的版本号是否≥1.27.14？低于该版本则需要升级snmp版本号至不低于1.27.14版本。"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/331/4",
+            "text": "确认了snmp版本为1.27.12版本。\n是1.27.13和14版本，这之间是否存在其他需要配套升级的组件呢？\n是在1.27.14解决的这个问题哇？"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/331/5",
+            "text": "该问题已在1.27.14解决。仅需升级snmp，无配套升级组件。"
+        },
+        {
+            "user_name": "HKZY_YangBo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/331/6",
+            "text": "升级到1.27.14解决。多谢"
+        }
+    ]
+}

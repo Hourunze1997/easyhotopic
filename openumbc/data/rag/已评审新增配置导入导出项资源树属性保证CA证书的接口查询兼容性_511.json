@@ -1,0 +1,43 @@
+{
+    "topic_id": 511,
+    "question": "【已评审】新增配置导入导出项/资源树属性保证CA证书的接口查询兼容性 - content: ISSUE链接：GitCode - 全球开发者的开源社区,开源代码托管平台\n背景：新增配置导入导出项/资源树属性保证CA证书的接口查询兼容性\n决策点：新增配置导入导出项审视, 新增资源树属性审视\n详细描述：\n1. certificate组件配置导入导出项CertificateService下新增CACerticicateRedfishSchemaVersion\n, String类型, 可导入导出\n2.新增资源树属性\n资源path：/bmc/kepler/CertificateService\n资源interface： bmc.kepler.CertificateService.CA\n属性：RedfishSchemaVersion\n类型：String\n权限： 读权限：ReadOnly 写权限：BasicSettings\nRedfishSchemaVersion的值为对应Redfish的Certificate资源Schema版本; 当前默认1.3.0(标准版本), 可通过配置导入修改为1.0.0(历史版本)\n评审结论\n同意bmc.kepler.CertificateService.CA接口新增属性RedfishSchemaVersion，类型为String，读权限：ReadOnly， 写权限：BasicSettings\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/15",
+    "topic_user_name": "ZhangNing",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/511/2",
+            "text": "content: 请参考接口开发流程要求申报议题【推荐】接口设计与开发流程\nlinks: https://forum.openubmc.cn/t/topic/262"
+        },
+        {
+            "user_name": "ZhangNing",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/511/3",
+            "text": "已修改"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/511/4",
+            "text": "这个问题是redfish接口的兼容问题，建议属性名改为RedfishSchemaVersion"
+        },
+        {
+            "user_name": "ZhangNing",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/511/5",
+            "text": "已修改"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/511/6",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1363,
+    "question": "【已评审】新增获取Led灯模式默认颜色资源协作接口属性 - content: 关联issue\nipmcget -d ledinfo，返回信息显示不全\n评审背景\n\nipmcget -d ledinfo，返回信息显示不全，需将chassis内私有属性更改为资源协作属性\n\n资源树新增方法\n评审点： 是否新增属性DefaultLCSColor，DefaultOSColor\n资源树路径： /bmc/kepler/Systems/:SystemId/Leds/:ID\n资源树接口： bmc.kepler.Systems.Led\n新增属性：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n属性说明\n接口约束\n\nDefaultLCSColor\n新增属性\ny\n只读 R ReadOnly W：无\n无\nfalse\n本地控制模式(local control state)的默认颜色，0：reserved，1：BLUE，2：RED，3：GREEN，4：AMBER，5：ORANGE， 6：WHITE\n–\n\nDefaultOSColor\n新增属性\ny\n只读 R ReadOnly W：无\n无\nfalse\n超驰模式(override state)的默认颜色，0：reserved，1：BLUE，2：RED，3：GREEN，4：AMBER，5：ORANGE， 6：WHITE\n–\n\n评审结论：\n1、同意新增以下资源协作接口属性：\npath:  /bmc/kepler/Systems/:SystemId/Leds/:ID\ninterface: bmc.kepler.Systems.Led\n新增属性：\n（1）DefaultLCSColor，签名为y，只读，读权限为ReadOnly ，不发送变更通知事件，取值范围：0：reserved，1：BLUE，2：RED，3：GREEN，4：AMBER，5：ORANGE，6：WHITE\n（2）DefaultOSColor，签名为y，只读，读权限为ReadOnly，不发送变更通知事件，取值范围：0：reserved，1：BLUE，2：RED，3：GREEN，4：AMBER，5：ORANGE，6：WHITE\nlinks: #p-3144-issue-1, https://gitcode.com/openUBMC/chassis/issues/7, #p-3144-h-2, #p-3144-h-3, #p-3144-h-4",
+    "topic_user_name": "maoyuhao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1363/2",
+            "text": ""
+        }
+    ]
+}

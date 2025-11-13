@@ -1,0 +1,15 @@
+{
+    "topic_id": 1238,
+    "question": "【已评审】BMC新增加CAN-FD通信自定义调测命令 - content: 关联issue\n支持CANBUS总线的调测命令\n背景\nBMC上有两条CANBUS通道，后续进行CAN协议升级（采用CAN-FD），当前需要在BMC上支持基于CANBUS通道（采用CAN-FD协议）的通信机制。\n评审点\n基于上述背景，需要新增加两个调测自定义命令，两个命令分别用于以下调测用途：\n\n命令1：在基于CAN-FD总线上一键发送一条广播消息\n命令2：打印当前的BMC上CAN-FD总线的统计信息\n\n评审点1：新增资源协作接口 SendDebugBoardcast\npath： /bmc/kepler/Debug/RemoteAccess\ninterface： bmc.kepler.Debug.RemoteAccess.CAN\ncmd： cantest <args>\n\n项\n取值以及说明\n\n方法名称\nSendTestBoardcast\n\n方法描述\n发送测试广播\n\n方法权限\nBasicSetting\n\n请求签名\ny\n\n请求参数\nChannel：签名为y，表征要发送广播的CANBUS编号，必填参数\n\n响应签名\n无\n\n响应参数\n无，发送成功之后不会返回任何数据，发送失败之后会返回error引擎\n\n评审点2：新增资源协作接口 PrintMetrics\npath： /bmc/kepler/Debug/RemoteAccess\ninterface： bmc.kepler.Debug.RemoteAccess.CAN\ncmd： canmetrics <args>\n\n项\n取值以及说明\n\n方法名称\nPrintMetrics\n\n方法描述\n打印CAN总线的统计信息\n\n方法权限\nReadonly\n\n请求签名\ny\n\n请求参数\nChannel：签名为y，表征要打印统计的CANBUS编号，如果值为0xFF（表征打印所有的CANBUS的统计信息）\n\n响应签名\nas\n\n响应参数\nDetails：签名为as，表征CANBUS的统计详细信息，采用字符串数组形式，每个字符串采用 json 格式编码\n\n评审结论\n通过，同意新增资源协作接口以及调测命令，具体结论如下：\n\n评审点1：同意新增自定义命令 cantest，同意新增资源协作接口 bmc.kepler.Debug.RemoteAccess.CAN 以及方法 SendTestBoardcast，权限为 BasicSetting，请求签名为 y\n评审点1：同意新增自定义命令 canmetrics，同意新增资源协作接口 bmc.kepler.Debug.RemoteAccess.CAN 以及方法 PrintMetrics，权限为 BasicSetting，请求签名为 y，响应签名为 as\nlinks: #p-2692-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/111, #p-2692-h-2, #p-2692-h-3, #p-2692-h-1-senddebugboardcast-4, #p-2692-h-2-printmetrics-5, #p-2692-h-6",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1238/2",
+            "text": ""
+        }
+    ]
+}

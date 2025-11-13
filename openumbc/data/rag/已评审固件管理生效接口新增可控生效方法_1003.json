@@ -1,0 +1,36 @@
+{
+    "topic_id": 1003,
+    "question": "【已评审】固件管理生效接口新增可控生效方法 - content: 关联issue\n固件生效管理接口新增可控生效方法\n评审背景\n对于固件生效的管理，由于部分固件（如CPLD）的生效存在AC而打断业务的高危操作，所以期望生效接口能够灵活选择性生效某些当前影响可接受的固件，比如：能够选择性生效“只复位BMC”的固件 或 “只需要DC的固件” 或 “生效所有固件”等\n评审点\nFirmwareActive资源的生效管理接口新增一个方法\npath ：/bmc/kepler/UpdateService/FirmwareActive\ninterface ：bmc.kepler.UpdateService.FirmwareActive\n\nA\n方法名称\n权限\n参数签名\n返回值\n参数说明\n参数可选项含义说明\n优点\n缺点\n\n方案一\nStartActiveByControlType\nBasicSetting\nias\n（u）:TaskId\n（i）SystemId：多主机场景下生效指定host。 （as）：固件生效扩展参数字符串列表，用于固件生效管理的各场景处理。如：[“ResetBMC”]表示复位BMC生效对应的固件；[“PowerOff”]表示下电生效对应的固件等\n\"ResetBMC\"只生效BMC、CSR这一类固件 \"PowerOff\"只生效VRD这一类下电生效但不AC的固件。 [“ResetBMC”, “PowerOff”]生效所有固件，包括需要下电、复位BMC、AC的固件，同[“ResetAC”]\n1、参数签名\"as\"与redfish生效接口的定义一致\n1、生效方式与“自动下电生效”的历史生效行为不一致，实现上也不易兼容 2、后续不易扩展新的生效方式\n\n方案二\nStartActiveWithPolicy\nBasicSetting\nia{ss}\n（u）:TaskId\n（i）SystemId：多主机场景下生效指定host。 （a{ss}）：固件生效扩展参数字典，用于固件生效管理的各场景处理。如{ActivationControl = ControlType}\n\"ResetBMC\"表示触发一次复位BMC，只生效BMC、CSR这一类固件。 \"PowerOff\"只生效VRD这一类下电生效但不AC的固件。“ResetAC”表示触发一次AC去生效所有固件\na{ss}扩展性更强，后续用户特殊的生效要求（如：选定待生效列表的几个固件生效;生效指定槽位的固件或fru），可以方便扩展，不用修改再接口\na{ss}一个参数可以包含多种含义，单个参数不符合单一性原则\n\n方案三\nStartActiveByControlType\nBasicSetting\nis\n（u）:TaskId\n（i）SystemId：多主机场景下生效指定host。 （s）：固件生效扩展参数字符串，用于固件生效管理的各场景处理。如：“ResetBMC”表示复位BMC生效对应的固件；“PowerOff”表示下电生效对应的固件等\n\"ResetBMC\"只生效BMC、CSR这一类固件 \"PowerOff\"只生效VRD这一类下电生效但不AC的固件。“ResetAC”生效所有固件，包括需要下电、复位BMC、AC的固件。\n参数类型简单，使用简单\n不易扩展\n\n评审结论\n通过，采用方案二，同意在 bmc.kepler.UpdateService.FirmwareActive 接口下新增方法 StartActiveWithPolicy，请求签名：ia{ss}，响应签名：u,  权限：BasicSetting\nlinks: #p-2101-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/59, #p-2101-h-2, #p-2101-h-3, #p-2101-h-4",
+    "topic_user_name": "Lilie",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1003/2",
+            "text": "lilie:\n\nFirmwareActive资源的生效管理接口新增一个方法\n\n方法怎么只有请求签名，对应的响应没有？以及新增接口的权限需要明确\n两个方法采用两个方案单独列举，清晰展示优缺点"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1003/3",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1003/4",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1003/5",
+            "text": ""
+        }
+    ]
+}

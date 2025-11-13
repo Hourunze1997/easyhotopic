@@ -1,0 +1,36 @@
+{
+    "topic_id": 1584,
+    "question": "get device info 的ipmi命令是否支持以下功能，支持的功能实现在哪里 - content: 当前子命令为0x27的ipmi命令，有一些可以发通，有一些不能发通。\n如 raw 0x30 0x93 0xdb 0x07 0x00 0x27 4 1  0 255\n位置对应不同功能获取，除了，在位2，状态3，位置8，Funciton9，DeviceName11，其他信息无法获取；这些是否支持呢？\n可以发通的如在位0x02，也没有找到实现的地方，这个是在那个组件实现的ipmi命令\nimage1179×1121 125 KB\nimage967×460 36.7 KB\nimage1379×756 126 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/427e93ff7f4097f0ca0827c561eb4fa0591991ce.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c08d6e1d1c6757f3bdb57660ff890b282f11f0f1.png, https://discuss.openubmc.cn/uploads/default/original/2X/9/9a7d2c595803ff5e3640615086372fba61eaee99.png",
+    "topic_user_name": "Kui Tai Fan Chun Yang",
+    "best_answer_url": "/t/topic/1584/5",
+    "reply_posts": [
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1584/2",
+            "text": "content: image590×603 17 KB\n通过这种方式来找，限定ipmi.json，然后一般是netfn、cmd、SubCmd三者可以区分一条IPMI命令。然后搜索限定词，一般就可以找到入口了。本地代码来看主要集中在frudata和general_hardware这两个组件。\nimage819×229 15.1 KB\nsource/frudata/src/lualib/ipmi_register.lua\nimage477×253 13.9 KB\n在图示文件内可以找到部分函数的实现。其余在IPMI手册上有，但是代码搜不到的，要么是没实现，要么在闭源组件内声明+实现，得具体咨询确认了。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/60ecd0343294bcd891632d1b063f9d45c0ee1009.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/ec94f89ff4e121177255c142cf625cf76016a671.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c4d02ff0f4bec2d7d7d0e743a3de5af7cb9590b4.png"
+        },
+        {
+            "user_name": "sunpeijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1584/3",
+            "text": "此类命令比较分散，通过DeviceInfo区分不同命令，会存放在不同组件，当前只能通过上方回复的方式，在全量源码中搜索命令字\n'0x02’在frudata中\n后续社区会有IPMI命令的全集，便于查看当前实现了哪些命令\n此问题我反馈下，看怎么方便查询实现的组件"
+        },
+        {
+            "user_name": "Kui Tai Fan Chun Yang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1584/4",
+            "text": "现在发命令时返回失败了，我要怎么确认当前命令是否支持"
+        },
+        {
+            "user_name": "sunpeijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1584/5",
+            "text": "查找方式前2个回复有说明\n通过ipmi.json名字查找\n但也仅限于开源组件\n所以实际也可以结合返回码0xD6\n此返回码表示不支持子命令"
+        }
+    ]
+}

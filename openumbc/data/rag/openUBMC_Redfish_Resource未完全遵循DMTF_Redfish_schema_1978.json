@@ -1,0 +1,15 @@
+{
+    "topic_id": 1978,
+    "question": "openUBMC Redfish Resource未完全遵循DMTF Redfish schema - content: 在项目上，使用DMTF提供的Redfish Service Validator工具，检查BMC Redfish服务与DMTF定义的Schema一致性，存在大量ERROR，例如属性定义的类型错误，请确认下这些问题。\nDSP8010_2024.2\nimage1149×835 22.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/ae46fc5594ba564e61859b2d88b8be1fd339aabb.png",
+    "topic_user_name": "Kun Lun Wanglongzhen",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1978/2",
+            "text": "请提供下openUBMC的版本和校验工具的详细参数"
+        }
+    ]
+}

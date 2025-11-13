@@ -1,0 +1,141 @@
+{
+    "topic_id": 466,
+    "question": "25.03发行版BIOS组件中执行bmcgo test命令失败 - 在25.03版本bios组件中执行bmcgo test后报如下错误，展示的是bios组件报的问题，但是在其他组件也出现类似的问题\nbmcgo版本：0.5.282\n镜像：gitcode上提供的3月28号的镜像\nSDK也已经更新为社区上最新的SDK\n报错日志如下：\nWARN: kmc/24.0.0.B020@hw.ibmc.release/stable: requirement huawei_secure_c/[>=1.0.0]@hw.ibmc.release/stable overridden by libmc4lua/1.70.17@hw.ibmc.release/rc to huawei_secure_c/1.0.2@hw.ibmc.release/stable\nWARN: Signature_Verify_CBB_Library/24.1.0.B006@hw.ibmc.release/rc: requirement huawei_secure_c/[>=1.0.0]@hw.ibmc.release/stable overridden by libmc4lua/1.70.17@hw.ibmc.release/rc to huawei_secure_c/1.0.2@hw.ibmc.release/stable\nWARN: json/B003_00002@hw.ibmc.release/stable: requirement huawei_secure_c/[>=1.0.0]@hw.ibmc.release/stable overridden by libmc4lua/1.70.17@hw.ibmc.release/rc to huawei_secure_c/1.0.2@hw.ibmc.release/stable\nWARN: libsoc_adapter/1.70.1@hw.ibmc.release/rc: requirement huawei_secure_c/[>=1.0.2 <1.1.0, include_prerelease=True]@hw.ibmc.release/stable overridden by libmc4lua/1.70.17@hw.ibmc.release/rc to huawei_secure_c/1.0.2@hw.ibmc.release/stable\nWARN: libmgmt_protocol/1.70.7-build.1@hw.ibmc.release/rc: requirement libmc4lua/[>=1.70.17 <1.71.0, include_prerelease=True]@hw.ibmc.release/rc overridden by bios/1.70.32@hw.ibmc.dev/dev to libmc4lua/1.70.17@hw.ibmc.release/rc\nWARN: hwdiscovery/1.70.1@hw.ibmc.release/rc: requirement mdb_interface/[>=1.70.46 <1.71.0, include_prerelease=True]@hw.ibmc.release/rc overridden by bios-deploy/0.0.1@hw.ibmc.dev/dev to mdb_interface/1.70.101@hw.ibmc.release/rc\nWARN: hwdiscovery/1.70.1@hw.ibmc.release/rc: requirement persistence/[>=1.70.2 <1.71.0, include_prerelease=True]@hw.ibmc.release/rc overridden by bios-deploy/0.0.1@hw.ibmc.dev/dev to persistence/1.70.2@hw.ibmc.release/rc\nWARN: persistence/1.70.2@hw.ibmc.release/rc: requirement libmc4lua/[>=1.70.17 <1.71.0, include_prerelease=True]@hw.ibmc.release/rc overridden by hwdiscovery/1.70.1@hw.ibmc.release/rc to libmc4lua/1.70.17@hw.ibmc.release/rc\nWARN: persistence/1.70.2@hw.ibmc.release/rc: requirement mdb_interface/[>=1.70.46 <1.71.0, include_prerelease=True]@hw.ibmc.release/rc overridden by hwdiscovery/1.70.1@hw.ibmc.release/rc to mdb_interface/1.70.101@hw.ibmc.release/rc\nWARN: key_mgmt/1.50.8@hw.ibmc.release/rc: requirement persistence/[>=1.60.10 <1.61.0, include_prerelease=True]@hw.ibmc.release/rc overridden by bios-deploy/0.0.1@hw.ibmc.dev/dev to persistence/1.70.2@hw.ibmc.release/rc\nWARN: key_mgmt/1.50.8@hw.ibmc.release/rc: requirement mdb_interface/[>=1.60.111 <1.61.0, include_prerelease=True]@hw.ibmc.release/rc overridden by bios-deploy/0.0.1@hw.ibmc.dev/dev to mdb_interface/1.70.101@hw.ibmc.release/rc\nERROR: Version range '>=1.60.10 <1.61.0, include_prerelease=True' required by 'key_mgmt/1.50.8@hw.ibmc.release/rc' not valid for downstream requirement 'persistence/1.70.2@hw.ibmc.release/rc'\nERROR: Traceback (most recent call last):\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/cli/cli.py\", line 355, in run\n    return method(command_args)\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/cli/cli.py\", line 218, in test\n    test.run()\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/component/test.py\", line 849, in run\n    self.build_and_deploy()\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/component/test.py\", line 280, in build_and_deploy\n    self.deploy.run()\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/component/deploy.py\", line 86, in run\n    Helper.run(cmd)\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/codegen/c/helper.py\", line 68, in run\n    ret = subprocess.run(cmd, check=check, stderr=stderr, stdout=stdout)\n  File \"/usr/lib/python3.8/subprocess.py\", line 516, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['conan', 'install', '.', 'hw.ibmc.dev/dev', '-pr:h', 'profile.dt.ini', '-s', 'build_type=Dt', '-r', 'artifactory', '-if=/home/project_manage/bios/temp/.deploy/.install', '-g', 'deploy', '--build=missing']' returned non-zero exit status 1.\n\nERROR: Command '['conan', 'install', '.', 'hw.ibmc.dev/dev', '-pr:h', 'profile.dt.ini', '-s', 'build_type=Dt', '-r', 'artifactory', '-if=/home/project_manage/bios/temp/.deploy/.install', '-g', 'deploy', '--build=missing']' returned non-zero exit status 1.\nERROR: 请查看日志信息",
+    "topic_user_name": "百信-张滨",
+    "best_answer_url": "/t/topic/466/15",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/2",
+            "text": "bmc sdk是否更新到25.03版本？"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/3",
+            "text": "content: 是的，从社区应用市场下载的最新版bmc_sdk，根据编译时报组件找不到，但对应版本的组件社区conan仓是有的 帖子在镜像中进行更新操作，编译出包没有问题 ，但是在执行bmcgo test时报的这个错误\nlinks: https://forum.openubmc.cn/t/topic/386"
+        },
+        {
+            "user_name": "曾启健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/4",
+            "text": "失败和bmcgo版本有关，使用bingo test 可以成功，建议做组件测试时使用bingo test"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/5",
+            "text": "您好，使用bingo test时也报了错误，使用的代码是从gitcode仓库，组件代码是从gitcode上拉取的最新代码\nERROR: Couldn't checkout SCM: Command 'git -c http.sslVerify=true checkout \"aa252c7f4bee3b977acaf63dc6d50d8073738db8\"' returned non-zero exit status 128.\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)\nfatal: reference is not a tree: aa252c7f4bee3b977acaf63dc6d50d8073738db8\n\nERROR: Traceback (most recent call last):\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/cli/cli.py\", line 355, in run\n    return method(command_args)\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/cli/cli.py\", line 218, in test\n    test.run()\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/component/test.py\", line 849, in run\n    self.build_and_deploy()\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/component/test.py\", line 280, in build_and_deploy\n    self.deploy.run()\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/component/deploy.py\", line 86, in run\n    Helper.run(cmd)\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/codegen/c/helper.py\", line 68, in run\n    ret = subprocess.run(cmd, check=check, stderr=stderr, stdout=stdout)\n  File \"/usr/lib/python3.8/subprocess.py\", line 516, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['conan', 'install', '.', 'hw.ibmc.dev/dev', '-pr:h', 'profile.dt.ini', '-s', 'build_type=Dt', '-r', 'openubmc_dev', '-if=/home/project_manage/bios/temp/.deploy/.install', '-g', 'deploy', '--build=missing']' returned non-zero exit status 1.\n\nERROR: Command '['conan', 'install', '.', 'hw.ibmc.dev/dev', '-pr:h', 'profile.dt.ini', '-s', 'build_type=Dt', '-r', 'openubmc_dev', '-if=/home/project_manage/bios/temp/.deploy/.install', '-g', 'deploy', '--build=missing']' returned non-zero exit status 1.\nERROR: 请查看日志信息"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/6",
+            "text": "由图中的报错可以看到key_mgmt/1.50.8@hw.ibmc.release/rc版本，执行conan search key_mgmt -r openubmc_dev查看社区最新的key_mgmt版本为key_mgmt/1.70.5@openUBMC.release/rc。\n当前bmcgo默认配置的为hw.ibmc.release，bingo默认配置的为openUBMC.release。如果想针对社区组件执行测试，请使用bingo。"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/7",
+            "text": "你好，李老师，在使用了bingo执行bingo test -r openubmc_dev -it -ut的时候出现该报错，显示的是没有这个提交记录\nERROR: Couldn't checkout SCM: Command 'git -c http.sslVerify=true checkout \"aa252c7f4bee3b977acaf63dc6d50d8073738db8\"' returned non-zero exit status 128.\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)\nfatal: reference is not a tree: aa252c7f4bee3b977acaf63dc6d50d8073738db8\n\nERROR: Traceback (most recent call last):\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/cli/cli.py\", line 355, in run\n    return method(command_args)\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/cli/cli.py\", line 218, in test\n    test.run()\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/component/test.py\", line 849, in run\n    self.build_and_deploy()\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/component/test.py\", line 280, in build_and_deploy\n    self.deploy.run()\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/component/deploy.py\", line 86, in run\n    Helper.run(cmd)\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/codegen/c/helper.py\", line 68, in run\n    ret = subprocess.run(cmd, check=check, stderr=stderr, stdout=stdout)\n  File \"/usr/lib/python3.8/subprocess.py\", line 516, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['conan', 'install', '.', 'hw.ibmc.dev/dev', '-pr:h', 'profile.dt.ini', '-s', 'build_type=Dt', '-r', 'openubmc_dev', '-if=/home/project_manage/bios/temp/.deploy/.install', '-g', 'deploy', '--build=missing']' returned non-zero exit status 1.\n\nERROR: Command '['conan', 'install', '.', 'hw.ibmc.dev/dev', '-pr:h', 'profile.dt.ini', '-s', 'build_type=Dt', '-r', 'openubmc_dev', '-if=/home/project_manage/bios/temp/.deploy/.install', '-g', 'deploy', '--build=missing']' returned non-zero exit status 1.\nERROR: 请查看日志信息\n\n这个错误应该怎么解决"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/8",
+            "text": "content: @baixin_zhangbin  是使用的git clone 方式下载的组件源码么？  在组件目录执行 git remote -vv 命令看下是否正常，如果有报错，请删除组件源码，重新使用git clone 下载组件源码。\n注：在gitcode上的tag下面下载tar包或zip包是不包含git提交信息。\nlinks: /u/baixin_zhangbin"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/9",
+            "text": "content: image1759×479 62.7 KB\n执行git remote -vv命令后得到的结果如上图所示，现实的URL是git code的链接，另外想咨询一下，如果后续自己开发使用的是tar包或者zip包中没有提交记录，但是在执行命令时需要这些记录应该怎么处理\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/6afca37ace15199bd0053c05131911b7454a4206.jpeg"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/10",
+            "text": "1.如果只是本地调试, 执行\ngit init\ngit add .\ngit commit -m \"init repo\"\n\n如果是要联调和正式开发，需要新建代码仓管理。"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/11",
+            "text": "可能因为存在缓存失效，执行conan remove \"*\" -f清空conan缓存。"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/12",
+            "text": "在执行了conan remove “*” -f 后，再执行bingo test -r openubmc_dev -it -ut后仍然有错误\nhwdiscovery/1.70.1@hw.ibmc.release/rc: Package installed dffcc6a5bacb114782161f6a2676b0564a501537\nhwdiscovery/1.70.1@hw.ibmc.release/rc: Downloaded package revision 0\nkey_mgmt/1.50.8@hw.ibmc.release/rc: Retrieving package dffcc6a5bacb114782161f6a2676b0564a501537 from remote 'openubmc_dev'\nDownloading conanmanifest.txt completed [2.30k]\nDownloading conaninfo.txt completed [2.67k]\nDownloading conan_package.tgz completed [32.58k]\nDecompressing conan_package.tgz completed [0.00k]\nkey_mgmt/1.50.8@hw.ibmc.release/rc: Package installed dffcc6a5bacb114782161f6a2676b0564a501537\nkey_mgmt/1.50.8@hw.ibmc.release/rc: Downloaded package revision 0\nmaca/1.50.16@hw.ibmc.release/rc: Retrieving package f09e5a1656544db1d37a3ba2ff4f05986b3afae6 from remote 'openubmc_dev'\nDownloading conanmanifest.txt completed [4.06k]\nDownloading conaninfo.txt completed [2.69k]\nDownloading conan_package.tgz completed [69.00k]\nDecompressing conan_package.tgz completed [0.00k]\nmaca/1.50.16@hw.ibmc.release/rc: Package installed f09e5a1656544db1d37a3ba2ff4f05986b3afae6\nmaca/1.50.16@hw.ibmc.release/rc: Downloaded package revision 0\nComputing_Component_RAID/V100R001C00SPC512B020@hw.ibmc.release/stable: Already installed!\nboost/1.82.0.B001@hw.ibmc.release/stable: Already installed!\nhuawei_secure_c/1.0.2@hw.ibmc.release/stable: Already installed!\nmdb_interface/1.70.101@hw.ibmc.release/rc: Configuring sources in /root/.conan/data/mdb_interface/1.70.101/hw.ibmc.release/rc/source\nmdb_interface/1.70.101@hw.ibmc.release/rc: SCM: Getting sources from url: 'https://gitcode.com/openUBMC/mdb_interface.git'\nERROR: Couldn't checkout SCM: Command 'git -c http.sslVerify=true checkout \"aa252c7f4bee3b977acaf63dc6d50d8073738db8\"' returned non-zero exit status 128.\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)\nfatal: reference is not a tree: aa252c7f4bee3b977acaf63dc6d50d8073738db8\n\nERROR: Traceback (most recent call last):\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/cli/cli.py\", line 355, in run\n    return method(command_args)\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/cli/cli.py\", line 218, in test\n    test.run()\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/component/test.py\", line 849, in run\n    self.build_and_deploy()\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/component/test.py\", line 280, in build_and_deploy\n    self.deploy.run()\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/component/deploy.py\", line 86, in run\n    Helper.run(cmd)\n  File \"/usr/local/lib/python3.8/dist-packages/bmcgo/codegen/c/helper.py\", line 68, in run\n    ret = subprocess.run(cmd, check=check, stderr=stderr, stdout=stdout)\n  File \"/usr/lib/python3.8/subprocess.py\", line 516, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['conan', 'install', '.', 'hw.ibmc.dev/dev', '-pr:h', 'profile.dt.ini', '-s', 'build_type=Dt', '-r', 'openubmc_dev', '-if=/home/project_manage/bios/temp/.deploy/.install', '-g', 'deploy', '--build=missing']' returned non-zero exit status 1.\n\nERROR: Command '['conan', 'install', '.', 'hw.ibmc.dev/dev', '-pr:h', 'profile.dt.ini', '-s', 'build_type=Dt', '-r', 'openubmc_dev', '-if=/home/project_manage/bios/temp/.deploy/.install', '-g', 'deploy', '--build=missing']' returned non-zero exit status 1.\nERROR: 请查看日志信息"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/13",
+            "text": "content: 从日志可以看出使用的以前开发版本的bingo。\n方案1： 使用发布的最新bingo包， 下载链接，解压获得whl包和deb包。执行以下步骤安装\npip3 uninstall -y script\napt remove bingo\npip3 install  xxx.whl\ndpkg -i xxx.deb\n\n方案2： 使用发布的dockerfile (manifest源码中获取）制作镜像，或者直接拉取发布的docker镜像， 见指导\nlinks: https://repo.openubmc.cn/25.03/tools/openUBMC-bingo_25.03.zip, https://openubmc.cn/docs/zh/development/quick_start/prepare_environment/docker_env.html#%E6%8B%89%E5%8F%96openubmc%E5%BC%80%E5%8F%91docker%E9%95%9C%E5%83%8F"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/14",
+            "text": "content: 李老师，您好，按照您的指导在执行bingotest的时候还是会报错\n问题一：方案1中在执行apt remove bingo时报错\n\n可能镜像中bingo使用的是pip进行安装，执行pip3 uninstall bingo成功后，执行pip3 install xxx.whl成功\n但是在执行dpkg -i xxx.deb后报错，报错原因可能是有镜像中原有的工具和当前安装冲突\nimage857×137 7.13 KB\n问题二：在方案2中，使用发布的dockerfile制作的镜像中bios组件中执行bingo test -r openubmc_dev -it -ut 后报错，使用的bingo 版本为0.5.230\nimage1885×611 56.5 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/9ffaf57a9dc5034a53d944dd3a157358dad5eed6.png, https://forum.openubmc.cn/uploads/default/original/1X/baf6c86abf5b59ef94cca8db767280bf08f46d9c.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/466/15",
+            "text": "content: 方案一： 还要执行 apt remove  hw-ibmc-bmcgo  移除bmcgo的deb包。\n方案二： 已知问题，解决方案如下：\n\n构建 mdb_interface 时提示 Cannot found lua-format CICD\n\n    问题原因：  init.py 将lua-format 复制到了错误的地址 和 mdb_interface 使用了固定地址，导致不匹配 。 \n当前请使用临时解决方案： 将lua-format 从/usr/local/bin/ 拷贝到/usr/bin/ \n后续解决措施：1. init.py 将lua-format 复制到/usr/bin   2.  mdb_interface 中使用which获取lu…\nlinks: https://forum.openubmc.cn/t/topic/582/2, /c/44-category/44"
+        },
+        {
+            "user_name": "百信-张滨",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/16",
+            "text": "非常感谢李老师，目前bingo已更新，也没有再报找不到lua-format的错误"
+        },
+        {
+            "user_name": "Insyde_ander",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/17",
+            "text": "content: hi larry，\n有遇到方案一同样的问题，还是无法解决。\nimage1225×296 12 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/d4b2d870a58b23146213fd44487f20886d5076dd.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/18",
+            "text": "执行dpkg -P hw-ibmc-bmcgo 卸载"
+        },
+        {
+            "user_name": "Insyde_ander",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/19",
+            "text": "这个包已经是未安装的了"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/466/20",
+            "text": "content: 按照bingo指导， 本地安装最新的bingo.\nlinks: https://www.openubmc.cn/marketplace/bingo"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "topic_id": 1717,
+    "question": "【问题求助】执行 bingo test -ut 报错mdb_interface的commit不存在 - content: 各位好，我在执行如下命令进行 UT 测试时遇到错误：\nbingo test -ut\n\n报错信息中指出 mdb_interface 仓库中的某个 commit（aa252c7f4bee3b977acaf63dc6d50d8073738db8）不存在，导致构建失败。查看 Git 仓库后，确实没有这个提交记录。\n截图如下：\n已尝试从仓库拉取最新代码，但该 commit 仍找不到，不确定是 recipe 配置错误，还是 tag 有误。\n相关日志见附件：temp_log.pdf\n请问有没有人遇到过类似问题，这是conan仓不对，还是commit确实是删除了导致得？\nimage1914×630 49.4 KB\nimage1287×104 7.94 KB\ntemp_log.pdf (41.2 KB)\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/89b57f42f4933d6deb1910176602eac25979b703.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/f10bb7a92b00f7634cde94d70bdc950aaf97065b.png, /uploads/short-url/6WzgS3UUMER5U3OZftMcGzHRcvg.pdf",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/1717/3",
+    "reply_posts": [
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1717/2",
+            "text": "content: 和这个问题应该是类似的\n\nmanufacture 代码仓 bingo gen 交流互助区\n\n    manufacture 代码仓b8d5cdcfabdea154fb432344ac81e947d1e2027c 结点. \nbingo gen 代码失败, 提示从SCM下载aa252c7f4bee3b977acaf63dc6d50d8073738db8 \n失败 \n> root@hz209-z00010824:/home/project_manage/source_code/manufacture# …\nlinks: https://discuss.openubmc.cn/t/topic/978, /c/42-category/42"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1717/3",
+            "text": "我之前用的是25.03得环境，重新搭建虚拟机，重新部署25.06得环节后执行就没问题了。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1717/4",
+            "text": "在 25.03 环境下参考该教程编译不通过，尝试单独升级 bingo 后也遇到一些兼容性问题。综合考虑后，建议还是重新搭建一套环境更高效。\n我这边测试下来，从虚拟机创建到执行 manifest 完成环境搭建，全流程不超过 30 分钟，稳定性更好，也避免了后续潜在的版本冲突。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1717/5",
+            "text": "嗯，为了避免版本间配套问题，当前还是采用的不同版本不同docker镜像的方式，如果有更好地建议可以随时反馈"
+        }
+    ]
+}

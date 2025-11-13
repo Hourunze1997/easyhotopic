@@ -1,0 +1,15 @@
+{
+    "topic_id": 1399,
+    "question": "【已评审】支持可观测功能 & 语言集功能 在web页面可灵活裁剪属性 - content: ISSUE链接\n支持可观测功能web页面裁剪能力-rackmount-GitCode\n背景\n可观测功能 & 语言集功能 需要裁剪时，需要在/UI/Rest/GenericInfo接口提供相应属性，支持前端页面对相应功能进行裁剪。\n决策点\n1、web rest接口/UI/Rest/GenericInfo新增ObservabilitySupported属性\n详细描述：\nuri：/UI/Rest/GenericInfo\n变化类型：新增属性\n操作类型： GET\n\n属性名称\n取值类型\n取值范围\n默认值\n说明\n\nObservabilitySupported\nboolean\ntrue/false\n-\n通过IsValidPath判断Observability组件资源协作路径是否存在决定是否显示可观测功能页面\n\n2、web rest接口/UI/Rest/GenericInfo新增LanguageSetSupported属性\n详细描述：\nuri：/UI/Rest/GenericInfo\n变化类型：新增属性\n操作类型： GET\n\n属性名称\n取值类型\n取值范围\n默认值\n说明\n\nLanguageSetSupported\n对象\n-\n-\n用于webui对语言信息展示进行裁剪判断，示例：“LanguageSetSupported”:{  “en”: true, “zh”: true, “ja”: true, “fr”: true, “ru”: true}，包含的属性如下\n\nen\n布尔值\ntrue/false\ntrue\nwebui语言信息是否显示中文\n\nzh\n布尔值\ntrue/false\ntrue\nwebui语言信息是否显示英文\n\nja\n布尔值\ntrue/false\ntrue\nwebui语言信息是否显示日文\n\nfr\n布尔值\ntrue/false\ntrue\nwebui语言信息是否显示法语\n\nru\n布尔值\ntrue/false\ntrue\nwebui语言信息是否显示俄语\n\n评审结论：\n1、同意web rest接口/UI/Rest/GenericInfo新增属性ObservabilitySupported，类型为boolean，表示是否支持可观测服务；\n2、同意web rest接口/UI/Rest/GenericInfo新增对象LanguageSetSupported，表示支持的语言类型，该对象增加属性en， zh，ja，fr， ru， 类型为boolean，true表示支持该语言，false表示不支持该语言；\nlinks: #p-3249-issue-1, https://gitcode.com/openUBMC/rackmount/issues/143, #p-3249-h-2, #p-3249-h-3, #p-3249-h-1web-restuirestgenericinfoobservabilitysupported-4, #p-3249-h-2web-restuirestgenericinfolanguagesetsupported-5, #p-3249-h-6",
+    "topic_user_name": "HuoJianCong",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1399/2",
+            "text": ""
+        }
+    ]
+}

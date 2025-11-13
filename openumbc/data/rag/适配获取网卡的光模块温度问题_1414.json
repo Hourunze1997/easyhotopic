@@ -1,0 +1,43 @@
+{
+    "topic_id": 1414,
+    "question": "适配获取网卡的光模块温度问题 - 当前需要适配Boardcom网卡的光模块与网卡温度获取。初步分析为非标准协议，需要新增protocol 协议来源，涉及闭源。是否有其他方案可以仅通过修改network_adapter代码解决这个问题",
+    "topic_user_name": "Kunlun Liuchenxi",
+    "best_answer_url": "/t/topic/1414/5",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1414/2",
+            "text": "如果是厂商自定义非标协议，建议在hardware-sig申报议题提诉求，会给出预计解决方案和解决时间"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1414/3",
+            "text": "可以直接在组件内写，libmgmt_protocol也只是一个封装lua库\nmctp还是i2c的？"
+        },
+        {
+            "user_name": "Kunlun Liuchenxi",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1414/4",
+            "text": "mctp的。直接套用ncsi_standard 把oem定义部分塞到data字段里面？这样对整个架构来说是否合适"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1414/5",
+            "text": "如果说从使用上可以这样子用，也可以直接创建具体的，我写个教程吧"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1414/6",
+            "text": "content: gitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\nlinks: https://gitcode.com/openUBMC/network_adapter/pull/87/diffs, https://gitcode.com/openUBMC/network_adapter/pull/87/diffs"
+        }
+    ]
+}

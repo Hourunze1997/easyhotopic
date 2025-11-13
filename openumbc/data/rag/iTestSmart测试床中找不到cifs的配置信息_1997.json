@@ -1,0 +1,22 @@
+{
+    "topic_id": 1997,
+    "question": "【iTestSmart】测试床中找不到cifs的配置信息。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\n二、问题描述\nOpenUBMC->平台功能->通过SNMP使用NFS协议从BMC上传dump_info.tar.gz文件到服务端。cifs的配置信息都有什么？\n测试床中找不到cifs的配置信息1920×814 192 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/cf1f0845e1eb5c90ade2d4093b88b09d309533a9.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/1997/2",
+    "reply_posts": [
+        {
+            "user_name": "Hdq",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1997/2",
+            "text": "content: image1068×640 47.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/3bccf84f721d176a3ef7b52ca562635e3a66d5f1.png"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1997/3",
+            "text": "多谢，我配置CIFS后再跑用例试试。"
+        }
+    ]
+}

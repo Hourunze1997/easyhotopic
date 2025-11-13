@@ -1,0 +1,15 @@
+{
+    "topic_id": 2067,
+    "question": "关机状态下风扇信息页面占空比显示不为0% - content: bmc版本：openUBMC 25.06\n问题描述：\n在关机状态下风扇信息显示页面占空比显示为上一次设置的值，不为0，实际转速为0\nimage1649×898 97.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/badc08e9245c41e9bc672b87e5017578e0d6693a.png",
+    "topic_user_name": "Yjshen",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "He wei",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2067/2",
+            "text": "DC下电实际还是能读取到寄存器 中的 占空比，只是没电不能 转了，所以转速比为0。emmmm"
+        }
+    ]
+}

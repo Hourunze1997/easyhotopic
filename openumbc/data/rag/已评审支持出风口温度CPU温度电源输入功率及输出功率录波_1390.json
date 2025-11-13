@@ -1,0 +1,29 @@
+{
+    "topic_id": 1390,
+    "question": "【已评审】支持出风口温度、CPU温度、电源输入功率及输出功率录波 - content: ISSUE链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n评审背景\n1、温度录波新增出风口录波与CPU录波，其中CPU录波精确到器件，如CPU1、CPU2；\n2、功耗录波新增电源输入功率与电源输出功率，其中精确到器件如PSU1、PSU2\n评审点\n一、 资源协作接口支持出风口录波与CPU录波\npath：/bmc/kepler/Systems/:SystemId/Temperatures/:Id\ninterface：bmc.kepler.Systems.HistoryTemperature\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nTemperatureType\n新增参数枚举\nu\n只读 R：ReadOnly\n不持久化\nfalse\n温度类型：属性值来源于CSR配置 1：CPU，2：出风口，11:进风口 ，0xFFFFFFFF：无效值（默认）\n\nTemperatureName\n新增属性\ns\n只读 R：ReadOnly\n不持久化\nfalse\n温度点名称:属性值来源于CSR配置\n\n二、 资源协作接口支持电源输入功率与电源输出功率录波\npath：/bmc/kepler/Systems/:SystemId/EnergyMetric\ninterface：bmc.kepler.Systems.EnergyMetric\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nCollectPowerHistoryData\n新增参数枚举\nssu\nPowerMgmt\nNA\nNA\n收集历史功率数据                            请求：   FilePath：文件导出路径    Domain：数据域（System、Fan、Cpu、Memory、PSUInput、PSUOutput ）                         DomainId：域Id                                       响应：                                      TaskId：任务Id\n\nResetPowerHistoryData\n新增参数枚举\nsu\nPowerMgmt\nNA\nNA\n清空历史功率数据 请求：   Domain：数据域（System、Fan、Cpu、Memory、PSUInput、PSUOutput）                        DomainId：域Id      响应： NA\n\nGetPowerHistoryData\n新增参数枚举\nsu\nPowerMgmt\nNA\nNA\n获取历史功率数据 请求：   Domain：数据域（System、Fan、Cpu、Memory、PSUInput、PSUOutput）                        DomainId：域Id      响应： NA\n\n评审结论\n决策点1：资源协作接口支持出风口录波与CPU录波\n结论：\n1、同意资源协作接口bmc.kepler.Systems.HistoryTemperature新增TemperatureName属性用于获取温度点名称，签名为s，只读，读权限：ReadOnly，不发送变更通知事件\n2、同意资源协作接口bmc.kepler.Systems.HistoryTemperature的TemperatureType属性新增枚举类型1：CPU，2：出风口\n决策点2：资源协作接口支持电源输入功率与电源输出功率录波\n结论：\n1、同意资源协作接口bmc.kepler.Systems.EnergyMetric的CollectPowerHistoryData、ResetPowerHistoryData、GetPowerHistoryData方法请求参数新增枚举类型PSUInput、PSUOutput\nlinks: #p-3233-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/127, https://gitcode.com/openUBMC/mdb_interface/issues/127, #p-3233-h-2, #p-3233-h-3, #p-3233-cpu-4, #p-3233-h-5, #p-3233-h-6, #p-3233-h-1cpu-7, #p-3233-h-2-8",
+    "topic_user_name": "Fumingquan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1390/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1390/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1390/4",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1697,
+    "question": "内存适配中部分字段疑问 - 背景：\n需要对内存进行适配\n诉求：\n当前适配文档中对内存适配内容较少，能否增加详细的字段说明，或者例子\n如：\nLogicalChannelId 字段 为内存所属逻辑通道id ，那么具体是由哪里获取这个通道id信息，或者如何判断该字段填写的值\n        \"MemoryChannel_1\": {\n            \"SystemId\": \"${SystemId}\",\n            \"PhysicalChannelId\": 0,\n            \"LogicalChannelId\": 2,\n            \"LogicalCpuId\": \"${Slot} |> expr($1 * 2 - 2)\",\n            \"DiagnosticFault\": 0,\n            \"Name\": \"${Slot} |> expr($1 * 2 - 1) |> string.format('Cpu%sChannel0', $1)\"\n        },",
+    "topic_user_name": "Ocy",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1697/2",
+            "text": "content: 补充：问题背景主要是为了适配传输正确的内存丝印给BIOS，目前我们根据S920X10白皮书内存章节推测LogicalChannelId的值为CPU通道TB_A、TB_B、TB_C、TB_D、TA_A、TA_B、TA_C、TA_D分别0-7。CpuIdDIMM号的第一位，ChannelId为DIMM号的第二位，DimmId为DIMM号的第三位，不知道理解是否有误，如果以上理解无误，那丝印配置应该没问题，但BIOS菜单下看到的内存有问题，有重复，BMC下看丝印文件内存丝印无重复，这该如何定位？根据多次测试情况来看，问题可能在于LogicalChannelId\nimage697×137 13.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/08c0225b3be91c65707adb463b5254fd1f77b579.png"
+        }
+    ]
+}

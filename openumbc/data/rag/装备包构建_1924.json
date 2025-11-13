@@ -1,0 +1,36 @@
+{
+    "topic_id": 1924,
+    "question": "装备包构建 - 1.请问要如何出包含DFT ipmi命令的装备包？ 其对应的0502XXX是什么？\n2.如何修改、新增装备测试的DFT ipmi命令？",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "/t/topic/1924/3",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1924/3",
+            "text": "1、如果是社区通用机型的话，是HFH"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1924/4",
+            "text": "2、如何修改、新增装备测试的DFT ipmi命令？ 组件内对象实现bmc.kepler.Manufacture接口，参考general_hardware的model.json文件"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1924/5",
+            "text": "好的 我学习一下 感谢"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1924/6",
+            "text": "装备ipmi命令的通用入口在manufacture组件，由manufacture组件转发到各个组件实现了bmc.kepler.Manufacture接口的对象"
+        }
+    ]
+}

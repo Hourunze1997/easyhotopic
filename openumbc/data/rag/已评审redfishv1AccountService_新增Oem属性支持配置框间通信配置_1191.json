@@ -1,0 +1,15 @@
+{
+    "topic_id": 1191,
+    "question": "【已评审】/redfish/v1/AccountService 新增Oem属性支持配置框间通信配置 - content: 背景\n需要支持管理板通过柜内设备间通信对BMC进行管理\n关联Iuuse\n【需求】支持框间通信配置的北向接口\n决策点\nRedfish接口 GET/PATCH /redfish/v1/AccountService 新增Oem属性\n详细描述\n1、uri：/redfish/v1/AccountService\n变化类型：新增属性\n操作类型：GET\n应用场景：查询框间鉴权使能、框间通道会话权限\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n属性说明\n约束\n\nInterChassAuthentication{\nObject\n\nEnabled\nBoolean\ntrue/false\nfalse\nReadOnly\n框间通信使能\n\nAccessRole\nString\n[“Administrator”、“Operator”、“CommonUser”、“NoAccess”]\nAdministrator\nReadOnly\n框间通信通道对应生成会话的权限\n\n}\n\n2、uri：/redfish/v1/AccountService\n变化类型：新增属性\n操作类型：PATCH\n应用场景：配置框间鉴权使能、框间通道会话权限\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n属性说明\n约束\n\nInterChassAuthentication{\nObject\n\nEnabled\nboolean\ntrue/false\nfalse\nUserMgmt\n框间通信使能\n可选属性\n\nAccessRole\nstring\n[“Administrator”、“Operator”、“CommonUser”、“NoAccess”]\nAdministrator\nUserMgmt\n框间通信通道对应生成会话的权限\n可选属性\n\n}\n\n评审结论\n同意redfish接口/redfish/v1/AccountService新增属性用于查询/设置框间通信鉴权使能、通道会话权限，具体如下：\nOem/InterChassAuthentication/Enabled，类型为boolean，默认为false，GET权限：ReadOnly， PATCH权限：UserMgmt\nOem/InterChassAuthentication/AccessRole，类型为string，取值范围[“Administrator”、“Operator”、“CommonUser”、“NoAccess”]，默认为Administrator，GET权限：ReadOnly， PATCH权限：UserMgmt\nlinks: #p-2594-h-1, #p-2594-iuuse-2, https://gitcode.com/openUBMC/rackmount/issues/105, #p-2594-h-3, #p-2594-h-4, #p-2594-h-5",
+    "topic_user_name": "pengxianglin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1191/2",
+            "text": ""
+        }
+    ]
+}

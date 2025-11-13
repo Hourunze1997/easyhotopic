@@ -1,0 +1,22 @@
+{
+    "topic_id": 1203,
+    "question": "【启航行动】openUBMC社区开发者赋能培训（第2期）--openUBMC整体框架&代码结构 - 交流答疑问题：\n问题一：Lua 代码中是如何与 C/C++ 交互的？\n问题二：去哪里找到 skynet 学习资料？\n课后作业：\n通过 bingo  创建一个新的 App，并在本地能通过集成测试启动成功",
+    "topic_user_name": "王宇航",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1203/2",
+            "text": "content: 交流问题\n问题一：\n通过Lua C API，lua的虚拟机是通过C实现，数据结构、词法语法都会通过C进行解析，并且通过lapi.c提供Lua和C交互的核心API。\n问题二：\n①Skynet 的官方代码仓库：https://github.com/cloudwu/skynet以及官方wiki\nimage856×205 8.36 KB\n②通过风云的blog：https://blog.codingnow.com/eo/skynet/\n③博客园、CSDN等相关博客\nlinks: https://github.com/cloudwu/skynet%E4%BB%A5%E5%8F%8A%E5%AE%98%E6%96%B9wiki, https://discuss.openubmc.cn/uploads/default/original/2X/0/0ce38fd176015258a17ba42e72ce2bf40142e49a.png, https://blog.codingnow.com/eo/skynet/"
+        },
+        {
+            "user_name": "Guoxin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1203/3",
+            "text": "content: 1、 将 C/C++ 代码编译成 Lua 模块（如动态链接库 .so ），然后在lua中通过 require 加载和使用；\n2、 Home · cloudwu/skynet Wiki · GitHub\n[云风的 BLOG: skynet 入门指南]\n(https://blog.codingnow.com/2016/06/skynet_gettingstarted.html)\nlinks: https://github.com/cloudwu/skynet/wiki, https://blog.codingnow.com/2016/06/skynet_gettingstarted.html"
+        }
+    ]
+}

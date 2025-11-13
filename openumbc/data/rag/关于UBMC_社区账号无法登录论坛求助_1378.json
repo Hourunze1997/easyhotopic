@@ -1,0 +1,15 @@
+{
+    "topic_id": 1378,
+    "question": "关于UBMC 社区账号无法登录论坛求助 - content: 长江计算 huaconghui@yctco.com.cn 账号可以登录 UBMC 社区首页，无法登录 社区论坛，请问是被设置了什么权限吗？目前该账号已无法再论坛评论及发帖，请问如何解决？\n社区首页可以登录\n截图_202506171106111603×593 150 KB\n点击社区论坛后 账号自动退出\n截图_202506171108131603×733 88 KB\n点击论坛登录  就会报错\n截图_202506171108571654×281 7.27 KB\nlinks: mailto:huaconghui@yctco.com.cn, https://discuss.openubmc.cn/uploads/default/original/2X/6/6ee88af1dc26ab0b5073c6b689953d8a9f867784.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/e/ee50ada767602421bfc7dd518940a6fa99bc8125.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/667bbbed2ad9052985744285e8bebe1dd910b854.png",
+    "topic_user_name": "长江_赵凯",
+    "best_answer_url": "/t/topic/1378/2",
+    "reply_posts": [
+        {
+            "user_name": "zhuchao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1378/2",
+            "text": "您好，根据报错信息，貌似是你社区账号绑定的邮箱被占用了，后台查看这个邮箱已经绑定 yctco_huaconghui这个用户名，请使用这个名字进行登录。"
+        }
+    ]
+}

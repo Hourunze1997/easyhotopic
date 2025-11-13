@@ -1,0 +1,15 @@
+{
+    "topic_id": 692,
+    "question": "【已评审】新增收集整机信息IPMI接口 - content: 背景\n客户在生产阶段需要采集服务器部件信息，需提供IPMI命令供生产脚本调用，从而实现启动正向信息采集、查询采集状态等能力\n决策点\n\n新增ipmi命令：收集整机信息\n\n详细描述\n1、新增ipmi命令：收集整机信息\nIPMI命令字：netfn：0x30，cmd：0x93，subCmd：0x8A\n变化类型：新增IPMI命令\n应用场景：收集整机信息\n操作类型： GET/SET\n角色权限：Operator\n操作权限：BasicSetting\n参数说明\n\n字节\n名称\n取值说明\n\n1:3\nManufactureId\nManufacturer ID，LS Byte first。长度固定3个字节，例如，某厂家ID是2011，对应十六进制为0x0007DB，则字节序为第1个字节为DBh、第2个字节为07h、第3个字节为00h。\n\n4\nSubCmd\nSub command，子命令=8Ah\n\n5\nParameter Selector\n见表 整机信息参数表\n\n6\nOffset\n数据偏移，从0开始，LS Byte first。\n\n7\nLength\n读取或写入数据长度\n\n8:N\nData\n写入数据\n\n响应说明\n\n字节\n名称\n取值说明\n\n1\nCompletionCode\n响应码\n\n2:4\nManufactureId\nManufacturer ID，LS Byte first。长度固定3个字节，例如，某厂家ID是2011，对应十六进制为0x0007DB，则字节序为第1个字节为DBh、第2个字节为07h、第3个字节为00h.\n\n5\nEnd of List\n表示当前数据是否结束。当参数数据比较长的时候，可能需要分多次读取，通过此字段可以判断数据是否读完。[7:1]：reserved.[0]：End of list 0=last data. 1=middle data\n\n6:N\nData\n响应数据，见表 整机信息参数表\n\n整机信息参数表\n\n取值\n操作类型\n含义\n参数数据说明\n\n0\nwrite-only\n启动或停止收集整机部件信息\n请求: Offset: 0x00 Length: 1 Data: 0（停止），1（启动）响应: End of List：0 Data：无\n\n1\nread-only\n查询整机部件信息收集状态\n请求: Offset: 0x00 Length: 1 响应: End of List：0 Data: 0：未启动收集、1：正在收集、2：收集完成、3：收集失败\n\n评审结论\n1、同意新增收集整机信息IPMI接口\nnetfn：0x30，cmd：0x93，subCmd：0x8A\nlinks: #p-1394-h-1, #p-1394-h-2, #p-1394-h-3, #p-1394-h-1ipmi-4, #p-1394-h-5, #p-1394-h-6, #p-1394-h-7, #p-1394-h-8, #p-1394-h-1ipmi-9",
+    "topic_user_name": "lisiguang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/692/2",
+            "text": ""
+        }
+    ]
+}

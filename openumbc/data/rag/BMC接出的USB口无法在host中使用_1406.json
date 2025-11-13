@@ -1,0 +1,71 @@
+{
+    "topic_id": 1406,
+    "question": "BMC接出的USB口无法在host中使用 - content: 背景：\n1.使用V3场内代码\n2.目前在BMC出的两个USB口插入设备，host端没有显示\n1750301378016176×322 15.4 KB\n问题：\n1.需要如何配置BMC才能使用这两个USB口\n2.是否需要BIOS配合\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/ee682acd9478ee77683b4e7d67523063eaa4861f.png",
+    "topic_user_name": "Iuliu",
+    "best_answer_url": "/t/topic/1406/8",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1406/2",
+            "text": "插入的是什么设备？顺便发一下一键收集的日志吧。"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1406/3",
+            "text": "openUBMC目前支持USB并在host侧显示吗？\n在使用BMC V2版本时和PAE沟通过类似场景，结论是BMC的USB设备在host无法显示。\n使用openUBMC，插上U盘，在BMC无法看到这个设备。"
+        },
+        {
+            "user_name": "Iuliu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1406/4",
+            "text": "U盘"
+        },
+        {
+            "user_name": "Iuliu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1406/5",
+            "text": "这里说的host是系统下，不是BMC侧"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1406/6",
+            "text": "web页面的BMC管理标签页下看看有没有USB管理标签页呢？这个标签页可以设置usb管理使能开关。"
+        },
+        {
+            "user_name": "Iuliu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1406/7",
+            "text": "BMC管理页面没有该标签。您的意思是这两个USB口是给BMC用的，不是通过BMC映射到主机端？"
+        },
+        {
+            "user_name": "nathanael yu",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1406/8",
+            "text": "这路USB是接到挂耳上的USB，主要用途是给BMC本身使用（主要预留的近端运维），不会映射成业务侧的USB资源。如果需要业务侧使用的USB，需要从CPU侧拉对应的硬件资源出来。"
+        },
+        {
+            "user_name": "Iuliu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1406/9",
+            "text": "明白。多谢"
+        },
+        {
+            "user_name": "Iuliu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1406/10",
+            "text": "请问一下，“预留的近端运维”大概是哪些功能，或者说有哪些使用场景呢？社区版本有支持吗"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 1501,
+    "question": "跑完稳定性压测后，用xshell工具连接SSH失败，无法登录 - content: 跑完一些稳定性测试之后，SSH无法登录BMC。\n两台机器分别执行过“snmp get压力测试”和“sharelink stress” ，压测完成后发现SSH无法登录BMC，静置2天后依然不能登录；压测内容如下：\nimage803×100 16.7 KB\n登录提示如下：\nimage1895×245 8.08 KB\n登录异常记录如下：\nimage1340×479 18.4 KB\nlog如下：\nbmc_network ERROR: init.lua(134): get host type failed, org.freedesktop.DBus.Error.LimitsExceeded: The maximum number of active connections for UID 0 has been reached [repeated 129 times in 301s from 2025-06-27 08:55:58.129305 to 2025-06-27 09:00:59.054420]\nimage1759×769 121 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/7bab7724b862ac42e88ca7183ab93cf4fb2a913e.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/3a6d60f3b29d176048d53aca21e6c0d9e6b81dc9.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a84e952afeafb261b205b88f5a32697500cfdbee.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/7c134b8e0aee9cb695facbe9c41c3dde3e582f00.png",
+    "topic_user_name": "KunTai_WangJiaKai",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1501/2",
+            "text": "有更多的日志吗？ 后两张图的日志，时间看着没有对应上。"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1501/3",
+            "text": "content: 提供一下一键收集的日志吧。发到邮件 ouwenjjian@huawei.com\nlinks: mailto:ouwenjjian@huawei.com"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1501/4",
+            "text": "好的 日志我发你"
+        }
+    ]
+}

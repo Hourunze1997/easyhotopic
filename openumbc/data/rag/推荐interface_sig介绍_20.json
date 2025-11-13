@@ -1,0 +1,22 @@
+{
+    "topic_id": 20,
+    "question": "【推荐】interface sig介绍 - 定位：openUBMC社区接口管理技术决策组织\n职责：\n1）建设接口规范，吸引更多企业/组织参与，繁荣北向生态。\n2）负责openUBMC组件间接口（资源树接口）、系统北向接口（web-backend/redfish/ipmi/cli/snmp）的设计看护，例行运作评审活动。\n3）规划接口演进方向，开展技术交流。\n4）引入接口设计、开发辅助工具和系统，并推动在社区基础设施中落地。\n成员：\n1）组长：huanghan（TC成员）\n2）maintainer：暂定席位9个，当前华为5个\n3）committer：暂定席位15个，当前华为3个\n运作方式：\n1）评审例会：两周一次，每月的第一周和第三周的周四下午14:00-16:00，maintainer按月轮流组织\n2）评审原则：\na. maintainer作为固定评委，需要有三分之二的评委出席，评审会议才有效；\nb. 单次评审需要75%或以上的评委同意，才算通过；\nc. 组长具有一票否决权；",
+    "topic_user_name": "zhuchao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/20/2",
+            "text": ""
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/20/3",
+            "text": ""
+        }
+    ]
+}

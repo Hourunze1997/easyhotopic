@@ -1,0 +1,50 @@
+{
+    "topic_id": 637,
+    "question": "BMC升级 release 版本会自动回退 - content: 背景\n基于最新 manifest 的dockerfile构建来容器\n“bingo”版本：0.5.317\n25.03+高可用\n问题现象\n通过命令：\nbingo build -b openUBMC -r openubmc_dev -bt release\n\n能够正常出包，能正常升级、但是升级完成后，等待稍长一段时间发现主版本号没变，可用分区的版本号是目标版本\n诉求\n1、这类问题应该如何定位\nlinks: #p-1273-h-1, #p-1273-h-2, #p-1273-h-3",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/637/7",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/637/2",
+            "text": "yizhonghui:\n\nmanifest\n\n1、优先确定代码本身问题，可以在版本回退后一键收集查看app.log/framework.log日志中，对应时间的错误打印，有无关键信息。\n2、其次通过查看一键收集中的m3_log文件，确定是否安全启动校验失败。"
+        },
+        {
+            "user_name": "baixin_ouyangyonggang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/637/3",
+            "text": "content: 我这也出现BMC升级release版本自动回退的现象，从55.05.00.03版本升级至自己构建的release版本，web页面上正常显示升级信息，但升级后版本回退到55.05.00.03版本。\nimage1466×651 163 KB\n参照提供的思路怀疑问题的可能性有：\n1.分析app.log，在release版本正常升级完BMC复位后，有3次crc失败校验的打印，结合升级时间原因可能为crc校验失败；\nimage1859×587 83.4 KB\n2.分析m3_log.1文件，发现存在跟安全启动校验及证书相关的日志，不确定是否为版本回退的原因；\nimage1474×577 22.9 KB\n3.分析m3_log文件发现BMC升级后有几次启动失败的日志，但未看出启动失败的原因；\nimage1041×822 58.4 KB\n目前尚不清楚升级的流程以及导致版本回退的原因，@caiyesheng_b48v3 麻烦帮忙分析下原因，日志文件见附件。\n升级release版本回退日志.zip (207.5 KB)\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/8514cbf480e9dcc05baced7916af90beaa7213e8.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/28fdbf4b5f8b77c406a8a825312098eecbc6327c.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0be717f6e699942569969e120c109f94fe737726.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/7df1866935ae07610b29e0b0e1229f7a2deca62d.png, /u/caiyesheng_b48v3, /uploads/short-url/t3oTlTw9QZzOmg9PjmB77HWrlVk.zip"
+        },
+        {
+            "user_name": "baixin_ouyangyonggang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/637/4",
+            "text": "content: 直连BMC串口，升级release版本串口显示卡在了下图圈红地方，卡了一段时间后BMC重启，串口下显示Secure L1FW Start！。\n07908e089e8772fec58cedd9f7d5c331379×610 36.7 KB\nimage946×627 184 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/ce4d8c833aef19a4bb7563fc5f45c00cb9c1679a.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/3a9c2de2b88ae38a3d22daca43da7ee974feb6cf.png"
+        },
+        {
+            "user_name": "Tf Wenchenglong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/637/5",
+            "text": "content: 遇到了相同的问题，使用的命令是bingo publish -b openUBMC -bt release --stage stable -r 自己的仓。升级后操作日志显示升级成功但使用的升级前版本启动。\n查看framework日志有几个path找不到然后很多的类和属性报错\nimage2026×314 26.9 KB\nimage2034×1028 274 KB\nimage2013×926 94.2 KB\n在app.log中有很多的get bma object failed\nimage2034×798 94.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/5838005b3ea6b3fe6e2dd32b77289c4808b50d40.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/f3e44d3aeda95df58bb8fdc8c4f9e70fff194be3.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0cd54441c224b0621dc05b137207cd3d245b75b6.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/7c0b2facbf42764f06e7341a82f8f2abf3754ebe.png"
+        },
+        {
+            "user_name": "Chengxiaoju",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/637/6",
+            "text": "content: release版本同样启动失败。看起来像安全启动问题。\nimage945×448 165 KB\nLogDump.zip (291.6 KB)\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/b64ac1c3dfc456c41b531dafdf7f184ef5e20710.png, /uploads/short-url/7CEZyxESPPqBQYzCp3wEaK0Bayx.zip"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/637/7",
+            "text": "content: 此问题已修复，GitCode - 全球开发者的开源社区,开源代码托管平台\nlinks: https://gitcode.com/openUBMC/bingo/pull/90"
+        }
+    ]
+}

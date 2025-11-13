@@ -1,0 +1,36 @@
+{
+    "topic_id": 802,
+    "question": "更新白牌包后，二维码还是华为的网址 - 1、白牌包在openUBMC代码下用自己签名制作；\n2、openUBMC代码用自己签名生成的固件，更新白牌包后二维码按预期更新；\n3、场内ibmc代码华为签名生成的固件，更新过渡包后，更新白牌包后二维码还是华为的网址；\n4、场内ibmc代码华为签名生成的固件，使用clear_wbd_config.hpm清理后，更新过渡包再更新白牌包后二维码还是华为的网址。",
+    "topic_user_name": "Tim",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "system",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/802/2",
+            "text": "由于大量社区举报，此话题被临时关闭至少 4 小时。"
+        },
+        {
+            "user_name": "system",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/802/3",
+            "text": "此话题已在 2 天后被自动打开。"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/802/4",
+            "text": "有出现问题时的一键收集日志吗？"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/802/5",
+            "text": "有日志的话，发送到这个邮件吧：ouwenjian@huawei.com"
+        }
+    ]
+}

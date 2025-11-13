@@ -1,0 +1,36 @@
+{
+    "topic_id": 623,
+    "question": "bmcgo gen工具优化建议 - content: 需求开发中，遇到使用gen工具自动生成代码后还需要手动调整gen的代码才能保证组件功能正常或通过社区CI的普通检查的问题。\n\npcie_device组件的代码进行gen之后，发现被删去了CpuBusInfo相关的部分gen代码\n\nmodel.json中的配置（未修改）\n\"CpuBusInfo\": {\n        \"tableName\": \"t_cpu_bus_info\",\n        \"privilege\": [\"ConfigureSelf\"],\n        \"properties\": {\n            \"SocketID\": {\n                \"baseType\": \"U8\",\n                \"default\": 0,\n                \"primaryKey\": true\n            },\n            \"SysId\": {\n                \"baseType\": \"U8\",\n                \"default\": 1\n            },\n            \"BusBaseAddr\": {\n                \"baseType\": \"U8\",\n                \"default\": 0\n            },\n            \"BusSize\": {\n                \"baseType\": \"U8\",\n                \"default\": 0\n            }\n        }\n    }\n\ngen后缺少的代码\nimage1752×150 17.3 KB\nimage1318×247 16.3 KB\n对相关功能可能产生影响\n\n建议gen工具自动检查生成代码行宽是否超过120，减少为通过ci检查而进行的手动修改动作\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/dcc67a2ef78c2a2600667f72a20d4ff0228eda79.png, https://forum.openubmc.cn/uploads/default/original/1X/cf8f3ffc8c6bcf85d3bf756276cbcc660fa42e6a.png",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "/t/topic/623/5",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/623/2",
+            "text": "+1"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/623/3",
+            "text": "自动生成代码策略，没有配置tabletype不会自动生成相关代码\n行宽未限制120目前认为是vscode-lua-format的bug，暂时只能通过手动修改"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/623/4",
+            "text": "1.这个策略是否相较于旧的策略有变动，因为从原先gen下的代码看，旧的策略是可以生成这相关的代码的（在gen下的代码没有被手动修改的前提下）；如策略有更新，是否有评估过其兼容性，目前从结果上来看可能是存在一定问题的\n2.目前有修复计划吗，或者尝试使用其他工具，手动修改不是长久之计呀"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/623/5",
+            "text": "当前自动生成代码已通过版本进行区分，自动生成代码策略发生变更时会通过版本区分，具体在service.json下 codegen_policy的version关键字，能够约束自动生成代码不随版本出现预期外的变更\n行宽超过120这个是来自配置文件vscode-lua-format的bug，目前只能等待官方社区更新"
+        }
+    ]
+}

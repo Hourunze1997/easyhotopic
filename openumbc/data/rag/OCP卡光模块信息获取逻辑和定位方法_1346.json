@@ -1,0 +1,15 @@
+{
+    "topic_id": 1346,
+    "question": "OCP卡光模块信息获取逻辑和定位方法 - content: 新适配了一款网讯OCP网卡，在添加network_adapter/src/lualib/hardware_config对应的XXX.lua文件后网卡和网口信息可以正常显示，但光模块信息有时能显示，有时又不能显示。\nimage736×484 18.5 KB\n想知道光模块信息的获取逻辑是怎样的，以及通过什么日志可以定位相关问题\n个人推测是iBMA带内获取后发送给BMC，但在network_adapter未找到相关日志，只在一个叫metric_analyzer的组件发现了光模块上树的打印\nimage1159×330 22.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/bfec4f2c485a05ea891194bccb5d280e36c607c4.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/83551bd9b66f7ebdfa3c067921b5fc02892bdcf3.png",
+    "topic_user_name": "百信-罗昊",
+    "best_answer_url": "/t/topic/1346/2",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1346/2",
+            "text": "光模块信息可以通过带外协议获取或者安装BMA后获取，且BMA显示的优先级更高\n如果想确定新增的带外协议是否生效并获取建议如下：\n1、关闭BMA，保证光模块获取来源只有带外协议\n2、在hardware_config对应的XXX.lua文件增加打印，确定报文收到时是否是符合预期的报文信息\n如果是定位光模块信息展示问题建议如下：\n1、BMA信息，使用busctl --user tree bmc.kepler.host_agent信息，该信息为BMA发送过来的信息\n2、带外协议的信息，建议加日志打印是否有触发获取的流程"
+        }
+    ]
+}

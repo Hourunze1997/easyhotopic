@@ -1,0 +1,15 @@
+{
+    "topic_id": 832,
+    "question": "kptest框架与KPTestOpenFramework工程、iTestSmart工具介绍 - 一、Kptest框架\n专为服务器测试生态打造的自动化测试框架，基于Python3.7。主要分为执行器和API库，执行器主要是调度用例进行运行，完成脚本的自动化测试过程，同时包含脚本和业务层的组件函数。API库为测试用例或者为业务组件提供底层的执行单元，同时对外提供接口，屏蔽了硬件软件环境的差异。\n框架三个关键模块：\n1、被测设备&连接抽象\n\n实体被测对象的抽象封装\n被测设备中具体系统的抽象封装\n执行机与被测设备建立连接&下发操作的封装\n\n2、功能操作&统一接口\n\n被测对象最底层操作的封装\n框架底层执行单元，统一对外接口\n\n3、测试试步骤&业务逻辑抽象\n\n测试用例步骤中测试逻辑的封装\n与测试步骤解耦的业务实现封装\n静态数据、配置文件的封装\n\n二、KPTestOpenFramework工程\n为支持大家开发自己的测试用例、扩展框架的AW、API能力，开放KPTestOpenFramework工程。它其实就是一个python代码工程目录，依赖了KPTest框架，提供用例、AW、API扩展的入口与示例。以及提供执行入口，将测试套配置（用例脚本）、测试床配置（被测设备）关联起来，并转为框架中的抽象对象，将脚本运行起来，将脚本中命令下发到被测设备等。导入本地IDE即可开始编写自己的用例脚本，并在IDE中调试、运行脚本。\n为了更多的用例、设备并发能力，该工程提供了一键脚本，将开发的用例打包导出，并导入到itestsmart执行。\n三、iTestSamrt离线工具\nTestSmart工具主要是为生态提供专业级计算测试服务，iTestSmart是华为计算合作伙伴测试能力中心，提供简单高效的整机和部分专业测试能力，如：OpenUBMC。它集成了KPTest框架、部分openUBMC测试用例脚本，以及测试调度、测试结果查看、测试日志查看，开箱即用。用户只需添加被测设备信息、选择测试用例，即可开始执行测试用例脚本。它提供了跟多的用例、设备并发能力。\n同时支持导入用户自己开发的用例（如：用例脚本、AW/API扩展等）后，可在选择用例时，选择自己的用例。\n更多信息可参考开发指南。",
+    "topic_user_name": "openubmc-jianghu",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "openubmc-jianghu",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/832/2",
+            "text": "content: 框架、工具获取，参考：怎么申请使用kptest框架和itestsmart工具呢\nlinks: https://discuss.openubmc.cn/t/topic/665"
+        }
+    ]
+}

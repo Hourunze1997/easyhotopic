@@ -1,0 +1,29 @@
+{
+    "topic_id": 1388,
+    "question": "组件RPC函数的用法用途 - content: 看见每个组件几乎都注册了很多rpc函数，想知道它们是用来干什么的，以及怎么调用，社区没有相关的文档说明\nimage703×492 29 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a0c659724c5a7e2b97391d54c7fc78c106a27554.png",
+    "topic_user_name": "百信-罗昊",
+    "best_answer_url": "/t/topic/1388/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1388/2",
+            "text": "content: openubmc.cn\n\n组件的开发和代码编写 | openUBMC\nopenUBMC\n\n这些是组件mds模型的RPC方法实现，相当于其他APP调用对应的RPC时，就会出发这里的回调。\n文档里只是建议的说明了一下，确实不太够，已提issue，后续补充。GitCode - 全球开发者的开源社区,开源代码托管平台\nlinks: https://www.openubmc.cn/docs/zh/development/develop_guide/app_development/coding.html#%E6%AD%A5%E9%AA%A4%E4%B8%89-%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0, https://www.openubmc.cn/docs/zh/development/develop_guide/app_development/coding.html#%E6%AD%A5%E9%AA%A4%E4%B8%89-%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0, https://gitcode.com/openUBMC/docs/issues/40"
+        },
+        {
+            "user_name": "Linwanmin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1388/3",
+            "text": "content: 组件RPC函数的用途以及使用过程等详细过程可以参考 代码自动生成 | openUBMC，这里将会从组件的mds到rpc生成到使用都一步步给您详细介绍哦!\nlinks: https://www.openubmc.cn/docs/zh/development/design_reference/key_feature/code_generation.html"
+        },
+        {
+            "user_name": "FXX",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1388/4",
+            "text": "content: 在文档中心中有相关的描述 代码自动生成 | openUBMC。这些RPC方法是用于组件A通过资源树调用组件B定义的对外方法。\nimage1058×1124 46.7 KB\nlinks: https://www.openubmc.cn/docs/zh/development/design_reference/key_feature/code_generation.html, https://discuss.openubmc.cn/uploads/default/original/2X/c/cb11fbc4b84f8121f5ca3a2c25e4fc3399393521.png"
+        }
+    ]
+}

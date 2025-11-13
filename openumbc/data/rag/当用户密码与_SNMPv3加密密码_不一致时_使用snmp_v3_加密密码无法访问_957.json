@@ -1,0 +1,15 @@
+{
+    "topic_id": 957,
+    "question": "当用户密码与 SNMPv3加密密码 不一致时 ，使用snmp v3 加密密码无法访问 - content: 背景测试步骤：\n1.新增一个用户，授予其管理员权限\n2.修改snmp  SNMPv3算法 为 MD5 DES ，要求修改用户密码\n3.修改用户密码 和 SNMPv3加密密码\n4.当用户密码 和 SNMPv3加密密码  不一样时，用SNMPv3加密密码 填入MG-SOFT Mib Broswer\n,无法访问，\nimage809×910 27.8 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/bb421192f74d382d2b72c5a355c66b4b65c17578.png",
+    "topic_user_name": "Zxl",
+    "best_answer_url": "/t/topic/957/2",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/957/2",
+            "text": "content: 需要区分鉴权密码和加密密码，可以通过 snmpget 命令确认访问是否正常。\nimage979×238 10.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/c57adac50a58d67b98156649579e6bd221054420.png"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 1861,
+    "question": "请问离散传感器状态说明，有相关文档吗？ - content: 请问离散传感器的状态，有说明文档吗，有的话请分享一下，多谢：）\n离散传感器状态1755×866 144 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4180a185165ac6c96a81cecd2ee361f6439f0309.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/1861/2",
+    "reply_posts": [
+        {
+            "user_name": "Duzhou13 51cdj",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1861/2",
+            "text": "content: 当前针对离散传感器的状态社区暂无对应的详细说明文档，而web页面处于“离散传感器”页面时，右上角“帮助”对离散传感器的状态有简要说明，如下所示。\nimage2538×358 13.1 KB\n\n以下对离散传感器状态和相应的事件对应关系做简要讲解：\n\n离散传感器状态共 2 Bytes，其中bit15默认为1，其余15个bit位分别可以代表一个事件的状态，为1则表示事件产生，为0则表示无事件或事件恢复。\n对应关系参考IPMI标准规范文档42章节“Sensor and Event Code Tables”：\n以DIMM160举例，状态值为0x8040，也即bit6的值为1，根据DIMM160传感器配置的SensorType为0x12，ReadingType为0x6f，根据标准规范，此时产生了“检测到在位”的事件\nimage952×280 41.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/6675399c8198fcfa10a6ee48ca21babfe614bf1d.png, https://discuss.openubmc.cn/uploads/default/original/2X/d/d5860b9a68abdd675e5e6325a9e49d38119ef062.png"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1861/3",
+            "text": "content: 多谢。就是”IPMI规范”链接不到相关文档了。我们同事准备提一个BUG。如果您知道IPMI规范的链接，麻烦发一下。\nIPMI标准链接错误2281×1222 254 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/3dbb52aecf6d1e4c0f5a6663e9ca83fa9daacf9c.jpeg"
+        }
+    ]
+}

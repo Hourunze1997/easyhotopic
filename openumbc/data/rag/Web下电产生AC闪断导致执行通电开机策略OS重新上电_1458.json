@@ -1,0 +1,36 @@
+{
+    "topic_id": 1458,
+    "question": "Web下电产生AC闪断，导致执行通电开机策略，OS重新上电 - content: 背景：在通电策略是“保持上电”的前提且OS处于开机状态下，web页面点击“下电”，OS下电后会重新上电。\n日志分析：\n1.fructrl组件找到下电时刻日志，如下：\n企业微信截图_175074689542751363×119 11 KB\n2.下电过程中发现power_mgmt组件收到ac lost信号。并把该信号反馈至fructl组件中：\n企业微信截图_175074864095691444×237 39.8 KB\n3.fructrl判断该信号是否是AC 闪断。如是，将执行通电开机策略：\n企业微信截图_175074887177721438×158 25.4 KB\n代码走读：\n1.power_mgmt组件在init时注册gpio服务，消息处理函数发送ACLost给fructrl\n企业微信截图_17507492953984738×271 13 KB\n企业微信截图_17507493114136545×383 15.3 KB\n2.fructrl接收到AcLost信号，判断是否是Ac闪断，如是执行通电开机策略。\n企业微信截图_17507497789759597×110 6.97 KB\n企业微信截图_17507497499388878×198 13.4 KB\n企业微信截图_17507497301844924×197 14.8 KB\n问题：1.有哪些情况导致发生AC闪断呢？2.gpio服务是否绑定指定gpio口？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/1189611ca8ab1fff34544f2f481bc1caefe3a2ef.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a8c1fd1fcde2ff7d7271dfe7e4a0f1de3d6f2671.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/634bad95300fa61873aaf3abde39673da5d4f0f6.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0e73f34abe8026c8058e645bd98877876ba31117.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/e10e3113552e7e88ab1de6f633105c5624d01db8.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/f6784d7818dc8d4e1f9b9443a11eb40333c38be7.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/e353865063400d8ffcb5760270b6488e4e35f007.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c3a561976b9ae61b7d02d726ec76144d31fe5815.png",
+    "topic_user_name": "Huangmincai-wuzhou",
+    "best_answer_url": "/t/topic/1458/4",
+    "reply_posts": [
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1458/2",
+            "text": "ac的时候会有ac闪断信号上报"
+        },
+        {
+            "user_name": "Huangmincai-wuzhou",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1458/3",
+            "text": "请教一下，AC闪断信号是哪个组件监控呢？是上述的power_mgmt吗？"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1458/4",
+            "text": "power_mgmt例测扫描gpio管脚，检测到有ac闪断信号后发送给fructrl\n请排查该管脚是否正常"
+        },
+        {
+            "user_name": "Huangmincai-wuzhou",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1458/5",
+            "text": "具体是哪个管脚呢"
+        }
+    ]
+}

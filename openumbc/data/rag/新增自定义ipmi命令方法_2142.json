@@ -1,0 +1,7 @@
+{
+    "topic_id": 2142,
+    "question": "新增自定义ipmi命令方法 - content: 简要概述\n1.在组件ipmi.json中定义新增命令\n2.自动生成代码\n3.上板调试\n\nimage1604×592 58.3 KB\n在ipmi.json新增ipmi命令定义，确保通过netfn+cmd+req拼接成的ipmi命令唯一，如果无法确保唯一，请联系对应项目支持人员\n2.自动生成代码\nimage986×457 35.7 KB\n2.1 直接执行bingo gen后\nimage873×271 27.3 KB\n2.2 保留本次自动生成和ipmi有关的代码\n2.3 实现本次新增ipmi命令的接口\n在fructrl的pwr_powerctrl_ipmi.lua的register_ipmi函数中注册新回调\nimage1227×238 29 KB\n3. 升级环境后，先通过busctl --user tree bmc.kepler.fructrl 查看是否新增了自定义的ipmi命令\n确认新增后，即可通过ipmi命令发送请求\n如以上步骤执行后仍无法新增自定义ipmi命令，请联系对应项目技术支持人员\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/6e7a7077a40062b6ffa62af7b7d3cd8f36735f96.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/aa033960173d8199c8311c12d12fd9d821661797.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/e4c685395edd05a432a9c64808a1b89693274118.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0aa159e7b53a5f6b14de07de6641007a9f1e9ff2.png",
+    "topic_user_name": "wangxin",
+    "best_answer_url": "",
+    "reply_posts": []
+}

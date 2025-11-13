@@ -1,0 +1,50 @@
+{
+    "topic_id": 1658,
+    "question": "【已评审】新增redfish 接口查询和设置高温下电恢复使能开关与延时时间 - content: ISSUE链接\n【需求】支持高温下电后是否需要上电属性进行开关设置-fructrl-GitCode\n背景\n1： CPU过温后，硬件会主动下电，下电后，会根据私有对象ThermTrip的Actions的值决定一段时间后是否要上电还是不上电（默认上电）；当cpu持续高温时可能造成os反复上下电，当前该策略配置在CSR里，没有提供相关接口供客户选择，影响可用性\n2： 自动上电的延时时间后只能在csr里配置，没有对外的接口可以提供设置，影响可用性\n评审点\n基于上述背景，redfish需要新增加两个oem自定义属性，同时私有对象ThermTrip需要上到资源协作接口\n评审点1： 新增redfish查询和设置高温下电后是否需要上电的接口 与 延时时间\nURI：/redifsh/v1/Systems/:systemid\n操作类型：GET/PATCH\n修改描述：Oem/{{OemIdentifier}} 下新增属性新增如下属性\n\n字段\n字段说明\n类型\nPrivilegeMap配置\n取值举例\n\nPowerOnAfterCpuThermalTrip\nCPU过温保护下电再上电策略开启状态\n布尔值\nGET: ReadOnlyPATCH:PowerMgmt\ntrue:需要上电false:不需要上电\n\nDelaySecondsAfterCpuThermalTrip\nCPU过温保护下电再上电间隔秒数\n整数类型\nGET: ReadOnlyPATCH:PowerMgmt\n范围在0~1800的正整数\n\n示例：\nOem: {\n    \"{{OemIdentifier}}\": {\n       \"PowerOnAfterCpuThermalTrip\": true，\n       ”DelaySecondsAfterCpuThermalTrip“：300\n       }\n}\n\n评审点2： 资源协作接口增加 ThermalTrip\n新增interface\nbmc.kepler.Systems.ThermalTrip\n新增属性如下\n\n属性名称\n变化类型\n描述\n类型\n读写&权限\n持久化\n变化通知\n取值说明\n\nAction\n属性新增\n高温下电后上电策略\nU8\nWrite：PowerMgmtRead：ReadOnly\n掉电持久化\nfalse\n1：需要上电0：不需要上电默认是1\n\nTimeDelaySeconds\n属性新增\n高温下电后上电延时时间\nU32\nWrite：PowerMgmtRead：ReadOnly\n掉电持久化\nfalse\n单位为秒，默认300\n\n评审结论\n通过，具体结论如下：\n\n评审点1：同意 Redfish 接口 /redifsh/v1/Systems/:systemid 下新增 Oem 属性，具体属性信息如下：\n\nPowerOnAfterCpuThermalTrip，类型为 boolean， 表征CPU过温保护下电再上电策略开启状态，PATCH操作权限为 PowerMgmt\nDelaySecondsAfterCpuThermalTrip，类型为 integer, 表征CPU过温保护下电再上电间隔秒数，PATCH操作权限为 PowerMgmt\n\n评审点2：同意新增资源协作接口 bmc.kepler.Systems.ThermalTrip，该接口需要挂接在资源 /bmc/kepler/Systems/:SystemsId/Fructrl/:FruId，表征当前 Host 的高温下电后上电策略配置。具体属性信息如下：\n\nAction，签名为 y， 表征高温下电后上电策略动作，默认为上电；属性可以读写，其中读权限 ReadOnly ，写权限 PowerMgmt\nTimeDelaySeconds，签名为 u, 表征高温下电后上电延时时间，单位为秒，默认300；属性可以读写，其中读权限 ReadOnly ，写权限 PowerMgmt\nlinks: https://gitcode.com/openUBMC/fructrl/issues/16, #p-4025-h-1, #p-4025-interface-2, #p-4025-h-3, #p-4025-h-4",
+    "topic_user_name": "wangxin",
+    "best_answer_url": "/t/topic/1658/2",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1658/2",
+            "text": "content: hxmygcs:\n\n查询/设置\nOem: {\n    \"{{OemIdentifier}}\": {\n       \"PowerOnAfterCpuThermalTrip\": true，\n       ”DelaySecondsAfterCpuThermalTrip“：300\n       }\n}\n\n评审点2：\n私有对象ThermTrip上到资源协作接口\n详细描述\n新增path\n/bmc/kepler/Systems/:SystemsId/ThermTrip/:Id\n新增interface\nbmc.kepler.Systems.ThermTrip\n私有属性Actions/TimeDelaySeconds迁移到新增interface属性下面\n\n@hxmygcs 当前评审发帖需要答复和闭环以下问题：\n问题1：评审点2新增的资源协作接口需要说明变更的原因，以及兼容性处理策略\n问题2：评审点2中资源协作接口下的属性的说明需要明确细化，说明这里的高温下电是什么原因的下电，接口名称是不是就是 ThermalTrip 导致的下电之后的上电策略？\nlinks: /u/hxmygcs"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1658/4",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1658/5",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1658/6",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1658/7",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1658/8",
+            "text": ""
+        }
+    ]
+}

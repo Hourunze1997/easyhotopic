@@ -1,0 +1,15 @@
+{
+    "topic_id": 2137,
+    "question": "【问题反馈】20.06版本多个web帮助页面为空，未显示帮助信息 - content: 现象：伙伴测试进行WEB页面基础功能检查时，发现多个功能的帮助页面为空，具体页面如下\n1、服务管理-VNC\nimage796×174 7.78 KB\n2、用户安全–双因素认证\nimage733×139 7.59 KB\n3、用户安全-LDAP\nimage763×163 7.6 KB\n4、维护诊断-可观测\n\n定位：进入conan包缓存目录下查看help/1.71.24@openUBMC.release的内容，发现在中英两个语言目录下均没有bmc_help_0025.html，bmc_help_0027.html，bmc_help_0035.html，bmc_help_0083.html等四个帮助文件\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/08cf63f8959a3a0280679defb8b568e741ee1587.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/61eb93d0306136ba09db226b273ef1be3a76889d.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/397acfe6095d0e9f1d4d28e9dd76b9c64479148f.png",
+    "topic_user_name": "百信-李肖航",
+    "best_answer_url": "/t/topic/2137/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2137/2",
+            "text": "openUBMC 没有 VNC、 双因素认证、 LDAP  这3项功能，相应的没有对应的帮助文档文件。"
+        }
+    ]
+}

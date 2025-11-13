@@ -1,0 +1,113 @@
+{
+    "topic_id": 1585,
+    "question": "root.sr是如何选择下面的exu用哪个sr文件的？ - tianchi的目录下有这些sr文件，root.sr是如何选择的呢？",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/2",
+            "text": "天池自发现是通过读取eeprom烧录的csr来识别是什么板卡的\n所以具体要看是哪个机型\nBMC内置的CSR只是备份用的，确保CSR最低版本的"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/3",
+            "text": "920S默认烧录的是哪个版本呢"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/4",
+            "text": "如果你有实际环境，可以通过一键收集中dump_info\\AppDump\\hwdiscovery\\Connector_EXU_1_01.sr查看环境上生效版本内容，也可通过dump_info\\LogDump\\framework.log中搜索关键词EXU看sr文件名"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/5",
+            "text": "content: image1440×747 52.4 KB\n为什么里面没有Connector_EXU_1_01.sr这个文件\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/0636de28361b868d85aaff3db448235a77f0cca9.png"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/6",
+            "text": "打开看下connector.txt中Connector_EXU的信息呢"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/7",
+            "text": "content: image1916×910 25.5 KB\n这里面能看到Connector_EXU_1_01，但是没有指向哪个sr\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/9dd5edcc040164f87de0a1a7f9de95cafa40c43b.png"
+        },
+        {
+            "user_name": "殷健",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/9",
+            "text": "检查一下EXU的硬件csr烧录有没有问题，看起来是没有从EXU的eeprom里正确读到组件UID以及其他csr数据，查看一下framework.log，应该能找到对应的报错"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/10",
+            "text": "loadStatus不为0，说明加载有问题"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/11",
+            "text": "这个csr是需要自己烧录进去的吗，还是买bmc模块的时候就已经烧好了的，怎样检查它烧上没有呢"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/12",
+            "text": "content: 在用bmc studio进行csr出包时报错了\n企业微信截图_17519588716955552×130 17.2 KB\nlog内容如下\n企业微信截图_175195897537281299×287 55.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a1393b664ba3554ab6814f3b39acc8ccb7c2ebc2.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c543290721c607f366038db403b1c2b49d3cbb89.png"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/13",
+            "text": "会跟随硬件一起发布，除非有更新诉求一般不需要动"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/14",
+            "text": "现在有更新诉求，该怎么更新呢"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/15",
+            "text": "content: @caiyesheng_b48v3\nlinks: /u/caiyesheng_b48v3"
+        },
+        {
+            "user_name": "王宇航",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/16",
+            "text": "你们这是鲲鹏模组产品，建议把csr内置到bmc，而不是烧录到eeprom，Connector里BomId可以写死"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1585/17",
+            "text": "内置到bmc后资源树上看不到smc"
+        }
+    ]
+}

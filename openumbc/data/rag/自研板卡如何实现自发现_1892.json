@@ -1,0 +1,36 @@
+{
+    "topic_id": 1892,
+    "question": "自研板卡如何实现自发现 - 需求：自研板卡实现硬件自发现；\n步骤：\n\n通过配置vpd组件，能够通过配置非天池方式（“IdentifyMode”: 2,）和固定bom、auxid、id、Presence等属性，实现对自研板卡加载，配置代码如下：\n\n        \"Connector_IEU_1\": {\n            \"Bom\": \"14100513\",\n            \"Slot\": 1,\n            \"Position\": 1,\n            \"Presence\": 1,\n            \"Id\": \"34343735\",\n            \"AuxId\": \"\",\n            \"Buses\": [\n                \"I2c_9\",\n                \"JtagOverLocalBus_1\"\n            ],\n            \"SystemId\": \"${SystemId}\",\n            \"ManagerId\": \"${ManagerId}\",\n            \"ChassisId\": \"${ChassisId}\",\n            \"SilkText\": \"J6012\",\n            \"IdentifyMode\": 2,\n            \"Type\": \"PCIeRiserCard\"\n        },\n\n2.在自研板卡的Eeprom上写入UID（uid为00000001040302024342）：\n~ ~ # busctl --user call bmc.kepler.hwproxy /bmc/kepler/Chip/Eeprom/Eeprom_IEU_01010101  bmc.kepler.Chip.BlockIO  Write a{ss}ua\ny 0 100 24  0x30 0x30 0x30 0x30 0x30 0x30 0x30 0x31 0x30 0x34 0x30 0x33 0x30 0x32 0x30 0x32 0x34 0x33 0x34 0x32 0 0 0 0\n~ ~ # busctl --user call bmc.kepler.hwproxy /bmc/kepler/Chip/Eeprom/Eeprom_IEU_01010101  bmc.kepler.Chip.BlockIO  Read  a{ss}uu\n 0 100 24\nay 24 48 48 48 48 48 48 48 49 48 52 48 51 48 50 48 50 52 51 52 50 0 0 0 0\n\n3.因不清楚天池头的内容，将能够实现自发现的板卡Eeprom的前100个字节复制到自研板卡上；\n4.新增一份以00000001040302024342为名称的sr，并且将IdentifyMode\": 设置为3，无法实现自发现该板卡。\n疑问：目前这种方式只是在对应板卡的eeprom中写入了uid，并没有将csr烧写入eeprom中。该情况下是否能够根据eeprom中的uid在bmc系统找到对应的sr文件，从而实现自发现。",
+    "topic_user_name": "wuzhou-xiaokaili",
+    "best_answer_url": "/t/topic/1892/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1892/2",
+            "text": "content: 天池自发现对应的是板卡要完全支持天池协议，包括硬件设计、eeprom配置，天池fru烧录等一些列的动作，会比较复杂。\n如果只是为了识别和加载卡的话，可以考虑采用boardid加载方式：\n\nIdentifyMode = 1：BoardId可读，采用BoardId加载方式，直接关联某个Accessor\n\n相当于你配一个Accessor，然后可以读取到你在eeprom里面写的ID（不一定是UID，或者Riser已有的一些可识别读取方式），然后你在connector的id设置成引用这个Accessor，这样在加载的时候他就会通过Accessor去读取id，然后加载本地的/opt/bmc/sr/bom_id_auxid.sr文件\nlinks: https://www.openubmc.cn/docs/zh/development/develop_guide/feature_development/board_integration.html#connector%E5%AF%B9%E8%B1%A1"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1892/3",
+            "text": "zybwh:\n\n天池fru烧录\n\n天池fru烧录这部分有相关文档吗？目前对天池头，fru格式相关资料不是很多，包括生产过程中，如何将天池头，csr，psr，fru等信息打包为一个bin烧录到eeprom中，这个可行吗？"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1892/4",
+            "text": "请问accessor是读取eeprom的offset是多少？配置是以下这样吗？\n        \"Connector_IEU_2\": {\n            \"Bom\": \"14100513\",\n            \"Slot\": 2,\n            \"Position\": 2,\n            \"Presence\": 1,\n            \"Id\": \"\",\n            \"AuxId\": \"\",\n            \"Buses\": [\n                \"I2c_9\",\n                \"JtagOverLocalBus_1\"\n            ],\n            \"SystemId\": \"${SystemId}\",\n            \"ManagerId\": \"${ManagerId}\",\n            \"ChassisId\": \"${ChassisId}\",\n            \"SilkText\": \"J6013\",\n            \"IdentifyMode\": 1,\n            \"Type\": \"PCIeRiserCard\"\n        },"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1892/5",
+            "text": "要找鲲鹏社区的接口人要了，当前openUBMC社区还没有这些内容"
+        }
+    ]
+}

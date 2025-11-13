@@ -1,0 +1,43 @@
+{
+    "topic_id": 1291,
+    "question": "风扇智能调速概率性失效的问题 - content: 在风扇适配过程中，发现bmc在断电重启，升级后，有概率web的智能调速策略失效，现象体现在，无论设置什么模式，风扇的速率不会改变。在日志和代码后，定位到如图这段代码。\nimage2555×1257 429 KB\n从CustomReadinfo()里面获取的数据，有时候会获取为无效数据\n失效时的获取的数据\n\n正常时获取的数据\nimage2283×113 5.75 KB\n想请问这个数据的来源在哪里，为什么会是概率性问题，是否是配置原因导致。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/98413890efa539f92351fb72e90056a0131d37a8.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0780e155714c5241c69cb3fe5de898dabc65912f.png",
+    "topic_user_name": "wuzhou-Lsx",
+    "best_answer_url": "/t/topic/1291/6",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1291/2",
+            "text": "风扇速率不会改变，此时的风扇速率为多少？请先查看cooling_control.log中定位在重启时的调速策略以及转速。"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1291/3",
+            "text": "content: image2345×1407 441 KB\n按理说我配了16个风扇，但是加入调速策略只有前4个风扇。\n85bb1c1e9eb512dab3ce1d261b9393e1635×453 17.8 KB\n而且我是几个自动调速策略（节能，高性能，低转速）都试过了，正常的是有风扇转速变化的，异常时是没有转速变化的。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/5d1abf1feecf084f0ddbb531c797f0cf6b6d7209.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/8bd39d42ae19dbb2eed678b4b42f7c6a1df3236e.png"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1291/4",
+            "text": "异常是指什么异常？问题描述可以再清晰一些"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1291/5",
+            "text": "就是风扇自动调速功能无效，代码里面体现是没有找到散热设备。散热器件id都是0xffff，正常来说是非0xffff的。"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1291/6",
+            "text": "已解决，是风扇sr文件配置问题，之前配置风扇文件是按单风扇板的方式去配置，但实际是有多风扇板，所以需要按多风扇板的配置方法去配置。"
+        }
+    ]
+}

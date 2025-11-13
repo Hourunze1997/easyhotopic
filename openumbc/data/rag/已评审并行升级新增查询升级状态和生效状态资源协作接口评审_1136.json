@@ -1,0 +1,15 @@
+{
+    "topic_id": 1136,
+    "question": "【已评审】并行升级新增查询升级状态和生效状态资源协作接口评审 - content: 背景：为支持并行升级web界面展示升级进度及生效状态，需要提供资源协作接口以支持北向接口及业务组件的交互；\n评审点一：资源协作接口查询所有固件升级状态\nUpdateService 资源协作接口新增方法：GetUpdateProgress。\npath: /bmc/kepler/UpdateService\ninterface : bmc.kepler.UpdateService\n方法说明：\n\n项目\n值\n\n方法名称\nGetUpdateProgress\n\n变化类型\n新增\n\n权限\nReadonly\n\n请求签名\n‘’\n\n响应签名\n‘sa(ssssssi)’\n\n响应参数\nUpgradeMode：签名为 s，表征当前升级模式\n\n响应参数\nUpgradeTasks：签名为 a(ssssssi)，表征当前所有固件的升级进度，结构体(ssssssi)具体定义见下表\n\n结构体(ssssssi)定义\n\n签名\n名称\n取值\n取值说明\n取值样例\n\ns\nTaskName\nString\n任务名称\n\ns\nFirmware\nString\n升级的固件类型\nCPLD\n\ns\nFirmwareInstance\nString\n升级的具体的固件名称\nMB_CPLD\n\ns\nFileName\nString\n升级的文件名称\nimage.hpm\n\ns\nPercentage\nString\n升级进度（百分比）\n8%\n\ns\nTaskState\nString\n升级状态，具体取值如下：Pending：挂起状态 Running：正在升级Exception：升级异常Completed：升级完成)\nRunning\n\ni\nErrorCode\nint32\n错误码，取值如下：1：升级固件异常2：升级文件不存在3：无效的升级固件4：内存不足8：先下电之后才能升级9：固件版本不匹配12：升级固件和设备类型不匹配13：不支持升级BIOS27：升级版本和WEB不匹配28：设备状态不支持固件升级70：升级固件太旧\n1\n\n评审点二：资源协作接口查询所有待生效固件生效状态\nUpdateService 资源协作接口新增方法：GetPendingFirmwareList。\npath: /bmc/kepler/UpdateService\ninterface : bmc.kepler.UpdateService\n方法说明：\n\n项目\n值\n\n方法名称\nGetPendingFirmwareList\n\n变化类型\n新增\n\n权限\nReadonly\n\n请求签名\n‘’\n\n响应签名\n‘a(ysss)’\n\n响应参数\nPendingFirmwareList：签名为 a(yssss)，表征当前所有待生效固件的状态，结构体(yssss)定义见下表\n\n结构体(yssss)定义\n\n签名\n名称\n取值\n取值说明\n取值样例\n\ny\nSystemId\nuint8\n升级的设备归属的Host\n1\n\ns\nFirmware\nString\n升级的固件类型\nCPLD\n\ns\nFirmwareInstance\nString\n升级的具体的固件名称\nMB_CPLD\n\ns\nActiveStatus\nString\n生效状态，具体取值如下：ToBeActivated：待生效Activating：生效中Activated：生效完成\nActivating\n\ns\nActiveAction\nString\n生效执行的动作，具体取值如下：ResetBMC：复位BMC生效PowerOff：下电Host生效\nResetBMC\n\n评审结论\n通过，具体结论如下：\n\n同意资源协作接口 bmc.kepler.UpdateService 新增方法 GetUpdateProgress，请求签名：无，响应签名：sa(ssssssi)，权限为 Readonly\n同意资源协作接口 bmc.kepler.UpdateService 新增方法 GetPendingFirmwareList，请求签名：无，响应签名：a(ysss)，权限为 Readonly\nlinks: #p-2457-h-1, #p-2457-h-2, #p-2457-h-3",
+    "topic_user_name": "lixiaoning",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1136/2",
+            "text": ""
+        }
+    ]
+}

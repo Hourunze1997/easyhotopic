@@ -1,0 +1,71 @@
+{
+    "topic_id": 1350,
+    "question": "qemu启动之后，ssh可以登入，但是web和ipmi无法访问 - content: image630×794 27.3 KB\n环境：wsl2 ubuntu24.04\n操作步骤：使用宿主机的IP，wsl的IP\nimage749×676 24.4 KB\nssh可以正常访问：\nimage680×210 5.78 KB\n实在是不知道为什么\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/7cbe20717e7f38bd656b2b73720c833fa4a736f1.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/1325ea1763880bd6a508c397c47f6eb1d94160f6.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/05051a842f6839b5c26dd6c625b97f19c763c5af.png",
+    "topic_user_name": "qin-xiupup",
+    "best_answer_url": "/t/topic/1350/4",
+    "reply_posts": [
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1350/2",
+            "text": "我这边也遇到这个问题，删除temp和output文件夹后重新编译仿真包后，再qemu运行就没问题了，不确定是不是相同问题"
+        },
+        {
+            "user_name": "qin-xiupup",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1350/3",
+            "text": "我来试试"
+        },
+        {
+            "user_name": "qin-xiupup",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1350/4",
+            "text": "content: 可以了 非常感谢\n8bda5052d06b0a4eb6f1a21b1e010c21881×965 82.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/1ac6ce4563fa6ba16e8d50a89457fac9019580d4.png"
+        },
+        {
+            "user_name": "qin-xiupup",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1350/5",
+            "text": "content: 但是ipmi访问不了怎么回事\nimage1241×126 6.89 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/fc005d1b7ec43486c6d999c0eade08da7f7f00bf.png"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1350/6",
+            "text": "看上去像是ipmitool工具的问题，ipmitool访问其他BMC正常吗"
+        },
+        {
+            "user_name": "qin-xiupup",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1350/7",
+            "text": "之前openBMC用的就是这个，请问您是在哪里下的ipmitool工具的"
+        },
+        {
+            "user_name": "baixin_lipengbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1350/8",
+            "text": "刚开始执行init.py初始化环境时会apt install ipmitool，我就用的是这个"
+        },
+        {
+            "user_name": "qin-xiupup",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1350/9",
+            "text": "content: 我在wsl中使用ipmitool是可以的，但是在Windows中使用ipmitool就不行\nimage1177×706 23.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/c7cc7af9c9c97b6df489a647ff415ececaa719a9.png"
+        },
+        {
+            "user_name": "qin-xiupup",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1350/10",
+            "text": "content: 可以了，网段需要跟wsl网段一样就行\n\nimage1314×200 9.98 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/79e69340e098525d41262e2cdd32eb8d14bd3f1d.png"
+        }
+    ]
+}

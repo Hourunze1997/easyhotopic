@@ -1,0 +1,15 @@
+{
+    "topic_id": 1043,
+    "question": "【已评审】新增某客户专用Syslog配置导入导出项 - content: ISSUE链接（必填，此议题关联的issue）：\n涉及具体客户名，此处不填写\n背景（必填，文字描述议题背景，如需求来源、问题场景）:\n某客户使用定制的Syslog配置功能，当前不支持对该定制的Syslog配置进行导入导出。针对该客户进行配置克隆、散备件更换等使用场景，需要支持该客户定制的Syslog配置导入导出功能。\n决策点（必填，一句话描述待决策点）：\n新增该客户定制Syslog配置导入导出项\n详细描述（必填，描述待评审接口的详细内容）：\n\n配置项名称（中文）\n配置项类别\n配置项\n归属组件\n取值说明\n导入导出类型（ExportOnly，ImportAndExport）\n导出后是否可直接导入（无修改）\n\nSyslog配置\nSyslog\n\nxx客户仓\n对象\nImportAndExport\n是\n\n消息格式\nSyslog\nMessageFormat\nxx客户仓\n字符串枚举值：Custom、RFC3164\nImportAndExport\n是\n\n主机标识\nSyslog\nServerIdentitySource\nxx客户仓\n字符串枚举值：BoardSN、ProductAssetTag、HostName\nImportAndExport\n是\n\n告警级别\nSyslog\nLowestSeverity\nxx客户仓\n字符串枚举值：Critical、Major、Minor、Normal、None\nImportAndExport\n是\n\nSyslog服务器配置\nSyslog\nServers\nxx客户仓\n数组\nImportAndExport\n是\n\nSyslog服务器Id\nSyslog/Servers\nId\nxx客户仓\n整型：1,2,3,4\nExportOnly\n是\n\nSyslog服务器地址\nSyslog/Servers\nAddress\nxx客户仓\n字符串，取值满足ipv4或ipv6格式\nImportAndExport\n是\n\nSyslog报文通知配置\nSyslog/Servers\nLogReceivers\nxx客户仓\n对象\nImportAndExport\n是\n\n操作日志报文通知配置信息\nSyslog/Servers/LogReceivers\nOperationLog\nxx客户仓\n对象\nImportAndExport\n是\n\nSEL日志报文通知配置信息\nSyslog/Servers/LogReceivers\nSELLog\nxx客户仓\n对象\nImportAndExport\n是\n\nSOL日志报文通知配置信息\nSyslog/Servers/LogReceivers\nSOLLog\nxx客户仓\n对象\nImportAndExport\n是\n\nSyslog报文通知配置信息\nSyslog/Servers/LogReceivers\nSYSLog\nxx客户仓\n对象\nImportAndExport\n是\n\n报文通知通道使能\nLogReceivers/OperationLog、LogReceivers/SELLog、LogReceivers/SOLLog、LogReceivers/SYSLog\nEnabled\nxx客户仓\n布尔值\nImportAndExport\n是\n\n报文通知传输协议\nLogReceivers/OperationLog、LogReceivers/SELLog、LogReceivers/SOLLog、LogReceivers/SYSLog\nProtocol\nxx客户仓\n字符串枚举值：TCP、UDP\nImportAndExport\n是\n\n报文通知服务器端口号\nLogReceivers/OperationLog、LogReceivers/SELLog、LogReceivers/SOLLog、LogReceivers/SYSLog\nPort\nxx客户仓\n整型[0,65535]\nImportAndExport\n是\n\n评审结论\n同意新增该客户定制Syslog配置导入导出项，具体配置见详细描述\nlinks: #p-2207-issueissue-1, #p-2207-h-2, #p-2207-h-3, #p-2207-h-4, #p-2207-h-5",
+    "topic_user_name": "Zhangyu",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1043/2",
+            "text": ""
+        }
+    ]
+}

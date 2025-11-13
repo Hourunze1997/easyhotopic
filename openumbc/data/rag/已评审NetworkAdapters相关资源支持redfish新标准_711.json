@@ -1,0 +1,15 @@
+{
+    "topic_id": 711,
+    "question": "【已评审】NetworkAdapters相关资源支持redfish新标准 - content: 关联issue\nNetworkAdapters相关资源支持redfish新标准\n背景\n对Redfish协议进行升级，新增实现NetworkAdapter资源暂不支持的属性。\n评审点\n查询网络适配器接口增加PartNumber、 SerialNumber属性\nURI:  redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}\n操作类型：GET\n变化类型：新增属性\nPartNumber ：网络适配器的部件号，类型为string/null。\nSerialNumber：网络适配器的序列号，类型为string/null。\n响应样例：\n{\n“@odata.id\": “/redfish/v1/Chassis/1/NetworkAdapters/xxx”,\n“@odata.type”: “#NetworkAdapter.v1_0_0.NetworkAdapter”,\n“PartNumber”：网络适配器的部件号\n“SerialNumber”：网络适配器的序列号\n}\n评审结论：\n同意redfish接口redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}\n新增标准属性PartNumber 和 SerialNumber， 类型为string/null，只读，读权限为ReadOnly\nlinks: #p-1451-issue-1, https://gitcode.com/openUBMC/rackmount/issues/56, #p-1451-h-2, #p-1451-h-3, #p-1451-h-4",
+    "topic_user_name": "Changxing Open Ubmc",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/711/2",
+            "text": ""
+        }
+    ]
+}

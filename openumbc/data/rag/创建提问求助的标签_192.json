@@ -1,0 +1,22 @@
+{
+    "topic_id": 192,
+    "question": "创建提问求助的标签 - 创建提问求助的标签",
+    "topic_user_name": "",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/192/2",
+            "text": ""
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/192/3",
+            "text": ""
+        }
+    ]
+}

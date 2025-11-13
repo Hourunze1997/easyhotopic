@@ -1,0 +1,50 @@
+{
+    "topic_id": 770,
+    "question": "【已评审】NtpService资源支持Actions操作 - content: 关联issue\n支持Redfish资源NtpService下可以导入NTP组密钥-rackmount-GitCode\n背景\n客户需求需要Redfish资源NtpService下支持导入NTP组密钥\n评审点\n\n新增NtpService资源下的Actions属性\n新增NtpService资源下的ImportNtpKeyActionInfo资源\n新增NtpService资源下的ImportNtpKey请求\n新增NtpService资源Actions操作错误引擎\n\n评审点1：新增NtpService资源下的Actions属性\nURI：/redfish/v1/Managers/:managerid/NtpService\n操作类型：GET\n新增属性：Actions\n样例：\n\"Actions\": {\n    \"#NtpService.ImportNtpKey\": {\n        \"target\": \"/redfish/v1/Managers/:managerid/NtpService/Actions/NtpService.ImportNtpKey\",\n        \"@Redfish.ActionInfo\": \"/redfish/v1/Managers/:managerid/NtpService/ImportNtpKeyActionInfo\"\n    }\n}\n\n评审点2：新增NtpService资源下的ImportNtpKeyActionInfo资源\nURI：/redfish/v1/Managers/:managerid/NtpService/ImportNtpKeyActionInfo\n操作类型：GET\n响应样例：\n{\n    \"Uri\": \"/redfish/v1/AccountService/ImportRootCertificateActionInfo\",\n    \"Interfaces\": [\n        {\n            \"Type\": \"GET\",\n            \"RspBody\": {\n                \"@odata.context\": \"/redfish/v1/$metadata#ActionInfo.ActionInfo\",\n                \"@odata.id\": \"/redfish/v1/Managers/1/NtpService/ImportNtpKeyActionInfo\",\n                \"@odata.type\": \"#ActionInfo.v1_0_1.ActionInfo\",\n                \"Id\": \"ImportNtpKeyActionInfo\",\n                \"Name\": \"Import Ntp Key Action Info\",\n                \"Parameters\": [\n                    {\n                        \"Name\": \"Type\",   // 上传NTP组密钥的方式，取值为string\n                        \"Required\": true,\n                        \"DataType\": \"String\",\n                        \"AllowableValues\": [\n                            \"text\",    // 上传NTP组密钥的方式，类型为text\n                            \"URI\"      // 上传NTP组密钥的方式，类型为URI\n                        ]\n                    },\n                    {\n                        \"Name\": \"Content\",   // 上传NTP组密钥的内容，取值为string\n                        \"Required\": true,\n                        \"DataType\": \"String\" \n                    }\n                ]\n            }\n        }\n    ]\n}\n\n参数说明：\n\n参数名\n参数说明\n取值约束\n\ntype\n上传NTP组密钥的方式\n● text方式：表明value值是密钥  ● URI方式：表明value值是URI（本地或者远程）\n\nvalue\n上传NTP组密钥的内容\n1：若type的值是text，则value值是密钥的内容；  2：若type的值是URI，则value值是证书的路径，可以是证书本地路径（只能在/tmp目录下）或者远程路径（支持的文件传输协议有https、sftp、nfs、cifs、scp）\n\n评审点3：新增NtpService资源下的ImportNtpKey请求\n\"Url\"：\"/redfish/v1/Managers/:managerid/NtpService/Actions/NtpService.ImportNtpKey\"\n\n操作类型：POST\n请求样例：\n{\n    \"Type\": \"URI\",\n    \"Content\": \"/tmp/ntp.key\"\n}\n\n响应样例：\n{\n    \"error\": {\n        \"code\": \"Base.1.0.GeneralError\",\n        \"message\": \"A general error has occured. See ExtendedInfo for more information.\",\n        \"@Message.ExtendedInfo\": [\n            {\n                \"@odata.type\": \"#Message.v1_0_0.Message\",\n                \"MessageId\": \"Base.1.0.UploadNTPSecureGroupKeysuccessfully\",\n                \"RelatedProperties\": [],\n                \"Message\": \"The NTP group key is uploaded successfully.\",\n                \"MessageArgs\": 0,\n                \"Severity\": \"OK\",\n                \"Resolution\": \"None.\"\n            }\n        ]\n    }\n}\n\n评审点4：新增NtpService资源Actions操作错误引擎\n\nUploadNTPSecureGroupKeysuccessfully\n\n\"UploadNTPSecureGroupKeysuccessfully\": {\n            \"Description\": \"Indicates that an NTP group key is uploaded successfully.\",\n            \"Message\": \"The NTP group key is uploaded successfully.\",\n            \"Severity\": \"OK\",\n            \"NumberOfArgs\": 0,\n            \"Resolution\": \"None.\",\n            \"HttpStatusCode\": 200,\n            \"IpmiCompletionCode\": \"0x00\",\n            \"SnmpStatusCode\": 0\n        }\n\nNTPSecureGroupKeyTooLarge\n\n\"NTPSecureGroupKeyTooLarge\": {\n            \"Description\": \"Indicates that an error occuerd during the NTP group key upload process.\",\n            \"Message\": \"Failed to upload the NTP group key because it is oversized.\",\n            \"Severity\": \"Warning\",\n            \"NumberOfArgs\": 0,\n            \"Resolution\": \"Make sure that the content or URI of the NTP group in the request body is valid.\",\n            \"HttpStatusCode\": 400,\n            \"IpmiCompletionCode\": \"0xFF\",\n            \"SnmpStatusCode\": 3\n        }\n\nNTPGroupKeyNotSupported\n\n\"NTPGroupKeyNotSupported\": {\n            \"Description\": \"Indicates that an error occuerd during the NTP group key upload process.\",\n            \"Message\": \"Failed to upload the NTP group key because it is not support.\",\n            \"Severity\": \"Warning\",\n            \"NumberOfArgs\": 0,\n            \"Resolution\": \"Make sure that the group key is supported by the NTP.\",\n            \"HttpStatusCode\": 400,\n            \"IpmiCompletionCode\": \"0xFF\",\n            \"SnmpStatusCode\": 3\n        }\n\nUploadNTPSecureGroupKeyFailed\n\n\"UploadNTPSecureGroupKeyFailed\": {\n            \"Description\": \"Indicates that an error occuerd during the NTP group key upload process.\",\n            \"Message\": \"Failed to upload the NTP group key.\",\n            \"Severity\": \"Warning\",\n            \"NumberOfArgs\": 0,\n            \"Resolution\": \"Make sure that the content or URI of the NTP group in the request body is valid.\",\n            \"HttpStatusCode\": 400,\n            \"IpmiCompletionCode\": \"0xFF\",\n            \"SnmpStatusCode\": 3\n        }\n\n评审结论\n通过，具体结论如下：\n\n同意新增 NtpService 资源下的 Actions 属性\n同意新增 NtpService 资源下的 ImportNtpKeyActionInfo 资源\n同意新增 NtpService 资源下的 ImportNtpKey 请求\n同意新增 NtpService 资源 Actions 操作错误引擎\nlinks: #p-1601-issue-1, https://gitcode.com/openUBMC/rackmount/issues/36, #p-1601-h-2, #p-1601-h-3, #p-1601-h-1ntpserviceactions-4, #p-1601-h-2ntpserviceimportntpkeyactioninfo-5, #p-1601-h-3ntpserviceimportntpkey-6, #p-1601-h-4ntpserviceactions-7, #p-1601-h-8",
+    "topic_user_name": "Iss Szyaoh",
+    "best_answer_url": "/t/topic/770/4",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/770/2",
+            "text": "材料的格式再调整一下，请求和响应以及URI采用代码的方式包裹起来"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/770/3",
+            "text": "UploadNTPGroupKeyTooLarge\nUploadNTPGroupKeyNotSupport\nUploadNTPGroupKeyFailed\n上述这三个 error 的 HTTPStatusCode 是400"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/770/4",
+            "text": "iss_szyaoh:\n\n\"Name\": \"Import NTP key Action Info\",\n\n【评审意见】确认 Name 的正确性\n确认结论：修复为 Import Ntp Key Action Info"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/770/5",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/770/6",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/770/7",
+            "text": ""
+        }
+    ]
+}

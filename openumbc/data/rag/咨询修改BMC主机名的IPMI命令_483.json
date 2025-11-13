@@ -1,0 +1,29 @@
+{
+    "topic_id": 483,
+    "question": "咨询修改BMC主机名的IPMI命令 - content: image651×176 3.61 KB\n目前web上可以修改主机名，想问下有没有现成ipmi命令可以使用？期望用ipmi命令也能修改主机名。\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/e42ef98f5c92bbeba92d7424ac59181891cf9afc.png",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/483/2",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/483/2",
+            "text": "content: 当前提供对应的OEM IPMI命令可以修改和查询BMC的主机名，具体如下：\n设置BMC的主机名\n\nIPMI命令\n\n请求：ipmitool raw 0x30 0x93 {iana code} 0x05 0x01 0x00 0x00 {length} {datas}\n响应：{completion code} {iana code} \n\n参数说明\n\nlength： 要写入的数据长度，最大长度限制为128\ndatas：要写入的数据，需要转为ASCII码\ncompletion code：IPMI响应码\n{iana code}：厂商的IANA编码，采用三字节编码（比如华为：2011 = 0xdb 0x07 0x00）\n\n举例\n设置BMC的主机名为：testBMC，对应的命令为：\nipmitool raw 0x30 0x93 0xdb 0x07 0x00 0x05 0x01 0x00 0x00 0x07  0x74 0x65 0x73 0x74 0x42 0x4d 0x43\n\n查询BMC的主机名\n\nIPMI命令\n\n请求：ipmitool raw 0x30 0x93 {iana code} 0x06 0x01 0x00 {length}\n响应：{completion code} {iana code} 0x00 {datas}\n\n参数说明\n\nlength： 要获取的数据长度，不确定则可以填写0xFF（按照最大长度获取）\ndatas：获取的数据，格式为ASCII码\ncompletion code：IPMI响应码\n{iana code}：厂商的IANA编码，采用三字节编码（比如华为：2011 = 0xdb 0x07 0x00）\n\n举例\n获取BMC的主机名，对应的命令为：\nipmitool raw 0x30 0x93 0xdb 0x07 0x00 0x06 0x01 0x00 0xff\n\n厂商IANA编码说明\n\n厂商IANA编码可以采用定制化，如果已经进行过定制化则使用定制化之后的厂商IANA编码\n当前BMC的厂商IANA编码可以通过标准ipmi命令 Get Device Id Command (ipmitool raw 0x06 0x01) 进行查询\n具体的各个厂商的IANA编码请见 >> IANA编码查询\nlinks: https://www.iana.org/assignments/enterprise-numbers"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/483/3",
+            "text": "已验证，可以使用，感谢大佬"
+        },
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/483/4",
+            "text": "这是从代码中找的吗，openUBMC的ipmi手册有吗"
+        }
+    ]
+}

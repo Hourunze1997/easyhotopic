@@ -1,0 +1,29 @@
+{
+    "topic_id": 872,
+    "question": "希望提供openUBMC发布版本已测试范围 - 当前使用openUBMC过程中发现了一些问题，希望提供当前openUBMC基础版本已测试范围和结果，供伙伴分析交付补测范围。另外对于伙伴基于openUBMC进行交付，有无一些测试范围上的建议？",
+    "topic_user_name": "Huangyuxuan",
+    "best_answer_url": "/t/topic/872/2",
+    "reply_posts": [
+        {
+            "user_name": "Young Yang007",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/872/2",
+            "text": "社区版本测试范围在社区QA组进行过评审，测试结果会归档到QA仓测试结果中，请注意文档更新和使用参考。"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/872/3",
+            "text": "请问“QA仓测试结果”入口在哪儿？"
+        },
+        {
+            "user_name": "nathanael yu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/872/4",
+            "text": "content: GitCode - 全球开发者的开源社区,开源代码托管平台   经过测试确认的发布特性参照社区发布需求列表\nlinks: https://gitcode.com/openUBMC/release_management/blob/main/openUBMC-25.06/release-plan.md"
+        }
+    ]
+}

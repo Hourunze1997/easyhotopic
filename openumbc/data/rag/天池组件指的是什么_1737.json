@@ -1,0 +1,36 @@
+{
+    "topic_id": 1737,
+    "question": "“天池组件”指的是什么？ - openUBMC打造南向部件接口标准，与社区共建南向硬件标准生态，实现天池部件自适配，非天池组件快速接入适配，最终实现硬件自适配即插即用。\n如上是社区文档  探索openUBMC 中的描述，但是对于 天池组件 的定义在社区或者公共网络中难以找到其定义，请问 “天池组件” 具体指哪种？有什么特点？另外建议社区文档需要补齐这种内容，否则文档无法自解释。",
+    "topic_user_name": "Niegsh",
+    "best_answer_url": "/t/topic/1737/3",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1737/2",
+            "text": "天池组件是天池架构中的核心概念，通过标准化的硬件接口和管理协议，实现了硬件资源的动态管理和自发现。每个组件通过SMC进行管理，屏蔽了单板差异，确保了BMC的统一管理。\n需要更详细的文档补充请联系社区PAE通过issue跟踪文档补齐"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1737/3",
+            "text": "content: https://support.huawei.com/enterprise/zh/doc/EDOC1100297711/be23682d\n天池架构是TS2280 VF 09服务器的一种新硬件架构设计，天池组件指的是天池架构下各独立的标准硬件组件，如抬升卡、硬盘背板、基础版、IO组件、BMC插卡等。天池组件间支持灵活组合以应对不同客户的硬件场景。\n当前openUBMC社区正在和鲲鹏社区紧密合作，后续会在社区放置更多天池架构相关文档。\nlinks: https://support.huawei.com/enterprise/zh/doc/EDOC1100297711/be23682d"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1737/4",
+            "text": "大概能理解一个意思，但这个概念在鲲鹏社区也找不到一个明确的定义。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1737/5",
+            "text": "可以考虑以鲲鹏伙伴的反馈渠道去进行反馈，要求增加天池协议相关介绍和解释"
+        }
+    ]
+}

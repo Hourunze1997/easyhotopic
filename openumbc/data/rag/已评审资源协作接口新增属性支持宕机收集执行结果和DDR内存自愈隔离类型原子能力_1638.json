@@ -1,0 +1,15 @@
+{
+    "topic_id": 1638,
+    "question": "【已评审】资源协作接口新增属性支持宕机收集执行结果和DDR内存自愈隔离类型原子能力 - content: SSUE链接：\n【需求】支持获取宕机收集执行结果的原子能力\n【需求】支持获取DDR内存自愈隔离类型及执行结果的原子能力\n评审背景\n\n实现RAS事件可灵活配置、扩展和能力对外开放；满足IPMI、Redfish RAS相关规范；支持原始数据查询，支撑伙伴/客户实现自规划差异化特性。\n\n需求\n\n需求1：支持获取宕机收集执行结果的原子能力\n需求2：支持获取DDR内存自愈隔离类型的原子能力\n\n当前现状与差距/问题分析：\n\n需求1：目前，宕机收集已支持CLI导出，面对客户定制化需求，RAS需要支持宕机收集结果查询的原子能力\n需求2：目前，每个内存都支持隔离结果的原子能力，面对客户定制化需求，RAS需要支持获取DDR内存自愈隔离类型的原子能力\n\n决策点\n\n需求1：bmc.kepler.Systems.ExceptionInfo新增DumpProcessorLogResult属性\n需求2：bmc.kepler.Systems.FDMDomain.MemoryRAS新增LastIsolationType属性\n\n评审点\n\n需求1：bmc.kepler.Systems.ExceptionInfo新增DumpProcessorLogResult属性，承载宕机收集结果\n需求2：bmc.kepler.Systems.FDMDomain.MemoryRAS新增LastIsolationType属性，承载DDR内存自愈隔离类型\n\n详细描述\n需求1：资源协作接口新增属性\npath： /bmc/kepler/Systems/:SystemId/FDMDomain/:Id\ninterface： bmc.kepler.Systems.ExceptionInfo\n变化类型：新增属性\n应用场景：支持获取宕机收集执行结果的原子能力\n持久化类型： 复位持久化\n操作权限： ReadOnly\n具体如下：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nDumpProcessorLogResult\n新增属性\ny\n只读，R：ReadOnly W：不涉及\n复位持久化\ntrue\n上一次宕机收集结果，取值：0-未收集，1-收集成功，2-收集失败，默认值0。系统上下电/复位时，属性恢复默认值0。\n无\n\n需求2：资源协作接口新增属性\npath：/bmc/kepler/Systems/:SystemId/FDMDomain/MemoryRAS/:Id\ninterface： bmc.kepler.Systems.FDMDomain.MemoryRAS\n变化类型：新增属性\n应用场景：支持获取DDR内存自愈隔离类型的原子能力\n持久化类型： 复位持久化\n操作权限： ReadOnly\n具体如下：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nLastIsolationType\n新增属性\ny\n只读，R：ReadOnly W：不涉及\n复位持久化\ntrue\n上一次内存隔离类型，取值：0xFF-未隔离，0x00-ACLS，0x01-SPPR，0x02-HPPR，0x03-ADDDC，0x04-SDDC，0x05-RankSparing，0x06-PageOffline，默认值0xFF。系统上下电/复位时，属性恢复默认值0xFF。\n无\n\n评审结论\n1、同意新增资源协作接口属性\npath： /bmc/kepler/Systems/:SystemId/FDMDomain/:Id\ninterface： bmc.kepler.Systems.ExceptionInfo\n新增属性DumpProcessorLogResult，签名y，只读，读权限： ReadOnly，发送变更通知事件\n2、同意新增资源协作接口属性\npath：/bmc/kepler/Systems/:SystemId/FDMDomain/MemoryRAS/:Id\ninterface： bmc.kepler.Systems.FDMDomain.MemoryRAS\n新增属性LastIsolationType，签名y，只读，读权限： ReadOnly，发送变更通知事件\n遗留问题\n1、读写&权限补充完整\n已刷新属性读写&权限说明\n2、LastIsolationType属性取值说明中的RANK_SPARING改成RankSparing，PAGE_OFFLINE改成PageOffline\n已刷新接口说明\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/140, https://gitcode.com/openUBMC/mdb_interface/issues/141, #p-3971-h-1, #p-3971-h-2, #p-3971-h-3, #p-3971-h-4, #p-3971-h-5, #p-3971-h-6, #p-3971-h-1-7, #p-3971-h-2-8, #p-3971-h-9, #p-3971-h-10",
+    "topic_user_name": "Huangrenjie Wtss6",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1638/2",
+            "text": ""
+        }
+    ]
+}

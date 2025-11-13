@@ -1,0 +1,15 @@
+{
+    "topic_id": 583,
+    "question": "【紧急】误升异常固件导致BMC相关服务异常 - content: 目前的情况\n\n三个分区都变成了异常版本，但是升级前是正常版本且版本号与现在的不同，按道理升级后也不会影响到正常的分区，但现在正常的那个分区没了。\n通过登录串口看到目前的异常版本1.05.03.00 两个是18: 28的，一个是18: 43的。\nimage669×183 67.4 KB\n\nbusybox ifconfig下没有ip，但是手动配置ip后，外面能ping通，ssh连不上\n\n执行大部分命令都返回以下的报错\n\n改动只有vpd组件，怀疑是路径的大小写问题导致配置没有被正确加载，之前有遇到过这个情况，通过切换分区恢复，但现在分区都异常了\n\n请问现在能有什么办法传入固件包刷新恢复，或者还有其他的恢复方法吗？\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/fc30c1ee4ecd02bb08696acb0589c14f400ef37f.png",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "/t/topic/583/2",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/583/2",
+            "text": "如果三个分区损坏且只有串口可以登录的话是无法修复的，需要返厂维修。"
+        }
+    ]
+}

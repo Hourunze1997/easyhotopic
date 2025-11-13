@@ -1,0 +1,15 @@
+{
+    "topic_id": 681,
+    "question": "【已评审】redfish新增光模块老化预测开关使能 - content: 关联issue\n支持光模块老化预测功能开关使能\n背景\n当前AI训练集群集成大量光模块，由于光模块是易损器件，生命周期末期可能存在批量集中失效的问题。BMC新增光模块劣化故障预测功能，可对预故障光模块进行诊断。此预测类功能需要新增开关控制，支持通过redfish接口配置/查询功能使能状态。\n决策点\n是否增加光模块亚健康功能合集的对象\"OpticalModuleSubhealthFunction\"，和里面的子属性\"DeteriorationPredictionEnabled\"\n详细描述\nURI ：/redfish/v1/Managers/manager_id/DiagnosticService\n变化类型 ：新增属性\n操作类型 ：Get，Patch\n应用场景：光模块老化预测功能开关\n\n属性名称\n取值类型(string/integer/number/object/array/null)\n取值范围\n默认值\n操作权限(仅针对当前说明的操作类型，可选值为UserMgmt/BasicSetting/KVMMgmt/VMMMgmt/SecurityMgmt/PowerMgmt/DiagnoseMgmt/ReadOnly/ConfigureSelf)\n约束\n\nDeteriorationPredictionEnabled\nboolean\ntrue/false\ntrue\nGET：ReadOnly PATCH：BasicSetting\n仅AI训练集群可使用\n\n错误说明：无\n性能说明：无\n兼容性策略：无\n示例：\n{\n  “OpticalModuleSubhealthFunction”: {\n    “DeteriorationPredictionEnabled”: true\n  }\n}\n评审结论\n同意增加如下接口，用于控制光模块老化预测功能使能\nURI ：/redfish/v1/Managers/manager_id/DiagnosticService\n变化类型 ：新增对象OpticalModuleSubhealthFunction，以及属性DeteriorationPredictionEnabled\n操作类型 ：GET，PATCH\n应用场景：查询和设置光模块老化预测功能开关\n操作权限：GET：ReadOnly PATCH：BasicSetting\nlinks: #p-1371-issue-1, https://gitcode.com/openUBMC/rackmount/issues/39, #p-1371-h-2, #p-1371-h-3, #p-1371-h-4, #p-1371-h-5",
+    "topic_user_name": "Huangrenjie Wtss6",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/681/2",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "topic_id": 1986,
+    "question": "Kunpeng服务器ipmi power diag报错openuBMC是否有开启 Diag 的方法？ - content: 大家好，\n在做固件联盟送测代码开发时，需要验证 IPMI 规范里（chassis power diag ）。\n测试环境是 鲲鹏服务器（openubmc固件），OS 为 openEuler 22.03 LTS（ARM64）。\n我做了以下尝试：\n# OS 端（root）：想让未知 NMI 触发 panic，但 ARM64 内核没有这个开关\necho 1 > /proc/sys/kernel/unknown_nmi_panic   # 返回：No such file or directory\n\n# 带外测试脚本执行：\nipmitool -I lanplus -H 192.168.16.102 -U xxxx -P 'xxxx' power diag\n\n# iBMC 返回\nSet Chassis Power Control to Diag failed: Command not supported in present state\n\n日志片段如下（见截图）：\nroot@tux-106:/home/arch/test/firmware-test-evaluation-platform/BMC_Test/L1_MainTest/CESI# ipmitool -I lanplus -H 192.168.16.102 -U xxxx -P 'xxxx' -C 17 power diag\nSet Chassis Power Control to Diag failed: Command not supported in present state\nroot@tux-106:/home/arch/test/firmware-test-evaluation-platform/BMC_Test/L1_MainTest/CESI# python3 main.py TEST-BMC-02-006\n2025-07-24 06:08:06 - INFO utils.py[line:31]: Start TestCase:TEST-BMC-02-006-ipmi-set-power-diag\n2025-07-24 06:08:06 - INFO oslib.py[line:44]: send os cmd: echo 1 > /proc/sys/kernel/unknown_nmi_panic\n2025-07-24 06:08:08 - INFO transport.py[line:1819]: Connected (version 2.0, client OpenSSH_8.8)\n2025-07-24 06:08:08 - INFO transport.py[line:1819]: Auth banner: b'\\nAuthorized users only. All activities may be monitored and reported.\\n'\n2025-07-24 06:08:08 - INFO transport.py[line:1819]: Authentication (publickey) failed.\n2025-07-24 06:08:09 - INFO transport.py[line:1819]: Authentication (password) successful!\n2025-07-24 06:08:09 - INFO ssh.py[line:50]: SSH Connection IP:192.168.16.100, User: xxxx, Pwd: xxxx success!\n2025-07-24 06:08:10 - INFO ssh.py[line:117]: Close the connect 192.168.16.100\n2025-07-24 06:08:10 - ERROR utils.py[line:106]: [ipmitool -C 17 -I lanplus -H 192.168.16.102 -U xxxx -P xxxx power diag] execute FAIL !Error: Set Chassis Power Control to Diag failed: Command not supported in present state\n2025-07-24 06:08:10 - ERROR ipmilib.py[line:38]: error! ipmi cmd ipmitool -C 17 -I lanplus -H 192.168.16.102 -U xxxx -P xxxx power diag fail!\n\nimage1727×305 153 KB\n想确认的问题：\n\nKunpeng 服务器（openubmc）是否本身就不支持标准的 chassis power diag？\n如果支持，是否需要先在 iBMC CLI / BIOS 开启某个 选项？\n如果不支持，华为有没有 OEM Raw 命令或 REST 接口可以触发？\nARM64 系统要想捕获到 NMI 并 panic/kdump，有官方的内核或 RAS 设置指导吗？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/764598fb1a006016d6e57ad3151c01259b2f7aa1.jpeg",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/1986/4",
+    "reply_posts": [
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1986/2",
+            "text": "Kunpeng 服务器（openubmc）本身就不支持标准的 chassis power diag"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1986/3",
+            "text": "谢谢大佬，做用例开发时候发现有个跑不通，所以来问下，这块我在用例上标注一下"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1986/4",
+            "text": "1、关于问题1/2/3，IPMI的power diag命令是需要硬件（如CPLD）、CPU芯片、BIOS以及OS共同配合的，最早是在x86平台定义的，通过NMI实现，BMC只是作为触发的入口，其核心流程是靠CPU芯片、BIOS和OS完成的，当前鲲鹏平台暂不支持，后续如果支持了，openUBMC会实现该标准IPMI命令；\n2、关于问题4，建议通过openEuler的咨询渠道寻求解答;"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1986/5",
+            "text": "谢谢大佬！"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1986/6",
+            "text": "IPMI用户名密码记得打码"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1986/7",
+            "text": "由于当前鲲鹏平台的硬件、CPU芯片、BIOS暂不支持，所以openUBMC暂未实现，并非openUBMC不主动规划实现该标准命令"
+        }
+    ]
+}

@@ -1,0 +1,106 @@
+{
+    "topic_id": 1774,
+    "question": "iTestSmart运行报错 - 请问运行依赖的kpautos、kptest从哪里获取？",
+    "topic_user_name": "恒扬-胡田野",
+    "best_answer_url": "/t/topic/1774/15",
+    "reply_posts": [
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/2",
+            "text": "kptest 是托管在 GitCode 上 openubmc 组织下的 QA 仓库里面，你可以在该组织中看到相关内容。如有具体问题建议联系相关维护人确认。"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/3",
+            "text": "content: image1124×156 17.6 KB\n依赖的kpautos没找到\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/cea662becbaadf408ed452916c6f7e54c3a65f39.png"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/4",
+            "text": "确实没看到，建议联系sig组公共邮箱咨询"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/5",
+            "text": "好的，多谢"
+        },
+        {
+            "user_name": "Wwy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/6",
+            "text": "content: 捕获837×175 11.8 KB\n确认下是不是没有安装kptest依赖库\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/81dd95fe1ae29f464488158ee2bd804bcb7d8775.png"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/7",
+            "text": "content: image334×437 4.37 KB\n两个依赖包安装了\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/3a68219e976fb744411e8954a5ca83fe9de0fbdf.png"
+        },
+        {
+            "user_name": "百敖软件",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/8",
+            "text": "content: 本地调试，需要先把测试床配置一下。image1024×628 28.9 KB\n测试床的内容，从itestsmart的设备界面导出来的xml文件里复制。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/ea666f6d5bd602b959ea9bd727a7ea08fd3d8cad.png"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/9",
+            "text": "content: iTestSmart客户端从哪里得到，社区提供的下载链接里没有\nimage731×264 23.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e92135b0d0af698b14faf52f8a33e63437cdb4c0.png"
+        },
+        {
+            "user_name": "百敖软件",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/10",
+            "text": "content: image1819×480 96.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/6c26983823425973275f32a15353f29834d8bb17.jpeg"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/11",
+            "text": "这是WEB端吗，是不是要开通权限才能访问"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/13",
+            "text": "WH11003:\n\n这是WEB端吗，是不是要开通权限才能访问\n\nitestsmart 工具本身这个要找你们对接的pae去申请开放"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/14",
+            "text": "申请了，whl和指导文档的下载（上面提供的截图里）就是申请后提供的，没有提到账号/权限相关信息"
+        },
+        {
+            "user_name": "Openubmc Liuyujie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1774/15",
+            "text": "请联系一下huangdingquan1@huawei.com\n最好是可以电话沟通。"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1774/16",
+            "text": "好的"
+        }
+    ]
+}

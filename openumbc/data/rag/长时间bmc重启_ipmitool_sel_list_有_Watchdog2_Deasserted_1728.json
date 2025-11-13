@@ -1,0 +1,15 @@
+{
+    "topic_id": 1728,
+    "question": "长时间bmc重启, ipmitool sel list 有 Watchdog2 Deasserted - 在分析app.log日志中我发现有assert失败打印，想请问一下：\n为什么assert会失败？\n什么场景下会报Watchdog的sel告警呢，感谢\n2027-07-08 00:13:12.711964 sensor ERROR: sel_management.lua(629): add sel[{“SensorType”:35,“SubjectName”:“MainBoard”,“SensorName”:“Watchdog2”,“SensorId”:“DiscreteSensor_Watchdog2_00”,“SelEventType”:239,“SensorNumber”:1,“SelMsgVersion”:4,“GenerateId”:32,“SelData3”:255,“SelData2”:3,“SelData1”:8,“SelType”:2}] failed\n2027-07-08 00:13:12.712226 sensor NOTICE: sensor_instance.lua(224): [DiscreteSensor_Watchdog2_00] deassert an event [event dir: 0]\n20\n这个传感器DiscreteSensor_Watchdog2是个离散传感器，配置文件如下：\n“DiscreteEvent_Watchdog2”: {\n“Property”: “<=/Watchdog2_1.ExpirationEventData”,\n“ListenType”: 0,\n“EventData1”: 255,\n“EventData2”: 255,\n“EventData3”: 255,\n“EventDir”: 255,\n“Conversion”: 0,\n“SensorObject”: “#/DiscreteSensor_Watchdog2”\n}\nplatform.sr中watchdog2_1的配置文件如下：\n“Watchdog2_1”: {\n“TimerUse”: 1,\n“TimerUseStr”: “”,\n“TimeoutAction”: 0,\n“OEMExpirationFlag”: 0,\n“SMSExpirationFlag”: 0,\n“OSLoadExpirationFlag”: 0,\n“BIOSPOSTExpirationFlag”: 0,\n“BIOSFRB2ExpirationFlag”: 0,\n“BIOSFailToStartFlag”: 0,\n“PreTimeoutInterruptFlag”: 0\n}\n其中ExpirationEventData值应该是在闭源仓进行处理，且在日志中未发现有function sensor_instance:assert_discrete_event(sel, dir_value)函数中的log:notice(‘[%s] assert an event [event dir: %s]’, self.sensor_id, dir_value or ‘mock’)打印，只有function sensor_instance:deassert_discrete_event(sel, dir_value)函数中的log:notice(‘[%s] deassert an event [event dir: %s]’, self.sensor_id, dir_value or ‘mock’)打印，当时情况是每次重启都会触发看门狗的恢复告警，想再问一下，这种恢复告警在什么情况下会打印呢，感谢",
+    "topic_user_name": "Jiaoxinchao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Duzhou13 51cdj",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1728/2",
+            "text": "content: 麻烦发一份日志文件到 wanghaozhou2@huawei.com 以便分析问题\nlinks: mailto:wanghaozhou2@huawei.com"
+        }
+    ]
+}

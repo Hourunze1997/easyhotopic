@@ -1,0 +1,7 @@
+{
+    "topic_id": 1411,
+    "question": "传感器配置checklist - content: 【————Qemu使用指南————】教会我们如何安装和使用qemu，使用过的朋友们是不是觉得仿真的bmc和真实的bmc使用方法大差不差\n【—Qemu仿真应用之事件模拟篇—】教会我们如何触发传感器事件\n【—Qemu仿真应用之新增板卡篇—】教会我们如何替换板卡\n在这里，我们将会进行以传感器配置为例，跟大家一起学习配置一个传感器所需要的checklist清单，以及如何在qemu中验证该传感器是否工作\n传感器配置Checklist\n传感器主要就是监测硬件信息及其运行状态的，主要分两部分：一个是门限传感器，主要是实时更新显示硬件的温度、电压、功率等信息的具体值，一般需要搭配门限配置用于显示硬件值超过合理范围时进行事件上报；一个是离散传感器，主要在于体现部件在位、启动异常等运行状态\n\n传感器名称需要遵循IPMI规范要求，不允许超过16个字符（包括空格）。\n门限传感器关注告警门限和mask是否匹配正确\n门限传感器关注是否需要配置告警和调速：温度类传感器需要确认是否需要配置告警和调速，避免误配、漏配\n门限传感器避免传感器数值超大发生翻转：电压和功耗类传感器需要特别注意，很容易忽略\nlinks: https://discuss.openubmc.cn/t/topic/636, https://discuss.openubmc.cn/t/topic/1331, https://discuss.openubmc.cn/t/topic/1332, #p-3280-checklist-1",
+    "topic_user_name": "Linwanmin",
+    "best_answer_url": "",
+    "reply_posts": []
+}

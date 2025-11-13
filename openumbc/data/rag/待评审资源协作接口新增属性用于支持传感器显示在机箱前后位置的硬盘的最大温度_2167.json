@@ -1,0 +1,7 @@
+{
+    "topic_id": 2167,
+    "question": "【待评审】资源协作接口新增属性用于支持传感器显示在机箱前后位置的硬盘的最大温度 - content: 关联issue\n支持扩展硬盘温度传感器\n评审背景\n\n定制化需新增传感器，分别显示前部Nvme最大值   前部Hdd最大值  后部Nvme最大值，后部Hdd最大值：\n\n传感器对象需要有这几个属性，参考以往传感器对象类似功能实现，在thermal_mgmt组件仓cooling_config对象bmc.kepler.Systems.DiskCoolingConfig下的对应属性进行读值，需要新增的属性字段名为FrontSeuMaxNvmeTemp, FrontSeuMaxHddTemp, RearSeuMaxNvmeTemp, RearSeuMaxHddTemp分别对应以上四个传感器读值\n上述需求为了对硬盘位置做区分，需要在storage组件仓的drive对象的bmc.kepler.Systems.Storage.Drive接口下新增位置Position属性，与硬盘所在的背板（前，后）位置进行关联，以便于thermal_mgmt组件在获取硬盘对象的所在位置时进行逻辑处理\nNvme盘指采用PCIe协议的硬盘，hdd硬盘指的是介质为hdd的硬盘\n\n资源树新增属性\n评审点： 是否新增属性FrontSeuMaxNvmeTemp, FrontSeuMaxHddTemp, RearSeuMaxNvmeTemp, RearSeuMaxHddTemp\n资源树路径： /bmc/kepler/Systems/1/CoolingConfig\n资源树接口： bmc.kepler.Systems.DiskCoolingConfig\n评审点： 是否新增属性Position\n资源树路径：/bmc/kepler/Systems/1/Storage/Drives/Drive_1_010102\n资源树接口： bmc.kepler.Systems.Storage.Drive\n新增属性：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n属性说明\n接口约束\n\nFrontSeuMaxNvmeTemp\n新增属性\ny\n只读 R: ReadOnly  W:BasicSetting\n不持久化\nfalse\n前部nvme盘最大温度\n\nFrontSeuMaxHddTemp\n新增属性\ny\n只读 R: ReadOnly  W:BasicSetting\n不持久化\nfalse\n前部hdd盘最大温度\n\nRearSeuMaxNvmeTemp\n新增属性\ny\n只读 R: ReadOnly  W:BasicSetting\n不持久化\nfalse\n后部nvme盘最大温度\n\nRearSeuMaxHddTemp\n新增属性\ny\n只读 R: ReadOnly  W:BasicSetting\n不持久化\nfalse\n后部hdd盘最大温度\n\nposition\n新增属性\nd\n只读 R: ReadOnly  W:BasicSetting\n不持久化\nfalse\n硬盘位置\nlinks: #p-5489-issue-1, https://gitcode.com/openUBMC/Baidu/issues/35, #p-5489-h-2, #p-5489-h-3",
+    "topic_user_name": "Xieqi29",
+    "best_answer_url": "",
+    "reply_posts": []
+}

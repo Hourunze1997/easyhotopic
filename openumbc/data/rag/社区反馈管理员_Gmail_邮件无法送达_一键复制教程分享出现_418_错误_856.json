@@ -1,0 +1,15 @@
+{
+    "topic_id": 856,
+    "question": "社区反馈：管理员 Gmail 邮件无法送达 + 一键复制教程分享出现 418 错误 - 社区管理员您好，\n目前我们在使用管理员的 Gmail 邮箱发送邮件时，遇到退信问题，邮件无法成功送达。\n同时，在使用“一键复制”将自制教程放到社区话题上时候，系统返回了418 错误，导致分享失败。\n以上两个问题影响了正常的交流与内容分发，还请社区维护团队协助排查与修复，非常感谢！",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/856/2",
+    "reply_posts": [
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/856/2",
+            "text": "已开白名单，麻烦再做一次尝试"
+        }
+    ]
+}

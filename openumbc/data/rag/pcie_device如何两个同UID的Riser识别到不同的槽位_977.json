@@ -1,0 +1,29 @@
+{
+    "topic_id": 977,
+    "question": "【pcie_device】如何两个同UID的Riser识别到不同的槽位 - content: 这边有一个线缆接线，同一个类型UID的Riser，接到CPU1，分别挂IO1和IO2，如下（PSR适配的接线）：\nimage608×636 10.7 KB\n线缆接线如下（cable_info日志）：\nimage803×234 7.03 KB\n从app.log看都只识别到了槽位2（IO2下），槽位1（IO1）的没有识别：\nimage1490×618 110 KB\n这种有什么方法可以两个都识别不呢？\n看代码，是不支持这种配置哇？如果支持是有啥风险哇？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/beecda96474bb637b6abf4b4d3f8ef50ca0bf7bf.png, https://discuss.openubmc.cn/uploads/default/original/1X/1c816293fb06a80d3a3d3a545a679d577b45e411.png, https://discuss.openubmc.cn/uploads/default/original/1X/8c3a8d68e544e6748f8d6901d8666feb54ad6c54.png",
+    "topic_user_name": "HKZY_YangBo",
+    "best_answer_url": "/t/topic/977/3",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/977/2",
+            "text": "现在的问题是同一款riser卡插在了IO1和IO2上，有一个IO的Riser加载失败还是计算拓扑信息失败？\n同一款riser卡插在多个IO都是支持的，参照BC83PRUO这个riser卡适配即可。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/977/3",
+            "text": "Riser卡不加载定位思路：\n1、排查对应的scanner是否在位？如果scanner不在位需要找硬件CPLD定位。\n2、如果对应的scanner如果在位但是Riser卡不加载，就去framework.log里面找对应connector的报错日志"
+        },
+        {
+            "user_name": "王祝炜",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/977/4",
+            "text": "content: 支持在PSR线缆白名单里配置index的值，区分同一个UID的Riser卡插在不同的槽位。\n前提是线缆信息返回的会通过index区分不同槽位的组件。\nimage768×238 7.51 KB\n如上图，当前返回的index都是1，需要区分。比如槽位1的Riser卡线缆信息里Index上报1，槽位2的上报2.\nimage502×642 9.46 KB\n如上图，PSR线缆白名单里配置index的值，1对应槽位1，2对应槽位2。配置之后，在代码里会以index作为匹配的条件，来匹配线缆配置。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/c02a5912d1f25ce8ee875feaf349732e9dcfd05c.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0e0dbd5aa105501f185905b814a1599778cd073c.png"
+        }
+    ]
+}

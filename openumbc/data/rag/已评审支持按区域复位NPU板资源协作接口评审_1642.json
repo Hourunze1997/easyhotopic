@@ -1,0 +1,15 @@
+{
+    "topic_id": 1642,
+    "question": "【已评审】支持按区域复位NPU板资源协作接口评审 - content: ISSUE链接（必填，此议题关联的issue）：\nhttps://gitcode.com/openUBMC/mdb_interface/issues/152\n背景（必填，文字描述议题背景，如需求来源、问题场景）:\n支持按区域复位NPU板，用于修复故障\n决策点（必填，一句话描述待决策点）：\n新增ResetDevice方法，复位NPU板\n对应资源路径是/bmc/kepler/Systems/${SystemId}/Boards/NpuBoard/${Id}，对应资源接口是bmc.kepler.Systems.Board.NpuBoard，对应方法是ResetDevice\n详细描述（必填，描述待评审接口的详细内容）：\n资源path： /bmc/kepler/Systems/${SystemId}/Boards/NpuBoard/${Id}\n资源interface：bmc.kepler.Systems.Board.NpuBoard\n变化类型：新增方法\n应用场景：按区域复位NPU板\n持久化类型： 不涉及\n操作权限：BasicSetting\n详细描述：\n\n资源路径 ：/bmc/kepler/Systems/${SystemId}/Boards/NpuBoard/${Id}\n\n资源接口：bmc.kepler.Systems.Board.NpuBoard\n\n方法 :ResetDevice\n\n权限 :BasicSetting\n\n请求签名 : y\n\n请求参数 :\n\nRegionId：NPU复位区域的Id\n0xff – 全域\n0x0 – 保留\n0x1 – 计算单元\n\n响应签名 : NA\n\n响应参数 ：NA\n\n评审结论\n1、同意资源协作接口bmc.kepler.Systems.Board.NpuBoard新增ResetDevice方法，请求签名为y，无响应签名，权限：BasicSetting\nlinks: #p-3986-issueissue-1, https://gitcode.com/openUBMC/mdb_interface/issues/152, #p-3986-h-2, #p-3986-h-3, #p-3986-h-4, #p-3986-h-5",
+    "topic_user_name": "Huangjiapei O2800",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1642/2",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "topic_id": 320,
+    "question": "新器件（如 TCA9548（I2C switch）、TPM75 温感）怎么适配？ - content: 板卡上有TCA9548（I2C switch）、TPM75 温感，这类器件也是需要申报议题吗？伙伴能不能自己适配这类器件？\n搜索开源代码没搜到相关的类，readme文件有Pca9548的描述尝试适配成Pca948提示找不到类信息。\nimage1796×207 44.5 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/a69f6ee6189336023180f83bc286b5919e253584.png",
+    "topic_user_name": "KunTai_WangJiaKai",
+    "best_answer_url": "/t/topic/320/5",
+    "reply_posts": [
+        {
+            "user_name": "Liuxingsen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/320/2",
+            "text": "可以申报议题，社区也要结合此场景，分析如何支持伙伴扩展适配此类器件能力。"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/320/3",
+            "text": "content: @caiyesheng_b48v3 蔡老板 器件的议题申报是在interface组吗？\nlinks: /u/caiyesheng_b48v3"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/320/4",
+            "text": "把板子上的9545吹下来，9548换上去，试试不就行了 ，驱动大概率可以共用"
+        },
+        {
+            "user_name": "yctco_zhanglei",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/320/5",
+            "text": "还是用Pca9545，通道的可以配置1-8，我验证了下是可以这样用的；不过最好还是要支持这个9548对象"
+        },
+        {
+            "user_name": "Liuxingsen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/320/6",
+            "text": "硬件适配类需求，在hardware组申报议题。"
+        }
+    ]
+}

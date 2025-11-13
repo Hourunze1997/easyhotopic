@@ -1,0 +1,71 @@
+{
+    "topic_id": 1267,
+    "question": "openUBMC模拟产生离散、门限传感器产生告警的方法有哪些 - 在iBMC下可以使用ipmcset传感器值test模拟、以及maint_debug_cli模式下setprop模拟产生告警\n在openUBMC下是否有方式可以代替同样的模拟效果 ？",
+    "topic_user_name": "zhangmmtrust",
+    "best_answer_url": "/t/topic/1267/10",
+    "reply_posts": [
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1267/2",
+            "text": "openUBMC提供了mdbctl工具，支持iBMC的maint_debug_cli的功能。\nmdbctl setprop     [parameter list]"
+        },
+        {
+            "user_name": "zhangmmtrust",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1267/3",
+            "text": "setprop可设置每个object的属性有哪些 ？设置的值代表什么含义 ？有文档说明吗\n比如iBMC可以通过设置ReadingRaw 0x8010模拟传感器值失效"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1267/4",
+            "text": "使用lsprop查看object支持的属性"
+        },
+        {
+            "user_name": "Zhuyuwei_baixin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1267/5",
+            "text": "content: image526×770 14.7 KB\nimage707×124 3.12 KB\n请问一下这个命令为啥执行不了，是命令有变化吗？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/350099f02cb0a69eeca096c72a816ca8c0851236.png, https://discuss.openubmc.cn/uploads/default/original/2X/b/b6a4032ce903f7a4c454ea076d057689ad3b7920.png"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1267/6",
+            "text": "参数格式和V2有区别，help查看格式要求"
+        },
+        {
+            "user_name": "Zhuyuwei_baixin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1267/7",
+            "text": "content: image1132×211 9.42 KB\n这个读取可以，但是设置传感器失效报错说是超出范围值十六进制和十进制都填了，请问模拟传感器失效填什么？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/d/dd579a0ceb0a70edaa19499142514d42efa14990.png"
+        },
+        {
+            "user_name": "Zhuyuwei_baixin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1267/8",
+            "text": "content: image680×121 2.37 KB\n请问一下我这设置失效设置上了，但是没有告警信息，能帮忙看看设置的是没问题吧\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4441df1058133e4896fbe8729effe2ee5ed35f1a.png"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1267/9",
+            "text": "取决于相关传感器和告警配置的csr"
+        },
+        {
+            "user_name": "Duzhou13 51cdj",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1267/10",
+            "text": "content: openUBMC与iBMC中，ThresholdSensor对象的Reading属性的差异\n1、iBMC：Reading属性定义为U16，其中高字节代表的是传感器读值状态，具体为0x80（硬件访问异常）、0x40（读值更新中）；低字节才是传感器读值。\n2、openUBMC：Reading属性定义为U8，属性含义满足单一职责，仅代表传感器读值。传感器读值状态由ReadingStatus属性承载。具体取值及含义如下\n\n读值状态\n取值\n状态含义\n\nSCAN_NORMAL\n0\n扫描正常\n\nSCAN_FAILURE\n1\n扫描失败，连续持续N(可配置)个防抖周期均失败失败之后传感器会禁用状态，并且上报SEL\n\nSCAN_PRE_FAILURE\n2\n扫描预失败，一般为一个防抖周期，全部失败则为失败失败之后传感器会禁用状态\n\nSCAN_NOT_ACCESSIBLE\n3\n扫描不可访问，扫描的对象器件不支持扫描比如：掉电、状态更新中、读值为NA\n\nSCAN_NOT_SCANNED\n4\n初始未扫描状态\n\n如何通过mdbctl setprop模拟传感器读值及读值状态\nmdbctl setprop set <ObjectName> <Interface> <Property> <Value>\nmdbctl setprop unset <ObjectName> <Interface> <Property>\n\n传感器的Reading、ReadingStatus都配置了同步语法，无法直接操作这两个属性，仅能通过设置数据源的方式更改这两个属性的值。如：Reading属性同步自某个Scanner的Value、ReadingStatus同步自某个Scanner的Status，则分别设置该Scanner对象的Value或Status即可。\nlinks: #p-3061-openubmcibmcthresholdsensorreading-1, #p-3061-mdbctl-setprop-2"
+        }
+    ]
+}

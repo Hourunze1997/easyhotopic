@@ -1,0 +1,15 @@
+{
+    "topic_id": 695,
+    "question": "咨询当前OpenUBMC中加锁一般是怎么用的 - 是否有示例参考",
+    "topic_user_name": "Kunlun Liuchenxi",
+    "best_answer_url": "/t/topic/695/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/695/2",
+            "text": "可以全局搜一下\n文件锁\n\nlocal utils = require 'mc.utils'\n\n-- 共享锁\n\nlocal lock = utils.FileLock.shared(file)\n\n-- 互斥锁\n\nlocal lock = utils.FileLock.exclusive(file)\n\n-- 解锁\n\nlock:close()"
+        }
+    ]
+}

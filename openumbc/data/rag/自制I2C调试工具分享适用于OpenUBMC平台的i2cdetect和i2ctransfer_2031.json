@@ -1,0 +1,36 @@
+{
+    "topic_id": 2031,
+    "question": "自制I2C调试工具分享(适用于OpenUBMC平台的i2cdetect和i2ctransfer) - content: 开发背景\n在做其他平台时我们常用i2c-tools进行硬件设备的i2c通信调试，但在OpenUBMC平台暂时没有类似的工具，比较影响调试效率，因此我使用hwproxy组件提供的能力封装实现了i2c-tools中的i2cdetect和i2ctransfer，考虑到i2cdump、i2cget、i2cset的能力都可以由i2ctransfer替代实现，这里就没有做这三个工具了。\ni2cdetect\n注意事项\n\n这里相较于通用版本，删除了-y参数，默认使用非交互模式\n删除了-q和-r参数，因为hwproxy组件不提供SMBus quick write能力，默认使用SMBus read byte探测\n\n使用说明\ni2c bus扫描\nimage635×155 3.74 KB\n使用i2cdetect -l即可\ni2c slave address扫描\n使用i2cdetect [bus_number]即可\nimage430×149 2.6 KB\ni2ctransfer\n注意事项\nimage731×200 8.61 KB\n\n这里相较于通用版本，删除了-y参数，默认使用非交互模式\n删除了-f参数，因为hwproxy不涉及设备地址被驱动占用的问题\n\n使用说明\ni2c读写数据\n以读取电源厂商为例\n\n该命令表示向i2c-3的地址0x5c写入一个字节的数据0x99，然后读取7个字节，读取的数据为HUAWEI对应的ASCII码，说明读写正确。\n工具下载安装方法\n因为未掌握将单独程序制作成hpm包的技能，目前只支持以下两种方式使用\n手动拷贝使用\n\nSCP等将i2cdetect和i2ctransfer手动拷贝到OpenUBMC环境的/tmp路径\n然后再拷贝到/usr/sbin/等路径下，并加上执行权限\n执行\n使用i2cdetect或i2ctransfer\n\n构建阶段导入固件\n该工具正在申请导入社区代码仓库，后续会作为一个conan制品支持构建时导入\n下载链接\n论坛无法上传二进制程序作为附件，适用网盘分享：\n链接: 百度网盘 请输入提取码 提取码: UBMC\nlinks: #p-5028-h-1, #p-5028-i2cdetect-2, #p-5028-h-3, #p-5028-h-4, #p-5028-i2c-bus-5, https://discuss.openubmc.cn/uploads/default/original/2X/3/3f9a823d7da4e14ade70b547cf86d9cccf536739.png, #p-5028-i2c-slave-address-6, https://discuss.openubmc.cn/uploads/default/original/2X/b/b2431b41879db82680b27eb1cf72370418228a35.png, #p-5028-i2ctransfer-7, #p-5028-h-8, https://discuss.openubmc.cn/uploads/default/original/2X/5/5519c39b3c3377088eb7714571c23940adf93bb6.png, #p-5028-h-9, #p-5028-i2c-10, #p-5028-h-11, #p-5028-h-12, #p-5028-h-13, #p-5028-h-14, https://pan.baidu.com/s/1DG9fvf5Y_pD3vUZ144k-ng?pwd=UBMC",
+    "topic_user_name": "百信-罗昊",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Changxing Open Ubmc",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2031/2",
+            "text": "感谢分享，可以报个议题在hardware-sig例会分享，我们再把工具放到代码仓，这样大家都可以下载使用。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2031/3",
+            "text": "content: hpm的话，不太建议做成hpm，因为hpm的核心是能在现网维护的时候提供快速的运维工具。然而一般现网运维需要的功能都应该集成到CLI里面。\n通过scp传到 /tmp，然后拷到/data分区运行\n还有关于分享的事情，可以考虑\n1、使用网盘，创建分享链接（可能会有安全风险）\n2、在社区接纳前，在gitcode个人空间创建源码仓，并使用发布功能上传编译好的二进制（更加社区类的玩法， 类似IPMITOOL那种发布 ）\nlinks: https://github.com/ipmitool/ipmitool/releases/tag/IPMITOOL_1_8_19"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2031/4",
+            "text": "这个不太对哦，如果要贡献的话，建议来TC来申请一个仓单独存放。\n工具类的话，CICD SIG可能会比hardware SIG更适合一些。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2031/5",
+            "text": "content: TC评审已通过，代码仓已创建： 项目首页 - bus_tools:Command line tool for accessing BMC bus resources, e.g. i2c - GitCode\nlinks: https://gitcode.com/openUBMC/bus_tools"
+        }
+    ]
+}

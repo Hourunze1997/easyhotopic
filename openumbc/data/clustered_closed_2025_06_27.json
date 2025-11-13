@@ -1,0 +1,496 @@
+{
+    "0": {
+        "summary": "实现BMC对多型号网卡的CSR适配、带内外信息采集及Redfish/Web/SNMP接口集成，确保告警配置验证与调速功能兼容性",
+        "discussion_count": 24,
+        "discussion": [
+            [
+                {
+                    "id": 370,
+                    "title": "【需求】支持管理网卡MCX755106AS-HEAT",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/33",
+                    "created_at": "2025-05-08T21:08:02+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085715",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 530,
+                    "title": "【需求】支持管理网卡MCX75310AAS-HEAT",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/50",
+                    "created_at": "2025-05-28T14:51:53+08:00",
+                    "source_type": "issue",
+                    "source_id": "3146490",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.906
+                },
+                {
+                    "id": 18093,
+                    "title": "【需求】新增适配网卡E810XXVDA2G1P5，E810CQDA2G2P5，MCX755106AS-HEAT网卡",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/94",
+                    "created_at": "2025-06-19T16:18:56+08:00",
+                    "source_type": "issue",
+                    "source_id": "3172440",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.763
+                }
+            ],
+            [
+                {
+                    "id": 5424,
+                    "title": "【需求】支持MCX631432AN-ADAB 网卡",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/73",
+                    "created_at": "2025-06-14T18:49:45+08:00",
+                    "source_type": "issue",
+                    "source_id": "3166110",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 424,
+                    "title": "【需求】支持服务器固件管理",
+                    "url": "https://gitcode.com/openUBMC/general_hardware/issues/31",
+                    "created_at": "2025-05-08T21:09:52+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085776",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 416,
+                    "title": "【需求】支持服务器网络管理",
+                    "url": "https://gitcode.com/openUBMC/network_adapter/issues/25",
+                    "created_at": "2025-05-08T21:09:36+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085768",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 415,
+                    "title": "【需求】支持存储管理",
+                    "url": "https://gitcode.com/openUBMC/storage/issues/35",
+                    "created_at": "2025-05-08T21:09:34+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085767",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 403,
+                    "title": "【需求】支持管理网卡MCX512A-ACAT",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/41",
+                    "created_at": "2025-05-08T21:09:10+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085754",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 401,
+                    "title": "【需求】支持管理网卡MCX512A-ACUT",
+                    "url": "https://gitcode.com/openUBMC/network_adapter/issues/24",
+                    "created_at": "2025-05-08T21:09:06+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085752",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 400,
+                    "title": "【需求】支持管理网卡MCX631102AN-ADAT的能力",
+                    "url": "https://gitcode.com/openUBMC/network_adapter/issues/23",
+                    "created_at": "2025-05-08T21:09:04+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085751",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 399,
+                    "title": "【需求】支持管理网卡MCX631432AN-ADAB的能力",
+                    "url": "https://gitcode.com/openUBMC/network_adapter/issues/22",
+                    "created_at": "2025-05-08T21:09:02+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085750",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 397,
+                    "title": "【需求】NetworkAdapters相关资源支持redfish新标准",
+                    "url": "https://gitcode.com/openUBMC/network_adapter/issues/21",
+                    "created_at": "2025-05-08T21:08:58+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085748",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 377,
+                    "title": "【需求】支持管理网卡QLE2742",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/40",
+                    "created_at": "2025-05-08T21:08:16+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085722",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 376,
+                    "title": "【需求】支持管理网卡SF200HT",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/39",
+                    "created_at": "2025-05-08T21:08:14+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085721",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 375,
+                    "title": "【需求】支持管理网卡SF400HT",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/38",
+                    "created_at": "2025-05-08T21:08:12+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085720",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 374,
+                    "title": "【需求】支持管理网卡SF223D-H",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/37",
+                    "created_at": "2025-05-08T21:08:10+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085719",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 373,
+                    "title": "【需求】支持管理网卡SP625D",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/36",
+                    "created_at": "2025-05-08T21:08:08+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085718",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 372,
+                    "title": "【需求】支持管理网卡SF221Q",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/35",
+                    "created_at": "2025-05-08T21:08:06+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085717",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 371,
+                    "title": "【需求】支持管理网卡SP680",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/34",
+                    "created_at": "2025-05-08T21:08:04+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085716",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 369,
+                    "title": "【需求】支持管理网卡Lpe31002",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/32",
+                    "created_at": "2025-05-08T21:08:00+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085714",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 368,
+                    "title": "【需求】支持管理网卡SWIFT-2200N",
+                    "url": "https://gitcode.com/openUBMC/vpd/issues/31",
+                    "created_at": "2025-05-08T21:07:58+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085713",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 367,
+                    "title": "【需求】支持板卡硬件管理",
+                    "url": "https://gitcode.com/openUBMC/network_adapter/issues/15",
+                    "created_at": "2025-05-08T21:07:56+08:00",
+                    "source_type": "issue",
+                    "source_id": "3085712",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 254,
+                    "title": "支持查询 BMC 网口资源详细信息",
+                    "url": "https://gitcode.com/openUBMC/rackmount/issues/38",
+                    "created_at": "2025-04-27T14:55:18+08:00",
+                    "source_type": "issue",
+                    "source_id": "3066709",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 251,
+                    "title": "支持Redfish接口EthernetInterfaces资源下Links等标准属性",
+                    "url": "https://gitcode.com/openUBMC/rackmount/issues/37",
+                    "created_at": "2025-04-27T11:40:19+08:00",
+                    "source_type": "issue",
+                    "source_id": "3066621",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "1": {
+        "summary": "openUBMC25.06版本需通过QEMU实现板卡器件多路转换器及EEPROM仿真读写功能，依托i2c总线与hi1711 soc能力完成硬件解耦验证",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 270,
+                    "title": "【需求】支持eeprom器件功能仿真和验证",
+                    "url": "https://gitcode.com/openUBMC/qemu/issues/13",
+                    "created_at": "2025-04-27T17:54:54+08:00",
+                    "source_type": "issue",
+                    "source_id": "3067043",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 268,
+                    "title": "【需求】支持板卡寄存器的设备仿真",
+                    "url": "https://gitcode.com/openUBMC/qemu/issues/11",
+                    "created_at": "2025-04-27T17:53:53+08:00",
+                    "source_type": "issue",
+                    "source_id": "3067040",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 267,
+                    "title": "【需求】支持板卡多路转换器的设备仿真",
+                    "url": "https://gitcode.com/openUBMC/qemu/issues/10",
+                    "created_at": "2025-04-27T17:53:20+08:00",
+                    "source_type": "issue",
+                    "source_id": "3067039",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "2": {
+        "summary": "BMC开发者如何实现单个风扇独立调速配置",
+        "discussion_count": 6,
+        "discussion": [
+            [
+                {
+                    "id": 726,
+                    "title": "目标调速",
+                    "url": "https://discuss.openubmc.cn/t/topic/863/1",
+                    "created_at": "2025-05-12T08:03:33+08:00",
+                    "source_type": "forum",
+                    "source_id": "863",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 6401,
+                    "title": "调速策略配置指导",
+                    "url": "https://discuss.openubmc.cn/t/topic/1366/1",
+                    "created_at": "2025-06-16T06:46:24+08:00",
+                    "source_type": "forum",
+                    "source_id": "1366",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.797
+                },
+                {
+                    "id": 13912,
+                    "title": "调速配置指导说明文档",
+                    "url": "https://discuss.openubmc.cn/t/topic/1384/1",
+                    "created_at": "2025-06-17T09:05:28+08:00",
+                    "source_type": "forum",
+                    "source_id": "1384",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.754
+                }
+            ],
+            [
+                {
+                    "id": 613,
+                    "title": "散热问题咨询--风扇转速、当前激活的最高转速调速策略",
+                    "url": "https://discuss.openubmc.cn/t/topic/1235/1",
+                    "created_at": "2025-06-04T09:57:45+08:00",
+                    "source_type": "forum",
+                    "source_id": "1235",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 443,
+                    "title": "【需求】社区补齐thermal_mgmt相关文档",
+                    "url": "https://gitcode.com/openUBMC/thermal_mgmt/issues/23",
+                    "created_at": "2025-05-09T15:59:16+08:00",
+                    "source_type": "issue",
+                    "source_id": "3087112",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 667,
+                    "title": "【问题求助】风扇调速策略中，如何单个风扇调速",
+                    "url": "https://discuss.openubmc.cn/t/topic/397/1",
+                    "created_at": "2025-04-09T08:13:33+08:00",
+                    "source_type": "forum",
+                    "source_id": "397",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "3": {
+        "summary": "BMC开发者Ubuntu WSL2构建QEMU版本权限不足，如何调整文件系统权限及shared目录配置？",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 615,
+                    "title": "启动仿真环境提示权限问题",
+                    "url": "https://discuss.openubmc.cn/t/topic/1064/1",
+                    "created_at": "2025-05-22T00:09:18+08:00",
+                    "source_type": "forum",
+                    "source_id": "1064",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 4551,
+                    "title": "build qemu版本报错：权限不够，但赋予权限后rebuild再次权限不够",
+                    "url": "https://discuss.openubmc.cn/t/topic/1302/1",
+                    "created_at": "2025-06-09T10:12:44+08:00",
+                    "source_type": "forum",
+                    "source_id": "1302",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.751
+                }
+            ]
+        ]
+    },
+    "4": {
+        "summary": "非天池架构BMC中EXU升级主板CPLD时需解决I2C拓扑配置及无SMC场景下的访问路径适配问题",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 777,
+                    "title": "非天池架构的EXU上，没有SMC，如何配置cpld？",
+                    "url": "https://discuss.openubmc.cn/t/topic/699/1",
+                    "created_at": "2025-04-28T09:24:39+08:00",
+                    "source_type": "forum",
+                    "source_id": "699",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 4562,
+                    "title": "bmc插卡为非天池架构时，EXU升级主板CPLD报错问题求助",
+                    "url": "https://discuss.openubmc.cn/t/topic/1285/1",
+                    "created_at": "2025-06-07T07:30:21+08:00",
+                    "source_type": "forum",
+                    "source_id": "1285",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.778
+                }
+            ],
+            [
+                {
+                    "id": 637,
+                    "title": "CPLD固件更新失败问题咨询",
+                    "url": "https://discuss.openubmc.cn/t/topic/1219/1",
+                    "created_at": "2025-06-03T13:52:06+08:00",
+                    "source_type": "forum",
+                    "source_id": "1219",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "5": {
+        "summary": "openUBMC如何管理开源漏洞及依赖修复周期",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 4555,
+                    "title": "openUBMC 涉及的开源软件和漏洞如何管理?",
+                    "url": "https://discuss.openubmc.cn/t/topic/1299/1",
+                    "created_at": "2025-06-09T08:59:24+08:00",
+                    "source_type": "forum",
+                    "source_id": "1299",
+                    "source_closed": true,
+                    "cosine": 0.0,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 894,
+                    "title": "openubmc的社区漏洞处理策略",
+                    "url": "https://discuss.openubmc.cn/t/topic/107/1",
+                    "created_at": "2025-02-13T01:48:36+08:00",
+                    "source_type": "forum",
+                    "source_id": "107",
+                    "source_closed": false,
+                    "cosine": 0.0,
+                    "closed_cosine": 0.754
+                }
+            ]
+        ]
+    }
+}

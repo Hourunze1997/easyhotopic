@@ -1,0 +1,29 @@
+{
+    "topic_id": 1217,
+    "question": "白牌包升级成功但是logo未成功替换 - content: 捕获1914×1023 113 KB\n捕获11920×732 33.4 KB\nimage1246×786 42.6 KB\n此目录下的图片就是需要定制的图片\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/6401633ebc8af94b97ef121fc6479bef0e048d3b.png, https://discuss.openubmc.cn/uploads/default/original/1X/e3aa95e9a20422fe8ff12899e4acc623c547e8ac.png, https://discuss.openubmc.cn/uploads/default/original/1X/1b83fb16b8f18c1d1dd8e0261a4c8ab3ba6bb32e.png",
+    "topic_user_name": "He wei",
+    "best_answer_url": "/t/topic/1217/4",
+    "reply_posts": [
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1217/2",
+            "text": "content: 白牌包更换主界面机型展示图片失败 可以参考这里的解决方案\nlinks: https://discuss.openubmc.cn/t/topic/1115"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1217/3",
+            "text": "content: 仍未解决，环境上无/opt/bmc/web/htdocs/extern/custom路径\nimage1207×263 11.5 KB\nimage665×420 32.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/16acaba372fedbf950750521e827b7da79638517.png, https://discuss.openubmc.cn/uploads/default/original/1X/4762c33f20879c664ec669186fe23504d9951756.png"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1217/4",
+            "text": "content: 已修复 GitCode - 全球开发者的开源社区,开源代码托管平台\nlinks: https://gitcode.com/openUBMC/manifest/issues/32"
+        }
+    ]
+}

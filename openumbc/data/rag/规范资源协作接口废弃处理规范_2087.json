@@ -1,0 +1,15 @@
+{
+    "topic_id": 2087,
+    "question": "【规范】资源协作接口废弃处理规范 - content: 接口废弃的简单介绍\n接口废弃是软件开发中常见的概念，主要用于标记某些功能、API、类、方法或配置等在未来版本中可能会被移除。\n接口废弃的主要目的是为了逐步淘汰旧的功能，同时为用户提供迁移路径，避免直接删除功能对现有用户造成重大影响。\n不同的编程语言和框架，声明接口废弃的方式不同，但基本上都采用deprecated的废弃声明，例如javadoc、java等。\n/*\n * @deprecated 该方法已废弃，请使用xxx替代。\n */\npublic void oldMethod() {\n}\n\n资源协作接口废弃关键字deprecated\n在资源协作接口中，废弃关键字deprecated可以使用在接口、方法和属性场景。\n{\n    \"bmc.kepler.xxx\": {\n        \"deprecated\": true, # 接口废弃\n        \"properties\": {\n            \"Prop1\": {\n                \"deprecated\": true # 属性废弃\n            }\n        },\n        \"methods\": {\n            \"Method1\": {\n                \"deprecated\": true # 方法废弃\n            }\n        }\n    }\n}\n\n属性废弃应用示例：\n{\n    \"bmc.kepler.Systems.Processor.CPU\": {\n        \"properties\": {\n            \"ProcessorID\": {\n                \"baseType\": \"U32\",\n                \"readOnly\": true,\n                \"deprecated\": true,\n                \"description\": \"处理器标识数据，按照SMBIOS规范定义，处理器标识数据长度为8字节，此属性位宽不足，因此已被弃用，改用此接口下的ProcessorIDString属性\"\n            }\n        }\n    }\n}\n\n资源协作接口废弃规范\n1. 资源协作接口的接口废弃、方法废弃和属性废弃，必须在资源协作接口配置deprecated废弃关键字。\n2. 资源协作接口的接口废弃、方法废弃和属性废弃，必须考虑兼容性，特定场景下禁止删除。\n2.1. 资源协作接口属性涉及持久化场景时，禁止删除废弃接口和废弃属性。\n如果组件对资源协作接口的属性实现了持久化能力，则仅支持废弃，不可删除，否则可能导致持久化兼容性问题：新版本的持久化模型，回退到旧版本后会出现数据模型不一致问题，导致组件启动异常。\n3. 资源协作接口的接口废弃、方法废弃和属性废弃，必须提供废弃原因，必要的情况下须提供替代功能。\n4. 资源协作接口废弃注意事项\n4.1. 目前资源协作接口仅提供了废弃关键字标记，尚未提供完整的废弃处理流程，包括资源协作接口的生命周期管理、版本控制等，不具备删除废弃接口、方法和属性的条件。\n资源协作接口废弃检查规则\n组件模型代码生成检查项\n\n组件模型service.json依赖废弃属性：构建告警提示\n\nWARN：在servcie.json中配置了已废弃的依赖性，interface: bmc.kepler.xxx, item: xxx\n\n组件模型service.json依赖废弃接口：构建告警提示\n\nWARN：在servcie.json中配置了已废弃的依赖性，interface: bmc.kepler.xxx\n\n组件模型model.json实现废弃接口：构建告警提示\n\nWARN：在model.json中类xxx配置了已废弃的资源协作接口bmc.kepler.xxx\n\n组件模型model.json实现废弃属性：构建告警提示\n\nWARN：在model.json中类xxx接口bmc.kepler.xxx的属性xxx已废弃\n\n组件模型model.json实现废弃方法：构建告警提示\n\nWARN：在model.json中类xxx接口bmc.kepler.xxx的方法xxx已废弃\nlinks: #p-5215-h-1, #p-5215-deprecated-2, #p-5215-h-3, #p-5215-h-1-deprecated-4, #p-5215-h-2-5, #p-5215-h-3-6, #p-5215-h-4-7, #p-5215-h-8, #p-5215-h-9",
+    "topic_user_name": "许强",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2087/2",
+            "text": "组件模型代码生成检查项：\n1、依赖性检查调整为Error\n2、废弃实现区分新增场景和存量场景"
+        }
+    ]
+}

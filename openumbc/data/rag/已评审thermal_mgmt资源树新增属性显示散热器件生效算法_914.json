@@ -1,0 +1,7 @@
+{
+    "topic_id": 914,
+    "question": "【已评审】thermal_mgmt资源树新增属性显示散热器件生效算法 - content: 背景\n之前在Auto模式下，仅有PID算法生效；\t\n当前新增MPC的高阶调速能力，在Auto模式下会参与到服务器的实际调速中；\n期望提供一个资源树属性，用户能查看到当前风冷和液冷器件实时生效的算法；\n决策点\n（1）在bmc.kepler.Systems.AirCoolingConfig下新增属性ActiveAlgorithm表示，当前的风冷器件的生效算法；\n（2）在bmc.kepler.Systems. LiquidCoolingConfig下新增属性ActiveAlgorithm表示，当前的液冷器件的生效算法；\n详细描述\n1、新增\n资源path： /bmc/kepler/Systems/:SystemId/AirCoolingConfig\n资源interface： bmc.kepler.Systems.AirCoolingConfig\n变化类型：新增\n应用场景：用户实时查看当前风冷器件生效算法\n持久化类型： 不持久化\n操作权限：ReadOnly\n详细描述：\nimage1799×269 33.6 KB\n2、新增\n资源path： /bmc/kepler/Systems/:SystemId/LiquidCoolingConfig\n资源interface： bmc.kepler.Systems.LiquidCoolingConfig\n变化类型：新增\n应用场景：用户实时查看当前液冷器件生效算法\n持久化类型： 不持久化\n操作权限：ReadOnly\n详细描述：\nimage1797×273 34 KB\n评审结论\n决策点一:同意\n决策点二：同意\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/9f60418bbb8dba1143793348dfd698fa330a4fa3.png, https://discuss.openubmc.cn/uploads/default/original/1X/61d470c21fd803d1dbfa28ac222caef1ef040a62.png",
+    "topic_user_name": "Tangjingman",
+    "best_answer_url": "",
+    "reply_posts": []
+}

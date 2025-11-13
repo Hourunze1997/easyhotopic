@@ -1,0 +1,15 @@
+{
+    "topic_id": 1958,
+    "question": "【已评审】支持电源告警锁存开关设置 - content: 一、ISSUE链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n二、背景\n电源故障场景需要新增调测命令，该命令用于控制电源锁存功能的开关，用于捕捉电源闪断的异常。锁存功能开启后，后续产生的告警无法消除，需要关闭锁存功能告警才可以恢复清除。\n三、决策点\n1、新增电源锁存开关设置的调测命令\n四、详细描述\n方案一：\n1、新增release在线调试命令\npath：/bmc/kepler/Systems/:SystemId/PowerMgmt/:ID\ninterface：bmc.kepler.Release.OnePower.Status\n\n方法名称\n变化类型\n签名\n读写&权限\n接口说明\n接口约束\n命令字\n描述(displayDescription)\n\nSetAlarmLatch\n新增方法\n请求: y  响应：NA\nPowerMgmt\n设置电源告警锁存开关请求：Switch：电源告警锁存开关响应：NA\nSwitch取值：0：告警不锁存1：告警锁存\nsetpsualarmlatch\n方法描述： Set the power supply alarm latch switch.  请求参数描述：Switch：Power supply alarm latch switch, with values of 0 and 1, where 0 indicates that the alarm is not latched, and 1 indicates that the alarm is latched.\n\n方案二：\n1、 资源协作接口新增设置电源告警锁存开关方法\npath：/bmc/kepler/Systems/:SystemId/PowerMgmt/:ID\ninterface：bmc.kepler.Systems.PowerMgmt.OnePower.Status\n\n方法名称\n变化类型\n请求签名\n响应签名\n读写&权限\n接口说明\n接口约束\n\nSetAlarmLatch\n新增方法\ny\n无\nPowerMgmt\n设置电源告警锁存开关请求：SwitchStatus：电源告警锁存开关响应：NA\nSwitchStatus取值：0：告警不锁存1：告警锁存\n\n2、 cli接口新增设置电源告警锁存开关方法\nCLI命令：ipmcset -t maintenance -d psualarmlatch -v <psu_slot> <state>\n变化类型：新增命令字\n操作类型：SET\n操作权限：PowerMgmt\n命令描述：设置电源告警锁存开关\n\n参数名称\n取值类型\n说明\n是否必选\n约束\n\npsu_slot\ninteger\n电源槽位号\n是\n1-最大电源个数\n\nstate\nstring\n告警锁存开关\n是\n取值enabled：开启告警锁存disabled：关闭告警锁存\n\n五、评审结论\n采用方案二新增cli命令\n决策点1：资源协作接口新增设置电源告警锁存开关方法\n结论：同意资源协作接口bmc.kepler.Systems.PowerMgmt.OnePower.Status新增SetAlarmLatch方法用于设置电源告警锁存开关，请求签名为y，无响应签名，权限：PowerMgmt\n决策点2：cli接口新增设置电源告警锁存开关方法\n结论：同意新增cli命令ipmcset -t maintenance -d psualarmlatch -v <psu_slot> <state>用于设置电源告警锁存开关，psu_slot为integer类型，state为string类型，权限：PowerMgmt\n命令描述:\nSet the power supply alarm latch status\n\n回显格式:\nUsage: ipmcset -t maintenance -d psualarmlatch -v <psu_slot> <state>\n    psu_slot: \n        Power supply slot number, the range is from 1 to 3\n    state: \n        enabled - Enable power supply alarm latch\n        disabled - Disable power supply alarm latch\n\n设置成功:\niBMC:/->ipmcset -t maintenance -d psualarmlatch -v 1 enabled\nEnable power supply 1 alarm latch successfully.\n\n设置失败:\niBMC:/->ipmcset -t maintenance -d psualarmlatch -v 1 disabled\nDisable power supply 1 alarm latch failed.\nlinks: #p-4798-issue-1, https://gitcode.com/openUBMC/power_mgmt/issues/126, https://gitcode.com/openUBMC/power_mgmt/issues/126, #p-4798-h-2, #p-4798-h-3, #p-4798-h-4, #p-4798-h-5, #p-4798-h-1release-6, #p-4798-h-7, #p-4798-h-1-8, #p-4798-h-2-cli-9, #p-4798-h-10, #p-4798-cli-11, #p-4798-h-1-12, #p-4798-h-2cli-13",
+    "topic_user_name": "Fumingquan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1958/2",
+            "text": ""
+        }
+    ]
+}

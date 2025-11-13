@@ -1,0 +1,7 @@
+{
+    "topic_id": 2069,
+    "question": "【已评审】新增IPMI接口以支持功耗封顶触发上报功能 - content: 背景\n当前CPU功耗封顶触发状态是由BMC轮询获取，事件上报存在时序与丢失问题，为解决该问题， 新增IPMI接口，由IMU在封顶触发状态变更时直接上报刷新功耗封顶触发状态\n触发原因\n功耗封顶触发逻辑优化\n关联issue\n无ISSUE\n决策点\nIPMI命令字：NetFn：0x30 Cmd：0x92\n名称：Set Power Capping Attribute\n变化类型：新增IPMI命令\n应用场景：上报刷新功耗封顶触发状态，会限制仅由IMU调用\n操作权限：BasicSetting\n请求说明：\n\n字节顺序\n域内容\n\nNetFn\n30h\n\nCmd\n92h\n\n1:3\nManufacturer ID，LS Byte first。长度固定3个字节，例如，某厂家ID是2011，对应十六进制为0x0007DB，则字节序为第1个字节为DBh、第2个字节为07h、第3个字节为00h。\n\n4\nSub command，子命令=67h\n\n5\nParameter，见Parameter表\n\n6\nLength，写入的数据长度\n\n7:N\n写入的数据\n\n响应说明：\n\n字节顺序\n域内容\n\n1\nCompletion Code\n\n2:4\nManufacturer ID，LS Byte first。长度固定3个字节，例如，某厂家ID是2011，对应十六进制为0x0007DB，则字节序为第1个字节为DBh、第2个字节为07h、第3个字节为00h。\n\nParameter：\n\n#(Byte 5)\nParameter\nParameter Data(Byte 7:N)\n\n0x01\n功耗封顶触发状态\n0:Deassert Event 取消事件 1:Assert Event 触发事件\n\n评审结论\n\n同意新增仅由IMU调用的上报刷新功耗封顶触发状态的IPMI命令，NetFn：0x30，Cmd：0x92，Sub command：0x67，该命令有通道限制，仅支持Host通道\nlinks: #p-5135-h-1, #p-5135-h-2, #p-5135-issue-3, #p-5135-h-4, #p-5135-h-5",
+    "topic_user_name": "songdianpeng",
+    "best_answer_url": "",
+    "reply_posts": []
+}

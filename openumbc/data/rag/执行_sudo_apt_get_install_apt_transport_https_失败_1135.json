@@ -1,0 +1,15 @@
+{
+    "topic_id": 1135,
+    "question": "执行 sudo apt-get install apt-transport-https 失败 - root@DESKTOP-7EA9N91:/etc/apt/sources.list.d# sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common\nReading package lists… Done\nBuilding dependency tree… Done\nReading state information… Done\nNote, selecting ‘apt’ instead of ‘apt-transport-https’\nPackage gnupg2 is not available, but is referred to by another package.\nThis may mean that the package is missing, has been obsoleted, or\nis only available from another source\nE: Package ‘gnupg2’ has no installation candidate\n执行失败，已将gnupg2替换为gnupg安装成功，咨询一下是否有影响？没有影响建议更新社区文档。",
+    "topic_user_name": "Niegsh",
+    "best_answer_url": "/t/topic/1135/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1135/2",
+            "text": "content: 你使用的是方式一 【通过华为云开源镜像站进行安装】， 请将Ubuntu源改为mirrors.huaweicloud，再重试。\n或者\n使用\n方式二：通过Docker官方镜像站进行安装 ​\n当然您可以根据需求选用Docker官方的镜像进行安装。详情请参考Docker官网进行安装Ubuntu | Docker Docs\nlinks: #p-2494-docker-httpswwwopenubmccndocszhdevelopmentquick_startprepare_environmentdocker_envhtmle696b9e5bc8fe4ba8c-e9809ae8bf87dockere5ae98e696b9e9959ce5838fe7ab99e8bf9be8a18ce5ae89e8a385-1, https://www.openubmc.cn/docs/zh/development/quick_start/prepare_environment/docker_env.html#%E6%96%B9%E5%BC%8F%E4%BA%8C-%E9%80%9A%E8%BF%87docker%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8F%E7%AB%99%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85, https://docs.docker.com/engine/install/ubuntu/"
+        }
+    ]
+}

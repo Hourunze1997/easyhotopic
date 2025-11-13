@@ -1,0 +1,15 @@
+{
+    "topic_id": 1073,
+    "question": "【已评审】支持BIOS启动项控制新增资源协作接口 - content: ISSUE链接（必填，此议题关联的issue）：\nhttps://gitcode.com/openUBMC/bios/issues/14\n背景（必填，文字描述议题背景，如需求来源、问题场景）:\n需求支持BIOS启动项设置策略定制，需要在定制化场景下实现bios启动项设置策略定制，支持客户定制化启动项策略。\n决策点（必填，一句话描述待决策点）：\n新增资源协作属性BootOptionPolicy ，支持启动项策略定制\n新增资源协作属性PreviousBootSourceOverrideTarget，用于实现该定制策略\n对应资源路径是/bmc/kepler/Systems/:SystemId/BootOptions，对应资源接口是bmc.kepler.Systems.BootOptions\n详细描述（必填，描述待评审接口的详细内容）：\n资源path： /bmc/kepler/Systems/:SystemId/BootOptions\n资源interface：bmc.kepler.Systems.BootOptions\n变化类型：新增属性\n应用场景：BIOS启动项设置策略定制\n持久化类型： 不持久化、掉电持久化\n操作权限：可读写，R: ReadOnly W:BasicSetting、只读，R：ReadOnly\n详细描述：\n\n方法名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nBootOptionPolicy\n新增属性\ny\n可读写，R: ReadOnly W:BasicSetting\n不持久化\n否\n0：无定制化启动项策略 1：设置永久启动项后，不能被再次设置的单次生效刷新掉\n数字类型，可取值0~255\n\nPreviousBootSourceOverrideTarget\n新增属性\ns\n只读，R：ReadOnly\n掉电持久化\n否\n上次设置的启动项类型\n字符串类型，当前可取值：None、Pxe、Hdd、Cd、BiosSetup、Floppy\n\n评审结论\n1、同意新增资源协作接口属性BootOptionPolicy ：\n\n资源path: /bmc/kepler/Systems/:SystemId/BootOptions\n资源interface: bmc.kepler.Systems.BootOptions\n属性：BootOptionPolicy，签名为y，表示定制的启动项策略\n权限：可读写，R: ReadOnly W:BasicSetting\n\n2、同意新增资源协作接口属性PreviousBootSourceOverrideTarget ：\n\n资源path: /bmc/kepler/Systems/:SystemId/BootOptions\n资源interface: bmc.kepler.Systems.BootOptions\n属性：PreviousBootSourceOverrideTarget，签名为s，表示上次设置的启动项类型\n权限：只读，R：ReadOnly\nlinks: #p-2272-issueissue-1, https://gitcode.com/openUBMC/bios/issues/14, #p-2272-h-2, #p-2272-h-3, #p-2272-h-4, #p-2272-h-5",
+    "topic_user_name": "曾启健",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1073/2",
+            "text": ""
+        }
+    ]
+}

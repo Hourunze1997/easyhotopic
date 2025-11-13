@@ -1,0 +1,15 @@
+{
+    "topic_id": 1393,
+    "question": "Scanner如何解析多字节的长数据 - content: 问题说明\n一个SMC命令字当中存放了所有传感器的数据，大概有32个字节。同时这个命令字好像也不带param参数，就是一整块数据连着的。\n看现有的所有的Scanner下面配置的Size最多好像也就8，Value最大也就U64，8字节吧？感觉Scanner好像不能实现去解析32字节的数据。\n请问这个问题在sr中如何去配置，读取并解析呢？\nSmcDfxInfo\n我在sr文件中有找到了SmcDfxInfo这个类，从结构上看很像我这次需求实现，但目前没有找到什么资料对这个dfx的说明。\n\n请问dfx是什么？\ndfxinfo的数据格式是否有要求，对于我上面传感器数据这样的可以支持吗？\nlinks: #p-3239-h-1, #p-3239-smcdfxinfo-2",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "/t/topic/1393/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1393/2",
+            "text": "content: 简单讲DfxInfo就是一把读回来长字节的数据，再Config与mapping的配置分配给scanner\nSmcDfxInfo\n当前组件存在大量Scanner需要轮询访问，但很多Scanner仅存在偏移差异，针对此情况需要做批量读取\n\n属性名类型描述默认值\nChipro引用的Smc Chip对象\nSizeU8SmcDfxInfo的长度\nOffsetU32偏移，一般为7424\nFunction=0x00 Cammand=0x07 RW=1\nPeriodU32扫描周期，单位ms程序默认值1000\nSmcVersionU32支持的Smc最低版本，用于版本检测\nConfigDictionarySmcDfxInfo中每个字节与对应硬件信号的对应关系，可通过mask按照单字节或者bit位进行对应\nMappingDictionaryScanner与硬件信号的对应关系，通过配置表达式获取值，硬件信号名称为Config中的名称\nContextDictionary预留扩展字段，当前1U风扇板 MCU版本号有使用该字段，其他未使用\n\n字段说明：\n\nConfig为对应byte与硬件信号的对应关系，key表示第几个byte（整数字符串），从1开始，1个byte可以存在多个信号或1个信号，通过信号名称与mask掩码对应整字节数据或其中某个bit位的数据\nMapping为Scanner与硬件信号的对应关系，key为Scanner名称，Scanner必须位于同一CSR中，\"Value\"表示为Scanner的值，通过配置表达式从硬件信号获取值\n固定第一个字节表示Smc版本号，2段式，高4位为第一段，低4位为第二段，如32表示版本号为2.0；如果单板无CPLD，仅有MCU，使用前3个字节表示MCU版本号，例如\"\\x00\\x02\\x12\"，表示MCU版本号为0.2.18，在Context中配置表达式获取版本号；\n\n配置样例\n    \"SmcDfxInfo_CLU\": {\n      \"Chip\": \"#/Smc_FanBoardSMC\",\n      \"Offset\": 7424,\n      \"Size\": 27,\n      \"Period\": 400,\n      \"SmcVersion\": 784,\n      \"Config\": {\n        // 即第一个byte为信号 mcu_ver_major 与 mask 255\n        \"1\": {\"mcu_ver_major\": 255},\n        \"2\": {\"mcu_ver_minor\": 255},\n        \"3\": {\"mcu_ver_build\": 255},\n        \"4\": {\"board_temp_l\": 255},\n        \"5\": {\"board_temp_h\": 255},\n        \"14\": {\"code_power_fail\": 255},\n        \"15\": {\"code_power_time_out\": 255},\n        \"16\": {\"fan1_prsnt_n\": 1},\n        \"24\": {\"fan1_tach_a_data_l\": 255},\n        \"25\": {\"fan1_tach_a_data_h\": 255},\n        \"26\": {\"fan1_tach_b_data_l\": 255},\n        \"27\": {\"fan1_tach_b_data_h\": 255}\n      },\n      \"Context\": {\n        \"SmcVersion\": \"expr(($mcu_ver_major << 16) + ($mcu_ver_minor << 8) + $mcu_ver_build)\"\n      },\n      \"Mapping\": {\n        \"Scanner_Fan1_Presence\": {\"Value\": \"expr($fan1_prsnt_n)\"},\n        \"Scanner_Fan1_FSpeed\": {\"Value\": \"expr((($fan1_tach_b_data_l >> 7) << 7) + ($fan1_tach_b_data_h << 8))\"},\n        \"Scanner_Fan1_RSpeed\": {\"Value\": \"expr((($fan1_tach_a_data_l >> 7) << 7) + ($fan1_tach_a_data_h << 8))\"},\n        \"Scanner_FanBrdTemp\": {\"Value\": \"expr($board_temp_l)\"}\n      }\n    }\nlinks: #p-3423-smcdfxinfo-1"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 395,
+    "question": "i2c over hisport与UBC/UBCDD - 基础板和交换板中是通过UBCDD/UBC连接的，UBCDD与虚拟i2c的对应关系是什么？在openubmc中只能看到hisport_0~hisport_21，该如何将hisport，i2c，ubc/ubcdd关系对应起来？",
+    "topic_user_name": "wuzhou-xiaokaili",
+    "best_answer_url": "/t/topic/395/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/395/2",
+            "text": "content: hisport是天池规范中的一种高速互联总线，支持i2c低速总线。当前1711通过localbus与扩展板CPLD进行通讯，扩展板CPLD和基础板CPLD通过hisport通讯，基础板与Riser、PCIe设备使用单独的i2c进行通讯。\n因此为了简化理解，CSR中通过Hisport0-21表示的是BCU对外的i2c总线，BMC在读到配置后会自动转换，因此从使用角度可以认为还是通过i2c与终端设备进行通讯。\nUBC、UBCDD是天池中基础板对外连线的接口，通常UBC是x8，UBCDD最高支持x16带宽。部分UBC口包含高速总线和低速总线。\n这块主要是业务侧的事务。BMC侧相关业务主要是两块：\n1、UB线缆检测\n2、PCIe业务拓扑计算\n具体介绍可以参考pcie_device的readme\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\nlinks: https://gitcode.com/openUBMC/pcie_device#%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1, https://gitcode.com/openUBMC/pcie_device#%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/395/3",
+            "text": "请问ubc/ubcdd中是否有i2c?i2c与ubc/ubcdd的对应关系是什么？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/395/4",
+            "text": "有，具体的硬件细节建议通过PAE获取，包括基础板每个ubc/ubcdd对应的i2c/hisport线缆"
+        }
+    ]
+}

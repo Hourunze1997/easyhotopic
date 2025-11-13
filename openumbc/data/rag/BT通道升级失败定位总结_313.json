@@ -1,0 +1,7 @@
+{
+    "topic_id": 313,
+    "question": "BT通道升级失败定位总结 - content: 问题描述\n关闭 SSH 端口后，在带内使用 BT 通道进行升级操作时出现报错，导致升级失败。\n背景信息\n在 0502 脚本执行 hpm 包升级流程中，会优先尝试通过 veth 进行升级，若失败则会切换至 bt 通道进行升级。但在定制化关闭 SSH 端口或者带内缺少配套驱动的情况下，无法通过 veth 进行传包升级。\n定位过程\n上网版本情况\n关闭 SSH 端口，当前系统处于上网版本时，BT 通道升级失败，脚本执行报错，提示“Send WRITE_OPERATION failed, completion code 0xd5”。查看 app.log 文件，发现其中出现“get uid gid by name failed”以及“The file already exists and not belong to the operator”的打印信息。\n\n初步怀疑：怀疑升级失败是由于 /tmp 目录下存在同名文件或者 get_file_accessible 接口在校验文件时出现误判。\n排查过程：通过 telnet 破解 BMC，删除 /tmp/image.hpm 文件后再次执行升级操作，结果依然失败。进一步检查发现，/tmp 目录下的 image.hpm 包文件大小极小，将其拷贝出来与升级包对比，发现其内容与升级包的开头部分一致。由此排除了 /tmp 目录下同名文件导致升级失败的可能性。\n问题确认：综合分析可知，BT 通道升级时第一帧数据发送成功，但第二帧数据校验失败。问题根源在于 get_file_accessible 接口，此问题为框架返回报错。经确认，该问题是由于 BMC 内部 root 用户从 Linux 系统获取信息时存在兼容性问题所致。\n\n装备版本情况\n关闭 SSH 端口，当前系统处于装备版本时，偶尔会出现“Send WRITE_OPERATION failed, completion code 0x81”的错误提示。查看 app.log 文件，出现“bios_write_data: DataOffset:41860(ShouldBe:42090) is invalid!”的打印信息。\n\n问题分析：这表明当前文件的数据已经成功写入到偏移量为 42090 的位置，但 IPMI 传入的这一帧数据的偏移量小于当前文件偏移量，且偏移量差值恰好为一帧数据的大小（230）。\n原因确定：此问题是由于触发了 IPMI 的重试机制，当发送的这一帧数据 BMC 已经接收过，重试时数据校验失败，从而导致升级异常。\nlinks: #p-529-h-1, #p-529-h-2, #p-529-h-3, #p-529-h-4, #p-529-h-5",
+    "topic_user_name": "Kunlun Liuchenxi",
+    "best_answer_url": "",
+    "reply_posts": []
+}

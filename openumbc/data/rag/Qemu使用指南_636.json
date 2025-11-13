@@ -1,0 +1,127 @@
+{
+    "topic_id": 636,
+    "question": "Qemu使用指南 - content: Qemu使用指南\n本贴用于指导社区开发者使用Qemu进行openUBMC仿真。\nQemu启动指南\nQemu的启动分为两种方式：\n\nWSL/Linux 本地启动： 已完成openUBMC环境准备的用户，想使用更高性能openUBMC\nDocker镜像启动 ： 未完成openUBMC环境准备的用户或想要一次拉起多个Qemu镜像完成自动化部署的用户\n\nQemu 启动配置\nQemu的启动可以通过[manifest仓库](项目首页 - manifest:manifest - GitCode)一键启动。下载最新 的manifest之后，可以在build/works/packet/qemu_shells/config.json 中完成你对Qemu的一些配置。当然，对于体验者来说你可以直接使用config.json 中的默认配置，因为它可以一键式的帮你下载Qemu启动的依赖文件。\n{\n    \"mapports\": {\n      \"ssh\": 10022,\n      \"https\": 10443,\n      \"ipmi\": 10623,\n      \"snmp\": 10161,\n      \"telnet\": 10023\n    },\n    \"start_dependencies\" : {\n      \"qemu_setup_dir\" : \"temp/qemu_temp/qemu_start_temp\" ,\n      \"inner_path\" : \"output/packet/inner\",\n      \"cpio_path\" : \"output/packet/inner/openUBMC_25.00.00.01_qemu.cpio.gz\" ,\n      \"zImage_path\" : \"output/packet/inner/zImage_openUBMC\" ,\n      \"dtb\" : \"hi1711_9p8c.dtb\",\n      \"qemu\": \"qemu-system-aarch64-release\",\n      \"remote_qemu\": false,\n      \"remote_cpio\": false,\n      \"download_qemu\" : \"https://repo.openubmc.cn/25.03/tools/openUBMC-qemu.zip\",\n      \"download_cpio\" : \"https://repo.openubmc.cn/25.03/firmware/openUBMC_25.00.00.01_qemu.cpio.gz\"\n    },\n    \"container_cfg\":{\n      \"container\": \"hi1711\",\n      \"wsl_enabled\": true,\n      \"docker_enabled\": false,\n      \"docker_num\" : 2,\n      \"docker_operator\" : \"create\",\n      \"docker_image\": \"swr.cn-north-4.myhuaweicloud.com/openubmc/qemu:latest\"\n    },\n    \"qemu_cfg\":{\n      \"core_num\" : 4 ,\n      \"memory\" : 4\n    }\n}\n\n 配置说明\nmapports : Qemu启动时，内部环境与外部宿主机的端口映射关系。例如Qemu环境中ssh端口为22，映射到宿主机上为10022\nstart_dependencies:Qemu启动时依赖的文件及路径声明。\nQemu启动时依赖四个文件：\n\ncpio：openUBMC文件系统，内涵RTOS内核，openBMC应用APP等\nzImage：Linux内核映像文件\nqemu：qemu-system-aarch64, qemu启动二进制文件\ndtb ： Linux设备树文件\n\nstart_dependencies 中有两个用于控制远端下载的字段 remote_qemu、 remote_cpio，当该字段为true时会根据download_xxx中的url下载对应文件。\ncontainer_cfg: Qemu启动模式配置，wsl_enabled为true时表示使用WSL/Linux 本地启动，docker_enabled为true且docker_operator为create时表示Docker镜像启动，同时根据docker_num决定同时启动数量。更多配置可查看build/works/packet/qemu_shells/schema.json中的描述。\nqemu_cfg : Qemu启动时内存大小和使用的CPU核数。\nQemu启动命令\nQemu的启动命令已经被集成到了一个一键式启动的脚本中。\npython3 build/works/packet/qemu_shells/vemake_1711.py\n\n为了便于用户体验，哪怕没有手动下载依赖文件，没有配置remote参数为true，该脚本会自动从远端获取依赖文件，让初体验者一键式启动Qemu。\nQemu使用指南\nWSL/Linux本地启动\n本地启动的方式会在执行python脚本后，在终端开启串口打印\nWSL/Linux本地启动串口打印1996×344 16.4 KB\nDocker启动\n配置docker_enabled为true\ndocker启动配置修改725×225 9.95 KB\n执行python脚本后，会在终端打印出Docker实例启动后的编号，并结束脚本。\n虽然脚本结束了，但并不意味着Qemu被停止了，而是Qemu在后台使用Docker在运行。\n可以使用docker ps -a的方式查看Docker实例情况\n然后通过docker attach <Container ID>的形式进入Qemu串口。\nssh登录\n在登录ssh之前需要知晓宿主机的ip，在Linux中执行ifconfig查看ip。\n找到eth0的ip，然后再宿主机中执行\nssh Administrator@<ip>:10022\n\n输入密码后即可登录。默认密码为Admin@90000\nWeb登录\n在浏览器中输入https://<ip>:100443 即可进入Web登录界面，通常该页面会在启动Qemu后6~10分钟左右完全显示，视宿主机配置而定。\nimage1865×933 71.7 KB\nredfish访问\n请下载postman工具，并在postman中发送redfish命令。\nimage1535×714 53 KB\nipmi访问\nipmi访问请下载ipmitool工具。\nimage1090×496 15.9 KB\nQemu已支持的能力\n\n北向接口：Rest、Redifsh、ipmi、CLI\n南向硬件：EXU、BCU、SEU、CLU、NIC、门限传感器、离散传感器 等\n安全特性：在线用户管理、用户权限管理 等\n运维：告警收集、BMC日志收集、传感器事件记录 等\n\nQemu使用常见场景\n本章节用于收纳社区开发者在使用Qemu过程中常使用的场景，并给出案例。\n想更新openUBMC的hpm包怎么办？\n目前Qemu openBMC并不支持固件升级，所以无法更新hpm包。但这并不意味着无法更新你想调试的组件。\n解决方法：制作属于自己的cpio包，cpio包的文件系统和hpm包的文件系统是几乎一致的，除了我们根据仿真系统做了一些变动外，你可以将cpio包视为另一个hpm包。\n制作方法：拉取manifest仓库，并执行bingo build -sc qemu，这会在output/packet/inner目录下生成一个openUBMC_25.00.00.01_qemu.cpio.gz，然后启动Qemu时可以使用该cpio包启动。\n想更新CSR制作的hpm包怎么办？\n更新CSR包可以通过在线替换CSR方法实现。例如替换一个BCU的CSR：\n将Qemu中的1825sr替换为4339sr。通过scp将4339.sr上传至Qemu的/tmp目录中\n# 进入telnet\n/data/home/busybox1711 telnet localhost\n\n# 替换文件\nmv /tmp/14100513_00000001020302024339.sr /opt/bmc/sr/14100513_00000001020302024339.sr\n\n# ctrl + D 退出telnet\n\n# 修改Connector配置，将天池加载方式切换为非天池加载\nmdbctl setprop set  Connector_BCU_1_0101 bmc.kepler.Connector Bom \"14100513\"\nmdbctl setprop set  Connector_BCU_1_0101 bmc.kepler.Connector Id \"00000001020302024339\"\nmdbctl setprop set  Connector_BCU_1_0101 bmc.kepler.Connector IdentifyMode 2\n\n#卸载板卡\nmdbctl setprop set  Connector_BCU_1_0101 bmc.kepler.Connector Presence 0\n\n# 重载板卡\nmdbctl setprop set  Connector_BCU_1_0101 bmc.kepler.Connector Presence 1\n\n# 加载后通过general_hardware查看cpuBorad情况\nbusctl --user introspect bmc.kepler.general_hardware /bmc/kepler/Systems/1/Boards/CpuBoard/CpuBoard_1_010101\n\nimage853×238 6 KB\n替换成功！\nQemu社区贡献\n你可以在 openUBMC Qemu中贡献Qemu代码，我们非常希望有丰富qemu开发经验的大佬参与到此项目~\n当然如果你在使用Qemu过程中有使用或识别到的问题，请及时和我们联系，可以在此贴下留言。\nlinks: #p-1271-qemu-1, #p-1271-qemu-2, #p-1271-qemu-3, https://gitcode.com/openUBMC/manifest, #p-1271-qemu-4, #p-1271-qemu-5, #p-1271-wsllinux-6, https://discuss.openubmc.cn/uploads/default/original/1X/9b4533d23704b213b3d1c041b4c5bfbe14a600b9.png, #p-1271-docker-7, https://discuss.openubmc.cn/uploads/default/original/1X/ee9dc2e0139d1e2542de88db829cb1f4faf90cd0.png, #p-1271-ssh-8, #p-1271-web-9, https://discuss.openubmc.cn/uploads/default/original/1X/b50b1ddb16338224c340fe44dd97fd1a243265d3.jpeg, #p-1271-redfish-10, https://discuss.openubmc.cn/uploads/default/original/1X/bd5c6abffa34fa8184a6d2ad49e069eb83cefc45.png, #p-1271-ipmi-11, https://discuss.openubmc.cn/uploads/default/original/1X/39278f6c44a0195661835baa2ed06a59ec2a508c.png, #p-1271-qemu-12, #p-1271-qemu-13, #p-1271-openubmchpm-14, #p-1271-csrhpm-15, https://discuss.openubmc.cn/uploads/default/original/1X/5dbc3f7a9d5bce09ebd059a15a49130247409ba4.png, #p-1271-qemu-16, https://gitcode.com/openUBMC/qemu",
+    "topic_user_name": "FXX",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Iss Yanyuchun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/3",
+            "text": "content: 我使用的时候没有https://gitcode.com/openUBMC/qemu.git/的权限，用户名iss_yanyuchun\nlinks: https://gitcode.com/openUBMC/qemu.git/%E7%9A%84%E6%9D%83%E9%99%90%EF%BC%8C%E7%94%A8%E6%88%B7%E5%90%8Diss_yanyuchun"
+        },
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/4",
+            "text": "这个仓库是一个私有仓库，需要申请。"
+        },
+        {
+            "user_name": "Dillon",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/5",
+            "text": "请问申请链接有嘛"
+        },
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/6",
+            "text": "没有链接，需要你想华为那边申请，把gitcode账户给他们。你可以问一下@xuhaijun，让他帮忙申请一下。"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/7",
+            "text": "无需申请权限，稍后开放访问。"
+        },
+        {
+            "user_name": "Deep",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/8",
+            "text": "请问大家遇到了ctrl +a X无法退出qemu吗？"
+        },
+        {
+            "user_name": "Dillon",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/9",
+            "text": "content: qemu启动 maca ERROR1540×881 27.7 KB\n请问启动qemu有遇过这种情况嘛\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/48936442b8696e96907c9843630d0d5a15fe9a18.png"
+        },
+        {
+            "user_name": "FXX",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/10",
+            "text": "该问题目前正在修复。但不会影响到其他组件的正常使用。"
+        },
+        {
+            "user_name": "Dillon",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/12",
+            "text": "content: 老师再请教一个问题使用脚本启动qemu的过程中会出现提示权限的问题，请老师指导一下该如何解决该问题\nqemu启动报错提示权限问题1276×684 114 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/af14023cd7ac63fcfc273ec018b6e693bacbb409.jpeg"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/13",
+            "text": "Dillon:\n\n权限的问\n\n当前的权限问题是由于qemu仿真的能力不够完整导致的，我们也正在尽力推进相关功能的仿真，以达到更好的效果。这个权限问题当前无重大影响，如果与你想测试的代码内容无关，请忽略这部分报错"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/14",
+            "text": "content: docker方式启动失败，修改config.json文件后，在container中无法启动，在外面也无法正常启动。截图如下\nimage942×677 38.9 KB\n在docker container中启动的错误提示\nimage1011×461 23.3 KB\n在Ubuntu中启动的错误提示\nimage1200×307 17.2 KB\n帮看一下是什么问题？多谢\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/cdb3412fc3956d2e244b4210d9d77db3eb61910a.png, https://discuss.openubmc.cn/uploads/default/original/1X/397ef592fc994125b8168675e868070561d32cd7.png, https://discuss.openubmc.cn/uploads/default/original/1X/0d0e157463b387d92939ea9db627d3d53e1fb7a5.png"
+        },
+        {
+            "user_name": "FXX",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/15",
+            "text": "content: 这个看上去是因为你未安装docker，或者说/usr/bin下没有对应的docker可执行文件。可以尝试安装 docker.io 或者说使用软链接的方式在/usr/bin下创建一个可执行的docker\nlinks: http://docker.io"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/16",
+            "text": "那就是说在docker container中启动qemu吗？还需要在container中还要安装docker吗？这感觉不合理啊。我感觉是不是说docker启动只有在WSL环境中有效？"
+        },
+        {
+            "user_name": "FXX",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/17",
+            "text": "目前该脚本是只支持在wsl Ubuntu环境中有效。或者可以参考WSL_enable的方式，手动拉起docker镜像后，在其中执行qemu运行脚本。"
+        },
+        {
+            "user_name": "Niegsh",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/18",
+            "text": "content: 目前实验的情况是\n\n在docker中不能用docker的方式运行qemu，就是上面报的那个错误，这个应该是合理的\n在docker中运行qemu WEB/SSH等服务的端口映射不出来，这个\n在WSL中运行qemu则端口映射可以生效，可以正常使用 \n\n另外在WSL中使用docker方式启动当前有问题，像是脚本语法存在问题\nimage1065×259 13.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/1d510b787f3e3dc2c94cc3c732762821f726e3c6.png"
+        },
+        {
+            "user_name": "shiyuyiya",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/19",
+            "text": "qemu仿真时ssh，web连接时出现以下错误:\nqemu-system-aarch64-release: Slirp: Failed to send packet, ret: -1"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/636/20",
+            "text": "可能是两方面的原因：\n1.openUBMC 25.06版本升级了RTOS，造成驱动与系统不匹配，当前qemu相关适配工作正在进行，预计在7.20左右完成。\n2.qemu使用的环境中libslirp-dev库版本较低，请尝试升级libslirp-dev"
+        }
+    ]
+}

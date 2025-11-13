@@ -1,0 +1,1885 @@
+{
+    "0": {
+        "summary": "加载W8A8量化模型时因量化描述缺失导致KeyError",
+        "discussion_count": 7,
+        "discussion": [
+            [
+                {
+                    "id": 287,
+                    "title": "[Bug]: fail to start W8A8 deepseek-R1 with TP=8,PP=2",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/813",
+                    "created_at": "2025-05-12T14:51:40+08:00",
+                    "source_type": "issue",
+                    "source_id": "3055836208",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.76,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 349,
+                    "title": "[Bug]: fail to start W8A8 deepseek-R1 with vllm-ascend:v0.8.5rc1",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/986",
+                    "created_at": "2025-05-28T16:22:26+08:00",
+                    "source_type": "issue",
+                    "source_id": "3096492202",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.73,
+                    "closed_cosine": 0.887
+                },
+                {
+                    "id": 300,
+                    "title": "[Bug]: vllm-ascend v0.8.5rc1, failed to start vllm, when load w8a8 weights",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/856",
+                    "created_at": "2025-05-14T15:19:03+08:00",
+                    "source_type": "issue",
+                    "source_id": "3062090148",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.725,
+                    "closed_cosine": 0.787
+                }
+            ],
+            [
+                {
+                    "id": 216,
+                    "title": "[Feedback][Feature] w8a8 quantization",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/619",
+                    "created_at": "2025-04-22T18:14:20+08:00",
+                    "source_type": "issue",
+                    "source_id": "3010619479",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.673,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 683,
+                    "title": "[Feature]: supporting w8a16 quantization",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2265",
+                    "created_at": "2025-08-07T16:40:32+08:00",
+                    "source_type": "issue",
+                    "source_id": "3299577983",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.687,
+                    "closed_cosine": 0.863
+                },
+                {
+                    "id": 448,
+                    "title": "[Bug]: vllm-ascend 0.7.3.post1 does not support w8a8 quantization, but 0.9.0rc2 does.",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1329",
+                    "created_at": "2025-06-20T23:52:57+08:00",
+                    "source_type": "issue",
+                    "source_id": "3163762677",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.688,
+                    "closed_cosine": 0.824
+                }
+            ],
+            [
+                {
+                    "id": 184,
+                    "title": "[Feature]: Supporting W8A16 and W4A16 weight-only quantization",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/524",
+                    "created_at": "2025-04-14T22:48:09+08:00",
+                    "source_type": "issue",
+                    "source_id": "2993315351",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.657,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Quantization Model Loading Issue"
+    },
+    "1": {
+        "summary": "安装vllm_ascend时模块缺失且编译失败",
+        "discussion_count": 4,
+        "discussion": [
+            [
+                {
+                    "id": 402,
+                    "title": "[Bug]: ModuleNotFoundError: No module named 'vllm_ascend.compilation'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1156",
+                    "created_at": "2025-06-10T18:16:34+08:00",
+                    "source_type": "issue",
+                    "source_id": "3132989425",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.835,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 414,
+                    "title": "[Bug]: ModuleNotFoundError: No module named 'vllm_ascend.distributed'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1209",
+                    "created_at": "2025-06-13T18:01:52+08:00",
+                    "source_type": "issue",
+                    "source_id": "3143025170",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.808,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 370,
+                    "title": "[Usage]: 部署vllm-ascend报错",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1047",
+                    "created_at": "2025-06-03T15:14:43+08:00",
+                    "source_type": "issue",
+                    "source_id": "3112749723",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.78,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 245,
+                    "title": "[Bug]: vllm wrong raised the ERROR : Failed to import vllm_ascend_C:No module named 'vllm_ascend.vllm_ascend_C'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/703",
+                    "created_at": "2025-04-28T16:34:25+08:00",
+                    "source_type": "issue",
+                    "source_id": "3024159196",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.78,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Installation Failure"
+    },
+    "2": {
+        "summary": "DeepSeek-V2-Lite 张量及专家并行精度异常",
+        "discussion_count": 5,
+        "discussion": [
+            [
+                {
+                    "id": 380,
+                    "title": "[Bug]: deepseek-v2-lite tp=8 ep=8 accuracy is not correct",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1077",
+                    "created_at": "2025-06-05T12:09:05+08:00",
+                    "source_type": "issue",
+                    "source_id": "3119769067",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.846,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 407,
+                    "title": "[Bug]: Inference precision mismatch with DeepSeek-V2-Lite when using TP=2 and DP=2, enable expert-parallel",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1171",
+                    "created_at": "2025-06-11T17:11:11+08:00",
+                    "source_type": "issue",
+                    "source_id": "3136077772",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.782,
+                    "closed_cosine": 0.861
+                },
+                {
+                    "id": 312,
+                    "title": "[Bug]:  deepseek-v2-lite-w8a8 精度不对",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/883",
+                    "created_at": "2025-05-16T15:05:49+08:00",
+                    "source_type": "issue",
+                    "source_id": "3068142928",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.73,
+                    "closed_cosine": 0.835
+                }
+            ],
+            [
+                {
+                    "id": 249,
+                    "title": "[Bug]: 单卡推理Deepseek-v2-lite精度异常",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/720",
+                    "created_at": "2025-04-29T14:36:31+08:00",
+                    "source_type": "issue",
+                    "source_id": "3027227284",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.831,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 317,
+                    "title": "[Bug]: tp4 DeepSeek-V2-Lite, accuracy is error，\"text\":\".....................................................................................................\"",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/894",
+                    "created_at": "2025-05-19T11:06:06+08:00",
+                    "source_type": "issue",
+                    "source_id": "3072352815",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.745,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Accuracy Anomaly"
+    },
+    "3": {
+        "summary": "VLLM-Ascend在910B2部署DeepSeek模型时存在严重性能瓶颈导致推理速度仅7 token/s",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 51,
+                    "title": "[Misc]: vllm-ascend 推理速度非常慢",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/171",
+                    "created_at": "2025-02-26T11:47:35+08:00",
+                    "source_type": "issue",
+                    "source_id": "2880097944",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.819,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 118,
+                    "title": "[Bug]: VLLM-Ascend在910b2上推理deepseek模型非常慢，只有7token/s",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/362",
+                    "created_at": "2025-03-20T10:32:42+08:00",
+                    "source_type": "issue",
+                    "source_id": "2933810149",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.818,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Severe Performance Bottleneck"
+    },
+    "4": {
+        "summary": "vLLM Ascend启动时因opp kernel缺失导致aclnnSwiGlu调用失败",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 201,
+                    "title": "[Bug]: call aclnnSwiGlu failed,  Get path and read binary_info_config.json failed",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/573",
+                    "created_at": "2025-04-18T16:40:21+08:00",
+                    "source_type": "issue",
+                    "source_id": "3004419719",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.664,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 75,
+                    "title": "[Bug]: RuntimeError: call aclnnSwiGlu failed, detail:EZ1001: [PID: 72153] 2025-03-04-15:41:40.695.851 Get path and read binary_info_config.json failed, please check if the opp_kernel package is installed!",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/237",
+                    "created_at": "2025-03-04T15:54:54+08:00",
+                    "source_type": "issue",
+                    "source_id": "2893304114",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.64,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Missing Kernel in Installation"
+    },
+    "5": {
+        "summary": "Qwen3-235B-A22B模型加载失败：AscendQuantConfig缺少packed_modules_mapping属性",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 143,
+                    "title": "[Bug]: AttributeError: 'AscendQuantConfig' object has no attribute 'packed_modules_mapping'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/420",
+                    "created_at": "2025-03-28T14:29:03+08:00",
+                    "source_type": "issue",
+                    "source_id": "2955162013",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.715,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 321,
+                    "title": "[Bug]: Qwen3-235B-A22B-AWQ AttributeError: 'AscendQuantConfig' object has no attribute 'packed_modules_mapping'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/900",
+                    "created_at": "2025-05-19T17:46:59+08:00",
+                    "source_type": "issue",
+                    "source_id": "3073227469",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.83,
+                    "closed_cosine": 0.916
+                }
+            ],
+            [
+                {
+                    "id": 96,
+                    "title": "[Bug]: AttributeError: 'AscendQuantConfig' object has no attribute 'packed_modules_mapping'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/312",
+                    "created_at": "2025-03-12T15:54:02+08:00",
+                    "source_type": "issue",
+                    "source_id": "2913064831",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.749,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Attribute Missing in Config"
+    },
+    "6": {
+        "summary": "Ascend量化配置找不到self_attn.q_proj.weight权重键",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 200,
+                    "title": "[Bug]: 推理量化模型qwen2.5-32b-w8a8报错",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/569",
+                    "created_at": "2025-04-18T14:51:16+08:00",
+                    "source_type": "issue",
+                    "source_id": "3004176282",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.647,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 747,
+                    "title": "[Bug]: Qwen3-235B-A22B-W8A8 跑不起来",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2497",
+                    "created_at": "2025-08-22T17:49:11+08:00",
+                    "source_type": "issue",
+                    "source_id": "3344875381",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.655,
+                    "closed_cosine": 0.834
+                }
+            ],
+            [
+                {
+                    "id": 310,
+                    "title": "[Bug]: Qwen2.5 7B W8A8 KeyError: 'model.layers.0.self_attn.q_proj.weight'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/876",
+                    "created_at": "2025-05-15T20:10:56+08:00",
+                    "source_type": "issue",
+                    "source_id": "3066031817",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.731,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Weight Key Error"
+    },
+    "7": {
+        "summary": "V1 DP Attention重复初始化MoE All to All组导致HCCL错误",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 213,
+                    "title": "[Bug]: DP Attention in V1 error: cannot set moe all to all group due to repeated initializations",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/616",
+                    "created_at": "2025-04-22T17:29:59+08:00",
+                    "source_type": "issue",
+                    "source_id": "3010507823",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.784,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 212,
+                    "title": "[Bug]: DP Attention in V1 error: cannot set moe all to all group due to repeated initializations",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/615",
+                    "created_at": "2025-04-22T17:29:54+08:00",
+                    "source_type": "issue",
+                    "source_id": "3010507603",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.845,
+                    "closed_cosine": 0.949
+                }
+            ],
+            [
+                {
+                    "id": 214,
+                    "title": "[Bug]: DP Attention in V1 error: cannot set moe all to all group due to repeated initializations",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/617",
+                    "created_at": "2025-04-22T17:30:16+08:00",
+                    "source_type": "issue",
+                    "source_id": "3010508475",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.823,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Parallel Initialization Conflict"
+    },
+    "8": {
+        "summary": "Qwen3-235b ACLGraph测试未完成",
+        "discussion_count": 7,
+        "discussion": [
+            [
+                {
+                    "id": 660,
+                    "title": "[Release]: Release checklist for v0.10.0rc1",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2210",
+                    "created_at": "2025-08-05T14:08:59+08:00",
+                    "source_type": "issue",
+                    "source_id": "3291720336",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.43,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 755,
+                    "title": "[Release]: Release checklist for v0.10.1rc1",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2525",
+                    "created_at": "2025-08-25T16:57:41+08:00",
+                    "source_type": "issue",
+                    "source_id": "3351014184",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.497,
+                    "closed_cosine": 0.949
+                }
+            ],
+            [
+                {
+                    "id": 556,
+                    "title": "[Release]: Release checklist for v0.9.2rc1",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1742",
+                    "created_at": "2025-07-11T15:33:23+08:00",
+                    "source_type": "issue",
+                    "source_id": "3221897221",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.408,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 655,
+                    "title": "[Release]: Release checklist for v0.9.1rc2",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2191",
+                    "created_at": "2025-08-04T12:27:28+08:00",
+                    "source_type": "issue",
+                    "source_id": "3287961877",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.406,
+                    "closed_cosine": 0.935
+                }
+            ],
+            [
+                {
+                    "id": 324,
+                    "title": "[release] 0.9.0rc1 release checklist",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/904",
+                    "created_at": "2025-05-20T11:48:21+08:00",
+                    "source_type": "issue",
+                    "source_id": "3075535233",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.45,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 725,
+                    "title": "[Release]: Release checklist for `v0.9.1rc3`",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2396",
+                    "created_at": "2025-08-15T17:46:14+08:00",
+                    "source_type": "issue",
+                    "source_id": "3324857234",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.441,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 485,
+                    "title": "[Release]: Release checklist for v0.9.1rc2 on main",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1486",
+                    "created_at": "2025-06-28T00:19:32+08:00",
+                    "source_type": "issue",
+                    "source_id": "3183373669",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.425,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Incomplete Model Testing"
+    },
+    "9": {
+        "summary": "Qwen2系列模型需新增架构与配置适配支持",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 77,
+                    "title": "[New Model]: Qwen2-VL",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/246",
+                    "created_at": "2025-03-05T23:04:54+08:00",
+                    "source_type": "issue",
+                    "source_id": "2897587436",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.813,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 325,
+                    "title": "[New Model]: Qwen/Qwen2.5-7B-Instruct-1M",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/920",
+                    "created_at": "2025-05-21T17:35:30+08:00",
+                    "source_type": "issue",
+                    "source_id": "3079587131",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.717,
+                    "closed_cosine": 0.845
+                }
+            ],
+            [
+                {
+                    "id": 19,
+                    "title": "[New Model]: Qwen2.5-VL",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/75",
+                    "created_at": "2025-02-17T17:23:27+08:00",
+                    "source_type": "issue",
+                    "source_id": "2857257846",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.721,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "New Model Adaptation Required"
+    },
+    "10": {
+        "summary": "Ascend NPU在Atlas 300I Duo/200I A2硬件上支持情况及模型推理部署指南",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 71,
+                    "title": "[Doc]: 请问300I Duo以及Atlas 200I A2是否支持vllm-ascend",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/226",
+                    "created_at": "2025-03-03T17:52:52+08:00",
+                    "source_type": "issue",
+                    "source_id": "2890727567",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.741,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 396,
+                    "title": "[Usage]: Does vllm-ascend currently support Atlas 300I Duo？",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1141",
+                    "created_at": "2025-06-09T20:39:40+08:00",
+                    "source_type": "issue",
+                    "source_id": "3130192887",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.706,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 37,
+                    "title": "[Usage]: 是否支持Atlas 300I Duo系列",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/141",
+                    "created_at": "2025-02-22T11:51:02+08:00",
+                    "source_type": "issue",
+                    "source_id": "2870459932",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.629,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Hardware Compatibility Query"
+    },
+    "11": {
+        "summary": "ZhipuAI GLM-4在Ascend启用eager模式时RoPE设置失败",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 678,
+                    "title": "[Bug]: ZhipuAI/GLM-4-32B-0414 failed to start in enage and graph model",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2258",
+                    "created_at": "2025-08-07T12:05:10+08:00",
+                    "source_type": "issue",
+                    "source_id": "3298855705",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.831,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 677,
+                    "title": "[Bug]: ZhipuAI/glm-4-9b-chat-hf failed to start in enage and graph model",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2255",
+                    "created_at": "2025-08-07T11:29:47+08:00",
+                    "source_type": "issue",
+                    "source_id": "3298780777",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.777,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 680,
+                    "title": "[Bug]:ZhipuAI/glm-4v-9b failed to start in enage and graph model",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2260",
+                    "created_at": "2025-08-07T12:12:27+08:00",
+                    "source_type": "issue",
+                    "source_id": "3298870942",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.738,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "RoPE Setup Failure"
+    },
+    "12": {
+        "summary": "Qwen2.5-VL-7B在vllm-ascend服务化运行时频繁输出感叹号并导致推理延迟",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 34,
+                    "title": "Qwen2.5-VL-7B的问题",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/131",
+                    "created_at": "2025-02-21T16:05:56+08:00",
+                    "source_type": "issue",
+                    "source_id": "2868312460",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.813,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 775,
+                    "title": "[Usage]: 测试qwen2.5-vl-7b 服务化模型会经常遇到模型输出特别长的感叹号，而且特别耗时。",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2586",
+                    "created_at": "2025-08-28T09:50:13+08:00",
+                    "source_type": "issue",
+                    "source_id": "3361448634",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.843,
+                    "closed_cosine": 0.842
+                }
+            ]
+        ],
+        "label": "Inference Latency with Errors"
+    },
+    "13": {
+        "summary": "Pipeline不支持最新CANN版本导致无法移除旧chunked prefill实现",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 38,
+                    "title": "[Misc]: Bump CANN version to CANN 8.1.RC1.alpha001",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/142",
+                    "created_at": "2025-02-22T16:06:31+08:00",
+                    "source_type": "issue",
+                    "source_id": "2870589238",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.605,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 408,
+                    "title": "Upgrade CANN version to 8.2RC1.",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1176",
+                    "created_at": "2025-06-11T22:17:34+08:00",
+                    "source_type": "issue",
+                    "source_id": "3137012780",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.705,
+                    "closed_cosine": 0.843
+                }
+            ]
+        ],
+        "label": "Dependency Version Conflict"
+    },
+    "14": {
+        "summary": "DeepSeek模型加载报 KeyError: 权重缺失或名称不匹配",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 125,
+                    "title": "[Bug]: KeyError when loading weights",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/381",
+                    "created_at": "2025-03-24T16:36:34+08:00",
+                    "source_type": "issue",
+                    "source_id": "2942449366",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.817,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 55,
+                    "title": "[Usage]: Checkpoint loading error when running Deepseek-V3/R1",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/183",
+                    "created_at": "2025-02-26T21:32:43+08:00",
+                    "source_type": "issue",
+                    "source_id": "2881621659",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.765,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Weight Key Error"
+    },
+    "15": {
+        "summary": "Loading Qwen2-5VL-7B-Instruct model missing _npu_flash_attention interface",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 108,
+                    "title": "[Bug]: AttributeError: module 'torch_npu' has no attribute '_npu_flash_attention'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/340",
+                    "created_at": "2025-03-16T11:36:21+08:00",
+                    "source_type": "issue",
+                    "source_id": "2922744555",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.739,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 64,
+                    "title": "[Bug]: module 'torch_npu' has no attribute '_npu_flash_attention'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/211",
+                    "created_at": "2025-03-01T17:26:00+08:00",
+                    "source_type": "issue",
+                    "source_id": "2888761314",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.666,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Missing Interface for Flash Attention"
+    },
+    "16": {
+        "summary": "vllm-ascend调用torch_npu私有接口_npu_rotary_embedding时因版本不兼容导致属性缺失",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 123,
+                    "title": "[Bug]:  AttributeError: module 'torch_npu' has no attribute '_npu_rotary_embedding'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/379",
+                    "created_at": "2025-03-24T13:49:18+08:00",
+                    "source_type": "issue",
+                    "source_id": "2942074289",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.818,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 67,
+                    "title": "[Bug]: AttributeError: module 'torch_npu' has no attribute '_npu_rotary_embedding'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/218",
+                    "created_at": "2025-03-02T22:58:08+08:00",
+                    "source_type": "issue",
+                    "source_id": "2889599118",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.803,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Compatibility Issue with Torch NPU"
+    },
+    "17": {
+        "summary": "Qwen2.5-7B-Instruct模型在vllm-ascend 0.7.3版本中输出精度异常",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 68,
+                    "title": "[Bug]: Qwen2.5-7B-Instruct 模型0.7.1和0.7.3版本vllm-ascend输出不相同，怀疑0.7.3有精度问题",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/221",
+                    "created_at": "2025-03-03T10:35:41+08:00",
+                    "source_type": "issue",
+                    "source_id": "2890011501",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.839,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 367,
+                    "title": "[Bug][V1]: Qwen/Qwen2.5-7B-Instruct accuracy  ceval-valid failed",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1043",
+                    "created_at": "2025-06-03T09:57:36+08:00",
+                    "source_type": "issue",
+                    "source_id": "3112108256",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.749,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Accuracy Inconsistency"
+    },
+    "18": {
+        "summary": "Qwen2.5-VL模型在Ascend 910 NPU上推理速度异常缓慢，疑似硬件加速未有效启用",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 157,
+                    "title": "[Usage]: Qwen2.5VL inference speed is unusually slow, something wrong within my usage?",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/451",
+                    "created_at": "2025-04-01T11:17:24+08:00",
+                    "source_type": "issue",
+                    "source_id": "2962108749",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.784,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 107,
+                    "title": "[Bug]: The inference of Qwen2/2.5-VL-7B is very slow.",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/338",
+                    "created_at": "2025-03-15T15:24:07+08:00",
+                    "source_type": "issue",
+                    "source_id": "2921859883",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.769,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ],
+        "label": "Slow Inference Speed"
+    },
+    "19": {
+        "summary": "vLLM-Ascend版本安装失败",
+        "discussion_count": 13,
+        "discussion": [
+            [
+                {
+                    "id": 88,
+                    "title": "[v0.7.3rc1] FAQ / Feedback | 问题/反馈",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/267",
+                    "created_at": "2025-03-07T19:24:24+08:00",
+                    "source_type": "issue",
+                    "source_id": "2902743511",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.773,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 298,
+                    "title": "[v0.7.3] FAQ / Feedback | 问题/反馈",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/848",
+                    "created_at": "2025-05-14T10:56:51+08:00",
+                    "source_type": "issue",
+                    "source_id": "3061665797",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.819,
+                    "closed_cosine": 0.969
+                },
+                {
+                    "id": 357,
+                    "title": "[v0.7.3.post1] FAQ / Feedback | 问题/反馈",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1007",
+                    "created_at": "2025-05-29T15:12:57+08:00",
+                    "source_type": "issue",
+                    "source_id": "3099424538",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.729,
+                    "closed_cosine": 0.915
+                },
+                {
+                    "id": 557,
+                    "title": "[v0.9.2rc1] FAQ / Feedback | 问题/反馈 ",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1743",
+                    "created_at": "2025-07-11T15:35:37+08:00",
+                    "source_type": "issue",
+                    "source_id": "3221902895",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.699,
+                    "closed_cosine": 0.906
+                },
+                {
+                    "id": 662,
+                    "title": "[v0.10.0rc1] FAQ / Feedback | 问题/反馈",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2217",
+                    "created_at": "2025-08-05T19:29:43+08:00",
+                    "source_type": "issue",
+                    "source_id": "3292731557",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.649,
+                    "closed_cosine": 0.839
+                },
+                {
+                    "id": 792,
+                    "title": "[v0.10.1rc1] FAQ / Feedback | 问题/反馈",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2630",
+                    "created_at": "2025-08-29T14:51:21+08:00",
+                    "source_type": "issue",
+                    "source_id": "3365700477",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.612,
+                    "closed_cosine": 0.807
+                }
+            ],
+            [
+                {
+                    "id": 188,
+                    "title": "[v0.8.4rc1] FAQ / Feedback | 问题/反馈",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/546",
+                    "created_at": "2025-04-17T10:36:23+08:00",
+                    "source_type": "issue",
+                    "source_id": "3001216654",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.814,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 795,
+                    "title": "[v0.9.1] FAQ / Feedback | 问题/反馈",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2643",
+                    "created_at": "2025-08-30T09:16:33+08:00",
+                    "source_type": "issue",
+                    "source_id": "3368597473",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.809,
+                    "closed_cosine": 0.97
+                }
+            ],
+            [
+                {
+                    "id": 262,
+                    "title": "[v0.8.5rc1] FAQ / Feedback | 问题/反馈",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/754",
+                    "created_at": "2025-05-05T23:43:12+08:00",
+                    "source_type": "issue",
+                    "source_id": "3040072666",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.794,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 387,
+                    "title": "[v0.9.0rc2] FAQ / Feedback | 问题/反馈 #",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1115",
+                    "created_at": "2025-06-07T17:13:24+08:00",
+                    "source_type": "issue",
+                    "source_id": "3126752720",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.645,
+                    "closed_cosine": 0.855
+                }
+            ],
+            [
+                {
+                    "id": 142,
+                    "title": "[v0.7.3rc2] FAQ / Feedback | 问题/反馈",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/418",
+                    "created_at": "2025-03-28T12:04:31+08:00",
+                    "source_type": "issue",
+                    "source_id": "2954955094",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.802,
+                    "closed_cosine": 0.0
+                }
+            ],
+            [
+                {
+                    "id": 486,
+                    "title": "[v0.9.1rc2] FAQ / Feedback | 问题/反馈 ",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1487",
+                    "created_at": "2025-06-28T00:25:07+08:00",
+                    "source_type": "issue",
+                    "source_id": "3183390759",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.476,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 728,
+                    "title": "[v0.9.1rc3] FAQ / Feedback | 问题/反馈",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2410",
+                    "created_at": "2025-08-18T14:31:14+08:00",
+                    "source_type": "issue",
+                    "source_id": "3329361373",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.414,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "20": {
+        "summary": "Ascend NPU上vLLM生产就绪性不足",
+        "discussion_count": 3,
+        "discussion": [
+            [
+                {
+                    "id": 155,
+                    "title": "vLLM Ascend Roadmap Q2 2025",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/448",
+                    "created_at": "2025-03-31T20:14:16+08:00",
+                    "source_type": "issue",
+                    "source_id": "2960325254",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.766,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 405,
+                    "title": "vLLM Ascend Roadmap Q3 2025",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1168",
+                    "created_at": "2025-06-11T14:50:39+08:00",
+                    "source_type": "issue",
+                    "source_id": "3135692940",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.719,
+                    "closed_cosine": 0.927
+                }
+            ],
+            [
+                {
+                    "id": 17,
+                    "title": "vLLM Ascend Roadmap Q1 2025",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/71",
+                    "created_at": "2025-02-17T15:42:22+08:00",
+                    "source_type": "issue",
+                    "source_id": "2857033722",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.709,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "21": {
+        "summary": "vllm-ascend V1引擎需重构硬编码CUDA依赖并新增关键接口",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 4,
+                    "title": "[RFC] V1 engine support",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/9",
+                    "created_at": "2025-02-06T10:22:33+08:00",
+                    "source_type": "issue",
+                    "source_id": "2834366028",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.715,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 140,
+                    "title": "[Guide] V1 Engine",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/414",
+                    "created_at": "2025-03-27T21:15:07+08:00",
+                    "source_type": "issue",
+                    "source_id": "2952954949",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.696,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "22": {
+        "summary": "vllm-ascend插件暂不支持DeepSeek V3/R1部署到Ascend",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 11,
+                    "title": "Does this project support the deployment of deepseek-v3 and deepseek-r1 on Ascend?",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/39",
+                    "created_at": "2025-02-11T18:03:19+08:00",
+                    "source_type": "issue",
+                    "source_id": "2844902588",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.895,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 18,
+                    "title": "[New Model]: DeepSeek V3 / R1",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/72",
+                    "created_at": "2025-02-17T15:48:09+08:00",
+                    "source_type": "issue",
+                    "source_id": "2857044978",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.831,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "23": {
+        "summary": "Prefix cache and chunked prefill not supported in current vLLM Ascend plugin",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 35,
+                    "title": "RuntimeError: Prefix cache and chunked prefill are currently not supported",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/133",
+                    "created_at": "2025-02-21T16:40:31+08:00",
+                    "source_type": "issue",
+                    "source_id": "2868382639",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.837,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 102,
+                    "title": "[Feature]:  prefix cache and chunk prefill",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/323",
+                    "created_at": "2025-03-13T15:49:27+08:00",
+                    "source_type": "issue",
+                    "source_id": "2916174173",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.783,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "24": {
+        "summary": "Ascend 910B部署Qwen2.5 VL 72B显存不足",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 168,
+                    "title": "[Usage]:910B2 部署qwen2.5-vl-72B，效果比GPU部署效果差很多",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/482",
+                    "created_at": "2025-04-08T15:52:03+08:00",
+                    "source_type": "issue",
+                    "source_id": "2978932966",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.769,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 685,
+                    "title": "[Bug]: 8张910B部署qwen2.5_vl_72b显存不足",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2267",
+                    "created_at": "2025-08-07T19:10:36+08:00",
+                    "source_type": "issue",
+                    "source_id": "3300046783",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.839,
+                    "closed_cosine": 0.824
+                }
+            ]
+        ]
+    },
+    "25": {
+        "summary": "PyTorch未编译CUDA支持导致模型加载失败",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 273,
+                    "title": "[Bug]:",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/780",
+                    "created_at": "2025-05-07T16:57:59+08:00",
+                    "source_type": "issue",
+                    "source_id": "3045247225",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.686,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 181,
+                    "title": "[Bug]: AssertionError: Torch not compiled with CUDA enabled",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/516",
+                    "created_at": "2025-04-14T13:59:12+08:00",
+                    "source_type": "issue",
+                    "source_id": "2991973894",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.681,
+                    "closed_cosine": 0.88
+                }
+            ]
+        ]
+    },
+    "26": {
+        "summary": "vllm_ascend导入PoolingParams失败，版本兼容性问题",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 185,
+                    "title": "[Bug]: cannot import name 'PoolingParams' from 'vllm' (unknown location)",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/527",
+                    "created_at": "2025-04-15T11:27:07+08:00",
+                    "source_type": "issue",
+                    "source_id": "2994959070",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.796,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 558,
+                    "title": "[Usage]: 出现ImportError: cannot import name 'PoolingParams' from 'vllm' (unknown location)",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1747",
+                    "created_at": "2025-07-11T16:09:53+08:00",
+                    "source_type": "issue",
+                    "source_id": "3221990693",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.733,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "27": {
+        "summary": "Qwen2.5-VL-7B在vllm-ascend 0.7.3rc2加载推理失败",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 190,
+                    "title": "Qwen2.5-VL-7B的问题",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/548",
+                    "created_at": "2025-04-17T14:03:00+08:00",
+                    "source_type": "issue",
+                    "source_id": "3001511660",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.796,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 191,
+                    "title": "[Bug]: Qwen2.5-VL:7B的问题",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/549",
+                    "created_at": "2025-04-17T14:10:48+08:00",
+                    "source_type": "issue",
+                    "source_id": "3001523742",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.789,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "28": {
+        "summary": "DeepSeek V2 Lite W8A8量化模型在vllm-ascend多流与动态量化下生成重复符号及乱码",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 222,
+                    "title": "[Bug]: deepseek-v2-lite-w8a8 quantizaion inference repeated output",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/628",
+                    "created_at": "2025-04-23T14:37:34+08:00",
+                    "source_type": "issue",
+                    "source_id": "3012860369",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.82,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 666,
+                    "title": "[Bug]: deepseek w8a8 dynamic + multi-stream test get wrong output",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2232",
+                    "created_at": "2025-08-06T10:32:21+08:00",
+                    "source_type": "issue",
+                    "source_id": "3294972221",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.866,
+                    "closed_cosine": 0.823
+                }
+            ]
+        ]
+    },
+    "29": {
+        "summary": "Qwen3 MoE模型支持回滚修复",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 308,
+                    "title": "[release] 0.7.3.post1 release checklist",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/871",
+                    "created_at": "2025-05-15T17:42:40+08:00",
+                    "source_type": "issue",
+                    "source_id": "3065615552",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.569,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 229,
+                    "title": "[Release]: vLLM Ascend v0.7.3 release checklist",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/644",
+                    "created_at": "2025-04-24T16:07:42+08:00",
+                    "source_type": "issue",
+                    "source_id": "3016407728",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.458,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "30": {
+        "summary": "训练时触发张量形状无效的RuntimeError",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 286,
+                    "title": "[Bug]: RuntimeError: shape '[-1, 3, 80, 1280]' is invalid for input size 1966080",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/809",
+                    "created_at": "2025-05-12T10:17:24+08:00",
+                    "source_type": "issue",
+                    "source_id": "3055444427",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.767,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 482,
+                    "title": "[Bug]: RuntimeError: shape '[-1, 3, 80, 1280]' is invalid for input size xxxxx |",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1467",
+                    "created_at": "2025-06-26T21:25:57+08:00",
+                    "source_type": "issue",
+                    "source_id": "3179133455",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.766,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "31": {
+        "summary": "DeepSeek模型MoE专家并行时Ascend调度器划分异常",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 340,
+                    "title": "[Bug]: When moe ep=16 etp=1, the result is normal. When moe ep=1 etp=16, the result is abnormal.",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/971",
+                    "created_at": "2025-05-27T16:00:37+08:00",
+                    "source_type": "issue",
+                    "source_id": "3093014233",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.595,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 351,
+                    "title": "[Bug]: moe ep=4 etp=4, the result is abnormal",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/991",
+                    "created_at": "2025-05-28T17:37:46+08:00",
+                    "source_type": "issue",
+                    "source_id": "3096712664",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.689,
+                    "closed_cosine": 0.827
+                }
+            ]
+        ]
+    },
+    "32": {
+        "summary": "Eagle1/Eagle3 Acceleration Support Incomplete",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 355,
+                    "title": "[Feature]: Implement Eagle3 Acceleration on vllm-ascend",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1004",
+                    "created_at": "2025-05-29T11:37:42+08:00",
+                    "source_type": "issue",
+                    "source_id": "3099068082",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.612,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 384,
+                    "title": "[Feature]: Implement Eagle1 Acceleration on vllm-ascend",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1088",
+                    "created_at": "2025-06-05T19:23:22+08:00",
+                    "source_type": "issue",
+                    "source_id": "3120828349",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.618,
+                    "closed_cosine": 0.963
+                }
+            ]
+        ]
+    },
+    "33": {
+        "summary": "AscendFusedMoE代码抽象不足导致维护困难及硬件适配问题",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 399,
+                    "title": "[RFC]: Refactoring AscendFusedMoE",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1147",
+                    "created_at": "2025-06-10T10:38:22+08:00",
+                    "source_type": "issue",
+                    "source_id": "3131964890",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.776,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 704,
+                    "title": "[RFC]: Refactoring fused_moe",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2321",
+                    "created_at": "2025-08-11T20:26:41+08:00",
+                    "source_type": "issue",
+                    "source_id": "3309810444",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.714,
+                    "closed_cosine": 0.86
+                }
+            ]
+        ]
+    },
+    "34": {
+        "summary": "vLLM与vllm-ascend PyTorch版本冲突导致安装失败",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 410,
+                    "title": "[Installation]: The relationship between vllm-ascend 0.9.0 and torch versions",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1188",
+                    "created_at": "2025-06-12T16:30:31+08:00",
+                    "source_type": "issue",
+                    "source_id": "3139349772",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.786,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 574,
+                    "title": "[Installation]: Unmatched torch version between vllm=0.9.2 and vllm-ascend=0.9.2rc1",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1796",
+                    "created_at": "2025-07-15T10:43:42+08:00",
+                    "source_type": "issue",
+                    "source_id": "3230568153",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.699,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "35": {
+        "summary": "Qwen3-30B-A3B在DP2+TP2并行模式下生成重复内容导致精度低",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 439,
+                    "title": "[Bug]: Qwen3-30B-A3B Shows Precision Issues in DP2+TP2 Parallel Mode",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1289",
+                    "created_at": "2025-06-18T23:18:08+08:00",
+                    "source_type": "issue",
+                    "source_id": "3157286096",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.883,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 572,
+                    "title": "[Bug]: Qwen/Qwen3-30B-A3B accuracy low when tp=2 dp=2",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1791",
+                    "created_at": "2025-07-14T21:02:25+08:00",
+                    "source_type": "issue",
+                    "source_id": "3228704285",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.807,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "36": {
+        "summary": "vLLM-Ascend的ACL Graph模式不支持DeepSeek架构导致启动失败",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 476,
+                    "title": "[Doc]:",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1456",
+                    "created_at": "2025-06-26T17:25:40+08:00",
+                    "source_type": "issue",
+                    "source_id": "3178458632",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.827,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 477,
+                    "title": "[Bug]: NotImplementedError: ACL Graph does not support deepseek. Please try torchair graph mode to serve deepseek models on vllm-ascend. Or set `enforce_eager=True` to use eager mode",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1458",
+                    "created_at": "2025-06-26T17:27:20+08:00",
+                    "source_type": "issue",
+                    "source_id": "3178463541",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.798,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "37": {
+        "summary": "vLLM-Ascend v0.9.0rc2/v0.9.1rc1-310p是否支持Qwen2.5 VL系列模型在Ascend NPU上的运行",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 542,
+                    "title": "[Question]: does vllm-ascend:v0.9.1rc1-310p support 300i duo + MRoPE, such as qwen2.5-vl-7b and qwen2.5-vl-32b?",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1684",
+                    "created_at": "2025-07-09T11:00:54+08:00",
+                    "source_type": "issue",
+                    "source_id": "3214327682",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.795,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 521,
+                    "title": "[Question]:  does vllm-ascend v0.9.0rc2 support 300i + qwen2.5-vl-7b?",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/1609",
+                    "created_at": "2025-07-03T14:38:35+08:00",
+                    "source_type": "issue",
+                    "source_id": "3198222727",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.803,
+                    "closed_cosine": 0.828
+                }
+            ]
+        ]
+    },
+    "38": {
+        "summary": "GPT-OSS系列模型推理支持问题",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 675,
+                    "title": "[Feature]: 是否能够支持GPT-OSS系列的模型推理",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2253",
+                    "created_at": "2025-08-07T11:07:22+08:00",
+                    "source_type": "issue",
+                    "source_id": "3298730858",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.852,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 664,
+                    "title": "[New Model]: support gptoss",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2228",
+                    "created_at": "2025-08-06T09:29:42+08:00",
+                    "source_type": "issue",
+                    "source_id": "3294880820",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.804,
+                    "closed_cosine": 0.838
+                }
+            ]
+        ]
+    },
+    "39": {
+        "summary": "chunkprefill机制引发多GPU并行计算低效与显存冗余",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 706,
+                    "title": "[RFC]: [Feature]: Context Parallelism && Sequence Parallelism",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2329",
+                    "created_at": "2025-08-12T09:54:56+08:00",
+                    "source_type": "issue",
+                    "source_id": "3312222364",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.567,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 689,
+                    "title": "[RFC]: [Feature]: Context Parallelism && Sequence Parallelism",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2278",
+                    "created_at": "2025-08-08T14:31:47+08:00",
+                    "source_type": "issue",
+                    "source_id": "3302804086",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.567,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "40": {
+        "summary": "Qwen3-30B-A3B模型在Ascend 910B2双卡推理速度慢且性能差距过大",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 771,
+                    "title": "[Bug]:Qwen3-30B-A3B推理速度与N卡差距过大",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2575",
+                    "created_at": "2025-08-27T17:07:36+08:00",
+                    "source_type": "issue",
+                    "source_id": "3358627774",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.853,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 705,
+                    "title": "[Usage]: 910B2推理qwen-30B-A3B速度",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2328",
+                    "created_at": "2025-08-12T09:22:52+08:00",
+                    "source_type": "issue",
+                    "source_id": "3312149608",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.846,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "41": {
+        "summary": "vLLM-Ascend 插件部署 DeepSeek 模型时图编译异常导致启动失败",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 710,
+                    "title": "[Usage]: How to deploy DeepSeek-R1-0528-BF16 on 910B 64G × 32 using DP",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2343",
+                    "created_at": "2025-08-12T23:17:11+08:00",
+                    "source_type": "issue",
+                    "source_id": "3314765070",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.547,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 711,
+                    "title": "[Bug]: How to deploy DeepSeek-R1-0528-BF16 on 910B 64G × 32 using DP",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2344",
+                    "created_at": "2025-08-12T23:39:26+08:00",
+                    "source_type": "issue",
+                    "source_id": "3314854756",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.649,
+                    "closed_cosine": 0.86
+                }
+            ]
+        ]
+    },
+    "42": {
+        "summary": "Qwen3-30B-A3B-W8A8 EP TP模式启动失败，同步已捕获流",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 770,
+                    "title": "[Bug]: vllm-ascend/Qwen3-30B-A3B-W8A8 + EP + TP start failed due to AclrtSynchronizeStreamWithTimeout(copy_stream), error code is 107027",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2567",
+                    "created_at": "2025-08-27T11:07:05+08:00",
+                    "source_type": "issue",
+                    "source_id": "3357844014",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.709,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 743,
+                    "title": "[Bug]: Qwen3-30B-A3B-W8A8 on v0.10.0rc1 report AclrtSynchronizeStreamWithTimeout(copy_stream), error code is 107027",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2473",
+                    "created_at": "2025-08-21T16:41:06+08:00",
+                    "source_type": "issue",
+                    "source_id": "3340839156",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.692,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "43": {
+        "summary": "缺失apply_repetition_penalties_ CUDA内核导致测试失败",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 757,
+                    "title": "[Bug]: perf test failed due to AttributeError: '_OpNamespace' '_C' object has no attribute 'apply_repetition_penalties_'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2533",
+                    "created_at": "2025-08-26T08:48:30+08:00",
+                    "source_type": "issue",
+                    "source_id": "3353632313",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.713,
+                    "closed_cosine": 0.0
+                },
+                {
+                    "id": 762,
+                    "title": "[Bug]: alsbench  test failed due to AttributeError: '_OpNamespace' '_C' object has no attribute 'apply_repetition_penalties_'",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2544",
+                    "created_at": "2025-08-26T14:19:28+08:00",
+                    "source_type": "issue",
+                    "source_id": "3354278509",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.687,
+                    "closed_cosine": 0.0
+                }
+            ]
+        ]
+    },
+    "44": {
+        "summary": "配置vLLM EP需显式指定expert parallel size值",
+        "discussion_count": 2,
+        "discussion": [
+            [
+                {
+                    "id": 785,
+                    "title": "[Usage]: vllm中如何配置具体的EP并行度数值?",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2603",
+                    "created_at": "2025-08-28T16:37:50+08:00",
+                    "source_type": "issue",
+                    "source_id": "3362393927",
+                    "source_closed": true,
+                    "source_deleted": false,
+                    "cosine": 0.78,
+                    "closed_cosine": 1.0
+                },
+                {
+                    "id": 788,
+                    "title": "[Doc]: vllm如何配置EP为具体数值？",
+                    "url": "https://github.com/vllm-project/vllm-ascend/issues/2611",
+                    "created_at": "2025-08-28T18:25:59+08:00",
+                    "source_type": "issue",
+                    "source_id": "3362756070",
+                    "source_closed": false,
+                    "source_deleted": false,
+                    "cosine": 0.761,
+                    "closed_cosine": 0.952
+                }
+            ]
+        ]
+    }
+}

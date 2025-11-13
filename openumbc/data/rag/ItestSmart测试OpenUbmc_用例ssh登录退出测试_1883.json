@@ -1,0 +1,22 @@
+{
+    "topic_id": 1883,
+    "question": "ItestSmart测试OpenUbmc 用例ssh登录退出测试 - content: 1硬件环境\n主板：S920X20\nBMC版本：25.06\nitestsmart版本：1.0.34\n2测试项\ncaseid：User_Login_Function_0001\ncasename：ssh登录退出测试\n失败截图：\na654ea312ea823d3a3c96971c4f8e8a1922×951 76.1 KB\n很多同样的问题redfish接口获取的是openubmc不是huawei\n652bc166565b439fccaf68ba14e30471326×784 43.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e8e0eb4cbe9ea3aae335b4942664e35ebbf8c657.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/f0f02d71b0c2dac9aa1e854d2996dfff8c4724f0.png",
+    "topic_user_name": "Zhuyuwei_baixin",
+    "best_answer_url": "/t/topic/1883/2",
+    "reply_posts": [
+        {
+            "user_name": "Hdq",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1883/2",
+            "text": "该用例在后续版本将会适配"
+        },
+        {
+            "user_name": "Zhuyuwei_baixin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1883/3",
+            "text": "好的，itestsmart下个版本会适配吗？大概多久会发布下个版本"
+        }
+    ]
+}

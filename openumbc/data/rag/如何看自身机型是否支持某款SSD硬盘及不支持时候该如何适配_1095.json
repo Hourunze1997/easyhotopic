@@ -1,0 +1,15 @@
+{
+    "topic_id": 1095,
+    "question": "如何看自身机型是否支持某款SSD硬盘及不支持时候该如何适配 - 请教下我们该 如何看自身机型是否支持某款SSD硬盘及当不支持时候该如何适配代码",
+    "topic_user_name": "He wei",
+    "best_answer_url": "/t/topic/1095/2",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1095/2",
+            "text": "content: 如果有不支持的厂商硬盘可以再sig-hardwaref登记议题评审，会分析实现后支持\n参考如下\nimage897×260 25.8 KB\n可以订阅sig-hardware的例会后申报议题\nsig-hardware链接\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/f4765295e0fc8c745d9326bcff00565282c8df18.png, https://etherpad.openubmc.cn/p/sig-hardware"
+        }
+    ]
+}

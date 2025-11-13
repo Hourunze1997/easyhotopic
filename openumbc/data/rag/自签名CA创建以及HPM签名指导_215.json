@@ -1,0 +1,78 @@
+{
+    "topic_id": 215,
+    "question": "自签名CA创建以及HPM签名指导 - content: 说明\n签名涉及多种证书公私钥，主要包含根证书、证书吊销列表、由根证书派生的签名证书和时间戳证书等。\n根证书是整个信任链起点，泄露根证书私钥会产生严重安全问题，需要保障根证书私钥绝对安全，建议客户使用安全加密、离线保存、多人持有等措施保护根证书私钥不会被泄露、遗失、损毁。\n所有与根证书私钥相关的操作建议在离线环境（且一直保持离线状态）中执行，华为不对证书的生成、保存、传输做任何安全保证，也不承担相应后果，一切过程由客户操作、存储和传递[/color]。\n本文档参考了 昇腾 - CMS签名\n创建签名证书\n创建CA证书，创建的根证书私钥请妥善保存\nCA证书由根公钥和私钥组件：\n\n私钥(rootca_pri.pem)用于签发签名证书，也可用于吊销签名证书，如果泄漏会引发安全风险，需要证书拥有者妥善保存（如加密+多份安全备份）。\n公钥(rootca.der)用于验证签名证书和CRL合法性，其hash值需要写入iBMC的安全区。\n证书中的组织名称(O)、证书名称（CN）请变更为你需要的名称\n\n# 生成证书配置文件，其中O一般改为公司名称，CN改你期望的证书名称\ncat << EOF > rootca.cnf\n[ req ]\ndefault_bits = 4096\ndistinguished_name = req_distinguished_name\nprompt = no\ndefault_md = sha256\nstring_mask = utf8only\nx509_extensions = extensions\n\n[ req_distinguished_name ]\nC = CN\nO = Huawei\nCN = Huawei EnterpriseIT Root CA\n\n[ extensions ]\nsubjectKeyIdentifier = hash\nauthorityKeyIdentifier = keyid:always, issuer\nbasicConstraints = CA:TRUE\nkeyUsage = cRLSign, keyCertSign\nEOF\n\n# 创建根证书私钥\nopenssl genpkey -algorithm rsa-pss -pkeyopt rsa_keygen_bits:4096 -pkeyopt rsa_keygen_pubexp:65537 -out rootca_pri.pem\n# 创建根公钥\nopenssl req -x509 -new -days 18250 -key rootca_pri.pem -config rootca.cnf -sha256 -out rootca.pem\n# 加密存储，密码需要保证适当的长度和复杂度，来源建议是随机生成，例如`dd if=/dev/random bs=1 count=128 2>&1| sha256sum | awk '{print $1}'`命令可以生成64字节的随机字符串\n# 测试密码 56ff8ba86d0979b2e6915d156ffcd49b9d7af80a3cceebdd32406e21ebe13594\nopenssl pkcs12 -export -out rootca.pfx -in rootca.pem -inkey rootca_pri.pem\n# 转换成der格式，重要，该文件需要写入环境中，并将其hash写入安全启动支持的安全区域（efuse或其它otp设备）\nopenssl x509 -in rootca.pem -inform pem -outform der -out rootca.der\n# 生成后注意删除临时文件\nrm rootca_pri.pem rootca.cnf\n\n执行完上述命令后生成如下三个文件：\n\nrootca.der：根公钥DER格式证书，需要导入到BMC环境中，安全启动和安全升级功能都依赖此证书验证软件包完整性性，可公开的文件。\nrootca.pfx: 加密存储的根公私钥，后续签发签名证书和吊销列表时使用，如果泄漏会引发安全风险，需要证书拥有者妥善保存（加密+多份安全备份），建议证书和加密密码分开（不同的存储区域 + 不同的管理者）保存。\nrootca.pem：可从rootca.der导出的PEM格式证书。\n\n创建签名证书，该证书由CA根证书签名\n签名需要使用私钥，显然我们不能使用根CA的私钥签名。实际上，日常签名活动我们使用的是由CA根证书签发的签名证书。\n# 创建签名证书配置，其中O一般改为公司名称，CN改为你期望的证书名称\ncat << EOF > signcert.cnf\n[ req ]\ndefault_bits = 4096\ndistinguished_name = req_distinguished_name\nprompt = no\ndefault_md = sha256\nstring_mask = utf8only\nx509_extensions = extensions\n\n[ req_distinguished_name ]\nC = CN\nO = Huawei\nCN = Huawei EnterpriseIT S1\n\n[ extensions ]\nsubjectKeyIdentifier = hash\nauthorityKeyIdentifier = keyid, issuer\nbasicConstraints = CA:FALSE\nkeyUsage = critical, nonRepudiation, digitalSignature\nextendedKeyUsage = codeSigning\nEOF\n\n# 生成签名私钥signcert_pri.pem\nopenssl genrsa -out signcert_pri.pem 4096\n# 生成签名请求文件signcert.csr\nopenssl req -new -config signcert.cnf -out signcert.csr -key signcert_pri.pem\n# 从rootca.pfx中导出rootca.pem和rootca_pri.pem，使用后清除\nopenssl pkcs12 -in rootca.pfx -nocerts -out rootca_pri.pem -nodes\n# 生成签名证书，有效期1年，请合理设置，证书到期时及时重新生成并替换\nopenssl x509 -req -in signcert.csr -CA rootca.pem -CAkey rootca_pri.pem -CAcreateserial -out signcert.pem -days 365 -extensions extensions -extfile signcert.cnf\n# 删除rootca_pri.pem\nrm rootca_pri.pem\n# 可选：生成der格式的签名证书\n# openssl x509 -in signcert.pem -inform pem -outform der -out signcert.der\n# 将公私钥打包成pem格式的签名证书（签名需要使用此文件），请妥善保存\ncat signcert.pem signcert_pri.pem > signer.pem\n# 清理环境\nrm signcert.csr signcert.pem signcert_pri.pem signcert.cnf rootca.srl\n\n执行完上述命令后生成如下一个文件：\n\nsigner.pem：签名证书，此证书用于hpm包、rootfs、uboot签名，建议参考 《加密证书管理》 章节使用AES-256-CBC加密存储。\n\n吊销证书（发生签名证书泄露时）\n当签名证书泄露时，使用泄露证书将带来安全风险，为此我们需要吊销签名证书并生成新证书，吊销证书会生成吊销列表，签名验证会检查签名证书是否已被吊销。\n以下脚本将创建crl目录，请妥善保存\n# 以下为首次吊销时需要生成的文件\n# 创建crl目录\nmkdir crl -p\ncat << EOF > crl/crl.cnf\n[ ca ]\ndefault_ca=CA_default\n\n[ CA_default ]\ndatabase=./crl/rootca.crlindex\ncrlnumber=./crl/rootca.crlnumber\nprivate_key=./rootca_pri.pem\ncertificate=./rootca.pem\ncrl_extensions=crl_ext\ndefault_days=365\ndefault_crl_days=365\ndefault_md=default\npreserve=no\n\n[ crl_ext ]\nauthorityKeyIdentifier=keyid\nEOF\n\n# 创建一个空的数据库\ntouch crl/rootca.crlindex\n# crl序列号\necho 01 > crl/rootca.crlnumber\n# 从rootca.pfx中导出rootca.pem和rootca_pri.pem，使用后清除\nopenssl pkcs12 -in rootca.pfx -nocerts -out rootca_pri.pem -nodes\n# 生成CRL文件\nopenssl ca -gencrl -keyfile rootca_pri.pem -cert rootca.pem -out rootca.crl.pem -config crl/crl.cnf\n# 删除rootca_pri.pem\nrm rootca_pri.pem\n# 转换成crl文件\nopenssl crl -in rootca.crl.pem -inform pem -outform der -out rootca.crl\n# 删除文件\nrm rootca.crl.pem\n\n执行完上述命令后生成如下文件：\n\nrootca.crl：证书吊销列表，需要通过升级方式更新BMC环境中的crl文件，以正确吊销存在风险的证书，确保这些证书不被用于制作非法的固件。\ncrl：吊销配置目录，后续吊销其它文件时使用\n\n新增吊销操作\n有必要时可以吊销签名证书，吊销的动作将生成一个新的rootca.crl文件，请将该文件传递给构建系统。证书吊销命令如下：\n# 吊销signer.pem文件，需要从rootca.pfx中解出根私钥，使用完成后删除\nopenssl ca -revoke signer.pem -config crl/crl.cnf\n# 生成crl.pem文件\nopenssl ca -gencrl -out rootca.crl.pem -config crl/crl.cnf\n# 生成rootca.crl文件\nopenssl crl -in rootca.crl.pem -inform pem -outform der -out rootca.crl\n# 删除文件\nrm rootca.crl.pem\n\n时间戳签名证书\n签名证书会因为有效期、被吊销等原因导致失效，验签时需要验证签名时刻签名证书有效即可，为此需要有一个可信的签名时间戳，该时间戳受时间戳签名保护，需要使用时间戳签名证书。\n时间戳签名证书生成命令：\ncat << EOF > tsa.cnf\n[ req ]\ndefault_bits = 4096\ndistinguished_name = req_distinguished_name\nprompt = no\ndefault_md = sha256\nstring_mask = utf8only\nx509_extensions = extensions\n\n[ req_distinguished_name ]\nC = CN\nO = Huawei\nCN = Huawei EnterpriseIT Timestamp Certificate\n\n[ extensions ]\nsubjectKeyIdentifier = hash\nauthorityKeyIdentifier = keyid, issuer\nbasicConstraints = critical, CA:FALSE\nkeyUsage = critical, nonRepudiation, digitalSignature\nextendedKeyUsage = critical, timeStamping\n\n[ tsa ]\ndefault_tsa = tsa_config1\n\n[ tsa_config1 ]\nserial = ./serial\ncrypto_device = builtin\nsigner_digest = sha256\ndefault_policy  = 1.2.3.4.1\nother_policies = 1.2.3.4.5.6, 1.2.3.4.5.7\ndigests = sha1, sha256, sha384, sha512\ness_cert_id_chain = no\ness_cert_id_alg = sha256\nEOF\n\necho 03 > serial\nopenssl genrsa -out tsa_pri.pem 4096\nopenssl req -new -config tsa.cnf -out tsa.csr -key tsa_pri.pem\n# 从rootca.pfx中导出rootca.pem和rootca_pri.pem，使用后清除\nopenssl pkcs12 -in rootca.pfx -nocerts -out rootca_pri.pem -nodes\n# 有效期20年，请合理设置\nopenssl x509 -req -in tsa.csr -CA rootca.pem -CAkey rootca_pri.pem -CAcreateserial -out tsa.pem -days 7300 -extensions extensions -extfile tsa.cnf\n# 删除rootca_pri.pem\nrm rootca_pri.pem\n# 生成签名pem文件\ncat tsa.pem tsa_pri.pem > ts_signer.pem\nrm tsa.csr tsa.pem tsa_pri.pem serial\n\n执行完上述命令后生成如下文件：\n\nts_signer.pem：时间戳签名，用于保护签名时间的完整性，建议参考 《加密证书管理》 章节使用AES-256-CBC加密存储。\n\n加密证书管理\niBMC签名工具支持读取加密的签名证书，过程涉及签名证书加密和解密及加密密钥管理。\n生成加密密钥和加密证书\n当前支持的加密方式为aes-256-cbc，密钥由厂商自己生成，长度必须为32字节，请妥善保存。以下命令可用于随机生成一个长度为32字节的加密密钥。\n# 生成一个随机密码并打印到终端，此密码将用于后续密钥解密， 如： 2ef7680ab4434fca5b58a1f9facaf8dc\ndd if=/dev/random bs=1 count=128 2>&1| sha256sum | awk '{print $1}' | cut -c1-32\n\n签名证书加密存储命令示例：\n# 加密签名证书，要求输入两次加密密码\nopenssl aes-256-cbc -salt -pbkdf2 -in signer.pem -out signer.pem.enc\n# 验证：解密加密签名证书确保正确\nopenssl aes-256-cbc -d -pbkdf2 -out signer.pem.out -in signer.pem.enc\n# 判断sha256是否一致\nsha256sum signer.pem signer.pem.out\n# 删除签名证书原文\nrm signer.pem signer.pem.out\n\n# 加密时间戳签名证书，要求输入两次加密密码\nopenssl aes-256-cbc -salt -pbkdf2 -in ts_signer.pem -out ts_signer.pem.enc\n# 解密加密签名证书确保正确\nopenssl aes-256-cbc -d -pbkdf2 -out ts_signer.pem.out -in ts_signer.pem.enc\n# 判断sha256是否一致\nsha256sum ts_signer.pem ts_signer.pem.out\n# 删除签名证书原文\nrm ts_signer.pem ts_signer.pem.out\n\n加密密钥管理\n生成的加密密钥和密钥加密密码需要妥善保存，建议只有CI环境中使用，不提供给普通开发者，使用方式可以参考 jenkins的安全凭证，如下jenkins file示例演示了使用secret text文本在构建阶段注入：\npipeline {\n    agent {\n        // 此处定义 agent 的细节\n    }\n    environment {\n        // signer_secret_text为安全凭证的ID，可自定义。\n        // SIGN_PASSWORD为签名密码的环境变量，hpm_signer签名工具会读取该密码\n        SIGN_PASSWORD     = credentials('signer_secret_text')\n    }\n    stages {\n        stage('Example stage 1') {\n            steps {\n                // 构建代码中可以使用SIGN_SECRET环境变量获取到加密密钥\n            }\n        }\n    }\n}\n\n管理实践\n签名管理涉及安全和信任，建议定义多个角色参与管理，如：\n\n根证书私钥(rootca.pfx)：证书持有人和密码持有人分离，多份存储可以更好的防止密钥泄露、损毁、遗失。\n签名证书(signer.pem.enc和ts_signer.pem.enc)：日常开发和构建时使用，需要集成在CI构建镜像中，加密密钥由jenkins的 jenkins的安全凭证存储，并在jenkinsfile中申明使用，并尽量保证安全凭证有效期最小化。\n吊销列表(rootca.crl)：在识别到签名证书可能泄露时需要及时吊销，及时更新CI构建镜像中的rootca.crl文件，随后可通过升级BMC环境生效。\n\n签名配置\n开发者生成各项签名证书后可在manifest.yml中配置签名服务，完成配置后可以使用SIGN_PASSWORD=xxxx bmcgo build启动构建，其中xxxx替换为签名密码。\nmanifest.yml配置示例：\n# yaml-language-server: $schema=/usr/share/bmcgo/schema/manifest.schema.json\nbase:\n  # 其它已省略\n  # 签名文件，由构建系统复制到self.config.board_path目录，如需定制\n  signature:\n    certificates:\n      # 根公钥证书，文件需要满足正则表达式要求：^(/[a-zA-Z0-9._-]+)+\\\\.der$\n      rootca_der: /home/xuhj/signer/rootca.der\n      # 签名证书，文件需要满足正则表达式要求：^(/[a-zA-Z0-9._-]+)+\\\\.pem(.enc)?$\n      signer_pem: /home/xuhj/signer/signer.pem.enc\n      # 时间戳签名证书，文件需要满足正则表达式要求：^(/[a-zA-Z0-9._-]+)+\\\\.pem(.enc)?$\n      timestamp_signer_pem: /home/xuhj/signer/ts_signer.pem.enc\n      # 时间戳签名私钥，文件需要满足正则表达式要求：^(/[a-zA-Z0-9._-]+)+\\\\.cnf$\n      timestamp_signer_cnf: /home/xuhj/signer/tsa.cnf\n      # 证书吊销列表：文件需要满足正则表达式要求：^(/[a-zA-Z0-9._-]+)+\\\\.crl$\n      rootca_crl: /home/xuhj/signer/rootca.crl\n\n签名和验证\n构建工具提供了hpm_signer签名和hpm_verify验签命令，以下示例结合创建的证书演示了如何签名和验签。\n# 创建待签名源文件\ndd if=/dev/random of=image.filelist bs=1K count=1\n# CMS签名,可以使用-p参数传入密码\nhpm_signer -s signer.pem.enc -t ts_signer.pem.enc -T tsa.cnf -i image.filelist -o image.cms -p <加密密码>\n# CMS签名, 可使用SIGN_PASSWORD存储加密密码\nSIGN_PASSWORD=<加密密码> hpm_signer -s signer.pem.enc -t ts_signer.pem.enc -T tsa.cnf -i image.filelist -o image.cms\n# 验证签名\nhpm_verify -r rootca.pem -C cms.crl.pem -s image.cms -c image.filelist\nlinks: #p-302-h-1, https://www.hiascend.com/doc_center/source/zh/canncommercial/5046/openform/instg710/instgopen_0045.html, #p-302-h-2, #p-302-ca-3, #p-302-ca-4, #p-302-h-5, #p-302-h-6, #p-302-h-7, #p-302-h-8, #p-302-h-9, #p-302-h-10, https://www.jenkins.io/zh/doc/book/using/using-credentials/, #p-302-h-11, https://www.jenkins.io/zh/doc/book/using/using-credentials/, #p-302-h-12, #p-302-h-13",
+    "topic_user_name": "xuhaijun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/215/2",
+            "text": "时间戳签名证书这一节开头说：“签名证书会因为有效期、被吊销等原因导致失效，验签时需要验证签名时刻签名证书有效即可”\n意思是即使该签名证书被吊销了，验签时还是可以验证通过么？"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/215/3",
+            "text": "时间戳签名签的是 签名时刻 ，只要在签名时刻签名证书是有效的就能通过验签。"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/215/5",
+            "text": "以下是我理解的各个证书的作用，麻烦看一下是否正确：\nrootca.der：用来验证hpm包来源是否可信\nsigner.pem_enc、ts_signer.pem_enc、rootca.crl：用来给hpm原文签名以及验签\n签名：出hpm包时，使用hpm_signer工具进行签名\nhpm_signer -s signer.pem.enc -t ts_signer.pem.enc -T tsa.cnf -i name.filelist -o name.filelist.cms -p <签名证书加密密码>\n升级时：\n①验证hpm包来源：对比iBMC中的rootca.der与hpm包中的rootca.der是否匹配\n②验签：验签时先检查iBMC内的rootca.crl和hpm包内的signer.pem.enc，判断signer.pem.enc是否失效（过期或者被吊销），如果失效，则检查签名中的时间戳，判断签名时刻signer.pem.enc是否有效，如果有效，才继续进行验签"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/215/6",
+            "text": "content: 是的。\n另外，因为CMS签名内容中包含了证书链，所以才能使用rootca.der根证书校验证书链，最终验证签名证书的有效性。\n有兴趣可以用 asn1editor 工具查看cms的内容。\nlinks: https://www.pkisolutions.com/tools/asn1editor/"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/215/7",
+            "text": "好的    感谢指导"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/215/8",
+            "text": "海军哥你好，我们用证书服务器搭建了rootca和中间ca。用中间ca作为bmc 证书可行吗，因为看bmc里面证书的名称都需要替换成rootca使用才会被识别。"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/215/9",
+            "text": "使用根证书。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/215/10",
+            "text": "content: 好的。那用证书服务器时候，这个BMC证书教程里面tsa.cnf文件怎么处理。我们是使用ejbca搭建的证书服务器。在ejbca中，依赖证书模板和终端实体模板来提供 默认的RA界面用来申请证书\nimage1240×863 51.5 KB\nimage1143×277 18.9 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/7d8669ebf9ff17f7a11c728a2c946a18db1537ea.png, https://forum.openubmc.cn/uploads/default/original/1X/92c20d0f4512811d5039a419d1cb3661837dd143.png"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/215/11",
+            "text": "这个工具我没接触过唉。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/215/12",
+            "text": "我们准备先搭建sign server 服务验证tsa模块了。"
+        }
+    ]
+}

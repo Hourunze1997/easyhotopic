@@ -1,0 +1,15 @@
+{
+    "topic_id": 2098,
+    "question": "【已评审】新增互联网定制一键收集资源协作路径 - content: ISSUE链接\n支持客户定制一键收集接口\n评审背景\n某客户存在一键收集接口定制诉求，当前实现无法满足客户的需要，计划新增一键收集资源协作接口，按照客户要求实现\n触发原因\n新需求\n决策点\n方案一 新增资源协作路径\npath: /bmc/{Customer}/Managers/:Id/LogServices\ninterface: bmc.kepler.Managers.LogServices（已有）\n变化类型：新增资源协作path\n应用场景：客户定制redfish一键收集接口\n持久化类型：不持久化\n操作权限：SecurityMgmt\n详细描述：继承一键收集接口方法\n方案二 新增资源协作路径及资源协作接口\npath: /bmc/{Customer}/Managers/:Id/LogServices\ninterface: bmc.{Customer}.Managers.LogServices\n变化类型：新增资源协作path、新增资源协作interface\n应用场景：客户定制redfish一键收集接口\n持久化类型：不持久化\n操作权限：SecurityMgmt\n详细描述：接口下新增方法Dump\n\n方法名称\n变化类型\nreq签名\n请求参数说明\n响应参数类型\n响应参数说明\n执行权限\n备注\n\nDump\n新增方法\nys\ny：Reserved s：FilePath， 一键收集导出路径\nu\nTaskId：一键收集任务ID\nSecurityMgmt\n一键收集方法\n\n评审结论\n同意采用方案二，方案如下：\n新增资源协作路径： /bmc/{Customer}/Managers/:Id/LogServices\n新增资源协作接口：bmc.{Customer}.Managers.LogServices\n接口下新增方法：Dump\n方法详细描述：\n\n方法名称\n变化类型\nreq签名\n请求参数说明\n响应参数类型\n响应参数说明\n执行权限\n备注\n\nDump\n新增方法\nys\ny：Reserveds：FilePath，一键收集导出路径\nu\nTaskId：一键收集任务ID\nSecurityMgmt\n一键收集方法\nlinks: #p-5239-issue-1, https://gitcode.com/openUBMC/JD/issues/13, #p-5239-h-2, #p-5239-h-3, #p-5239-h-4, #p-5239-h-5, #p-5239-h-6, #p-5239-h-7",
+    "topic_user_name": "chengkun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2098/2",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 335,
+    "question": "能否实现伙伴签名的openUBMC版本直接升级华为签名的各种固件？ - 考虑如下1种场景：\n\n伙伴以openUBMC版本出货，后期工程过程中需要更新华为签名的BIOS/CPLD HPM包（由于当前BIOS/CPLD/SR的打包构建默认都是场内华为签名的），那对于伙伴来说需要先替换签名后才能升级。\n请问：是否能在openUBMC的版本中实现升级HPM包时检测到华为签名后直接校验通过继续执行升级？",
+    "topic_user_name": "yctco_zhanglei",
+    "best_answer_url": "/t/topic/335/4",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/335/2",
+            "text": "签名是种承诺，每个固件包都需要经过充分测试验证，如果支持伙伴镜像升级华为签名的固件会导致责任界限不明，建议处理的原则：谁测试谁签名谁负责。"
+        },
+        {
+            "user_name": "yctco_zhanglei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/335/3",
+            "text": "1.那针对我上面的这种场景来说，就只能拿到华为签名的HPM后先替换成长计签名了再升级验证么？\n2. 军哥，我有一点不太明白：如果伙伴拿到的华为签名的版本只是替换了签名再升级，实际不也是华为出的版本么，那后期出现相关的问题后不也是找华为一起定位吗？"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/335/4",
+            "text": "1、伙伴可以拿着固件重签名、验证完成后再次发布。\n2、谁签名谁负责，这是个交付界面的事。"
+        }
+    ]
+}

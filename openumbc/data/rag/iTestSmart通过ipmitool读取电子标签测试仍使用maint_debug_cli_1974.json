@@ -1,0 +1,15 @@
+{
+    "topic_id": 1974,
+    "question": "【iTestSmart】通过ipmitool读取电子标签测试，仍使用maint_debug_cli。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\n二、问题描述\nOpenUBMC->平台功能->通过ipmitool读取电子标签测试，测试步骤中仍使用maint_debug_cli获取信息（openUBMC的CLI已经没有maint_debug_cli命令），应修改。\n仍使用maint_debug_cli1920×893 148 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/bc9b222f1ece4fa06734a8d6cb5063f6b5fb93f9.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Hdq",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1974/2",
+            "text": "部分openubmc用例未适配，下一个版本会统一整改，预计8月初会发布。"
+        }
+    ]
+}

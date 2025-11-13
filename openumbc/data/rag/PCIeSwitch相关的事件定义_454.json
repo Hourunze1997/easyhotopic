@@ -1,0 +1,64 @@
+{
+    "topic_id": 454,
+    "question": "PCIeSwitch相关的事件定义 - 1.当前openubmc是否有PCIeSwitch相关的对象和事件定义？\n2. 如果要新增事件定义EventDefinition和事件描述EventDescription的话需要哪里步骤和在哪个文件修改？",
+    "topic_user_name": "yctco_zhanglei",
+    "best_answer_url": "/t/topic/454/9",
+    "reply_posts": [
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/454/2",
+            "text": "问题+1，ubc/ubcdd经过pcieswitch转为了5路pcie，在bmc中该如何定义pcieswitch对象？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/454/3",
+            "text": "pcieswitch对象定义建议在Hardware SIG申报议题进行讨论"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/454/4",
+            "text": "content: 事件配置可以参考这篇文档:事件定制 | openUBMC\n因为是全局唯一的，可以考虑放在platform.sr中\nlinks: https://openubmc.cn/docs/zh/development/develop_guide/feature_development/event.html#%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B"
+        },
+        {
+            "user_name": "yctco_zhanglei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/454/5",
+            "text": "当前已有的一些事件是在哪里定义的呢，好像都没搜到"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/454/6",
+            "text": "联系PAE获取"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/454/7",
+            "text": "content: wuzhou-xiaokaili:\n\nubc/ubcdd经过pcieswitch转为了5路pcie\n\n请问像这种情况  参考Riser卡的BusinessConnector中的UpstreamResources应该怎么配？\n另外UpstreamResources作用是什么？配错了会有什么影响？\n@zybwh\nlinks: /u/zybwh"
+        },
+        {
+            "user_name": "长江_赵凯",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/454/8",
+            "text": "您好，目前看最新代码，好像把事件定义移到VPD仓的event_def.json；目前事件码到了0x5F（光模块相关事件告警），如果我们需要新增Switch的事件告警码，这个有没有规范或者建议，因为考虑到未来我这边新增的事件码会与华为定义重复"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/454/9",
+            "text": "如果不希望与openUBMC社区后续新增告警码冲突，建议在社区上评审告警码的创建，以便长久保持唯一性，可以在interface sig组进行评审后被社区接纳"
+        }
+    ]
+}

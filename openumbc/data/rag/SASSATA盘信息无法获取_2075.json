@@ -1,0 +1,29 @@
+{
+    "topic_id": 2075,
+    "question": "SAS/SATA盘信息无法获取 - content: 现象：\n在背板上接了两个sata盘，系统侧装了iBMA，但是BMC无法获取硬盘信息\n\nimage922×199 11.8 KB\n当前定位：\nhost_agent收到了硬盘信息\nimage860×884 26.3 KB\n14100665_00000001030302023936.sr中没有PcieAddrInfo_SAS对象，因此丝印文件中没有硬盘丝印\nimage264×231 4.73 KB\n请问SAS/SATA盘是如何与iBMA信息进行对象匹配的，也是通过BDF么？要配置PcieAddrInfo_SAS对象么？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/39b44fb354342b5a5de38bd35b3afe988e16765b.png, https://discuss.openubmc.cn/uploads/default/original/2X/5/5948e01be5d5c5cabe181de6b3bf92e856f26663.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/fee0889c341c417b77478ec6c530a152a954893b.png",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2075/2",
+            "text": "sas/sata盘更新是通过silktext来映射到对应的盘的。基本逻辑大概是：hostagent上面silktext=Disk2，那么就会跟硬盘的Name匹配，如果匹配上了，就会把相关数据更新到对应的Drive对象上。从你截图来看，hostagent上面，silktext是null，所以匹配不到Drive对象。\n该问题可以联系对应项目支持，拉BMA和PCIE的人进行联合诊断，问题不大。"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2075/3",
+            "text": "liujie_11:\n\nPcieAddrInfo_SAS\n\n1、需要在硬盘背板配置PCIeAddrInfo，否则无法上报丝印；\n2、SAS、SATA的丝印和PCIE的不一致，记得参考其他已经配置的硬盘背板适配。"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2075/4",
+            "text": "content: 配置了PcieAddrInfo_SAS之后，silkconfig.json中硬盘丝印正常生成，但host_agent的.SilkScreen字段依旧是null，还是无法获取硬盘信息。\nimage499×309 7.16 KB\nimage404×475 7.77 KB\nimage429×315 8.2 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/99c0a4b3fcb485813fd8685d527e136966a0446e.png, https://discuss.openubmc.cn/uploads/default/original/2X/5/5dc73b0e440a885f57be2a6b48f238bca33f4594.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/76b69555387d88b0b6abb1f902f8f430451b73b6.png"
+        }
+    ]
+}

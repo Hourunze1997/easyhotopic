@@ -1,0 +1,15 @@
+{
+    "topic_id": 1689,
+    "question": "【iTestSmart OpenUBMC问题反馈】自检类型PCA9545测试，测试结果Fail。 - content: 一、测试环境\n硬件：S920X20\nBMC  Version: 25.03\niTestSmart Version: 1.0.34\n二、问题描述\nOpenUBMC->安全管理->自检类型PCA9545测试，测试用例执行失败。\nipmi_0391920×1091 226 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/44c9e61c664ce73da2f3776e3f40c84c60d4608f.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Hdq",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1689/2",
+            "text": "该问题需要额外信息，提供一键收集日志后支撑问题定位"
+        }
+    ]
+}

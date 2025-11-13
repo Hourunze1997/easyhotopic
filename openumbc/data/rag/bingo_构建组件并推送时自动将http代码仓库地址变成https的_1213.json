@@ -1,0 +1,57 @@
+{
+    "topic_id": 1213,
+    "question": "bingo 构建组件并推送时，自动将http代码仓库地址变成https的 - content: 背景\n正在进行组件修改并已推送到conan远端，清除了本地conan缓存，修改manifest 依赖后，构建产品包时，触发的源码构建提示仓源码库没有访问权限。\n问题现象\n源码仓库的开头是http://<用户名>:<访问令牌>@<组件仓库url>.git\n但是bingo构建组件并上传时，将URL变成了https://<组件仓库url>.git\n也就是删除了用户凭证并将http改成了https。\n我们希望删除用户凭证但是不要将http改成了https\n初步尝试\n将/usr/local/lib/python3.12/dist-packages/bmcgo/component/build.py的 96 行的https://改成http://\nimage635×356 20.1 KB\n虽然能够保留http，但是用户凭证也跟着一起保留下来了。\n诉求\n1、临时方案应该如何才能删除用户凭证但是不要将http改成了https\n2、是否有长期方案\nlinks: #p-2626-h-1, #p-2626-h-2, #p-2626-h-3, https://discuss.openubmc.cn/uploads/default/original/1X/945507736fc1cd46cca08ec13f172e2b20460943.png, #p-2626-h-4",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/1213/7",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1213/2",
+            "text": "建议：1、使用https链接，2、不要使用带token的链接克隆代码，可以将token配置在~/.git-credentials中，详细配置可查看git文档。\n如果你非要这样做，可以在conanfile.py中增加scm属性，硬编码链接。将下面的示例代码中的xxx改为你期望的链接。\nfrom conanbase import ConanBase\n\nclass xxxConan(ConanBase):\n    scm = {\n        \"type\": \"git\",\n        \"url\": \"xxx\",\n        \"revision\": \"auto\"\n    }\n\n注意： 硬编码将导致自适应远程仓地址功能失效，如果变更代码仓就需要修改url（如克隆仓库后修改代码只上传到个人子，未上传到产品仓场景）。"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1213/3",
+            "text": "仅限于长江计算的思路：\n1、修改仓库git地址，使之不含用户凭证\n2、修改/usr/local/lib/python3.12/dist-packages/bmcgo/component/build.py的第100行：\nif url.startswith(\"https://\") or url.startswith(\"http://\")"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1213/4",
+            "text": "可以提个PR合到社区仓。"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1213/5",
+            "text": "猜测：你为什么想使用http呢？是否因为内网自签名问题无法下载代码？\n建议：\n\n凭据放在~/.git-credentials，而不是链接里面。\n在CI工程或者本地导入export GIT_SSL_NO_VERIFY=1\nhttps 。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1213/6",
+            "text": "如果内网问题，把内网改了就成了，用https也是为了安全。从社区角度不会去做兼容问题得，可以提个PR试试"
+        },
+        {
+            "user_name": "易重辉",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1213/7",
+            "text": "这里有几个情况需要理一理：\n已有的bingo代码中，有关提取远端仓库地址逻辑是这样的：\n步骤1、如果是https开头，直接返回\n步骤2、如果不是https，去掉@之前部分，然后加上https再返回（这一步我猜测主要是把git@转换成https协议）\n步骤3、(处理有端口的情况，目前不涉及)..\n我们实际的gitlab地址是http协议，确实不安全，目前也在和我们的基础设施团队沟通。\n其实最开始我们的git URL是不带用户凭证的，但是bingo构建组件时会失败，会报URL格式不正确。\n原因走到了步骤2里面，误将http://…git认为成了git@…git，然后尝试通过@符合截取但是实际上是http://…git默认没@，然后报URL错误。\n这时候，我们误认为bingo必须要用户凭证，因为设置http://<用户凭证>@…git之后，正好能让组件构建正常进行。\n但是这样实际上会把http替换成https，导致组件虽然能构建成功，但是组件scm中记录的地址实际上是拉不到源码的。\n以上\n最佳的处理方案是：gitlab基础设施换https协议\n临时方案就是git URL不带用户凭证；修改bingo提取逻辑：如果URL头是https或者http直接返回"
+        },
+        {
+            "user_name": "特别的名字_wangningbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1213/8",
+            "text": "bingo的逻辑是依据openUBMC社区上的仓库链接，无论使用ssh或者https的链接，统一都修改为https链接进行打包。\n对于你上边提到的区分https和http链接，这个之前确实没考虑其他仓库链接的场景，可以在bingo仓库和我们一起改进。"
+        }
+    ]
+}

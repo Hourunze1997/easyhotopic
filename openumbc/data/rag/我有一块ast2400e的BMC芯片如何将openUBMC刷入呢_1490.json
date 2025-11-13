@@ -1,0 +1,15 @@
+{
+    "topic_id": 1490,
+    "question": "我有一块ast2400e的BMC芯片，如何将openUBMC刷入呢 - 咱们社区有BMC相关刷入教程嘛",
+    "topic_user_name": "Sanchezyu",
+    "best_answer_url": "/t/topic/1490/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1490/2",
+            "text": "当前还没有适配其他BMC芯片的规划，如果有需求可以提到TC"
+        }
+    ]
+}

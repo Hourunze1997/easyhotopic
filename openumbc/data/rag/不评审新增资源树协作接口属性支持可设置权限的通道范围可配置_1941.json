@@ -1,0 +1,7 @@
+{
+    "topic_id": 1941,
+    "question": "【不评审】新增资源树协作接口属性，支持可设置权限的通道范围可配置 - content: 背景:\n需求支持IPMI通道权限配置，其中可设置权限的通道范围支持由客户自行配置\n决策点：\n新增资源协作属性IPMIChannelSessionEnabled，支持客户自行配置可设置权限的通道范围\n详细描述：\n资源path：/bmc/kepler/AccountService\n资源interface：bmc.kepler.AccountService\n变化类型：新增属性\n应用场景：设置通道权限时对通道范围进行校验，不在范围内的通道不允许设置\n持久化类型： 掉电持久化\n操作权限：可读写，R: ReadOnly W:SecurityMgmt\n详细描述：\n\n方法名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nIPMIChannelSessionEnabled\n新增属性\na(yb)\n可读写，R: ReadOnly W:SecurityMgmt\n掉电持久化\n是\ny表示通道号，b表示该通道是否支持设置权限等通道配置\n通道号范围为1-15默认取值：1:true,8:true，其余通道均为false\n\n评审结论\nlinks: #p-4774-h-1, #p-4774-h-2, #p-4774-h-3, #p-4774-h-4",
+    "topic_user_name": "Je Li",
+    "best_answer_url": "",
+    "reply_posts": []
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 613,
+    "question": "【已评审】新增资源协作接口属性/方法以支持redfish接口Chassis和Thermal资源新标准 - content: ISSUE链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景\nChassis资源支持redfish新标准\nThermal资源支持redfish新标准\n决策点\n\n新增服务器的总功率的下限和上限属性\n新增散热组件累计耗电量属性\n新增散热组件累计耗电量开始统计时间属性\n新增散热组件累计耗电量信息重新统计方法\n\n详细描述\n资源path：/bmc/kepler/Systems/:SystemId/EnergyMetric\n资源interface：bmc.kepler.Systems.EnergyMetric\n\n属性：\n\nMinPowerWatts 服务器的总功率的下限\n签名：u\n读写&权限：R：ReadOnly\n持久化类型：不持久化\n变化通知：false\nMaxPowerWatts 服务器的总功率的上限\n签名：u\n读写&权限：R：ReadOnly\n持久化类型：不持久化\n变化通知：false\n\n资源path：/bmc/kepler/Chassis/:ChassisId/ThermalSubsystem\n资源interface：bmc.kepler.Chassis.ThermalSubsystem.Metrics\n\nEnergyConsumptionkWh 散热组件累计耗电量属性(单位kWh)\n签名：d\n读写&权限：R：ReadOnly\n持久化类型：掉电持久化\n变化通知：false\nResetTime 散热组件累计耗电量开始统计时间属性\n签名：u\n读写&权限：R：ReadOnly\n持久化类型：掉电持久化\n变化通知：false\nResetMetrics 散热组件累计耗电量信息重新统计方法\n签名：无\n读写&权限：BasicSetting\n请求：无\n\n评审结论\n\n决策点1： 同意资源协作接口bmc.kepler.Systems.EnergyMetric新增属性MinPowerWatts 和MaxPowerWatts，表示服务器的总功率的下限和上限，签名为u，只读，读权限：ReadOnly，不发送变更通知事件\n决策点2： 同意资源协作接口bmc.kepler.Chassis.ThermalSubsystem.Metrics新增属性EnergyConsumptionkWh，表示散热组件累计耗电量，签名为d，读权限：ReadOnly，不发送变更通知事件\n决策点3： 同意资源协作接口bmc.kepler.Chassis.ThermalSubsystem.Metrics新增属性ResetTime，表示散热组件累计耗电量开始统计时间，签名为u，只读，读权限：ReadOnly，不发送变更通知事件\n决策点4： 同意资源协作接口bmc.kepler.Chassis.ThermalSubsystem.Metrics新增方法ResetMetrics，用于控制散热组件累计耗电量信息重新统计，请求签名：无，响应签名：无，权限BasicSetting\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/26, https://gitcode.com/openUBMC/mdb_interface/issues/26, https://gitcode.com/openUBMC/mdb_interface/issues/39, https://gitcode.com/openUBMC/mdb_interface/issues/39",
+    "topic_user_name": "songdianpeng",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/613/2",
+            "text": "既然是Chassis资源，为何资源协作接口的path和interface选用了System的，对于多System的机型，该如何处理"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/613/3",
+            "text": ""
+        }
+    ]
+}

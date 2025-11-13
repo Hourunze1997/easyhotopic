@@ -1,0 +1,29 @@
+{
+    "topic_id": 1896,
+    "question": "光模块信息在光模块被拔除后依然存在，没有更新 - 【操作步骤】\n\n服务器正常上电；\n登录BMC WEB界面，进入 系统管理 => 系统信息 => 网络适配器 页面，展开端口属性；\n查看各端口光模块状态、网厂商、序列号、生产日期、部件名称、设备类型、接收丢失状态、发送错误状态、告警门限信息等信息显示是否正确；\n注：若部分信息无法查看，请先带内安装iBMA.\n\n【预期结果】\n\n步骤3要求的光模块信息显示均正确。\n\n【实际结果】\n信息可以查询，但是拔掉网卡上的光模块后，web/redfish仍然残留光模块信息，没有实时更新\n请问光模块拔出后信息没有更新，是否符合华为预期的设计和现象，是否是异常情况？请帮忙解释下",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1896/2",
+            "text": "content: 网卡光模块的在位信息是怎么判断的 交流互助区\n\n    最近在引入一款网卡，热插拔光模块后发现光模块的信息并没有消失，查看dbus上光模块的信息发现还存在并显示为在位状态 请问光模块的在位逻辑是怎么判断的 应该怎样去debug解决 \n [image]\n\n看看是不是跟这个问题一样\nlinks: https://discuss.openubmc.cn/t/topic/1401, /c/42-category/42, https://discuss.openubmc.cn/uploads/default/original/2X/8/8eda4be55349bc3d0ed78d01546fad509676d507.png"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1896/3",
+            "text": "是一样的，但是预期结果不太一样啊，我按他的方式尝试了，光模块的信息还在，我先问问他看是怎样操作的，我再尝试下"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1896/4",
+            "text": "content: 网卡光模块的在位信息是怎么判断的 交流互助区\n\n    1、重新试了两次，第一次两个光模块都拔出来，IsSffExist都为false，如附件中24、26行。 \n [image] \n2、重新插上，IsSffExist都为true，如35、40行。 \n [image] \n3、再次拔出，只有一个网卡IsSffExist为false，另一个网卡没有该属性，如42、48行。 \n [image] \n目前来看ibma似乎并不是每次都有IsSffExist属性上报。 …\n  \n\n帮忙看看是不是ibma这边确实有问题啊\nlinks: https://discuss.openubmc.cn/t/topic/1401/19, /c/42-category/42, https://discuss.openubmc.cn/uploads/default/original/2X/0/096e1d86fc291a6f5e26993c0c13b23430a2e9d7.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/16ab2cc8b623571c525070f3e0fba1d75c99e93d.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/1dcc81a53d5e09a14893a13c653047e68ba859d9.png"
+        }
+    ]
+}

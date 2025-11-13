@@ -1,0 +1,22 @@
+{
+    "topic_id": 2178,
+    "question": "iTestSmart任务执行失败求助 - content: iTestSmart工具1.0.35版本执行自动化任务时，每次任务下发任务执行一条用例任务就会终止\nimage1215×843 77.8 KB\n检查日志报告发现第二条用例执行报错“vendor_id\"错误\nimage1670×406 167 KB\n这种现象是导入的执行设备不对吗？该如何解决呢？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e18cf65b1162d3f82a3a05c2efc6a460c10aac8f.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/3d59f15e906548ec91584f0d7f728e05ce4fd6c2.png",
+    "topic_user_name": "Jerome Luo",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Hdq",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2178/2",
+            "text": "content: 按照提供一下失败任务的日志分析，可以邮件发送或者私信给我。\n\niTestSmart测试OpenUBMC用例失败求助指引 QA SIG\n\n一、历史问题查看\n在openUBMC社区搜索失败用例名称（编号），查看历史定位经验。 \n二、问题求助\nitestsmart日志收集\n\n从itestsmart的任务详情中，点击右上角的打开测试目录。 \n [image] \n\n把打开的文件内全部文件打成压缩包 \n [image] \n\n发帖求助后，将日志发送给回帖的问题定位协助人。 \n\nBMC一键收集日志（非必须）\n部分失败用例定位需要额外收集B…\nlinks: https://discuss.openubmc.cn/t/topic/1786, /c/sig-qa/43, #p-4370-h-1, https://discuss.openubmc.cn/, #p-4370-h-2, #p-4370-itestsmart-3, https://discuss.openubmc.cn/uploads/default/original/2X/3/3265ea517f3b1d993374a9015b7121ca4d80dc02.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/a7b9bcdca67d32015df0838a94f759c0d45ece52.png, #p-4370-bmc-4"
+        },
+        {
+            "user_name": "Jerome Luo",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2178/3",
+            "text": "content: image1226×556 30.6 KB\n无法直接上传压缩包\niTestSmart日志.docx (934.8 KB)\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/f59a542876b9f972d4c3a64fd33eb9cbcf4ccea5.png, /uploads/short-url/eQEWOLSwVpbrQcfCXdN2izHjorB.docx"
+        }
+    ]
+}

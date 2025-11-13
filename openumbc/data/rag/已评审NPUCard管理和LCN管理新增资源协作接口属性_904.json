@@ -1,0 +1,29 @@
+{
+    "topic_id": 904,
+    "question": "【已评审】NPUCard管理和LCN管理新增资源协作接口属性 - content: ISSUE链接 新增资源树bmc.kepler.Systems.NPUCard属性ChipHealthStatus和ChipFaultDescription，lcn_mgmt接口新增属性IsManaged-mdb_interface-GitCode\n评审点一\nNPUCard接口新增属性ChipHealthStatus和ChipFaultDescription\n背景\n支持Atlas卡告警精细化需求，新增的精细化告警需要获取mcu读到的故障状态来触发，需要mcu读到的故障码来扩充告警描述。\n决策点\nNPUCard接口新增属性ChipHealthStatus和ChipFaultDescription\n详细描述\n资源path：/bmc/kepler/Systems/${SystemId}/PCIeDevices/PCIeCards/NPUCards/${Id}\n资源interface：bmc.kepler.Systems.NPUCard\n变化类型：新增属性\n应用场景：触发告警时使用ChipFaultDescription来扩展告警描述信息。使用ChipHealthStatus来触发相应告警\n持久化类型： 不持久化\n操作权限：ReadOnly\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nChipHealthStatus\n新增属性\ny\nR：ReadOnly\n不持久化\ntrue\nNPU卡精细化告警级别 0：代表无告警1：代表一般告警2：代表严重告警3：代表紧急告警\n默认值为0\n\nChipFaultDescription\n新增属性\ns\nR：ReadOnly\n不持久化\nfalse\n精细化告警故障描述信息示例1：Error code：7602, 7605. NPU EventID: 0xa42f3918, 0xa8028801   示例2：Error code：NA. NPU EventID: NA.\n默认值为空串\n\n评审结论\n同意在bmc.kepler.Systems.NPUCard接口新增如下属性\n\n新增属性ChipHealthStatus，签名y，只读，不持久化，发送变化事件\n新增属性ChipFaultDescription，签名s，只读，不持久化，不发生变化事件\n\n遗留问题\n已确定单卡的不同严重程度的告警事件为高级的告警覆盖低级的告警（低的deassert，高的assert），同一严重等级的告警再次触发时，会更新告警描述信息。\n评审点二\nlcn_mgmt接口新增属性IsManaged\n背景\n网管/工具通过BMC redfish接口对LCNE设备进行固件升级、模式切换等操作后,LCNE设备需要复位,网管无法感知到LCNE设备是否复位成功并与BMC恢复连接，需要新增纳管成功属性进行标识\n决策点\nlcn_mgmt接口新增属性IsManaged\n详细描述\n资源path：/bmc/kepler/LCNs/${Id}\n资源interface：bmc.kepler.LCN.Manage\n变化类型：新增属性 IsManaged\n应用场景：标明BMC已纳管LCNE成功的属性\n持久化类型： 不持久化\n操作权限：ReadOnly\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nIsManaged\n新增属性\nb\nR：ReadOnly\n不持久化\ntrue\nBMC已成功纳管LCNE的标志位取值说明： 若BMC与LCNE建立连接并成功完成一次信息轮询，则为true；若BMC与LCNE断连或取消纳管，则为false\n无\n\n评审结论\n同意在bmc.kepler.LCN.Manage接口新增如下属性\n\n新增属性IsManaged，签名b，只读，不持久化，发送变化事件\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/57, #p-1853-h-1, #p-1853-h-2",
+    "topic_user_name": "Ljj",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/904/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/904/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/904/4",
+            "text": ""
+        }
+    ]
+}

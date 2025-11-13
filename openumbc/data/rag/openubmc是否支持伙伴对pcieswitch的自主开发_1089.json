@@ -1,0 +1,36 @@
+{
+    "topic_id": 1089,
+    "question": "openubmc是否支持伙伴对pcieswitch的自主开发？ - 如果要让openubmc支持PEX89104这款pcieswitch，我们伙伴是否有足够的条件（SDK API）开发出来？",
+    "topic_user_name": "Chen Minjun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Yelvsub",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1089/2",
+            "text": "这取决于具体的需求，是对芯片自身的管理还是需要实现pcie建链。另外这里提到的SDK API有哪些能力，是否可以提供"
+        },
+        {
+            "user_name": "Chen Minjun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1089/3",
+            "text": "1.想实现建链\n2.希望SDK能帮助我们实现建链的功能。"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1089/4",
+            "text": "建议申报sig议题。"
+        },
+        {
+            "user_name": "nathanael yu",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1089/5",
+            "text": "content: PEX89104  你所说的SDK应该是要针对它进行配置，从该switch的key adavatages看，最简单的是通过I2C配置EEPROM的方式\nimage662×654 59.3 KB\n\n但是从PEX本身的特性，他是支持动态配置的，这部分如果要实现，硬件上171x跟这款pex物理链路如何设计就至关重要，所以需要你们这边产品明确期望使用这款swtich要达成的最终效果、\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a2cb80a514f170ca156319049ede2c3a289ef61e.png"
+        }
+    ]
+}

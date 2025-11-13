@@ -1,0 +1,22 @@
+{
+    "topic_id": 962,
+    "question": "BMC_STUDIO仓库一键部署，丢失响应，无成功，无失败反馈 - content: image2847×1617 252 KB\nBMC_studio仓库一键部署–尝试了很多次，都是这样，右侧可以看到是一直有响应，但是过一会儿突然就没了，也没有任何成功，或者失败的提示，响应体则是突然从running变为了error，然后就没有了，原因是啥呢，也有其他同事有相同问题，最初怀疑网络，但也有同场地同事部署成功的。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/702441af1e7596ffbb2898655246e0aa7d713335.png",
+    "topic_user_name": "Gxd",
+    "best_answer_url": "/t/topic/962/3",
+    "reply_posts": [
+        {
+            "user_name": "LiRuichen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/962/2",
+            "text": "您好，使用studio需要完成开发环境的部署，是否已经按照文档的《环境准备》章节中完成bingo、git和conan的配置？麻烦您提供下~/bmc_studio/var/log/debug.log的内容，以便确认其中具体的错误信息"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/962/3",
+            "text": "content: 请您按照这个教程部署环境，如果还有问题的话请您提供一下~/bmc_studio/var/log/debug.log的内容，谢谢。\n\nopenubmc.cn\n\nUbuntu开发环境搭建 | openUBMC\nopenUBMC\nlinks: https://www.openubmc.cn/docs/zh/development/quick_start/prepare_environment/ubuntu_env.html, https://www.openubmc.cn/docs/zh/development/quick_start/prepare_environment/ubuntu_env.html"
+        }
+    ]
+}

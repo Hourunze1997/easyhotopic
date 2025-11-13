@@ -1,0 +1,15 @@
+{
+    "topic_id": 1440,
+    "question": "上下电常见问题定位指导 - content: 1. 通过接口查询电源状态已经是On，但是os无法ping通\n可能原因\n\n等待一段时间，可能os未完全启动\n\n等待较长一段时间仍未启动，则联系bios咨询\n\n2. 执行上下电命令报错，提示内部错误\n可能原因\n有对象没有分发\nfructrl要提供上下电功能必须有FruCtrl/PGSignal/PowerButton/ThermTrip/RecordFault对象，缺少任意对象则无法提供上下电功能\n可以搜索“create other objects completed”日志来判断上下电对象是否分发\n3. 执行上下电命令时，提示操作不支持\n可能原因\n\n处于下电时，发送了强制下电再上电/安全下电再上电/强制重启的命令\n\n当前有上电锁，会禁止上电命令的发送\n\n4. 怎么判断有没有上电锁\n一键日志收集中，fructrl的资源协作接口的mdb_info.log文件中找PwrLocked属性是否为true\n5. 操作日志中有上下点命令成功打印，但最终上下电状态不符合预期\n可能原因\n\n上下电操作都是异步操作，操作日志成功打印只表示命令发通，不代表实际执行\n\n确认是否有其他的操作\n\n6. 如何知道上下电命令是否来自bmc还是os？\n查看对应时间点日志中，是否经过了powerapi函数，只要是通过bmc发送的上下点命令最终必定经过bmc\n7. 是否支持nmi命令？\nopenbmc 目前不支持\nlinks: #p-3402-h-1-onosping-1, #p-3402-h-2, #p-3402-h-2-3, #p-3402-h-4, #p-3402-h-3-5, #p-3402-h-6, #p-3402-h-4-7, #p-3402-h-5-8, #p-3402-h-9, #p-3402-h-6-bmcos-10, #p-3402-h-7-nmi-11",
+    "topic_user_name": "wangxin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1440/2",
+            "text": ""
+        }
+    ]
+}

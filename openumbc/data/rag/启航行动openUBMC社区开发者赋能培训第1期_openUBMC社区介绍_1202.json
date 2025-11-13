@@ -1,0 +1,15 @@
+{
+    "topic_id": 1202,
+    "question": "【启航行动】openUBMC社区开发者赋能培训（第1期）--openUBMC社区介绍 - 交流答疑问题：\n问题一：哪里获取稳定的代码，哪里获取闭源二进制\n问题二：社区发行版多久发布一次\n问题三：哪些渠道可以提问求助\n问题四：哪些地方可以获取学习资料\n问题五：如何订阅SIG会议\n课后作业：\n一、去社区论坛发帖提问或回答问题或给别人点赞\n二、加入自己感兴趣的SIG组",
+    "topic_user_name": "王宇航",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Guoxin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1202/2",
+            "text": "content: 答疑问题：\n1、https://www.openubmc.cn/download\nhttps://www.openubmc.cn/marketplace/bmcsdk\n2、每三个月发布一次\n3、gitcode开源组件下提issue;\n社区论坛提问；\n参加SIG会议；\n咨询PAE\n4、社区文档中心：openUBMC\n开源组件Readme：\n项目目录预览 - docs:openUBMC documentation - GitCode\n闭源区间API接口：\nopenUBMC SDK | openUBMC\n5、 订阅指南 | openUBMC\nlinks: https://www.openubmc.cn/download, https://www.openubmc.cn/marketplace/bmcsdk, https://www.openubmc.cn/docs/zh/development/develop_guide/introduction.html, https://gitcode.com/openUBMC/docs/tree/main/docs/zh/development, https://www.openubmc.cn/docs/zh/development/api/SDK.html, https://www.openubmc.cn/sig/subscribe-guide"
+        }
+    ]
+}

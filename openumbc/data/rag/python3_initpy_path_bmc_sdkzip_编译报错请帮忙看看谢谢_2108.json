@@ -1,0 +1,15 @@
+{
+    "topic_id": 2108,
+    "question": "python3 init.py -path ./bmc_sdk.zip 编译报错，请帮忙看看，谢谢 - content: 在ubuntu 24.04执行命令python3 init.py -path ./bmc_sdk.zip -user xxxx -psw yyyy\n报错如下\nWriting to /root/.config/pip/pip.conf\nWriting to /root/.config/pip/pip.conf\nWriting to /root/.config/pip/pip.conf\nWriting to /root/.config/pip/pip.conf\nopenubmc-bingo:\nInstalled: 0.5.272\nCandidate: 0.5.272\nVersion table:\n*** 0.5.272 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n100 /var/lib/dpkg/status\n0.5.270 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n0.5.269 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n0.5.265 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n0.5.262 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n0.5.261 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n0.5.257 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\n0.5.254 500\n500 https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu noble/main amd64 Packages\nReading package lists… Done\nBuilding dependency tree… Done\nReading state information… Done\nopenubmc-bingo is already the newest version (0.5.272).\n0 upgraded, 0 newly installed, 0 to remove and 239 not upgraded.\nERROR:root:[None, ‘config’, ‘init’]不存在，请检查命令或环境配置\nlinks: https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu, https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu",
+    "topic_user_name": "Frank Liu0007",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2108/2",
+            "text": "content: 参考以下话题：\n\nbmc_sdk.zip进行环境安装时报错 交流互助区\n\n    在执行python3 init.py -path ./bmc_sdk.zip，进行bmcsdk的环境初始化时报错，报错内容如下： \n [image] \n请帮忙确认如何对应 \n谢谢！\n  \n\n构建BMC失败 交流互助区\n\n    这个错误是要手动下,我这边照着教程是报这个错误，这个也是正常构建的第一个错误 \n\nsudo dpkg --configure -a \n\nsudo apt-get install -y python3 python3-pip python3-dev git wget curl  \nca-certificates ipmitool dbus-x11 libdbus-1-dev dbus pkgco…\nlinks: https://discuss.openubmc.cn/t/topic/2122, /c/42-category/42, https://discuss.openubmc.cn/uploads/default/original/2X/5/52790ba064bad5e389f4900200676fc2d24ff3eb.png, https://discuss.openubmc.cn/t/topic/2124/7, /c/42-category/42"
+        }
+    ]
+}

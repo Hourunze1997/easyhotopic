@@ -1,0 +1,50 @@
+{
+    "topic_id": 343,
+    "question": "openubmc固件升级后web页面机型图片无法显示 - 问题定位过程：\n1 查看网页图片路径为theme/custom/bmcimg/product/img_03.png，而正确情况下此处应该为img_01.png\n2 查看webui代码发现请求为/UI/Rest/Overview，返回信息为\n{\n    \"Customer\": \"\",\n    \"DeviceInfo\": {\n        \"ProductName\": \"TaiShan 200 (Model 1280 V2)\",\n        \"ProductAlias\": \"\",\n        \"ProductSN\": \"\",\n        \"SystemSN\": \"\",\n        \"BMCVersion\": \"1.00.00.00\",\n        \"BIOSVersion\": null,\n        \"GUID\": \"8638D6A8-E8DF-ED11-B2C3-A8FFBA8D2AEA\",\n        \"FQDN\": \"iBMC\",\n        \"DomainName\": \"\",\n        \"MAC\": \"20:22:01:86:01:98\",\n        \"DeviceIPv4\": \"76.76.16.98\",\n        \"DeviceIPv6\": \"0.0.0.0.0.0.0.0\",\n        \"DefaultIPAddress\": {\n            \"Address\": \"\",\n            \"Mode\": \"\",\n            \"Ipv6Address\": \"\",\n            \"Ipv6Mode\": \"DHCPv6\",\n            \"IpVersion\": \"IPv4AndIPv6\"\n        },\n        \"TEEOSVersion\": null\n    },\n    \"KVMClientUrl\": \"\",\n    \"ProductImage\": \"img_03\"\n}\n\n此处\"ProductImage\": \"img_03\"导致显示路径错误\n3 查看rackmount组件/interface_config/web_backend/mapping_config/Overview.json文件中\nProductPicture接口为bmc.kepler.Systems.Product\n4 查看资源树的值，以及硬件自发现的日志发现，PSR从EEPROM中获取\n4.1 查看资源树product属性\nmdbctl lsprop Product_1_01010A\nbmc.kepler.Object.Properties\n  ClassName=\"Product\"\n  ObjectIdentifier=[1,\"1\",\"1\",\"01010A\"]\n  ObjectName=\"Product_1_01010A\"\nbmc.kepler.Systems.Product\n  LanguageSet=[\"en\",\"zh\"]\n  ProductAlias=\"\"\n  ProductId=0\n  ProductName=\"TaiShan 200 (Model 1280 V2) \"\n  ProductPicture=\"img_03\"\n  ProductUniqueID=\"0x0307BF03\"\n  ProductVendorID=\"0x00000001\"\n  ProductVersion=\"V6\"\nbmc.kepler.Systems.Product.Custom\n  Manufacturer=\"Huawei\"\n  ManufacturerOid=\"2011.2.235.1.1\"\n  OemData=[]\n  SmsName=\"iBMA\"\nbmc.kepler.Systems.Product.Device\n  Name=\"\"\n  OwnerId=\"\"\n  SerialNumber=\"\"\nbmc.kepler.Systems.Product.DigitalWarranty\n  FirstPowerOnTime=\"N/A\"\n  Lifespan=0\n  StartPoint=\"`1996-04-10`\"\n\n4.2 一键收集日志发现PSR的connector加载的文件来自eeprom.即来自挂耳的eeprom\n查看dump_info/AppDump/hwdiscovery/connectors.txt\nConnector_PSR_EEP_0101:\n.AuxId            : \"\"\n.Bom              :\"14100513\"\n.Buses           :[\"12c_8\",\"I2c_2\"]\n.ChassisId     :\"1\"\n.GroupId        :10\n.GroupPosition      :\"01010A\"\n.Id                  :\"00000001040302044503\"\n.IdentifyMode : 3\n.LoadStatus    :0\n.ManagerId     : \"1\"\n.Presence       : 1\n.SilkText          :\"PSR\"\n.Slot                : 1\n.SystemId       : 1\n.Type              :\"\"\n-SourcePath   :/data/opt/bmc/sr/backup/000000001040302044503_01010A.bin\n-DataSource   :EEPROM\n-EffectiveFormatVersion   : 1.05\n-EffectiveDataVersion    : 1.05\n-EepromFormatVersion : 1.05\n-EepromDataVersion    : 1.05\n-LocalFormatVersion : NA\n-LocalDataVersion    : NA\n\n5 尝试从正常环境拷贝csr文件到异常环境重启后，图片路径变为img_01,正常显示图片。新日志信息为：\nConnector_PSR_EEP_0101:\n.AuxId            : \"\"\n.Bom              :\"14100513\"\n.Buses           :[\"12c_8\",\"I2c_2\"]\n.ChassisId     :\"1\"\n.GroupId        :8\n.GroupPosition      :\"01010A\"\n.Id                  :\"00000001040302044503\"\n.IdentifyMode : 3\n.LoadStatus    :0\n.ManagerId     : \"1\"\n.Presence       : 1\n.SilkText          :\"PSR\"\n.Slot                : 1\n.SystemId       : 1\n.Type              :\"\"\n-SourcePath   :/opt/bmc/sr/14100513_000000001040302044503.sr\n-DataSource   :LOCAL\n-EffectiveFormatVersion   : 3.00\n-EffectiveDataVersion    : 1.05\n-EepromFormatVersion : 3.00\n-EepromDataVersion    : 1.05\n-LocalFormatVersion : 3.00\n-LocalDataVersion    : 3.13\n\n拷贝的文件为14100513_000000001040302044503.sr和14100513_000000001040302044503-soft.sr",
+    "topic_user_name": "Tf Wenchenglong",
+    "best_answer_url": "/t/topic/343/6",
+    "reply_posts": [
+        {
+            "user_name": "Tf Wenchenglong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/343/2",
+            "text": "因此，我们判断结论为：因为出的包并没有对应产品的psr，导致去读了挂耳的PSR，挂耳中的product对象为\"ProductImage\":“img_03”"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/343/3",
+            "text": "在framework.log日志中会记录csr的加载来源，同时一键收集中也会包含eeprom的csr\n可以通过这里确认是否符合你们的判断\ncat /var/log/framework.log |grep \"start to process sr data\"\n\n找到PSR相关的日志，如果是来源于/opt/bmc/sr/则是使用内置的csr"
+        },
+        {
+            "user_name": "Lanqiao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/343/4",
+            "text": "通过定位，使用开源社区出的hpm包，缺少PSR文件，cat /var/log/framework.log |grep “start to process sr data”，从日志发现，PSR来源于验证HPM包的挂耳eeprom,请问一下，开源社区出的hpm中为product openubmc缺少14100513_000000001040302044503.sr，这个文件是否会重新加入进来。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/343/5",
+            "text": "此机型当前openUBMC社区尚不支持，建议单独联系PAE"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/343/6",
+            "text": "如果希望优先使用内置的PSR而非EEPROM中的PSR，用户可以自行内置PSR，并且设置DataVersion字段为较高值（例如3.99）"
+        },
+        {
+            "user_name": "Lanqiao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/343/7",
+            "text": "好的，这种方式可以的"
+        }
+    ]
+}

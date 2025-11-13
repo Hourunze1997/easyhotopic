@@ -1,0 +1,29 @@
+{
+    "topic_id": 2005,
+    "question": "openUBMC X 昆仑太科 Meetup@西安 - 大家好！\n在TC委员们的联合运作下，计划8/18下午联合昆仑太科在西安举办社区线下Meetup活动，旨在帮助西安周边地域的开发者快速上手社区25.06版本的新特性，围绕BMC Studio部件快速适配、社区开发板体验、可观测技术应用实践、社区DT建设等议题开展对应的Workshop。\n本次活动仍然会以动手实践为主，针对上次Meetup的反馈，也会在前一周开展线上环境搭建教学，确保大家参会当天拥有可用的开发环境。\n活动报名、活动海报等细节随后会公布出来，欢迎大家参加！\n同时如果对议题、Workshop有建议的，欢迎反馈！",
+    "topic_user_name": "张雨博",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2005/3",
+            "text": ""
+        },
+        {
+            "user_name": "Zmcheng",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2005/4",
+            "text": "可否线下和线上直播同步开展？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2005/5",
+            "text": "workshop的话，线上可能互动性会差一些，还要看看场地的设备如何\n如果效果好的话，后续可以单独搞线上的课程"
+        }
+    ]
+}

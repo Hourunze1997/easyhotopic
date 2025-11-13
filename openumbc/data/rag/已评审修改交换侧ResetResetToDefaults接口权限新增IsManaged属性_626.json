@@ -1,0 +1,43 @@
+{
+    "topic_id": 626,
+    "question": "【已评审】修改交换侧Reset、ResetToDefaults接口权限，新增IsManaged属性 - content: 关联issue\n修改lcn_mgmt资源协作接口涉及到上下电、恢复出厂配置业务的接口权限-mdb_interface-GitCode\n背景\n1、Reset接口涉及交换侧上下电业务，接口权限BasicSetting权限不合理；\n2、ResetToDefaults接口涉及交换侧用户账号恢复默认配置，接口权限BasicSetting权限不合理。\n3、当前GET接口/redfish/v1/Oem/Huawei/LCNService/LCNDevices/device_id无法获取到BMC与LCNE设备的纳管状态。网管与工具调用涉及LCNE重启的BMC redfish接口后，无法获取到LCNE复位成功且BMC已纳管的标志。\n决策点\n1、权限变更\nURI：/redfish/v1/Oem/Huawei/LCNService/LCNDevices/LinkBoard1/Actions/LCNDevice.Reset\n操作类型：POST\n权限变更： BasicSetting 到 PowerMgmt\n对应资源协作接口实现变更\n路径：/bmc/kepler/LCNs/:Id\n接口：bmc.kepler.LCN\n方法：Reset\n权限变更：BasicSetting 到 PowerMgmt\n2、权限变更\nURI：/redfish/v1/Oem/Huawei/LCNService/LCNDevices/LinkBoard1/Actions/LCNDevice.ResetToDefaults\n操作类型：POST\n权限变更： BasicSetting 到 UserMgmt\n对应资源协作接口实现变更\n路径：/bmc/kepler/LCNs/:Id\n接口：bmc.kepler.LCN\n方法：RestoreFactorySettings\n权限：BasicSetting 到 UserMgmt\n3、新增属性\nURI： /redfish/v1/Oem/Huawei/LCNService/LCNDevices/device_id\n操作类型：GET\n新增属性： IsManaged\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n约束\n\nIsManaged\nboolean\nfalse/true\nfalse\n只读R：ReadOnly\n打开BMC纳管LCNE（ManagedByBMC:true）且BMC与LCNE建立连接并完成一次信息轮询，则为true，BMC与LCNE断连或取消纳管（ManagedByBMC:false），则为false\n\n整体方案\n无\n评审结论\n1、同意redfish接口/redfish/v1/Oem/Huawei/LCNService/LCNDevices/LinkBoard1/Actions/LCNDevice.ResetToDefaults的权限变更为UserMgmt\n2、同意redfish接口/redfish/v1/Oem/Huawei/LCNService/LCNDevices/LinkBoard1/Actions/LCNDevice.Reset的权限变更为PowerMgmt\n3、同意redfish接口/redfish/v1/Oem/Huawei/LCNService/LCNDevices/device_id新增属性 IsManaged，类型bool，只读，权限ReadOnly，默认为false\nlinks: #p-1258-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/28, #p-1258-h-2, #p-1258-h-3, #p-1258-h-4, #p-1258-h-5",
+    "topic_user_name": "Liushun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/626/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/626/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/626/4",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/626/5",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/626/6",
+            "text": ""
+        }
+    ]
+}

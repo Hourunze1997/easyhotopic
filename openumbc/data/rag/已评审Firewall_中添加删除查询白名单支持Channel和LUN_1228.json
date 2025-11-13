@@ -1,0 +1,15 @@
+{
+    "topic_id": 1228,
+    "question": "【已评审】Firewall 中添加/删除/查询白名单支持Channel和LUN - content: 关联issue\n同下述背景关联议题中关联issue，具体链接： 支持IPMI规范的 Firewall 中添加/删除/查询白名单\n背景\n在IPMI规范中对于 Firmware Firewall 的 Enable/Disable 处理，标准IPMI命令输入中均有对应的 Channel 和 LUN 的支持，因此基于上一次评审（见下面 关联评审）在资源协作接口原子能力中需要增加对于 Channel 和 LUN 的支持。\n关联评审\n\n【已评审】支持 Firewall 资源协作接口以及IPMI标准命令 Interface评审\n\n关联issue\n支持IPMI规范的 Firewall 中添加/删除/查询白名单\n评审背景\n客户对于 IPMI 规范的 Firmware Firewall 命令需要支持，并且需要支持在其他非IPMI的北向接口进行查询和设置。 \n差距 \n\n当前BMC不支持 IPMI 规范的 Firmware Firewall 命令\n当前BMC不支持  IPMI 规范的 Firmware Firewall 白名单的管…\n  \n\n评审点\npath：/bmc/kepler/IpmiService\ninterface：bmc.kepler.IpmiService.Firewall\n方法1：AddWhiteList\n\n项\n取值以及说明\n\n方法名称\nAddWhiteList\n\n方法描述\n增加 IPMI Firewall 白名单，当前仅支持标准IPMI命令\n\n方法权限\nUserMgmt（和对应的IPMI命令Enable操作对齐）\n\n请求签名\nya{yay}yy\n\n请求参数\nNetFN：uint8 类型，表征添加白名单的网络功能码，取值范围[0, 64]，必填参数CmdList：array<uint8> 类型，表征添加白名单的命令列表，每个元素的取值范围 [0, 255]，可选参数，如果长度为空则添加NetFN下的所有命令SubFunctionList：array<uint8> 类型，表征添加白名单的命令列表，每个元素的取值范围 [0, 63]，可选参数，如果长度为空则添加的NetFN和CmdList的交集下的所有命令Channel：uint8 类型，表征添加白名单需要支持的通道，取值范围[0, 15]以及0xFF（全部通道）LUN：uint8 类型，表征添加白名单需要支持的LUN，取值范围[0, 3]以及0xFF（全部LUN）\n\n响应签名\n无\n\n响应参数\n无，添加成功之后不会返回任何数据，添加失败之后会返回error引擎\n\n方法2：RemoveWhiteList\n\n项\n取值以及说明\n\n方法名称\nRemoveWhiteList\n\n方法描述\n删除 IPMI Firewall 白名单，当前仅支持标准IPMI命令\n\n方法权限\nUserMgmt（和对应的IPMI命令Disable操作对齐）\n\n请求签名\nya{yay}yy\n\n请求参数\nNetFN：uint8 类型，表征删除白名单的网络功能码，取值范围[0, 64]，必填参数CmdList：array<uint8> 类型，表征删除白名单的命令列表，每个元素的取值范围 [0, 255]，可选参数，如果长度为空则删除NetFN下的所有的命令SubFunctionList：array<uint8> 类型，表征删除白名单的命令列表，每个元素的取值范围 [0, 63]，可选参数，如果长度为空则删除NetFN和CmdList的交集下的所有命令Channel：uint8 类型，表征添加白名单需要支持的通道，取值范围[0, 15]以及0xFF（全部通道）LUN：uint8 类型，表征添加白名单需要支持的LUN，取值范围[0, 3]以及0xFF（全部LUN）\n\n响应签名\n无\n\n响应参数\n无，删除成功之后不会返回任何数据，删除失败之后会返回error引擎\n\n方法3：GetWhiteList\n\n项\n取值以及说明\n\n方法名称\nGetWhiteList\n\n方法描述\n查询 IPMI Firewall 白名单列表，当前仅支持标准IPMI命令\n\n方法权限\nReadOnly\n\n请求签名\nyy\n\n请求参数\nChannel：uint8 类型，表征添加白名单需要支持的通道，取值范围[0, 15]以及0xFF（全部通道）LUN：uint8 类型，表征添加白名单需要支持的LUN，取值范围[0, 3]以及0xFF（全部LUN）\n\n响应签名\na{ya{yay}}\n\n响应参数\n查询失败之后会返回error引擎，查询成功时返回参数如下：NetFN：uint8 类型，表征删除白名单的网络功能码，取值范围[0, 64]，必填参数CmdList：array<uint8> 类型，表征删除白名单的命令列表，每个元素的取值范围 [0, 255]，可选参数，如果长度为空则删除NetFN下的所有的命令SubFunctionList：array<uint8> 类型，表征删除白名单的命令列表，每个元素的取值范围 [0, 63]，可选参数，如果长度为空则删除NetFN和CmdList的交集下的所有命令\n\n评审结论\n通过，具体结论如下：\n\n同意方法 AddWhiteList 请求参数中增加 Channel 和 LUN，必填参数，类型均为 uint8\n同意方法 RemoveWhiteList 请求参数中增加 Channel 和 LUN，必填参数，类型均为 uint8\n同意方法 GetWhiteList 请求参数中增加 Channel 和 LUN，必填参数，类型均为 uint8\nlinks: #p-2664-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/75, #p-2664-h-2, #p-2664-h-3, https://discuss.openubmc.cn/t/topic/1027, /c/interface/40-category/40, #p-2177-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/75, #p-2177-h-2, #p-2664-h-4, #p-2664-h-5",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1228/2",
+            "text": ""
+        }
+    ]
+}

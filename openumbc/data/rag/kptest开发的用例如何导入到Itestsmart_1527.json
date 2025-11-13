@@ -1,0 +1,22 @@
+{
+    "topic_id": 1527,
+    "question": "kptest开发的用例，如何导入到Itestsmart？ - 请问kptest开发的用例，如何导入到Itestsmart呢；Itestsmart导入用例的入口在哪儿？",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/1527/2",
+    "reply_posts": [
+        {
+            "user_name": "Hdq",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1527/2",
+            "text": "content: 1.确认版本\n请确认你的itestsmart版本≥1.0.31。具体操作：点击工具右上角 帮助—>关于。\n2.开启“开发者模式”\n打开工具后，点击顶部菜单栏的设置，点击左侧运行配置——点击编辑按钮——勾选用例开发者模式。具体页面参考用户指南9.1.6节。\n3.  导入用例\n点击顶部菜单栏的任务，点击创建任务，进入创建任务页面后，在下方选择用例模块的“预计执行时长”文字右侧有导入用例按钮，点击后在弹出的文件框中选择kptest写作框架生成的压缩包。\n具体页面参考用户指南6.7节\nlinks: #p-3724-h-1-1, #p-3724-h-2-2, #p-3724-h-3-3"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1527/3",
+            "text": "多谢"
+        }
+    ]
+}

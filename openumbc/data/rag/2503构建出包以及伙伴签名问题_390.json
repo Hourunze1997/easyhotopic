@@ -1,0 +1,15 @@
+{
+    "topic_id": 390,
+    "question": "25.03构建出包以及伙伴签名问题 - content: 一、构建方法选择\n在编译最新版25.03代码时，按照24.12.30的指导文档修改文件以及目录后进行编译，在执行bmcgo build -t install_sdk -b openUBMC步骤时出现如下报错:\nimg1436×853 69.1 KB\n在12.30号镜像中使用25.03代码进行构建报如下错误：\nimg1445×238 32.7 KB\n在使用25.03的dockerfile创建的镜像中用bingo在不修改其他文件夹名称和文件内板名的情况下可以正常出包，但是如果按之前构建步骤修改后就无法出包，想请教一下，现在的25.03版本以及后续的社区版本应该是用社区的指导进行构建还是按之前华为的出包指导文件进行出包。\n24.12.30指导文档要求修改\n1、修改manifest\\build\\conan_index\\openubmc为manifest\\build\\conan_index\\ibmc\n2、conanfile.py中的openubmc修改为ibmc\n3、修改build/product/iBMC/openUBMC/manifest.yml中的board_name为TaiShan200_2280v2\n二、伙伴签名\n1、使用社区的dockerfile创建的镜像编译时，按照之前的方式将证书放在/product/ca/目录下，刷完过渡包再升级之后升级失败，显示无效的升级包，查看日志显示签名校验不通过，想请教下当前的25.03发布版本如何使用自家签名\n2、使用华为版本的环境如何升级社区随代码发布的hpm以及如何从社区版本切回华为的版本\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/07e241f81881d02bacc4c1ff1266bd88dc977104.png, https://forum.openubmc.cn/uploads/default/original/1X/69fc7a72c238263cbb2c095243f99e1b93248762.png",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/390/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/390/2",
+            "text": "content: 一：\n对于图1中报错， 可以将manifest.yml里的版本号从25.0.0.1改到5.0.0.1.B001。\n二：\n参考下 hpm包格式说明以及重新签名指导\nlinks: https://forum.openubmc.cn/t/topic/204"
+        }
+    ]
+}

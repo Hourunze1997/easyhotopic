@@ -1,0 +1,29 @@
+{
+    "topic_id": 1263,
+    "question": "关于 openUBMC CPU 功耗计算方法的咨询 - content: 请教一下，openUBMC web中标注的 CPU 功耗数值，具体是指：\n\n单颗 CPU 的功耗？\n还是双路 CPU（即两颗 CPU）的总功耗？\n\n另外，能否说明一下，这个功耗数值是基于哪种计算方法或参考标准得出的？\n感谢社区老铁解答！\nimage1436×853 80.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/2e3a4b390acd9ccccec07a820e904aad6c996237.png",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/1263/4",
+    "reply_posts": [
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1263/2",
+            "text": "应该是总功耗，从bios获取"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1263/3",
+            "text": "看高性能用户指南手册是说当前在位的CPU的总功率。不过计算方式逻辑不太确定。"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1263/4",
+            "text": "总功耗，从bios查询到"
+        }
+    ]
+}

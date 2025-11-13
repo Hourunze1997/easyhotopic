@@ -1,0 +1,7 @@
+{
+    "topic_id": 1966,
+    "question": "【iTestSmart】CLI SOL会话超时时间设置正常值，能够正确设置，但是检查日志报错。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\n二、问题描述\nOpenUBMC->融合运维->CLI SOL会话超时时间设置正常值测试，根据测试日志，可以看出CLI SOL会话超时时间能够正确设置，但是检查日志的步骤报错了。疑似现在的日志有所变化，引起检查日志报错。\n设置SOL超时时间1分钟正确1920×822 235 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/49defe26b538d280c88fd8dcca74eb20a48003b7.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": []
+}

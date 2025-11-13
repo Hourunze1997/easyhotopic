@@ -1,0 +1,22 @@
+{
+    "topic_id": 707,
+    "question": "BMC Studio问题反馈 - content: 配置默认空间\n\n数据导入方式:请根据实际情况，选择数据导入的方式。\n\n如果选择“导入Manifest”：则通过Manifest来初始化空间数据。\n如果选择“指定文件路径”：则导入本地开发环境的数据作为空间数据进行管理。\n如果选择”不导入数据”：则新建的工作空间为空，需要手动导入或使用git clone获取代码仓。\n\n1.这三种形式能详细解释一下区别么？\n2.选择指定文件路径时，导入本地开发环境的数据作为空间数据进行管理—这里的本地开发环境的数据指的是什么？给的例子 ：/usr/share/bmc_studio/server/users/xxxxx/oem_files 不太清晰；按我的理解，bmc studio是辅助开发工具，这里的路径应该是本地代码仓的路径，例如我的应该是/home/v3_main/\nimage472×223 4.46 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/9661bdf08a041e2b748b6bfb5985fd0674f374cd.png",
+    "topic_user_name": "Iss Tanghaibin",
+    "best_answer_url": "/t/topic/707/4",
+    "reply_posts": [
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/707/2",
+            "text": "配置Anchor后无法选择Buses类型，里面显示的无数据\n截图无法通过自动审核"
+        },
+        {
+            "user_name": "Data Sculptor",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/707/4",
+            "text": "BMCStudio支持多产品开发的并行管理，每个工作空间管理一个产品，数据隔离，按照应用场景做了3个分类：\n导入Manifest：该场景用于开发整机业务，该场景下用户会配置manifest仓库，该仓库包含了产品的集成信息。通过此种方式导入，需要输入manifest的git仓库地址，并且支持一键仓库部署功能，该功能会一键下载manifest中配置的仓库代码到本地，包括社区代码仓、用户的私仓、社区未开源的组件的MDS。仓库保存位置: /root/bmc_studio/workspaces/xxx，其中xxx为工作空间名称。\n指定文件路径：该场景用于用户在使用BMCStudio前，已经在本地部署了代码仓环境，想使用BMCStudio基于此部署环境进行后续的开发工作。该场景下，用户需要输入本地仓库的路径（该路径下一定要包含manifest仓库）。用户若选择了一键迁移数据，则Studio直接将该路径下的所有文件一键无损拷贝到BMCStudio管理目录（/root/bmc_studio/workspaces）下，否则在原路径下继续开发。\n不导入数据：该场景用于开发板卡业务，用户通常不关心整机，也没有manifest的概念。该场景下用户需要自己导入MDS文件和CSR仓库。"
+        }
+    ]
+}

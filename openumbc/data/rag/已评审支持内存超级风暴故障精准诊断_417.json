@@ -1,0 +1,15 @@
+{
+    "topic_id": 417,
+    "question": "【已评审】支持内存超级风暴故障精准诊断 - content: ISSUE链接：GitCode - 全球开发者的开源社区,开源代码托管平台\n背景: 增强故障诊断检测能力，支持内存超级风暴故障精准诊断，满足超级风暴时更新对应事件状态属性、超级风暴生成次数属性\n决策点: 故障识别设置资源树对应的属性\n评审点1：\n资源path：/bmc/kepler/Systems/:SystemId/MemoryChannel/:ID\n资源interface：bmc.kepler.Systems.MemoryChannel\n变化类型：[新增] [属性]\n应用场景：超级CE风暴事件发生标志，事件发生时属性置1\n持久化类型： BMC复位持久化\n操作权限： ReadOnly\n评审点2：\n资源path：/bmc/kepler/Systems/:SystemId/FDMDomain/MemoryRAS/:Id\n资源interface：bmc.kepler.Systems.FDMDomain.MemoryRAS\n变化类型：[新增] [属性]\n应用场景：超级CE风暴事件发生次数\n持久化类型： BMC复位持久化\n操作权限： ReadOnly\n详细描述：\n\nservice\nOBJECT(path)\ninterface\nmethod/property/signal\ntype\n权限\n属性\n是否广播\n是否持久化\n属性值来源\n签名\n取值类型\n备注\n\nbmc.kepler.compute\n/bmc/kepler/Systems/:SystemId/MemoryChannel/:ID\nbmc.kepler.Systems.MemoryChannel\nCorrectableECCStormBurstEvent\nproperty\nReadOnly\nro\n是\n复位\n代码\ny\nu8\n内存发生超级CE风暴，取值：0-未发生，默认值；1-发生。系统下电/复位时，恢复到未发生状态。\n\nbmc.kepler.fault_diagnosis\n/bmc/kepler/Systems/:SystemId/FDMDomain/MemoryRAS/:Id\nbmc.kepler.Systems.FDMDomain.MemoryRAS\n4. CorrectableECCStormBurstCount\nproperty\nReadOnly\nro\n否\n复位\n代码\nu\nu32\n统计内存发生超级CE风暴的次数, 取值范围：0~0xFFFFFFFF。系统下电/复位时，统计次数清零。\n\n评审结论\n\n同意新增属性标志超级CE风暴事件发生状态，具体如下：\n资源path：/bmc/kepler/Systems/:SystemId/MemoryChannel/:ID\n资源interface：bmc.kepler.Systems.MemoryChannel\n资源属性：CorrectableECCStormBurstEvent\n持久化类型： BMC复位持久化\n操作权限： ReadOnly\n同意新增属性表示超级CE风暴事件发生次数，具体如下：\n资源path：/bmc/kepler/Systems/:SystemId/FDMDomain/MemoryRAS/:Id\n资源interface：bmc.kepler.Systems.FDMDomain.MemoryRAS\n资源属性：CorrectableECCStormBurstCount\n持久化类型： BMC复位持久化\n操作权限： ReadOnly\n\n遗留事项\n\n明确属性恢复默认值的场景\n结论：恢复场景为系统下电/复位时，恢复默认值。已在详细描述中刷新。\n属性命名增加CE修饰\n结论：属性命名均已添加前缀CorrectableECC。已在详细描述中刷新。\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/11",
+    "topic_user_name": "Hzx456 Do77o",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/417/2",
+            "text": ""
+        }
+    ]
+}

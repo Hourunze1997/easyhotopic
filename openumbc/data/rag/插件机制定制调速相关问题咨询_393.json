@@ -1,0 +1,29 @@
+{
+    "topic_id": 393,
+    "question": "插件机制定制调速相关问题咨询 - 请教一下：\n1、插件机制有哪些实际的应用场景？\n2、能否通过插件机制实现cooling组件中的风扇调速算法替换？\n3、能否通过插件机制实现fault_diagnosis组件中的故障预测功能的替换？",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "/t/topic/393/2",
+    "reply_posts": [
+        {
+            "user_name": "Yeluo12 P3f25",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/393/2",
+            "text": "1、当前只有组件插件投入了实际使用，比如维护诊断通过插件做了一些故障的后置处理动作，你这边应该想使用第三方插件对闭源的组件做一些定制化修改，目前还没有实际的使用样例可供参考，但第三方插件的编码方式和组件插件没有区别，只是打包路径上有些不同，第三方插件需要打包到/opt/bmc/plugins/的子目录下生效，如cooling的第三方插件需要打包到/opt/bmc/plugins/cooling目录下\n2、针对后面两个问题，哪些能力允许第三方进行复写是由组件决定的，可以跟组件owner沟通下，内部评审通过之后是可以支持使用插件机制进行功能替换的"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/393/3",
+            "text": "问题2：插件机制可直接替换风扇调速算法，当前thermal_mgmt组件中的风扇调速算法为pid算法，若需自行实现，可src/lualib/basic_cooling/plugin_method_init.lua中实现对应接口即可。"
+        },
+        {
+            "user_name": "lixiaocan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/393/4",
+            "text": "好的，了解了，感谢回复"
+        }
+    ]
+}

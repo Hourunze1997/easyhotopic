@@ -1,0 +1,15 @@
+{
+    "topic_id": 2030,
+    "question": "咨询I2c总结通信速率配置问题 - content: 以前v2里面可以设置某几路i2c通信速率 例如100K或者400K。想问下openUBMC里面该如何配置？\nimage638×307 13.1 KB\nI2c对象下面是否支持“Speed”属性？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/f1751cfc27a7d4f82926ed8c4f10aad4d3beb278.png",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "南京百敖",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2030/2",
+            "text": "content: image387×231 8.87 KB\nimage347×281 4.41 KB\n刚试着改一下，发现生效了，后面上机联调后再反馈。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/66c505c731f3b2c31ff2c97ccd5cafaf5c03b7fd.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/7373ac0b4a99010f1366f5eab5bb22b748ab0899.png"
+        }
+    ]
+}

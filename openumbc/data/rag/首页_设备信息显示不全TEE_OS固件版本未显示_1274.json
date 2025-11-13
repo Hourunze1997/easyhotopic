@@ -1,0 +1,29 @@
+{
+    "topic_id": 1274,
+    "question": "首页-设备信息显示不全：TEE OS固件版本未显示； - content: image1895×697 79.7 KB\nweb首页-设备信息：TEE OS固件版本 显示为 –\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/f5a0ffb9bf61ecea0e5e6055c77a69c8aa6294eb.png",
+    "topic_user_name": "Chury",
+    "best_answer_url": "/t/topic/1274/4",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1274/2",
+            "text": "社区版本默认TEE OS固件版本就是–，属于正常现象。"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1274/3",
+            "text": "如果我需要显示对应的信息应该怎么操作呢？"
+        },
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1274/4",
+            "text": "这是带内bios通过ipmi命令上报的，需要有对应支持的bios版本"
+        }
+    ]
+}

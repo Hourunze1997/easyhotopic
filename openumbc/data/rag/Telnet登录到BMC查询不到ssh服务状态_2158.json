@@ -1,0 +1,29 @@
+{
+    "topic_id": 2158,
+    "question": "Telnet登录到BMC，查询不到ssh服务状态。 - content: 一、环境\n硬件：S920X20\nBMC Version：25.03\n二、问题描述\n升级了telnet的hpm包后，telnet登录BMC，查询ssh服务器状态，是查询不到的。这是符合预期的吗？\nimg_v3_02or_ab89fe09-72ce-4a9c-9a53-7b36b6d308dg1027×327 116 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/b/b1880abfbc99f6ec7baae2265badd03af063f05f.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "/t/topic/2158/4",
+    "reply_posts": [
+        {
+            "user_name": "HuoJianCong",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2158/2",
+            "text": "ssh服务并非由systemctl拉起，因此该命令查询不到ssh服务状态"
+        },
+        {
+            "user_name": "KunTai_wangjl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2158/3",
+            "text": "可以查吗，用什么命令能查到呢？"
+        },
+        {
+            "user_name": "HuoJianCong",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2158/4",
+            "text": "通过ps aux | grep sshd进行查询"
+        }
+    ]
+}

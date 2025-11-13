@@ -1,0 +1,22 @@
+{
+    "topic_id": 1074,
+    "question": "bingo gen 代码生成问题咨询 - 如下是sensor组件的service.json配置\n这边获取的源码 默认依赖dependencies是放在了test里面\n我执行bingo gen后会按照mdb_interface所配置的生成代码\n然后去执行bingo  build\n请问\n1、什么时候放在test中  什么时候 放在build中\n2、test和build的依赖配置 不能同时存在吗?\n3、最终发版是放在哪里？\n{\n    \"name\": \"sensor\",\n    \"version\": \"1.70.28\",\n    \"type\": \"application\",\n    \"deployConfig\": \"alarm.service\",\n    \"author\": \"Huawei\",\n    \"license\": \"Mulan PSL v2\",\n    \"description\": \"Sensor Management Based on IPMI Protocol\",\n    \"codegen_policy\": {\n        \"version\": \"8\"\n    },\n    \"dependencies\": {\n        \"build\": [],\n        \"test\": [\n            {\n                \"conan\": \"dtframeforlua/[>=0.0.1]\"\n            },\n            {\n                \"conan\": \"libmc4lua/[>=0.0.228]\"\n            },\n            {\n                \"conan\": \"mdb_interface/[>=0.0.423]\"\n            },\n            {\n                \"conan\": \"maca/[>=0.0.1]\"\n            },\n            {\n                \"conan\": \"persistence/[>=0.0.46]\"\n            },\n            {\n                \"conan\": \"ipmi_core/[>=0.0.63]\"\n            },\n            {\n                \"conan\": \"hwdiscovery/[>=1.0.2]\"\n            },\n            {\n                \"conan\": \"libsoc_adapter/[>=0.0.42]\"\n            },\n            {\n                \"conan\": \"event/[>=0.0.42]\"\n            },\n            {\n                \"conan\": \"fructrl/[>=0.0.42]\"\n            }\n        ]\n    },",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/1074/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1074/2",
+            "text": "build和test分别是执行bingo build和bingo test时候会拉取得依赖，包括bmcgo gen时候会拉取mdb_interface的版本依赖\n可以同时配置 gen的时候会优先去build里查找依赖\n不明白你问的发版是什么意思，是~/.conan/data/下的缓存吗"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1074/3",
+            "text": "感谢回复"
+        }
+    ]
+}

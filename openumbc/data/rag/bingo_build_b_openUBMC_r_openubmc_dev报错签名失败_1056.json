@@ -1,0 +1,22 @@
+{
+    "topic_id": 1056,
+    "question": "bingo build -b openUBMC -r openubmc_dev报错签名失败 - content: 企业微信截图_174782666258701913×1038 61.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/3e364af308ed309a08e8bf5731c3625e7e07f6d7.png",
+    "topic_user_name": "He wei",
+    "best_answer_url": "/t/topic/1056/3",
+    "reply_posts": [
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1056/2",
+            "text": "bingo -v\nbmcgo 版本为: 0.5.317"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1056/3",
+            "text": "已解决，签名文件有后缀有变动，同时修改manifest.yml的签名文件后缀后，执行通过。之后遇到了uboot失败问题，将dev_tools的hi1711目录下所有文件拷贝到/root/sdk 目录下出包成功"
+        }
+    ]
+}

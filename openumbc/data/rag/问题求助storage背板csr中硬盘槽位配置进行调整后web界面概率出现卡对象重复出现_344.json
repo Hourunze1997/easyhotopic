@@ -1,0 +1,36 @@
+{
+    "topic_id": 344,
+    "question": "【问题求助】【storage】背板csr中硬盘槽位配置进行调整后，web界面概率出现卡对象重复出现 - content: 【问题背景】2280v2机型使用BC83NHBN16硬盘背板，对应的机身硬盘槽位丝印为0-3，8-15，20-23，但背板sr中配置的槽位为连续的0-15，因此对sr中槽位配置进行调整，调整如下:\nConnector_ComVPDConnect中对应的Slot由0-15，调整为0-3、8-15、20-23；Drive对象中Name,NodeId,RelativeSlot同步由0-15，调整为0-3、8-15、20-23\n\"Connector_ComVPDConnect_5\": {\n      \"Bom\": \"14140224\",\n      \"Slot\": 8,\n      \"Position\": 5,\n      ...\n      \"SilkText\": \"J6013\",\n      \"IdentifyMode\": 2,\n      \"Type\": \"NVMe\"\n    },\n\"Connector_ComVPDConnect_6\": {\n      \"Bom\": \"14140224\",\n      \"Slot\": 9,\n      \"Position\": 5,\n       ...\n      \"SilkText\": \"J6013\",\n      \"IdentifyMode\": 2,\n      \"Type\": \"NVMe\"\n    }，\n\n...\n...\n\n\"Drive_5\": {\n      \"Id\": 4,\n      \"Name\": \"Disk8\",\n      \"PhysicalLocation\": \"HDD Plane\",\n      \"NodeId\": \"HDDPlaneDisk8\",\n      ...\n      \"InAFailedArray\": 0,\n      \"FirmwareStatusError\": false,\n      \"SerialNumber\": \"\",\n      \"RelativeSlot\": 8,\n   }，\n\"Drive_6\": {\n      \"Id\": 4,\n      \"Name\": \"Disk9\",\n      \"PhysicalLocation\": \"HDD Plane\",\n      \"NodeId\": \"HDDPlaneDisk9\",\n      ...\n      \"InAFailedArray\": 0,\n      \"FirmwareStatusError\": false,\n      \"SerialNumber\": \"\",\n      \"RelativeSlot\": 9,\n   }\n\n修改后，在硬盘满配环境进行测试，概率出现硬盘对象重复显示的现象，截图显示Disk22重复出现2次，测试中发现也可能是其他硬盘重复出现\nEFA49D5E-C29C-4C5B-8CD7-98A64F1BCF1B345×580 11.8 KB\n查看一键收集日志中Drive对象，发现Disk14对应的Drive_11，ObjectName被刷成了Disk22对应的Drive_15\n/bmc/kepler/Systems/1/Storage/Drives/Drive_11_010102  bmc.kepler.Object.Properties\n.ClassName\n  signature:  s\n  value:      \"Drive\"\n  flags:      emits-change\n  readonly:   true\n.ObjectIdentifier\n  signature:  (ysss)\n  value:      [1,\"1\",\"1\",\"010102\"]\n  flags:      emits-change\n  readonly:   true\n.ObjectName\n  signature:  s\n  value:      \"Drive_15_010102\"\n  flags:      emits-change\n  readonly:   true\n\n找存储模块的同事定位，怀疑可能是受持久化数据影响\n在storage模块update_drive_slot_info()任务中加了日志进行复现，重复的盘变成了Disk20（Drive_13），Drive_9的ObjectName被刷成了Drive_13\nfunction c_drive:update_drive_slot_info()\n    self.Id = self.HddBackplaneStartSlot + self.RelativeSlot\n    self.Name = string.format('Disk%d', self.Id)\n    self.NodeId = string.format('HDDPlaneDisk%d', self.Id)\n    log:notice('update_drive_slot_info: path(%s), ObjectName(%s), Name(%s), NodeId(%s)', self.path, self.ObjectName, self.Name, self.NodeId)\nend\n\nstorage模块启动时，会启动update_drive_slot_info()任务，定时更新Drive对象的slot属性。\n看添加的日志，Drive_9的ObjectName还正常，但只出现了一次预期的打印，在后面的日志中不存在ObjectName为Drive_9的update_drive_slot_info()任务了\n2025-03-27 06:07:55.969154 storage NOTICE: drive_object.lua(145): update_drive_slot_info: ObjectName(Drive_9_010102), Name(Disk12), NodeId(HDDPlaneDisk12)\n\n目前暂时没有进一步定位思路，ObjectName值理论上应该来自sr中的命令，但是在运行过程中却显示成了其他的内容，想请教一下如何进一步定位，或者一键收集日志中是否有其他可参考的内容\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/f91404700343e96107fb97610dffc90e6756e085.png",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "/t/topic/344/5",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/344/2",
+            "text": "ObjectName应该对象分发时就确定了，后续不会对该名称进行更新。如果对象名与组件的Name无法匹配，需要确定是否进行了定制化，HddBackplaneStartSlot属性是否有定制。如果未定制建议加打印确定Name的变更时间是什么时候"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/344/3",
+            "text": "在update_drive_slot_info()接口中额外打印了drive对象的path，如下\n2025-04-07 14:42:53.935618 storage NOTICE: drive_object.lua(145): update_drive_slot_info: path(/bmc/kepler/Systems/1/Storage/Drives/Drive_7_010102), ObjectName(Drive_7_010102), Name(Disk10), NodeId(HDDPlaneDisk10)\n2025-04-07 14:42:54.950772 storage NOTICE: drive_object.lua(145): update_drive_slot_info: path(/bmc/kepler/Systems/1/Storage/Drives/Drive_7_010102), ObjectName(Drive_11_010102), Name(Disk14), NodeId(HDDPlaneDisk14)\n\nObjectName的值确实是从一开始的Drive_7_010102变成了Drive_11_010102，有可能是哪个的值会导致这个现象的发生呢"
+        },
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/344/4",
+            "text": "你这里说的Drive_11_010102仅仅只是SR里面配置的“Drive_11” 对象，就是简单创建了一个对象，中间没有什么逻辑"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/344/5",
+            "text": "与社区用户确认，暂无环境验证，待有环境后重新发帖定位。"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1795,
+    "question": "如何使用BMC-Studio打包hpm--bmc_studio使用反馈 - content: 烧录fru、csr文件相关的问题 - 交流互助区 - openUBMC 论坛\n如何将csr文件写入eeprom中 - 交流互助区 - openUBMC 论坛\n参考这两则问题，在使用bmc_studio时遇见如下问题。\n1 .CSR出包提示需要UID才可以\n这个UID指的是什么？需要在某个类或者对象内承载吗？\n我参考几个可以触发出包的sr配置，但是依然不知道实际上是哪里影响的。\n目前识别到的有如下三处，是都要吗还是怎么样。\n\nimage798×136 9.13 KB\n\nimage475×126 6.09 KB\n2. csr简单打包的功能如何使用？\n烧录fru、csr文件相关的问题 - #5，来自 ChenMinjun 该链接下的问题还没有被答复。\n放置在任意目录下的sr，使用bingo触发构建时会提示没有bmcgo.conf\n这个配置文件要怎么配？建议整理一篇教程。\n3. CSR出包的OEM文件是什么？\nOEM定制文件仅有一行描述，不知道具体是怎样的，希望补充一个示例文件。\nimage389×127 3.23 KB\n4. bmc_studio 页面帮助无效\n点击页面帮助后无反应。\n\n5. 具有UID的sr出包失败，出错打印乱码。\n无论是提示还是后台日志，都没有什么有效的信息，实际上功能不可用。\n\n6. 其它使用问题\nbmc_studio调用start后进入这个页面是正常的吗？如何进行关闭。\n\n另外bmc_studio如何查询版本信息？\nlinks: https://discuss.openubmc.cn/t/topic/1678/4, https://discuss.openubmc.cn/t/topic/267, #p-4422-h-1-csruid-1, https://discuss.openubmc.cn/uploads/default/original/2X/2/2b016cfa91880d1b141bb795d0b5a8d4dbd081ed.png, https://discuss.openubmc.cn/uploads/default/original/2X/b/bb814da0e0fcbc474d62a77eeaa75eb9b73e9d26.png, #p-4422-h-2-csr-2, https://discuss.openubmc.cn/t/topic/1678/5, #p-4422-h-3-csroem-3, https://discuss.openubmc.cn/uploads/default/original/2X/c/c6d450d3f380bedce73ee9c663490c2c422d2f07.png, #p-4422-h-4-bmc_studio-4, #p-4422-h-5-uidsr-5, #p-4422-h-6-6",
+    "topic_user_name": "kunlun_luzhanghui",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1795/2",
+            "text": "content: UID写在这个地方（xxboard、xxcard下面）说明这是这张卡的唯一标识\nimage798×136 9.13 KB\n而写在其他地方的UID指的是这张UID代表的扩展版卡，比如这张图片上的UID指的就是这张ExpBoard的eeprom可以升级\n\n这个问题可能是因为环境中同时存在旧版本bmcgo的新版本的bingo导致的，bingo自身已经提供了无签名和带签名打包的功能，建议使用bingo而非bmcgo。\n\nOEM文件是一个包含了定制信息的文件，但我不能给您提供样例。可以参考文档IPMI OEM自定义命令 | openUBMC\n\n目前页面帮助尚未集成到bmc studio中。\n\n和第二个问题是一个根因，实际上调用了旧版本bmcgo的能力。\n\n这个情况和文档中faq这种情形一致，请参考文档配置bmc studio。\nimage711×353 15.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/2/2b016cfa91880d1b141bb795d0b5a8d4dbd081ed.png, https://www.openubmc.cn/docs/zh/development/specifications/ipmi/oem.html, https://discuss.openubmc.cn/uploads/default/original/2X/d/d81ac05e0de3a159a5dc5f53603508c1ed647be9.png"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 1308,
+    "question": "伙伴想在自己的机器上验证openUBMC25.03的功能，应该怎么测啊，没有对应特性的用例 - content: 伙伴现在想要在自己的机器上升级openUBMC25.03，但是没有对应的测试用例，不知道怎么去针对版本的特性做对应的验证，也没办法保证质量，能帮忙提供一个可行的方案吗\nimage2855×1642 304 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/eec71c4298601903e3c70166abc5ab31e67d872d.png",
+    "topic_user_name": "Gxd",
+    "best_answer_url": "/t/topic/1308/4",
+    "reply_posts": [
+        {
+            "user_name": "Young Yang007",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1308/3",
+            "text": "后续会将openUBMC的特性根据计划节奏集成到itestsmart工具，使用itestsmart工具中的自动化或者参考相关测试用例步骤进行测试验证"
+        },
+        {
+            "user_name": "Openubmc Liuyujie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1308/4",
+            "text": "在itestsmart中挑选用例验证继承特性。\n新特性需要根据自己所交付范围新设计用例，并根据kptest架构完成用例自动化开发后，导入itestsmart中自动执行。"
+        }
+    ]
+}

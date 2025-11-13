@@ -1,0 +1,22 @@
+{
+    "topic_id": 1379,
+    "question": "资源树看不到SMC节点 - content: 环境\n社区25.03版本\n自研设备（BMC模组+鲲鹏模组）\n现象\n~ ~ $ busctl --user tree | grep -i smc | wc -l\n0\n~ ~ $\n~ ~ $ mdbctl lsclass | grep -i smc | wc -l\n0\n~ ~ $\n诉求\n如何定位此类问题\nlinks: #p-3203-h-1, #p-3203-h-2, #p-3203-h-3",
+    "topic_user_name": "恒扬-胡田野",
+    "best_answer_url": "/t/topic/1379/2",
+    "reply_posts": [
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1379/2",
+            "text": "content: 定位情况\n定位到是Connector_EXU的Buses与EXU的anchor不对应导致的。\n疑问\n1 日志是否能分析出sr文件配置问题？\n2 当前没有使用BMC Studio，构建是否能够实现sr文件检查，或者BMC studio具备检查能力？\nlinks: #p-3235-h-1, #p-3235-h-2"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1379/3",
+            "text": "framework.log里面应该有对应的connector加载失败日志，可以搜一下"
+        }
+    ]
+}

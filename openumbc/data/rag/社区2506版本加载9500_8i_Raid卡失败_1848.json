@@ -1,0 +1,15 @@
+{
+    "topic_id": 1848,
+    "question": "社区25.06版本加载9500 8i Raid卡失败 - content: S920X20 搭配BC83PRUR（00000001040302044499）Riser卡\n报错内容\nimage1752×323 68 KB\nHuawei/Server/Kunpeng/openUBMC/profile.txt profile文件中未添加\nvendor/Broadcom/Raid/14140130_100000e6_10004060.sr\nvendor/Broadcom/Raid/14140130_100000e6_10004060_soft.sr\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/ac15099ea1eb4768bf85e5f7449d15a30b0991c3.png",
+    "topic_user_name": "KunTai_WangJiaKai",
+    "best_answer_url": "/t/topic/1848/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1848/2",
+            "text": "就是这张raid卡的csr在profile.txt没配上，配上就行了"
+        }
+    ]
+}

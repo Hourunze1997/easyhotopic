@@ -1,0 +1,15 @@
+{
+    "topic_id": 1287,
+    "question": "bus资源树对象删除问题 - 请问 再自定义组件里面 自动生成的代码中有以Create开头的方法 创建资源树上的对象。\n那怎么通过代码删除的呢？\n或者说这个删除的函数在哪个服务下的哪个接口下？",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/1287/2",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1287/2",
+            "text": "我们可以通过获取类再调用类方法删除对应的对象\n-- 使用时需要引入的库文件\nlocal class_mgnt = require 'mc.class_mgnt'\n-- 根据类名获取类\nlocal class = class_mgnt(class_name)\n-- 根据对象名删除对象\nclass:remove(object_name)\n-- 根据对象删除对象\nclass:remove(object)"
+        }
+    ]
+}

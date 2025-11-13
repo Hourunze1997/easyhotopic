@@ -1,0 +1,22 @@
+{
+    "topic_id": 1979,
+    "question": "RAID卡下SSD盘预估寿命信息有时候显示为--，有时候不显示该属性 - content: 44.预估寿命1804×705 75.1 KB\n针对预估寿命信息这个属性，目前存在2个问题：\n1、有时候显示为- -，有时候不显示该属性，表现上有一点不稳定\n2、从来没有显示为一个有效值，是否不支持该属性？\n针对问题1，目前分析情况如下，当EstimatedRemainingLifespan被配置为null的时候，这种情况下WEB不会显示该属性，在EstimatedRemainingLifespan被配置为4294967294的时候（0xfffffffe），WEB上会显示该属性，显示为–。\n4294967294应该是个无效值\nlocal U32_MAX  = 4294967295\nlocal DRIVE_ESTIMATED_LIFESPAN_UNSUPPORT  = 4294967294\nwebui\\src\\pages\\System\\Storage\\components\\drivers\\drivers.service.ts文件里面也有判断，当estimatedRemainingLifespan为4294967294 的时候显示为- -\nconst estimatedRemainingLifespan = bodyData.EstimatedRemainingLifespan === 4294967294 ?\n‘–’ : isEmptyProperty(bodyData.EstimatedRemainingLifespan);\n通过rackmount\\interface_config\\web_backend\\mapping_config\\System\\Storage.json文件，“Uri”: \"/UI/Rest/System/Storage/Drives/:id\"里面获取该属性的定义来看，是通过判断该值是否为0xffffffff，如果是则显示为null，否则显示为原值。\n“GetEstimatedRemainingLifespan”: {\n“Input”: “${ProcessingFlow[6]/Destination/EstimatedRemainingLifespan}”,\n“Steps”: [\n{\n“Type”: “Script”,\n“Formula”: “return (ProcessingFlow[6].Destination.EstimatedRemainingLifespan ~= 0xFFFFFFFF) and ProcessingFlow[6].Destination.EstimatedRemainingLifespan or cjson.null”\n}\n]\n}\n通过storage\\src\\lualib\\pd\\pd_identify_service.lua文件，function pd_identify_service:set_subhealth_default_values(drive)函数的定义来看，EstimatedRemainingLifespan 的值被初始化为0xffffffff\nfunction pd_identify_service:set_subhealth_default_values(drive)\ndrive.EstimatedRemainingLifespan = common_def.INVALID_U32\ndrive.EstimatedRemainingLifespan = common_def.INVALID_U32\n…\nlocal common_def = {\n…\nINVALID_U32     = 0xffffffff,\n那么后面是在哪个阶段，EstimatedRemainingLifespan 属性被重新赋值为了4294967294？\n是通过这个函数去获取的EstimatedRemainingLifespan信息吗？\nlocal ok, ret = pcall(sml.pd_log_write_subhealthy_info, self.RefControllerId,\nself.EstimatedRemainingLifespan, basic_info)\n这个值为什么一直是个无效值的状态？如果不支持该属性，是不是可以一直不显示？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/ef9e263b7c8142c809c55e09485d6f09dbd58fbe.jpeg",
+    "topic_user_name": "Hudi",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "nathanael yu",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1979/2",
+            "text": "该能力与具体ssd盘厂商有关，详细约束可以咨询PAE"
+        },
+        {
+            "user_name": "Zmcheng",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1979/3",
+            "text": "对比场景需要描述再具体一些。是不同卡的不同时候，还是相同卡的不同时候。不同时候系统、BMC运行状态是怎么样的。出现问题后刷新是否可恢复，还是一直持续"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "topic_id": 733,
+    "question": "openUBMC各sig组本周(2025-0428~2025-0505)关闭issue统计 - content: 本周(2025 0428- 2025 0505)，openUBMC项目共关闭38个issue\n1. bmccore组本周没有关闭的issue\n2. cicd组(本周共关闭2个issue)\n\n代码仓名称\nissue标题\n\nbingo\n【需求】bingo gen支持生成Create对象的函数\n\nqemu\n【需求】支持hi711 SOC芯片仿真代码\n\n3. docs组本周没有关闭的issue\n4. hardware组(本周共关闭7个issue)\n\n代码仓名称\nissue标题\n\nstorage\n【需求】支持存储组件与闭源仓依赖解耦\n\n【问题单】同步单 通过IPMI命令查询NVME硬盘信心，返回信息从硬盘介质之后的部分解析都是错误的\n\nvpd\n【需求】解决所有时间源同步失败告警没有恢复事件的问题\n\n【需求】新增所有时间源同步失败告警\n\n【需求】支持standby下BF3网卡主芯片温度目标值调速\n\n【需求】适配BT驱动加载及服务启动\n\n5. infrastructure组(本周共关闭1个issue)\n\n代码仓名称\nissue标题\n\nopenubmc-ci\n创建流水线报错 No such file or directory: '/data/workspace/1a5a2db282354ab796b9d51272a700cd/share/openubmc-ci/ci-scripts/ci_config/templates/create_task_header.json\n\n6. interface组(本周共关闭28个issue)\n\n代码仓名称\nissue标题\n\nmdb_interface\nbmc.kepler.CertificateService.CA资源下新增RedfishSchemaVersion属性\n\n支持导入固件加密密钥IPMI命令\n\n【需求】支持扩展NPU等AI卡的资产清单数据\n\n支持自研服务器OEM命令查询BMC网口协商速率\n\n固件升级接口和信号支持扩展参数\n\nEthGroup对象新增ipv4和ipv6对象的属性和方法\n\nrackmount\n【需求】支持PCIeFunction资源\n\nCA证书Redfish属性支持兼容性展示策略\n\n【需求】NetworkAdapters相关资源支持redfish新标准\n\n【需求】新增所有时间源同步失败告警\n\n修复查询BMC协处理器版本号获取问题\n\n【需求】支持查询指定PCIEDevices资源信息\n\n【需求】NetworkAdapters相关资源支持redfish新标准\n\n【需求】支持KVM键盘大小写同步和状态显示\n\n支持用户名自定义配置前端展示优化\n\n修复命令行ipmcset -t storage -d ctrlconfig -v回显问题\n\n【需求】支持扩展NPU等AI卡的资产清单数据\n\n【修改描述】支持光模块老化预测功能开关使能\n\n【需求】支持PrivilegeMap资源\n\nwebui\n【缺陷】新增大小写开关图标导致的样式错误\n\n【需求】可观测页面\n\n【需求】支持BIOS启动过程禁止KVM热键功能\n\n【需求】支持BIOS启动过程禁止VNC热键功能\n\n【公共能力】支持KVM软键盘数字键显示对应的符号信息\n\nprofile_schema\n支持redfish ca Certificate redfish schema配置项\n\n【需求】支持BMC的hostname变化时DHCP重新申请分配IP地址\n\n配置导入导出项与定制项新增时间同步策略\n\nlibirc\n优化KVM消息分发机制\n\n7. qa组本周没有关闭的issue\n8. release-management组本周没有关闭的issue\n9. security组本周没有关闭的issue\n10. tc组本周没有关闭的issue\nlinks: #p-1526-h-1-bmccoreissue-1, #p-1526-h-2-cicd2issue-2, https://gitcode.com/openUBMC/bingo/issues/19, https://gitcode.com/openUBMC/qemu/issues/6, #p-1526-h-3-docsissue-3, #p-1526-h-4-hardware7issue-4, https://gitcode.com/openUBMC/storage/issues/11, https://gitcode.com/openUBMC/storage/issues/5, https://gitcode.com/openUBMC/vpd/issues/27, https://gitcode.com/openUBMC/vpd/issues/26, https://gitcode.com/openUBMC/vpd/issues/25, https://gitcode.com/openUBMC/vpd/issues/24, #p-1526-h-5-infrastructure1issue-5, https://gitcode.com/openUBMC/openubmc-ci/issues/6, #p-1526-h-6-interface28issue-6, https://gitcode.com/openUBMC/mdb_interface/issues/41, https://gitcode.com/openUBMC/mdb_interface/issues/36, https://gitcode.com/openUBMC/mdb_interface/issues/34, https://gitcode.com/openUBMC/mdb_interface/issues/33, https://gitcode.com/openUBMC/mdb_interface/issues/27, https://gitcode.com/openUBMC/mdb_interface/issues/18, https://gitcode.com/openUBMC/rackmount/issues/59, https://gitcode.com/openUBMC/rackmount/issues/58, https://gitcode.com/openUBMC/rackmount/issues/56, https://gitcode.com/openUBMC/rackmount/issues/55, https://gitcode.com/openUBMC/rackmount/issues/54, https://gitcode.com/openUBMC/rackmount/issues/51, https://gitcode.com/openUBMC/rackmount/issues/49, https://gitcode.com/openUBMC/rackmount/issues/44, https://gitcode.com/openUBMC/rackmount/issues/42, https://gitcode.com/openUBMC/rackmount/issues/41, https://gitcode.com/openUBMC/rackmount/issues/40, https://gitcode.com/openUBMC/rackmount/issues/39, https://gitcode.com/openUBMC/rackmount/issues/20, https://gitcode.com/openUBMC/webui/issues/21, https://gitcode.com/openUBMC/webui/issues/20, https://gitcode.com/openUBMC/webui/issues/16, https://gitcode.com/openUBMC/webui/issues/15, https://gitcode.com/openUBMC/webui/issues/13, https://gitcode.com/openUBMC/profile_schema/issues/10, https://gitcode.com/openUBMC/profile_schema/issues/7, https://gitcode.com/openUBMC/profile_schema/issues/1, https://gitcode.com/openUBMC/libirc/issues/5, #p-1526-h-7-qaissue-7, #p-1526-h-8-release-managementissue-8, #p-1526-h-9-securityissue-9, #p-1526-h-10-tcissue-10",
+    "topic_user_name": "Xieqi29",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/733/2",
+            "text": "建议添加开始时有多少issue和周期内新增了多少issue"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/733/3",
+            "text": ""
+        }
+    ]
+}

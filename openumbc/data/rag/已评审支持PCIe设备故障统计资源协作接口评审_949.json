@@ -1,0 +1,15 @@
+{
+    "topic_id": 949,
+    "question": "【已评审】支持PCIe设备故障统计资源协作接口评审 - content: ISSUE链接（必填，此议题关联的issue）：\nhttps://gitcode.com/openUBMC/mdb_interface/issues/63\n背景（必填，文字描述议题背景，如需求来源、问题场景）:\n支持PCIe设备Fatal Error、Non-Fatal Error故障统计资源协作接口。提供故障计数属性获取以及设置功能。\n决策点（必填，一句话描述待决策点）：\n新增资源协作接口属性FatalErrorCount、NonFatalErrorCount，表示故障计数。\n对应资源路径是/bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}，对应资源接口是bmc.kepler.Systems.PCIeDevices.PCIeDevice.RAS。\n详细描述（必填，描述待评审接口的详细内容）：\n资源path： /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\n资源interface： bmc.kepler.Systems.PCIeDevices.PCIeDevice.RAS\n变化类型：新增属性\n应用场景：记录PCIeDevice对象故障计数属性\n持久化类型： 复位持久化\n操作权限：可读写 read: ReadOnly write:BasicSetting\n详细描述：\n\n方法名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nFatalErrorCount\n新增属性\nu\n可读写 R: ReadOnly W:BasicSetting\n复位持久化\n否\nPCIe设备致命错误计数\nU32，取值范围：0~0xFFFFFFFF\n\nNonFatalErrorCount\n新增属性\nu\n可读写 R: ReadOnly W: BasicSetting\n复位持久化\n否\nPCIe设备非致命错误计数\nU32，取值范围：0~0xFFFFFFFF\n\n评审结论\n1、同意新增属性FatalErrorCount、NonFatalErrorCount：\n\n资源路径: /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\n\n资源接口: bmc.kepler.Systems.PCIeDevices.PCIeDevice.RAS\n\n操作权限：可读写 read: ReadOnly write:BasicSetting\n\n签名：u\nlinks: #p-1934-issueissue-1, https://gitcode.com/openUBMC/mdb_interface/issues/63, #p-1934-h-2, #p-1934-h-3, #p-1934-h-4, #p-1934-h-5",
+    "topic_user_name": "王祝炜",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/949/2",
+            "text": ""
+        }
+    ]
+}

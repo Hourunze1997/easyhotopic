@@ -1,0 +1,22 @@
+{
+    "topic_id": 1317,
+    "question": "通过PCA9546访问Retimer片内数据异常 - content: 通过i2ctool工具访问Retimer型号（PT5161LRS）获取数据正常：\nimage547×223 3.85 KB\n./i2ctool64 2 10 1 0xe0 8\n./i2ctool64 2 10 1 0xe2 1\n./i2ctool64 2 10 5 0x42 0x0a 0x03 0x02 0x09 0x23\n./i2ctool64 1 10 2 1 0x42 0x09\n如果把最后行换成\nbusctl --user call bmc.kepler.hwproxy /bmc/kepler/Chip/Complex/Chip_Retimer1_010133 bmc.kepler.Chip.BlockIO Read a{ss}uu 0  0x09 2\n为啥通过busctl获取到数据没对上？获取到数据为0xff\nimage1275×168 8.03 KB\nRetimer I2C拓扑如下\nI2C10–PCA9545(0xe0)–CH4–Retimer Board1–PCA9617–PCA9546(0XE2)–CH1–Retimer(0x42)\nimage1133×430 11.5 KB\nRetimer拓扑是通过PCA9546通道进行连接，但是由于PCA9546类没有实现，只通过PCA9545两个通过模拟，是否合理？\n对应SR配置：\n\"ManagementTopology\": {\n      \"Anchor\": {\n        \"Buses\": [\n          \"I2c_10\"\n        ]\n      },\n      \"I2c_10\": {\n        \"Chips\": [\n          \"Lm75_RetimerBP_0\",\n          \"Eeprom_RetimerBP_0\",\n          \"Pca9555_RetimerBP_0\",\n          \"Pca9545_i2c10_chip\"\n        ]\n      },\n      \"I2cMux_Pca9546_i2c10_chip_1\": {\n        \"Chips\": [\n          \"Chip_Retimer1\"\n        ]\n      },\n      \"I2cMux_Pca9546_i2c10_chip_2\": {\n        \"Chips\": [\n          \"Chip_Retimer2\"\n        ]\n      },\n      \"Pca9545_i2c10_chip\": {\n        \"Buses\": [\n          \"I2cMux_Pca9546_i2c10_chip_1\",\n          \"I2cMux_Pca9546_i2c10_chip_2\"\n        ]\n      }\n    },\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/83f20b2aa38ed3e497d06c59a34934b0a7429f52.png, https://discuss.openubmc.cn/uploads/default/original/2X/4/475092f4c92ad1f5c4496bd6e2fb176a7b1e8af4.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/8641ff9f42e7d02c15cda9237c70681db7541cb8.png",
+    "topic_user_name": "Kunlun Xiechuanguan",
+    "best_answer_url": "/t/topic/1317/3",
+    "reply_posts": [
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1317/2",
+            "text": "提供chip的sr内容看下呢"
+        },
+        {
+            "user_name": "Kunlun Xiechuanguan",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1317/3",
+            "text": "已解决，OffsetWidth配置为0导致的问题"
+        }
+    ]
+}

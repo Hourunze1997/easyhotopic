@@ -1,0 +1,15 @@
+{
+    "topic_id": 507,
+    "question": "【已评审】SystemStartupState属性新增状态表示进入PXE - content: 关联issue\nSystemStartupState新增状态值表示进入PXE状态\n评审背景\n\n诉求：为保障bios post阶段能与BMC正常通信，某客户要求在bios PXE阶段前禁止人为重启BMC，避免BMC重启导致信息丢失。\n现有问题：在os重启时重启BMC，上报所有内存更换事件\n\n当前现状与差距/问题分析：\n\nBios post阶段，当前机制对bmc重启无任何限制，此时bmc重启会影响bios与bmc的正常通信。\n\n评审点\n\nSystemStartupState属性新增状态表示进入PXE\n\n详细方案如下：\nSystemStartupState属性新增状态表示进入PXE\n新增状态：BIOS_STARTUP_PXE_START 0x6F\n{\n    \"Bios\": {\n        \"path\": \"/bmc/kepler/Systems/:SystemId/Bios\",\n        \"privilege\": [\"ConfigureSelf\"],\n        \"interfaces\": {\n            \"bmc.kepler.Systems.Bios\": {\n                \"properties\": {\n                    \"SystemStartupState\": {\n                        \"usage\": []\n                    },\n                    \"SystemId\": {\n                        \"usage\": [\n                            \"CSR\"\n                        ]\n                    },\n                    \"Version\": {\n                        \"usage\": [\n                            \"CSR\"\n                        ]\n                    },\n                    ... ...\n                }\n            }\n        }\n   }\n}\n\nmethod/property/signal\ntype\n属性\n是否持久化（否/临时/复位/掉电/永久）\n属性值来源（CSR/代码）\n(req)签名\n请求参数\nrsp签名\n响应参数\n取值说明\n\nSystemStartupState\nproperty\nrw\n\nunit8BIOS_STARTUP_STATE_OFF 0x00BIOS_STARTUP_ME_EOP 0x20BIOS_STARTUP_PCIE_INFO_REPORTED 0x40BIOS_STARTUP_SMBIOS_WRITE_PREPARE 0x60BIOS_STARTUP_SMBIOS_WRITE_DATA 0x63BIOS_STARTUP_SMBIOS_WRITE_FINISH 0x66BIOS_STARTUP_PXE_START 0x6FBIOS_STARTUP_POST_STAGE_FINISH 0xFE\n\n评审结论\n同意SystemStartupState新增枚举值表示进入PXE，状态值：BIOS_STARTUP_PXE_START 0x6F\n遗留事项\n在mdb_interface仓将SystemStartupState枚举值补充完整\nlinks: #p-967-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/14, #p-967-h-2, #p-967-h-3, #p-967-systemstartupstatepxe-4, #p-967-h-5, #p-967-h-6",
+    "topic_user_name": "Likun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/507/2",
+            "text": ""
+        }
+    ]
+}

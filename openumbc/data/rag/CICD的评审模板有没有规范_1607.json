@@ -1,0 +1,15 @@
+{
+    "topic_id": 1607,
+    "question": "CICD的评审模板有没有规范 - 请问下CICD sig组的评审模板规范有木有",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/1607/2",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1607/2",
+            "text": "当前sig-CICD有每日的答疑例会，如果有议题需要申报可以发帖说明，议题没有特定的模板要求，建议要讲清楚事务的背景、现象、述求。"
+        }
+    ]
+}

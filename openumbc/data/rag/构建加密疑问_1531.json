@@ -1,0 +1,15 @@
+{
+    "topic_id": 1531,
+    "question": "构建加密疑问 - content: 各位大佬好，我在本地想完全手动构建并签名 openUBMC 的 固件。目前我已经参考官方构建脚本跑了一下抓取日志，把关键日志打包在附件《构建加密日志.pdf》中，想请教以下几点困惑：\n\n问题 1：如何从零手动跑完整流程？\n在正式打包 HPM 之前，脚本做了大量操作（比如 uboot 签名、img 处理、header 拼接等）。我想从原始文件一步一步手动执行，包括：\n\nuboot.bin → 签名 → 加 header → 合成镜像；\nrootfs 镜像 → 签名；\n多个文件 → 拼成 openUBMC_gpp.bin → 再封装成 .hpm；\n最终 .hpm 包再做一次签名。\n\n但这些步骤之间的依赖和必要性还不太清楚，想请大佬指点一套明确可操作的完整流程。\n构建加密日志.pdf (45.3 KB)\nlinks: #p-3713-h-1-1, /uploads/short-url/n0WINTVnn1QcgBKwjy6eGKDzXSt.pdf",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/1531/3",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1531/3",
+            "text": "content: 可以参考下这个\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\nlinks: https://gitcode.com/openUBMC/bingo/issues/5?ref=&did=a074d61c60ee254bee288e3c87e13a0b60cf3164#tid-100886700, https://gitcode.com/openUBMC/bingo/issues/5?ref=&did=a074d61c60ee254bee288e3c87e13a0b60cf3164#tid-100886700"
+        }
+    ]
+}

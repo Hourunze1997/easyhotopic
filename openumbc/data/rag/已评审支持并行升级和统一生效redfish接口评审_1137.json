@@ -1,0 +1,29 @@
+{
+    "topic_id": 1137,
+    "question": "【已评审】支持并行升级和统一生效redfish接口评审 - content: 背景：并行升级特性支持redfish机机接口，需要新增URL，具体评审点如下：\n评审点一：redfish新增并行升级接口：\nURI: /redfish/v1/UpdateService/Actions/Oem/Huawei/UpdateService.ParallelUpdate\n操作类型：POST\n请求参数：\n{ \n    Packages：[\n        { \n            \"ImageURI\": filepath, \n            \"TransferProtocol\": protocol,\n            \"BiosActiveMode\": biosactivemode,\n            \"SystemId\": systemid\n        },\n        { \n            \"ImageURI\": filepath, \n            \"TransferProtocol\": protocol,\n            \"BiosActiveMode\": biosactivemode,\n            \"SystemId\": systemid\n        }\n    ]\n}\n权限：\nBasicSetting\n\n请求参数说明：\n\n参数\n必选/可选\n参数说明\n取值\n\nfilepath\n必选\n升级包所在路径\n升级包的URL\n\nprotocol\n可选\n从远程服务器下载升级包时使用的协议\nHTTPS/SCP/SFTP/CIFS/NFS（本地升级则不需要该字段。)\n\nbiosactivemode\n可选\nBIOS无感升级生效区域\nDefault/IMU/M7/All/None\n\nsystemid\n可选\nMulti-Host场景下指定升级某host的固件\n字符串[1 ~ N]：表示升级第N个host上的固件，要求对应的host在位 。可选参数，不使用此参数默认升级所有host。\n\n响应消息体举例：\n{ \n    \"@odata.context\": \"/redfish/v1/$metadata#TaskService/Tasks/Members/$entity\", \n    \"@odata.type\": \"#Task.v1_0_2.Task\", \n    \"@odata.id\": \"/redfish/v1/TaskService/Tasks/1\", \n    \"Id\": \"1\", \n    \"Name\": \"Update Task\"\n    \"TaskState\": \"Running\", \n    \"StartTime\": \"2016-11-28T10:36+00:00\", \n    \"Messages\": [], \n    \"SubTasks\": {\n        \"@odata.id\": \"/redfish/v1/TaskService/Tasks/1/SubTasks\"\n    } \n    \"Oem\": { \n       \"Huawei\": { \n        \"TaskPercentage\": null\n        }\n    }\n}\n响应码：202\n\n响应参数说明：\n\n字段\n类型\n说明\n\n@odata.context\n字符串\n当前任务资源的OData描述信息\n\n@odata.type\n字符串\n当前任务资源的类型\n\n@odata.id\n字符串\n当前任务资源的访问路径\n\nId\n字符串\n任务ID\n\nName\n字符串\n任务的名称\n\nTaskState\n字符串\n任务执行状态\n\nStartTime\n字符串\n任务的起始时间\n\nTaskPercentage\n字符串\n任务执行的进度\n\n评审点二：redfish新增统一生效接口：\nURI: /redfish/v1/UpdateService/Actions/Oem/Huawei/UpdateService.StartActivate\n操作类型：POST\n接口功能：所有待生效固件开始生效\n请求消息体：\n{\n    // 可选：\"ResetBMC\"、\"PowerOff\"\n    \"ActivationControl\": [\n         \"ResetBMC\" ，\n         \"PowerOff\"\n    ]\n}\n\n请求参数说明：\n\n字段\n类型\n说明\n\nActivationControl\n数组\n生效控制方式\n\n响应消息体举例：\n{ \n    \"@odata.context\": \"/redfish/v1/$metadata#TaskService/Tasks/Members/$entity\", \n    \"@odata.type\": \"#Task.v1_0_2.Task\", \n    \"@odata.id\": \"/redfish/v1/TaskService/Tasks/1\", \n    \"Id\": \"1\", \n    \"Name\": \"Update Task\"\n    \"TaskState\": \"Running\", \n    \"StartTime\": \"2016-11-28T10:36+00:00\", \n    \"Messages\": [], \n    \"Oem\": { \n       \"Huawei\": { \n        \"TaskPercentage\": null\n        }\n    }\n}\n响应码：202\n\n响应参数说明：\n\n字段\n类型\n说明\n\n@odata.context\n字符串\n当前任务资源的OData描述信息\n\n@odata.type\n字符串\n当前任务资源的类型\n\n@odata.id\n字符串\n当前任务资源的访问路径\n\nId\n字符串\n任务ID\n\nName\n字符串\n任务的名称\n\nTaskState\n字符串\n任务执行状态\n\nStartTime\n字符串\n任务的起始时间\n\nSubTasks\n对象\n此任务的子任务集合路径\n\nTaskPercentage\n字符串\n任务执行的进度\n\n说明：\n“ResetBMC”：生效只需要复位BMC的固件，如BMC、CSR；\n“PowerOff”：生效只需要下电就生效的固件，如VRD；说明：生效完成后会恢复系统之前的上下电状态\n“ResetBMC”与“PowerOff”都选择：生效所有固件；\n缺省：均不选择：生效所有固件；\n权限：\n如果有\"PowerOff \"则需要PowerMgmt权限，否则需要BasicSetting权限。\n如果无权限报错（InsufficientPrivilege，HTTPCode：403）\n评审结论\n通过，具体结论如下：\n\n同意新增 Redfish 并行升级接口，接口操作类型为 POST， 接口 URI 为 /redfish/v1/UpdateService/Actions/Oem/Huawei/UpdateService.ParallelUpdate\n同意新增 Redfish 统一生效接口，接口操作类型为 POST，接口 URI 为 /redfish/v1/UpdateService/Actions/Oem/Huawei/UpdateService.StartActivate\nlinks: #p-2458-h-1",
+    "topic_user_name": "lixiaoning",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1137/2",
+            "text": "content: 当前BIOS在并行升级时无法支持无感升级，当前问题已经issue进行跟踪。具体issue：\n并行升级支持BIOS的无感升级 rackmount issue #120\nlinks: https://gitcode.com/openUBMC/rackmount/issues/120"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1137/3",
+            "text": "content: 当前并行升级的响应后续要支持子任务管理，当前问题已经issue进行跟踪，具体issue：\n并行升级响应支持子任务处理 rackmount issue #121\nlinks: https://gitcode.com/openUBMC/rackmount/issues/121"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1137/4",
+            "text": ""
+        }
+    ]
+}

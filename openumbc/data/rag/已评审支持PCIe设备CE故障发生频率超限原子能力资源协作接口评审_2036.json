@@ -1,0 +1,15 @@
+{
+    "topic_id": 2036,
+    "question": "【已评审】支持PCIe设备CE故障发生频率超限原子能力资源协作接口评审 - content: SSUE链接 ：\n支持PCIe设备CE故障发生频率超限原子能力\n评审背景\n\n实现RAS事件可灵活配置、扩展和能力对外开放；满足IPMI、Redfish RAS相关规范；支持原始数据查询，支撑伙伴/客户实现自规划差异化特性。\n\n需求\n支持汇聚的PCIe设备和单个PCIe设备CE故障发生频率超限原子能力资源协作接口。用于故障时记录SEL。\n决策点\n决策点一\n新增资源协作接口属性CorrectableErrorOverfrequencyCount。表示单个PCIe设备CE故障发生频率超限计数。\n对应资源路径是/bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\n对应资源接口是bmc.kepler.Systems.PCIeDevices.PCIeDevice.RAS\n决策点二\n新增资源协作接口属性CorrectableErrorOverfrequency。表示汇聚PCIe设备CE故障发生频率超限原子能力\n对应资源路径是/bmc/kepler/Systems/:SystemId/FDMDomain/PCIeRASCollector\n对应资源接口是bmc.kepler.Systems.FDMDomain.PCIeRASCollector和bmc.kepler.Systems.FDMDomain.UnknownPCIeRASCollector\n评审点\n评审点一\npath： /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\ninterface： bmc.kepler.Systems.PCIeDevices.PCIeDevice.RAS\n变化类型：新增属性\n应用场景：支持单个PCIe设备CE故障发生频率超限计数。\n持久化类型：复位持久化\n操作权限： 可读写 read: ReadOnly write:BasicSetting\n具体如下：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nCorrectableErrorOverfrequencyCount\n新增属性\nu\n可读写R：ReadOnlyW：BasicSetting\n复位持久化\ntrue\n系统运行周期内，PCIe设备CE故障发生频率超门限的计数。取值范围：0~0xFFFFFFFF，默认值0。系统上下电/复位时，统计次数清零。\n无\n\n评审点二\npath： /bmc/kepler/Systems/:SystemId/FDMDomain/PCIeRASCollector\ninterface： bmc.kepler.Systems.FDMDomain.PCIeRASCollector\n变化类型：新增属性\n应用场景：支持汇聚PCIe设备CE故障发生频率超限原子能力。\n持久化类型：复位持久化\n操作权限： ReadOnly\n具体如下：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nCorrectableErrorOverfrequency\n新增属性\ny\n只读R：ReadOnlyW：不涉及\n复位持久化\ntrue\nPCIe设备CE故障发生频率超门限。取值: 0-未发生，1-发生，默认值0。系统上下电/复位时，属性恢复默认值0。下一次出现故障时先恢复为0后置为1。\n无\n\n评审点三\npath： /bmc/kepler/Systems/:SystemId/FDMDomain/PCIeRASCollector\ninterface： bmc.kepler.Systems.FDMDomain.UnknownPCIeRASCollector\n变化类型：新增属性\n应用场景：支持汇聚未知PCIe设备CE故障发生频率超限原子能力。\n持久化类型：复位持久化\n操作权限： ReadOnly\n具体如下：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nCorrectableErrorOverfrequency\n新增属性\ny\n只读R：ReadOnlyW：不涉及\n复位持久化\ntrue\n未知PCIe设备CE故障发生频率超门限。取值: 0-未发生，1-发生，默认值0。系统上下电/复位时，属性恢复默认值0。下一次出现故障时先恢复为0后置为1。\n无\n\n评审结论\n1、同意新增资源协作接口属性\npath： /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\ninterface： bmc.kepler.Systems.PCIeDevices.PCIeDevice.RAS\n新增属性CorrectableErrorOverfrequencyCount，签名u，可读写，读权限： ReadOnly，写权限：BasicSetting，发送变更通知事件\n2、同意新增资源协作接口属性\npath：/bmc/kepler/Systems/:SystemId/FDMDomain/PCIeRASCollector\ninterface：bmc.kepler.Systems.FDMDomain.PCIeRASCollector\npath：/bmc/kepler/Systems/:SystemId/FDMDomain/PCIeRASCollector\ninterface：bmc.kepler.Systems.FDMDomain.UnknownPCIeRASCollector\n新增属性CorrectableErrorOverfrequency，签名y，只读，读权限： ReadOnly，发送变更通知事件\n遗留问题\n1、评审点三\"接口说明\"需要修改，未知PCIe设备\n2、\"接口说明\"修改”先恢复为0后置为1“\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/173, #p-5038-h-1, #p-5038-h-2, #p-5038-h-3, #p-5038-h-4, #p-5038-h-5, #p-5038-h-6, #p-5038-h-7, #p-5038-h-8, #p-5038-h-9, #p-5038-h-10, #p-5038-h-11",
+    "topic_user_name": "Huangrenjie Wtss6",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2036/2",
+            "text": ""
+        }
+    ]
+}

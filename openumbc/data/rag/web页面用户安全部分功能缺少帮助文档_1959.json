@@ -1,0 +1,15 @@
+{
+    "topic_id": 1959,
+    "question": "web页面用户&安全部分功能缺少帮助文档 - 操作步骤：\n1、通过浏览器登录web；\n2、依次点击“用户&安全”-“LDAP”-右上角的“帮助”；\n结果：\n1、bmc_help_0025.html  the page required does not exist.\n同样的，还有双因素认证bmc_help_0027.html ，对应的中英文都有问题",
+    "topic_user_name": "lixiaocan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Zstlan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1959/2",
+            "text": "您好，此功能之前版本不支持，对应文档描述已删除。后续该功能按照版本节奏对外开放，文档会提供相应补充。"
+        }
+    ]
+}

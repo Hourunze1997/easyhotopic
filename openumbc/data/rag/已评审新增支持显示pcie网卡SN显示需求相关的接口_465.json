@@ -1,0 +1,29 @@
+{
+    "topic_id": 465,
+    "question": "【已评审】新增支持显示pcie网卡SN显示需求相关的接口 - content: 背景（必填，文字描述议题背景，如需求来源、问题场景）:\n互联网需求，支持web界面显示网卡SN\n决策点（必填，一句话描述待决策点）：\n\n新增IPMI命令：用于BIOS上报网卡SN的IPMI接口\n新增web-rest接口属性： /UI/Rest/System/NetworkAdapter/:adapterid 接口网卡SN属性\n\n整体架构/方案（可选，文字/图描述接口设计背后的整体管理架构/方案）：\n32AC5DFA-33F3-4AAD-83E1-15E37A25298A808×332 143 KB\n详细描述（必填，描述待评审接口的详细内容）：\n\nIPMI命令字：06 58\n变化类型：新增子命令\n应用场景：BIOS启动时上报PCIe设备 VPD信息\n操作类型： SET\n操作权限：BasicSetting\n\nreq\n说明\n\nbyte1\nsubcmd  0xd2\n\nbyte2\nCardType OCP or PCIe\n\nbyte3\nPCIe SlotNumber\n\nbyte4\nCard Bus Number\n\nbyte5\nCard Device Number\n\nbyte6\nCard Function Number\n\nbyte7\nVPD Item Count\n\nbyte8:9\nVPD Item Keyword\n\nbyte10\nVPD Item Length N\n\nbyte10:10+N-1\nVPD Item Data\n\nbyteX\n重复VPD Item内容\n\n示例：BIOS 上报请求 06 58 d2 01 02 17 00 00 01 53 4e 06 31 32 33 34 35 36 – 即slot2 PCIe卡BDF为17 00 00；SN 123456\nBMC响应 完成码 00 错误码复用06 58命令原定义\n\n新增web-rest接口属性\nuri：/UI/Rest/System/NetworkAdapter/:adapterid\n变化类型：新增属性\n操作类型： GET\n应用场景：网卡界面查询时显示\n属性名称：SerialNumber\n取值类型：string\n操作权限：ReadOnly\n错误说明：属性值获取错误展示默认值\n性能说明：与/UI/Rest/System/NetworkAdapter/:adapterid中 rootBDF共用一次资源调用，对性能无影响\n兼容性策略：新增属性不涉及\n\n评审结论\n同意新增IPMI命令及rest接口属性\n遗留事项\n\nIPMI命令资料刷新事项确认，社区IPMI资料如何刷新 – @pengqiang-gs\nlinks: #p-867-h-1, #p-867-h-2, #p-867-h-3, https://forum.openubmc.cn/uploads/default/original/1X/a7645d826e01e5a07d9978f5cc1f1159e7487746.png, #p-867-h-4, #p-867-h-5, #p-867-h-6, /u/pengqiang-gs",
+    "topic_user_name": "kunlun_Baominmin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/465/2",
+            "text": "请联系harware SIG组maintainer交流下，资源协作接口设计是否合理。另外，建议在接口中一并增加PCIe卡的PN属性"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/465/3",
+            "text": "已与harware SIG组maintainer进行方案评估，最新方案已更新"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/465/4",
+            "text": ""
+        }
+    ]
+}

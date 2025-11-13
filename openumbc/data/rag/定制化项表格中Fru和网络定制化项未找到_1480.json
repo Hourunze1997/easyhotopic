@@ -1,0 +1,15 @@
+{
+    "topic_id": 1480,
+    "question": "定制化项表格中Fru和网络定制化项未找到 - 请问一下 openUBMC定制化项表格在哪能查看呢 目前在openUBMC中未找到fru 中Product Version的定制化项和Ipv6Addr 与Ipv6Gateway",
+    "topic_user_name": "Jiaoxinchao",
+    "best_answer_url": "/t/topic/1480/2",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1480/2",
+            "text": "content: 目前定制化项整体的表格需要在社区上归档，这个请 @aaronlee_1mtye 解答一下\n关于上述问题中的定制化项，当前在 gitcode 仓库中有定义。具体如下：\n\nFru 电子标签定制化项请参考：profile schema #frudata\n网络IPv6相关定制化项请参考：profile schema #bmc_network\nlinks: /u/aaronlee_1mtye, https://gitcode.com/openUBMC/profile_schema/blob/main/schema/frudata.json, https://gitcode.com/openUBMC/profile_schema/blob/main/schema/bmc_network.json"
+        }
+    ]
+}

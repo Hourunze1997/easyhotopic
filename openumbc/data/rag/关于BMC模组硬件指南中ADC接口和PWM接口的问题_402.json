@@ -1,0 +1,36 @@
+{
+    "topic_id": 402,
+    "question": "关于《BMC模组硬件指南》中ADC接口和PWM接口的问题 - content: image765×285 43.8 KB\nimage752×691 62.9 KB\n请问：\n1、ADC接口的电压在代码中该如何去读取？\n2、PWM调速在组件中好像都是走风扇板SMC命令字去实现控制的，那这里的PWM接口在代码中又该如何使用呢？\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/156edf9063fe04a4e14a8357475e45579c5670d6.png, https://forum.openubmc.cn/uploads/default/original/1X/532163470918b5a49c8f40615c76af020466735c.png",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "/t/topic/402/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/402/2",
+            "text": "这里的接口都是从1711来看的，当前天池下很多这些能力都集成在了smc命令中，比如你举例的pwm\n但是1711本身还是支持的，在非天池场景下可以通过这些通道进行硬件交互。\n从BMC代码中，就是通过对应的驱动进行访问，adc和pwm都有对应的驱动：/dev/adc和/dev/pwm，具体驱动接口请参考芯片手册。\n如果是使用C进行业务开发，可以直接调用驱动进行操作。openUBMC中也提供了lua的封装接口:\nlocal adc = require 'libsoc_adapter.adc'\nlocal pwm = require 'libsoc_adapter.pwm'"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/402/3",
+            "text": "好的，张工，那请问这个芯片手册哪里能获取呢，或者说lua的封装接口的文档要从哪里获取？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/402/4",
+            "text": "建议先联系PAE"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/402/5",
+            "text": "好的，感谢张工"
+        }
+    ]
+}

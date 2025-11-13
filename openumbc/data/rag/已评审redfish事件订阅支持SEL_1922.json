@@ -1,0 +1,15 @@
+{
+    "topic_id": 1922,
+    "question": "【已评审】redfish事件订阅支持SEL - content: 背景\n当前openUBMC的四种事件订阅中，snmp、smtp、syslog事件订阅均已支持SEL上报，有客户对redfish事件订阅功能提出诉求，需要实现redfish事件订阅支持上报SEL的能力。\n决策点：redfish事件订阅资源协作接口属性EventType取值新增SEL\n\n注：对应redfish接口/redfish/v1/EventService中的Oem/{{OemIdentifier}}/ReportType属性\n\n资源path：/bmc/kepler/EventService/Subscriptions/Redfish\n资源interface：bmc.kepler.EventService.Subscriptions.Redfish\n变化类型：修改属性\n应用场景：查询、设置redfish上报事件类型\n详细描述：\n\n属性名称\nEventType\n\n变化类型\n属性变更（只读变更为读写，取值范围变化）\n\n签名\ns\n\n持久化\n不持久化\n\n只读属性\ntrue → false(变更)\n\n操作权限\nRead:ReadOnlyWrite:BasicSetting(本次新增)\n\n变化通知\nfalse\n\n属性值来源\n组件代码更新\n\n说明\n创建Redfish事件订阅时选择上报的事件类型\n\n取值\n枚举值：SEL(本次新增)、Event\n\n注：openUBMC暂不提供任何设置该资源协作接口属性的北向接口。该属性由定制仓设置并提供SEL事件的上报能力\n\n评审结论\n同意资源协作接口bmc.kepler.EventService.Subscriptions.Redfish的属性EventType取值新增SEL，属性操作改为可读写，写权限BasicSetting\n遗留事项\nlinks: #p-4740-h-1, #p-4740-redfisheventtypesel-2, #p-4740-h-3, #p-4740-h-4",
+    "topic_user_name": "Zhangyu",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1922/2",
+            "text": ""
+        }
+    ]
+}

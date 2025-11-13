@@ -1,0 +1,29 @@
+{
+    "topic_id": 1083,
+    "question": "伙伴openubmc版本如何支持升级华为签名固件版本和伙伴自己签名的固件版本均能成功？ - content: 1.我在华为官网下载了 Huawei Integrity Root CA - G2.der这个证书后重命名为rootca.der放在manifest目录的build/product/BMC/openUBMC/rootfs/opt/bmc/trust/partner目录；\n2. 执行bingo build -b openUBMC出包；\n3. web升级该openUBMC版本后，再升级从华为官网发布的cpld版本和bios版本，均提示无效的升级包？\n初步定位过程：\n\n查看bmc后台/opt/bmc/trust/partner/目录下确实存在rootca.der文件，经过对比与 Huawei Integrity Root CA - G2.der完全一样；\n查看日志发现提示verify signature error,code 88200004\n请问下该问题要怎样解决？\n证书&华为cpld固件.zip (195.6 KB)\ndump_info.zip (3.1 MB)\nlinks: /uploads/short-url/pkf2iBdGgJtAOZDaBxRTnFqVKdH.zip, /uploads/short-url/4tcvd1SdmfnLLfQOq5Uw7mbighZ.zip",
+    "topic_user_name": "yctco_zhanglei",
+    "best_answer_url": "/t/topic/1083/4",
+    "reply_posts": [
+        {
+            "user_name": "Chengxiaoju",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1083/2",
+            "text": "只放置rootca.der证书不行，主要是需要修改firmware_mgmt组件下面的validate_sign.lua文件，增加验签过程。这个组件是没有开放出来的，目前只能场内制作。"
+        },
+        {
+            "user_name": "yctco_zhanglei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1083/3",
+            "text": "你好，你那边验证过这样是可行的了吗？"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1083/4",
+            "text": "猜测原因：\n历史上支持pkcs v1.5和pss填充模式证书签名，你获取的固件可能使用pkcs v1.5填充模式的证书签名，Huawei Integrity Root CA - G2.der是PSS填充模式的证书，无法验签pkcs v1.5的固件。\n检查方法：使用文档编辑器打开待升级hpm包，检查前15行左右是否存在”Huawei Integrity Root CA - G2“文字，如果没有就是PKCS V1.5的固件。\n建议：对固件重签名。"
+        }
+    ]
+}

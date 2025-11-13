@@ -1,0 +1,22 @@
+{
+    "topic_id": 640,
+    "question": "CSR设计相关文档 - 我们目前在开发自己的硬盘背板与风扇板，需要配置调速策略、硬盘背板资源描述等CSR文件。当前的文档只是大概介绍了一下CSR配置，但是具体为什么要这么配置，配置含义与作用都不清楚，参考已有的CSR文件也看不明白。希望能够出一个具体的指导文档，能够说明CSR文件具体如何配置，配置参数作用与意义。",
+    "topic_user_name": "dh_qiuming",
+    "best_answer_url": "/t/topic/640/3",
+    "reply_posts": [
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/640/2",
+            "text": "CSR里面，有些配置的含义可以通过搜索类名到对应组件来看里面的属性定义（有些是hw自己定义的，有些可能来自于ipmi规范等）；如果搜索不到就是未开源组件；不过也确实需要一份指导文档来指导开发，很多时候只会模仿开发，对于具体含义是不清晰的"
+        },
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/640/3",
+            "text": "目前得知–bmc studio会提供所有CSR对象和属性的介绍，规划中，敬请期待"
+        }
+    ]
+}

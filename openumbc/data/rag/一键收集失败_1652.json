@@ -1,0 +1,64 @@
+{
+    "topic_id": 1652,
+    "question": "一键收集失败 - content: 通过网页和ssh的命令都无法一键收集，且进行一键收集的操作之后网络会断开连接\n企业微信截图_175204537597981912×924 55.6 KB\nimage343×144 2.79 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/f643d2174551ae3efa569334d54c9e17f462c60e.png, https://discuss.openubmc.cn/uploads/default/original/2X/4/4c4bcbb94a80e7acc2bbb68cbf5d1902f1ef960d.png",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/1652/9",
+    "reply_posts": [
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1652/2",
+            "text": "看看能否重新连接后收集一份日志呢？"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1652/3",
+            "text": "重启几次都收集不了"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1652/4",
+            "text": "那试试回退到正常的版本再收集呢，只有拿到日志才能分析哪里有问题。"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1652/5",
+            "text": "我在manifest用默认conan仓库里的编出来还是收集不了"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1652/6",
+            "text": "content: 试试把app.log放在tmp目录下，然后sftp取出来呢。拿到的话发送至邮件 ouwenjian@huawei.com\nlinks: mailto:ouwenjian@huawei.com"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1652/7",
+            "text": "content: app.txt (1.1 MB)\n邮件已发，请查收\nlinks: /uploads/short-url/5dBUEfVsbElBJOlqqhRZ1cdU9eW.txt"
+        },
+        {
+            "user_name": "欧文健",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1652/8",
+            "text": "这个app日志可能转储过了，里面没有相关报错信息。触发一下日志收集，失败后再把 app.log、app.log.1.gz 和 operation.log 这三个日志文件再发一份用于定位吧。"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1652/9",
+            "text": "这个问题是总断网导致的，网络稳定之后可以收集了"
+        }
+    ]
+}

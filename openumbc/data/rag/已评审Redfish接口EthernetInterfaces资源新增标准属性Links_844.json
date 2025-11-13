@@ -1,0 +1,36 @@
+{
+    "topic_id": 844,
+    "question": "【已评审】Redfish接口EthernetInterfaces资源新增标准属性Links - content: 关联issue\n支持Redfish接口EthernetInterfaces资源下Links等标准属性-rackmount-GitCode\n背景\nEthernetInterfaces资源支持redfish新标准\n评审点\n是否增加EthernetInterfaces资源的子属性\"Links\"\n详细描述\n\"Uri\": \"/redfish/v1/Managers/:managerid/EthernetInterfaces/:ethernetinterfaceid\"\n\n变化类型 ：新增属性Links\n操作类型 ：Get\n样例：\n\"Links\": {\n    \"Chassis\": {\n       \"@odata.id\": \"/redfish/v1/Chassis/${Uri/managerid}\"\n    }\n}\n\n评审结论\n通过，同意在 EthernetInterfaces 资源下新增属性 Links，属性类型为 object\nlinks: #p-1739-issue-1, https://gitcode.com/openUBMC/rackmount/issues/37, #p-1739-h-2, #p-1739-h-3, #p-1739-h-4, #p-1739-h-5",
+    "topic_user_name": "Iss Szyaoh",
+    "best_answer_url": "/t/topic/844/2",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/844/2",
+            "text": "iss_szyaoh:\n\n/redfish/v1/Systems/${Uri/managerid}/EthernetInterfaces\n\n【评审意见】这地方的链接需要进一步确认来源\n【确认结论】当前 Manager 下的网口和 System 下的网口没有关联关系，因此无法直接进行链接。当前Oem属性直接去除，Links资源下仅实现关联的 Chassis 资源"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/844/3",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/844/4",
+            "text": ""
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/844/5",
+            "text": ""
+        }
+    ]
+}

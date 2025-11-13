@@ -1,0 +1,78 @@
+{
+    "topic_id": 1407,
+    "question": "0.5.317版本的bmcgo，出BMC签名包失败问题 - content: 基于新镜像出包流程指导文档，出包失败如下：\nimage1365×957 50.4 KB\n查看task.log日志，有以下3处报错，请问如何解决\nimage1435×488 44.9 KB\nimage1429×498 61.3 KB\nimage1440×737 101 KB\nbmcgo版本是0.5.317，manifest用的社区最新的代码（6.18号）：\n\nimage860×149 6.76 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/520888a8e0428a62094cc749f57ec300e844a14d.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/655feb5398075f0a1ea5cd3cd5e98310d1917a2b.png, https://discuss.openubmc.cn/uploads/default/original/2X/1/10675d9a406e6bd665ca29047f74fa65ca6433ed.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/e652d0438208796fcf75b80c01908c19162936fc.png, https://discuss.openubmc.cn/uploads/default/original/2X/4/4e38cef011c886a64539e26d2b4fd9951d39692b.png",
+    "topic_user_name": "KLTK_qyh",
+    "best_answer_url": "/t/topic/1407/10",
+    "reply_posts": [
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1407/2",
+            "text": "content: openubmc.cn\n\nUbuntu开发环境搭建 | openUBMC\nopenUBMC\n\n有没有按照这篇指导里在 manifest 执行 init.py?\nlinks: https://www.openubmc.cn/docs/zh/development/quick_start/prepare_environment/ubuntu_env.html, https://www.openubmc.cn/docs/zh/development/quick_start/prepare_environment/ubuntu_env.html"
+        },
+        {
+            "user_name": "KLTK_qyh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1407/3",
+            "text": "有的，一开始在 manifest 下执行了 python3 init.py -path ./bmc_sdk.zip，bingo -v 命令查看安装的是0.5.230版本的bmcgo，用 bingo build 命令也可以出包成功。之后按照出包文档，安装0.5.317版本的bmcgo工具之后，执行bingo build -b openUBMC -r openubmc_dev命令，出包失败。"
+        },
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1407/4",
+            "text": "content: 自签名CA创建以及HPM签名指导 CICD SIG\n\n说明\n签名涉及多种证书公私钥，主要包含根证书、证书吊销列表、由根证书派生的签名证书和时间戳证书等。 \n根证书是整个信任链起点，泄露根证书私钥会产生严重安全问题，需要保障根证书私钥绝对安全，建议客户使用安全加密、离线保存、多人持有等措施保护根证书私钥不会被泄露、遗失、损毁。 \n所有与根证书私钥相关的操作建议在离线环境（且一直保持离线状态）中执行，华为不对证书的生成、保存、传输做任何安全保证，也不承担…\n  \n\n请按照指导配置自己的签名\nlinks: https://discuss.openubmc.cn/t/topic/215, /c/sig-cicd/44, #p-302-h-1"
+        },
+        {
+            "user_name": "KLTK_qyh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1407/5",
+            "text": "按照此指导生成的证书，我们有2个同事已经验证过没问题。唯独我这里出签名包遇到报错。"
+        },
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1407/6",
+            "text": "具体报错的内容是什么呢？"
+        },
+        {
+            "user_name": "KLTK_qyh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1407/7",
+            "text": "具体报错，我在前面的提问里面有截图哈"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1407/8",
+            "text": "content: no remote 'conancenter' defined in remotes 报错， 是conan自带报错，bmcgo使用的是自定义的remote，此报错不影响构建。\ncannot stat  xxx/sign_img.xml 报错，是因为没有在manifest.yml配置自签名。需要按如下示例配置：\n自签名CA创建以及HPM签名指导\nlinks: https://discuss.openubmc.cn/t/topic/215#p-302-h-12"
+        },
+        {
+            "user_name": "KLTK_qyh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1407/9",
+            "text": "content: ca证书放到root下了，manifest.yaml中也配置了，我们再找下原因看哪里没配置好，谢谢\n7243cac83506be0f1d4b700afff97211683×559 12.9 KB\n6a964d41bb244f91eb227da9b2300d17859×580 32.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/c7f9c230e30edf031935e93d9f873761c220544a.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/235b9dc43218bb00bcdcad9f0ac6ae5d2f084449.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1407/10",
+            "text": "层级不对。 certificates字段是在signature下面的，属于signature的属性， 与files同级， 结构示例如下：\nbase:\n  signature:\n       files:\n       certificates:"
+        },
+        {
+            "user_name": "KLTK_qyh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1407/11",
+            "text": "就是这个原因，调整了certificate与file同级就出包成功了，多谢~"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "topic_id": 1342,
+    "question": "在I2C8下新增chip导致fru信息丢失和风扇调速模块出错 - content: 【问题描述】\n在文件中适配chip vpd/vendor/openUBMC/14100513_00000001010302044492.sr\nimage698×601 33.9 KB\nimage472×447 21.4 KB\n经过日志调试发现在接入此硬件模块后导致I2C8下的connector中的loadstatus 值发生变化\nimage292×251 7.54 KB\n企业微信截图_174971422190551657×918 90.9 KB\n导致connector 的ID 没被设置上，从而导致sr 没被加载。\n请问Connector_PSR_EEP_0101 的loadstatus 是由什么决定的？有什么方案可以解决当前情况，从而使得新加的Chip可以正常使用\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/50b8340c41a558d32ebfa16172dd64efd013b21f.png, https://discuss.openubmc.cn/uploads/default/original/2X/4/4115e1e78b8e9f1d433cf938a9017f936012f29f.png, https://discuss.openubmc.cn/uploads/default/original/2X/b/bbe5f00f9b12f65b0d5bcc0e531349dfe20b728a.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/eee5b269060b86100512ebae3a9e7cdd70519744.png",
+    "topic_user_name": "Baode_zhujunjie",
+    "best_answer_url": "/t/topic/1342/3",
+    "reply_posts": [
+        {
+            "user_name": "Baode_zhujunjie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1342/2",
+            "text": "content: 正常的风扇调速界面\n企业微信截图_17496955161139877×631 20.4 KB\n异常界面\n企业微信截图_17496955066378717×754 27.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/583c684ec2e281c775c65f207d65745dcb4fc942.png, https://discuss.openubmc.cn/uploads/default/original/2X/d/dbf399ebcc594aa46500f31c3230dbbea8191d32.png"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1342/3",
+            "text": "content: loadstatus 值及其含义\n在系统中，loadstatus 是一个用于指示组件加载状态的值。根据不同的数值，可以判断组件加载的成功或失败原因。以下是 loadstatus 的可能值及其含义：\n\n0：组件加载成功\n\n组件成功加载，系统运行正常。\n\n1：器件访问失败\n\n系统无法访问相应的硬件设备，可能是设备未连接、驱动问题或硬件故障。\n\n2：签名校验失败\n\n系统在验证组件签名时失败，可能是签名文件损坏或不匹配。\n\n3：数据格式非法\n\n组件的数据格式不符合预期，可能是配置文件格式错误或数据损坏。\n\n4：本地文件未找到\n\n系统在指定位置未能找到所需的本地文件，可能是文件丢失或路径配置错误。\n\n5：对象解析失败\n\n系统在解析组件对象时失败，可能是对象文件损坏或依赖项缺失。\n\n6：Eeprom头校验失败\n\n系统在校验Eeprom头CRC32时失败，可能是Eeprom头数据被篡改。\n\n7：格式版本超过上限\n\n系统在加载时发现Eeprom和内置的csr格式版本均超过上限（目前上限是4.00）。\n\n255：初始状态（默认状态）\n\n系统的初始状态，尚未开始加载组件或未完成初始化。\n\n排查方法\n当 loadstatus 显示非零值时，需要按照以下步骤进行排查：\n\n查看日志文件\n\n打开日志文件 framework.log，查找与组件加载相关的日志信息。\n在日志中搜索关键词 Connector_xx_xx，其中 xx_xx 是具体的组件标识符。\n\n识别加载阶段\n\n找到带有 [self-discovery] 标记的日志，这表示系统正在读取并解析对应的 SR 文件。\n示例日志：[self-discovery] Starting to parse SR file for component Connector_xx_xx\n\n定位解析过程\n\n在 [self-discovery] 日志之后，查找带有 position 标记的条目。这个标记是解析过程的唯一标志。\n示例日志：[position] Parsing component at position 1234\n\n分析错误信息\n\n在 position 标记之后，查找相关的错误信息。这些信息将帮助确定加载失败的具体原因。\n示例错误信息：Error: ioctl(HISPORT_CMD_READ) failed: Unknown error 290\n\n解读错误代码\n\n错误代码 290= 0010 0010  表示 HISPORT 命令读取操作失败，具体原因可能是 ACK 校验失败。\n\n二进制字符串\n位位置\n名称\n值\n描述\n\n0010 0010\n7\n发送FIFO已满\n0\nI2C控制器发送FIFO未满\n\n0010 0010\n6\n时钟拉伸\n0\n读写期间未出现 Clock Stretching\n\n0010 0010\n5\nACK校验错误\n1\n读写时ACK校验错误\n\n0010 0010\n4\n总线异常拉低\n0\n读写启动时未检测到总线异常拉低\n\n0010 0010\n3\n从fifo取数据超时\n0\n从fifo取数据未出现超时错误\n\n0010 0010\n2\n命令帧结束标志\n0\n0表示命令帧未结束\n\n0010 0010\n1\n读写出错\n1\n汇总 BIT[6:3] 的错误，表示I2C读写出错\n\n0010 0010\n0\n操作完成\n0\n此次I2C读写操作未完成\n\n解释\n\n发送FIFO已满（位7）：值为0，表示I2C控制器的发送FIFO未满。\n时钟拉伸（位6）：值为0，表示读写期间未出现时钟拉伸。\nACK校验错误（位5）：值为1，表示读写时ACK校验出现错误。\n总线异常拉低（位4）：值为0，表示读写启动时未检测到总线异常拉低。\n从fifo取数据超时（位3）：值为0，表示从fifo取数据时未出现超时错误。\n命令帧结束标志（位2）：值为0，表示命令帧未结束。\n读写出错（位1）：值为1，表示I2C读写出错，汇总了BIT[6:3]的错误。\n操作完成（位0）：值为0，表示此次I2C读写操作未完成。\n\n需要联系硬件工程师进行进一步的排查，确认硬件连接和通信状态。\n\n针对不同 loadstatus 值采取相应措施\n\nloadstatus = 1（器件访问失败）\n\n检查硬件连接，确保设备已正确连接。\n验证设备驱动是否安装正确，必要时重新安装或更新驱动。\n检查硬件是否上电，确保电源供应正常。\n\nloadstatus = 2（签名校验失败）\n\n确认组件的签名文件是否完整且有效。\n检查签名文件路径是否正确，确保文件可被访问。\n如签名文件损坏，需重新获取并安装签名文件。\n\nloadstatus = 3（数据格式非法）\n\n检查配置文件或数据文件的格式，确保符合系统预期。\n使用验证工具检查数据文件的完整性，修复或替换损坏的文件。\n如数据格式错误，需根据系统要求重新格式化数据。\n\nloadstatus = 4（本地文件未找到）\n\n确认所需文件是否存在于指定路径。\n检查文件路径配置是否正确，确保路径指向正确的文件位置。\n如文件丢失，需重新获取并放置在正确的路径下。\n\nloadstatus = 5（对象解析失败）\n\n检查组件对象文件是否正确无误。\n确保组件的依赖项已正确安装，无缺失或版本不匹配。\n如对象文件损坏，需重新获取并替换文件。\nlinks: #p-3107-loadstatus-1, #p-3107-h-2"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1342/4",
+            "text": "这不是异常。是你的介质属性切换为了Liquid，风冷服务器预期是Air。手动修改下CoolingConfig类下的Medium属性。至于你为啥会切换为Liquid，不清楚"
+        }
+    ]
+}

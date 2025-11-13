@@ -1,0 +1,29 @@
+{
+    "topic_id": 522,
+    "question": "openUBMC需求&问题合入后测试策略问题 - 目前了解到的，如果需要合入代码&兼容性板卡，需要提SIG议题评审（需求），提ISSUE跟踪需求和问题单合入，然后提PR关联ISSUE解决，并在PR上附上验证报告等内容。\n目前的问题是：合入openUBMC后，后续的测试如何进行保证？\n了解到社区特性开发阶段会有测试策略制定、测试设计，然后在验证阶段执行。这些动作是谁来进行？是合入方进行负责吗。\n总结下就是两个问题。\n问题1：测试如何进行。是跟V2一样伙伴需求伙伴验收，在社区上就是谁提的Issue和PR，谁负责提供验证报告和测试结果？（这里主要指的是合入后的测试，合入前应该提供自验证报告即可）\n问题2：测试用例评审的流程，以及详设&需求清单&测试用例等资料的归档路径是在哪里。",
+    "topic_user_name": "kunlun_luzhanghui",
+    "best_answer_url": "/t/topic/522/4",
+    "reply_posts": [
+        {
+            "user_name": "Young Yang007",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/522/2",
+            "text": "1、首先所有社区合入的内容要有需求跟踪，需求合入伙伴开发需要提供自验报告，合入后伙伴测试要验证，验证完成对应需求才能关闭；\n2、测试用例等相关测试资产评审要在QA-SIG组报议题进行评审，评审后的内归档到QA-sig对应的测试版本仓；"
+        },
+        {
+            "user_name": "kunlun_luzhanghui",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/522/3",
+            "text": "通过何种需求跟踪？社区代码合入没有DTS或者US关联系统，需要在哪里提需求并进行跟踪？目前只有SIG议题有进行过申报，但是是文本内容，没有什么强关联或者系统进行追踪。\n测试用例是否由伙伴提供？以前是你们提供测试用例的。\n\n另外，测试报告是否也要单独评审，是在QA-SIG组申报议题还是release-management-SIG组申报？需求说明当时在release-management组，两个组的信息如何保证互通，也就是第一个问题，需求是怎么进行跟踪的。"
+        },
+        {
+            "user_name": "Young Yang007",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/522/4",
+            "text": "1、社区的所有需求通过提issue跟踪交付，提交PR是需要关联issue；\n2、社区的需求由谁交付谁对应进行测试设计分析，并输出测试用例；\n每个SIG组有社区的职责，可以参考社区SIG组的说明，特性SIG组中包含了设计、开发、测试，相关的需求交付在SIG要形成紧密配合，包括需求串讲、需求转测、需求验收以及相关方案评审和测试设计评审活动。"
+        }
+    ]
+}

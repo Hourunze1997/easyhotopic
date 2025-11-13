@@ -1,0 +1,29 @@
+{
+    "topic_id": 1724,
+    "question": "Sensor access degraded or unavailable告警含义 - content: 请问下面警告产生的原因是什么？会有什么影响呢？\n企业微信截图_175248296071791903×1024 72.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/32071be65c41bc873bbc45c03379bd1b0cb8da3c.png",
+    "topic_user_name": "Chen Minjun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1724/2",
+            "text": "说明有传感器的status异常，具体定位可以查找一键收集中app.log中搜索传感器名称，找到对应add sel的地方，根据seldata2确认问题传感器编号，再根据具体的传感器进一步分析"
+        },
+        {
+            "user_name": "Chen Minjun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1724/3",
+            "text": "感谢回复，“seldata2的值就是传感器编号”是怎么看出来的呢？"
+        },
+        {
+            "user_name": "Duzhou13 51cdj",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1724/4",
+            "text": "openubmc的sensor模块针对Mngmnt Health传感器事件的实现如下：\n当存在传感器（主要是连续传感器）有硬件访问等异常获取不到值时，会触发一条Mngmnt Health传感器事件，其中SelData2和SelData3承载了异常的传感器编号，具体如下：\nSelData3 = 0 ：传感器编号为SelData2\nSelData3 = 1 ：传感器编号为SelData2 + 255\nSelData3 = 3 ：传感器编号为SelData2 + 510\n因此通过查看app.log日志信息中添加事件时的打印能确定到异常的传感器的编号，而后进一步可以通过sensor.log中传感器注册信息确定该编号对应哪个传感器。\n需要注意的是，传感器编号是动态分配的，经BMC复位后可能会有变化，比如DISK0复位前为0x1，复位后可能为0x3，因此根据日志信息确定到的异常的传感器的编号，为产生事件当时的传感器编号，要想进一步根据传感器编号确定传感器时，一定要从对应时间段的注册日志中确定到传感器。\n例如：事件产生时间为“2025-07-16 21:36:08”，则需要在该时间之前最近的一次注册日志中根据编号确定传感器。"
+        }
+    ]
+}

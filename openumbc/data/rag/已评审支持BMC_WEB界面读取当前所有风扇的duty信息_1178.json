@@ -1,0 +1,15 @@
+{
+    "topic_id": 1178,
+    "question": "【已评审】支持BMC WEB界面读取当前所有风扇的duty信息 - content: 背景介绍：\n客户期望通过BMC WEB界面查询所有风扇实时占空比\n当前现状与差距/问题分析：\nBMC WEB接口未支持查询所有风扇占空比信息\n决策点：\nwebrest接口新增属性，支持查询风扇占空比信息\n详细描述\nuri：https://device_ip/UI/Rest/System/Thermal\n变化类型：Fans资源下新增DutyCycle属性\n操作类型： GET\n应用场景：客户可通过BMC WEB页面查询所有风扇实时占空比\nimage1830×267 34.1 KB\nimage1508×376 68.9 KB\n返回实例：\nimage381×241 1.71 KB\n评审结论\n同意webrest接口/UI/Rest/System/Thermal新增属性DutyCycle，表示风扇占空比，类型为number，取值范围为0~100，风扇不在位或读取失败时为null\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/e558daadbdd0a8dd25d3770fd1c39335006cd57b.png, https://discuss.openubmc.cn/uploads/default/original/1X/98f537b9a5e89de5406fad95853b13a9ad7e1c48.png, https://discuss.openubmc.cn/uploads/default/original/1X/bc90a96efdc1b25a0f0712aa859d56f72460ea96.png",
+    "topic_user_name": "Weber Chen",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1178/2",
+            "text": ""
+        }
+    ]
+}

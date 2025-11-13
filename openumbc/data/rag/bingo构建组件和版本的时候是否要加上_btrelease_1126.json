@@ -1,0 +1,22 @@
+{
+    "topic_id": 1126,
+    "question": "bingo构建组件和版本的时候，是否要加上-bt=release - 当前构建分为组件构建和整包构建（个人构建和版本构建）\n组件构建如network_adapter，编译的时候是否需要加上-bt=release呢？\n如果不加，那么是否意味着组件发布的时候带上了调试功能，那么在整包构建，版本构建发布阶段加上了bingo publish -bt=release，那么构建出来的hpm整包，是否会意外带入上面组件的debug功能？\n但如果组件构建带bt=release的话，那如果要归档内部的调试包，又似乎使用的是这些release的组件，似乎会缺少debug的组件功能？",
+    "topic_user_name": "河南昆仑-郑豪伟",
+    "best_answer_url": "/t/topic/1126/2",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1126/2",
+            "text": "组件构建和版本构建的bt默认值为debug。\n版本构建时加上-bt release， 使用的组件对应就是release包，如果没有缓存的release组件包，会触发组件源码构建出release包。所以不会出现意外的情况。\n如果要归档版本的调试包，bingo build 命令默认就是调试包。"
+        },
+        {
+            "user_name": "河南昆仑-郑豪伟",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1126/3",
+            "text": "所以总结一下：\n1，组件构建归档默认的debug版本就好了\n2，版本构建需要带bt=release"
+        }
+    ]
+}

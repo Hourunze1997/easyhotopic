@@ -1,0 +1,29 @@
+{
+    "topic_id": 1262,
+    "question": "【启航行动】openUBMC社区开发者赋能培训（第5期）--数据库与自动生成 - 交流答疑问题：\n问题一：复位持久化是什么含义？\n问题二：自动生成代码是用什么命令执行？\n问题三：数据库表名在哪个MDS文件配置？\n课后作业：\n一、在MDS中新增两个类定义：类TestA配置路径/bmc/kepler/Foo/Bar和接口bmc.kepler.Systems.Test，接口下有TestMethod方法，类TestB只包含私有属性并配置了整表掉电持久化，表名为t_test_b。\n二、实现TestMethod方法，往t_test_b插入一条数据。",
+    "topic_user_name": "王宇航",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Kui Tai Fan Chun Yang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1262/2",
+            "text": "答疑问题：\n1.BMC复位，数据可以持久化。\n2.自动生成代码命令：bingo gen\n3.model.json配置"
+        },
+        {
+            "user_name": "kunlun_Baominmin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1262/3",
+            "text": "交流答疑问题：\n\nbmc复位属性值不会丢失，包括BMC升级场景，掉电后属性值恢复原始值\nbingo gen，必要时需要加-r参数\nmodel.json中使用tableName配置"
+        },
+        {
+            "user_name": "Guoxin",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1262/4",
+            "text": "交流答疑问题：\n问题一：BMC复位后需要保留的数据，存在pram文件系统，BMC掉电后数据会清除。\n问题二：bingo gen\n问题三： model.json"
+        }
+    ]
+}

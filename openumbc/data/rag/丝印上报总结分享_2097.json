@@ -1,0 +1,7 @@
+{
+    "topic_id": 2097,
+    "question": "丝印上报总结分享 - content: 概述\n\nBMC与BIOS通过IPMI命令交互是一种用途比较广泛的交互方式。在天池机型上，BIOS通过IPMI命令从BMC读取丝印信息就是其中一种\n\nBIOS启动时，通过ReadFileFromBmc这条IPMI命令从BMC读取丝印文件silkconfig.json，解析丝印文件后，更新到BIOS人机界面、SMBIOS等\n\n丝印信息当前包括内存、PCIe设备、板载网卡、直通硬盘，即将实现CPU的丝印信息上报\n\nReadFileFromBmc的实现可见bios组件仓\n\nsilkconfig.json已支持一键收集时获取，路径为dump_info/AppDump/bios\n\nMemSilk\n\n基于Memory对象实现，包含CpuId、ChannelId、LogicalChannelId、DimmId、DimmName属性。DimmName作为内存丝印信息，最终会体现到SMBIOS中\n\nBIOS会通过WriteSmbiosData这条IPMI命令发送SMBIOS数据给BMC，BMC通过内存丝印信息来匹配Memory对象，从而更新内存静态信息\n\nWriteSmbiosData的实现可见bios组件仓\n\nSMBIOS_CONF已支持一键收集时获取，路径为dump_info/AppDump/bios\n\nPCIeSilk\n\n基于ComponentType为NVMe（2）、PCIe（8）、OCP（83）的PcieAddrInfo对象实现，包含Segment、SocketID、PortID、SlotID以及类型属性\n\nBIOS会通过WritePcieDiskBdfToBmc、WritePcieCardBdfToBmc、WriteOcpCardBdfToBmc将3种类型设备的BDF号传给BMC\n\nBMC根据BDF号向BIOS查询对应PCIe槽位的四元组信息，从而加载对应的CSR\n\nWritePcieDiskBdfToBmc、WritePcieCardBdfToBmc、WriteOcpCardBdfToBmc的实现可见bios组件仓\n\n加载PCIe设备CSR的流程可见pcie_device组件仓\n\nNICSilk\n\n基于ComponentType为NIC（13）的PcieAddrInfo对象实现，包含SocketID、SlotID属性\n\n这种丝印类型针对的是板载网卡。BMC暂无应用场景\n\nDiskSilk\n\n基于ControllerType为SAS（2）和SATA（3）的PcieAddrInfo对象实现，包含SocketID、PortID、SlotID、RootBDF等属性\n\n这种丝印类型针对的是CPU直出硬盘，不经过RAID卡管理，这些硬盘的信息需要通过BMA上报。有以下几个关键流程：\n\n1、BMA基于rootBDF向BMC获取硬盘的丝印号\n2、BMA将获取到的直通盘信息连同丝印号挂到BMC的资源协作路径上\n3、storage组件通过丝印号来匹配Drive对象，匹配成功则将直通盘信息赋给对应的Drive对象\nlinks: #p-5238-h-1, #p-5238-memsilk-2, #p-5238-pciesilk-3, #p-5238-nicsilk-4, #p-5238-disksilk-5",
+    "topic_user_name": "Yelvsub",
+    "best_answer_url": "",
+    "reply_posts": []
+}

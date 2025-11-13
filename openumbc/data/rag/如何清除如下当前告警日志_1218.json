@@ -1,0 +1,15 @@
+{
+    "topic_id": 1218,
+    "question": "如何清除如下当前告警日志 - content: 【问题描述】\n长时间稳定性测试时BMC当前告警显示\"The data written to the NAND flash in last 15 days exceeds 12G\"\n【求助点】\n如何清除掉\"The data written to the NAND flash in last 15 days exceeds 12G\"这条日志。这条日志是正常现象吗？\nimage1792×514 48 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/be8978b38bfb6b581f65172951ae99ac4a2e027d.png",
+    "topic_user_name": "Zxl",
+    "best_answer_url": "/t/topic/1218/2",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1218/2",
+            "text": "这条日志表示存储器写入量超标，属于非正常现象，可能原因是日志写入过多，可以一键收集日志检查原因。"
+        }
+    ]
+}

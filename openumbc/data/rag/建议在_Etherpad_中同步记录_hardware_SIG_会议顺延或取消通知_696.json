@@ -1,0 +1,22 @@
+{
+    "topic_id": 696,
+    "question": "建议在 Etherpad 中同步记录 hardware SIG 会议顺延或取消通知 - 在参加 hardware SIG 例会的过程中，偶尔遇到会议因故顺延、取消或未能召开的情况。\n为了方便大家及时了解会议安排，同时也便于后续跟踪记录，我想提一个小建议：\n是否可以在对应的 Etherpad 页面上，同步简单备注会议变更的情况？比如顺延、取消或其他特殊情况。\n只是个人一点小想法，供大家参考。也非常欢迎各位老师指导和补充，如果已有更好的做法，也希望能学习了解。\n感谢大家！",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/696/3",
+    "reply_posts": [
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/696/2",
+            "text": "我进去后发现都没人说话，就退出来了"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/696/3",
+            "text": "很抱歉对您造成的困扰，感谢您对此问题提出的反馈和建议，后续SIG例会会严格按照约定时间开展。"
+        }
+    ]
+}

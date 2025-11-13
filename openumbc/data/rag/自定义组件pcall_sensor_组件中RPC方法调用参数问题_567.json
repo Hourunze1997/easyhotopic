@@ -1,0 +1,29 @@
+{
+    "topic_id": 567,
+    "question": "自定义组件pcall sensor 组件中RPC方法调用参数问题 - content: 我在自定义的组件中添加了个ipmi命令，在其回调中，去pcall Sensor组件中新增的一个方法\nlocal err, repoResult = self.bus:pcall(\"bmc.kepler.sensor\", \"/bmc/kepler/Systems/ThresholdSensorMgmts/1\",\n                    \"bmc.kepler.Systems.ThresholdSensorMgmt\", \"CustomSetSensorThreshold\", \"a{ss}ay\",\n                    context.new(), byte_array)\n\n这个地方无论使用ipmi回调的ctx还是用context.new()  还是传0   都会有错误返回类似下面的，推测ctx参数的格式不对或者权限问题\nimage1088×108 8.45 KB\nsensor组件新增的方法 部分代码 如下：\nself:ImplThresholdSensorMgmtThresholdSensorMgmtCustomSetSensorThreshold(function(obj, ctx, ...)\n        log:info(\"---- ctx start ----\")\n        for k, v in pairs(ctx) do\n            local v_type = type(v)\n            if v_type == \"table\" then\n                log:info(\"Key: %s, Value: <table>\", k)\n            elseif v_type == \"function\" then\n                log:info(\"Key: %s, Value: <function>\", k)\n            else\n                log:info(\"Key: %s, Value: %s (%s)\", k, tostring(v), v_type)\n            end\n        end\n        log:info(\"---- ctx end ----\")\n        \n\n现在就是不知道 这个ctx到底该怎么传才能正确呢？\n我通过web接口 调 自定义方法 会返回下面这些 字段或者属性\n1970-01-05 03:04:07.575258 byo_czcbmc INFO: byo_czcbmc_app.lua(587): Key: Auth, Value: 1 (string)\n1970-01-05 03:04:07.577183 byo_czcbmc INFO: byo_czcbmc_app.lua(587): Key: ClientAddr, Value: 192.168.150.228 (string)\n1970-01-05 03:04:07.577708 byo_czcbmc INFO: byo_czcbmc_app.lua(587): Key: Privilege, Value: 511 (string)\n1970-01-05 03:04:07.579361 byo_czcbmc INFO: byo_czcbmc_app.lua(587): Key: Interface, Value: WEB (string)\n1970-01-05 03:04:07.579938 byo_czcbmc INFO: byo_czcbmc_app.lua(587): Key: UserName, Value: Administrator (string)\n1970-01-05 03:04:07.581334 byo_czcbmc INFO: byo_czcbmc_app.lua(590): ---- ctx end ----\n\n现在的问题我自定义组件中  通过ipmi命令 去出发  pcall到sensor中这个自定义方法的时候  这个参数怎么传 怎么定义？\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/bf75d6c679606dff51c8fcd7062f83aa88e35e6a.png",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/567/5",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/567/2",
+            "text": "content: 如果需要调用其他组件的资源接口，建议通过这篇文档中的方式进行调用\n\nopenubmc.cn\n\n组件的开发和代码编写 | openUBMC\nopenUBMC\n\nMDS声明依赖后，通过自动生成代码的函数进行调用，并将ipmi中的ctx传入即可\nlinks: https://openubmc.cn/docs/zh/development/develop_guide/app_development/coding.html#%E8%B0%83%E7%94%A8%E8%B5%84%E6%BA%90%E5%8D%8F%E4%BD%9C%E6%8E%A5%E5%8F%A3rpc%E6%8E%A5%E5%8F%A3, https://openubmc.cn/docs/zh/development/develop_guide/app_development/coding.html#%E8%B0%83%E7%94%A8%E8%B5%84%E6%BA%90%E5%8D%8F%E4%BD%9C%E6%8E%A5%E5%8F%A3rpc%E6%8E%A5%E5%8F%A3"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/567/3",
+            "text": "content: 就是按照上面的文档开发的，如果直接使用ipmi命令的ctx如下 error返回6aj.并且 被调用的方法 不执行，如果换成 context.new()的话就报 最初提问的时候的错误 但不影响被调用方法的执行  只是不能返回数据了  因为有error\nimage1300×189 27.3 KB\nimage1119×123 46.8 KB\nctx打印如下：\n3c10678deab9cf99dd075c6c7bf62a9672×266 106 KB\n附上资源树配置\n{\n    \"bmc.kepler.Systems.ThresholdSensorMgmt\": {\n        \"properties\": {},\n        \"methods\": {\n            \"CustomSetSensorThreshold\": {\n                \"description\": \"设置sensor阈值\",\n                \"req\": {\n                    \"InData\": {\n                        \"baseType\": \"U8[]\",\n                        \"description\": \"写入的数据内容\"\n                    }\n                },\n                \"rsp\": {\n                    \"Result\": {\n                        \"baseType\": \"U8\",\n                        \"description\": \"设置sensor阈值结果,失败返回0;成功返回1\"\n                    }\n                }\n            }\n        }\n    }\n}\n\n如下，调用目前资源树上有的方法 也是如上调用的 都没什么问题 ，但现在的方法是自己写的 就不行了呢\nlocal err = self.bus:pcall(\n        \"bmc.kepler.hwproxy\",\n        \"/bmc/kepler/Chip/Complex/Chip_CPLD_0102\",\n        \"bmc.kepler.Chip.BlockIO\",\n        \"Write\",\n        \"a{ss}uay\",\n        context.new(),\n        addr,\n        byte_array\n    )\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/1c967306ced77944776612433785f9e13c849141.png, https://forum.openubmc.cn/uploads/default/original/1X/d34d8226aacbf7122d41376d0895d45bc45e8b08.png, https://forum.openubmc.cn/uploads/default/original/1X/3c3fe36effd8cb0eafd85794a16045a85b0b0922.jpeg"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/567/5",
+            "text": "上下文要求键值对全为string类型，看起来用context.new()并没有什么问题，请检查一下回调方法的定义与其余参数的传递，报错看起来是封装参数时出现的问题"
+        }
+    ]
+}

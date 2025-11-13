@@ -1,0 +1,15 @@
+{
+    "topic_id": 1971,
+    "question": "【iTestSmart】使用通用下载接口下载BMC文件路径注入测试，信息校验出错。 - content: 一、测试环境\n硬件：S920X20\nBMC Version: 25.03\n二、问题描述\nOpenUBMC->平台功能->使用通用下载接口下载BMC文件路径注入测试。实际值为“openUBMC.1.0.FileNotExist”，预期值为\"iBMC.1.0.FileNotExist”，校验出错。\n预期值与实际值有差别1920×831 218 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/374e78429e9b2acd03c601620ddb8d5e2e747a8c.jpeg",
+    "topic_user_name": "KunTai_wangjl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Hdq",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1971/2",
+            "text": "下一个版本会统一整改用例，预计8月初会发布。"
+        }
+    ]
+}

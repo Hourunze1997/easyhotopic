@@ -1,0 +1,22 @@
+{
+    "topic_id": 551,
+    "question": "【已评审】新增设置/查询风扇控制模式持久化属性/方法 - content: ISSUE链接 GitCode - 全球开发者的开源社区,开源代码托管平台\n背景\n期望可以设置风扇模式的持久化类型为不持久化、复位持久化、掉电持久化\n决策点\n\n新增永久持久化的风扇模式持久化类型属性\n新增复位持久化的风扇模式属性\n新增复位持久化的全体风扇手动模式转速百分比属性\n新增掉电持久化的风扇模式属性\n新增掉电持久化的全体风扇手动模式转速百分比属性\n新增设置可持久化的风扇模式方法\n新增复位持久化的单个风扇手动模式转速百分比属性\n新增掉电持久化的单个风扇手动模式转速百分比属性\n\n详细描述\n资源path：/bmc/kepler/Systems/:SystemId/AirCoolingConfig\n资源interface：bmc.kepler.Systems.AirCoolingConfig\n属性：\n\nCtrlModePersistType 风扇模式的持久化类型\n签名：y\n读写&权限：R：ReadOnly\n持久化类型：永久持久化\n变化通知：false\n默认值为0\n0不持久化、1复位持久化、2掉电持久化\n\nCtrlModeResetPersist 复位持久化的风扇模式\n签名：s\n读写&权限：R：ReadOnly\n持久化类型：复位持久化\n变化通知：true\n默认值为\"Auto\"\n取值为\"Auto\"/“Manual”/“Mixed”\n\nManualSpeedPercentResetPersist 复位持久化的风扇手动模式转速百分比\n签名：y\n读写&权限：R：ReadOnly\n持久化类型：复位持久化\n变化通知：true\n默认值为0\n取值范围为[0,100]\n\nCtrlModePoweroffPersist 掉电持久化的风扇模式\n签名：s\n读写&权限：R：ReadOnly\n持久化类型：掉电持久化\n变化通知：true\n默认值为\"Auto\"\n取值为\"Auto\"/“Manual”/“Mixed”\n\nManualSpeedPercentPoweroffPersist 掉电持久化的风扇手动模式转速百分比\n签名：y\n读写&权限：R：ReadOnly\n持久化类型：掉电持久化\n变化通知：true\n默认值为0\n取值范围为[0,100]\n\n方法：\n\nSetCtrlModePersist 设置可持久化的风扇模式\n签名：syu\n读写&权限：BasicSetting\n请求：\n\nCtrlModPersist 风扇控制模式\n取值为\"Auto\"/“Manual”/“Mixed”\nCtrlModePersistType 风扇控制模式持久化类型\n取值为0不持久化、1复位持久化、2掉电持久化\nTimeout 超时时长\n当CtrlModePersistType为0时，超时时长生效\n\n资源path：/bmc/kepler/Systems/:SystemId/CoolingFan/:Id\n资源interface：bmc.kepler.Systems.CoolingFan\n属性：\n\nManualSpeedPercentResetPersist 复位持久化的风扇手动模式转速百分比\n签名：y\n读写&权限：R：ReadOnly\n持久化类型：复位持久化\n变化通知：false\n默认值为0\n取值范围为[0,100]\n\nManualSpeedPercentPoweroffPersist 掉电持久化的风扇手动模式转速百分比\n签名：y\n读写&权限：R：ReadOnly\n持久化类型：掉电持久化\n变化通知：false\n默认值为0\n取值范围为[0,100]\n\n评审结论\n决策点1： 同意资源协作接口bmc.kepler.Systems.AirCoolingConfig新增属性CtrlModePersistType，表示风扇模式的持久化类型，签名为y，只读，读权限：ReadOnly，不发送变更通知事件\n决策点2： 同意资源协作接口bmc.kepler.Systems.AirCoolingConfig新增属性CtrlModeResetPersist，表示复位持久化的风扇模式，签名为s，只读，读权限：ReadOnly，发送变更通知事件\n决策点3： 同意资源协作接口bmc.kepler.Systems.AirCoolingConfig新增属性ManualSpeedPercentResetPersist，表示复位持久化的风扇手动模式转速百分比，签名为y，只读，读权限：ReadOnly，发送变更通知事件\n决策点4： 同意资源协作接口bmc.kepler.Systems.AirCoolingConfig新增属性CtrlModePoweroffPersist，表示掉电持久化的风扇模式，签名为s，只读，读权限：ReadOnly，发送变更通知事件\n决策点5： 同意资源协作接口bmc.kepler.Systems.AirCoolingConfig新增属性ManualSpeedPercentPoweroffPersist，表示掉电持久化的风扇手动模式转速百分比，签名为y，只读，读权限：ReadOnly，发送变更通知事件\n决策点6： 同意资源协作接口bmc.kepler.Systems.AirCoolingConfig新增方法SetCtrlModePersist，用于设置可持久化的风扇模式，请求签名：syu，响应签名：无，权限为BasicSetting\n决策点7： 同意资源协作接口bmc.kepler.Systems.CoolingFan新增属性ManualSpeedPercentResetPersist，表示复位持久化的风扇手动模式转速百分比，签名为y，只读，读权限：ReadOnly，不发送变更通知事件\n决策点8： 同意资源协作接口bmc.kepler.Systems.CoolingFan新增属性ManualSpeedPercentPoweroffPersist，表示掉电持久化的风扇手动模式转速百分比，签名为y，只读，读权限：ReadOnly，不发送变更通知事件\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/25",
+    "topic_user_name": "songdianpeng",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/551/2",
+            "text": "content: 请参考申报模板填写【申报模板】【待评审】redfish新增XXX接口 - #3，来自 huanghan\nlinks: https://forum.openubmc.cn/t/topic/189/3"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/551/3",
+            "text": ""
+        }
+    ]
+}

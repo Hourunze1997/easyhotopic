@@ -1,0 +1,36 @@
+{
+    "topic_id": 397,
+    "question": "【问题求助】风扇调速策略中，如何单个风扇调速 - 目前项目开发过程中，发现风扇调速只能全部风扇一个速率，不能一个风扇一个速度。\n使用命令： busctl --user call bmc.kepler.thermal_mgmt /bmc/kepler/Systems/1/Thermal/Fans bmc.kepler.Systems.Fans SetPWM a{ss}a\nd 0 4 10 15 20 25\n发现现象是把四个风扇的占空比调成百分之10\n使用命令： busctl --user call bmc.kepler.thermal_mgmt /bmc/kepler/Systems/1/Thermal/Fans/Fan_4_010103 bmc.kepler.Systems.Fan S\netFanPWM a{ss}d 0 50\n发现现象是命令不起作用，风扇4速率没有改变成百分之50。\n相关的sr文件里面跟设置风扇相关的配置如下\n“Fans_0”: {\n“PWMChip”: “#/Chip_Fan_PWM”,\n“SetPWMCmd”: 402657792\n},\n请问这里是不是只是全部风扇设置速率的配置，设置单个风扇还需要添加新的配置。",
+    "topic_user_name": "wuzhou-Lsx",
+    "best_answer_url": "/t/topic/397/5",
+    "reply_posts": [
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/397/2",
+            "text": "请先确认是否有先设置为手动模式，自动模式下设置的转速不会生效"
+        },
+        {
+            "user_name": "He wei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/397/3",
+            "text": "需要先设置为手动模式，否则按照上面命令设置后，会立马被自动调速将转速切换回自动调速"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/397/4",
+            "text": "content: image2863×1547 296 KB\n现象：先手动全局设置为速率10，然后单独设置风扇4速率为30，风扇四没有变化。如同所示。\n看起来，与我用命令行设置的现象是一样的。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/a2053cd48e55919f165c591d5fb975fbcca59e48.png"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/397/5",
+            "text": "期望速率比：指风扇转速百分比，是由期望PWM值 / 支持的最大PWM 计算获得\n速率比：为转子转速百分比，是由当前转子转速值 / 风扇最大转子转速值 计算获得\n上述两个速率比并非同一个转速，若需要确认转速是否达到30%，可通过查看对应风扇对象 mdbctl lsprop Fan_xxx获取"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "topic_id": 2159,
+    "question": "DiscreteEvent离散事件等级定制功能 - content: 功能背景\n客户需求支持定制传感器对应事件的严重级别，而所有离散事件的生成都依赖与DiscreteEvent对象配置，因此可以为DiscreteEvent对象新增等级属性，在客户定制仓配置该属性，以达到定制离散事件等级的效果。\n功能概述\n当产生离散事件时，会优先从本DiscreteEvent对象中获取等级属性，当等级属性值合法则会采用该等级，否则还会从data.yml文件中获取事件默认等级配置。\n属性属性\n\n属性名称\n属性类型\n属性说明\n\nSeverity\nuint8\n离散事件等级：0:Normal 1: Minor 2: Major 3:Critical\n\n配置示例\n用于等级定制的Severity属性需配置在客户定制仓，若认为某传感器事件等级在不定制的场景下也不准确，则直接修改sensor仓的data.yaml文件配置即可。\n\n针对未定制场景下已配置的离散事件对象定制事件等级\n例如：未定制场景下已配置了DiscreteSensor_FAN1FPresence事件对象，述求将该事件等级定制为2，那么则在定制仓中新增如下配置\n\n\"DiscreteEvent_FAN1FPresence\": {\n    \" Severity \": 0 // 事件等级配置，可选：0、1、2、3\n}\n\n针对定制场景下客户新增的离散事件对象定制事件等级\n整个离散事件对象配置甚至于其关联的离散传感器对象都是在定制仓中新增的配置，那么基于配置的离散传感器对象在新增Severity属性配置即可。\n离散传感器及离散事件配置，可以参考： 传感器定制与开发 | openUBMC\n在上一步配置好的离散事件对象里面添加Severity属性\n\n\"DiscreteEvent_FAN1FPresence\": {\n    \"xxx\": \"yyy\"  // 其余事件配置\n    \" Severity \": 0 // 事件等级配置，可选：0、1、2、3\n}\nlinks: #p-5457-h-1, #p-5457-h-2, #p-5457-h-3, #p-5457-h-4, https://www.openubmc.cn/docs/zh/development/develop_guide/feature_development/sensor.html#discreteevent-%E7%A6%BB%E6%95%A3%E4%BA%8B%E4%BB%B6%E9%85%8D%E7%BD%AE",
+    "topic_user_name": "Iss Szyaoh",
+    "best_answer_url": "",
+    "reply_posts": []
+}

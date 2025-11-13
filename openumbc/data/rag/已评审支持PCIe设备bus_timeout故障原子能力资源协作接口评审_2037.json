@@ -1,0 +1,15 @@
+{
+    "topic_id": 2037,
+    "question": "【已评审】支持PCIe设备bus timeout故障原子能力资源协作接口评审 - content: SSUE链接 ：\n支持PCIe设备bus timeout故障原子能力\n评审背景\n\n实现RAS事件可灵活配置、扩展和能力对外开放；满足IPMI、Redfish RAS相关规范；支持原始数据查询，支撑伙伴/客户实现自规划差异化特性。\n\n需求\n支持汇聚的PCIe设备和单个PCIe设备bus timeout故障原子能力资源协作接口。用于故障时记录SEL。\n决策点\n新增资源协作接口属性TimeoutError。\n\n单个PCIe设备bus timeout故障原子能力\n对应资源路径是/bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\n对应资源接口是bmc.kepler.Systems.PCIeDevices.PCIeDevice.RAS\n汇聚PCIe设备bus timeout故障原子能力\n对应资源路径是/bmc/kepler/Systems/:SystemId/FDMDomain/PCIeRASCollector\n对应资源接口是bmc.kepler.Systems.FDMDomain.PCIeRASCollector和bmc.kepler.Systems.FDMDomain.UnknownPCIeRASCollector\n\n评审点\n评审点一\npath： /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\ninterface： bmc.kepler.Systems.PCIeDevices.PCIeDevice.RAS\n变化类型：新增属性\n应用场景：支持单个PCIe设备bus timeout故障原子能力\n持久化类型：复位持久化\n操作权限： 可读写 read: ReadOnly write:BasicSetting\n具体如下：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nTimeoutError\n新增属性\ny\n可读写R：ReadOnly W：BasicSetting\n复位持久化\ntrue\nPCIe设备发生超时错误，取值: 0-未发生，1-发生，默认值0。系统上下电/复位时，属性恢复默认值0。\n无\n\n评审点二\npath： /bmc/kepler/Systems/:SystemId/FDMDomain/PCIeRASCollector\ninterface： bmc.kepler.Systems.FDMDomain.PCIeRASCollector\n变化类型：新增属性\n应用场景：支持汇聚PCIe设备bus timeout故障原子能力\n持久化类型：复位持久化\n操作权限： ReadOnly\n具体如下：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nTimeoutError\n新增属性\ny\n只读R：ReadOnly W：不涉及\n复位持久化\ntrue\nPCIe设备发生超时错误，取值: 0-未发生，1-发生，默认值0。系统上下电/复位时，属性恢复默认值0。下一次出现故障时先恢复为0后置为1。\n无\n\n评审点三\npath： /bmc/kepler/Systems/:SystemId/FDMDomain/PCIeRASCollector\ninterface： bmc.kepler.Systems.FDMDomain.UnknownPCIeRASCollector\n变化类型：新增属性\n应用场景：支持汇聚未知PCIe设备bus timeout故障原子能力\n持久化类型：复位持久化\n操作权限： ReadOnly\n具体如下：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nTimeoutError\n新增属性\ny\n只读R：ReadOnly W：不涉及\n复位持久化\ntrue\n未知PCIe设备发生超时错误，取值: 0-未发生，1-发生，默认值0。系统上下电/复位时，属性恢复默认值0。下一次出现故障时先恢复为0后置为1。\n无\n\n评审结论\n1、同意新增资源协作接口属性\npath： /bmc/kepler/Systems/${SystemId}/PCIeDevices/${Id}\ninterface： bmc.kepler.Systems.PCIeDevices.PCIeDevice.RAS\n新增属性TimeoutError，签名y，可读写，读权限： ReadOnly，写权限：BasicSetting，发送变更通知事件\n2、同意新增资源协作接口属性\npath：/bmc/kepler/Systems/:SystemId/FDMDomain/PCIeRASCollector\ninterface：bmc.kepler.Systems.FDMDomain.PCIeRASCollector\npath：/bmc/kepler/Systems/:SystemId/FDMDomain/PCIeRASCollector\ninterface：bmc.kepler.Systems.FDMDomain.UnknownPCIeRASCollector\n新增属性TimeoutError，签名y，只读，读权限： ReadOnly，发送变更通知事件\n遗留问题\n1、评审点二和评审点三中接口说明需要细化属性变化场景“ 下一次出现故障时先恢复后置位”修改“下一次出现故障时先恢复为0后置为1”\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/172, #p-5039-h-1, #p-5039-h-2, #p-5039-h-3, #p-5039-h-4, #p-5039-h-5, #p-5039-h-6, #p-5039-h-7, #p-5039-h-8, #p-5039-h-9",
+    "topic_user_name": "Huangrenjie Wtss6",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2037/2",
+            "text": ""
+        }
+    ]
+}

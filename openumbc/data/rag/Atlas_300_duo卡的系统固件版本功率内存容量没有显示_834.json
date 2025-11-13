@@ -1,0 +1,15 @@
+{
+    "topic_id": 834,
+    "question": "Atlas 300 duo卡的系统固件版本，功率，内存容量没有显示 - content: image1920×873 151 KB\n请教一下，为什么这里300 duo卡的系统固件版本，功率，内存容量没有显示呢？另外槽位信息是否是因为没有关联PcieAddrInfo_4对象导致一直为“0”呢？我没有配置BusinessConnector下行对象，因为我目前的建立链路需要pcie switch类的支持。我的配置如：300 duo：\n        \"Connector_PCIe_4\": {\n            \"Bom\": \"14140130\",\n            \"Slot\": 4,\n            \"Position\": 4,\n            \"Presence\": \"<=/Scanner_Slot4Presence.Value|>expr($1 == 1? 0 : 1)\",\n            \"Id\": \"19e5d500\",\n            \"AuxId\": \"02000110\",\n            \"Buses\": [\n                \"I2cMux_9548Chan52\"\n            ],\n            \"SystemId\": \"${SystemId}\",\n            \"ManagerId\": \"${ManagerId}\",\n            \"ChassisId\": \"${ChassisId}\",\n            \"SilkText\": \"RiserCard${Slot}\",\n            \"IdentifyMode\": 2,\n            \"Container\": \"Component_Switch\",\n            \"Type\": \"PCIe\"\n        },\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/2192040a9367ab2521ea4de72edda3200c2bebce.png",
+    "topic_user_name": "wuzhou-xiaokaili",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/834/2",
+            "text": "排查下smbus通道是否是通的"
+        }
+    ]
+}

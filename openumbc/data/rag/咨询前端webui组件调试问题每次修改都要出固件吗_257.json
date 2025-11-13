@@ -1,0 +1,50 @@
+{
+    "topic_id": 257,
+    "question": "咨询前端webui组件调试问题每次修改都要出固件吗？ - webui组件每次修改后，怎么才能单独更新这个组件看效果而不用出整个固件包？\n有方法单独更新某个组件或者单独上传ui相关的静态文件吗？",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/257/5",
+    "reply_posts": [
+        {
+            "user_name": "Sameeen No0i5",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/257/2",
+            "text": "您可以尝试以下操作：\n1、在webui目录执行npm run build，构建完成后将dist目录打包成dist.zip\n2、上传dist.zip到/tmp目录下\n3、执行cd /opt/bmc/web\n4、执行cp /tmp/dist.zip ./\n5、执行mv htdocs bak_htdocs\n6、执行unzip dist.zip\n7、执行mv dist htdocs\n8、执行chmod -R 777 htdocs"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/257/3",
+            "text": "感谢"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/257/4",
+            "text": "content: rootfs启动后只读，默认情况是不允许写入的。\n风险提醒：如果环境启用了安全启动功能，请谨慎操作，存在风险\n修改rootfs的内容将导致镜像变更，无法通过安全启动校验，系统会自动切换到未被破坏的分区（总共三个分区），多次切换就会导致系统无可用分区，最终导致启动失败。\nlinks: #p-401-h-1"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/257/5",
+            "text": "content: 本地开发使用反向代理，即可实时在浏览器看到效果。\n参考前端开发反向代理指导：\n\njuejin.cn\n\n[VUE] vue配置反向代理解决跨域在客户端和原始服务器(origin server)之间架设一个代理服务器，为了从原 - 掘金\n在客户端和原始服务器(origin server)之间架设一个代理服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。 客户端无需做任何配置。…\n\nvue-js.com\n\n[VUE] vue配置反向代理解决跨域__Vue.js - VueClub\nVue：Vue.js专业中文社区\nlinks: https://juejin.cn/post/6844904033874886663, https://juejin.cn/post/6844904033874886663, https://vue-js.com/topic/5ff2c0744590fe0031e595ba, https://vue-js.com/topic/5ff2c0744590fe0031e595ba"
+        },
+        {
+            "user_name": "Zxl",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/257/6",
+            "text": "Larry_Li:\n\n实时在浏览器看到效果\n\n在webui组件中，没找proxyTable和API_HOST关键字，能具体说说webui实时在浏览器看到效果的步骤吗？"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/257/7",
+            "text": "content: npm install\nnpm ci\nnpm run dev\n2de3623b09c3fbdbb8ea4e6d5fda4c131770×989 141 KB\n这边改成机器ip\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/20627c8ec6b32006b3e247cd83de78b844e8c6a5.png"
+        }
+    ]
+}

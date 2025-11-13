@@ -1,0 +1,15 @@
+{
+    "topic_id": 1772,
+    "question": "【已评审】新增ipmi命令支持安全芯片固件加密秘钥相关导入导出和任务状态查询的能力 - content: 背景\n底层安全整改诉求，需要限制安全芯片固件加密秘钥的处理仅在装备流程中。\n触发原因\n新需求\n关联issue\n【需求】新增ipmi命令支持安全芯片固件加密秘钥相关导入导出和任务状态查询的能力\n决策点\nIPMI命令字：NetFn：0x30 Cmd：0x90\n名称：Dft File Action\n变化类型：新增IPMI命令\n应用场景：用于支持装备场景的文件导入导出行为\n操作权限：SecurityMgmt\n请求&响应说明：\n设置类请求：\n\n字节顺序\n域内容\n\nNetFn\n30h\n\nCMD\n90h\n\n1\nSub command，字命令=82h\n\n2\n命令行为：00h：设置\n\n3\n文件操作类型：00h：导出01h：导入\n\n4\n文件类型：00h：安全芯片固件加密非对称公钥（仅支持导出）01h：安全芯片固件加密秘钥（仅支持导入，导入成功后不可重复导入）\n\n5\n预留扩展，默认填0\n\n6\n预留扩展，默认填0\n\n7\n文件名长度（N）\n\n8 ~ 7+N\n文件名\n\n8+N\n扩展信息长度（M），当 byte4 的取值为：00h时，填101h时，表示安全芯片固件加密秘钥摘要长度\n\n9+N~8+N+M\n扩展信息，当 byte4 的取值为：00h时，表示非对称公钥算法，取值范围：00h：RSA2048；01h：RSA409601h时，表示安全芯片固件加密秘钥摘要值\n\n说明：文件名长度（N）与扩展信息长度（M）之和不超过200字节\n设置类响应：\n\n字节顺序\n域内容\n\n1\nCompletion Code00h：成功当操作为导入安全芯片固件加密秘钥时，存在以下响应：85h：安全芯片固件固件加密秘钥格式错误86h：安全芯片固件固件加密秘钥处理错误87h：安全芯片固件固件加密秘钥已存在\n\n查询类请求：\n\n字节顺序\n域内容\n\nNetFn\n30h\n\nCMD\n90h\n\n1\nSub command，字命令=82h\n\n2\n命令行为：01h：查询\n\n3\n文件操作类型：00h：导出01h：导入\n\n4\n文件类型：00h：安全芯片固件加密非对称公钥（仅支持导出）01h：安全芯片固件加密秘钥（仅支持导入，导入成功后不可重复导入）\n\n5\n预留扩展，默认填0\n\n6\n预留扩展，默认填0\n\n查询类响应：\n\n字节顺序\n域内容\n\n1\nCompletion Code00h：成功\n\n2\n任务状态00h：执行操作完成01h：执行操作失败02h：正在执行操作FFh：空闲状态，未启动。\n\n3\n操作执行进度百分比取值范围为[0-100]\n\n命令行为-文件操作类型-文件类型 对应表\n\n命令行为\n文件操作类型\n文件类型\n命令说明\n\n00h\n00h\n00h\n导出安全芯片固件加密非对称公钥\n\n00h\n01h\n01h\n导入安全芯片固件加密秘钥\n\n01h\n00h\n00h\n查询安全芯片固件加密非对称公钥导出任务状态\n\n01h\n01h\n01h\n查询安全芯片固件加密秘钥导入任务状态\n\n原File Action中byte7 = 0Bh、0Ch两个命令字标记日落，后续废弃。\nimage1297×659 28.2 KB\n评审结论\n同意新增IPMI命令\nNetFn：0x30\nCmd：0x90\nSubCmd：0x82\n名称：Dft File Action\n说明：设置类请求时，文件名长度N与扩展信息长度M之和不可超过200\nimage2028×756 21.7 KB\nimage2028×252 8.55 KB\nimage2027×497 12.4 KB\nimage2040×354 8.62 KB\n遗留问题\nlinks: #p-4315-h-1, #p-4315-h-2, #p-4315-issue-3, https://gitcode.com/openUBMC/rackmount/issues/198, #p-4315-h-4, https://discuss.openubmc.cn/uploads/default/original/2X/d/dc2b0f0f9e113652126f0c0863c69d311a1ba2cd.png, #p-4315-h-5, https://discuss.openubmc.cn/uploads/default/original/2X/3/3692d41af15bd8df73c3815518bcdbb862217e4e.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/eab09a3f8ea92b9def971ad02ee88ac33a0c1fbd.png, https://discuss.openubmc.cn/uploads/default/original/2X/c/c2f5fe9638002e0e0d8cf48735d1192a3f208d2c.png, https://discuss.openubmc.cn/uploads/default/original/2X/5/5665b1b144194479ba669e0e903eab9e9a7aaf11.png, #p-4315-h-6",
+    "topic_user_name": "pengxianglin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1772/2",
+            "text": ""
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1072,
+    "question": "【已评审】新增属性内存CE故障发生频率超门限计数 - content: Issue链接:\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景:\n多次发生“内存CE故障发生频率超门限 ”的事件时，上报内存CE风暴告警\n决策点\n资源协作接口新增属性CorrectableECCOverfrequencyCount，表示内存CE故障发生频率超门限次数\n详细描述\n资源path: /bmc/kepler/Systems/:SystemId/FDMDomain/MemoryRAS/:ld\n资源interface: bmc.kepler.Systems.FDMDomain.MemoryRAS\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n属性值来源\n接口约束\n\nCorrectableECCOverfrequencyCount\n新增属性\nu\n只读R：ReadOnly\n复位持久化\ntrue\n系统运行期间 内存CE故障发生频率超门限的次数\n代码\n1、属性刷新需求在计数变化时才刷新 2、在系统上下电、重启场景下次数清0\n\n评审结论：\n同意资源协作接口bmc.kepler.Systems.FDMDomain.MemoryRAS新增属性CorrectableECCOverfrequencyCount，表示内存CE故障发生频率超门限次数，具体如下：\npath： /bmc/kepler/Systems/:SystemId/FDMDomain/MemoryRAS/:ld\ninterface：bmc.kepler.Systems.FDMDomain.MemoryRAS\n属性：CorrectableECCOverfrequencyCount\n签名：u\n持久化类型： BMC复位持久化\n操作权限： 只读，R：ReadOnly\n是否发送变更事件：是\nlinks: #p-2271-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/56?ref=&did=3090458#tid-3090458, https://gitcode.com/openUBMC/mdb_interface/issues/56?ref=&did=3090458#tid-3090458, #p-2271-h-2, #p-2271-h-3, #p-2271-h-4, #p-2271-h-5",
+    "topic_user_name": "Guanbin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1072/2",
+            "text": ""
+        }
+    ]
+}

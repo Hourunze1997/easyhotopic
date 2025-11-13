@@ -1,0 +1,29 @@
+{
+    "topic_id": 1395,
+    "question": "关于storage组件编译疑问？ - content: 问题背景：\n执行bingo build -r openubmc_dev\n出现以下WARN\nimage1563×363 66.9 KB\n问题：\n1.如果要解决该警告需要怎么操作？\n2.如何指定警告中对应组件的版本，如libsoc_adapter我希望指定为1.70.43，而不是1.70.1呢？我如果删除本地conan下只保留libsoc_adapter的1.70.43版本依旧会远程下载1.70.1，同时修改service.json文件增加\"conan\": “libsoc_adapter/[>=1.70.43]”，执行编译则会提示ERROR: Version range ‘>=1.70.43’ from requirement ‘libsoc_adapter/[>=1.70.43]@hw.ibmc.release/rc’ required by ‘storage/1.70.41@hw.ibmc.dev/dev’ could not be resolved in remote ‘openubmc_dev’\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/357de637e1e6d054693e324dc250be288aa94045.png",
+    "topic_user_name": "Ocy",
+    "best_answer_url": "/t/topic/1395/4",
+    "reply_posts": [
+        {
+            "user_name": "Wuyupeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1395/2",
+            "text": "content: account组件单元测试执行报错 交流互助区\n\n    我找到一个好办法，并且可行！ \n思路\n.317版本的bingo会去找user为hw.ibmc.release的最新mdb_interface 版本，目前最新的版本就是1.70.101，但是这个版本没法源码构建，导致种种操作失败。 \n那主动推一个有源码的并且离1.70.101最近的并且将user设置为hw.ibmc.release的mdb_interface 到远端就行了，这样bingo就会找更新版…\nlinks: https://discuss.openubmc.cn/t/topic/1329/14, /c/42-category/42, #p-3306-h-1"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1395/3",
+            "text": "content: WARN，不是报错，不影响构建结果。 这是正常现象，因为bmc_sdk里的组件定义的依赖软件是范围版本。\n具体原理 参考conan官方文档：\n\ndocs.conan.io\n\nIntroduction to versioning — conan 1.66.0 documentation\n\ndocs.conan.io\n\nIntroduction to versioning — conan 1.66.0 documentation\nlinks: https://docs.conan.io/1/versioning/introduction.html#version-and-configuration-conflicts, https://docs.conan.io/1/versioning/introduction.html#version-and-configuration-conflicts, https://docs.conan.io/1/versioning/introduction.html#dependencies-overriding, https://docs.conan.io/1/versioning/introduction.html#dependencies-overriding"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1395/4",
+            "text": "content: 通过该帖子可以修改为指定版本 社区lsw编译不过 - #2，来自 huangjiapei_o2800\nlinks: https://discuss.openubmc.cn/t/topic/979/2"
+        }
+    ]
+}

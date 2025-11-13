@@ -1,0 +1,29 @@
+{
+    "topic_id": 325,
+    "question": "往开源组件合入代码，如何联系到committor? - 开源组件需要合入代码，自己公司没有committor的情况，如何联系到华为的committor检视、合入代码？",
+    "topic_user_name": "Kunlun Liuchenxi",
+    "best_answer_url": "/t/topic/325/4",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/325/2",
+            "text": "理论上社区committer定期审视PR并检视\n是有具体哪个PR没有被检视吗？"
+        },
+        {
+            "user_name": "Kunlun Liuchenxi",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/325/3",
+            "text": "content: 【修改描述】修复亿恒硬盘固件版本获取失败问题-storage-GitCode\n这个PR 未合入\nlinks: https://gitcode.com/openUBMC/storage/pull/26"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/325/4",
+            "text": "content: 已经手动通知了，当前gitcode存在一些bug，机器人的@并未推送到对应的committer邮箱，会组织人排查。\nimage1050×225 14 KB\n当前如果需要的话可以手动 @Maintainer、Committer，具体的名单在机器人的这个回复里\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/7db0c62363d504f1a86956d00d9625a598d2c31f.png"
+        }
+    ]
+}

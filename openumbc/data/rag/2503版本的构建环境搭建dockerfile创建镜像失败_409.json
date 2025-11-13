@@ -1,0 +1,29 @@
+{
+    "topic_id": 409,
+    "question": "25.03版本的构建环境搭建：dockerfile创建镜像失败 - 使用manifest25.03版本的dockerfile出现的问题和解决思路：\n1、华为镜像软件源速度太慢，init.py的apt install xxx执行会超时。将timeout设置成6000后不会因超时而断掉\n2、软件安装过程都在init.py里边，但凡出现安装错误，重新build镜像，所有软件又要重新安装一遍（python3 init.py -path $(basename \"$BMC_SDK_PATH\")），结合1所述，调试时间成本很高（40分钟）。\n3、npm安装nodejs，会报网络错误：\nadded 1 package in 27s\n2505.5   installing : node-v20.18.0\n2506.4        mkdir : /usr/local/n/versions/node/20.18.0\n2506.4        fetch : https://nodejs.org/dist/v20.18.0/node-v20.18.0-linux-x64.tar.xz\n2575.8 curl: (56) Recv failure: Connection reset by peer\n2575.8 xz: (stdin): Unexpected end of input\n2575.8 tar: Unexpected EOF in archive\n2575.8 tar: Unexpected EOF in archive\n2575.8 tar: Error is not recoverable: exiting now\n2575.8 \n2575.8   Error: failed to download archive for 20.18.0\n2575.8 \n2575.8 ERROR:root:Command '['/usr/local/bin/n', '20.18.0']' returned non-zero exit status 1.\n\n手动下载或者配置镜像源？",
+    "topic_user_name": "易重辉",
+    "best_answer_url": "/t/topic/409/4",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/409/2",
+            "text": "content: 第1、3点请配置成你自己的镜像源，社区尽量满足最大公约数要求，像网络配置问题、镜像源问题请开发者修改init.py独立解决。\nnpm源配置参考：https://mirrors.huaweicloud.com/mirrorDetail/5ea0f1e03fdb11a72fd319b2?mirrorName=npm&catalog=language\napt源配置参考：https://mirrors.huaweicloud.com/mirrorDetail/5ea14ecab05943f36fb75ee7?mirrorName=ubuntu&catalog=os\n至于从社区下载的资源，可以归档到你司的内部通用制品仓。\n可以替换成其它源，如 https://mirrors.tuna.tsinghua.edu.cn/，或者你司的内部源。\nlinks: https://mirrors.huaweicloud.com/mirrorDetail/5ea0f1e03fdb11a72fd319b2?mirrorName=npm&catalog=language, https://mirrors.huaweicloud.com/mirrorDetail/5ea14ecab05943f36fb75ee7?mirrorName=ubuntu&catalog=os, https://mirrors.tuna.tsinghua.edu.cn/%EF%BC%8C%E6%88%96%E8%80%85%E4%BD%A0%E5%8F%B8%E7%9A%84%E5%86%85%E9%83%A8%E6%BA%90%E3%80%82"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/409/3",
+            "text": "第2条 请 @wangningbo 解答。"
+        },
+        {
+            "user_name": "特别的名字_wangningbo",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/409/4",
+            "text": "可以将dockerfile中执行init.py文件的代码注释掉，先构建一个空的docker容器。在容器内部使用命令行执行init.py。\nwget下载文件超时，可以在wget命令行中添加-c指令实现断点续传。"
+        }
+    ]
+}

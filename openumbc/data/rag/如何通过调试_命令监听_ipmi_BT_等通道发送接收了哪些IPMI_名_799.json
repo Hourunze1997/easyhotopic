@@ -1,0 +1,15 @@
+{
+    "topic_id": 799,
+    "question": "如何通过调试 命令监听 ipmi BT 等通道发送接收了哪些IPMI 名 - BMC v2 可以通过\nattach ipmi\ntrace 的方法监听 ipmi 命令，当前UBMC 如何监听ipmi命令",
+    "topic_user_name": "Yctco Huaconghui",
+    "best_answer_url": "/t/topic/799/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/799/2",
+            "text": "使用下面的命令实现南向追踪功能，可以打印南向通道上具体数据交互，输出到/tmp/下的ipmi.txt\nbusctl --user call bmc.kepler.ipmi_core /bmc/kepler/Debug/IpmiCore/TraceIpmi bmc.kepler.Debug.IpmiCore.TraceIpmi Trace a{ss}bsyyss 0 true \"bt\" 0xff 0xff \"\" \"file\""
+        }
+    ]
+}

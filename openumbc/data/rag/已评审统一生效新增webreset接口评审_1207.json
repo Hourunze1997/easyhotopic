@@ -1,0 +1,22 @@
+{
+    "topic_id": 1207,
+    "question": "【已评审】统一生效新增webreset接口评审 - content: ISSUEl\nweb界面查询升级状态及生效状态信息\n背景\n支持web统一生效接口后，web页面会显示固件生效的进度，如果web页面切出后再切回固件生效界面，需要重新查询当前的生效进度\n而此前webreset接口没有相关属性承载，所以web无法查询固件生效的进度\n评审点\nwebreset接口新增属性，返回后端固件生效任务的TaskURI ，web通过此TaskURI查询固件生效的进度\n接口信息\n\n项\n取值\n\nURI\n/UI/Rest/BMCSettings/UpdateService\n\n接口类型\nGET\n\n变化类型\n新增属性\n\n属性名称\nActiveUrl\n\n数据类型\nstring/null\n\n属性权限\n只读\n\n属性说明\n当前升级资源的统一生效的任务URI，如果没有生效任务则为 null\n\n示例\nURL: /UI/Rest/BMCSettings/UpdateService\n操作类型：GET\n请求参数：{}\n响应消息体举例：\n{\n    \"ActiveMode\": \"Immediately\",\n    \"ActiveModeSupported\": false,\n    \"FirmwareVersion\": {\n        \"ActiveBMCVersion\": \"5.10.00.02\",\n        \"AvailableBMCVersion\": \"5.10.00.02\",\n        \"BackupBMCVersion\": \"5.10.00.02\"\n    },\n    \"UpdatingFlag\": false,\n    \"UpgradeUrl\": null,\n    \"UpgradeMode\": \"Serial\",\n    \"ActiveUrl\": null\n}\n\n评审结论\n通过，同意webrest接口 /UI/Rest/BMCSettings/UpdateService 新增属性 ActiveUrl，类型为 string，表征当前升级资源中生效任务的URI，如果没有生效任务则属性值为 null\nlinks: #p-2617-issuel-1, https://gitcode.com/openUBMC/rackmount/issues/114, #p-2617-h-2, #p-2617-h-3, #p-2617-h-4, #p-2617-h-5, #p-2617-h-6",
+    "topic_user_name": "sunpeijun",
+    "best_answer_url": "/t/topic/1207/2",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1207/2",
+            "text": "问题 #1：当前议题没有关联issue\n问题 #2：背景描述不清楚，上来就是说支持统一生效，究竟什么原因触发的评审？\n问题 #3：评审点条目不清晰，什么叫生效任务的路径？"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1207/3",
+            "text": ""
+        }
+    ]
+}

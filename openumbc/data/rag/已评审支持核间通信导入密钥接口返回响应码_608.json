@@ -1,0 +1,43 @@
+{
+    "topic_id": 608,
+    "question": "【已评审】支持核间通信导入密钥接口返回响应码 - content: ISSUE链接 ：GitCode - 全球开发者的开源社区,开源代码托管平台\n背景:\n当前核间通信中有对称密钥导入接口，并已提供资源协作接口方法。\n1、该接口调用成功时候返回true，\n2、调用失败时记录异常日志（日志中含错误具体信息），然后抛出请求失败request error的报错\n预期：业务模块希望调用该资源协作接口的方法失败时能获取到调用异常时的sdk的响应码，从而在业务侧可以根据不同的响应码打印不同的日志\n决策点\n修改资源协作接口bmc.kepler.Managers.SOC.SecureCore.SecureBoot以下方法：\nImportBMCFirmwareEncryptKey，变更参数，响应类型从Boolean变更成U16\n详细描述\n该接口在装备阶段调用，用于将密钥密文、密文长度以及哈希值导入sdk，sdk解密校验通过后烧录到efuse。接口调用失败后资源树方法原先返回boolean无法让业务判断具体错误，因此评审修改成返回对应的错误码\n评审结论\n不通过，上层业务不应该感知到sdk的错误码\nlinks: #p-1197-issue-gitcode-httpsgitcodecomopenubmcmdb_interfaceissues19-1, https://gitcode.com/openUBMC/mdb_interface/issues/19, #p-1197-h-2, #p-1197-h-3, #p-1197-h-4, #p-1197-h-5",
+    "topic_user_name": "Chenshengfan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/608/2",
+            "text": "标题和内容请按照模板填写"
+        },
+        {
+            "user_name": "Chenshengfan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/608/3",
+            "text": "soctl中不返回错误码，直接将错误码所对应的抛错的错误引擎对应内容抛出"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/608/4",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/608/5",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/608/6",
+            "text": ""
+        }
+    ]
+}

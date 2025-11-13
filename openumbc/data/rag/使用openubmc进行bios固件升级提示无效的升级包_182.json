@@ -1,0 +1,29 @@
+{
+    "topic_id": 182,
+    "question": "使用openubmc进行bios固件升级，提示无效的升级包 - content: image543×394 10.6 KB\n一键日志，查看app.log，提示签名校验失败verify signature error, code 88200312，\n用的是bios同事给的hpm包，S920S10X10_Update_CS_2P_cms.hpm，确认能再v2架构bmc上升级bios。\n目前openubmc固件已经使用了百敖的证书签名\n是不是因为bios hpm包还是用的hw证书签名？让bios同事用百敖的证书重新签名就行？\n相关日志内容如下：\n\n2025-01-16 09:56:58.890801 web_backend NOTICE: init.lua(98): upload content length:number 4299426, remaining capacity space:number 133378048\n2025-01-16 09:56:59.717685 firmware_mgmt NOTICE: active_fructl.lua(96): get host type is Singlehost\n2025-01-16 09:56:59.718027 firmware_mgmt NOTICE: utils.lua(34): The file path is local.\n2025-01-16 09:56:59.726249 firmware_mgmt NOTICE: init.lua(33): update status to FS_SIMPLE_UPGRADING.\n2025-01-16 09:56:59.750662 firmware_mgmt NOTICE: task_service.lua(49): task create success, task id: 1171667961\n2025-01-16 09:56:59.801887 firmware_mgmt NOTICE: file_transfer.lua(145): start to move file [S920S10X10_Update_CS_2P_cms.hpm] from tmp to shm\n2025-01-16 09:56:59.880898 firmware_mgmt NOTICE: file_transfer.lua(150): move_file_s ok:true, err:0\n2025-01-16 09:56:59.951508 firmware_mgmt NOTICE: validate_sign.lua(255): CMS verification started.\n2025-01-16 09:56:59.962452 firmware_mgmt WARNING: init.lua(97): nil:256 > validate_sign.lua:-1 > validate_sign.lua:166: An error occurred during the firmware upgrade process. Details: verify signature error, code 88200312\n2025-01-16 09:56:59.962863 firmware_mgmt ERROR: validate_sign.lua(258): FirmwareUpgradeError: An error occurred during the firmware upgrade process. Details: verify signature error, code 88200312\n2025-01-16 09:56:59.963623 firmware_mgmt ERROR: control.lua(302): parse package(S920S10X10_Update_CS_2P_cms.hpm) failed, ret:false.\n2025-01-16 09:57:00.103705 firmware_mgmt NOTICE: state_simple_upgrading.lua(76): simple upgraded, current active mode is:nil, wait restart seconds:30000\n2025-01-16 09:57:00.111141 firmware_mgmt NOTICE: init.lua(33): update status to FS_IDLE.\n2025-01-16 09:57:12.075292 thermal_mgmt NOTICE: thermal_mgmt_app.lua(166): collect log finished\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/d2046e491ba389306e01b0e22a3f6f20e086f310.png",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/182/2",
+    "reply_posts": [
+        {
+            "user_name": "李文杰",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/182/2",
+            "text": "从日志上来看确实是签名校验失败了，如果使用的是伙伴自签名固件，同时升级华为签名的HPM，就会遇到这类问题。\n请试一下把HPM包的签名替换一下\nHPM头部可以直接用文本的方式看出来证书的CommonName"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/182/3",
+            "text": "content: openubmc hpm包证书信息\nimage1152×400 32.5 KB\nbios hpm包证书信息\nimage1045×444 28.9 KB\n对比是不一样的，我再来问下bios那边\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/332037a90fd2d7e20ac8e1bf5373a7193e6b9c6f.png, https://forum.openubmc.cn/uploads/default/original/1X/31eeadf2d2dda8415af9b54951e70bd230c91a59.png"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/182/4",
+            "text": ""
+        }
+    ]
+}

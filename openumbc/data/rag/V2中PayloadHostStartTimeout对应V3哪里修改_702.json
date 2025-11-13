@@ -1,0 +1,43 @@
+{
+    "topic_id": 702,
+    "question": "V2中Payload.HostStartTimeout对应V3哪里修改 - 如标题，V2中类CLASS=\"Payload\"的属性HostStartTimeout,对应V3在哪里设置？",
+    "topic_user_name": "Kun Lun Lizhuang",
+    "best_answer_url": "/t/topic/702/5",
+    "reply_posts": [
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/702/2",
+            "text": "可使用ipmi命令进行设置看门狗超时时间"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/702/3",
+            "text": "KunLun_lizhuang:\n\nHostStartTimeout\n\n有没有办法配置HostStartTimeout默认值，如通过CSR配置。"
+        },
+        {
+            "user_name": "Kun Lun Lizhuang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/702/4",
+            "text": "嗯，我就是想在类似csr配置中直接修改后构建出包，而不是通过ipmi命令，用于开机过程特殊处理"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/702/5",
+            "text": "更正,当前没有其他手段可以设置该时间,该时间当前固定为180秒"
+        },
+        {
+            "user_name": "Kun Lun Lizhuang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/702/6",
+            "text": "你好，有计划改为可配方式吗？例如开机过程中需要留给host开机时间尽可能长一些，避免定位问题时出现重启，影响问题定位。"
+        }
+    ]
+}

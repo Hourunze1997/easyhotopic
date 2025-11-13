@@ -1,0 +1,7 @@
+{
+    "topic_id": 1773,
+    "question": "【待评审】支持检查下发的调速级别是否有效资源协作接口 - content: ISSUE链接\n[GitCode - 全球开发者的开源社区,开源代码托管平台]( [支持判断下发的调速级别是否有效资源协作接口-mdb_interface-GitCode]）\n(GitCode - 全球开发者的开源社区,开源代码托管平台)\n背景\n当通过北向接口设置转速级别时，北向无法直接判断要下发的转速级别是否在允许的范围内，需要新增方法来判断要下发的转速级别是否在允许的范围内。\n决策点\n在bmc.kepler.Systems.AirCoolingConfig和bmc.kepler.Systems.LiquidCoolingConfig下分别新增IsValidLevel方法，分别用于判断手动下发的风扇、泵的转速级别是否在允许的范围内。\n详细描述\n1. 新增方法IsValidLevel\n资源path：/bmc/kepler/Systems/:SystemId/AirCoolingConfig\n资源interface：bmc.kepler.Systems.AirCoolingConfig\n变化类型：新增方法\n\n方法名称\n变化类型\n请求签名\n请求参数说明  \n响应签名\n响应参数说明  \n访问权限\n说明  \n约束\n\nIsValidLevel\n新增方法\nsy\nLevelPercent：下发的调速级别类型：U8\nb\n取值：true/falsetrue：下发的转速级别在允许的范围内；false：下发的转速级别不在允许的范围内\nReadOnly\n判断手动下发的转速级别是否在允许的范围内\n无\n\n2. 新增方法IsValidLevel\n资源path：/bmc/kepler/Systems/:SystemId/LiquidCoolingConfig\n资源interface：bmc.kepler.Systems.LiquidCoolingConfig\n变化类型：新增方法\n\n方法名称\n变化类型\n请求签名\n请求参数说明  \n响应签名\n响应参数说明  \n访问权限\n说明  \n约束\n\nIsValidLevel\n新增方法\nsy\nLevelPercent：下发的调速级别类型：U8\nb\n取值：true/falsetrue：下发的转速级别在允许的范围内；false：下发的转速级别不在允许的范围内\nReadOnly\n判断手动下发的转速级别是否在允许的范围内\n无\n\n结论\n\n遗留问题及确认结论\n1.xx\n结论：xx\nlinks: #p-4316-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/149, #p-4316-h-2, #p-4316-h-3, #p-4316-h-4, #p-4316-h-5",
+    "topic_user_name": "Luchen",
+    "best_answer_url": "",
+    "reply_posts": []
+}

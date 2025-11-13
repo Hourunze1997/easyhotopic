@@ -1,0 +1,22 @@
+{
+    "topic_id": 1649,
+    "question": "iBMC V2 更新到 iBMC V3 后无法登录web，显示拒绝连接 - 可以通过SSH登录到系统，使用FTP把iBMC to uBMC 的包传输到BMC文件系统后，使用此命令更新后，BMC IP 可以ping通，但无法登陆网页也无法ssh登录。\nipmcset -d upgrade -v  [activemode]\nfilepath       e.g.:/tmp/image.hpm\nactivemode     e.g. 1\n0: firmware need to reboot manually after BMC is upgraded\n1：firmware wiil reboot after BMC is upgraded",
+    "topic_user_name": "Leon.Li",
+    "best_answer_url": "/t/topic/1649/3",
+    "reply_posts": [
+        {
+            "user_name": "Leon.Li",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1649/2",
+            "text": "更新iBMC to uBMC 的包后，无法使用原有用户名密码通过SSH登录到BMC系统"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1649/3",
+            "text": "需要更新ssl证书才能登录网页"
+        }
+    ]
+}

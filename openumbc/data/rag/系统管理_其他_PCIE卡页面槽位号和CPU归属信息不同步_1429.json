@@ -1,0 +1,92 @@
+{
+    "topic_id": 1429,
+    "question": "系统管理-其他-PCIE卡页面槽位号和CPU归属信息不同步 - content: 企业微信截图_174771949571281920×899 46.5 KB\n在pcieaddrinfo对象中slotid、socketid是可以正常显示的，但是在pcie_device对象中slotid和socketid都是0，怀疑是没有成功同步。我们用的是非天池模式，静态配置sr文件，求助，有什么解决方法或者排查思路。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/1/148c77651e85d9ebf96563074bd03fc33104e998.png",
+    "topic_user_name": "wuzhou-xiaokaili",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1429/2",
+            "text": "pcie_device加日志调试？\ncsr是怎么配的？SlotId、SocketId是引用还是同步？"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1429/3",
+            "text": "这是我csr的配置\n        \"Connector_PCIe_17\": {\n            \"Bom\": \"14140130\",\n            \"Slot\": 17,\n            \"Position\": 17,\n            \"Presence\": \"<=/Scanner_Slot17Presence.Value|>expr($1 == 1? 0 : 1)\",\n            \"Id\": \"19e5d500\",\n            \"AuxId\": \"02000110\",\n            \"Buses\": [\n                \"I2cMux_9548Chan63\"\n            ],\n            \"SystemId\": \"${SystemId}\",\n            \"ManagerId\": \"${ManagerId}\",\n            \"ChassisId\": \"${ChassisId}\",\n            \"SilkText\": \"PCIeSlot${Slot}\",\n            \"IdentifyMode\": 2,\n            \"Container\": \"Component_Switch\",\n            \"Type\": \"PCIe\"\n        },\n        \"PcieAddrInfo_17\": {\n            \"Location\": \"PCIeSlot${Slot}\",\n            \"ComponentType\": 8,\n            \"ContainerSlot\": \"${Slot}\",\n            \"ContainerUID\": \"00000001040302024342\",\n            \"ContainerUnitType\": \"IEU\",\n            \"GroupPosition\": \"PcieAddrInfo_17_${GroupPosition}\"\n        },\n      .............\n        \"BusinessConnector_23\": {\n            \"Name\": \"Down_4\",\n            \"Direction\": \"Downstream\",\n            \"Slot\": 18,\n            \"LinkWidth\": \"X16\",\n            \"MaxLinkRate\": \"PCIe 5.0\",\n            \"ConnectorType\": \"PCIe CEM\",\n            \"UpstreamResources\": [\n            {\n                \"Name\": \"Up_130\",\n                \"ID\": 255,\n                \"Offset\": 6,\n                \"Width\": 2\n            }\n            ],\n            \"RefMgmtConnector\": \"#/Connector_PCIE_17\",\n            \"RefPCIeAddrInfo\": \"#/PcieAddrInfo_17\"\n        },"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1429/4",
+            "text": "这块没问题，看一下卡的配置，尤其是PCIeDevice的"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1429/5",
+            "text": "content: 企业微信截图_175038830080221288×880 67.4 KB\n企业微信截图_17503885142271316×876 62.6 KB\n这是pcie_device和pcie_addrinfo的属性信息\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/4/4d9ca06b59c10704517c20947c9c44c509c4f26f.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/842adc09740b85dc972dcba644faf8134cc158eb.png"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1429/6",
+            "text": "content: https://gitcode.com/openUBMC/pcie_device/blob/main/src/lualib/device/class/pcie_device.lua#L162\n在这个函数这里加点调试日志？这里是把PCIeAddrInfo和PCIeDevice槽位同步的地方\nlinks: https://gitcode.com/openUBMC/pcie_device/blob/main/src/lualib/device/class/pcie_device.lua#L162"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1429/7",
+            "text": "content: 大佬，经过调试，问题定位到下图代码段，通过观察日志也发现是有返回bdf信息的。\n问题：为什么我的配置会存在RefMgmtConnector exists but has no path问题呢，我现在使用的pcie device是300i dou，使用csr文件是：14140130_19e5d500_02000110.sr？\nimage1271×610 106 KB\n日志部分打印了，此部分为通过function c_biz_topo:get_pcie_addr_info(type, slot, position)\n匹配到了biz_conn：\n2025-06-30 14:21:52.847214 pcie_device NOTICE: device_loader.lua(508): [BizTopoLoader] type=PCIeCard, slot_id=1 - DeviceSSBDF=[0x00, 0x00, 0x0d, 0x00, 0x00]\n2025-06-30 14:21:52.847446 pcie_device NOTICE: device_loader.lua(508): [BizTopoLoader] type=PCIeCard, slot_id=2 - DeviceSSBDF=[0x00, 0x00, 0x03, 0x00, 0x00]\n2025-06-30 14:21:52.847837 pcie_device NOTICE: device_loader.lua(508): [BizTopoLoader] type=PCIeCard, slot_id=3 - DeviceSSBDF=[0x00, 0x00, 0x0d, 0x00, 0x00]\n...\n...\n2025-06-30 14:21:54.945291 pcie_device NOTICE: device_loader.lua(124): [BizTopoLoader] Get id from PMU, vid:4096, did:690, sub_vid:4096, sub_did:260\n2025-06-30 14:21:54.945524 pcie_device NOTICE: biz_topo.lua(831): [get_pcie_addr_info] start: type=PCIeCard, slot=14, position=nil\n2025-06-30 14:21:54.947039 pcie_device NOTICE: biz_topo.lua(856): [get_pcie_addr_info] matched connector[2]\n2025-06-30 14:21:54.947643 pcie_device NOTICE: device_loader.lua(570): [BizTopoLoader] addr_multi_presence=1, sys_id=1\n2025-06-30 14:21:54.947970 pcie_device NOTICE: biz_topo.lua(831): [get_pcie_addr_info] start: type=PCIeCard, slot=15, position=nil\n2025-06-30 14:21:54.961690 pcie_device NOTICE: biz_topo.lua(856): [get_pcie_addr_info] matched connector[10]\n2025-06-30 14:21:54.963233 pcie_device NOTICE: device_loader.lua(570): [BizTopoLoader] addr_multi_presence=0, sys_id=1\n2025-06-30 14:21:54.965584 pcie_device NOTICE: biz_topo.lua(877): [get_mgmt_connector] start: type=PCIeCard, slot=14, position=nil\n2025-06-30 14:21:54.969380 pcie_device NOTICE: biz_topo.lua(885): [get_mgmt_connector] get_pcie_addr_info success\n2025-06-30 14:21:54.969866 pcie_device NOTICE: biz_topo.lua(897): [get_mgmt_connector] RefMgmtConnector exists but has no path\n2025-06-30 14:21:54.972339 pcie_device NOTICE: biz_topo.lua(877): [get_mgmt_connector] start: type=PCIeCard, slot=15, position=nil\n2025-06-30 14:21:54.982319 pcie_device NOTICE: biz_topo.lua(885): [get_mgmt_connector] get_pcie_addr_info success\n2025-06-30 14:21:54.982574 pcie_device NOTICE: biz_topo.lua(897): [get_mgmt_connector] RefMgmtConnector exists but has no path\n2025-06-30 14:21:54.993383 pcie_device NOTICE: device_loader.lua(124): [BizTopoLoader] Get id from PMU, vid:4096, did:690, sub_vid:4096, sub_did:260\n2025-06-30 14:21:54.993655 pcie_device NOTICE: biz_topo.lua(831): [get_pcie_addr_info] start: type=PCIeCard, slot=16, position=nil\n2025-06-30 14:21:55.006525 pcie_device NOTICE: biz_topo.lua(856): [get_pcie_addr_info] matched connector[8]\n2025-06-30 14:21:55.008146 pcie_device NOTICE: device_loader.lua(570): [BizTopoLoader] addr_multi_presence=1, sys_id=1\n2025-06-30 14:21:55.008656 pcie_device NOTICE: biz_topo.lua(831): [get_pcie_addr_info] start: type=PCIeCard, slot=17, position=nil\n2025-06-30 14:21:55.023969 pcie_device NOTICE: biz_topo.lua(856): [get_pcie_addr_info] matched connector[12]\n2025-06-30 14:21:55.029746 pcie_device NOTICE: device_loader.lua(570): [BizTopoLoader] addr_multi_presence=0, sys_id=1\n2025-06-30 14:21:55.033952 pcie_device NOTICE: biz_topo.lua(877): [get_mgmt_connector] start: type=PCIeCard, slot=16, position=nil\n2025-06-30 14:21:55.045875 pcie_device NOTICE: biz_topo.lua(885): [get_mgmt_connector] get_pcie_addr_info success\n\n部分打印了，这部分是通过业务连接器没有匹配到指定槽位的PCIeAddrInfo对象相关的打印：\n2025-06-30 14:21:55.969449 pcie_device NOTICE: biz_topo.lua(881): [get_mgmt_connector] failed to get_pcie_addr_info: 2\n2025-06-30 14:21:55.969802 pcie_device NOTICE: device_loader.lua(162): [BizTopoLoader] not ok\n2025-06-30 14:21:55.970154 pcie_device NOTICE: biz_topo.lua(877): [get_mgmt_connector] start: type=PCIeCard, slot=22, position=nil\n2025-06-30 14:21:56.005530 pcie_device NOTICE: biz_topo.lua(870): [get_pcie_addr_info] connectors with position found, but no matching PCIeAddrInfo (type=PCIeCard, slot=22)\n2025-06-30 14:21:56.005745 pcie_device NOTICE: biz_topo.lua(881): [get_mgmt_connector] failed to get_pcie_addr_info: 2\n2025-06-30 14:21:56.006215 pcie_device NOTICE: device_loader.lua(162): [BizTopoLoader] not ok\n2025-06-30 14:21:56.007098 pcie_device NOTICE: biz_topo.lua(877): [get_mgmt_connector] start: type=PCIeCard, slot=23, position=nil\n2025-06-30 14:21:56.042527 pcie_device NOTICE: biz_topo.lua(870): [get_pcie_addr_info] connectors with position found, but no matching PCIeAddrInfo (type=PCIeCard, slot=23)\n2025-06-30 14:21:56.043245 pcie_device NOTICE: biz_topo.lua(881): [get_mgmt_connector] failed to get_pcie_addr_info: 2\n2025-06-30 14:21:56.043842 pcie_device NOTICE: device_loader.lua(162): [BizTopoLoader] not ok\n2025-06-30 14:21:56.044634 pcie_device NOTICE: biz_topo.lua(877): [get_mgmt_connector] start: type=PCIeCard, slot=24, position=nil\n2025-06-30 14:21:56.093203 pcie_device NOTICE: biz_topo.lua(870): [get_pcie_addr_info] connectors with position found, but no matching PCIeAddrInfo (type=PCIeCard, slot=24)\n2025-06-30 14:21:56.093369 pcie_device NOTICE: biz_topo.lua(881): [get_mgmt_connector] failed to get_pcie_addr_info: 2\n2025-06-30 14:21:56.093813 pcie_device NOTICE: device_loader.lua(162): [BizTopoLoader] not ok\n2025-06-30 14:21:56.094737 pcie_device NOTICE: biz_topo.lua(877): [get_mgmt_connector] start: type=PCIeCard, slot=25, position=nil\n2025-06-30 14:21:56.114714 pcie_device NOTICE: biz_topo.lua(881): [get_mgmt_connector] failed to get_pcie_addr_info: 2\n2025-06-30 14:21:56.114877 pcie_device NOTICE: device_loader.lua(162): [BizTopoLoader] not ok\n2025-06-30 14:21:56.115530 pcie_device NOTICE: biz_topo.lua(877): [get_mgmt_connector] start: type=PCIeCard, slot=26, position=nil\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e8031b6a559465af5ea6174934008110390ebd7e.png"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1429/8",
+            "text": "wuzhou-xiaokaili:\n\nRefMgmtConnector exists but has no path\n\n这个指的是IEU上面的BusinessConnector的RefMgmtConnector没有引用对应的Connector对象。"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1429/10",
+            "text": "但是我的BusinessConnector_8是有\"RefMgmtConnector\": \"#/Connector_PCIE_6\"属性的，并且这个Connector_PCIE_6是在位的，有什么解决思路吗？"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1429/11",
+            "text": "content: 你这个问题有点奇怪的，Connector_PCIE_6在hwdiscovery资源树上能看得到对吧\n估计要看一下完整日志了\n@caiyesheng_b48v3 帮忙看看\nlinks: /u/caiyesheng_b48v3"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1429/12",
+            "text": "可以看到Connector_PCIE_6的"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1429/13",
+            "text": "追踪到相关日志打印dump_info/LogDump/hw_stream.log：\n1970-01-01 08:00:30.869311 hwdiscovery WARNING: analyse.lua(123): get reference object failed, object: Connector_PCIE_6\n\n1970-01-01 08:00:30.869707 hwdiscovery WARNING: analyse.lua(408): position: 01010101, ignore property: RefMgmtConnector, value: #/Connector_PCIE_6, object: BusinessConnector_8_01010101,error: analyse property failed\n\n1970-01-01 08:00:30.870275 hwdiscovery WARNING: analyse.lua(123): get reference object failed, object: Connector_PCIE_0\n\n1970-01-01 08:00:30.870500 hwdiscovery WARNING: analyse.lua(408): position: 01010101, ignore property: RefMgmtConnector, value: #/Connector_PCIE_0, object: BusinessConnector_5_01010101,error: analyse property failed"
+        },
+        {
+            "user_name": "王祝炜",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1429/14",
+            "text": "content: wangzhuwei3@h-partners.com 日志转发我一份。\nlinks: mailto:wangzhuwei3@h-partners.com"
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "topic_id": 1019,
+    "question": "bmcgo.errors Download failed，下载失败 - content: 使用stdio编译时候，一键部署仓库会报错，如下：\nimage1095×812 133 KB\nimage404×506 50 KB\n如何配置呢？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/27d46da9c3259ee31fc09110509487ca11e0259c.png, https://discuss.openubmc.cn/uploads/default/original/1X/4146ac7c27886573a0023d8cc84b31278c4e9f3a.png",
+    "topic_user_name": "Xiangxiang",
+    "best_answer_url": "/t/topic/1019/9",
+    "reply_posts": [
+        {
+            "user_name": "LiRuichen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1019/2",
+            "text": "看报错信息是conan获取组件仓失败了，如果manifest版本过低可能会导致旧的组件conan制品不存在，导致获取失败，可以考虑更新manifest以及bingo到最新的版本尝试解决该问题"
+        },
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1019/3",
+            "text": "我重新clone了manifest\nbingo 为0.5.230\nbmc-stdio 1.1.71\n错误仍然存在，我通过bingo build命令是可以正常编译的\nstdio的配置有什么特别需要注意的吗？"
+        },
+        {
+            "user_name": "LiRuichen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1019/4",
+            "text": "bingo build能够正常完成的话，报错应该是拉取代码失败，由于bingo fetch会使用https协议拉取代码，需要在~/.git-credentials中加入https://<gitcode令牌>:<gitcode令牌>@gitcode.com，完成获取全部代码仓"
+        },
+        {
+            "user_name": "特别的名字_wangningbo",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1019/5",
+            "text": "根据manifest代码仓中的readme说明，环境初始化一下，然后在执行bingo build。"
+        },
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1019/6",
+            "text": "正常配置了~/.git-credentials之后问题仍然存在  ，此问题是否与权限有关。\n我目前是非root权限启动的stdio\n尝试使用root权限启动，stdio会报错，服务启动失败？\n还有其他排查方向吗？"
+        },
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1019/7",
+            "text": "命令行的bingo build是可以的，bmc stdio，工具出错"
+        },
+        {
+            "user_name": "LiRuichen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1019/8",
+            "text": "content: root用户出现服务启动失败问题有对应的社区issue BMC Studio页面跳转端口号不对-docs-GitCode，当前可以通过手动访问localhost:12888访问studio，报错信息还是和上面一样吗？还是有其它的报错信息？\nlinks: https://gitcode.com/openUBMC/docs/issues/11"
+        },
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1019/9",
+            "text": "content: 块引用 root用户出现服务启动失败问题有对应的社区issue BMC Studio页面跳转端口号不对-docs-GitCode，当前可以通过手动访问localhost:12888访问studio\n\n按照这个方法可以正常使用bmc studio了，非常感谢！！！\n针对这个报错我尝试过手动通过\nsudo conan download XXX\n\n能正常进行下载，但是非root权限会报openubmc_dev远端仓库不存在的错误\nlinks: https://gitcode.com/openUBMC/docs/issues/11"
+        }
+    ]
+}

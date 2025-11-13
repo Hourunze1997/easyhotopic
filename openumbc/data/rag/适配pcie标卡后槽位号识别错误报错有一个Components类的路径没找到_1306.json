@@ -1,0 +1,15 @@
+{
+    "topic_id": 1306,
+    "question": "适配pcie标卡后槽位号识别错误，报错有一个Components类的路径没找到 - content: 适配pcie网卡后web的网络适配器槽位号识别错误，其他界面的Pcie卡出槽位号显示正常。现象是相同的卡槽位号一样，图二和图三是相同的卡，槽位号都显示成11，查看报错有一个Components类的路径没找到：from path:/bmc/kepler/Systems/1/Components/Component_PCIeCard_010101080C, interface:bmc.kepler.Systems.Component, property:Health\n这里是Components类的资源树路径还没有生成吗，后面找这个接口下的属性都报错了，另外BDF会影响槽位号吗\nimage586×360 3.85 KB\nimage1157×236 7 KB\nimage1171×220 6.89 KB\nimage2296×142 20.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/63347fa830d95f6adaa0a86614f7582be4c65c14.png, https://discuss.openubmc.cn/uploads/default/original/2X/3/30cf175f143c2e5c39e72ee580f793862aa8cf04.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/6f4029177ff6c5ba227283a36a197e4c30155077.png, https://discuss.openubmc.cn/uploads/default/original/2X/b/b74d246c54079c950de915f7a362da9da747f7d0.png",
+    "topic_user_name": "Kui Tai Fan Chun Yang",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "王祝炜",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1306/2",
+            "text": "content: wangzhuwei3@h-partners.com 一键收集日志转发我一份\nlinks: mailto:wangzhuwei3@h-partners.com"
+        }
+    ]
+}

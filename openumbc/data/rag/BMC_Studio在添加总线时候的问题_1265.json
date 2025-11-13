@@ -1,0 +1,43 @@
+{
+    "topic_id": 1265,
+    "question": "BMC Studio在添加总线时候的问题 - content: 我在使用BMC Studio的时候，在root.sr中添加了一条Adc总线，在buses下面会有Adc_1，但是objects里面没有Adc_1对象的定义。\n\"Objects\": {\n        \"I2c_1\": {\n            \"Id\": 1\n        },\n        \"I2c_2\": {\n            \"Id\": 2\n        },\n\n按道理应该会有向上面I2c对象一样的对象吧？同样我添加新的i2c bus好像也不会有对应的i2c对象被添加到Objects下面。同样我在 功能器件 里面也找不到I2c，Adc这些。\n请问总线该如何完整的添加呢？使用Studio是想校验一下之前这个问题中，我手动配置存在的问题\n配置Adc bus时候的问题 - 交流互助区 - openUBMC 论坛\nlinks: https://discuss.openubmc.cn/t/topic/838",
+    "topic_user_name": "百敖 周子彦",
+    "best_answer_url": "/t/topic/1265/5",
+    "reply_posts": [
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1265/2",
+            "text": "root.sr是总线的定义位置和总线的出口，因此不是在anchor中添加总线，而是直接定义总线对象然后传到下游连接器中。"
+        },
+        {
+            "user_name": "百敖 周子彦",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1265/3",
+            "text": "总线对象在BMC Studio里怎么去配置呢？好像没有看到相关的，还是说只能代码去定义对象"
+        },
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1265/4",
+            "text": "只能在object中定义"
+        },
+        {
+            "user_name": "gongcheng",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1265/5",
+            "text": "content: adellonzzy:\n\nAdc\n\nAdc为anchor 总线，只会出现在ManagementTopology对象中，不会出现在Objects中。出现在Objects中的是mux总线，也就是有下联器件的总线，比如Smc、Chip、JtagSwitch器件的下联总线，还有Pca9544、Pca9545、Pca9548端口连出的总线。\nanchor总线配置如下：\n1963×741 56.1 KB\n配置出现在Objects中的mux总线：比如Smc器件的下联总线：\n操作步骤：拖拽Smc器件到Adc总线上，再拖拽一个Cpld器件到Smc器件上，会自动生成下联总线I2cMux_Smc_2_1，其中ChannelId对应图上的I12Mux右边的(0)\nScreenShot_202506171449471016×465 61.2 KB\n2844×355 46.8 KB\n31122×435 64.4 KB\nPca9544的下联总线：\n操作步骤：拖拽Pca9544器件到Adc总线上，拖拽Lm75器件到端口0上（或者鼠标右键点击端口0，选择要添加的器件），Objects中会自动生成总线I2cMux_Pca9544_1_1，ChannelId对应端口号\n41033×332 65.6 KB\n5630×383 36.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/8edea7c2e9824db108f187ff3a7b45a018a9339c.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/27e72ca4083fbfa9d3f3c052f1504d4ec4994d73.png, https://discuss.openubmc.cn/uploads/default/original/2X/2/239ee6ecd0647a9a9ace3b1a5d8b6deeb538a96a.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/81c287f9d45e83aef874c249a8ccfcdfa826f91d.png, https://discuss.openubmc.cn/uploads/default/original/2X/7/712da53abc2dba2de2f7e892a8f256d6ab7e3a5c.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/8171f44d634f8472a964316399b2d9923d6c8877.png"
+        },
+        {
+            "user_name": "Data Sculptor",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1265/7",
+            "text": "当前总线均是发源于root文件的，在其它板卡都不会出现重新定义总线的场景，在root里定义一次就可以了，再通过Anchor把总线传入到下级版本。\n曾了解到在其它板卡可能会出现新增总线的情况，但一直都没有落实这个场景诉求，所以当前没有做新增总线的功能，后续如果有此诉求，会把新增总线功能放开，届时可以配置总线的详细信息。"
+        }
+    ]
+}

@@ -1,0 +1,294 @@
+{
+    "0": {
+        "summary": "开发者需解决YOLOv7在ATC转换OM后高宽比失衡场景的检测异常",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "122",
+                "title": "yolov7转换得到的om模型对高宽比大于1.5左右的图片识别结果错误",
+                "url": "https://gitee.com/ascend/samples/issues/IC9L4Q",
+                "created_at": "2025-05-22 10:03:46+08",
+                "source_type": "issue",
+                "source_id": "20602682",
+                "cosine": 0.7378668065326263
+            },
+            {
+                "id": "113",
+                "title": "yolov7转换得到的om模型对高宽比大于1.5左右的图片识别结果错误",
+                "url": "https://www.hiascend.com/forum/thread-0237183096692632168-1-1.html",
+                "created_at": "2025-05-20 04:11:33+00",
+                "source_type": "forum",
+                "source_id": "237183096692632192",
+                "cosine": 0.7372730904547024
+            }
+        ],
+        "label": "模型部署问题"
+    },
+    "1": {
+        "summary": "昇腾CANN开发者如何排查算子适配中的用例异常及内存溢出",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "101",
+                "title": "[Bug-Report|缺陷反馈]: isamax算子在香橙派 Ascend310b 大部分样例结果错误 ",
+                "url": "https://gitee.com/ascend/cann-ops/issues/IC8IUT",
+                "created_at": "2025-05-17 18:54:29+08",
+                "source_type": "issue",
+                "source_id": "20553077",
+                "cosine": 0.550988461483959
+            },
+            {
+                "id": "99",
+                "title": "[Bug-Report|缺陷反馈]: sasum在香橙派 Ascend310b 大部分样例结果错误",
+                "url": "https://gitee.com/ascend/cann-ops/issues/IC8IR8",
+                "created_at": "2025-05-17 18:23:50+08",
+                "source_type": "issue",
+                "source_id": "20552948",
+                "cosine": 0.5310956652579101
+            },
+            {
+                "id": "100",
+                "title": "[Bug-Report|缺陷反馈]: isamin 在Atlas 200I DK A2测试大部分均result error",
+                "url": "https://gitee.com/ascend/cann-ops/issues/IC8ITQ",
+                "created_at": "2025-05-17 18:40:43+08",
+                "source_type": "issue",
+                "source_id": "20553038",
+                "cosine": 0.4981091906764322
+            }
+        ],
+        "label": "算子适配问题"
+    },
+    "2": {
+        "summary": "昇腾CANN开发者在无root权限下调用单算子API时报ERROR 561103，需排查环境变量和显存限制",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "136",
+                "title": "根据CANN社区版8.0.0.alpha001的文档调用单算子API，编译成功，但是运行报错：aclnnAddGetWorkspaceSize failed. ERROR: 561103",
+                "url": "https://www.hiascend.com/forum/thread-02108183654631289220-1-1.html",
+                "created_at": "2025-05-26 15:10:31+00",
+                "source_type": "forum",
+                "source_id": "2108183654631289088",
+                "cosine": 0.7017711053201549
+            },
+            {
+                "id": "106",
+                "title": "使用aclnnMatmul的时候报错：aclnnMatmulGetWorkspaceSize failed. ERROR: 561103",
+                "url": "https://www.hiascend.com/forum/thread-02108183029427616162-1-1.html",
+                "created_at": "2025-05-19 09:30:28+00",
+                "source_type": "forum",
+                "source_id": "2108183029427616000",
+                "cosine": 0.688277386243082
+            }
+        ],
+        "label": "运行时权限与环境配置问题"
+    },
+    "3": {
+        "summary": "昇腾CANN开发者亟需确认不同soc版本模型部署兼容性及OM转换错误码分析",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "14",
+                "title": "om推理报错",
+                "url": "https://www.hiascend.com/forum/thread-02113175152884692058-1-1.html",
+                "created_at": "2025-02-17 05:34:45+00",
+                "source_type": "forum",
+                "source_id": "2113175152884691968",
+                "cosine": 0.6286537820019762
+            },
+            {
+                "id": "82",
+                "title": "【Atlas 200I DK A2】onnx转om失败",
+                "url": "https://www.hiascend.com/forum/thread-0255182415578200087-1-1.html",
+                "created_at": "2025-05-12 06:59:38+00",
+                "source_type": "forum",
+                "source_id": "255182415578200096",
+                "cosine": 0.5647846270150442
+            }
+        ],
+        "label": "模型转换与部署兼容性"
+    },
+    "4": {
+        "summary": "开发者在昇腾310P3 NPU部署LLM时遇到显存固定占用98MB导致数据加载卡死的问题",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "133",
+                "title": "任何张量加载到NPU都会只占用98Mb（很奇怪的一个数字）然后卡住",
+                "url": "https://www.hiascend.com/forum/thread-0237183630703446231-1-1.html",
+                "created_at": "2025-05-26 08:31:43+00",
+                "source_type": "forum",
+                "source_id": "237183630703446208",
+                "cosine": 0.7716357668287862
+            },
+            {
+                "id": "137",
+                "title": "数据加载到NPU卡住",
+                "url": "https://gitee.com/ascend/samples/issues/ICALGE",
+                "created_at": "2025-05-26 16:38:06+08",
+                "source_type": "issue",
+                "source_id": "20649758",
+                "cosine": 0.7075648097498244
+            }
+        ],
+        "label": "资源管理缺陷"
+    },
+    "5": {
+        "summary": "昇腾CANN开发者如何处理多版本卸载残留导致的安装路径冲突",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "115",
+                "title": "安装 Ascend-cann-toolkit_8.1.RC1_linux-aarch64.run 失败",
+                "url": "https://www.hiascend.com/forum/thread-0237183196156024184-1-1.html",
+                "created_at": "2025-05-21 07:49:16+00",
+                "source_type": "forum",
+                "source_id": "237183196156024192",
+                "cosine": 0.5418075012475312
+            },
+            {
+                "id": "142",
+                "title": "Atlas800I A2安装CANN报错：opp_uninstall.sh不存在",
+                "url": "https://www.hiascend.com/forum/thread-0226183785107239008-1-1.html",
+                "created_at": "2025-05-28 03:25:07+00",
+                "source_type": "forum",
+                "source_id": "226183785107239008",
+                "cosine": 0.5411012958634049
+            }
+        ],
+        "label": "安装路径配置问题"
+    },
+    "6": {
+        "summary": "昇腾CANN开发者需确认CANN组件/驱动/固件与依赖的版本兼容性",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "47",
+                "title": "版本报错",
+                "url": "https://www.hiascend.com/forum/thread-0292180172684622045-1-1.html",
+                "created_at": "2025-04-16 07:58:05+00",
+                "source_type": "forum",
+                "source_id": "292180172684622016",
+                "cosine": 0.705967621535681
+            },
+            {
+                "id": "24",
+                "title": "在运行run.sh时出现报错",
+                "url": "https://www.hiascend.com/forum/thread-0236177061362063063-1-1.html",
+                "created_at": "2025-03-11 07:42:42+00",
+                "source_type": "forum",
+                "source_id": "236177061362063104",
+                "cosine": 0.5533354368675685
+            }
+        ],
+        "label": "版本兼容性缺陷"
+    },
+    "7": {
+        "summary": "昇腾CANN开发者需确认SenseVoice模型离线转换后输入数据shape是否符合预期",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "9",
+                "title": "sensevoice推理报错",
+                "url": "https://www.hiascend.com/forum/thread-02108173815438515275-1-1.html",
+                "created_at": "2025-02-01 18:03:59+00",
+                "source_type": "forum",
+                "source_id": "2108173815438514944",
+                "cosine": 0.5149479646446393
+            },
+            {
+                "id": "8",
+                "title": "sensevoice推理报错，返回错误码500002",
+                "url": "https://www.hiascend.com/forum/thread-02108173814998442274-1-1.html",
+                "created_at": "2025-02-01 17:56:38+00",
+                "source_type": "forum",
+                "source_id": "2108173814998441984",
+                "cosine": 0.4783888225079898
+            }
+        ],
+        "label": "模型输入格式适配问题"
+    },
+    "8": {
+        "summary": "昇腾CANN开发者如何通过算子分片和内存优化提升特定输入维度下的cube利用率至50+",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "73",
+                "title": "优化 PpMatmulEinSumKernel 算子性能",
+                "url": "https://gitee.com/ascend/ascend-transformer-boost/issues/IC5ZY1",
+                "created_at": "2025-05-07 15:07:14+08",
+                "source_type": "issue",
+                "source_id": "20435257",
+                "cosine": 0.5966804901721964
+            },
+            {
+                "id": "72",
+                "title": "优化 PagedMultiLatentAttentionCombineCacheMaskNdKernel 算子 性能",
+                "url": "https://gitee.com/ascend/ascend-transformer-boost/issues/IC5ZXP",
+                "created_at": "2025-05-07 15:06:35+08",
+                "source_type": "issue",
+                "source_id": "20435245",
+                "cosine": 0.5782091236252521
+            }
+        ],
+        "label": "算子性能优化手段不足"
+    },
+    "9": {
+        "summary": "昇腾CANN开发者在使用msOpGen生成复杂算子原型时遇类型数量不一致及属性类型不支持报错",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "83",
+                "title": "msOpGen编写复杂输入参数算子原型定义文件",
+                "url": "https://www.hiascend.com/forum/thread-02102182431331486085-1-1.html",
+                "created_at": "2025-05-12 11:22:12+00",
+                "source_type": "forum",
+                "source_id": "2102182431331485952",
+                "cosine": 0.7102207764873598
+            },
+            {
+                "id": "62",
+                "title": "msOpGen编写复杂算子原型定义文件",
+                "url": "https://www.hiascend.com/forum/thread-02102181354769801037-1-1.html",
+                "created_at": "2025-04-30 00:19:30+00",
+                "source_type": "forum",
+                "source_id": "2102181354769800960",
+                "cosine": 0.5775265441792784
+            }
+        ],
+        "label": "算子开发工具链缺陷"
+    },
+    "10": {
+        "summary": "昇腾CANN开发者解决Atlas 200I DK A2上scasum/sscal算子内存密集和高维shape泛化性不足的问题",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "96",
+                "title": "[Bug-Report|缺陷反馈]: scasum在Atlas 200I DK A2测试泛化性不足，部分shape运行结果精度异常",
+                "url": "https://gitee.com/ascend/cann-ops/issues/IC8IJC",
+                "created_at": "2025-05-17 17:41:20+08",
+                "source_type": "issue",
+                "source_id": "20552664",
+                "cosine": 0.6871085518037823
+            },
+            {
+                "id": "98",
+                "title": "[Bug-Report|缺陷反馈]: sscal在Atlas 200I DK A2测试泛化性不足，部分shape运行结果精度异常",
+                "url": "https://gitee.com/ascend/cann-ops/issues/IC8IQX",
+                "created_at": "2025-05-17 18:19:36+08",
+                "source_type": "issue",
+                "source_id": "20552937",
+                "cosine": 0.6713682157909813
+            },
+            {
+                "id": "97",
+                "title": "[Bug-Report|缺陷反馈]: sscal在Atlas 200I DK A2测试泛化性不足，部分shape运行结果精度异常",
+                "url": "https://gitee.com/ascend/cann-ops/issues/IC8IQV",
+                "created_at": "2025-05-17 18:19:34+08",
+                "source_type": "issue",
+                "source_id": "20552935",
+                "cosine": 0.6687221081741759
+            }
+        ]
+    }
+}

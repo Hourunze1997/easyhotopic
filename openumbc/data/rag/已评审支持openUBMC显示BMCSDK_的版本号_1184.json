@@ -1,0 +1,15 @@
+{
+    "topic_id": 1184,
+    "question": "【已评审】支持openUBMC显示BMCSDK 的版本号 - content: 评审背景\n升级BMC固件之后通过CLI查询可以查询到 BMC SDK 版本（命令ipmcget -d version）\nBMC的版本在3各分区都有，分别是：Active分区，Backup分区，Available分区版本号，需要支持展示三个分区的BMCSDK版本号\n评审点\n将SDK注册至资源协作接口路径/bmc/kepler/UpdateService/FirmwareInventory下，用于北向接口展示\n当前资源协作接口注册内容展示案例如下：\n─/bmc/kepler/UpdateService/FirmwareInventory\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/ActiveBMC\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/ActiveSecureBootloader\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/ActiveSecureFirmware\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/ActiveUboot\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/AvailableBMC\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/BCU_CPLD_010101\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/BackupBMC\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/BackupSecureBootloader\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/BackupSecureFirmware\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/BackupUboot\n\n新增注册三个分区SDK路径如下\n─/bmc/kepler/UpdateService/FirmwareInventory\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/ActiveBMCSDK\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/AvailableBMCSDK\n    │ │ ├─/bmc/kepler/UpdateService/FirmwareInventory/BackupBMCSDK\n\nipmcget -d version新增展示字段\nActive BMCSDK Version\nAvailable BMCSDK Version\nBackup BMCSDK Version\n示例如下：\n...\nActive BMCSDK    Version:         5.10.00.01\nAvailable BMCSDK Version:         5.10.00.01\nBackup BMCSDK    Version:         5.09.02.04\n...\n----------------- Product INFO -----------------\n\n评审结论\n通过，具体结论如下：\n\n同意资源协作接口新增BMCSDK版本号资源对象路径：\n（1）Active区域BMCSDK版本：\n/bmc/kepler/UpdateService/FirmwareInventory/ActiveBMCSDK\n（2）Backup区域BMCSDK版本：\n/bmc/kepler/UpdateService/FirmwareInventory/BackupBMCSDK\n（3）Available区域BMCSDK版本：\n/bmc/kepler/UpdateService/FirmwareInventory/AvailableBMCSDK\n同意CLI接口命令（ipmcget -d version）新增Active区域的BMCSDK版本号展示\nlinks: #p-2574-h-1, #p-2574-h-2, #p-2574-h-3",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1184/2",
+            "text": ""
+        }
+    ]
+}

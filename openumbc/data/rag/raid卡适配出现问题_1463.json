@@ -1,0 +1,92 @@
+{
+    "topic_id": 1463,
+    "question": "raid卡适配出现问题 - content: 问题背景\n需要适配卡型:\n3152,8204\n相关组件所用版本：\nstorage:1.70.35\niBMA: 2.16.0\n问题描述：\n1.使用mctp协议的3152,8204都出现无法显示详细信息，os下lspci能够查询到\nimage1035×480 28.6 KB\n2.组件storage根据测试结果，9560-8i在tag 1.80以下版本能够正常显示全部信息，1.80以上显示都存在问题\n排查过程：\n1.根据raid卡适配指导 帖子使用busctl --user introspect  bmc.kepler.mctpd /bmc/kepler/Systems/1/Mctp/MctpBinding .BmcEid和.BmcPhyAddr均为0\nimage1457×940 173 KB\n2.通过代码跟踪storage组件mctp_service.lua日志打印提示卡在了[Storage] Get BMC Mctp info failed,但是mctp_lib.get_mctp_pcie_binding部分涉及闭源包。\nfunction mctp_service:prepare()\n    log:notice('mctp_service:prepare')\n    if not self.os_state then\n        log:notice('not self.os_state')\n        return\n    end\n    local obj = mctp_lib.get_mctp_pcie_binding(self.bus)\n    if not obj then\n        log:notice('[Storage] Get BMC Mctp info failed')\n        return\n    end\n    -- 将BMC的mctp信息传递给C库的线程\n    sml.mctp_infos.set_bmc_mctp_info(obj.BmcEid, obj.BmcPhyAddr)\n    self.mctp_state = true\n    log:notice('[Storage] mctp prepare finished. bmc_eid = %s bmc_phy = %s state = %s',\n        obj.BmcEid, obj.BmcPhyAddr, self.mctp_state)\nend\n\n期望\n接下来的排查思路,能够成功适配3152,8204\nlinks: #p-3487-h-1, #p-3487-h-2, https://discuss.openubmc.cn/uploads/default/original/2X/0/0ea4f0e2f038cba33b87dacca1894fd67811364f.png, #p-3487-h-3, https://discuss.openubmc.cn/t/topic/1386, https://discuss.openubmc.cn/uploads/default/original/2X/9/94b94a3e75710ec684e9d99b6e8612f10be3907a.png, #p-3487-h-4",
+    "topic_user_name": "Ocy",
+    "best_answer_url": "/t/topic/1463/15",
+    "reply_posts": [
+        {
+            "user_name": "Dli Bmc Vigaq",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1463/2",
+            "text": "content: 步骤1.首先查看一下web页面：\n系统管理–系统信息–其他–PCIe卡下面有没有目标Raid卡的信息\n步骤2.如果有看下面的日志是否打印；  如果没有看步骤5\nimage833×213 14.4 KB\n步骤3：如果步骤2的日志正常打印，那么要看一下raid卡的加载流程是否走完\nimage713×154 10.7 KB\n具体关注这几个日志是否都有打印：\nimage791×264 16.8 KB\n步骤5：\n在/var/log/app.log里面搜索一下目标raid的SR名称，看是否有加载的日志，预期要有。\n如果没有，要在环境：/opt/bmc/sr路径下搜索看是否包含目标Raid卡的SR文件，预期要有。\n如果路径没有可能是因为集成配置时候没有带上该SR。\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/52f8243b997826a9d81dff624df57888d6c91d69.png, https://discuss.openubmc.cn/uploads/default/original/2X/0/0d1ca293c7c8a87e926ab9bb57943b7d428c62b0.png, https://discuss.openubmc.cn/uploads/default/original/2X/b/be4ffd313abe310a4848a5ee1a9c332defae3dfa.png"
+        },
+        {
+            "user_name": "nathanael yu",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1463/3",
+            "text": "如果排查SR没问题，可以排查下raid卡的oob开关是否打开，这张卡默认oob应该是关闭的"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1463/4",
+            "text": "content: 其他中能够识别出该卡\nimage1630×376 34 KB\n查看日志在/var/log/app.log中并没有步骤2的打印，根据步骤5,在app.log中执行cat /var/log/app.log|grep ‘19005028f_1cc40101’ 并没有回显，不满足预期\n\n但是在/opt/bmc/sr中是能够查看到14140130_9005028f_1cc40101.sr文件\nimage855×118 12.9 KB\n其内容与vpd中的vendor/PMC-Sierra/Raid/14140130_9005028f_1cc40101.sr文件进行对比内容是一致的,同时通过一键收集日志进行查看14140130_9005028f_1cc40101.sr文件有如下内容，请问这种情况接下来应该怎么做呢？\nimage765×358 41.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/c/ca58e86857fd4fef12297232b23d1a24a066b109.png, https://discuss.openubmc.cn/uploads/default/original/2X/f/fc6b310983a109f6a4a692a9d9ed01d1c34c9f1d.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/804d6f54bc0fb3360ca48b4077bbfceb5c083ebd.png"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1463/5",
+            "text": "content: 如下图raid卡的固件版本和oob设置应该能满足带外管理功能了吧？\nimage922×624 105 KB\nimage922×624 55.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/9a8a428414543a780debdfc308f3ab1dbeef5f9e.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/f/f014f5deafe988cd86987eef89232c6e01a7586d.jpeg"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1463/7",
+            "text": "十分感谢，定位出问题了，是卡在下面代码处，设备BDF出现问题，在sr手动写死该配置，即可正常显示\nif self.DevBus == 0 and self.DevDevice == 0 and self.DevFunction == 0 then"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1463/8",
+            "text": "content: 现在我们在另外一个机型，将3152-8i的卡插在交换板上，参考其他机器能够正常显示的情况，已经通过写死\n“DevBus”: 15,\n“DevDevice”: 0,\n“DevFunction”: 0\nos下查看\nimage995×376 85.9 KB\n/var/log/app.log中 storage|mctp 相关日志\nimage1414×922 221 KB\n根据增加的注释打印，发现是卡在了该处，在后面则没有相关信息\nimage776×289 36.1 KB\n对比其他机型的日志，发现是缺少了mctpd闭源包后面的回复，那么接下来要怎么排查呢？\nimage1256×735 230 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/713dcf1045db72ce2b7dcf6a5938c657c27f689a.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/3/3f049c1143d6f7df314de483107cb1c4140aeb37.png, https://discuss.openubmc.cn/uploads/default/original/2X/6/6841792be1e3f6d7340ee1a9c8a008ec14cd29f1.png, https://discuss.openubmc.cn/uploads/default/original/2X/4/47990fc261c1c9effd197a1ad56fe98d043ac8d3.png"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1463/9",
+            "text": "content: 还想请问一个问题，arcconf该工具是怎么通过命令arconf list 返回slot号的？异常的机器中，插在0,2,4插槽中，回复显示的都是8\n截图 2025-07-08 20-21-301046×424 37.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/5269927a48da9921b5155a630677fdc5f2bb8903.png"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1463/11",
+            "text": "content: 补充，bios已经返回正常的bdf号后，继续定位日志，发现mctpd能够添加switch芯片的eid，但是3152该卡的eid还是没有正常添加\nimage1424×333 150 KB\n重启OS，发现mctpd其实是有发出 TargetPhyAddr=131 (请求?) 131为3152-8i所在槽位的bdf号\nimage1440×349 161 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/780e90bebe49e9088ab0d8cb7824ba94e4e892e3.png, https://discuss.openubmc.cn/uploads/default/original/2X/8/85a52227e9bb4bfc5537f9f2e290cf62de665577.png"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1463/12",
+            "text": "你说的TargetPhyAddr=131 请求实际是Storage向mctp发起的注册请求，代表软件层识别到此raid卡，但mctp并未在路由中查找到131(从图中mctp_routing_table: del日志可以看到只有13 17 138)，可能的原因：\n\n此raid不支持mctp\nIMU与该raid卡未建链或建链失败\n请按此进行排查"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1463/13",
+            "text": "1.3152-8i卡已确定支持mctp，在其他机型上已经验证(较大差异为其他机型无switch板)，有详细信息\n2.IMU与该raid卡未建链或建链失败，倾向于未建链，但是IMU这个部分具体要怎么排查，方便说明一下吗？IMU部分没有详细资料，联系bios，IMU为二进制，目前无法进行更多排查"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1463/14",
+            "text": "请联系社区技术支持获取更多帮助"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1463/15",
+            "text": "PAE协助排查后，发现是switch板固件屏蔽mctp导致"
+        }
+    ]
+}

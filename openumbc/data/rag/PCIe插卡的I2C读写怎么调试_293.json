@@ -1,0 +1,113 @@
+{
+    "topic_id": 293,
+    "question": "PCIe插卡的I2C读写怎么调试 - content: 我在Riser卡接了一张PCIe卡，它的MCU地址为0x30(7bit)，在别的设备使用i2ctransfer验证读写是正常的\n\n使用该卡的四元组信息配置了CSR：14140130_99994001_99994001.sr\nimage455×787 10.8 KB\n可以加载Chip_MCU，但使用hwproxy组件提供的WriteRead方法读写报错：\nimage1209×112 8.71 KB\n想问一下，bmc.kepler.Chip.BlockIO提供的ComboWriteRead和WriteRead应该怎么正确使用\nimage1003×789 49.5 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/dd2d945f2de62da8d067731c397e526c53047482.png, https://forum.openubmc.cn/uploads/default/original/1X/1423428121dbcf0c2eea92340938a3d95357e610.png, https://forum.openubmc.cn/uploads/default/original/1X/8858cbc91da83c0a2f3c14d72edc9ae504b874b8.png",
+    "topic_user_name": "百信-罗昊",
+    "best_answer_url": "/t/topic/293/2",
+    "reply_posts": [
+        {
+            "user_name": "许强",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/293/2",
+            "text": "content: 首先需要确保MCU的Chip对象配置正确，包括Address，AddrWidth，OffsetWidth等属性。\n从图中的配置来看，Address配置是错误的，应当为48（对应0x30）。AddrWidth和OffsetWidth需要根据实际地址和访问偏移地址的宽度配置不同的字节宽度（1到4字节）。\n对于bmc.kepler.Chip.BlockIO提供的接口，可以参考资源树接口定义，里面有详细的接口描述和参数说明，链接如下：\nGitCode - 全球开发者的开源社区,开源代码托管平台\n简单来说：\n\n相同点：WriteRead和ComboWriteRead都是在一次请求内完成先写入后读取的操作\n不同点：\n\nWriteRead是先在特定偏移地址（0xffffffff）写入指定数据，再从特定偏移地址（0xffffffff）读取指定长度的数据；\nComboWriteRead先在指定的偏移地址写入指定数据后，再从指定偏移地址读取指定长度的数据。\nlinks: https://gitcode.com/openUBMC/mdb_interface/blob/main/json/intf/mdb/bmc/kepler/Chip/BlockIO.json"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/3",
+            "text": "busctl的方式：\nbusctl --user call bmc.kepler.hwproxy <path> bmc.kepler.Chip.BlockIO ComboWriteRead a{ss}uayuu <a{ss}: ctx> <u: req_cmd> <ay: req_data> <u: rsp_cmd> <u: rsp_len>\nmdbctl的方式：\nmdbctl call <object> bmc.kepler.Chip.BlockIO ComboWriteRead <a{ss}: ctx> <u: req_cmd> <ay: req_data> <u: rsp_cmd> <u: rsp_len>\n\npath：待访问Chip的资源树路径，一般为/bmc/kepler/Chip/Complex/<object>，object为环境中芯片的对象名\nctx：RPC的通用上下文，可直接填0\nreq_cmd：表示读/写请求，取值0x20\nreq_data：请求数据\nrsp_cmd：表示读/写响应，取值0x21\nrsp_len：响应长度。使用时，命令的实际长度小于响应长度时使用0xff填充，大于时进行截断"
+        },
+        {
+            "user_name": "百信-罗昊",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/4",
+            "text": "地址0x30是7bit地址，Address应该是写8bit地址吧，我从96改成48反而无法访问了"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/5",
+            "text": "查看错误码含义\n使用公式ret_code = (reg_value & 0xFA) | 0x100反算出寄存器值，从而确定错误类型。\n\n例如：错误码290对应的寄存器值为0x22（即二进制00100010），表示HiSPort总线读写操作未完成，确保访问地址正确的前提下，通常是硬件链路不通的问题。\n\n发送FIFO已满（位7）：值为0，表示I2C控制器的发送FIFO未满。\n时钟拉伸（位6）：值为0，表示读写期间未出现时钟拉伸。\nACK校验错误（位5）：值为1，表示读写时ACK校验出现错误。\n总线异常拉低（位4）：值为0，表示读写启动时未检测到总线异常拉低。\n从fifo取数据超时（位3）：值为0，表示从fifo取数据时未出现超时错误。\n命令帧结束标志（位2）：值为0，表示命令帧未结束。\n读写出错（位1）：值为1，表示I2C读写出错，汇总了BIT[6:3]的错误。\n操作完成（位0）：值为0，表示此次I2C读写操作未完成。"
+        },
+        {
+            "user_name": "许强",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/6",
+            "text": "对应的总线配置是否正确呢？可以通过一键收集，查看AppDump中hwproxy组件的拓扑信息topology.txt，确认对应的总线是否与i2ctransfer操作的总线id一致。"
+        },
+        {
+            "user_name": "百信-罗昊",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/7",
+            "text": "HisPort总线有直接调试的工具吗，类似i2ctools这种"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/8",
+            "text": "正常发i2c命令就可以我理解，hisport是底层机制，应该是不感知的"
+        },
+        {
+            "user_name": "chenghaoyang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/9",
+            "text": "暂时还没有"
+        },
+        {
+            "user_name": "百信-罗昊",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/10",
+            "text": "content: image713×233 25.1 KB\n根据SMBus规范，Block Write - Block Read Process Call过程没有rsp_cmd，当前提供的接口无法实现，有什么解决办法吗\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/ac10a1cfe45c31670ed339c3b41dd41239c510c3.png"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/11",
+            "text": "Block Write - Block Read Process Call过程没有rsp_cmd，当前提供的接口无法实现 ---- 这个问题可以补充描述一下吗，没有特别理解"
+        },
+        {
+            "user_name": "百信-罗昊",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/12",
+            "text": "当前提供的Read、WriteRead、ComboWriteRead读之前其实都是发了一个byte的offset再读，但是SMBus的Process Call是不发offset直接读"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/13",
+            "text": "content: 您好，请教一下，问题：不清楚以下查询功耗参数的具体含义。\nbusctl --user call bmc.kepler.hwproxy  \n/bmc/kepler/Chip/Complex/Chip_Dmini_0101010109   \nbmc.kepler.Chip.BlockIO ComboWriteRead  a{ss}uayuu \n0 0x20 0x0e 0x0c 0x80 0x00 0x04 0x00 0x00 0x00 0x00 0x00 0x02 0x00 0x00 0x00 0x87 \n0x21 32\n\n根据带外管理文档：\nimage559×677 36.8 KB\n尝试理解命令：0x20是读/写请求，0x0e应该是请求数据的第一个字节，0x0c 0x80是什么意思呢？0x00 0x04应该是opcode，0x00 0x00 0x00 0x00应该是offset，0x87又是什么意思呢？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/7/7eb598aca5947555f8fd73488d021b0b3dcdb608.png"
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/14",
+            "text": "content: @zybwh @caiyesheng_b48v3 @chenghaoyang 大佬们可以解答一下吗？\nlinks: /u/zybwh, /u/caiyesheng_b48v3, /u/chenghaoyang"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/15",
+            "text": "0x80对应LUNFlag，bit7=1，对应到80\n0x0c是请求体长度， 0x80 0x00 0x04 0x00 0x00 0x00 0x00 0x00 0x02 0x00 0x00 0x00 0x87 – 13个，对应0x0c\n这个是smbus的报文发送格式，一般在前面章节会有写的"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/293/16",
+            "text": "0x00 0x04应该是opcode\n\n还有你说的opcode不太准确，一般smbus都是小端模式，所以应该是 0x04 0x00 才是opcode。就比如length对应的0x02 0x00 0x00 0x00，不是0x20000000，而是0x00000002"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1175,
+    "question": "【已评审】调速策略资源协作接口新增属性SensorName - 背景：\n在定制化场景下，Redfish ThermalSubsystem资源下需新增ThermalPolicy资源，该资源对应目标调速相关资源属性。在该Redfish资源中需要关联对应温度点名称，而该属性表示目标调速策略关联的温度传感器名称。\n现状：\n当前目标调速策略资源协作接口中仅存在私有属性SensorName，该属性未在对应资源协作接口中\n决策点\n在bmc.kepler.Systems.CoolingRequirement下新增属性SensorName\n详细描述\n资源path：/bmc/kepler/Systems/:SystemId/CoolingRequirement/:Id\n资源interface：bmc.kepler.Systems.CoolingRequirement\n变化类型：修改私有属性SensorName在资源协作接口中\n应用场景：定制化Redfish ThermalPolicy资源使用\n持久化类型： 不持久化\n操作权限：ReadOnly\n\n评审结论\n决策点：在bmc.kepler.Systems.CoolingRequirement下新增属性SensorName\n结论：\n同意在bmc.kepler.Systems.CoolingRequirement下新增属性SensorName\n资源path：/bmc/kepler/Systems/:SystemId/CoolingRequirement/:Id\n资源interface：bmc.kepler.Systems.CoolingRequirement\n属性：SensorName，类型为String\n读写&权限：ReadOnly\n持久化：不持久化\n变化通知：不通知\n变化类型：新增属性\n遗留问题及确认结论\n问题：客户定制的北向接口redfish是否需要显示为传感器名称\n结论：经确认，客户定制的redfish接口明确要求优先使用SDR中的名称，即传感器名称",
+    "topic_user_name": "Wwhh",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1175/2",
+            "text": ""
+        }
+    ]
+}

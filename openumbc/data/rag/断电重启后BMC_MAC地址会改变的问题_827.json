@@ -1,0 +1,43 @@
+{
+    "topic_id": 827,
+    "question": "断电重启后BMC MAC地址会改变的问题 - content: 现象：每次断电重启后BMC MAC地址会改变\nAC断电重启后MAC地址变更\nimage369×106 23.1 KB\nimage369×105 22.7 KB\n通过收集日志发现是随机MAC地址是由Conan包bmc_network控制的\napp.log中：\n2025-05-09 11:42:33.149067 bmc_network NOTICE: network_init.lua(415): enter net_init.\n2025-05-09 11:42:33.150483 bmc_network NOTICE: network_eth_mac.lua(71): gen random mac: 20:22:01:4e:2c:c3\n期望：目前没有Conan包bmc_network的源码，无法修改相关逻辑，希望可以实现BMC Mac地址持久化存储，随机生成的Mac地址断电重启后不会改变。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/49fc1e64ebd4210ad50dcf948f2ff5f2641568df.png, https://discuss.openubmc.cn/uploads/default/original/1X/1df7ea83ba07e85cfbee4887ebfaf8f267e978b8.png",
+    "topic_user_name": "wuzhou-Lsx",
+    "best_answer_url": "/t/topic/827/5",
+    "reply_posts": [
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/827/2",
+            "text": "请问有其他伙伴出现类似现象吗"
+        },
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/827/3",
+            "text": "如果通过ipmi接口等修改mac地址，BMC的mac地址是持久化了的；如果你是通过ifconfig这些os系统命令修改就不会持久化。"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/827/4",
+            "text": "content: 感谢回复，根据建议我通过ipmi去设置mac地址，发现设置不成功，只能获取mac地址不能设置mac地址。\nimage1901×421 95.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/5/501423d18540b50008f5fbcda015a15a48a78561.png"
+        },
+        {
+            "user_name": "Zhangbaocun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/827/5",
+            "text": "content: image807×705 29.5 KB\n使用这个原子命令再试试\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e987876b6ae84762699d356045474cb6cc795bbb.png"
+        },
+        {
+            "user_name": "wuzhou-Lsx",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/827/7",
+            "text": "通过ipmi接口等修改mac地址，BMC的mac地址是持久化了，但是按理说bmc的mac应该去eeprom里面去拿，现在是一开始是随机生成的MAC地址，这应该是有问题，请问一下这段逻辑该怎么改，去哪里改它。"
+        }
+    ]
+}

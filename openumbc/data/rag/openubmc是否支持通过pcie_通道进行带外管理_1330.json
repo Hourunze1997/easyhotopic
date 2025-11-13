@@ -1,0 +1,22 @@
+{
+    "topic_id": 1330,
+    "question": "openubmc是否支持通过pcie 通道进行带外管理 - 底层支持走pcie 通道吗？相关接口是哪些（收发接口）？\n类似于通过Management Component Transport Protocol (MCTP) PCIe VDM Transport Binding 进行带外管理。",
+    "topic_user_name": "net-swift_wangchen",
+    "best_answer_url": "/t/topic/1330/2",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1330/2",
+            "text": "content: 支持mctp over pcie vdm\n使用方式可以参考network_adapter里面如何创建mctp endpoint的https://gitcode.com/openUBMC/network_adapter/blob/main/src/lualib/device/class/network_adapter.lua#L602\nlinks: https://gitcode.com/openUBMC/network_adapter/blob/main/src/lualib/device/class/network_adapter.lua#L602"
+        },
+        {
+            "user_name": "net-swift_wangchen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1330/3",
+            "text": "好的，我参考下代码，感谢。"
+        }
+    ]
+}

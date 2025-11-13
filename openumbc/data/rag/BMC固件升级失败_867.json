@@ -1,0 +1,64 @@
+{
+    "topic_id": 867,
+    "question": "BMC固件升级失败 - content: 背景\n\n在升级了一个包之后，发现从web进去之后页面空白，但ssh可以进入\n遂尝试在命令行中回滚/升级均成功，web页面依旧空白\n回滚/升级之后，在命令行中又尝试进行恢复出厂设置，恢复成功，web页面能够显示数据，也可以进行分区置换，ssh能够登录\n但在恢复出厂设置之后进行升级时，升级失败\n\n设备信息\n\nS920X20\n\n目前初步分析的日志如下\n2025-05-12 09:26:29.354039 firmware_mgmt NOTICE: active_fructl.lua(95): get host type is Singlehost\n2025-05-12 09:26:29.354406 firmware_mgmt NOTICE: utils.lua(35): The file path is local.\n2025-05-12 09:26:29.363743 firmware_mgmt NOTICE: init.lua(33): update status to FS_SIMPLE_UPGRADING.\n2025-05-12 09:26:29.391171 firmware_mgmt NOTICE: task_service.lua(49): task create success, task id: 443127616\n2025-05-12 09:26:29.462593 firmware_mgmt NOTICE: file_transfer.lua(145): start to move file [rootfs_openUBMC.hpm] from tmp to shm\n2025-05-12 09:26:29.991158 firmware_mgmt NOTICE: file_transfer.lua(150): move_file_s ok:true, err:0\n2025-05-12 09:26:30.457794 firmware_mgmt NOTICE: validate_sign.lua(174): verify signature successfully\n2025-05-12 09:26:30.458670 firmware_mgmt NOTICE: action.lua(37): Validate signature successfully\n2025-05-12 09:26:30.470142 firmware_mgmt ERROR: [C](65535): [WSEC_CBB_CAC][][1339] EVP_DecryptFinal_ex failed 0.\n2025-05-12 09:26:30.470707 firmware_mgmt ERROR: [C](65535): [WSEC_CBB_CAC][][1767] OpensslDecryptFinal failed 101\n2025-05-12 09:26:30.471032 firmware_mgmt ERROR: [C](65535): [WSEC_CBB][][265] (UTC) 2025-05-12 09:26:30 CAC decrypt final failed 101.\n2025-05-12 09:26:30.471141 bmc_core ERROR: kmc_file.c(170): decrypt_hmac: SdpDecryptFinalEx failed, ret = 110.\n2025-05-12 09:26:30.471180 bmc_core ERROR: kmc_file.c(348): file_decrypt: decrypt failed.\n2025-05-12 09:26:30.472310 firmware_mgmt ERROR: hpm_package.lua(179): read from profile_en failed, generate new key and try again\n2025-05-12 09:26:30.478022 firmware_mgmt ERROR: [C](65535): [WSEC_CBB][][636] (UTC) 2025-05-12 09:26:30 The file is not KSF format.\n2025-05-12 09:26:30.478343 firmware_mgmt ERROR: [C](65535): [WSEC_CBB][][830] (UTC) 2025-05-12 09:26:30 ReadRootKeyByHandle() failed 255\n2025-05-12 09:26:30.478998 firmware_mgmt ERROR: [C](65535): [WSEC_CBB][][1805] (UTC) 2025-05-12 09:26:30 MemImportKsf ReadKsf failed, result = 255\n2025-05-12 09:26:30.479721 firmware_mgmt ERROR: hpm_package.lua(207): decrypt srcfile failed, err:./opt/bmc/libmc/lualib/mc/logging.lua:395: kmc import ksf failed, ret = 255\n2025-05-12 09:26:30.480850 firmware_mgmt WARNING: init.lua(97): hpm_package.lua:669 > hpm_package.lua:565 > hpm_package.lua:241: An error occurred during the firmware upgrade process. Details: Upgrade write config file failed\n2025-05-12 09:26:30.481435 firmware_mgmt ERROR: control.lua(321): parse package(rootfs_openUBMC.hpm) failed, ret:FirmwareUpgradeError: An error occurred during the firmware upgrade process. Details: Upgrade write config file failed.\n2025-05-12 09:26:30.702802 firmware_mgmt NOTICE: active_fructl.lua(95): get host type is Singlehost\n2025-05-12 09:26:30.703174 firmware_mgmt NOTICE: active_single_host_fructrl.lua(61): active_single_host_fructrl fructrl get power status\n2025-05-12 09:26:30.706078 firmware_mgmt NOTICE: state_simple_upgrading.lua(87): simple upgraded, current active mode is:nil, wait restart seconds:30000\n2025-05-12 09:26:30.714475 firmware_mgmt NOTICE: init.lua(33): update status to FS_IDLE.\n2025-05-12 09:26:41.765164 bmc_soc NOTICE: uart_data.lua(525): start collecting all com logs\n2025-05-12 09:26:42.204357 bios NOTICE: log_collector.lua(98): [bios]start to dump bios log\n2025-05-12 09:26:42.205334 bios NOTICE: log_collector.lua(73): [bios]start collect bios info\n2025-05-12 09:26:42.340847 bmc_soc NOTICE: uart_data.lua(558): all com logs have been compressed\n2025-05-12 09:26:43.084997 bmc_network NOTICE: network_dump.lua(132): bmc_network dump begin.\n2025-05-12 09:26:43.318294 bmc_network NOTICE: network_dump.lua(142): bmc_network dump end.\n2025-05-12 09:26:43.470144 event NOTICE: event_app.lua(274): event dump is started.\n2025-05-12 09:26:45.132447 event NOTICE: event_app.lua(300): event dump is completed.\n2025-05-12 09:26:45.753554 ipmi_core NOTICE: ipmi_dump.lua(54): ipmi_core dump begin.\n2025-05-12 09:26:45.825765 ipmi_core NOTICE: ipmi_dump.lua(34): dump_route_table collect start.\n2025-05-12 09:26:45.931662 ipmi_core NOTICE: ipmi_dump.lua(47): dump_route_table collect end.\n2025-05-12 09:26:45.932752 ipmi_core NOTICE: ipmi_dump.lua(97): ipmi_core dump end.\n2025-05-12 09:26:46.277895 general_hardware NOTICE: unit_manager.lua(615): unit_manager:on_dump_cb start.\n2025-05-12 09:26:46.595450 general_hardware NOTICE: unit.lua(486): CpuBoard1 collect finish\n2025-05-12 09:26:46.678146 om ERROR: alm_callback.c(789): [license][alm] 0007[TIME]2025-05-12 09:26:46 lgen-ck err--350: Prd[1] ALM_LicGeneralQuery end 2030043238\n2025-05-12 09:26:46.679440 license ERROR: license_dump.lua(112): Get revoke ticket from db failed\n2025-05-12 09:26:46.681330 om ERROR: alm_callback.c(789): [license][alm] 0008[TIME]2025-05-12 09:26:46 lgen-ck err--350: Prd[1] ALM_LicGeneralQuery end 2030043238\n2025-05-12 09:26:46.682479 license ERROR: license_dump.lua(65): failed to get feature key info, ret = 0x79000066\n2025-05-12 09:26:46.774798 om ERROR: alm_callback.c(789): [license][alm] 0009[TIME]2025-05-12 09:26:46 lgen-ck err--350: Prd[1] ALM_LicGeneralQuery end 2030043238\n2025-05-12 09:26:46.905970 general_hardware NOTICE: unit.lua(486): ExpBoard1 collect finish\n2025-05-12 09:26:47.381594 general_hardware NOTICE: unit.lua(486): FanBoard1 collect finish\n2025-05-12 09:26:47.440675 hardware ERROR: mctp_dump.cpp(40): Failed to open /dev/mem\n2025-05-12 09:26:47.441618 mctpd NOTICE: mctp_dump.lua(91): mctp info collect finish\n2025-05-12 09:26:47.759139 general_hardware NOTICE: unit.lua(486): DiskBP1 collect finish\n2025-05-12 09:26:47.761482 general_hardware NOTICE: unit_manager.lua(695): CPU board Info  collect finish\n2025-05-12 09:26:47.763133 general_hardware NOTICE: unit_manager.lua(695): HDD Backplane Info  collect finish\n2025-05-12 09:26:47.764921 general_hardware NOTICE: unit_manager.lua(695): FAN board Info  collect finish\n2025-05-12 09:26:47.767291 general_hardware NOTICE: unit_manager.lua(695): Riser Card Info  collect finish\n2025-05-12 09:26:47.769136 general_hardware NOTICE: unit_manager.lua(695): EXP board info  collect finish\n2025-05-12 09:26:47.771395 general_hardware NOTICE: mcu_service.lua(170): mcu info collect finish\n2025-05-12 09:26:47.773259 general_hardware NOTICE: mcu_service.lua(138): vrd ifx info collect finish\n2025-05-12 09:26:47.777817 general_hardware NOTICE: vrd_manager.lua(206): vrd info collect finish\n2025-05-12 09:26:47.804153 metric_analyzer NOTICE: metric_dump.lua(65): metric dump completed\n2025-05-12 09:26:48.441939 network_adapter NOTICE: network_adapter.lua(1313): optical module cnt is 0\n2025-05-12 09:26:49.758629 redfish NOTICE: event.lua(525): redfish dump is started\n2025-05-12 09:26:49.761505 redfish NOTICE: event.lua(538): redfish dump is completed\n2025-05-12 09:26:50.574540 pcie_device NOTICE: device_service.lua(271): [DeviceService] App log dump.\n2025-05-12 09:26:50.677345 pcie_device NOTICE: biz_topo.lua(1028): [BizTopo] cable log dump.\n2025-05-12 09:26:50.851371 remote_console NOTICE: dump.lua(51): remote_console dump begin\n2025-05-12 09:26:52.254595 storage NOTICE: storage_app.lua(65): Dumping bios_boot_stage\n2025-05-12 09:26:52.268218 storage NOTICE: storage_app.lua(67): Dumping controllers info\n2025-05-12 09:26:57.142863 unknown_service ERROR: screenshot_api.lua(48): get lastframe ready state failed\n2025-05-12 09:26:57.144563 remote_console NOTICE: dump.lua(47): VCE info collect finish\n2025-05-12 09:26:57.146329 remote_console NOTICE: dump.lua(61): remote_console dump end\nlinks: #p-1787-h-1, #p-1787-h-2, #p-1787-h-3",
+    "topic_user_name": "Bd2025",
+    "best_answer_url": "/t/topic/867/5",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/867/2",
+            "text": "已转专家分析。"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/867/3",
+            "text": "content: 环境完整日志发到\nlinyao12@h-partners.com\nlinks: mailto:linyao12@h-partners.com"
+        },
+        {
+            "user_name": "Bd2025",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/867/4",
+            "text": "content: hxmygcs:\n\nlinyao12@h-partners.com\n\n已发送到这个邮箱\nlinks: mailto:linyao12@h-partners.com"
+        },
+        {
+            "user_name": "Linyao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/867/5",
+            "text": "此环境没有预置升级所需密钥文件，所以导致了升级失败\n恢复环境的话，可以试试先回滚到上一个版本（25.00.00），这个版本是社区包的版本，然后升一个过渡包（预置秘钥的社区包），再重新尝试去升级"
+        },
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/867/6",
+            "text": "content: 新建文件夹.zip (790.1 KB)\nSnipaste_2025-05-21_17-30-50990×331 24 KB\n遇到了同样问题，升级失败，日志在压缩包中\nlinks: /uploads/short-url/IW0bSt8W3D9bKBFM0ylR2WrRso.zip, https://discuss.openubmc.cn/uploads/default/original/1X/48d15d264586d10e9db48436edc5bd0898548b29.jpeg"
+        },
+        {
+            "user_name": "GaviPeng",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/867/7",
+            "text": "这个方法是建立在我们能回退到25.00.00版本的基础上，我们现在的环境已经所有分区都被刷成自己的版本了，没办法回退。 该解决方案在这种场景下无法解决问题！"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/867/8",
+            "text": "有台机器不保留配置升级后，华为固件和伙伴自己出的固件都升级不了，有什么方法升级吗"
+        },
+        {
+            "user_name": "KunTai_WangJiaKai",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/867/9",
+            "text": "可升级社区包，然后升级社区过渡包，再升级伙伴过渡包，再升级伙伴版本就可以救回来了"
+        }
+    ]
+}

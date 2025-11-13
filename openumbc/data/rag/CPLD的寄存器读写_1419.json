@@ -1,0 +1,50 @@
+{
+    "topic_id": 1419,
+    "question": "CPLD的寄存器读写 - BMC模组与CPLD通过I2C_2总线连接，openUBMC是否有类似iBMC的i2cread/i2cwrite的命令进行CPLD寄存器的读写测试？",
+    "topic_user_name": "恒扬-胡田野",
+    "best_answer_url": "/t/topic/1419/6",
+    "reply_posts": [
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1419/2",
+            "text": "使用busybox命令报错\n~ ~ # /opt/debug/busybox i2cdetect -l\ni2cdetect: can’t open ‘/sys/class/i2c-dev’: No such file or directory\n~ ~ #\n~ ~ # ls /sys/class/i2c* -l\nlrwxrwxrwx    1 root     root             0 Jan  1 03:48 i2c → ../../devices/virtual/i2c/i2c\n~ ~ #"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1419/3",
+            "text": "可以使用busctl和mdbctl下的call\n如：\nmdbctl\nUsage: call [object name] [interface name] [method name] [parameter list]\ncall I2c_11 bmc.kepler.Bus.BlockIO Read 0 144 2"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1419/4",
+            "text": "busctl 对 /bmc/kepler/Chip/Smc/Smc_EnclSMC_010102 /bmc/kepler/Bus/I2c/I2c_6 等都有读写接口"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1419/5",
+            "text": "mdbctl call的[parameter list]参数格式是按照资源树对象的method要求填吗？\n试了一下报错了。\n~ /tmp # mdbctl call I2c_5 bmc.kepler.Bus.BlockIO Read 0 0 2\nkepler.hwproxy.ChipNotExistError: Unable to find chip in the topology link.\n~ /tmp #\n想要查看资源树对象也报错\n~ /tmp # busctl introspect bmc.kepler.hwproxy /bmc/kepler/Bus/I2c/I2c_5\nFailed to introspect object /bmc/kepler/Bus/I2c/I2c_5 of service bmc.kepler.hwproxy: The name bmc.kepler.hwproxy was not provided by any .service files\n~ /tmp #"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1419/6",
+            "text": "你应该是在telnet下执行了该命令，ssh进入bmc，执行\nbusctl --user introspect  bmc.kepler.hwproxy  /bmc/kepler/Bus/I2c/I2c_5\n\nssh 进入bmc，先执行mdbctl，然后再执行Usage: call [object name] [interface name] [method name] [parameter list]，例如call I2c_11 bmc.kepler.Bus.BlockIO Read 0 144 2，这里指i2c11下有个地址为0x90的设备，具体参数根据i2c总线下设备地址而定，地址不对会报错"
+        },
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1419/7",
+            "text": "感谢，ssh可以"
+        }
+    ]
+}

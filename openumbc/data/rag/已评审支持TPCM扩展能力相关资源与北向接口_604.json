@@ -1,0 +1,43 @@
+{
+    "topic_id": 604,
+    "question": "【已评审】支持TPCM扩展能力相关资源与北向接口 - content: 背景\n支持TPCM扩展能力\nISSUE链接\n【需求】支持TPCM扩展能力北向接口\n支持TPCM扩展能力资源树\n决策点及结论\n1、新增资源树接口 bmc.kepler.Managers.SecureBoot 提供安全启动相关配置能力\n结论：同意新增资源协作接口\n资源path: /bmc/kepler/Managers/:ManagerId/SecureBoot\n资源interface：bmc.kepler.Managers.SecureBoot\n变化类型：新增interface，包含属性 VerificationEnabled 和方法SetBiosSignature\n应用场景：用于承载安全启动相关配置\nimage1772×280 42.7 KB\n2、新增资源树接口 bmc.kepler.Managers.SecureBoot.Signature 承载各启动阶段的安全启动信息\n结论：同意新增资源协作接口\n资源path：\n/bmc/kepler/Managers/:ManagerId/SecureBoot/Signatures/Uboot\n/bmc/kepler/Managers/:ManagerId/SecureBoot/Signatures/Rootfs\n/bmc/kepler/Systems/:SystemId/SecureBoot/Signatures/Bios\n资源interface：bmc.kepler.Managers.SecureBoot.Signature\n变化类型：新增资源路径及接口，包含属性 Name、Signature、VerificationResult\n应用场景：承载安全启动的签名校验信息，用于前端呈现\nimage1851×185 17.5 KB\n3、新增资源树接口 bmc.kepler.Systems.TPCM.Measured.Component 承载关键处理器身份度量明细信息\n结论：同意新增资源协作接口\n资源path：\n/bmc/kepler/Systems/:SystemId/TPCM/Measured/CPU/:Id\n/bmc/kepler/Systems/:SystemId/TPCM/Measured/NetworkAdapter/:Id\n/bmc/kepler/Systems/:SystemId/TPCM/Measured/NPU/:Id\n/bmc/kepler/Systems/:SystemId/TPCM/Measured/GPU/:Id\n资源interface：bmc.kepler.Systems.TPCM.Component\n变化类型：新增资源路径及接口，包含属性ActualManufacturer、ActualModel、ActualUniqueIdentifier、StandardManufacturer、StandardModel、StandardUniqueIdentifier、Status\n应用场景：该资源承载硬件身份度量明细信息，用于前端呈现\nimage1915×380 32.1 KB\n4、在资源树接口bmc.kepler.AssetService.AssetChange新增方法，实现刷新关键处理器基准值的能力\n结论：不同意新增资源协作方法\n方法归属不合理，调用关系违反逻辑架构约束\n资源path：/bmc/kepler/AssetService/AssetChange\n资源interface：bmc.kepler.AssetService.AssetChange\n变化类型：新增方法\n应用场景：用于在部件变更后，收集数据触发硬件身份度量基准值刷新行为\n操作权限：UserMgmt\nimage1781×133 13.2 KB\n5、在 bmc.kepler.Managers.TPCM.Config 接口中新增方法提供关键处理器身份度量能力\n结论：不同意新增资源协作方法\n方法归属不合理，调用关系违反逻辑架构约束\n资源path：/bmc/kepler/Managers/${ManagerId}/TPCM/Config\n资源interface：bmc.kepler.Managers.TPCM.Config\n变化类型：新增方法\n应用场景：用于各部件加载完成后，收集数据触发硬件身份度量行为\n操作权限：UserMgmt（不提供对外北向接口）\nimage1777×580 56 KB\n6、新增Rest接口GET /UI/Rest/TrustedComputing/SecureBoot 呈现安全启动验签信息\n结论：同意新增rest接口\nuri：/UI/Rest/TrustedComputing/SecureBoot\n变化类型：新增uri\n操作类型： GET\n应用场景：前端页面《可信计算》呈现《安全启动信息》\n详细描述：仅当支持安全启动时可用\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n属性说明\n约束\n\nSecureBootVerification[{\narray\n\nReadOnly\n承载安全启动各固件的校验情况\n只读\n\nName\nstring\n长度：0~32\n(实际固件名）\nReadOnly\n安全启动固件名称，不同Systems下通过后缀区分，如Bios_1、Bios_2\n只读\n\nVersion\nstring\n长度：0~64\n“”\nReadOnly\n安全启动固件版本\n只读\n\nSignature\nstring\n长度：0/64\n“”\nReadOnly\n安全启动固件签名值\n只读\n\nVerificationResult\nnumber\n0 - 校验成功 1 - 校验失败 255 - 未进行校验\n255\nReadOnly\n安全启动固件验签结果\n只读\n\n}]\n\n7、新增Rest接口GET /UI/Rest/TrustedComputing/HardwareIdentity 呈现关键处理器身份度量信息\n结论：同意新增Rest接口\nuri：/UI/Rest/TrustedComputing/HardwareIdentity\n变化类型：新增uri\n操作类型： GET\n应用场景：前端页面《可信计算》呈现《硬件身份度量信息》\n详细描述：仅在TCM在位场景下可用\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n属性说明\n约束\n\nHardwareIdentityMeasured[{\narray\n\nReadOnly\n承载关键处理部件的度量情况\n只读\n\nName\nString\nCPU, NetworkAdapter, NPU, GPU\n\nReadOnly\n单个System下的部件信息，如CPU\n只读\n\nSystemId\nNumber\n\n1\nReadOnly\n当前部件所在的SystemId\n只读\n\nComparedResult\nNumber\n0     – 度量成功 1     – 度量失败 255 – 未度量\n255\nReadOnly\n单System下的部件整体度量结果\n只读\n\nDetails[{\narray\n\nReadOnly\n单System下的部件度量明细信息集合\n只读\n\nName\nString\n长度：0~32\n“”\nReadOnly\n部件(槽位)名称，如CPU1\n只读\n\nActualIdentifier\nString\n长度：0~128\n“”\nReadOnly\n当前槽位上实际部件信息（型号+唯一标识）\n只读\n\nActualDigest\nString\n长度：0/64\n“”\nReadOnly\n当前槽位上实际部件度量值\n只读\n\nStandardIdentifier\nString\n长度：0~128\n“”\nReadOnly\n当前槽位上基准部件信息（型号+唯一标识）\n只读\n\nStandardDigest\nString\n长度：0/64\n“”\nReadOnly\n当前槽位上基准部件度量值\n只读\n\nStatus\nNumber\n0 – 正常 1 – 新增 2 – 移除 3 – 变更\n0\nReadOnly\n部件状态，标识当前槽位上的部件操作行为\n只读\n\n}]}]\n\n8、新增Rest接口POST /UI/Rest/TrustedComputing/HardwareIdentity/ResetComponentStandardDigest，提供关键处理器身份基准值刷新能力\n结论：同意新增rest接口\nuri：/UI/Rest/TrustedComputing/HardwareIdentity/ResetComponentStandardDigest\n变化类型：新增uri\n操作类型： POST\n应用场景：提供前端页面《可信计算》-《硬件身份度量信息》中触发刷新部件基准值的能力\nimage1736×207 18.3 KB\n9、扩展Rest接口GET /UI/Rest/AccessMgnt/TpcmService ，增加对 tpcm license 状态的呈现\n结论：同意扩展rest接口\nuri：/UI/Rest/AccessMgnt/TpcmService\n变化类型：新增属性 LicenseType、ExpiredTime\n操作类型： GET\n应用场景：增加TSB license状态呈现\n备注：前端呈现字符串映射 1-调测，3-商用\nimage1889×329 26.7 KB\n10、扩展Rest接口GET /UI/Rest/GenericInfo，新增响应值标识当前是否支持安全启动\n结论：同意扩展rest接口\nuri：/UI/Rest/GenericInfo\n变化类型：新增属性SecureBootVerificationEnabled、BasicSafeRunEnabled（仅V2）\n操作类型： GET\n应用场景：增加标识，用于判断前端呈现\nimage1889×385 31.9 KB\n11、新增 ipmi 接口\n结论：同意新增 ipmi 接口\nNetFn: 0x30  Cmd: 0x93\nSubCmd: 0x88 Get Trusted Computing Configuration\nSubCmd: 0x89 Set Trusted Computing Configuration\nimage1600×176 12.8 KB\n① Get Trusted Computing Configuration\n命令功能：查询可信计算相关配置\n权限说明：ReadOnly\n使用示例：\nIpmitool raw 0x30 0x93 0xdb 0x07 0x00 0x88 0x01 0x00 0x00\n请求：\nimage1758×251 10.9 KB\n响应：\nimage1758×160 9.78 KB\n②Set Trusted Computing Configuration\n命令功能：设置可信计算相关配置\n权限说明：UserMgmt\n使用示例：\nIpmitool raw 0x30 0x93 0xdb 0x07 0x00 0x89 0x02 0x00 0x00 0x01 0x01\n请求：\nimage1758×308 12.9 KB\n响应：\nimage1758×100 7.4 KB\n③功能号对照表\nimage1661×107 3.82 KB\n④功能状态对照表\nimage1729×164 7.76 KB\nlinks: #p-1189-h-1, #p-1189-issue-2, https://gitcode.com/openUBMC/rackmount/issues/28, https://gitcode.com/openUBMC/mdb_interface/issues/23, #p-1189-h-3, https://discuss.openubmc.cn/uploads/default/original/1X/2d08481bab62a0f5ae792f9582965630721e15e3.png, https://discuss.openubmc.cn/uploads/default/original/1X/692694dc5d7cb94365102fb852eca86be0b41155.png, https://discuss.openubmc.cn/uploads/default/original/1X/20c37cb31293ec3382bcacf14a844d5eb1152c88.png, https://discuss.openubmc.cn/uploads/default/original/1X/df87aad139026969054c7224164bd42262436832.png, https://discuss.openubmc.cn/uploads/default/original/1X/55350dfa72272b00088c2aeaadabc2930d36bcdb.png, https://discuss.openubmc.cn/uploads/default/original/1X/59e01c9a40097c750c50ce3a53ccfa9689443ead.png, https://discuss.openubmc.cn/uploads/default/original/1X/1bbc041e5e30d429818306cc28c89262842d1645.png, https://discuss.openubmc.cn/uploads/default/original/1X/306c114e116c2d6ded799e7e4b0617a62da7a562.png, https://discuss.openubmc.cn/uploads/default/original/1X/fad0d2545656d3b18947e97ee6e7e1a8358626c9.png, https://discuss.openubmc.cn/uploads/default/original/1X/0e9d7199ece3d5a7bc53fadce64e2eefae8a3611.png, https://discuss.openubmc.cn/uploads/default/original/1X/784a1d64327b4c823e15883c30e772a874dfd1f9.png, https://discuss.openubmc.cn/uploads/default/original/1X/111569f4d97098fc200a36d7d7922847f31560f4.png, https://discuss.openubmc.cn/uploads/default/original/1X/5ac459d6b45bced995fa762c5109dcac41ddeeb1.png, https://discuss.openubmc.cn/uploads/default/original/1X/24c57ce37bfe50a11ed101b07c0fc44438857c68.png, https://discuss.openubmc.cn/uploads/default/original/1X/d71efc325112d4533290e7f1f8e34524718573c7.png",
+    "topic_user_name": "pengxianglin",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/604/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/604/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/604/4",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/604/5",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/604/6",
+            "text": ""
+        }
+    ]
+}

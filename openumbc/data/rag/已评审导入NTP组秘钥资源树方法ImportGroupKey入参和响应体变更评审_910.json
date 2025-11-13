@@ -1,0 +1,36 @@
+{
+    "topic_id": 910,
+    "question": "【已评审】导入NTP组秘钥资源树方法ImportGroupKey入参和响应体变更评审 - content: 关联issue\nrackmount issues#36（支持Redfish资源NtpService下可以导入NTP组密钥）\n评审背景\n需求：Redfish支持导入NTP组密钥\n\"Url\": \"/redfish/v1/Managers/:managerid/NtpService/Actions/NtpService.ImportNtpKey\"\n\n新增Redfish接口参数说明如下，支持导入密钥的路径和文本：\nimage999×1082 24.4 KB\n评审点\n目前，已有资源树方法ImportGroupKey可以导入NTP组密钥。\n\n资源路径 ：/bmc/kepler/Managers/:id\n资源接口：bmc.kepler.Managers.Ntp.Auth\n方法 :ImportGroupKey\n请求签名 : s\n请求参数 :\n\nFilePath：上传密钥的路径\n\n响应签名 : 无\n响应参数 ： 无\n若导入NTP组密钥失败，则直接返回错误引擎。\n\n评审点1\n为满足新增的Redfish接口需求，需支持导入密钥的路径及内容文本。然而，当前的资源树方法ImportGroupKey仅支持传递密钥路径，因此需要进行相应调整。以下是两种调整方案：\n方案一  调整原有资源树方法 ImportGroupKey的请求参数\n修改方法 ImportGroupKey，内容如下\n\n资源路径 ：/bmc/kepler/Managers/:id\n接口 : bmc.kepler.Managers.Ntp.Auth\n方法 : ImportGroupKey\n请求签名 : ss\n请求参数 :\n\nType：上传密钥的类型。‘text’ 表示传入的内容为密钥内容；‘URI’ 表示传入的内容为密钥路径，支持本地路径和远程路径。\nContent：若 Type 的值为 ‘text’，则  Content 为密钥的内容；若Type 的值为 ‘URI’，则 Content 为证书的路径，可以是本地路径（仅限于 /tmp 目录）或远程路径（支持的协议包括 https、sftp、nfs、cifs 和 scp）。\n\n方案二 新增资源树方法ImportGroupKeyWithContent用于导入NTP组密钥的内容\n为了防止原有资源树方法的变更造成的影响，新增ImportGroupKeyWithContent的资源树方法，用于导入NTP组密钥的内容。\n新增方法 ImportGroupKeyWithContent，内容如下\n\n资源路径 ：/bmc/kepler/Managers/:id\n资源接口：bmc.kepler.Managers.Ntp.Auth\n方法 :ImportGroupKeyWithContent\n请求签名 : s\n请求参数 :\n\nContent：上传密钥的内容\n\n响应签名 : 无\n响应参数 ： 无\n若导入NTP组密钥失败，则直接返回错误引擎。\n\n评审点2\n使用CLI导入NTP组密钥时，如果内部出现错误，当前实现会直接输出错误引擎的信息，而不是预期的“Import NTP group key failed”。为了改善这种情况，需要对返回体进行调整，添加ImportGroupKey的操作结果反馈 ，明确显示操作是否成功。这样CLI可以根据返回信息准确地展示“Import NTP group key failed”或“Set NTP group key successfully”。\n\n资源路径 ：/bmc/kepler/Managers/:id\n资源接口：bmc.kepler.Managers.Ntp.Auth\n方法 : ImportGroupKey\n响应签名 : i\n响应参数 ：\n\nResult：导入结果，0 表示成功，非 0 表示失败。\n\n如果密钥校验失败，则返回错误值。\n\n修改影响评估\n\n评审点1 的方案一 和评审点2 由于 ImportGroupKey 方法的入参发生了变更，需要同步更新 CLI 接口的实现方式。\n\n评审结论\n\n评审点1：通过，采用方案二，新增资源协作接口 ImportGroupKeyWithContent 进行实施\n评审点2：不通过，北向处理要具备回显时选择是否采用error引擎返回的message还是自定义内容的能力\nlinks: #p-1871-issue-1, https://gitcode.com/openUBMC/rackmount/issues/36, #p-1871-h-2, https://discuss.openubmc.cn/uploads/default/original/1X/b3a31bc7308cf6e80b70ff7351ca2ea2de2a4b8d.png, #p-1871-h-3, #p-1871-h-1-4, #p-1871-importgroupkey-5, #p-1871-importgroupkeywithcontentntp-6, #p-1871-h-2-7, #p-1871-h-8, #p-1871-h-9",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "/t/topic/910/3",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/910/2",
+            "text": "content: 接口方法的名称没有，是要修改哪个接口，对应修改之后的兼容性考虑缺失\n响应参数能否使用 error 引擎，对应的 error 引擎已经在另一个评审中处理。请见：【待评审】NtpService资源支持Actions操作 - #3，来自 pengqiang-gs\nlinks: https://discuss.openubmc.cn/t/topic/770/3"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/910/3",
+            "text": "linyao:\n\n调整原有资源树方法 ImportGroupKey的请求参数\n\n【评审意见】不同意变更当前的接口，建议采用新增接口来支持该能力\n【确认结论】新增资源协作接口方法 ImportGroupKeyWithContent，并且补充为到正文方案二中"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/910/4",
+            "text": "linyao:\n\n对返回体进行调整，添加ImportGroupKey的操作结果反馈 ，明确显示操作是否成功。这样CLI可以根据返回信息准确地展示“Import NTP group key failed”或“Set NTP group key successfully”。\n\n【评审意见】当前问题是对于北向接口返回的基础能力，需要给北向接口返回信息时选择是否使用error引擎中的message，还是可以自定义输出回显。"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/910/5",
+            "text": ""
+        }
+    ]
+}

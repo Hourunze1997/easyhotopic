@@ -1,0 +1,43 @@
+{
+    "topic_id": 2023,
+    "question": "IPMI命令添加不成功问题 - 求助。\nIPMI自定义命令 必须新建组件且使用CMD0x30么。可以在fructrl下直接添加命令么。\n尝试在fructrl的mds添加了一个ipmi命令，组件自生成代码，组件修改为本地组件，\n随之出现了1.BMC自重启 2.用户密码不可用（好像被改了）3.添加的命令不起效果 的情况，\n望大佬帮分析下原因。",
+    "topic_user_name": "wly501",
+    "best_answer_url": "/t/topic/2023/6",
+    "reply_posts": [
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2023/2",
+            "text": "理论上fructrl的修改不影响用户名密码（不在一个组件）\n重启有可能是因为你修改的组件启动失败了？要分一下framework.log日志，看一下是否有组件启动失败导致bmc重启。\n命令不起效果，要看具体实现了，比如组件的资源树上有对应的ipmi对象吗？有没有进入app的回调？"
+        },
+        {
+            "user_name": "wly501",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2023/3",
+            "text": "谢谢回答~\n确认是在account组件上有做修改，有尝试过在account里添加ipmi命令，没成功。重启现象也应该跟这个组件异常有关。\n我这边的操作是在ipmi.json下添加了两个ipmi → bingo gen → bingo build --stage=rc → bingo build 。不太清楚是在哪个位置出现了问题造成了组件的异常"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2023/4",
+            "text": "如果只加 model.json 然后gen了，会异常吗？\n或者说直接gen，再试试会异常吗？"
+        },
+        {
+            "user_name": "wly501",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/2023/5",
+            "text": "额，现在试不了，，在account上的异常搞得现在固件无法更新了，现在还在找更新或者还原的办法"
+        },
+        {
+            "user_name": "wangxin",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/2023/6",
+            "text": "content: 参考这个帖子\n新增自定义ipmi命令方法 - bmc_core SIG - openUBMC 论坛\nlinks: https://discuss.openubmc.cn/t/topic/2142"
+        }
+    ]
+}

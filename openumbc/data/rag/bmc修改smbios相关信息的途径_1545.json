@@ -1,0 +1,92 @@
+{
+    "topic_id": 1545,
+    "question": "bmc修改smbios相关信息的途径 - 现在的BMC是否有途径修改smbios的信息呢\n一般修改Type 0 Type1 Type2 这些信息\ntype 1\nManufacturer\nProduct Name\nVersionSerial NumberUUID\ntype 2\nManufacturer\nProduct Name\nVersionSerial Number\n基本上就这些字段，支持自定义刷写",
+    "topic_user_name": "南京百敖",
+    "best_answer_url": "/t/topic/1545/4",
+    "reply_posts": [
+        {
+            "user_name": "Huangjiapei O2800",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1545/2",
+            "text": "1、解析smbios信息入口是在bios组件的include目录的decoder.lua文件，当前已支持解析的类型是Type 4（ProcessorInformation）、Type 6（MemoryModuleInformation）、Type7（CacheInformation）、Type 16（PhysicalMemoryArray）、Type 17（MemoryDevice）。\n2、如果要修改Type 0 Type1 Type2的相关信息，可仿照已支持的类型新增Type 0 Type1 Type2的解析器到DecoderMap下面，自定义解析的流程逻辑。"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1545/3",
+            "text": "这个解析器是在读smbios的信息  没有对smbios相关信息做修改吧 ？\n修改是哪一步？"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1545/4",
+            "text": "bmc应该只做解析而不修改，如果想手动修改来验证一些问题，可以通过telnet或一键收集日志把smbios文件导出，用bcompare、xxd之类的工具解析出来，手动修改，再导入bmc，可以看到修改字段值在web页面有相应改变"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1545/5",
+            "text": "content: image353×249 7 KB\nimage1076×546 64 KB\n一键日志导出后的配置如上，上面所说的smbios导出的文件是这个文件吗？\n另外文件修改后是通过ipmi命令 还是什么渠道  导入bmc的\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/a412e8a2e224f654c2158285e22a9d4761a1b48e.png, https://discuss.openubmc.cn/uploads/default/original/2X/e/e876bd9328ca10ad1653f2113b3557e5b01dfbe3.png"
+        },
+        {
+            "user_name": "Yetaojie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1545/6",
+            "text": "是的，scp传进去/tmp，再telnet进bmc，拷贝到/data/opt/，没记错的话应该是这个目录"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1545/7",
+            "text": "content: 已经修改的文件  导入到了data/opt目录下了\nimage412×144 3.32 KB\n之后重启bmc不生效  web端没变化\n是执行哪个命令生效的？\n另外这个文件是bios放在这边的吗\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/e/e3371f11f5763464af29637bcdb63e34901a9d50.png"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1545/8",
+            "text": "一般就是重启bmc或者os生效，web没变化，可能修改的字段内容不对"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1545/9",
+            "text": "content: image673×235 12 KB\n配置文件我又下载下来核对了 确认是改为了6.91\n但是无论怎么重启 这边web端依然是6.81呢？是持久化了吗？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/0/00f4e96f3b5197bd59097d0626e56482f7259050.png"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1545/10",
+            "text": "帮看看 什么方式能生效呢？"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1545/11",
+            "text": "可能这个字段不支持这样修改？我这里验证了一下，os重启后，该文件的字段还是会被刷新回原来的值"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1545/12",
+            "text": "帮忙确认下修改方式呢"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1545/13",
+            "text": "老师  有方法了吗"
+        }
+    ]
+}

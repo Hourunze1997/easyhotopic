@@ -1,0 +1,15 @@
+{
+    "topic_id": 1011,
+    "question": "关于qemu仿真的问题 - content: 这一步的密码是什么\n仿真ssh登录911×257 13.3 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/0aaddfb1e9ca822f34d87197c9e90a30e6df727f.png",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/1011/2",
+    "reply_posts": [
+        {
+            "user_name": "恒扬-胡田野",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1011/2",
+            "text": "试试Admin@90000"
+        }
+    ]
+}

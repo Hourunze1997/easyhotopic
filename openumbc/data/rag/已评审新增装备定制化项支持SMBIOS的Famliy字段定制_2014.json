@@ -1,0 +1,15 @@
+{
+    "topic_id": 2014,
+    "question": "【已评审】新增装备定制化项，支持SMBIOS的Famliy字段定制 - content: ISSUE链接\n暂无\n评审背景\n\n某客户要求定制SMBIOS的Family字段，BMC需要提供装备定制化项给装备\n\n当前现状以及差距\n现状\n目前SMBIOS的Family字段仅支持配置导入导出功能和ipmi命令设置，不能满足批量定制需求\n差距\n客户有诉求需要定制SMBIOS的Family字段。\n解决方案\n新增SMBIOS的Family字段定制化项。\n决策点1：新增定制化项\n新增定制项1：\n\n项\n说明\n\n定制化项名称\nBMCSet_SmBiosFamily\n\n归属组件\nbios\n\n类型\nstring\n\n默认值\n空\n\n处理逻辑\nif (BMCSet_SmBiosFamily != 空 ）  设置Family为BMCSet_SmBiosFamily的值 else   设置为空\n\n说明\n长度范围0~48个ASCII字符，按实际值设置\n\n实现方式\n配置文件导入\n\n评审结论\n同意新增BMCSet_SmBiosFamily定制项，用来定制SMBIOS的Family字段，类型为string，长度限制为48个字符，默认值为空字符串\n遗留事项\n1.Famliy字段的长度与BIOS确认\n结论： 已与BIOS确定，Family长度限制为48\nlinks: #p-4960-issue-1, #p-4960-h-2, #p-4960-h-3, #p-4960-h-4, #p-4960-h-5, #p-4960-h-6, #p-4960-h-1-7, #p-4960-h-1-8, #p-4960-h-9, #p-4960-h-10",
+    "topic_user_name": "Lizhuolong",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/2014/2",
+            "text": ""
+        }
+    ]
+}

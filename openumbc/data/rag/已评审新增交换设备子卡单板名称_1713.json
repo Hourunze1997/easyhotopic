@@ -1,0 +1,22 @@
+{
+    "topic_id": 1713,
+    "question": "【已评审】新增交换设备子卡单板名称 - content: 关联issue\n【需求】支持显示交换设备子卡单板名称-mdb_interface-GitCode\n背景\n支持通过北向接口（redfish）查询交换侧设备的子卡单板名，通过BMC轮询交换设备，获取设备及其所有子卡的单板名信息并北向显示。\n决策点\n1、资源协作接口bmc.kepler.LCN.Card增加属性Name、Manufacturer\n2、/redfish/v1/Oem/Huawei/LCNService/LCNDevices/device_id/SubCards/card_id GET响应体新增属性BoardName、AssetTag、Manufacturer、ManufactureDate\n整体方案\n无\n详细描述\n1、\n资源path：/bmc/kepler/LCNs/:Id/Cards/:CardId\n资源interface：bmc.kepler.LCN.Card\n变化类型：新增资源协作接口属性Name、Manufacturer\n\n属性名称\n取值类型\n变化类型\n默认\n读写&权限\n持久化\n变化通知\n接口说明\n\nName\nstring\n新增属性\n“”\nR：ReadOnly\n无\nfalse\n交换系统子卡的单板名\n\nManufacturer\nstring\n新增属性\n“”\nR：ReadOnly\n无\nfalse\n交换系统子卡的厂商名称\n\n2、redfish接口新增属性BoardName\nuri：/redfish/v1/Oem/Huawei/LCNService/LCNDevices/{device_id}/SubCards/{card_id}\n变化类型： 新增属性\n操作类型： GET\n应用场景： redfish查询交换设备子卡的资产信息\n\n属性名称\n取值类型\n取值范围\n默认值\n操作权限\n约束\n\nBoardName\nstring/null\n\n“”\nReadOnly\n指定LCN设备子卡的单板名，默认为空字符串，获取失败为null\n\nAssetTag\nstring/null\n\n“”\nR：ReadOnly\n指定LCN设备子卡的资产标签，默认为空字符串，获取失败为null\n\nManufacturer\nstring/null\n\n“”\nR：ReadOnly\n指定LCN设备子卡的厂商名称，默认为空字符串，获取失败为null\n\nManufactureDate\nstring/null\n\n“”\nR：ReadOnly\n指定LCN设备子卡的制造日期，默认为空字符串，获取失败为null\n\n评审结论\n1、同意资源协作接口bmc.kepler.LCN.Card新增属性Name和Manufacturer，签名为s，只读，读权限：ReadOnly，不发送变更通知事件\n2、同意redfish接口/redfish/v1/Oem/Huawei/LCNService/LCNDevices/{device_id}/SubCards/{card_id}新增属性BoardName、AssetTag、Manufacturer、ManufactureDate，类型均为string/null，只读\nlinks: #p-4145-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/145, #p-4145-h-2, #p-4145-h-3, #p-4145-h-4, #p-4145-h-5, #p-4145-h-6",
+    "topic_user_name": "Liushun26",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1713/2",
+            "text": "请举一反三审视下，硬件资产相关的静态信息还有没有遗漏的。"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1713/5",
+            "text": ""
+        }
+    ]
+}

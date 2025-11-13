@@ -1,0 +1,15 @@
+{
+    "topic_id": 1769,
+    "question": "【已评审】webrest需要新增属性Position显示电源位置 - content: issue链接\n\ngitcode.com\n\nGitCode - 全球开发者的开源社区,开源代码托管平台\nGitCode是面向全球开发者的开源社区,包括原创博客,开源代码托管,代码协作,项目管理等。与开发者社区互动,提升您的研发效率和质量。\n\n背景\n在web新增属性显示电源所在的位置\n现状\n当前webrest接口没有属性指示电源位置，而redfish接口由Position属性指示电源位置\nimage595×416 9.67 KB\n决策点\nwebrest接口新增属性，支持查询电源位置查询\n详细描述\n1）webrest接口新增属性\nURL：UI/Rest/System/PowerSupply\n变化类型：\"SupplyList\"对象新增Position属性\n操作类型： GET\n应用场景：在多框电源的场景下，由web显示该属性到页面上为“位置”\n\n属性名称\n取值类型\n说明\n取值范围\n默认值\n操作权限\n约束\n\nPosition\nstring\n电源所处位置\nNA\nNA\nReadOnly\n电源不在位时为null\n\n{\n…\n“SupplyList”: [\n{\n…\n“Position”:“PowerShelf1”\n…\n},\n…\n],\n…\n“RecommendedPowerMode”: null\n}\n如下图所示，电源信息显示读取信息根据PoweringChassis显示到页面上为位置：PoweringChassis1\nimage689×464 72.4 KB\n评审结论\n同意在webrest接口/UI/Rest/System/PowerSupply的“SupplyList”里面新增如下属性：\n属性名称：Position\n类型：string\n读写&权限：只读，ReadOnly\n说明：电源所处位置\n取值范围：NA\n默认值：NA\n约束：电源不在位时为null\n遗留问题及确认结论\n1、确认字符串是否可能为空，以及字符串的长度范围\n结论：电源在位时，CSR中如果没有配置该属性，则资源协作接口属性值为“”， webrest接口属性值也为“”，电源不在位时，webrest接口属性取值null；字符串当前长度没有限制。\nlinks: #p-4312-issue-1, https://gitcode.com/openUBMC/rackmount/issues/238?ref=&did=3223056#tid-3223056, https://gitcode.com/openUBMC/rackmount/issues/238?ref=&did=3223056#tid-3223056, #p-4312-h-2, #p-4312-h-3, https://discuss.openubmc.cn/uploads/default/original/2X/9/9748fb35528af696e067c92da90614858ac72669.png, #p-4312-h-4, #p-4312-h-5, https://discuss.openubmc.cn/uploads/default/original/2X/d/d9eb381b3134a756326f5fe7447a6eea7488d993.png, #p-4312-h-6",
+    "topic_user_name": "Zhangguihua",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1769/2",
+            "text": ""
+        }
+    ]
+}

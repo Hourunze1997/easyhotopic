@@ -1,0 +1,22 @@
+{
+    "topic_id": 267,
+    "question": "如何将csr文件写入eeprom中 - 如何将csr文件写入到eeprom中？",
+    "topic_user_name": "wuzhou-xiaokaili",
+    "best_answer_url": "/t/topic/267/2",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/267/2",
+            "text": "bmc studio后续会支持将部件csr打包成hpm包。\nCSR文件有uid，升级程序会根据uid升级对应部件的eeprom."
+        },
+        {
+            "user_name": "wuzhou-xiaokaili",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/267/3",
+            "text": "感谢"
+        }
+    ]
+}

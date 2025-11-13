@@ -1,0 +1,1716 @@
+{
+    "0": {
+        "summary": "昇腾CANN开发者如何处理多输入OM模型占位数据并定位ACL错误提示问题",
+        "discussion_count": 11,
+        "discussion": [
+            {
+                "id": "130",
+                "title": "ais_bench.infer.interface推理出现问题",
+                "url": "https://www.hiascend.com/forum/thread-0289146733377687050-1-1.html",
+                "created_at": "2024-03-25 07:16:18+00",
+                "source_type": "forum",
+                "source_id": "289146733377686976",
+                "cosine": 0.6639633026068311
+            },
+            {
+                "id": "541",
+                "title": "使用Ais_bench推理多次报错[-1][ACL: general failure]",
+                "url": "https://gitee.com/ascend/tools/issues/IC346C",
+                "created_at": "2025-04-22 17:08:10+08",
+                "source_type": "issue",
+                "source_id": "20300772",
+                "cosine": 0.5071213818745463
+            },
+            {
+                "id": "522",
+                "title": "【ais-bench推理工具】【错误码提示不清晰，需要完善】",
+                "url": "https://gitee.com/ascend/tools/issues/I6O6CY",
+                "created_at": "2023-03-18 15:16:55+08",
+                "source_type": "issue",
+                "source_id": "11205682",
+                "cosine": 0.4604468497892572
+            },
+            {
+                "id": "529",
+                "title": "ais_infer推理和使用benchmark推理输出bin不一致的问题",
+                "url": "https://gitee.com/ascend/tools/issues/I5FZPB",
+                "created_at": "2022-07-07 15:33:37+08",
+                "source_type": "issue",
+                "source_id": "9144191",
+                "cosine": 0.4472628484785764
+            },
+            {
+                "id": "360",
+                "title": "【ais-bench推理工具】【模型推理运行正常，析构失败】",
+                "url": "https://gitee.com/ascend/tools/issues/I6O6F8",
+                "created_at": "2023-03-18 15:27:28+08",
+                "source_type": "issue",
+                "source_id": "11205764",
+                "cosine": 0.44564967889967866
+            },
+            {
+                "id": "545",
+                "title": "【ais-bench 推理工具】使用--dymShape_range参数执行推理失败",
+                "url": "https://gitee.com/ascend/tools/issues/I6QUJT",
+                "created_at": "2023-03-28 10:21:21+08",
+                "source_type": "issue",
+                "source_id": "11330345",
+                "cosine": 0.44275421075470645
+            },
+            {
+                "id": "318",
+                "title": "【ais-bench推理工具】【错误信息完善】",
+                "url": "https://gitee.com/ascend/tools/issues/I6O6DC",
+                "created_at": "2023-03-18 15:19:54+08",
+                "source_type": "issue",
+                "source_id": "11205696",
+                "cosine": 0.44225435980597433
+            },
+            {
+                "id": "524",
+                "title": "ais_bench 推理程序的 help 文本疑似有误",
+                "url": "https://gitee.com/ascend/tools/issues/I6F0T9",
+                "created_at": "2023-02-14 15:09:51+08",
+                "source_type": "issue",
+                "source_id": "10778589",
+                "cosine": 0.4338116858006097
+            },
+            {
+                "id": "542",
+                "title": "【ais-bench推理工具】【64bs resnet模型端到端耗时过长，需要优化】",
+                "url": "https://gitee.com/ascend/tools/issues/I6O6ES",
+                "created_at": "2023-03-18 15:24:18+08",
+                "source_type": "issue",
+                "source_id": "11205748",
+                "cosine": 0.42303355273436305
+            },
+            {
+                "id": "421",
+                "title": "benchmark、ais_bench输出结果不一样",
+                "url": "https://gitee.com/ascend/tools/issues/I7GK22",
+                "created_at": "2023-06-27 22:45:31+08",
+                "source_type": "issue",
+                "source_id": "12529802",
+                "cosine": 0.3725831351881643
+            },
+            {
+                "id": "455",
+                "title": "【ais-bench推理工具】【英文版说明没有更新】",
+                "url": "https://gitee.com/ascend/tools/issues/I6O6FI",
+                "created_at": "2023-03-18 15:28:57+08",
+                "source_type": "issue",
+                "source_id": "11205774",
+                "cosine": 0.30556931519180713
+            }
+        ],
+        "label": "推理工具易用性问题"
+    },
+    "1": {
+        "summary": "开发者需确认昇腾CANN中YOLO系列模型ATC转换与AIPP预处理配置的匹配性以定位输入尺寸及精度偏差问题",
+        "discussion_count": 7,
+        "discussion": [
+            {
+                "id": "170",
+                "title": "图片经AIPP处理后推理结果和未经AIPP处理的推理结果不一致。",
+                "url": "https://www.hiascend.com/forum/thread-0266136624565154018-1-1.html",
+                "created_at": "2023-11-29 07:33:39+00",
+                "source_type": "forum",
+                "source_id": "266136624565153984",
+                "cosine": 0.6542248563187317
+            },
+            {
+                "id": "220",
+                "title": "使用AIPP后推理结果错误",
+                "url": "https://www.hiascend.com/forum/thread-0201114078125309016-1-1.html",
+                "created_at": "2023-03-13 08:22:05+00",
+                "source_type": "forum",
+                "source_id": "201114078125308992",
+                "cosine": 0.6512930726420407
+            },
+            {
+                "id": "193",
+                "title": "yolov8m模型转成om后进行推理报错，显示图片输入尺寸不对",
+                "url": "https://www.hiascend.com/forum/thread-0225131008210090043-1-1.html",
+                "created_at": "2023-09-25 07:10:10+00",
+                "source_type": "forum",
+                "source_id": "225131008210089984",
+                "cosine": 0.6143803366106542
+            },
+            {
+                "id": "16",
+                "title": "yolov7转换得到的om模型对高宽比大于1.5左右的图片识别结果错误",
+                "url": "https://www.hiascend.com/forum/thread-0237183096692632168-1-1.html",
+                "created_at": "2025-05-20 04:11:33+00",
+                "source_type": "forum",
+                "source_id": "237183096692632192",
+                "cosine": 0.6022940100998452
+            },
+            {
+                "id": "310",
+                "title": "yolov7转换得到的om模型对高宽比大于1.5左右的图片识别结果错误",
+                "url": "https://gitee.com/ascend/samples/issues/IC9L4Q",
+                "created_at": "2025-05-22 10:03:46+08",
+                "source_type": "issue",
+                "source_id": "20602682",
+                "cosine": 0.597535629319073
+            },
+            {
+                "id": "492",
+                "title": "YOLOV8模型转完OM文件后推理成功但精度损失较大",
+                "url": "https://gitee.com/ascend/tools/issues/I97EDM",
+                "created_at": "2024-03-11 12:27:54+08",
+                "source_type": "issue",
+                "source_id": "15461770",
+                "cosine": 0.5937179589857892
+            },
+            {
+                "id": "192",
+                "title": "yolov8mpt模型转为om后进行推理，报错显示输入的尺寸不对",
+                "url": "https://www.hiascend.com/forum/thread-0270131012222771056-1-1.html",
+                "created_at": "2023-09-25 08:17:03+00",
+                "source_type": "forum",
+                "source_id": "270131012222771104",
+                "cosine": 0.5440778704593581
+            }
+        ],
+        "label": "模型预处理配置问题"
+    },
+    "2": {
+        "summary": "昇腾CANN开发者需关注环境变量配置、头文件路径依赖及跨架构编译适配问题",
+        "discussion_count": 4,
+        "discussion": [
+            {
+                "id": "345",
+                "title": "编译aclLite报错/交叉编译开发环境如何搭建",
+                "url": "https://gitee.com/ascend/samples/issues/IC8KRJ",
+                "created_at": "2025-05-18 15:38:14+08",
+                "source_type": "issue",
+                "source_id": "20555551",
+                "cosine": 0.6276789667058281
+            },
+            {
+                "id": "172",
+                "title": "acllite make出现错误",
+                "url": "https://www.hiascend.com/forum/thread-0281136518162687003-1-1.html",
+                "created_at": "2023-11-28 01:42:43+00",
+                "source_type": "forum",
+                "source_id": "281136518162687008",
+                "cosine": 0.5676747675899876
+            },
+            {
+                "id": "305",
+                "title": "编译cplusplus/level2_simple_inference/0_data_process/vdec失败",
+                "url": "https://gitee.com/ascend/samples/issues/ICA9P3",
+                "created_at": "2025-05-24 16:32:27+08",
+                "source_type": "issue",
+                "source_id": "20634519",
+                "cosine": 0.5351108881073651
+            },
+            {
+                "id": "382",
+                "title": "vscode找不到acl.h",
+                "url": "https://gitee.com/ascend/tools/issues/I6A88C",
+                "created_at": "2023-01-12 15:26:44+08",
+                "source_type": "issue",
+                "source_id": "10554924",
+                "cosine": 0.39155573600157
+            }
+        ],
+        "label": "开发环境搭建问题"
+    },
+    "3": {
+        "summary": "昇腾CANN开发者如何有效利用Autofuse进行AscIR定义、代码生成及多模板优化",
+        "discussion_count": 10,
+        "discussion": [
+            {
+                "id": "412",
+                "title": "Autofuse/ascir：定义高阶Api原型",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5Y9",
+                "created_at": "2023-12-11 01:34:09+08",
+                "source_type": "issue",
+                "source_id": "14517729",
+                "cosine": 0.641205336407413
+            },
+            {
+                "id": "457",
+                "title": "Autofuse：定义ascir并提供构图接口",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5WN",
+                "created_at": "2023-12-11 01:18:07+08",
+                "source_type": "issue",
+                "source_id": "14517671",
+                "cosine": 0.6358840443117763
+            },
+            {
+                "id": "475",
+                "title": "Autofuse：支持自动融合和代码生成",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N0CT",
+                "created_at": "2023-12-09 14:59:30+08",
+                "source_type": "issue",
+                "source_id": "14510477",
+                "cosine": 0.5718425251722675
+            },
+            {
+                "id": "485",
+                "title": "Autofuse：支持生成AscendC的proto/tiling/kernel代码",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5XP",
+                "created_at": "2023-12-11 01:26:27+08",
+                "source_type": "issue",
+                "source_id": "14517709",
+                "cosine": 0.5717101053293128
+            },
+            {
+                "id": "488",
+                "title": "Autofuse：支持Optimize优化补充代码生成所需信息",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5XO",
+                "created_at": "2023-12-11 01:26:07+08",
+                "source_type": "issue",
+                "source_id": "14517708",
+                "cosine": 0.5458707221709701
+            },
+            {
+                "id": "401",
+                "title": "Autofuse/codegen：支持多模板和tiling选择生成",
+                "url": "https://gitee.com/ascend/torchair/issues/I8PH8N",
+                "created_at": "2023-12-19 09:13:03+08",
+                "source_type": "issue",
+                "source_id": "14625671",
+                "cosine": 0.5383934087290202
+            },
+            {
+                "id": "482",
+                "title": "Autofuse/optimize：支持读取高阶Api信息补充到节点属性",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5XR",
+                "created_at": "2023-12-11 01:27:31+08",
+                "source_type": "issue",
+                "source_id": "14517711",
+                "cosine": 0.535111371304851
+            },
+            {
+                "id": "322",
+                "title": "Autofuse/codegen：支持生成kernel侧代码",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5YY",
+                "created_at": "2023-12-11 01:48:20+08",
+                "source_type": "issue",
+                "source_id": "14517754",
+                "cosine": 0.5294058923634545
+            },
+            {
+                "id": "498",
+                "title": "Autofuse/optimize：支持分配TQue/TBuf并补充到图的节点和tensor属性",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5XU",
+                "created_at": "2023-12-11 01:28:56+08",
+                "source_type": "issue",
+                "source_id": "14517714",
+                "cosine": 0.48452002724898774
+            },
+            {
+                "id": "515",
+                "title": "Autofuse/codegen：支持stride表达的指令映射",
+                "url": "https://gitee.com/ascend/torchair/issues/I8PH9W",
+                "created_at": "2023-12-19 09:14:22+08",
+                "source_type": "issue",
+                "source_id": "14625716",
+                "cosine": 0.483741030483531
+            }
+        ],
+        "label": "代码生成工具链支持"
+    },
+    "4": {
+        "summary": "开发者面临昇腾CANN多版本卸载失败、OPP模块缺失导致的安装路径异常及离线安装阶段配置文件权限校验问题",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "3",
+                "title": "Atlas800I A2安装CANN报错：opp_uninstall.sh不存在",
+                "url": "https://www.hiascend.com/forum/thread-0226183785107239008-1-1.html",
+                "created_at": "2025-05-28 03:25:07+00",
+                "source_type": "forum",
+                "source_id": "226183785107239008",
+                "cosine": 0.6653124107326198
+            },
+            {
+                "id": "15",
+                "title": "安装 Ascend-cann-toolkit_8.1.RC1_linux-aarch64.run 失败",
+                "url": "https://www.hiascend.com/forum/thread-0237183196156024184-1-1.html",
+                "created_at": "2025-05-21 07:49:16+00",
+                "source_type": "forum",
+                "source_id": "237183196156024192",
+                "cosine": 0.606006784288585
+            },
+            {
+                "id": "118",
+                "title": "离线安装Ascend-cann-toolkit_6.0.RC1_linux-aarch64   一直报错",
+                "url": "https://www.hiascend.com/forum/thread-0293147952701841019-1-1.html",
+                "created_at": "2024-04-08 09:58:22+00",
+                "source_type": "forum",
+                "source_id": "293147952701841024",
+                "cosine": 0.5882920006400363
+            }
+        ],
+        "label": "安装部署可靠性问题"
+    },
+    "5": {
+        "summary": "昇腾CANN非root用户调用aclnnMatmul算子触发空指针异常",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "245",
+                "title": "使用aclnnMatmul的时候报错：aclnnMatmulGetWorkspaceSize failed. ERROR: 561103",
+                "url": "https://www.hiascend.com/forum/thread-02108183029427616162-1-1.html",
+                "created_at": "2025-05-19 09:30:28+00",
+                "source_type": "forum",
+                "source_id": "2108183029427616000",
+                "cosine": 0.6728426874691424
+            },
+            {
+                "id": "92",
+                "title": "aclnnMatmul算子调用出错",
+                "url": "https://www.hiascend.com/forum/thread-0261153110635340011-1-1.html",
+                "created_at": "2024-06-07 02:43:55+00",
+                "source_type": "forum",
+                "source_id": "261153110635340000",
+                "cosine": 0.6442375197308348
+            },
+            {
+                "id": "237",
+                "title": "根据CANN社区版8.0.0.alpha001的文档调用单算子API，编译成功，但是运行报错：aclnnAddGetWorkspaceSize failed. ERROR: 561103",
+                "url": "https://www.hiascend.com/forum/thread-02108183654631289220-1-1.html",
+                "created_at": "2025-05-26 15:10:31+00",
+                "source_type": "forum",
+                "source_id": "2108183654631289088",
+                "cosine": 0.6271714052207353
+            }
+        ],
+        "label": "基础算子运行时异常"
+    },
+    "6": {
+        "summary": "昇腾CANN开发者测试sscal/scasum算子时遭遇高维shape泛化性缺陷导致超时及内存溢出异常",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "538",
+                "title": "[Bug-Report|缺陷反馈]: sscal在Atlas 200I DK A2测试泛化性不足，部分shape运行结果精度异常",
+                "url": "https://gitee.com/ascend/cann-ops/issues/IC8IQX",
+                "created_at": "2025-05-17 18:19:36+08",
+                "source_type": "issue",
+                "source_id": "20552937",
+                "cosine": 0.6939384332366507
+            },
+            {
+                "id": "472",
+                "title": "[Bug-Report|缺陷反馈]: sscal在Atlas 200I DK A2测试泛化性不足，部分shape运行结果精度异常",
+                "url": "https://gitee.com/ascend/cann-ops/issues/IC8IQV",
+                "created_at": "2025-05-17 18:19:34+08",
+                "source_type": "issue",
+                "source_id": "20552935",
+                "cosine": 0.6932930512419717
+            },
+            {
+                "id": "508",
+                "title": "[Bug-Report|缺陷反馈]: scasum在Atlas 200I DK A2测试泛化性不足，部分shape运行结果精度异常",
+                "url": "https://gitee.com/ascend/cann-ops/issues/IC8IJC",
+                "created_at": "2025-05-17 17:41:20+08",
+                "source_type": "issue",
+                "source_id": "20552664",
+                "cosine": 0.6629998471900758
+            }
+        ],
+        "label": "BLAS算子泛化性问题"
+    },
+    "7": {
+        "summary": "开发者如何解决Sinh算子在Ascend C环境测试结果异常的问题",
+        "discussion_count": 5,
+        "discussion": [
+            {
+                "id": "282",
+                "title": "Ascend C Sinh算子开发——香橙派310B",
+                "url": "https://www.hiascend.com/forum/thread-0261155955587482283-1-1.html",
+                "created_at": "2024-07-10 06:19:54+00",
+                "source_type": "forum",
+                "source_id": "261155955587482304",
+                "cosine": 0.6195120519688975
+            },
+            {
+                "id": "286",
+                "title": "ascend c适用范围咨询",
+                "url": "https://www.hiascend.com/forum/thread-0295152270005946033-1-1.html",
+                "created_at": "2024-05-28 09:13:26+00",
+                "source_type": "forum",
+                "source_id": "295152270005945984",
+                "cosine": 0.5434714326030068
+            },
+            {
+                "id": "291",
+                "title": "如何在启智平台搭建Ascend C开发环境",
+                "url": "https://www.hiascend.com/forum/thread-0255146200919945019-1-1.html",
+                "created_at": "2024-03-19 03:22:04+00",
+                "source_type": "forum",
+                "source_id": "255146200919944992",
+                "cosine": 0.5339233142631123
+            },
+            {
+                "id": "303",
+                "title": "Ascend C环境准备",
+                "url": "https://www.hiascend.com/forum/thread-0235128261452483095-1-1.html",
+                "created_at": "2023-08-24 12:10:53+00",
+                "source_type": "forum",
+                "source_id": "235128261452483104",
+                "cosine": 0.5070948076407328
+            },
+            {
+                "id": "184",
+                "title": "概述",
+                "url": "https://www.hiascend.com/forum/thread-0230132196288406104-1-1.html",
+                "created_at": "2023-10-09 01:11:28+00",
+                "source_type": "forum",
+                "source_id": "230132196288406112",
+                "cosine": 0.4977752514989286
+            }
+        ],
+        "label": "AscendC算子开发问题"
+    },
+    "8": {
+        "summary": "昇腾CANN开发者如何判断融合配置的有效性及适用场景需求",
+        "discussion_count": 4,
+        "discussion": [
+            {
+                "id": "400",
+                "title": "E+E融合判断",
+                "url": "https://gitee.com/ascend/torchair/issues/I8PQ0U",
+                "created_at": "2023-12-19 17:05:59+08",
+                "source_type": "issue",
+                "source_id": "14637054",
+                "cosine": 0.5818463498938621
+            },
+            {
+                "id": "503",
+                "title": "B+R融合判断",
+                "url": "https://gitee.com/ascend/torchair/issues/I8PQ1B",
+                "created_at": "2023-12-19 17:06:41+08",
+                "source_type": "issue",
+                "source_id": "14637071",
+                "cosine": 0.45128056821481277
+            },
+            {
+                "id": "505",
+                "title": "E+R融合判断",
+                "url": "https://gitee.com/ascend/torchair/issues/I8PQ13",
+                "created_at": "2023-12-19 17:06:31+08",
+                "source_type": "issue",
+                "source_id": "14637063",
+                "cosine": 0.449952719936362
+            },
+            {
+                "id": "537",
+                "title": "E+B融合判断",
+                "url": "https://gitee.com/ascend/torchair/issues/I8PQ11",
+                "created_at": "2023-12-19 17:06:20+08",
+                "source_type": "issue",
+                "source_id": "14637061",
+                "cosine": 0.43914553846660187
+            }
+        ],
+        "label": "融合算子策略判断"
+    },
+    "9": {
+        "summary": "昇腾310P3机型显存分配时卡死在98MB，影响PyTorch张量初始化与模型加载",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "7",
+                "title": "任何张量加载到NPU都会只占用98Mb（很奇怪的一个数字）然后卡住",
+                "url": "https://www.hiascend.com/forum/thread-0237183630703446231-1-1.html",
+                "created_at": "2025-05-26 08:31:43+00",
+                "source_type": "forum",
+                "source_id": "237183630703446208",
+                "cosine": 0.7555298265596004
+            },
+            {
+                "id": "311",
+                "title": "数据加载到NPU卡住",
+                "url": "https://gitee.com/ascend/samples/issues/ICALGE",
+                "created_at": "2025-05-26 16:38:06+08",
+                "source_type": "issue",
+                "source_id": "20649758",
+                "cosine": 0.6809458784287001
+            }
+        ],
+        "label": "硬件资源分配异常"
+    },
+    "10": {
+        "summary": "昇腾CANN开发者如何生成tiling的多模板案例",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "471",
+                "title": "多模板：tiling case生成",
+                "url": "https://gitee.com/ascend/torchair/issues/I8PQ1Y",
+                "created_at": "2023-12-19 17:07:46+08",
+                "source_type": "issue",
+                "source_id": "14637094",
+                "cosine": 0.7136289038711341
+            },
+            {
+                "id": "340",
+                "title": "多模板：tiling切分多模板",
+                "url": "https://gitee.com/ascend/torchair/issues/I8NXXJ",
+                "created_at": "2023-12-13 10:23:29+08",
+                "source_type": "issue",
+                "source_id": "14553991",
+                "cosine": 0.5674973749127773
+            }
+        ],
+        "label": "算子优化模板问题"
+    },
+    "11": {
+        "summary": "昇腾CANN开发者如何验证llama2模型算子融合性能",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "447",
+                "title": "E2E：验证llama2的融合性能",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5YG",
+                "created_at": "2023-12-11 01:38:43+08",
+                "source_type": "issue",
+                "source_id": "14517736",
+                "cosine": 0.6327551681753717
+            },
+            {
+                "id": "315",
+                "title": "E2E：支持llama2的执行",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5YF",
+                "created_at": "2023-12-11 01:38:29+08",
+                "source_type": "issue",
+                "source_id": "14517735",
+                "cosine": 0.4427240150314948
+            },
+            {
+                "id": "451",
+                "title": "E2E：支持llama2的执行",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5YL",
+                "created_at": "2023-12-11 01:42:24+08",
+                "source_type": "issue",
+                "source_id": "14517741",
+                "cosine": 0.4427240150314948
+            }
+        ],
+        "label": "大模型算子融合验证"
+    },
+    "12": {
+        "summary": "昇腾CANN开发者需解决BLAS算子在Ascend310b及Atlas 200I DK A2平台添加AddConfig后的测试失败问题",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "415",
+                "title": "[Bug-Report|缺陷反馈]: isamax算子在香橙派 Ascend310b 大部分样例结果错误 ",
+                "url": "https://gitee.com/ascend/cann-ops/issues/IC8IUT",
+                "created_at": "2025-05-17 18:54:29+08",
+                "source_type": "issue",
+                "source_id": "20553077",
+                "cosine": 0.6582200653244339
+            },
+            {
+                "id": "474",
+                "title": "[Bug-Report|缺陷反馈]: isamin 在Atlas 200I DK A2测试大部分均result error",
+                "url": "https://gitee.com/ascend/cann-ops/issues/IC8ITQ",
+                "created_at": "2025-05-17 18:40:43+08",
+                "source_type": "issue",
+                "source_id": "20553038",
+                "cosine": 0.6324357732590635
+            },
+            {
+                "id": "416",
+                "title": "[Bug-Report|缺陷反馈]: sasum在香橙派 Ascend310b 大部分样例结果错误",
+                "url": "https://gitee.com/ascend/cann-ops/issues/IC8IR8",
+                "created_at": "2025-05-17 18:23:50+08",
+                "source_type": "issue",
+                "source_id": "20552948",
+                "cosine": 0.5852814071816052
+            }
+        ],
+        "label": "特定硬件算子兼容性问题"
+    },
+    "13": {
+        "summary": "开发者需确认自定义OM模型加载失败原因及转换配置差异",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "147",
+                "title": "使用应用案例：风格迁移系统，加载模型报错 acl.mdl.load_from_file failed ret_int=545002",
+                "url": "https://www.hiascend.com/forum/thread-0281144580223213104-1-1.html",
+                "created_at": "2024-02-29 09:10:23+00",
+                "source_type": "forum",
+                "source_id": "281144580223213088",
+                "cosine": 0.6792660505640913
+            },
+            {
+                "id": "2",
+                "title": "acl.mdl.load_from_file返回ret=145000",
+                "url": "https://www.hiascend.com/forum/thread-0205183808507881011-1-1.html",
+                "created_at": "2025-05-28 09:55:08+00",
+                "source_type": "forum",
+                "source_id": "205183808507880992",
+                "cosine": 0.6618627312984839
+            }
+        ],
+        "label": "模型加载兼容性问题"
+    },
+    "14": {
+        "summary": "昇腾CANN开发者如何正确获取并配置AscendCL核心运行库",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "149",
+                "title": "libascendcl.so运行找不到这个文件，请问在什么位置下载？",
+                "url": "https://www.hiascend.com/forum/thread-0262144571877312103-1-1.html",
+                "created_at": "2024-02-29 06:51:17+00",
+                "source_type": "forum",
+                "source_id": "262144571877312096",
+                "cosine": 0.6010304667189466
+            },
+            {
+                "id": "393",
+                "title": "/usr/lib/ld:cannot find -lascendcl",
+                "url": "https://gitee.com/ascend/tools/issues/I62B83",
+                "created_at": "2022-11-21 19:44:12+08",
+                "source_type": "issue",
+                "source_id": "10185555",
+                "cosine": 0.5222286752474581
+            }
+        ],
+        "label": "基础依赖库问题"
+    },
+    "15": {
+        "summary": "昇腾CANN开发者如何选择纯vector或矩阵向量混合计算模式实现算子加速",
+        "discussion_count": 3,
+        "discussion": [
+            {
+                "id": "441",
+                "title": "E2E：支持flashattention的Inductor计算（验证矩阵向量混合计算）",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5YJ",
+                "created_at": "2023-12-11 01:40:21+08",
+                "source_type": "issue",
+                "source_id": "14517739",
+                "cosine": 0.48452805480372496
+            },
+            {
+                "id": "436",
+                "title": "E2E：支持layernorm的Inductor计算（验证纯vector计算）",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5YH",
+                "created_at": "2023-12-11 01:39:38+08",
+                "source_type": "issue",
+                "source_id": "14517737",
+                "cosine": 0.45299727535640055
+            },
+            {
+                "id": "406",
+                "title": "E2E：支持softmax的Inductor计算（验证纯vector计算",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5YI",
+                "created_at": "2023-12-11 01:39:56+08",
+                "source_type": "issue",
+                "source_id": "14517738",
+                "cosine": 0.45189099413526823
+            }
+        ],
+        "label": "计算模式选择问题"
+    },
+    "16": {
+        "summary": "昇腾CANN开发者在300V芯片使用ONNX Runtime时如何解决推理速度反向加速",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "94",
+                "title": "onnxruntime-cann推理速度比cpu慢一倍",
+                "url": "https://www.hiascend.com/forum/thread-0269152432797714039-1-1.html",
+                "created_at": "2024-05-30 06:26:38+00",
+                "source_type": "forum",
+                "source_id": "269152432797713984",
+                "cosine": 0.725311602320733
+            },
+            {
+                "id": "9",
+                "title": "对 onnxruntime-cann 的一些想法",
+                "url": "https://www.hiascend.com/forum/thread-02102183375078257181-1-1.html",
+                "created_at": "2025-05-23 09:31:18+00",
+                "source_type": "forum",
+                "source_id": "2102183375078256896",
+                "cosine": 0.618163362694679
+            }
+        ],
+        "label": "推理性能优化问题"
+    },
+    "17": {
+        "summary": "昇腾CANN开发者离线使用Ascend Deployer时需配置本地镜像路径及Ansible免密登录",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "106",
+                "title": "离线安装",
+                "url": "https://www.hiascend.com/forum/thread-0237149762954486031-1-1.html",
+                "created_at": "2024-04-29 08:49:14+00",
+                "source_type": "forum",
+                "source_id": "237149762954486016",
+                "cosine": 0.7110747178826884
+            },
+            {
+                "id": "212",
+                "title": "离线安装工具：ascend-deploye",
+                "url": "https://www.hiascend.com/forum/thread-0254119580694772050-1-1.html",
+                "created_at": "2023-05-16 00:51:35+00",
+                "source_type": "forum",
+                "source_id": "254119580694772096",
+                "cosine": 0.6821896582236823
+            }
+        ],
+        "label": "离线部署配置问题"
+    },
+    "18": {
+        "summary": "昇腾CANN开发者需扩展高阶API注册与映射适配能力",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "352",
+                "title": "AscendC：扩展AscendC进行高阶Api注册和映射",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5WQ",
+                "created_at": "2023-12-11 01:20:35+08",
+                "source_type": "issue",
+                "source_id": "14517674",
+                "cosine": 0.5847892417087978
+            },
+            {
+                "id": "440",
+                "title": "AscendC：扩展高阶Api在Ascend910/Ascend310上的高阶Api信息",
+                "url": "https://gitee.com/ascend/torchair/issues/I8N5YB",
+                "created_at": "2023-12-11 01:35:13+08",
+                "source_type": "issue",
+                "source_id": "14517731",
+                "cosine": 0.500641428594938
+            }
+        ],
+        "label": "高阶接口扩展需求"
+    },
+    "19": {
+        "summary": "昇腾CANN开发者在ATC模型转换中面临动态Shape不支持、算子兼容性冲突及精度对齐问题",
+        "discussion_count": 54,
+        "discussion": [
+            {
+                "id": "208",
+                "title": "跑开发板案例太简单？跑个昇腾 CANN 推理全流程！",
+                "url": "https://www.hiascend.com/forum/thread-0231123313987057018-1-1.html",
+                "created_at": "2023-06-28 06:19:47+00",
+                "source_type": "forum",
+                "source_id": "231123313987056992",
+                "cosine": 0.6975675936072491
+            },
+            {
+                "id": "218",
+                "title": "Dynamic shape is not supported on this chip!",
+                "url": "https://www.hiascend.com/forum/thread-0250115280625171063-1-1.html",
+                "created_at": "2023-03-27 06:23:45+00",
+                "source_type": "forum",
+                "source_id": "250115280625171104",
+                "cosine": 0.6918165845214795
+            },
+            {
+                "id": "105",
+                "title": "模型转换失败",
+                "url": "https://www.hiascend.com/forum/thread-0231151218923966090-1-1.html",
+                "created_at": "2024-05-16 05:15:24+00",
+                "source_type": "forum",
+                "source_id": "231151218923966112",
+                "cosine": 0.683573336178669
+            },
+            {
+                "id": "0",
+                "title": "快速解决问题的关键：【CANN板块发帖指南】",
+                "url": "https://www.hiascend.com/forum/thread-0296166241191125146-1-1.html",
+                "created_at": "2024-11-06 02:06:31+00",
+                "source_type": "forum",
+                "source_id": "296166241191125120",
+                "cosine": 0.6641127675401463
+            },
+            {
+                "id": "62",
+                "title": "模型转换",
+                "url": "https://www.hiascend.com/forum/thread-02100166518022251003-1-1.html",
+                "created_at": "2024-11-09 07:00:22+00",
+                "source_type": "forum",
+                "source_id": "2100166518022251008",
+                "cosine": 0.6550047839954506
+            },
+            {
+                "id": "125",
+                "title": "ATC转换自己训练的模型，一直转换不了",
+                "url": "https://www.hiascend.com/forum/thread-0232146996600629075-1-1.html",
+                "created_at": "2024-03-28 08:23:21+00",
+                "source_type": "forum",
+                "source_id": "232146996600629088",
+                "cosine": 0.6545672723885156
+            },
+            {
+                "id": "10",
+                "title": "onnx转om模型报错，Segmentation fault (core dumped)",
+                "url": "https://www.hiascend.com/forum/thread-02102183371294732180-1-1.html",
+                "created_at": "2025-05-23 08:28:15+00",
+                "source_type": "forum",
+                "source_id": "2102183371294732032",
+                "cosine": 0.6444233899219854
+            },
+            {
+                "id": "462",
+                "title": "ATC模型转换失败",
+                "url": "https://gitee.com/ascend/tools/issues/I6HL4Q",
+                "created_at": "2023-02-24 16:09:41+08",
+                "source_type": "issue",
+                "source_id": "10898234",
+                "cosine": 0.6438093107574113
+            },
+            {
+                "id": "11",
+                "title": "onnx使用atc 模型转换",
+                "url": "https://www.hiascend.com/forum/thread-02102183352936556174-1-1.html",
+                "created_at": "2025-05-23 03:22:17+00",
+                "source_type": "forum",
+                "source_id": "2102183352936556032",
+                "cosine": 0.6367887872134516
+            },
+            {
+                "id": "71",
+                "title": "提高om模型正确率",
+                "url": "https://www.hiascend.com/forum/thread-02104164341921644149-1-1.html",
+                "created_at": "2024-10-15 02:32:02+00",
+                "source_type": "forum",
+                "source_id": "2104164341921644032",
+                "cosine": 0.6319193382398065
+            },
+            {
+                "id": "463",
+                "title": "[应用开发]使用一键精度对比工具对c3d做精度对比报错",
+                "url": "https://gitee.com/ascend/tools/issues/I66IZW",
+                "created_at": "2022-12-16 18:47:16+08",
+                "source_type": "issue",
+                "source_id": "10382252",
+                "cosine": 0.6264810142564691
+            },
+            {
+                "id": "117",
+                "title": "DETR.onnx模型转化为.om模型atc failed",
+                "url": "https://www.hiascend.com/forum/thread-0297148102201643002-1-1.html",
+                "created_at": "2024-04-10 03:30:02+00",
+                "source_type": "forum",
+                "source_id": "297148102201643008",
+                "cosine": 0.6260727674192552
+            },
+            {
+                "id": "411",
+                "title": "atc模型转换cce编译报错",
+                "url": "https://gitee.com/ascend/tools/issues/I52LJT",
+                "created_at": "2022-04-13 19:46:52+08",
+                "source_type": "issue",
+                "source_id": "8519321",
+                "cosine": 0.6221196859673271
+            },
+            {
+                "id": "35",
+                "title": "GroundingDino在Altas300上模型转换失败",
+                "url": "https://www.hiascend.com/forum/thread-0237181022913671008-1-1.html",
+                "created_at": "2025-04-26 04:08:34+00",
+                "source_type": "forum",
+                "source_id": "237181022913671008",
+                "cosine": 0.6100661958913659
+            },
+            {
+                "id": "6",
+                "title": "把onnx转换成om后，执行推理，图片分割结果不正确",
+                "url": "https://www.hiascend.com/forum/thread-02108183690515604221-1-1.html",
+                "created_at": "2025-05-27 01:08:36+00",
+                "source_type": "forum",
+                "source_id": "2108183690515603968",
+                "cosine": 0.6024179052881992
+            },
+            {
+                "id": "195",
+                "title": "ONNX模型推理结果与转换的OM模型推理结果差异很大",
+                "url": "https://www.hiascend.com/forum/thread-0246129780671242059-1-1.html",
+                "created_at": "2023-09-11 02:11:11+00",
+                "source_type": "forum",
+                "source_id": "246129780671241984",
+                "cosine": 0.5990215656038783
+            },
+            {
+                "id": "478",
+                "title": "ais_bench动态shape模型推理报错",
+                "url": "https://gitee.com/ascend/tools/issues/IALG44",
+                "created_at": "2024-08-21 12:24:42+08",
+                "source_type": "issue",
+                "source_id": "17796820",
+                "cosine": 0.5979781886973575
+            },
+            {
+                "id": "27",
+                "title": "ATC转换RT-DERT时报错",
+                "url": "https://www.hiascend.com/forum/thread-0237182402660926094-1-1.html",
+                "created_at": "2025-05-12 03:24:21+00",
+                "source_type": "forum",
+                "source_id": "237182402660926112",
+                "cosine": 0.593011180387853
+            },
+            {
+                "id": "438",
+                "title": " python3 -m ais_bench --model ../model/detrnoaipp.om 报错",
+                "url": "https://gitee.com/ascend/tools/issues/IAF494",
+                "created_at": "2024-07-24 09:38:13+08",
+                "source_type": "issue",
+                "source_id": "17501512",
+                "cosine": 0.5843070231514572
+            },
+            {
+                "id": "437",
+                "title": "转换失败",
+                "url": "https://gitee.com/ascend/tools/issues/IAHZZO",
+                "created_at": "2024-08-05 19:48:52+08",
+                "source_type": "issue",
+                "source_id": "17635956",
+                "cosine": 0.5825142064226708
+            },
+            {
+                "id": "155",
+                "title": "ATC转换模型失败",
+                "url": "https://www.hiascend.com/forum/thread-0225142581618012022-1-1.html",
+                "created_at": "2024-02-06 06:00:18+00",
+                "source_type": "forum",
+                "source_id": "225142581618012000",
+                "cosine": 0.5812131709970999
+            },
+            {
+                "id": "417",
+                "title": "模型转换后运行报错",
+                "url": "https://gitee.com/ascend/tools/issues/I9N27H",
+                "created_at": "2024-05-07 16:15:45+08",
+                "source_type": "issue",
+                "source_id": "16192493",
+                "cosine": 0.5807010519472672
+            },
+            {
+                "id": "122",
+                "title": "关于使用atc转化onnx模型出现E10042报错",
+                "url": "https://www.hiascend.com/forum/thread-0290147267420921008-1-1.html",
+                "created_at": "2024-03-31 11:37:01+00",
+                "source_type": "forum",
+                "source_id": "290147267420921024",
+                "cosine": 0.5799221106033691
+            },
+            {
+                "id": "86",
+                "title": "ython3 -m ais_bench --model ../model/detrnoaipp.om  报错",
+                "url": "https://www.hiascend.com/forum/thread-0286157168069273400-1-1.html",
+                "created_at": "2024-07-24 01:47:49+00",
+                "source_type": "forum",
+                "source_id": "286157168069273408",
+                "cosine": 0.577262425747824
+            },
+            {
+                "id": "98",
+                "title": "ONNX可以成功使用ATC转成om文件，但是精度不对。",
+                "url": "https://www.hiascend.com/forum/thread-0237151731156412148-1-1.html",
+                "created_at": "2024-05-22 03:32:36+00",
+                "source_type": "forum",
+                "source_id": "237151731156412192",
+                "cosine": 0.5770728293301349
+            },
+            {
+                "id": "163",
+                "title": "atc模型转换（onnx转om）报错",
+                "url": "https://www.hiascend.com/forum/thread-0262137755711900019-1-1.html",
+                "created_at": "2023-12-12 09:28:32+00",
+                "source_type": "forum",
+                "source_id": "262137755711900000",
+                "cosine": 0.5739205677783726
+            },
+            {
+                "id": "19",
+                "title": "量化后的onnx模型转成om模型失败",
+                "url": "https://www.hiascend.com/forum/thread-02108183024048495158-1-1.html",
+                "created_at": "2025-05-19 08:00:49+00",
+                "source_type": "forum",
+                "source_id": "2108183024048495104",
+                "cosine": 0.5709612963646872
+            },
+            {
+                "id": "126",
+                "title": "faster_rcnn.onnx模型转化成om模型失败",
+                "url": "https://www.hiascend.com/forum/thread-0232146903768159070-1-1.html",
+                "created_at": "2024-03-27 06:36:08+00",
+                "source_type": "forum",
+                "source_id": "232146903768159104",
+                "cosine": 0.5658568335698955
+            },
+            {
+                "id": "157",
+                "title": "模型加载出错",
+                "url": "https://www.hiascend.com/forum/thread-0285140841372362096-1-1.html",
+                "created_at": "2024-01-17 02:36:12+00",
+                "source_type": "forum",
+                "source_id": "285140841372362112",
+                "cosine": 0.5657372402862525
+            },
+            {
+                "id": "114",
+                "title": "om模型转换报错",
+                "url": "https://www.hiascend.com/forum/thread-0255148205595963014-1-1.html",
+                "created_at": "2024-04-11 08:13:16+00",
+                "source_type": "forum",
+                "source_id": "255148205595963008",
+                "cosine": 0.5619520107901347
+            },
+            {
+                "id": "136",
+                "title": "模型转换失败om",
+                "url": "https://www.hiascend.com/forum/thread-0232145882972638001-1-1.html",
+                "created_at": "2024-03-15 11:02:53+00",
+                "source_type": "forum",
+                "source_id": "232145882972638016",
+                "cosine": 0.5609709236423545
+            },
+            {
+                "id": "5",
+                "title": "模型转换失败",
+                "url": "https://www.hiascend.com/forum/thread-02102183693864736207-1-1.html",
+                "created_at": "2025-05-27 02:04:25+00",
+                "source_type": "forum",
+                "source_id": "2102183693864736000",
+                "cosine": 0.5595600677641689
+            },
+            {
+                "id": "203",
+                "title": "ATC转换Onnx失败求助",
+                "url": "https://www.hiascend.com/forum/thread-0224126007333622013-1-1.html",
+                "created_at": "2023-07-29 10:02:14+00",
+                "source_type": "forum",
+                "source_id": "224126007333622016",
+                "cosine": 0.555632097177969
+            },
+            {
+                "id": "164",
+                "title": "使用 ATC 转换 ONNX 模型时报错 Param: src_out_anchor is nullptr",
+                "url": "https://www.hiascend.com/forum/thread-0284137673351389010-1-1.html",
+                "created_at": "2023-12-11 10:35:51+00",
+                "source_type": "forum",
+                "source_id": "284137673351388992",
+                "cosine": 0.5502124392320399
+            },
+            {
+                "id": "534",
+                "title": "一键全流程精度比对工具没有结果输出",
+                "url": "https://gitee.com/ascend/tools/issues/I4SDQ4",
+                "created_at": "2022-01-27 14:21:58+08",
+                "source_type": "issue",
+                "source_id": "8042620",
+                "cosine": 0.5498993140888474
+            },
+            {
+                "id": "502",
+                "title": "使用精度对比工具msquickcmp报错ONNXRuntimeError",
+                "url": "https://gitee.com/ascend/tools/issues/I70F1C",
+                "created_at": "2023-05-05 10:47:50+08",
+                "source_type": "issue",
+                "source_id": "11776800",
+                "cosine": 0.5496838180169632
+            },
+            {
+                "id": "150",
+                "title": "模型转换后无法使用，输出结果完全不对",
+                "url": "https://www.hiascend.com/forum/thread-0281144479138071094-1-1.html",
+                "created_at": "2024-02-28 05:05:38+00",
+                "source_type": "forum",
+                "source_id": "281144479138071104",
+                "cosine": 0.5482421954717683
+            },
+            {
+                "id": "233",
+                "title": "【Ascend C标准算子编译报错问题解决方案(持续更新)】",
+                "url": "https://www.hiascend.com/forum/thread-0284179983532114019-1-1.html",
+                "created_at": "2025-04-14 03:25:32+00",
+                "source_type": "forum",
+                "source_id": "284179983532113984",
+                "cosine": 0.5464623982798122
+            },
+            {
+                "id": "129",
+                "title": "atc命令转onnx模型失败",
+                "url": "https://www.hiascend.com/forum/thread-0289146738830791051-1-1.html",
+                "created_at": "2024-03-25 08:47:11+00",
+                "source_type": "forum",
+                "source_id": "289146738830790976",
+                "cosine": 0.540739930658735
+            },
+            {
+                "id": "13",
+                "title": "atc转换模型失败",
+                "url": "https://www.hiascend.com/forum/thread-0279183282947107045-1-1.html",
+                "created_at": "2025-05-22 07:55:47+00",
+                "source_type": "forum",
+                "source_id": "279183282947107008",
+                "cosine": 0.5402396765302004
+            },
+            {
+                "id": "234",
+                "title": "快速解决问题的关键：【AscendC板块发帖指南】",
+                "url": "https://www.hiascend.com/forum/thread-0230168661941674028-1-1.html",
+                "created_at": "2024-12-04 02:32:22+00",
+                "source_type": "forum",
+                "source_id": "230168661941673984",
+                "cosine": 0.5370004677532588
+            },
+            {
+                "id": "205",
+                "title": "ACT转换yolov5的onnx模型出现问题",
+                "url": "https://www.hiascend.com/forum/thread-0257124359971806011-1-1.html",
+                "created_at": "2023-07-10 08:26:12+00",
+                "source_type": "forum",
+                "source_id": "257124359971806016",
+                "cosine": 0.5324491613354672
+            },
+            {
+                "id": "358",
+                "title": "bilstmcrf执行一键精度对比时报错",
+                "url": "https://gitee.com/ascend/tools/issues/I6POHQ",
+                "created_at": "2023-03-23 19:47:20+08",
+                "source_type": "issue",
+                "source_id": "11275838",
+                "cosine": 0.5285336937796788
+            },
+            {
+                "id": "171",
+                "title": "ONNX转换到OM做推理，即使所有算子设置为fp32，推理精度仍然无法对齐",
+                "url": "https://www.hiascend.com/forum/thread-0281136573962007007-1-1.html",
+                "created_at": "2023-11-28 17:12:42+00",
+                "source_type": "forum",
+                "source_id": "281136573962007008",
+                "cosine": 0.5278554719425291
+            },
+            {
+                "id": "64",
+                "title": "ATC模型转换报错EC0010的解决方法",
+                "url": "https://www.hiascend.com/forum/thread-0238166325574705139-1-1.html",
+                "created_at": "2024-11-07 01:32:55+00",
+                "source_type": "forum",
+                "source_id": "238166325574705216",
+                "cosine": 0.5264844619157285
+            },
+            {
+                "id": "167",
+                "title": "使用atc将自己的onnx转为om模型时报E10001",
+                "url": "https://www.hiascend.com/forum/thread-0281137070695141037-1-1.html",
+                "created_at": "2023-12-04 11:11:35+00",
+                "source_type": "forum",
+                "source_id": "281137070695140992",
+                "cosine": 0.5187906212494839
+            },
+            {
+                "id": "116",
+                "title": "yolov5x  pt>onnx>om  om模型报错",
+                "url": "https://www.hiascend.com/forum/thread-0297148114905569003-1-1.html",
+                "created_at": "2024-04-10 07:01:46+00",
+                "source_type": "forum",
+                "source_id": "297148114905569024",
+                "cosine": 0.517199422980816
+            },
+            {
+                "id": "477",
+                "title": "msquick工具运行报错",
+                "url": "https://gitee.com/ascend/tools/issues/I61X6Z",
+                "created_at": "2022-11-18 16:20:41+08",
+                "source_type": "issue",
+                "source_id": "10167371",
+                "cosine": 0.5099652977651596
+            },
+            {
+                "id": "119",
+                "title": "yolov5权重转换",
+                "url": "https://www.hiascend.com/forum/thread-0294147507309160005-1-1.html",
+                "created_at": "2024-04-03 06:15:09+00",
+                "source_type": "forum",
+                "source_id": "294147507309160000",
+                "cosine": 0.5018083508998833
+            },
+            {
+                "id": "466",
+                "title": "一键全流程精度比对工具没有结果输出",
+                "url": "https://gitee.com/ascend/tools/issues/I5EJFR",
+                "created_at": "2022-06-28 17:06:30+08",
+                "source_type": "issue",
+                "source_id": "9076455",
+                "cosine": 0.4841663140246671
+            },
+            {
+                "id": "63",
+                "title": "加载模型报错500002解决方法",
+                "url": "https://www.hiascend.com/forum/thread-0296166331718266158-1-1.html",
+                "created_at": "2024-11-07 03:15:18+00",
+                "source_type": "forum",
+                "source_id": "296166331718266176",
+                "cosine": 0.4825407681386586
+            },
+            {
+                "id": "547",
+                "title": "一键精度比对工具报错",
+                "url": "https://gitee.com/ascend/tools/issues/I4V47U",
+                "created_at": "2022-02-24 15:51:11+08",
+                "source_type": "issue",
+                "source_id": "8170266",
+                "cosine": 0.47176814827580055
+            },
+            {
+                "id": "527",
+                "title": "om模型推理报错 E19999",
+                "url": "https://gitee.com/ascend/tools/issues/I5PEXR",
+                "created_at": "2022-09-02 15:23:56+08",
+                "source_type": "issue",
+                "source_id": "9583839",
+                "cosine": 0.47087248787105385
+            },
+            {
+                "id": "326",
+                "title": "om模型较onnx模型对比推理精度变差",
+                "url": "https://gitee.com/ascend/tools/issues/I5KLHI",
+                "created_at": "2022-08-04 10:12:55+08",
+                "source_type": "issue",
+                "source_id": "9359046",
+                "cosine": 0.4614821896858903
+            }
+        ]
+    },
+    "20": {
+        "summary": "昇腾开发者需明确ONNX转OM错误码E61001排查方法及Atlas设备SOC版本兼容条件",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "26",
+                "title": "【Atlas 200I DK A2】onnx转om失败",
+                "url": "https://www.hiascend.com/forum/thread-0255182415578200087-1-1.html",
+                "created_at": "2025-05-12 06:59:38+00",
+                "source_type": "forum",
+                "source_id": "255182415578200096",
+                "cosine": 0.6741597425470178
+            },
+            {
+                "id": "47",
+                "title": "om推理报错",
+                "url": "https://www.hiascend.com/forum/thread-02113175152884692058-1-1.html",
+                "created_at": "2025-02-17 05:34:45+00",
+                "source_type": "forum",
+                "source_id": "2113175152884691968",
+                "cosine": 0.6120043971365909
+            }
+        ]
+    },
+    "21": {
+        "summary": "昇腾CANN开发者需解决SenseVoice推理中ACL初始化失败及输入shape适配问题",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "50",
+                "title": "sensevoice推理报错",
+                "url": "https://www.hiascend.com/forum/thread-02108173815438515275-1-1.html",
+                "created_at": "2025-02-01 18:03:59+00",
+                "source_type": "forum",
+                "source_id": "2108173815438514944",
+                "cosine": 0.683737844248646
+            },
+            {
+                "id": "51",
+                "title": "sensevoice推理报错，返回错误码500002",
+                "url": "https://www.hiascend.com/forum/thread-02108173814998442274-1-1.html",
+                "created_at": "2025-02-01 17:56:38+00",
+                "source_type": "forum",
+                "source_id": "2108173814998441984",
+                "cosine": 0.6517873716506948
+            }
+        ]
+    },
+    "22": {
+        "summary": "昇腾CANN开发者在集成自定义OM模型到智能小车时如何确保串口通信协议的可行性",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "111",
+                "title": "2021 D",
+                "url": "https://www.hiascend.com/forum/thread-0297148309636578023-1-1.html",
+                "created_at": "2024-04-12 13:07:17+00",
+                "source_type": "forum",
+                "source_id": "297148309636577984",
+                "cosine": 0.5622229485103478
+            },
+            {
+                "id": "112",
+                "title": "2021 A",
+                "url": "https://www.hiascend.com/forum/thread-0297148308709075022-1-1.html",
+                "created_at": "2024-04-12 12:51:49+00",
+                "source_type": "forum",
+                "source_id": "297148308709075008",
+                "cosine": 0.5240663812562177
+            }
+        ]
+    },
+    "23": {
+        "summary": "昇腾CANN开发者如何定位icache缓存机制与指令加载配置逻辑文档？",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "186",
+                "title": "icase和指令加载的知识点有详细资料不",
+                "url": "https://www.hiascend.com/forum/thread-0225131961943616086-1-1.html",
+                "created_at": "2023-10-06 08:05:44+00",
+                "source_type": "forum",
+                "source_id": "225131961943616096",
+                "cosine": 0.649966768988985
+            },
+            {
+                "id": "183",
+                "title": "icache和指令加载的知识点有详细资料不",
+                "url": "https://www.hiascend.com/forum/thread-0225132200884168106-1-1.html",
+                "created_at": "2023-10-09 02:28:04+00",
+                "source_type": "forum",
+                "source_id": "225132200884168096",
+                "cosine": 0.6404596777239854
+            }
+        ]
+    },
+    "24": {
+        "summary": "昇腾CANN开发者如何兼容多框架并优化模型性能调优",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "210",
+                "title": "昇腾AI入门课",
+                "url": "https://www.hiascend.com/forum/thread-0258120405609035011-1-1.html",
+                "created_at": "2023-05-25 14:00:09+00",
+                "source_type": "forum",
+                "source_id": "258120405609035008",
+                "cosine": 0.5350248502509375
+            },
+            {
+                "id": "296",
+                "title": "华为昇腾AI处理器",
+                "url": "https://www.hiascend.com/forum/thread-0283137174074725008-1-1.html",
+                "created_at": "2023-12-05 15:54:35+00",
+                "source_type": "forum",
+                "source_id": "283137174074724992",
+                "cosine": 0.5025465883057325
+            }
+        ]
+    },
+    "25": {
+        "summary": "昇腾CANN开发者需排查OM模型自定义节点兼容性及输入尺寸处理",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "489",
+                "title": "推理出现问题",
+                "url": "https://gitee.com/ascend/tools/issues/I9BHGJ",
+                "created_at": "2024-03-25 18:51:40+08",
+                "source_type": "issue",
+                "source_id": "15652387",
+                "cosine": 0.5374771664339295
+            },
+            {
+                "id": "241",
+                "title": "OM模型推理出错",
+                "url": "https://www.hiascend.com/forum/thread-02108183286974580193-1-1.html",
+                "created_at": "2025-05-22 09:02:55+00",
+                "source_type": "forum",
+                "source_id": "2108183286974579968",
+                "cosine": 0.47269273486840924
+            }
+        ]
+    },
+    "26": {
+        "summary": "昇腾CANN如何用msOpGen解决BevPool输入参数类型及属性类型配置冲突",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "249",
+                "title": "msOpGen编写复杂输入参数算子原型定义文件",
+                "url": "https://www.hiascend.com/forum/thread-02102182431331486085-1-1.html",
+                "created_at": "2025-05-12 11:22:12+00",
+                "source_type": "forum",
+                "source_id": "2102182431331485952",
+                "cosine": 0.6790417056860556
+            },
+            {
+                "id": "254",
+                "title": "msOpGen编写复杂算子原型定义文件",
+                "url": "https://www.hiascend.com/forum/thread-02102181354769801037-1-1.html",
+                "created_at": "2025-04-30 00:19:30+00",
+                "source_type": "forum",
+                "source_id": "2102181354769800960",
+                "cosine": 0.5727957602888373
+            }
+        ]
+    },
+    "27": {
+        "summary": "昇腾CANN开发者如何确保组件/驱动/固件版本兼容性避免运行时错误",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "259",
+                "title": "版本报错",
+                "url": "https://www.hiascend.com/forum/thread-0292180172684622045-1-1.html",
+                "created_at": "2025-04-16 07:58:05+00",
+                "source_type": "forum",
+                "source_id": "292180172684622016",
+                "cosine": 0.6739551657262823
+            },
+            {
+                "id": "269",
+                "title": "在运行run.sh时出现报错",
+                "url": "https://www.hiascend.com/forum/thread-0236177061362063063-1-1.html",
+                "created_at": "2025-03-11 07:42:42+00",
+                "source_type": "forum",
+                "source_id": "236177061362063104",
+                "cosine": 0.5315546188741115
+            }
+        ]
+    },
+    "28": {
+        "summary": "昇腾CANN开发者如何显式分配连续内存并手动处理非连续数据访问",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "277",
+                "title": "Ascend C的编程模型",
+                "url": "https://www.hiascend.com/forum/thread-0230168764219294034-1-1.html",
+                "created_at": "2024-12-05 06:56:59+00",
+                "source_type": "forum",
+                "source_id": "230168764219294016",
+                "cosine": 0.4859406087662559
+            },
+            {
+                "id": "298",
+                "title": "Ascend C编程范式",
+                "url": "https://www.hiascend.com/forum/thread-0274133763664144003-1-1.html",
+                "created_at": "2023-10-27 04:34:24+00",
+                "source_type": "forum",
+                "source_id": "274133763664144000",
+                "cosine": 0.4441972446694015
+            }
+        ]
+    },
+    "29": {
+        "summary": "昇腾CANN开发者如何正确配置核函数的OpenCLAcl编译参数",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "283",
+                "title": "核函数",
+                "url": "https://www.hiascend.com/forum/thread-0272155828772805269-1-1.html",
+                "created_at": "2024-07-08 13:46:13+00",
+                "source_type": "forum",
+                "source_id": "272155828772805312",
+                "cosine": 0.6750511645875745
+            },
+            {
+                "id": "302",
+                "title": "ascend c 核函数",
+                "url": "https://www.hiascend.com/forum/thread-0230132739875974152-1-1.html",
+                "created_at": "2023-10-15 08:11:16+00",
+                "source_type": "forum",
+                "source_id": "230132739875974112",
+                "cosine": 0.46856006090087454
+            }
+        ]
+    },
+    "30": {
+        "summary": "昇腾CANN开发者需要确定在哪些场景下使用哪些库或工具",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "425",
+                "title": "这里需要使用",
+                "url": "https://gitee.com/ascend/Mind-KernelInfra/issues/IA8SIL",
+                "created_at": "2024-06-27 15:57:48+08",
+                "source_type": "issue",
+                "source_id": "17206365",
+                "cosine": 0.3534871034198479
+            },
+            {
+                "id": "328",
+                "title": "如下图所示:",
+                "url": "https://gitee.com/ascend/tools/issues/I5FEKN",
+                "created_at": "2022-07-04 16:25:29+08",
+                "source_type": "issue",
+                "source_id": "9116807",
+                "cosine": 0.28604845755100705
+            }
+        ]
+    },
+    "31": {
+        "summary": "昇腾CANN开发者亟需明确E+B和E+R策略的使用场景与优化方法选择",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "338",
+                "title": "tilng策略：E+B, E+R",
+                "url": "https://gitee.com/ascend/torchair/issues/I8PQ2V",
+                "created_at": "2023-12-19 17:09:03+08",
+                "source_type": "issue",
+                "source_id": "14637127",
+                "cosine": 0.6326562911579542
+            },
+            {
+                "id": "429",
+                "title": "tiling策略：B+R",
+                "url": "https://gitee.com/ascend/torchair/issues/I8PQ3P",
+                "created_at": "2023-12-19 17:09:18+08",
+                "source_type": "issue",
+                "source_id": "14637157",
+                "cosine": 0.5007080230447672
+            }
+        ]
+    },
+    "32": {
+        "summary": "昇腾CANN开发者需提升算子cube利用率至50%以上",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "565",
+                "title": "优化 PpMatmulEinSumKernel 算子性能",
+                "url": "https://gitee.com/ascend/ascend-transformer-boost/issues/IC5ZY1",
+                "created_at": "2025-05-07 15:07:14+08",
+                "source_type": "issue",
+                "source_id": "20435257",
+                "cosine": 0.5442054220118371
+            },
+            {
+                "id": "369",
+                "title": "优化 PagedMultiLatentAttentionCombineCacheMaskNdKernel 算子 性能",
+                "url": "https://gitee.com/ascend/ascend-transformer-boost/issues/IC5ZXP",
+                "created_at": "2025-05-07 15:06:35+08",
+                "source_type": "issue",
+                "source_id": "20435245",
+                "cosine": 0.520496717930806
+            }
+        ]
+    },
+    "33": {
+        "summary": "昇腾CANN开发者使用msprof采集导出性能数据时报错",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "495",
+                "title": "msprof 性能数据导出报错",
+                "url": "https://gitee.com/ascend/tools/issues/I8EWKC",
+                "created_at": "2023-11-08 16:51:02+08",
+                "source_type": "issue",
+                "source_id": "14132316",
+                "cosine": 0.7533948267389897
+            },
+            {
+                "id": "377",
+                "title": "msprof命令行方式采集性能数据报错",
+                "url": "https://gitee.com/ascend/tools/issues/I6DDHB",
+                "created_at": "2023-02-07 11:05:02+08",
+                "source_type": "issue",
+                "source_id": "10701695",
+                "cosine": 0.7075703042019428
+            }
+        ]
+    },
+    "34": {
+        "summary": "昇腾CANN开发者如何正确设置模型输入尺寸以适配架构要求",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "381",
+                "title": "check i:0 name:input in size:38400 needsize:102400 not match  ",
+                "url": "https://gitee.com/ascend/tools/issues/IC3CNC",
+                "created_at": "2025-04-23 15:00:24+08",
+                "source_type": "issue",
+                "source_id": "20311752",
+                "cosine": 0.5314191333071349
+            },
+            {
+                "id": "490",
+                "title": " Check i:0 name:input in size:602112 needsize:1769472 not match",
+                "url": "https://gitee.com/ascend/tools/issues/I9BHDL",
+                "created_at": "2024-03-25 18:42:34+08",
+                "source_type": "issue",
+                "source_id": "15652281",
+                "cosine": 0.5216735000162178
+            }
+        ]
+    },
+    "35": {
+        "summary": "昇腾CANN开发者使用一键精度对比工具时遇到输出形状与Ground Truth不匹配问题",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "385",
+                "title": "[应用开发]使用一键精度对比工具对Cognitive_Planning做精度对比报错",
+                "url": "https://gitee.com/ascend/tools/issues/I67ILI",
+                "created_at": "2022-12-26 17:02:59+08",
+                "source_type": "issue",
+                "source_id": "10428390",
+                "cosine": 0.6785838942835263
+            },
+            {
+                "id": "546",
+                "title": "[应用开发]使用一键精度对比工具对Smith做精度对比报错",
+                "url": "https://gitee.com/ascend/tools/issues/I681EP",
+                "created_at": "2022-12-29 16:50:12+08",
+                "source_type": "issue",
+                "source_id": "10452769",
+                "cosine": 0.6057491236664999
+            }
+        ]
+    },
+    "36": {
+        "summary": "昇腾CANN开发者遭遇NPU图执行器get_npu_format符号未定义错误，如何排查？",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "453",
+                "title": "在 npu 上运行编译后的模型报错",
+                "url": "https://gitee.com/ascend/torchair/issues/I93WIU",
+                "created_at": "2024-02-26 21:49:36+08",
+                "source_type": "issue",
+                "source_id": "15298662",
+                "cosine": 0.7113647505981647
+            },
+            {
+                "id": "389",
+                "title": "模型训练时指定自定义融合规则配置文件，训练报错",
+                "url": "https://gitee.com/ascend/torchair/issues/I9T4FS",
+                "created_at": "2024-05-29 14:36:27+08",
+                "source_type": "issue",
+                "source_id": "16475320",
+                "cosine": 0.711091760314745
+            }
+        ]
+    },
+    "37": {
+        "summary": "昇腾CANN开发者使用ais_bench在Atlas500小站运行YOLO系列OM模型加载失败",
+        "discussion_count": 2,
+        "discussion": [
+            {
+                "id": "428",
+                "title": "使用ais_bench在atlas500小站上推理yolo报模型加载失败",
+                "url": "https://gitee.com/ascend/tools/issues/IB76IY",
+                "created_at": "2024-11-26 17:19:22+08",
+                "source_type": "issue",
+                "source_id": "18810826",
+                "cosine": 0.7971870991581215
+            },
+            {
+                "id": "483",
+                "title": "yolov10模型转换后无法进行推理",
+                "url": "https://gitee.com/ascend/tools/issues/I9V22E",
+                "created_at": "2024-06-05 09:23:47+08",
+                "source_type": "issue",
+                "source_id": "16565558",
+                "cosine": 0.6767073417405545
+            }
+        ]
+    }
+}

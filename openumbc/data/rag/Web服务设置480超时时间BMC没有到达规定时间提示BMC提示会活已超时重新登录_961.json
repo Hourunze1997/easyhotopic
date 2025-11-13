@@ -1,0 +1,15 @@
+{
+    "topic_id": 961,
+    "question": "Web服务设置480超时时间，BMC没有到达规定时间提示“BMC提示会活已超时重新登录”。 - content: 求组：\n1.Web服务设置480超时时间，BMC没有到达规定时间提示“BMC提示会活已超时重新登录”。\nimage1920×1032 106 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/687b9dfbe7af3d9a8f71904d5c5c7f26df125892.jpeg",
+    "topic_user_name": "Zxl",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "ZhangNing",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/961/2",
+            "text": "你好 请提供相关日志方便定位"
+        }
+    ]
+}

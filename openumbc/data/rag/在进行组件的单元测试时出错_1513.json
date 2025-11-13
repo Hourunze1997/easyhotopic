@@ -1,0 +1,57 @@
+{
+    "topic_id": 1513,
+    "question": "在进行组件的单元测试时出错 - content: 在进行链接中的例子的简单测试时报错，报错的命令是bingo test -ut\nhttps://www.openubmc.cn/docs/zh/development/develop_guide/app_development/testing.html\n报错如下图：\nimage1855×810 112 KB\n具体日志内容如下：\n\n1 Cache locks removed\n2 [2025-07-01 10:47:52,892 INFO] 尝试清理conan组件锁\n3 [2025-07-01 10:47:52,894 INFO] >> find /root/.conan/data -maxdepth 4 -mindepth 4 -type f -name .count | xargs rm -f\n4 [2025-07-01 10:47:53,061 INFO] >>  conan create . my_app/0.0.1@hw.ibmc.dev/dev -pr:h profile.dt.ini -s build_type=Dt -r ibmc_dev --build=missing -tf None\n5 ^[[31m[2025-07-01 10:47:58,859 ERROR] 执行命令  conan create . my_app/0.0.1@hw.ibmc.dev/dev -pr:h profile.dt.ini -s build_type=Dt -r ibmc_dev --build=missing -tf None 错误, 日志:     /root/.bmcgo_log/bmcgo.log^[[0m\n6 ^[[31m[2025-07-01 10:47:58,873 ERROR] Traceback (most recent call last):\n7   File “/usr/local/lib/python3.12/dist-packages/bmcgo/cli/cli.py”, line 355, in run\n8     return method(command_args)\n9            ^^^^^^^^^^^^^^^^^^^^\n10   File “/usr/local/lib/python3.12/dist-packages/bmcgo/cli/cli.py”, line 218, in test\n11     test.run()\n12   File “/usr/local/lib/python3.12/dist-packages/bmcgo/component/test.py”, line 835, in run\n13     self.build_and_deploy()\n14   File “/usr/local/lib/python3.12/dist-packages/bmcgo/component/test.py”, line 263, in build_and_deploy\n15     self.build.run()\n16   File “/usr/local/lib/python3.12/dist-packages/bmcgo/component/build.py”, line 206, in run\n17     tool.run_command(cmd, show_log=True, timeout=timeout)\n18   File “/usr/local/lib/python3.12/dist-packages/bmcgo/utils/tools.py”, line 665, in run_command\n19     raise e\n20   File “/usr/local/lib/python3.12/dist-packages/bmcgo/utils/tools.py”, line 647, in run_command\n21     ret = subprocess.run(command, check=check, timeout=timeout)\n22           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n23   File “/usr/lib/python3.12/subprocess.py”, line 571, in run\n24     raise CalledProcessError(retcode, process.args,\n25 subprocess.CalledProcessError: Command ‘[‘conan’, ‘create’, ‘.’, ‘my_app/0.0.1@hw.ibmc.dev/dev’, ‘-pr:h’, ‘profile.dt.ini’, ‘-s’, ‘build_type=Dt’, ‘-r’, ‘ibmc_dev’, ‘–build=missi    ng’, ‘-tf’, ‘None’]’ returned non-zero exit status 1.\n26 ^[[0m\n27 ^[[31m[2025-07-01 10:47:58,875 ERROR] Command ‘[‘conan’, ‘create’, ‘.’, ‘my_app/0.0.1@hw.ibmc.dev/dev’, ‘-pr:h’, ‘profile.dt.ini’, ‘-s’, ‘build_type=Dt’, ‘-r’, ‘ibmc_dev’, ‘–buil    d=missing’, ‘-tf’, ‘None’]’ returned non-zero exit status 1.^[[0m\n28 ^[[31m[2025-07-01 10:47:58,876 ERROR] 请查看日志信息^[[0m\n29 [2025-07-01 10:50:26,859 INFO] 尝试清理conan组件锁\n30 [2025-07-01 10:50:26,861 INFO] >> find /root/.conan/data -maxdepth 4 -mindepth 4 -type f -name .count | xargs rm -f\n31 [2025-07-01 10:50:26,887 INFO] >>  conan create . my_app/0.0.1@hw.ibmc.dev/dev -pr:h profile.dt.ini -s build_type=Dt -r ibmc_dev --build=missing -tf None\n32 ^[[31m[2025-07-01 10:50:30,705 ERROR] 执行命令  conan create . my_app/0.0.1@hw.ibmc.dev/dev -pr:h profile.dt.ini -s build_type=Dt -r ibmc_dev --build=missing -tf None 错误, 日志:     /root/.bmcgo_log/bmcgo.log^[[0m\n33 ^[[31m[2025-07-01 10:50:30,707 ERROR] Traceback (most recent call last):\n34   File “/usr/local/lib/python3.12/dist-packages/bmcgo/cli/cli.py”, line 355, in run\n35     return method(command_args)\n36            ^^^^^^^^^^^^^^^^^^^^\n37   File “/usr/local/lib/python3.12/dist-packages/bmcgo/cli/cli.py”, line 218, in test\n38     test.run()\n39   File “/usr/local/lib/python3.12/dist-packages/bmcgo/component/test.py”, line 835, in run\n40     self.build_and_deploy()\n41   File “/usr/local/lib/python3.12/dist-packages/bmcgo/component/test.py”, line 263, in build_and_deploy\n42     self.build.run()\n43   File “/usr/local/lib/python3.12/dist-packages/bmcgo/component/build.py”, line 206, in run\n44     tool.run_command(cmd, show_log=True, timeout=timeout)\n45   File “/usr/local/lib/python3.12/dist-packages/bmcgo/utils/tools.py”, line 665, in run_command\n46     raise e\n47   File “/usr/local/lib/python3.12/dist-packages/bmcgo/utils/tools.py”, line 647, in run_command\n48     ret = subprocess.run(command, check=check, timeout=timeout)\n49           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n50   File “/usr/lib/python3.12/subprocess.py”, line 571, in run\n51     raise CalledProcessError(retcode, process.args,\n52 subprocess.CalledProcessError: Command ‘[‘conan’, ‘create’, ‘.’, ‘my_app/0.0.1@hw.ibmc.dev/dev’, ‘-pr:h’, ‘profile.dt.ini’, ‘-s’, ‘build_type=Dt’, ‘-r’, ‘ibmc_dev’, ‘–build=missi    ng’, ‘-tf’, ‘None’]’ returned non-zero exit status 1.\n53 ^[[0m\n54 ^[[31m[2025-07-01 10:50:30,708 ERROR] Command ‘[‘conan’, ‘create’, ‘.’, ‘my_app/0.0.1@hw.ibmc.dev/dev’, ‘-pr:h’, ‘profile.dt.ini’, ‘-s’, ‘build_type=Dt’, ‘-r’, ‘ibmc_dev’, ‘–buil    d=missing’, ‘-tf’, ‘None’]’ returned non-zero exit status 1.^[[0m\n55 ^[[31m[2025-07-01 10:50:30,708 ERROR] 请查看日志信息^[[0m\n56 [2025-07-01 10:50:38,587 INFO] 尝试清理conan组件锁\n57 [2025-07-01 10:50:38,587 INFO] >> find /root/.conan/data -maxdepth 4 -mindepth 4 -type f -name .count | xargs rm -f\n58 [2025-07-01 10:50:38,614 INFO] >>  conan create . my_app/0.0.1@hw.ibmc.dev/dev -pr:h profile.dt.ini -s build_type=Dt -r ibmc_dev --build=missing -tf None\n59 ^[[31m[2025-07-01 10:50:42,535 ERROR] 执行命令  conan create . my_app/0.0.1@hw.ibmc.dev/dev -pr:h profile.dt.ini -s build_type=Dt -r ibmc_dev --build=missing -tf None 错误, 日志:     /root/.bmcgo_log/bmcgo.log^[[0m\n60 ^[[31m[2025-07-01 10:50:42,537 ERROR] Traceback (most recent call last):\n61   File “/usr/local/lib/python3.12/dist-packages/bmcgo/cli/cli.py”, line 355, in run\n62     return method(command_args)\n63            ^^^^^^^^^^^^^^^^^^^^\n64   File “/usr/local/lib/python3.12/dist-packages/bmcgo/cli/cli.py”, line 218, in test\n65     test.run()\n66   File “/usr/local/lib/python3.12/dist-packages/bmcgo/component/test.py”, line 835, in run\n67     self.build_and_deploy()\n68   File “/usr/local/lib/python3.12/dist-packages/bmcgo/component/test.py”, line 263, in build_and_deploy\n69     self.build.run()\n70   File “/usr/local/lib/python3.12/dist-packages/bmcgo/component/build.py”, line 206, in run\n71     tool.run_command(cmd, show_log=True, timeout=timeout)\n72   File “/usr/local/lib/python3.12/dist-packages/bmcgo/utils/tools.py”, line 665, in run_command\n73     raise e\n74   File “/usr/local/lib/python3.12/dist-packages/bmcgo/utils/tools.py”, line 647, in run_command\n75     ret = subprocess.run(command, check=check, timeout=timeout)\n76           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n77   File “/usr/lib/python3.12/subprocess.py”, line 571, in run\n78     raise CalledProcessError(retcode, process.args,\n79 subprocess.CalledProcessError: Command ‘[‘conan’, ‘create’, ‘.’, ‘my_app/0.0.1@hw.ibmc.dev/dev’, ‘-pr:h’, ‘profile.dt.ini’, ‘-s’, ‘build_type=Dt’, ‘-r’, ‘ibmc_dev’, ‘–build=missi    ng’, ‘-tf’, ‘None’]’ returned non-zero exit status 1.\n80 ^[[0m\n81 ^[[31m[2025-07-01 10:50:42,538 ERROR] Command ‘[‘conan’, ‘create’, ‘.’, ‘my_app/0.0.1@hw.ibmc.dev/dev’, ‘-pr:h’, ‘profile.dt.ini’, ‘-s’, ‘build_type=Dt’, ‘-r’, ‘ibmc_dev’, ‘–buil    d=missing’, ‘-tf’, ‘None’]’ returned non-zero exit status 1.^[[0m\n82 ^[[31m[2025-07-01 10:50:42,538 ERROR] 请查看日志信息^[[0m\nlinks: https://www.openubmc.cn/docs/zh/development/develop_guide/app_development/testing.html, https://discuss.openubmc.cn/uploads/default/original/2X/c/c027d08414ae23d5986b3c7f248eedfad73c73bf.png",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1513/2",
+            "text": "content: 请参考以下2个帖子中的解决办法：\n\naccount组件单元测试执行报错 交流互助区\n\n环境\nbingo版本：0.5.317 \n现象\nbingo build --user openUBMC.release可以在生成openUBMC.release包 \n[image] \nbingo test -it --user openUBMC.release还是使用了hw.ibmc.release \n [image]\n\nACCOUNT组件执行集成测试报错 交流互助区\n\n    ipmitool dbus-x11 libdbus-1-dev dbus 这几个工具是否有安装，没有的话，使用apt install安装下这些工具。\nlinks: https://discuss.openubmc.cn/t/topic/1329/9, /c/42-category/42, #p-3199-h-1, #p-3199-h-2, https://discuss.openubmc.cn/uploads/default/original/2X/1/1a31aa425063f5e1ba299d35e81533c94e1ea6eb.png, https://discuss.openubmc.cn/t/topic/1320/9, /c/42-category/42"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1513/3",
+            "text": "content: 已经按照上述帖子进行了依赖的安装和mdb_interface版本的更改，但还是不行，新的报错信息如下\nimage1856×702 91.4 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/6/6eff5f896bbda8a0c0ccb37e42f5e9607c5532d6.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1513/4",
+            "text": "content: 参考\n\naccount组件单元测试执行报错 交流互助区\n\n    目前执行UT或IT请安装社区的bingo，安装方法 \ngit clone https://gitcode.com/openUBMC/bingo.git\ncd  bingo\nsh install_local.sh\nlinks: https://discuss.openubmc.cn/t/topic/1329/11, /c/42-category/42"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1513/5",
+            "text": "该问题是否还存在？"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1513/6",
+            "text": "由于社区版bingo没有签名功能，所以没有测试上面的方法"
+        },
+        {
+            "user_name": "yaoshun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1513/7",
+            "text": "DT跟签名没什么关系，当前DT是否还存在问题"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1513/8",
+            "text": "存在"
+        }
+    ]
+}

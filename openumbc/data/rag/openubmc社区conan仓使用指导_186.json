@@ -1,0 +1,57 @@
+{
+    "topic_id": 186,
+    "question": "openubmc社区conan仓使用指导 - content: 简要说明\nopenubmc使用conan包管理器管理组件，conan组件分为recipe和package，recipe提供构建脚本，package是组件的构建制品，不同的构建参数（编译器、编译选项、依赖、cflags等等）会生成不同的package。因此，一个recipe往往对应多个package。\nopenubmc社区提供了公共的conan仓服务，社区CI工程可以向该仓发布组件，其余社区参与者使用该仓提供的只读账户读取组件。开发者可以在openubmc官网的文档中心 > 快速入门 > 环境准备 > Ubuntu开发环境搭建获取社区仓信息。\n基于openubmc开发的产品化项目一般会有私有的组件，这些组件是不允许或者无意往openubmc社区仓发布。为此，开发者需要在本地构建一个私有的conan仓，可以参考conan社区推荐的 JFrog Artifactory Community Edition。\n在产品化开发过程使用到的组件一般会有两种来源：\n\nopenubmc社区conan仓：负责管理openubmc发布的组件，只读。\n产品conan仓：负责管理私有组件。\n\nconan提供的 remote 命令管理组件仓，在构建时也能指定使用哪个仓库启动构建。\n本文档指导开发者管理JFrog Artifactory Community Edition的本地仓、远程仓和虚拟仓，实现产品化conan仓与社区conan仓同步。\n实现方案\n产品的conan仓需要提供本地仓、远程仓和虚拟仓，相关概念和用途如下：\n\n本地仓：可以读写的仓库，其账号密码应该由CI工程持有，用于组件发布。\n远程仓：指向远程conan仓，如openubmc社区conan仓、conan官方仓(https://center2.conan.io)\n虚拟仓：一般是只读仓库，可以聚合本地仓和远程仓的组件包，开发者应该使用此仓用于日常开发活动，在虚拟仓查询或读取组件时，内部会从聚合的多个仓库中查找软件包。\n\n配置远程仓\nimage1397×559 58 KB\n创建本地仓\nimage1361×595 77.3 KB\n配置虚拟仓\nimage1359×602 75.4 KB\n测试和验证\n\n修改~/.conan/conan.conf，在general配置组将revisions_enabled设置为1，如revisions_enabled = 1\n配置conan仓: conan remote add artifactory http://ip_address:8081/artifactory/api/conan/conan，其中ip_address为服务器IP，artifactory为别名，url最后的conan为虚拟仓仓名。\n登录conan仓: conan user <uesrname> -p <password> -r artifactory，请替换用户名、密码和远程仓仓名。\n测试的验证：conan search \"libmc4lua/*\" -r artifactory，可以从虚拟仓中查找任何远程仓的组件，示例命令用于从虚拟仓中查找libmc4lua。\n\n社区conan仓\nopenubmc提供了社区conan仓，仓库信息请参考 文档中心 - 快速入门 - 环境准备 - Ubuntu开发环境搭建\n注意事项\n本文档仅用于指导产品化项目管理conan仓，请在产品化过程中注意安全防护，如使用https提供加密通信服务、适配的防火墙配置策略、隔离本地仓和虚拟仓的账号等。\nlinks: #p-268-h-1, https://conan.io/downloads, https://docs.conan.io/1/reference/commands/misc/remote.html, #p-268-h-2, https://center2.conan.io, #p-268-h-3, https://forum.openubmc.cn/uploads/default/original/1X/086d3e14260bb811e74efea2ca059ca72de39f16.png, #p-268-h-4, https://forum.openubmc.cn/uploads/default/original/1X/3813d74ad7e964b8cdd6411719933fd00f9bff7e.png, #p-268-h-5, https://forum.openubmc.cn/uploads/default/original/1X/4014a1994dbe2ccf80316a89766a4eaf1517fb67.png, #p-268-h-6, #p-268-conan-7, https://website.openubmc.cn/docs/zh/development/quick_start/prepare_environment/ubuntu_env.html, #p-268-h-8",
+    "topic_user_name": "xuhaijun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "LiJiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/186/2",
+            "text": "测试和验证的第1步可以直接使用conan的官方配置命令：\nconan config set general.revisions_enabled=1"
+        },
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/186/3",
+            "text": "你好，我刚刚开始使用openubmc，这篇文章没太看懂\n官方社区不应该是已经搭建好了conan仓库，通过\nconan user <openUBMC社区用户名> -p <openUBMC社区用户密码> -r openubmc_dev\n\n可以直接使用。\n为什么在编译的时候会出现：\nERROR: No remote ‘oepnubmc_dev’ defined in remotes\n有直接的解决方案吗？"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/186/4",
+            "text": "先用conan remote list看下远程仓库"
+        },
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/186/5",
+            "text": "bmc@bmc-VMware-Virtual-Platform:~/.conan$ sudo conan remote list\nopenubmc_dev: https://conan.openubmc.cn/conan_1/ [Verify SSL: False]\n\n这个样子"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/186/6",
+            "text": "oepnubmc_dev 词写错了。"
+        },
+        {
+            "user_name": "Xiangxiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/186/7",
+            "text": "content: 这个问题已经修正了，目前报错如下：\nimage1682×569 146 KB\n出错是在一键部署的过程中\n我怀疑是权限导致的，但是root权限启动bmc stdio，会报服务启动失败，非root权限可以成功启动但是会报下载错误\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/bd2e3cff36cc30d55bb9a9ae29f0ea981e42ddd9.png"
+        },
+        {
+            "user_name": "LiRuichen",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/186/8",
+            "text": "content: 该问题已在bmcgo.errors Download failed，下载失败 帖中回复，请您查看\nlinks: https://discuss.openubmc.cn/t/topic/1019"
+        }
+    ]
+}

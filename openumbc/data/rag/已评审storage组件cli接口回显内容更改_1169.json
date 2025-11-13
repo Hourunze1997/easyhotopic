@@ -1,0 +1,29 @@
+{
+    "topic_id": 1169,
+    "question": "【已评审】storage组件cli接口回显内容更改 - content: 关联issue\n【需求】支持Raid卡的CLI接口补齐-rackmount-GitCode\n评审背景\nstorage支持raid卡的cli接口适配，主要功能包括:raid卡控制器信息的设置和显示、逻辑盘的创建和删除、逻辑盘信息的设置和显示及物理盘信息设置和显示。\n评审点\nstorage组件相关部分cli接口功能新增或变更，支持新适配raid卡的功能\n1.功能变更\n1.1 cli命令：ipmcget -t storage -d ldinfo\n变化类型：变更命令回显/新增参数\n部分原有属性增加判断条件决定是否回显，新增部分条件下可回显的属性\n应用场景：获取指定逻辑盘信息\n操作类型：GET\n操作权限：ReadOnly\n修改内容：\n\n回显名称\n是否已实现\n修改方案\n\nDisk Cache Policy\n是\n修改后若RAID卡不支持此项，则查询时不显示\n\nConsistency Checking\n是\n修改后若RAID卡不支持此项，则查询时不显示\n\nBGI Enabled\n是\n修改后若RAID卡不支持此项，则查询时不显示\n\nSSCD Caching Enable\n是\n修改后若RAID卡不支持此项，则查询时不显示\n\nSSCD Associated LD List(ID#)\n否\n支持cachecade逻辑盘的raid卡回显该字段，若RAID卡不支持此项，则查询时不显示\n\nAcceleration Method\n否\n若RAID卡不支持此项，则查询时不显示\n\nCache Line Size\n否\n若RAID卡不支持此项，则查询时不显示\n\nRebuild in Progress\n否\n若RAID卡不支持此项，则查询时不显示\n\nInit State\n是\n修改后若RAID卡不支持此项，则查询时不显示\n\n2.功能新增\n2.1 ipmcset -t storage -d ldconfig -v\n资源\"Uri\": “/cli/v1/storage/ldconfig”\n变化类型：/新增参数\n应用场景：设置指定逻辑盘属性\n操作类型：SET\n操作权限：BasicSetting\n\n新增功能\n可选参数参数类型\n功能限制\n\n-boot 设置指定逻辑盘启动优先级为第二或全局\nNA、none、primary、secondary、all\n第二或全局参数适用于新适配的raid卡\n\n-size 设置指定逻辑盘容量大小\n{m|g|t}\n新适配的raid卡可使用该功能，设置的容量只能比原逻辑盘容量更大\n\n-ss 设置指定逻辑盘条带大小\n<16K|32K|64K|128K|256K|512K|1M>\n新适配的raid卡可使用该功能，需要raid卡的缓存策略为UnconfigureDrive\n\n-acc 设置逻辑盘加速方法\nnone、cache、iobypass\n新适配的raid卡可使用该功能\n\n2.2 ipmcget -t storage -d ctrlinfo -v\n资源\"Uri\": “/cli/v1/storage/ctrlinfo”\n变化类型：新增参数\n应用场景：获取指定raid卡信息\n操作类型：GET\n操作权限：ReadOnly\n\n新增回显字段\n说明\n约束\n\nController Driver Name\nRAID卡固件名称，默认值为\"N/A\"\n仅在带内agent在线时回显\n\nController Driver Type\nRAID卡固件版本，默认值为\"N/A\"\n仅在带内agent在线时回显\n\n2.3 ipmcget -t storage -d pdinfo -v\n资源\"Uri\": “/cli/v1/storage/pdinfo”\n变化类型：变更命令回显\n应用场景：回显指定物理盘信息\n操作类型：GET\n操作权限：ReadOnly\n新增方法获取管理硬盘的raid卡的厂商信息typeid\n部分厂商raid卡下的硬盘会不回显以下信息\nPower State 硬盘电源状态\nPatrol Read in Progress 硬盘重构状态\nMedia Error Count 媒介错误计数\nPrefail Error Count 预失败计数\nOther Error Count 其他错误计数\n2.4 ipmcset -t storage -d createld -v\n资源\"Uri\": “/cli/v1/storage/createld”\n变化类型：新增参数\n应用场景：在新的阵列上创建逻辑盘\n操作类型：SET\n操作权限：BasicSetting\n新增创建cachecade逻辑盘功能\n输入的参数中包含-cachecade时支持创建cachecade逻辑盘\n创建逻辑盘时支持设置逻辑盘的加速方法、缓存行大小\n可选的加速方法有no、cache、iobypass\n可选的缓存行大小有64K、256K\n\n新增功能\n可选参数参数类型\n功能限制\n\n-cls 设置指定逻辑盘缓存行大小\n<64K/256K>\n新适配的raid卡可使用该功能\n\n-acc 设置逻辑盘加速方法\nnone、cache、iobypass\n新适配的raid卡可使用该功能\n\n2.5 ipmcset -t storage -d addld -v\n资源\"Uri\": “/cli/v1/storage/addld”\n变化类型：新增参数\n应用场景：在已有阵列上创建逻辑盘\n操作类型：SET\n操作权限：BasicSetting\n新增创建cachecade逻辑盘功能\n输入的参数中包含-cachecade时支持创建cachecade逻辑盘\n创建逻辑盘时支持设置逻辑盘的加速方法、缓存行大小\n可选的加速方法有no、cache、iobypass\n可选的缓存行大小有64K、256K\n\n新增功能\n可选参数参数类型\n功能限制\n\n-cls 设置指定逻辑盘缓存行大小\n<64K/256K>\n新适配的raid卡可使用该功能\n\n-acc 设置逻辑盘加速方法\nnone、cache、iobypass\n新适配的raid卡可使用该功能\n\n评审结论\n同意如下cli接口功能改动，同步资料变更\n\n1.1 同意ldinfo命令如下字段在RAID卡不支持相关功能时不回显对应字段\nDisk Cache Policy\nInit State\nConsistency Checking\nBGI Enabled\nSSCD Caching Enable\nSSCD Associated LD List(ID#)\nAcceleration Method\nCache Line Size\nRebuild in Progress\n操作权限：ReadOnly\n\n2.1 同意ldconfig命令新增实现如下参数，不影响原有功能\n-boot 设置指定逻辑盘启动优先级为第二或全局\n-size 设置指定逻辑盘容量大小\n-ss 设置指定逻辑盘条带大小\n-acc 设置逻辑盘加速方法功能\n操作权限：BasicSetting\n\n2.2 同意ctrlinfo命令新增回显Controller Driver Name、Controller Driver Type，操作权限：ReadOnly\n\n2.3 同意pdinfo命令如下字段在RAID卡不支持相关功能时不回显对应字段\nPower State\nPatrol Read in Progress\nMedia Error Count\nPrefail Error Count\nOther Error Count\n操作权限：ReadOnly\n\n2.4 同意createld命令新增创建cachecade逻辑盘功能，支持如下参数\n-cls 设置指定逻辑盘缓存行大小\n-acc 设置逻辑盘加速方法\n操作权限：BasicSetting\n\n2.5 同意addld命令新增创建cachecade逻辑盘功能，支持如下参数\n-cls 设置指定逻辑盘缓存行大小\n-acc 设置逻辑盘加速方法\n操作权限：BasicSetting\nlinks: #p-2539-issue-1, https://gitcode.com/openUBMC/rackmount/issues/104, #p-2539-h-2, #p-2539-h-3, #p-2539-h-1-4, #p-2539-h-11-cliipmcget-t-storage-d-ldinfo-5, #p-2539-h-2-6, #p-2539-h-21-ipmcset-t-storage-d-ldconfig-v-7, #p-2539-h-22-ipmcget-t-storage-d-ctrlinfo-v-8, #p-2539-h-23-ipmcget-t-storage-d-pdinfo-v-9, #p-2539-h-24-ipmcset-t-storage-d-createld-v-10, #p-2539-cachecade-11, #p-2539-h-12, #p-2539-h-25-ipmcset-t-storage-d-addld-v-13, #p-2539-cachecade-14, #p-2539-h-15, #p-2539-h-16",
+    "topic_user_name": "yangqinghua",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1169/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1169/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1169/4",
+            "text": ""
+        }
+    ]
+}

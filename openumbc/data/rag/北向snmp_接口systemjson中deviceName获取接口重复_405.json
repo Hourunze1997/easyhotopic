@@ -1,0 +1,15 @@
+{
+    "topic_id": 405,
+    "question": "北向snmp 接口system.json中deviceName获取接口重复 - content: snmp这个接口定义重复了，这种情况是不是保留一个就可以了？实际生效的是后边的定义替换前面一个接口的定义吗？\n文件路径：/rackmount/interface_config/snmp/mapping_config/system/system.json\nimage1583×773 68.4 KB\nimage1777×762 75.8 KB\nlinks: https://forum.openubmc.cn/uploads/default/original/1X/a1d225feb1367c15ba0eae68dfb2ac172204a9da.png, https://forum.openubmc.cn/uploads/default/original/1X/32ca1b02cad2caebc2f91985b390047de9dd6df8.png",
+    "topic_user_name": "Lanqiao",
+    "best_answer_url": "/t/topic/405/2",
+    "reply_posts": [
+        {
+            "user_name": "",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/405/2",
+            "text": "强烈建议只保留一个，rackmount仓有相同的URI配置会导致后面加载的URI配置覆盖之前加载的，且配置加载顺序随机。\n重复SNMP deviceName已在1.60.215版本修复，删除下一个截图中的定义即可。"
+        }
+    ]
+}

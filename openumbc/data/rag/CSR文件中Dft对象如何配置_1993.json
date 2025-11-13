@@ -1,0 +1,22 @@
+{
+    "topic_id": 1993,
+    "question": "CSR文件中Dft对象如何配置 - content: 在CSR文件中有Dft相关对象的配置，能否提供一下该对象的属性说明？以及该对象和具体dft命令实现的关系？\nimage1302×303 37.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/9/934b417113d758dbd92796816579ea2d1c2deeea.png",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "/t/topic/1993/2",
+    "reply_posts": [
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1993/2",
+            "text": "可以参考general_hardware组件中model.json中实现了bmc.kepler.Manufacture接口的DFT对象，bmc.kepler.Manufacture接口下的属性，主要的变量定义：\n1、type表示测试类型：\n1是自检项\n2是需要人工干预的测试项，比如需要接环回投\n3是拷机测试项\n4是需要人工检查结果\n5是需要人工操作，如LCD\n\n2、ID是区分不同的DFT测试项类型\n3、device_num和slot一起区分相同DFT测试项类型，不同的测试项"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1993/3",
+            "text": "好的  我学习一下 感谢"
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "topic_id": 1690,
+    "question": "关于测试报告评审频次与达尔文平台使用的相关疑问咨询 - content: 1. 背景说明\n\n当前流程\n\n需求评审通过\n代码开发完成\n测试同学基于 itest-smart 等用例编写测试报告\n每 2 周集中一次测试报告评审\n\n主要痛点\n\n伙伴用例版本偏旧，可能不符合最新社区标准\n伙伴非华为开发者特殊场景处理不全，导致多轮返工\n评审频次低 → 进度慢；评审太频繁 → 占用开发/QA 产能\n测试共性问题（fail/pass）需跨 SIG 协调，但缺少统一处理机制\n达尔文平台开放后，流程衔接与资源压力尚不清晰\n\n2. 需要请教的具体问题\n\n共性问题协同\n\n若测试中发现与其他 SIG 相关的共性缺陷，只需在报告中“知会”即可，还是必须排期正式评审？\n\n达尔文平台流程\n\n社区完全开放后，伙伴能否直接在达尔文走完需求评审 → 用例执行 → 报告生成？\n新硬件 / 新部件适配时，走达尔文平台是否仍需新增测试用例？\n达尔文统一跑测后，服务器资源是否足以支撑高并发？\n\n评审效率优化\n\n除了“两周一次”集中评审与“随时插会”两种极端，有无折中方案\n\n3. 期待反馈\n\n咨询下QA SIG 大佬们：\n\n上述问题是否合理？\n若有现成的流程可借鉴，烦请指路。\n\n感谢大佬阅读！\nlinks: #p-4100-h-1-1, #p-4100-h-2-2, #p-4100-h-3-3",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/1690/10",
+    "reply_posts": [
+        {
+            "user_name": "Openubmc Liuyujie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1690/2",
+            "text": "新硬件 / 新部件适配时，走达尔文平台是否仍需新增测试用例？\n—这个要看具体的硬件和部件特性，有些是可以直接使用社区已有用例的。当然如果新增了特性，那就要新增用例。"
+        },
+        {
+            "user_name": "Openubmc Liuyujie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1690/3",
+            "text": "arch:\n\n达尔文统一跑测后，服务器资源是否足以支撑高并发？\n\n不能，社区的公共资源还比较少，当前只能支撑社区版本的发布验证，还无法支撑多版来使用。\n社区后续会规划一部分仿真环境，可以申请使用。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1690/4",
+            "text": "测试共性问题（fail/pass）需跨 SIG 协调，但缺少统一处理机制\n\n若测试中发现与其他 SIG 相关的共性缺陷，只需在报告中“知会”即可，还是必须排期正式评审？\n\n没看懂，你的问题是QA SIG发现了问题，需要依赖其他SIG修改，是这样么？\nQA SIG本身不承载问题修复、问题定位等问题，它的核心是发现问题、拦截问题露出、保障社区版本质量。同时利用技术手段来优化问题拦截效率、人工效率等等。\n因此如果发现问题，那就提到对应的仓库。提到哪个仓库，可以采用表象制，即问题发生在哪个地方，那就哪个地方对应的组件、对应的SIG负责定界，然后进行传递。\n同理，如果是对版本有影响的，RM SIG也是一种上升途径，RM SIG有权将有问题的特性下车，保障社区发行版的质量。\n最后，如果是技术方案冲突等问题，可以上升至TC。也不一定依赖例会，邮件也是一个好选择"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1690/5",
+            "text": "测试过程中发现一些具有共性的问题导致结果为 failed，初步判断可能与 SP 相关，因此基本可以排除开发 PR 本身的问题。\n根据 QA 评审流程，如果确认是与开发无关的共性问题，且经HW相关  人员确认后，可以判定为 pass，测试报告中需对此进行明确说明，QA 是可以接受并予以通过的。\n当前需要明确的是：\n对于这些用例是否可以直接 pass，是在取得相关 SIG 评审确认后操作，还是说通过邮件或论坛咨询并取得一致意见即可？"
+        },
+        {
+            "user_name": "Openubmc Liuyujie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1690/6",
+            "text": "arch:\n\n除了“两周一次”集中评审与“随时插会”两种极端，有无折中方案\n\n当前QA SIG例会是2周一周，后续可以根据需要，将频率提升到1周一次。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1690/8",
+            "text": "openubmc-liuyujie:\n\n当前QA SIG例会是2周一周，后续可以根据需要，将频率提升到1周一次。\n\n杰哥，\n目前测试报告直接进入会议评审的模式，如果未通过，往往会导致多轮返工，影响整体进度。是否可以考虑在正式评审前引入一个预评审机制，类似 interface 的评审流程，或通过 PR 的方式提前对报告内容进行初步把关？这样可以提高整体评审效率，也有助于 SIG 资源的统筹安排。\n另外，如果后续 RM 提的需求较少，每周固定开会评审可能显得频繁，不太匹配实际节奏，也容易造成资源浪费。"
+        },
+        {
+            "user_name": "张雨博",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1690/9",
+            "text": "content: @openubmc-liuyujie 可以考虑提供线下预审的通道，保障上会评审质量\nlinks: /u/openubmc-liuyujie"
+        },
+        {
+            "user_name": "社区技术支持",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1690/10",
+            "text": "如果社区对QA SIG的议题有预审诉求，可以在QA SIG报议题，一起讨论如何运行。"
+        }
+    ]
+}

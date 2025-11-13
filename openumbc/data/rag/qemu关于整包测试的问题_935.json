@@ -1,0 +1,85 @@
+{
+    "topic_id": 935,
+    "question": "【qemu】关于整包测试的问题 - content: 执行bingo build -sc qemu报错\n企业微信截图_174721452447561164×495 111 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/a7aa8132cfc6e4fbe27e2d1bbbffe03563904a5b.png",
+    "topic_user_name": "livein2ndworld",
+    "best_answer_url": "/t/topic/935/13",
+    "reply_posts": [
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/935/2",
+            "text": "根据已有的信息\n\n可能网络问题，多次尝试看看是否能解决\ngit pull失败，手动试一下？你看一下上方是否弹出需要输入gitcode账户的情况，或者增加访问令牌再试试？"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/935/3",
+            "text": "content: livein2ndworld:\n\nbingo build -sc qemu\n\n企业微信截图_174727433020041141×608 64.2 KB\n网络没有问题，上面的git命令是可以正常执行的，但是git pull那里就报错了\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/49378cbda84591b459222c8086b3580a3b3c92c7.png"
+        },
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/935/4",
+            "text": "可以看下task.log具体的错误日志"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/935/5",
+            "text": "task.log的部分内容\n执行脚本 bmc_time/include/customization.py 开始\nbmc 版本: 25.00.00.01\n>> sed -i \"/^Version=/s/1.0/25.00.00.01/g\" update.cfg\n>> chmod +x . -R \n切换工作目录到: /root/openUBMC/manifest/temp/build_openUBMC_debug_dev/output\n>> tar --format=gnu --exclude BMC_rootfs.tar.gz -czf rootfs_BMC.tar.gz rootfs_BMC.img\n>> cp -a /root/openUBMC/manifest/temp/build_openUBMC_debug_dev/buildimg/rtos_with_driver/rootfs /root/openUBMC/manifest/temp/qemu/qemu_rootfs\n>> cp /root/openUBMC/manifest/temp/qemu/qemu_rootfs/usr/lib64/mock/libsoc_adapter_mock.so /root/openUBMC/manifest/temp/qemu/qemu_rootfs/usr/lib64/libsoc_adapter.so -f\n>> rm -rf /root/openUBMC/manifest/temp/qemu/qemu_rootfs/usr/lib64/mock\n切换工作目录到: /root/openUBMC/manifest/temp/qemu\n>> rm -rf /root/openUBMC/manifest/temp/qemu/mock\n>> git init mock \n提示：使用 'master' 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中 \n提示：配置使用初始分支名，并消除这条警告，请执行： \n提示： \n提示：  git config --global init.defaultBranch <名称>\n提示： \n提示：除了 'master' 之外，通常选定的名字有 'main'、'trunk' 和 'development'。\n提示：可以通过以下命令重命名刚创建的分支： \n提示： \n提示：  git branch -m <name>\n已初始化空的 Git 仓库于 /root/openUBMC/manifest/temp/qemu/mock/.git/\n切换工作目录到: /root/openUBMC/manifest/temp/qemu/mock\n>> git remote add origin https://gitcode.com/openUBMC/qemu.git\n>> git config core.sparseCheckout true \n>> git pull origin main \nfatal: <CH.00905404> can not read project. user: livein2ndworld. Request-id is fUesJSkxuL.\nfatal: 无法读取远程仓库。\n\n请确认您有正确的访问权限并且仓库存在。\n^[[31mERROR: 执行命令 ['/usr/bin/git', 'pull', 'origin', 'main'] 错误, 日志: /root/openUBMC/manifest/temp/log/task.log^[[0m\n^[[32mtar BMC_rootfs.tar.gz successfully^[[0m"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/935/6",
+            "text": "task.log中其他报错"
+        },
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/935/7",
+            "text": "你可以本地git fetch origin试一下\n建议增加访问令牌，我之前构建qemu也出现过失败，设置访问令牌后就ok了"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/935/8",
+            "text": "content: 企业微信截图_174729837621081339×212 8.03 KB\n有令牌，git fetch origin执行了也不行，报一样的错\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/92c1238847451d8ed3dde44064db116fdbbda743.png"
+        },
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/935/9",
+            "text": "如果本地git fetch都不行；那你是不是都没加入到项目组里啊？\n\n看下在项目组里没\ngit remote -v 看下远程仓\nssh密钥是否配置了\ngit clone可以么"
+        },
+        {
+            "user_name": "livein2ndworld",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/935/10",
+            "text": "1.怎么看在不在组里？\n2.\n\n3.ssh配了\n4.git clone完整命令是啥\nbingo build是没问题的"
+        },
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/935/11",
+            "text": "后面会开放"
+        },
+        {
+            "user_name": "Zhengxy",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/935/13",
+            "text": "qemu仓库权限已开放，此问题应已修复"
+        }
+    ]
+}

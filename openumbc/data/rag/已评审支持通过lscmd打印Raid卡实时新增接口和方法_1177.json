@@ -1,0 +1,29 @@
+{
+    "topic_id": 1177,
+    "question": "【已评审】支持通过lscmd打印Raid卡实时新增接口和方法 - content: 评审背景\nissue链接\n背景\n通过在线调试客户端lscmd可以执行组件的自定义命令进行在线调试，提升开发的定位能力\n现状分析\n当前组件管理多个对象：比如controller，drive，volume等，因此需要针对每个对象单独\n新增一个接口，接口下面新增各对象各自的方法\n方案\n1.针对新增方法在业务组件中进行具体的调试功能实现，比如：打印某些私有信息帮助问题定位\n2.通过lscmd来进行调用方法，进行在线调试\n评审点\n资源path:“/bmc/kepler/Systems/:SystemId/Storage”\n资源interface:bmc.kepler.Release.Storage.Controller\n变化类型：新增interface\n应用场景：开发或维护人员通过组件调试命令查看组件运行实时数据\n持久化类型：不持久化\n\n方法名称\n变化类型\n请求签名\n请求参数说明\n响应签名\n响应参数说明\n访问权限\n说明\n约束\n\nGetControllerInfo\n新增方法\ny\nControllerId：签名为y，表示控制器ID\na{ss}\nRAID卡相关信息\nReadOnly\n打印运行时RAID卡的数据\n仅用于mdbctl执行组件调测命令时使用\n\n调测命令\n命令名称: getctrlinfo\n命令描述: “Get the running information of controller.”\n参数：ControllerId\n详细描述：“The Id of controller.”\n评审结论\n同意在/bmc/kepler/Systems/:SystemId/Storage下新增接口bmc.kepler.Release.Storage.Controller，并在该接口下新增方法：GetControllerInfo\n\n方法名称\n变化类型\n请求签名\n请求参数说明\n响应签名\n响应参数说明\n访问权限\n说明\n约束\n\nGetControllerInfo\n新增方法\ny\nControllerId：签名为y，表示控制器ID\na{ss}\nRAID卡相关信息\nReadOnly\n打印运行时RAID卡的数据\n仅用于mdbctl执行组件调测命令时使用\n\n遗留问题：\n1.lscmd界面描述信息要用英文。\n结论：已补充命令名称及参数的英文说明\n2.新增方法名字不合理。\n结论：方法名称修改为GetControllerInfo\nlinks: #p-2547-h-1, https://gitcode.com/openUBMC/storage/issues/21, #p-2547-h-2, #p-2547-h-3, #p-2547-h-4, #p-2547-h-5, #p-2547-h-6, #p-2547-h-7",
+    "topic_user_name": "Dli Bmc Vigaq",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "许强",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1177/2",
+            "text": "dli_bmc_vigaq:\n\n1.lscmd界面描述信息要用英文。\n结论：\nControllerId—displayDescription：“The Id of controller.”\nDetails—displayDescription：“The running information of controller.”\n接口显示—displayDescription：“Print controller running info”\n2.新增方法名字不合理。结论：已修改为PrintControllerRunningInfo\n\n1、命令描述\n这里对应的应该是方法描述，不是接口显示，建议已“.”结尾作为完整的方法描述。\n需要补充组件自定义命令名称cmdName，采用全小写方式"
+        },
+        {
+            "user_name": "Lanqiao",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1177/3",
+            "text": "功能实现已经修改。\n方法描述—displayDescription：“Print controller running info.”\ncmdName：printcontrollerrunninginfo"
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1177/4",
+            "text": ""
+        }
+    ]
+}

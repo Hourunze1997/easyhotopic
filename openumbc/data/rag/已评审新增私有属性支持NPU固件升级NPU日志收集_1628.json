@@ -1,0 +1,29 @@
+{
+    "topic_id": 1628,
+    "question": "【已评审】新增私有属性支持NPU固件升级、NPU日志收集 - content: ISSUE链接（必填，此议题关联的issue）：\nhttps://gitcode.com/openUBMC/general_hardware/issues/59\nhttps://gitcode.com/openUBMC/general_hardware/issues/79\n背景（必填，文字描述议题背景，如需求来源、问题场景）:\n适配npu固件升级和npu日志收集，新增私有属性区分不同底层协议\n参考新增资源协作路径：/bmc/kepler/Chip/I3cChip/:Id\n决策点（必填，一句话描述待决策点）：\n新增私有属性BusType，用于区分与控制芯片通信使用的总线协议\n详细描述（必填，描述待评审接口的详细内容）：\n类： NPUFirmware、NpuBoard\n变化类型：新增属性\n属性名称：BusType\n应用场景：用于区分与控制芯片通信使用的总线协议\n持久化类型： 不持久化\n操作权限：不涉及\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nBusType\n新增属性\ny\n不涉及\n不持久化\n否\n与芯片通信使用的总线议类型，0：自动选择 1：使用i2c协议 2：使用i3c协议\n\n评审结论\n1、同意新增私有属性BusType ：\n\n类: NPUFirmware、NpuBoard\n属性：BusType ，签名为y，与控制芯片通信使用的总线协议类型\n权限：不涉及\nlinks: #p-3947-issueissue-1, https://gitcode.com/openUBMC/general_hardware/issues/59, https://gitcode.com/openUBMC/general_hardware/issues/79, #p-3947-h-2, https://discuss.openubmc.cn/t/topic/1470, #p-3947-h-3, #p-3947-h-4, #p-3947-h-5",
+    "topic_user_name": "曾启健",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1628/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1628/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1628/4",
+            "text": ""
+        }
+    ]
+}

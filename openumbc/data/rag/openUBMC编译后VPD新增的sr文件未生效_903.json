@@ -1,0 +1,78 @@
+{
+    "topic_id": 903,
+    "question": "openUBMC编译后，VPD新增的sr文件未生效 - content: 问题描述：\nopenUBMC本地构建时，在VPD仓增加板卡sr，进行组件编译后，再进行版本构建后，进入BMC后台，使用find命令，未找到新增的sr\n诉求：\n能否提供解决方案\n现有docker版本构建记录说明：\n\n新增sr文件\nimage863×118 12.7 KB\n添加路径到profile\n\n组件编译构建\n\n在manifest中添加当前组件\n\n在manifest中整体构建出包\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/fccf28778a4e17c54359c415a12b13bd11724355.png",
+    "topic_user_name": "长江_赵凯",
+    "best_answer_url": "/t/topic/903/11",
+    "reply_posts": [
+        {
+            "user_name": "Iss Tanghaibin",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/903/2",
+            "text": "cat /etc/package_info | grep vpd\n可以看看环境上的vpd组件版本是不是对的"
+        },
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/903/3",
+            "text": "1、产品集成的逻辑是“组件打包什么文件，产品就集成什么文件”，请检查组件的conan包package目录，确定组件正确打包了的文件。\n2、ipmcget -d v检查bmc的构建时间和版本，确保是你期望的bmc版本。\n3、检查/etc/package_info，确定正确集成了你期望的组件&版本。"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/903/4",
+            "text": "content: vpd 组件options默认为common（即空模板用于与产业组件进行集成），使用直接构建时出的组件包中opt/bmc/sr目录下不会有\nimage457×346 6.71 KB\n本地需要构建联调时，在vpd组件构建命令后面加上options参数指定单板名，即 -o vpd:board_name=openUBMC 。\n构建完成后再进行manifest整体构建出包。\n可以在构建中间产物临时目录manifest/temp/build_xxx_debug_dev/conan_index/vpd/opt/bmc查看是否有新增的sr，其中xxx为构建的单板名。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/bd727253a9552fd92b62054d7d74407e49458d9c.png"
+        },
+        {
+            "user_name": "长江_赵凯",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/903/5",
+            "text": "好的，感谢各位支持，已经找到方案，需要在manifest.yml中的VPD指定board_name为S920X20后，再到X20 profile.txt中添加就实现加载"
+        },
+        {
+            "user_name": "yctco_zhanglei",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/903/6",
+            "text": "1.编译完成后可以直接再manifest/temp/build_openUBMC_debug_dev/tmp_root/opt/bmc/sr目录下查找是否文件有编译进去"
+        },
+        {
+            "user_name": "长江-涂华能",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/903/7",
+            "text": "content: 那manifest.yml中vpd这个boardname如何配置呢，现在发现改为openUBMC后出包，会报WARN: [‘TaiShanServer2.9.0_CSR’, ‘vpd’]存在重复文件opt/bmc/sr/xxx\n\nimage983×572 51.1 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/9fc7079307483875f3baaee3dd8256310d90556d.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/903/8",
+            "text": "content: vpd当前提供了3个产品单板，如下所示，对应3个不同的conan包，包含的sr文件也有所不同。\n\n看这3个单板是否满足业务需要，如果满足，选一个单板即可。\n\n如果不满足业务需要，要搭配产业的CSR组件使用。使用board_name: common ，如下所示：\n\nimage370×239 4.81 KB\n\nmanifest构建后，在构建中间产物临时目录manifest/temp/build_xxx_debug_dev/conan_index/vpd/opt/bmc 查看sr是否满足要求。\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/aad49d2983ce53956d7fd2af3879ffcc9089cd9e.png"
+        },
+        {
+            "user_name": "长江_赵凯",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/903/9",
+            "text": "content: 我们最开始用的common，新增sr未生效，然后我们指定了单板未openUBMC或者X20，会与taishan仓原有的sr冲突\n因为我们项目最开始开发的sr是基于taishan仓来改的（现在未开放），现在放在VPD仓的openUBMC 单板下\nimage1215×406 52.9 KB\n诉求：\n\n请问VPD新增的sr有办法覆盖taishan仓同名sr方法吗\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/9dba8465b006b8e1559f778b38fa3f4ff4ef7028.png"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/903/10",
+            "text": "content: 新增组件仓库，参考示例组件。\n在mds/service.json文件中将vpd作为build依赖\n新增单板配置目录（不能与vpd仓库中vendor下的第一级子目录同名），如TaiShan\n\n - TaiShan\n   profile.txt\n   - xxx\n      xx.sr\n\n添加需要vpd中的sr到profile.txt中，或自开发的sr添加到profile.txt中。\n\n进行组件构建出包，\n最后将组件配置在manifest中进行集成构建出包\n\n - conan：vpd_example/0.01\n    options:\n      board_name: Taishan\nlinks: https://gitcode.com/Larry_Li_006/openUBMC_VPD_Example"
+        },
+        {
+            "user_name": "长江_赵凯",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/903/11",
+            "text": "content: 规避编译冲突问题方案：可以将conan二进制的TaishanServer2.9.0目录下的cffc下的sr移到vpd仓的openUBMC下，然后manifest.yaml中注释TaishanServer2.9.0组件\n17494716389821505×236 67.9 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/a/aefbf1d80ab1a26965d5ef3ac45f67be1b1a72c7.jpeg"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "topic_id": 1114,
+    "question": "general_hardware组件bingo gen代码生成报错 - content: 拉取最新的general_hardware和mdb_interface代码，general_hardware组件执行bingo gen代码生成报错。\nmdb_interface版本号为：1.80.37\nimage2340×717 104 KB\nimage2187×1523 275 KB\nbingo版本号：0.5.317\nimage948×104 10.5 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/963051ac3a2aca331d9288b4b294c7bbdd0238da.png, https://discuss.openubmc.cn/uploads/default/original/1X/cede02313267c2424b6bfeccabe555a34b5ac5f5.png, https://discuss.openubmc.cn/uploads/default/original/1X/091e0f522866ef3f3cc1a4da968a52649c36bbde.png",
+    "topic_user_name": "iss_renping",
+    "best_answer_url": "/t/topic/1114/2",
+    "reply_posts": [
+        {
+            "user_name": "maoyuhao",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1114/2",
+            "text": "最新代码已解决该问题"
+        }
+    ]
+}

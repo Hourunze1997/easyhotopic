@@ -1,0 +1,57 @@
+{
+    "topic_id": 1318,
+    "question": "风扇&散热->传感器温度页面不显示温度数据 - content: openubmc web页面 风扇&散热->传感器温度页面不显示温度数据：\nimage2167×867 20.2 KB\n在telnet中重启energy服务，页面便可恢复正常。\n此处数据是从cooling组件获取的，查看app.log，发现一个报错：\nimg_v3_02n3_a5b094de-682d-43ee-9818-2d8d2e02cc5g1293×129 78.1 KB\n判断是因为此时compute进程还未完全启动，导致cooling组件无法获取其对象，导致温度获取线程初始化失败，因此做如下改动：\nimg_v3_02n4_caca97d1-4624-49f4-9d58-ab912483c50g365×103 19.7 KB\n新的固件启动，Processors/CPU报错消失，但是web页面依旧不显示温度，查看log发现另一个获取对象失败的报错：\nimg_v3_02n4_8bf2fc48-9519-4592-a861-791d4019315g1160×156 97.3 KB\n与正常情况对比，出问题的时候少了一些add object：\nimage1478×166 9.45 KB\n因为cooling未开源，因此不能确定cooling ERROR: cooling_service.lua(71): Get cooling config obj failed为何产生，请问这个问题该如何解决？\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/f/f2f9d6080124c63465beaf4fb9780fd92b9b6f00.png, https://discuss.openubmc.cn/uploads/default/original/2X/5/56c0b0d8ca188d71b9823277543320e546470856.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/3/3f6867e50bc47aa2126212940dc96520eb0429b9.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/9/9bf15c55ec475f8f94aa7ad29db40db329ce9a48.jpeg, https://discuss.openubmc.cn/uploads/default/original/2X/7/76b2f0e59e6866be9579585dc7661b5bfe5c087b.png",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "/t/topic/1318/8",
+    "reply_posts": [
+        {
+            "user_name": "Weber Chen",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1318/2",
+            "text": "排查是否CSR中配置CoolingConfig对象"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1318/3",
+            "text": "扩展板的CSR中有配置Coolingconfig"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1318/4",
+            "text": "传感器温度页面显示需依赖coolingConfig对象中配置的SensorLocationSupported字段\n若存在CoolingConfig对象，请确认是否正确配置SensorLocationSupported字段"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1318/5",
+            "text": "content: 如此配置了SensorLocationSupported。\n请问怎样算正确配置，能否给出该对象各属性的说明。\n如果不配置SensorLocationSupported的话，传感器温度这个选项卡就是没有的，我们现在的问题，这个页面选项卡存在，可以点进去，但是页面里不显示温度：\nimage2277×890 34.7 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/8/8781932b13fc0825d7e8b96369f87a40d92bbac6.png"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1318/6",
+            "text": "请提供日志"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1318/7",
+            "text": "content: app.zip (267.1 KB)\n整个一键收集的日志过大（超过5M），无法上传。如果还需要其他日志请具体说明我再上传\nlinks: /uploads/short-url/D4Ejno607NIxuprQXsHJHnw0OA.zip"
+        },
+        {
+            "user_name": "Wwhh",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1318/8",
+            "text": "已解决，待后续正式版本推送"
+        }
+    ]
+}

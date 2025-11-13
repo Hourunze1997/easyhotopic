@@ -1,0 +1,15 @@
+{
+    "topic_id": 1436,
+    "question": "【已评审】新增资源协作路径：/bmc/kepler/Chip/CpldChip/:Id - content: ISSUE链接\n支持通过I2c访问cpld\n评审背景\nCpld通过I2c读写时，由于通用chip没有实现bit写的功能，因此需要新增芯片类型CpldChip类，该类来继承通用chip，再对bit写的方法进行重新实现。\n触发原因：新的需求\n当前现在与差距/问题分析：\n当前不支持cpld通过i2c管理时按位写的能力，该功能为V2已支持的功能，当前版本上该框架基本能力缺失。\n决策点\n1、 新增资源协作路径：/bmc/kepler/Chip/CpldChip/:Id\n详细描述\npath：/bmc/kepler/Chip/CpldChip/:Id（新增）\ninterface：\n\nbmc.kepler.Chip\nbmc.kepler.Chip.BitIO\nbmc.kepler.Chip.BlockIO\nbmc.kepler.Release.TraceChip\n\n变化类型：新增资源path\n应用场景：cpld作为i2c芯片访问的场景下进行位读写操作\n持久化类型： 不持久化\n操作权限：BasicSetting\n详细描述：私有属性继承通用chip\n评审结论\n决策点1：新增资源协作路径：/bmc/kepler/Chip/CpldChip/:Id\n结论：同意新增资源协作路径/bmc/kepler/Chip/CpldChip/:Id，该路径下实现已定义的资源协作接口：bmc.kepler.Chip，bmc.kepler.Chip.BlockIO，bmc.kepler.Chip.BitIO，bmc.kepler.Release.TraceChip\n遗留问题及确认结论：\n1、新增的path下interface应包含通用chip下的interface\n结论：新增的资源协作路径/bmc/kepler/Chip/CpldChip/:Id下应和通用chip一样，实现bmc.kepler.Chip.BlockIO、bmc.kepler.Release.TraceChip、bmc.kepler.Chip的接口\nlinks: #p-3391-issue-1, https://gitcode.com/openUBMC/mdb_interface/issues/132, #p-3391-h-2, #p-3391-h-3, #p-3391-h-4, #p-3391-h-5, #p-3391-h-1-bmckeplerchipcpldchipid-6, #p-3391-h-7, #p-3391-h-8, #p-3391-h-1bmckeplerchipcpldchipid-9",
+    "topic_user_name": "Chenshengfan",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1436/2",
+            "text": ""
+        }
+    ]
+}

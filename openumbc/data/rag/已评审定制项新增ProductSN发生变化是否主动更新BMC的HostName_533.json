@@ -1,0 +1,15 @@
+{
+    "topic_id": 533,
+    "question": "【已评审】定制项新增ProductSN发生变化是否主动更新BMC的HostName - content: 关联issue\n支持BMC的hostname变化时DHCP重新申请分配IP地址\n评审背景\n\n当前BMC的HostName默认是使用主板的ProductSN作为内容进行处理，并且生成一次Hostname之后Hostname不再变化\n客户提出定制化需求，支持改主板ProductSN之后需要同步更新BMC的Hostname，并且使用新的Hostname作为依据需要DHCP重新分配IP地址\n\n评审点\n新增定制化项，用于定制是否使能序列号发生变化时更新BMC的HostName，默认为0（不开启）。具体的定制化项信息如下：\n\n项目\n值\n\n定制化项\nBMC主机名称更新策略\n\n定制化接口名称\nCustom_HostnameUpdatePolicy\n\n默认值\n0\n\n处理逻辑\nif(Custom_HostnameUpdatePolicy == 1)   使能同步更新策略，当SN发生变化时同步修改BMC的Hostname  else    去使能同步更新策略，当SN发生变化时不会同步修改BMC的Hostname\n\n说明\n取值范围：0：SN变化仅更新一次主机名1：SN变化实时更新到主机名注意：1. 当前定制化项对于Hostname定制的范围均有效，不论是System域还是Product域的SN（决定于定制化项 BMCSet_Hostname）2. SN由非空变为空的情况下则不进行更新主机名\n\n评审结论\n同意新增BMC主机名称更新策略定制化项。具体的定制化项如下：\n\nCustom_HostnameUpdatePolicy\n\n疑问点\n1 关于当前定制化项名称的疑问\n问题： 当前定制化项更像是一个开关，是否命名为 Custom_HostnameUpdateEnabled 更合适？\n\n提出人：彭强\n结论：已经和专家沟通确认，保留后续的扩展能力，保持原有的名称 Custom_HostnameUpdatePolicy 不变\n\n2 关于当前定制化项的作用范围\n问题： 按照上面详细信息中的注意项，当前定制化应该需要在整个SN领域均生效，还是仅生效于ProductSN的场景？\n\n提出人：彭强\n结论：整个SN领域（System域SN，Product域SN）变化时均受到定制化项 Custom_HostnameUpdatePolicy 影响，根据定制结果确认是否同步更新到BMC的HostName。\nlinks: #p-1030-issue-1, https://gitcode.com/openUBMC/profile_schema/issues/7, #p-1030-h-2, #p-1030-h-3, #p-1030-h-4, #p-1030-h-5, #p-1030-h-1-6, #p-1030-h-2-7",
+    "topic_user_name": "Zhangbaocun",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/533/2",
+            "text": ""
+        }
+    ]
+}

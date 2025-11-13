@@ -1,0 +1,29 @@
+{
+    "topic_id": 682,
+    "question": "【已评审】资源协作接口支持光模块老化预测功能开关 - content: SSUE链接：\n【修改描述】支持光模块老化预测功能开关使能\n评审背景\n\n光模块老化故障预测支持开关控制，支持客户在某些特殊场景下认为预测结果不符合预期时，可控制开关属性，自行关闭功能，避免告警长期存在或维护日志持续产生；客户明确不需要预测功能时，也可以通过开关关闭预测功能\n\n评审点\n\nbmc.kepler.Managers.FaultPrediction接口新增属性，表示光模块老化预测功能开关状态\n\n详细描述\n1、资源协作接口新增属性\n路径： /bmc/kepler/Managers/:ManagerId/FaultPrediction\n接口： bmc.kepler.Managers.FaultPrediction\n变化类型：新增属性\n具体如下：\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n属性说明\n接口约束\n\nOpticalModuleDeteriorationPredictionEnabled\n新增属性\nb\n读： ReadOnly 写: BasicSetting\n掉电持久化\nfalse\n光模块劣化预测功能开关: false,关闭;true,打开\n—\n\n评审结论：\n\n同意bmc.kepler.Managers.FaultPrediction接口新增属性OpticalModuleDeteriorationPredictionEnabled，表示光模块老化预测功能开关状态，签名类型为b，支持查询和设置\n\n评审时间：\n2025年4月3日\nlinks: https://gitcode.com/openUBMC/mdb_interface/issues/31, #p-1372-h-1, #p-1372-h-2, #p-1372-h-3, #p-1372-h-1-4",
+    "topic_user_name": "Huangrenjie Wtss6",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/682/2",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/682/3",
+            "text": ""
+        },
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/682/4",
+            "text": ""
+        }
+    ]
+}

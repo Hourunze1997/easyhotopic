@@ -1,0 +1,22 @@
+{
+    "topic_id": 723,
+    "question": "制作反向过渡包时碰到的疑问 - 我通过如下方式制作反向过渡包：\n①manifest按照制作过渡包的方法进行配置，bmcgo.conf中的伙伴模式为false\n②将华为rootca.der放到opt/bmc/trust/partner/下\n如此出包会生成一个自身是华为签名，同时升级时给华为证书开了后门的包。\n然后我使用hpm_resign给这个包重签名，如此该包就成了我们自签名包，同时该包可以升级华为签名包。\n那么，正常情况下，这个包可做的升级操作为：\n①从自签名包升级到该包\n②从该包升级到自签名包\n③从该包升级到华为包\n然而实际情况是①和③可以，②会报无效的升级包\n也就是说明通过hpm_signer重签名包和通过配置manifest.yml生成自签名包实际上并不一样。能否讲解一下升级时固件校验流程以说明重签名和自签名的差异",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "/t/topic/723/2",
+    "reply_posts": [
+        {
+            "user_name": "xuhaijun",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/723/2",
+            "text": "升级会使用内置的根证书校验hpm包的cms签名，有两个根证书可供选择：一个是/opt/bmc/trust/partner/rootca.der（以下叫B根），另外一个是由镜像构建时打包到镜像中的签名根（以下叫A根）。\n当你使用伙伴根重签名并不会修改hpm包里面的A根，使用华为构建流程制作的hpm包预置的A根是华为根，另外一个你导入的B根也是华为根，所以你的环境上只有华为根，当然不能升级自签名包。"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/723/3",
+            "text": "好的  感谢解答"
+        }
+    ]
+}

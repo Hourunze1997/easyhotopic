@@ -1,0 +1,57 @@
+{
+    "topic_id": 848,
+    "question": "Q1 main分支f8acc985 bmcgo 构建失败：not found in ibmc_dev - content: PKG_CONFIG_PATH=/opt/RTOS/208.8.0/arm64le_5.10_ek_preempt_pro/sdk/lib64/pkgconfig:/opt/RTOS/208.8.0/arm64le_5.10_ek_preempt_pro/sdk/usr/lib64/pkgconfig\nRANLIB=aarch64-target-linux-gnu-ranlib\nSTRIP=aarch64-target-linux-gnu-strip\nopenubmc/25.00.00.01@hw.ibmc.release/rc: Retrieving from server ‘ibmc_dev’\nopenubmc/25.00.00.01@hw.ibmc.release/rc: Trying with ‘ibmc_dev’…\nERROR: openubmc/25.00.00.01@hw.ibmc.release/rc was not found in remote ‘ibmc_dev’\n构建完成时间: 2025/05/11 11:41:03.877192\nERROR: ================== openubmc/25.00.00.01@hw.ibmc.release/rc 构建失败日志结束位置 ==================\nTraceback (most recent call last):\nFile “/usr/local/lib/python3.12/dist-packages/bmcgo/frame.py”, line 274, in run\nret = self._run()\n^^^^^^^^^^^\nFile “/usr/local/lib/python3.12/dist-packages/bmcgo/frame.py”, line 316, in _run\nret = work_x.run()\n^^^^^^^^^^^^\nFile “/usr/local/lib/python3.12/dist-packages/bmcgo/tasks/task_build_conan.py”, line 829, in run\nself.deploy()\nFile “/usr/local/lib/python3.12/dist-packages/bmcgo/tasks/task_build_conan.py”, line 643, in deploy\nself.install_ibmc()\nFile “/usr/local/lib/python3.12/dist-packages/bmcgo/tasks/task_build_conan.py”, line 600, in install_ibmc\nbundle_parse.conan_parallel_build(cmd, self.config.build_path)\nFile “/usr/local/lib/python3.12/dist-packages/bmcgo/tasks/task_build_conan.py”, line 238, in conan_parallel_build\nwhile self.wait_task_finished():\n^^^^^^^^^^^^^^^^^^^^^^^^^\nFile “/usr/local/lib/python3.12/dist-packages/bmcgo/tasks/task_build_conan.py”, line 195, in wait_task_finished\nraise errors.BmcGoException(“conan 组件构建进程接收到错误”)\nbmcgo.errors.BmcGoException: conan 组件构建进程接收到错误\nERROR: conan 组件构建进程接收到错误\n清理残留的进程\nERROR: 任务 personal 执行失败\nERROR: 请查看日志信息\n我在使用社区提供的 manifest 并执行 bingo build -b openUBMC 构建时，报错如下：\nERROR: openubmc/25.00.00.01@hw.ibmc.release/rc was not found in remote 'ibmc_dev'\n\n请问这个我的配置有问题，是否需要改什么？\n附图如下：\nimage1403×612 30.5 KB\n\n 补充信息：\n\n使用社区版 manifest  commit为main分支的[f8acc985]\nbmcgo 版本：0.5.317\nConan 配置已设定远程 ibmc_dev\n附图如下：\nimage805×193 5.01 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/a70a495ce5d0ada7bdb8be67355a171929eef35b.png, #p-1745-h-1, https://discuss.openubmc.cn/uploads/default/original/1X/b200aaa462ff14f598d9d16154fba717411eacb3.png",
+    "topic_user_name": "shenwei 百信信息技术",
+    "best_answer_url": "/t/topic/848/8",
+    "reply_posts": [
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/848/2",
+            "text": "bingo的conan不应该模式是openubmc_dev吗？ibmc_dev是华为的conan仓库吧"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/848/3",
+            "text": "这个只是取名问题。因为bmcgo 脚本里面是有些别名问题会报错。实际上链接是社区的"
+        },
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/848/4",
+            "text": "不确定工具有没有根据名称来判断的。可以新增一个openubmc_dev看看"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/848/5",
+            "text": "content: 我把远端改成了 openubmc_dev，但构建行为仍然一样。这个方式和原来用 ibmc_dev 的逻辑是完全一致的，只是仓名不同。\n需要注意的是，如果要改成 openubmc_dev，还必须同步修改 bmcgo 的 Python 脚本中的 Conan 地址配置，把里面的 ibmc_dev 替换成 openubmc_dev，否则还是会拉取失败。\n但是拉取失败和这个not found 是2个问题。目前我卡在这个组件缺失上了。\nimage1201×687 34.8 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/9bb9d1215452eaffde70f68abe60b72f8e2def77.png"
+        },
+        {
+            "user_name": "dh_qiuming",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/848/6",
+            "text": "我的意思是，一个ibmc_dev，一个openubmc_dev。两个conan的地址都一样，就是别名不一样"
+        },
+        {
+            "user_name": "LiJiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/848/7",
+            "text": "请问manifest修改了哪些？ 看日志openubmc/25.00.00.01@hw.ibmc.release/rc是当成了组件在构建，而实际上没有openubmc这个组件。"
+        },
+        {
+            "user_name": "shenwei 百信信息技术",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/848/8",
+            "text": "content: “conanfile.py” 19行，需要将openubmc改成ibmc\nimage1061×967 33.6 KB\nlinks: https://discuss.openubmc.cn/uploads/default/original/2X/3/373dca3f859ed3e44af7b34bd9b236e6958ba442.png"
+        }
+    ]
+}

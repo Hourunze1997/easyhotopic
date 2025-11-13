@@ -1,0 +1,22 @@
+{
+    "topic_id": 885,
+    "question": "【已评审】IPMI新增命令详细展示评审 - content: 关联 issue\n暂无\n评审背景\n目前在社区上已经录入了openUBMC支持的所有的IPMI命令的索引，具体的索引请见：OEM IPMI规范命令索引。\n对于每个IPMI命令，需要在社区上展示对应的详细信息。\n评审点\n评审点1\nIPMI命令的详细信息的路径采用 {NetFN}/{Cmd}[/{SubCmd}].md 的方式，比如：\n\nGet Device Id Command 命令详细信息： ./app-06/01.md\nWrite MAC Address 命令详细信息：./oem-30/90/00.md\n\n评审点2\n索引到详细信息采用超链接的方式，将索引的命令名称增加超链接，链接到对应的文件上\n评审点3\nIPMI命令的详细内容，总体上在对应的文件详细信息文件中，根据对应的章节进行处理。具体的章节以及对应的描述如下：\n\n命令说明\n当前命令用于查询BMC的NTP配置信息\n请求说明\n根据 ipmitool 工具 raw 命令方式说明请求的命令样式以及参数。 比如：\n格式： ipmitool raw 0x30 0x93 {1} 0x82 {2} {3} {4}\n权限： BasicSetting\n参数说明：\n\n字节顺序\n参数说明\n\n1:3\nManufacturer ID，LS Byte first。长度固定3个字节，例如，某厂家ID是2011，对应十六进制为0x0007DB，则字节序为第1个字节为DBh、第2个字节为07h、第3个字节为00h\n\n4\nSubCmd，子命令字，固定为 82h\n\n5\n参数选项，具体的参数见附表-1\n\n6\n请求数据的长度\n\n7:N\n请求数据，如果请求数据长度为0则不需要填写\n\n响应说明\n根据 ipmitool 工具 raw 命令的响应说明响应参数。 比如：\n参数说明：\n\n字节顺序\n参数说明\n\n1\nCompletion Code，IPMI命令响应码\n\n2:4\nManufacturer ID，LS Byte first。长度固定3个字节，例如，某厂家ID是2011，对应十六进制为0x0007DB，则字节序为第1个字节为DBh、第2个字节为07h、第3个字节为00h\n\n5\n响应数据的长度\n\n6:N\n响应数据\n\n附表\n附表-1：NTP配置参数选项表\n\n评审结论\n当前评审暂不给结论，需要闭环下述问题\nlinks: #p-1824-issue-1, #p-1824-h-2, https://gitcode.com/openUBMC/docs/blob/main/docs/zh/development/specifications/ipmi/oem.md, #p-1824-h-3, #p-1824-h-1-4, #p-1824-h-2-5, #p-1824-h-3-6, #p-1824-h-7",
+    "topic_user_name": "pengqiang",
+    "best_answer_url": "/t/topic/885/2",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/885/2",
+            "text": "content: 评审问题：\n\n命令的可执行样例，包括请求和响应的样例\n答复：已经写了一个样例并且在 interface SIG 上评审。示例代码：docs仓库\n能否在社区上搞个小工具，用于快速验证当前IPMI命令的请求是否满足要求，响应的样式验证 – 在线实时工具，需要和基础设施讨论\n答复：当前问题记录到 interface SIG 面板上作为长期议题进行跟踪落地。interface SIG 面板：Etherpad\n在每个章节中是否增加修订记录，增加 引入的版本号（openUBMC release版本号），修改的内容和背景，修订人，修订时间\n答复：已经在  interface SIG 评审，interface SIG 面板：Etherpad\nlinks: https://etherpad.openubmc.cn/p/sig-interface, https://etherpad.openubmc.cn/p/sig-interface"
+        },
+        {
+            "user_name": "pengqiang",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/885/3",
+            "text": ""
+        }
+    ]
+}

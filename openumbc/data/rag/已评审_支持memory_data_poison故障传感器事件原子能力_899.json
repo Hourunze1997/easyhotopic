@@ -1,0 +1,15 @@
+{
+    "topic_id": 899,
+    "question": "【已评审】 支持memory data poison故障传感器事件原子能力 - content: SSUE链接：\n 支持memory data poison故障传感器事件原子能力\n评审背景\n\n对于BIOS上报的memory Data Poisoning故障，提供传感器事件原子能力，伙伴/客户可以根据原子能力进行二次开发。\n\n需求\n\n支持memory data poison故障传感器事件原子能力\n\n决策点\n\n新增memory data poison资源树属性\n\n评审点\n路径： /bmc/kepler/Systems/:SystemId/FDMDomain/MemoryRAS/:Id\n接口： bmc.kepler.Systems.FDMDomain.MemoryRAS\n变化类型：新增属性DataPoison\n应用场景：BIOS上报memory Data Poisoning故障\n持久化类型： 不持久化\n操作权限： ReadOnly\n详细描述\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nDataPoison\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\ntrue\n内存被检测到Data Poisoning。取值: 0-未发生，1-发生，默认值0。\n无\n\n评审结论\n同意新增属性\n路径： /bmc/kepler/Systems/:SystemId/FDMDomain/MemoryRAS/:Id\n接口： bmc.kepler.Systems.FDMDomain.MemoryRAS\n\n属性名称\n变化类型\n签名\n读写&权限\n持久化\n变化通知\n接口说明\n接口约束\n\nDataPoisoned\n新增属性\ny\nR：ReadOnlyW：ReadOnly\n否\ntrue\n内存检测到Data Poisoning。从0到1表示故障事件发生，从1到0不表示故障事件恢复。\n无\n\n恢复方案：某次故障事件发生时，先恢复属性（恢复上一次故障），延时后再置位\n遗留问题\n\nDataPoison命名参考芯片资料\n问题结论：命名改为DataPoisoned\nlinks: #p-1846-ssue-1, https://gitcode.com/openUBMC/mdb_interface/issues/55, #p-1846-h-2, #p-1846-h-3, #p-1846-h-4, #p-1846-h-5, #p-1846-h-6, #p-1846-h-7, #p-1846-h-8",
+    "topic_user_name": "Wangxiaoyang1 Dhhhd",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "huanghan",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/899/2",
+            "text": ""
+        }
+    ]
+}

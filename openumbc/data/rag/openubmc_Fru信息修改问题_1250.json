@@ -1,0 +1,99 @@
+{
+    "topic_id": 1250,
+    "question": "openubmc Fru信息修改问题 - content: 在使用openubmc写fru信息时，碰到两个问题\n①\n使用ipmitool fru命令查看fru信息，有几个器件的fru报Device not present：\nimage513×106 2.12 KB\n这几个fru里目前是没有数据的，因此想试试通过ipmitool fru write命令写入数据后问题会不会恢复。但是发现这些fru无法通过ipmittool fru write命令写入数据：\nimage529×108 3.17 KB\nmdbctl查看eeprom对象没发现问题，且eeprom的写保护是关闭的\nimage333×312 5.02 KB\nimage340×589 69 KB\n请问Device not present这个问题是什么原因，要如何恢复？\n②\n有一个fru通过ipmitool fru write写入了非法格式和非法字符的数据\nimage861×237 6.85 KB\n之后要再通过ipmitool fru write\\edit写入正常数据，发现无法写入，会卡死在Writing new FRU.打印：\nimage690×382 9.05 KB\n像这样的情况要如何把fru数据恢复？\nlinks: https://discuss.openubmc.cn/uploads/default/original/1X/1b5c089576ca20213c94f47797513c48fe1c9255.png, https://discuss.openubmc.cn/uploads/default/original/1X/aa859628b29daf26c0416714f4ea89a4a8ff0805.png, https://discuss.openubmc.cn/uploads/default/original/1X/267ce8c0ff4f8198c1661a56af5499a13d5f4c1b.png, https://discuss.openubmc.cn/uploads/default/original/1X/15d904aed34748528714249cb8d31d1540fa15c7.jpeg, https://discuss.openubmc.cn/uploads/default/original/1X/931d0845796ea82c047b79f1a02db5db04bb42e1.png, https://discuss.openubmc.cn/uploads/default/original/1X/453d8df1bb77e3b91b0d8f8e877b1f662aaab665.png",
+    "topic_user_name": "KunTai_LiuJie",
+    "best_answer_url": "/t/topic/1250/11",
+    "reply_posts": [
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1250/2",
+            "text": "问题2   我通过ClearElabelData命令，把fru恢复了"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1250/3",
+            "text": "问题①补充\neeprom的数据可以读到：\n\nipmitool fru print 0，报 Device not present时，后台打印如下：\n\n跟踪代码没有找到ipmi_read_frudata函数的C实现，因此还确认不了报错的直接原因"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1250/4",
+            "text": "通过硬件烧fru.bin进eeprom里，问题就修复了"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1250/5",
+            "text": "方便说一下是用什么硬件方法吗？"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1250/6",
+            "text": "烧录器烧的"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1250/7",
+            "text": "还有一个疑问fru.bin是怎么生成的，有相关文档吗？"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1250/8",
+            "text": "content: 可以从fru正常的机器里导一个出来  用ipmitool fru write命令。\n也可以在gitcode上下载，不过这个我没用过： 项目首页 - FRUbin文件生成解析工具:本项目提供了一套高效的FRU bin文件生成与解析工具，专为Linux系统设计，包含ipmi-fru-it和ipmi_fru_parser两个实用程序。ipmi-fru-it能够将配置文件快速转换为FRU bin文件，支持自定义文件大小和附加信息，适用于服务器配置管理。ipmi_fru_parser则能从FRU bin文件中提取配置信息，并模拟ipmitool输出，便于用户查看与调试。这些工具操作简单，功能强大，是服务器维护与管理的得力助手，尤其适合熟悉Linux命令行的用户使用。通过本项目，您可以轻松实现FRU文件的生成与解析，提升服务器管理效率。 - GitCode\nfru规范文档也可以直接查到：Platform Management FRU Information Storage Definition v1.0 rev. 1.2\nlinks: https://gitcode.com/Premium-Resources/fed18, https://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/ipmi-platform-mgt-fru-info-storage-def-v1-0-rev-1-3-spec-update.pdf"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1250/9",
+            "text": "好的，谢谢你，我研究一下怎么用"
+        },
+        {
+            "user_name": "Ocy",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1250/10",
+            "text": "通过上诉工具，结合规范文档，能够成功修改fru信息"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": true,
+            "post_url": "/t/topic/1250/11",
+            "text": "content: FRU管理相关问题汇总 bmc_core SIG\n\n    碰到一个fru读写问题： \n查看fru信息报如下错误： \n[image] \n猜测是因为eeprom中数据不符合fru规范，导致无法识别，因此烧录器刷正确格式的fru进eeprom，刷过之后eeprom内数据为： \n [image] \n对应的fru信息为： \n[image] \n但是此时实际查看到的fru信息却是： \n[image] \n请问这是为何。\n  \n\n对于上面链接中我提的问题，是因为eeprom中不只有fru信息，还存在其他的信息。根据csr中FruData对象的StorageType值的不同，这些信息的偏移也不同，比如\"StorageType\": \"TianChi\"时，EEPROM前128个字节为天池头，从129字节开始为fru信息。因此，如果直接通过烧录器将fru.bin烧录进EEPROM，会导致缺少天池头，进而导致读出的fru信息与烧录的fru.bin信息不一致\nlinks: https://discuss.openubmc.cn/t/topic/91/3, /c/sig-bmc-core/7, https://discuss.openubmc.cn/uploads/default/original/2X/a/a2e242ebff941c63f8b4aaeac71cbd2488fee32f.png, https://discuss.openubmc.cn/uploads/default/original/2X/a/ad51deecae9166cdfc18253f72d5726c08cc7716.png"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1250/12",
+            "text": "你好，想问下“EEPROM前128个字节为天池头”这种情况，是需要烧录的时候跳过128字节吗？"
+        },
+        {
+            "user_name": "KunTai_LiuJie",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1250/13",
+            "text": "只烧fru的话   是的"
+        },
+        {
+            "user_name": "南京百敖",
+            "topic_closed": true,
+            "is_solution": false,
+            "post_url": "/t/topic/1250/14",
+            "text": "好的，3Q"
+        }
+    ]
+}

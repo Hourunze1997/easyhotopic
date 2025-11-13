@@ -1,0 +1,15 @@
+{
+    "topic_id": 1956,
+    "question": "【已评审】新增设置环境变量Host GMAC资源协作接口 - content: 前置评审\n\n【已评审】提供HOST.GMAC的MAC地址设置和查询接口（IPMI/CLI） Interface评审\n\n评审点一，新增设置/查询HOST.GMAC的IPMI命令：\n方案一（推荐）：\n设置HOST配置的IPMI命令： Set Host Info\n权限：BasicSetting\n\n字节顺序\n域内容\n\nNetFn\n30h\n\nCMD\n90h\n\n1\nSub command，子命令= 0x78\n\n2\nParameter Selector\n\n3:N\nConfiguration parame…\n  \n\n评审背景\n\n某机型HOST芯片没有集成GE控制器，在BMC芯片里集成了2个GE控制器，HOST芯片通过PCIe连接BMC芯片，由BMC芯片给HOST芯片出GE口；BMC芯片GE控制器的MAC地址通过环境变量控制；使用场景为：生产装备加工环节或者研发阶段，需要通过IPMI接口或者CLI命令配置HOST.GMAC的MAC地址\n\n当前现状以及差距\n现状\n当前仅框架提供了设置HOST GMAC的接口SetMacAddr，没有处理HOST GMAC生效\n差距\n需要由业务组件调用下游接口处理生效，并将完整的设置接口提供给北向接口调用\n解决方案\n基于以上场景，需要新增资源协作接口，以支持设置环境变量\n决策点\n新增资源协作接口方法，用于北向接口设置环境变量HOST.GMAC\npath：/bmc/kepler/Managers/:ManagerId/SOC （原有）\ninterface： bmc.kepler.Managers.SOC（原有）\nmethod：SetMacAddr（新增）\n\n权限：BasicSetting\n请求签名 : ys\n请求参数 :  GmacId MacAddr\n\nGmacId：U8 类型，GMAC控制器的Id\nMacAddr string 类型，GMAC控制器的网口MAC地址\n\n响应签名 : 无\n响应参数 ：无\n说明 ：设置GMAC控制器的网口MAC地址\n\n评审结论\n不通过，当前评审议题可以通过使用应用框架 soctrl 提供的 SoC 操作环境变量的接口可以处理，不需要再行评审资源协作接口。\nlinks: #p-4796-h-1, https://discuss.openubmc.cn/t/topic/929, /c/sig-interface/40-category/40, #p-1901-hostgmacipmi-1, #p-1901-font-colorredfont-2, #p-1901-hostipmi-set-host-info-3, #p-1901-basicsetting-4, #p-4796-h-2, #p-4796-h-3, #p-4796-h-4, #p-4796-h-5, #p-4796-h-6, #p-4796-h-7, #p-4796-h-8",
+    "topic_user_name": "Linyao",
+    "best_answer_url": "",
+    "reply_posts": [
+        {
+            "user_name": "pengqiang",
+            "topic_closed": null,
+            "is_solution": false,
+            "post_url": "/t/topic/1956/2",
+            "text": "linyao:\n\n新增资源协作接口方法，用于北向接口设置环境变量HOST.GMAC\npath：/bmc/kepler/Managers/:ManagerId/SOC （原有）\ninterface： bmc.kepler.Managers.SOC（原有）\nmethod：SetMacAddr（新增）\n\n权限：BasicSetting\n请求签名 : ys\n请求参数 : GmacId MacAddr\n响应签名 : 无\n响应参数 ：无\n\n【预审】\n\n当前是仅有 Host GMAC 使用吗？前置评审中的接口是针对整体 SoC 的环境变量的接口，这个要确认清楚评审范围"
+        }
+    ]
+}
